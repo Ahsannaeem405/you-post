@@ -972,3 +972,9 @@ body{
 /* ============================== */
 
 
+.emoji_parent > span {
+	display: none;
+}
+.emoji_parent > div {
+	z-index: 99;
+}

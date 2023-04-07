@@ -13,8 +13,8 @@
 
                 <form action="{{url('create_post')}}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <textarea required name="content" id="" cols="30" rows="3" class="form-control" placeholder="Write your post..."></textarea>
+                    <div class="form-group emoji_parent">
+                        <textarea required name="content" id="emojiarea" cols="30" rows="3" class="form-control" placeholder="Write your post..."></textarea>
                     </div>
 
                     <div class="icon_buttons_tags">
@@ -31,7 +31,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)" class="open_emoji">
                                         <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
                                     </a>
                                 </li>

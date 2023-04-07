@@ -237,16 +237,16 @@
     </div>
 </footer>
 <!--===== Markup For "Footer" Ends Here =====-->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
-        crossorigin="anonymous">
-</script>
-<script src='{{asset('js/inputEmoji.js')}}'></script>
+
 
 
 
 <!--jQuery Main Libraty Latest Version-->
 <script type="text/javascript" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
+
+<script src='{{asset('js/inputEmoji.js')}}'></script>
+
 
 <!--Bootstrap v4.5.3 JS File-->
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
@@ -272,11 +272,6 @@ $(function() {
 </script>
 
 
-<script>
-    $(function () {
-  $('textarea,input').emoji();
-})
-</script>
 
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <!--Custom JavaScript-->
@@ -352,6 +347,12 @@ $(function() {
     });
     
 </script>
+<script>
+    $(function () {
+			$('#emojiarea').emoji({place: 'after'});
+		})
+</script>
+
 </body>
 
 </html>

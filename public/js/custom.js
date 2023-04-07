@@ -313,7 +313,9 @@
             $('.posttime').val('later');
         });
 
-        
+        $(document).on('click', '.open_emoji', function() {
+            $('.emoji_parent > span').click();
+        });
         
         
         
