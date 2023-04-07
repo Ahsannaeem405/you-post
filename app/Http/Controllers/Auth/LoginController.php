@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Socialite;
-use Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -53,23 +53,24 @@ class LoginController extends Controller
     {
             try {
                 $user = Socialite::driver('google')->stateless()->user();
-                $finduser = User::where('email', $user->email)->first();
+                // $finduser = User::where('email', $user->email)->first();
+                $finduser = User::where('google_id', $user->id)->first();
                 if($finduser){
                     
                     Auth::login($finduser);
-                    return redirect()->intended('/');
+                    return redirect()->intended('/index')->with('success', 'Login Successfully');
                 }else{
-                        $newUser = User::create([
-                            'name' => $user->name,
-                            'email' => $user->email,
-                            'google_id'=> $user->id,
-                            'password' => encrypt('123456dummy')
-                        ]);
-                        Auth::login($newUser);
-                        return redirect()->intended('/');
+
+                    $newUser = User::updateOrCreate(['email' => $user->email],[
+                        'name' => $user->name,
+                        'google_id'=> $user->id,
+                        'password' => encrypt('123456dummy')
+                    ]);
+                    Auth::login($newUser);
+                    return redirect()->intended('/index')->with('success', 'Login Successfully');
                 }
             } catch (Exception $e) {
-                dd($e->getMessage());
+                return redirect()->intended('/login')->with('error', $e->getMessage()) ;
             }
         
     }
@@ -77,8 +78,30 @@ class LoginController extends Controller
 
     public function redirectToFacebook()
     {
-        return redirect('/');
         return Socialite::driver('facebook')->redirect();
 
+    }
+
+    public function handleFacebookCallback()
+    {
+        try {
+            $user = Socialite::driver('facebook')->user();
+            $finduser = User::where('facebook_id', $user->id)->first();
+            if($finduser){
+                Auth::login($finduser);
+                return redirect()->intended('/index')->with('success', 'Login Successfully');
+            }else{
+                $user->email != null ? $email = $user->email : $email = "$user->id@gmail.com";
+                $newUser = User::updateOrCreate(['email' => $email],[
+                    'name' => $user->name,
+                    'facebook_id'=> $user->id,
+                    'password' => encrypt('123456dummy')
+                ]);
+                Auth::login($newUser);
+                return redirect()->intended('/index')->with('success', 'Login Successfully');
+            }
+        } catch (Exception $e) {
+            return redirect()->intended('/login')->with('error', $e->getMessage());
+        }
     }
 }

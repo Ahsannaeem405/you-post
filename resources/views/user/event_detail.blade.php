@@ -14,7 +14,7 @@
 </div>
 
 <div class="social_forms">
-    <h5>Social Medail Plateforms :</h5>
+    <h5>Social Media Platforms :</h5>
     <p> 
         @foreach ($post->plateforms as $platform)
             <span class="social_forms">{{$platform->plateform}}</span>

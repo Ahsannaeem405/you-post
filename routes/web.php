@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('index', [UserController::class, 'index']);
     Route::post('create_post', [UserController::class, 'create_post']);
     Route::get('get_event_detail', [UserController::class, 'get_event_detail']);
+    Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
 
 });
 Route::get('logout',function (){

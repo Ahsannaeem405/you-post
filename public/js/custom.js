@@ -34,22 +34,6 @@
         $('.browsertimeinput').val(new_date_time);
         $('.posttime').val('later');
     }
-    function add_plateform()
-    {
-        // var all_plateform[] = $("input[name='plateform[]']:checked").val();
-        // $('.selected_plateform').val(all_plateform);
-
-        var all_plateform = $("input[name='plateform[]']:checked");
-        var plateform_val = [];
-        all_plateform.each(function() {
-            plateform_val.push($(this).val());
-        });
-        $('.selected_plateform').val(plateform_val);
-
-    }
-
-
-
 
     var graphdata1 = {
         linecolor: "#000000",
@@ -281,7 +265,6 @@
     });
 
     $( document ).ready(function() {
-        add_plateform();
         // $(document).on('click', '.calendar .pignose-calendar-row div', function() {
         $(".calendar .pignose-calendar-unit").on("click", function(){
             if($(this).hasClass('pignose-calendar-unit-active'))
@@ -300,18 +283,22 @@
         // set current time
 
         // set curent date and time
-        const now = new Date();
-        const browserTime = new Intl.DateTimeFormat('en-US', {
-        year: 'numeric', month: 'numeric',
-        day: 'numeric', hour: 'numeric',
-        minute: 'numeric', hour12: true
-        }).format(now);
-        // var browserTime = new Date();
-        // browserTime =  browserTime.toLocaleString().replace(/:\d{2},\s*/);
-        // alert(browserTime);
-        $('#browsertime').text(browserTime);
-        $('.browsertimeinput').val(browserTime);
-
+        function apend_current_time()
+        {
+            const now = new Date();
+            const browserTime = new Intl.DateTimeFormat('en-US', {
+            year: 'numeric', month: 'numeric',
+            day: 'numeric', hour: 'numeric',
+            minute: 'numeric', hour12: true
+            }).format(now);
+            // var browserTime = new Date();
+            // browserTime =  browserTime.toLocaleString().replace(/:\d{2},\s*/);
+            // alert(browserTime);
+            $('#browsertime').text(browserTime);
+            $('.browsertimeinput').val(browserTime);
+        }
+        
+        apend_current_time();
         // set curent date and time
 
         $(document).on('change', '.select_time', function() {
@@ -319,14 +306,14 @@
         });
         $(document).on('click', '.post_now_btn', function() {
             $('.posttime').val('now');
+            apend_current_time();
+
         });
         $(document).on('click', '.post_later_now_btn', function() {
             $('.posttime').val('later');
         });
 
-        $(document).on('click', '.plateform', function() {
-            add_plateform();
-        });
+        
         
         
         

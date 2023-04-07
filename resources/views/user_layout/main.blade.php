@@ -72,7 +72,8 @@
                         <img src="{{asset('images/FB_Color.png')}}" class="color_icon" alt="" />
                         <img src="{{asset('images/FB_Black.png')}}" class="black_icon" alt="" />
                     </div>
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Facebook" id="socialFB" checked>
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Facebook" id="socialFB" 
+                    {{ in_array('Facebook', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialFB"></label>
                 </div>
 
@@ -81,7 +82,8 @@
                         <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt="" />
                         <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt="" />
                     </div>
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Instagram" id="socialInstagram" checked>
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Instagram" id="socialInstagram" 
+                    {{ in_array('Instagram', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialInstagram"></label>
                 </div>
 
@@ -91,7 +93,8 @@
                         <img src="{{asset('images/Twitter_Black.png')}}" class="black_icon" alt="" />
                     </div>
 
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Twitter" id="socialTwitter" checked>
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Twitter" id="socialTwitter" 
+                    {{ in_array('Twitter', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialTwitter"></label>
                 </div>
                 <div class="single_platform">
@@ -100,7 +103,8 @@
                         <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt="" />
                     </div>
 
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Linkedin" id="socialLinkedin" checked>
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Linkedin" id="socialLinkedin" 
+                    {{ in_array('Linkedin', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialLinkedin"></label>
                 </div>
 
@@ -233,7 +237,11 @@
     </div>
 </footer>
 <!--===== Markup For "Footer" Ends Here =====-->
-
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
+        crossorigin="anonymous">
+</script>
+<script src='{{asset('js/inputEmoji.js')}}'></script>
 
 
 
@@ -249,6 +257,7 @@
 <script type="text/javascript" src="{{asset('js/index.global.min.js')}}"></script>
 <!--SimpleChart JS File-->
 <script type="text/javascript" src="{{asset('js/SimpleChart.js')}}"></script>
+
 <script>
 $(function() {
     $('.calendar').pignoseCalendar({
@@ -260,6 +269,13 @@ $(function() {
     // $('.pignose-calendar-unit-active').removeClass('pignose-calendar-unit-active');
 
 });
+</script>
+
+
+<script>
+    $(function () {
+  $('textarea,input').emoji();
+})
 </script>
 
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
@@ -312,6 +328,27 @@ $(function() {
             }
         });
         calendar.render();
+    });
+
+    $(document).on('click', '.plateform', function() {
+            // add_plateform();
+        // var all_plateform = $("input[name='plateform[]']:checked").serialize();
+        var all_plateform = $("input[name='plateform[]']:checked");
+        var plateform_val = [];
+        all_plateform.each(function() {
+            plateform_val.push($(this).val());
+        });
+        $.ajax({
+                type: "get",
+                url: "{{ url('update_user_platforms') }}",
+                data: {
+                    'plateform_val': plateform_val
+                },
+                success: function(response) {
+                    
+                }
+        });
+
     });
     
 </script>

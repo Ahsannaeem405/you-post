@@ -13,7 +13,6 @@
 
                 <form action="{{url('create_post')}}" method="post">
                     @csrf
-                    <input type="hidden" class="selected_plateform" name="selected_plateform">
                     <div class="form-group">
                         <textarea required name="content" id="" cols="30" rows="3" class="form-control" placeholder="Write your post..."></textarea>
                     </div>
