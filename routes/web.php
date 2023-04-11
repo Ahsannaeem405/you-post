@@ -38,10 +38,10 @@ Route::get('/migratefresh/seed', function () {
 // //////////////////////// social login////////////////////////
 
 Route::get('auth/google', [LoginController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback']);
+Route::get('auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::get('auth/facebook', [LoginController::class, 'redirectToFacebook']);
-Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
+Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('facebook.callback');
 
 // ///////////////////////social login/////////////////////////
 
@@ -59,6 +59,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('get_event_detail', [UserController::class, 'get_event_detail']);
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
 
+    Route::post('connect_to_facebook',  [UserController::class, 'connect_to_facebook']);
+    Route::get('connect_facebook/calback',  [UserController::class, 'connect_facebook_calback']);
+
+    
+    // http://localhost:8000/connect_facebook/calback
 });
 Route::get('logout',function (){
     Auth::logout();

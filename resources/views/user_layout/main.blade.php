@@ -204,6 +204,31 @@
   </div>
 {{-- event detail modal --}}
 
+
+{{-- myaccount modal --}}
+<div class="modal fade" id="myaccounts_modal" tabindex="-1" aria-labelledby="myaccounts_modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myaccounts_modalLabel">Connect Accounts</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{url('connect_to_facebook')}}" method="post">
+            @csrf
+            <div class="modal-body">
+                <span>Facebbok</span> <button class="btn btn-primary" type="submit">Connect</button>
+            </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{-- myaccount modal --}}
+
 <!--===== Markup For "Footer" Starts Here =====-->
 <footer class="footer_outer">
     <div class="footer_inner">
@@ -211,7 +236,7 @@
             <div class="footer">
                 <div class="site_links grid_item">
                     <ul>
-                        <li><a href="javascript:void(0)">My Account</a></li>
+                        <li><a href="javascript:void(0)" class="myaccounts">My Account</a></li>
                         <li><a href="javascript:void(0)">Add New Social Profile</a></li>
                         <li><a href="javascript:void(0)">Privacy Policy</a></li>
                         <li><a href="javascript:void(0)">Support</a></li>

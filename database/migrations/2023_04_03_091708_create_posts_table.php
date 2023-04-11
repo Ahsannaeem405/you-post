@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->references('id')->cascadeOnDelete();
             $table->text('content')->nullable();
             $table->string('tag')->nullable();
+            $table->text('media')->nullable();
             $table->string('posted_at_moment')->nullable();
             $table->string('posted_at')->nullable();
             $table->timestamps();

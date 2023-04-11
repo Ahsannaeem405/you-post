@@ -11,7 +11,7 @@
                     <h4>Create your post</h4>
                 </div>
 
-                <form action="{{url('create_post')}}" method="post">
+                <form action="{{url('create_post')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group emoji_parent">
                         <textarea required name="content" id="emojiarea" cols="30" rows="3" class="form-control" placeholder="Write your post..."></textarea>
@@ -21,13 +21,15 @@
                         <div class="icon_buttons grid_item">
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0)">
-                                        <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt="" />
+                                    <a href="javascript:void(0)"><label for="image_or_video">
+                                        <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt=""/>
+                                    </label>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">
+                                    <a href="javascript:void(0)"><label for="image_or_video">
                                         <img src="{{asset('')}}images/Video_Player_Icon.png" class="img-fluid" alt="" />
+                                    </label>
                                     </a>
                                 </li>
                                 <li>
@@ -37,6 +39,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <input type="file" name="media" class="image d-none" id="image_or_video" accept="image/*,video/*">
 
                         <div class="tags_input_wrap grid_item">
                             <div class="tags_input">
@@ -112,7 +115,7 @@
                         </li>
                         <li class="month_name">
                             <span>December 2022</span>
-                            <a href="javascript:void(0)"><img src="{{asset('')}}images/V_Icon.png" class="img-fluid" alt="" /></a>
+                            <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid" alt="" /></a>
                         </li>
                     </ul>
                 </div>
@@ -150,7 +153,7 @@
                         </li>
                         <li class="month_name">
                             <span>December 2nd 2022</span>
-                            <a href="javascript:void(0)"><img src="{{asset('')}}images/V_Icon.png" class="img-fluid" alt="" /></a>
+                            <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid" alt="" /></a>
                         </li>
                     </ul>
                 </div>

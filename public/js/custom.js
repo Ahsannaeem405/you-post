@@ -317,7 +317,10 @@
             $('.emoji_parent > span').click();
         });
         
-        
+        $(document).on('click', '.myaccounts', function() {
+        $('#myaccounts_modal').modal('show');
+            
+        });
         
         
     });
