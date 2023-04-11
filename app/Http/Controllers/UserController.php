@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DateTime;
 use Facebook\Facebook;
+use Facebook\Exceptions\FacebookResponseException;
+use Facebook\Exceptions\FacebookSDKException;
+use App\Services\Facebookservice;
+
 
 class UserController extends Controller
 {
@@ -27,8 +31,9 @@ class UserController extends Controller
         }
         return view('user.index', compact('allPosts'));
     }
-    public function create_post(Request $req)
+    public function create_post(Request $req, Facebookservice $facebookservice)
     {
+
         $req->validate([
             'content' => 'required',
             'tag' => 'required',
@@ -36,6 +41,13 @@ class UserController extends Controller
         $platforms = auth()->user()->platforms;
         if(count($platforms) > 0 )
         {
+            if(in_array('Facebook', $platforms))
+            {
+                $facebookservice->create_post();
+                
+            }
+            
+
             $post = new Post();
             $post->user_id = auth()->user()->id;
             $post->content = $req->content;
@@ -70,7 +82,13 @@ class UserController extends Controller
 
     public function update_user_platforms(Request $req)
     {
-        // dd($req->plateform_val);
+        if(in_array('Facebook',$req->plateform_val) && auth()->user()->fb_access_token == null)
+        {
+            // dd(12,$req->plateform_val);
+            $error = ['message' => 'fb_error'];
+            return response()->json($error, 404);
+
+        }
         $user = User::find(auth()->user()->id);
         isset($req->plateform_val) ? $user->platforms = $req->plateform_val : $user->platforms = [];
         $user->update();
@@ -87,10 +105,8 @@ class UserController extends Controller
         // dd($fb);
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email','user_posts'];
-       // $helper->getPersistentDataHandler()->set('state','US');
-        $loginUrl = $helper->getLoginUrl('http://localhost:8000/connect_facebook/calback', $permissions);
-        
-
+        $helper->getPersistentDataHandler()->set('state','abcdef');
+        $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
     }
 
@@ -101,30 +117,26 @@ class UserController extends Controller
             'app_secret' => env('app_secret'),
             'default_graph_version' => 'v12.0',
         ]);
-        $helper = $fb->getRedirectLoginHelper();
-
+   
+        // $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
         try {
-            $accessToken = $helper->getAccessToken();
-            dd(1);
-        } catch (Facebook\Exceptions\FacebookResponseException $e) {
-            return 'Graph returned an error: ' . $e->getMessage();
-        } catch (Facebook\Exceptions\FacebookSDKException $e) {
-            return 'Facebook SDK returned an error: ' . $e->getMessage();
-        }
-        if (!isset($accessToken)) {
-            if ($helper->getError()) {
-                return 'Error: ' . $helper->getError() . ', Description: ' . $helper->getErrorDescription();
-            } else {
-                return 'Error: Bad request';
-            }
-        }
-        // Store the access token in the database for future use
-        $token = $accessToken->getValue;
+            $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
 
-        dd($request);
+        } catch (FacebookResponseException $e) {
+            // Handle Facebook API errors
+            return response()->json(['error' => $e->getMessage()]);
+        } catch (FacebookSDKException $e) {
+            // Handle Facebook SDK errors
+            return response()->json(['error' => $e->getMessage()]);
+        }
+        dd($accessToken);
+
+
+        // Store the access token in the database for future use
+        $token = $accessToken->getValue();
         $user = User::find(auth()->user()->id);
-        $user->acees_token = $request->code;
+        $user->fb_access_token = $token;
         $user->update();
-        return redirect('/index')->with('success', 'Connected Successfully');
+        return redirect('/index')->with('success', 'Facebook Connected Successfully');
     }
 }

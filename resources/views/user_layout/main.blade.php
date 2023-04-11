@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}"/>
     <!--Stylesheet For The Responsiveness-->
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}"/>
+    <script src="https://kit.fontawesome.com/4366d6f846.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -218,7 +219,11 @@
         <form action="{{url('connect_to_facebook')}}" method="post">
             @csrf
             <div class="modal-body">
-                <span>Facebbok</span> <button class="btn btn-primary" type="submit">Connect</button>
+                @if(auth()->user()->fb_access_token == null)
+                    <button class="btn btn-primary" type="submit"> <i class="fa fa-facebook-f mr-2"></i>Connect with Facebook</button>
+                @else
+                    <button class="btn btn-success" type="button"> <i class="fa fa-facebook-f mr-2"></i>Connected</button>
+                @endif
             </div>
         </form>
         <div class="modal-footer">
@@ -366,6 +371,14 @@ $(function() {
                 },
                 success: function(response) {
                     
+                },
+                error: function(xhr, status, error) {
+                    var errorData = JSON.parse(xhr.responseText);
+                    if(errorData.message == 'fb_error')
+                    {
+                        $('#socialFB').prop('checked', false);
+                        toastr.error('Please Connect Your Facebook Account');
+                    }
                 }
         });
 
