@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Providers;
-
 use App\Services\Facebookservice;
+use App\Services\TwitterService;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
         //
         $this->app->bind(Facebookservice::class, function () {
             return new Facebookservice();
+        });
+        
+        $this->app->bind(TwitterService::class, function () {
+            return new TwitterService();
         });
     }
 

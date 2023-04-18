@@ -40,5 +40,16 @@ return [
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect' => url("/auth/facebook/callback"),
     ],
+    
+    'instagram' => [
+        'client_id' => env('INSTAGRAM_CLIENT_ID'),
+        'client_secret' => env('INSTAGRAM_CLIENT_SECRET'),
+        'redirect' => url("/connect_instagram/calback"),
+    ],
+    'linkedin' => [
+        'client_id' => '86k9qgvzogwtyu',
+        'client_secret' => 'f7W3hq2FzCDnKckO',
+        'redirect' => url("/connect_linkedin/calback"),
+    ],
 
 ];

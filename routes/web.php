@@ -55,6 +55,11 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 Route::group(['middleware' => ['auth']], function () {
     // Route::get('/', [UserController::class, 'home_page']);
     Route::get('index', [UserController::class, 'index']);
+    Route::get('select_page', [UserController::class, 'select_page']);
+    Route::post('set_page', [UserController::class, 'set_page']);
+    Route::post('set_page_for_instagram', [UserController::class, 'set_page_for_instagram']);
+    
+    
     Route::post('create_post', [UserController::class, 'create_post']);
     Route::get('get_event_detail', [UserController::class, 'get_event_detail']);
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
@@ -62,6 +67,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('connect_to_facebook',  [UserController::class, 'connect_to_facebook']);
     Route::get('connect_facebook/calback',  [UserController::class, 'connect_facebook_calback']);
 
+
+    Route::get('connect_to_instagram',  [UserController::class, 'connect_to_instagram']);
+    Route::get('connect_instagram/calback',  [UserController::class, 'connect_instagram_calback']);
+    
+    
+    Route::get('connect_to_linkedin',  [UserController::class, 'connect_to_linkedin']);
+    Route::get('connect_linkedin/calback',  [UserController::class, 'connect_linkedin_calback']);
+    
+    
+    Route::get('connect_to_twitter',  [UserController::class, 'connect_to_twitter']);
+    Route::get('connect_to_twitter/calback',  [UserController::class, 'connect_twitter_calback']);
     
     // http://localhost:8000/connect_facebook/calback
 });

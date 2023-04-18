@@ -21,6 +21,16 @@ return new class extends Migration
             $table->string('facebook_id')->nullable();
             $table->string('platforms')->default('[]');
             $table->text('fb_access_token')->nullable();
+            $table->text('fb_page_token')->nullable();
+    
+            $table->text('twiter_oauth_token')->nullable();
+            $table->text('twiter_secret_token')->nullable();
+            $table->text('twiter_oauth_verifier')->nullable();
+
+            $table->text('insta_access_token')->nullable();
+            $table->text('insta_user_id')->nullable();
+            
+            
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

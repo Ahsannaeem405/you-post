@@ -318,9 +318,20 @@
         });
         
         $(document).on('click', '.myaccounts', function() {
-        $('#myaccounts_modal').modal('show');
-            
+            $('#myaccounts_modal').modal('show');
         });
         
-        
+        $(document).on('click', '.image_or_video', function() {
+            if($(this).attr('typpe') == 'image')
+            {
+                $('.image').attr('accept', 'image/*');
+            }else{
+                $('.image').attr('accept', 'video/*');
+            }
+            $('#type_input').val($(this).attr('typpe'));
+        });
+       
+        var timezone_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        $('.timezone').val(timezone_name);
+
     });

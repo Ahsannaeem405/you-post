@@ -25,7 +25,7 @@
     <!--Stylesheet For The Responsiveness-->
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}"/>
     <script src="https://kit.fontawesome.com/4366d6f846.js" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
 </head>
 
 <body>
@@ -216,16 +216,19 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{url('connect_to_facebook')}}" method="post">
-            @csrf
+        
             <div class="modal-body">
-                @if(auth()->user()->fb_access_token == null)
-                    <button class="btn btn-primary" type="submit"> <i class="fa fa-facebook-f mr-2"></i>Connect with Facebook</button>
-                @else
-                    <button class="btn btn-success" type="button"> <i class="fa fa-facebook-f mr-2"></i>Connected</button>
-                @endif
+                <form action="{{url('connect_to_facebook')}}" method="post">
+                @csrf
+                    <button class="btn btn-primary" type="submit"> <i class="fa fa-facebook-f mr-2"></i>Connect with Facebook</button><br>
+                </form>
+                
+                <a class="btn btn-primary  mt-2" href="{{url('connect_to_instagram')}}"> <i class="fa fa-instagram-f mr-2"></i>Connect with Instagram</a><br>
+                <a class="btn btn-primary  mt-2" href="{{url('connect_to_linkedin')}}"> <i class="fa fa-linkedin-f mr-2"></i>Connect with Linkedin</a><br>
+                <a class="btn btn-primary  mt-2" href="{{url('connect_to_twitter')}}"> <i class="fa fa-linkedin-f mr-2"></i>Connect with Twitter</a>
             </div>
-        </form>
+        
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
@@ -233,6 +236,76 @@
     </div>
   </div>
 {{-- myaccount modal --}}
+
+{{-- pages_modal --}}
+
+<div class="modal fade" id="pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On</h5>
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+          <!--  <span aria-hidden="true">&times;</span>-->
+          <!--</button>-->
+        </div>
+        <form action="{{url('set_page')}}" method="post">
+            @csrf
+            <div class="modal-body">
+                
+                <select required name="page" class="form-control">
+                    <option value="">-select--</option>
+                        @foreach($all_pages as $page)
+                            <option value="{{$page->access_token}}">{{$page->name}}</option>
+                        @endforeach
+                </select>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+{{-- pages_modal --}}
+
+{{-- pages_modal for instagram --}}
+
+<div class="modal fade" id="instagram_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Instagram Account</h5>
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+          <!--  <span aria-hidden="true">&times;</span>-->
+          <!--</button>-->
+        </div>
+        <form action="{{url('set_page_for_instagram')}}" method="post">
+            @csrf
+            <div class="modal-body">
+                
+                <select required name="page" class="form-control">
+                    <option value="">-select--</option>
+                        @foreach($all_pages_for_insta as $page)
+                            <option value="{{$page->id}}">{{$page->name}}</option>
+                        @endforeach
+                </select>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+{{-- pages_modal for instagram --}}
 
 <!--===== Markup For "Footer" Starts Here =====-->
 <footer class="footer_outer">
@@ -272,7 +345,7 @@
 
 
 <!--jQuery Main Libraty Latest Version-->
-<script type="text/javascript" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+
 {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
 
 <script src='{{asset('js/inputEmoji.js')}}'></script>
@@ -378,6 +451,10 @@ $(function() {
                     {
                         $('#socialFB').prop('checked', false);
                         toastr.error('Please Connect Your Facebook Account');
+                    }else if(errorData.message == 'twiter_error')
+                    {
+                        $('#socialTwitter').prop('checked', false);
+                        toastr.error('Please Connect Your Twitter Account');
                     }
                 }
         });
@@ -388,7 +465,31 @@ $(function() {
 <script>
     $(function () {
 			$('#emojiarea').emoji({place: 'after'});
-		})
+		});
+    
+
+        
+        $( document ).ready(function() {
+            var authuser = "{{auth()->user()}}";
+            if(authuser != null)
+            {
+                var insta_access_token = "{{auth()->user()->insta_access_token}}";
+                var insta_user_id = "{{auth()->user()->insta_user_id}}";
+                var fb_access_token = "{{auth()->user()->fb_access_token}}";
+                var fb_page_token = "{{auth()->user()->fb_page_token}}";
+                
+                if(insta_access_token != '' && insta_user_id == '')
+                {
+                    $('#instagram_pages_modal').modal('show');
+                    
+                }else if(fb_access_token != '' && fb_page_token == ''){
+                    $('#pages_modal').modal('show');
+                }
+
+            }
+        
+        });
+        
 </script>
 
 </body>

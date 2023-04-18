@@ -21,13 +21,13 @@
                         <div class="icon_buttons grid_item">
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0)"><label for="image_or_video">
+                                    <a href="javascript:void(0)" class="image_or_video" typpe="image"><label for="image_or_video">
                                         <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt=""/>
                                     </label>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><label for="image_or_video">
+                                    <a href="javascript:void(0)" class="image_or_video" typpe="video"><label for="image_or_video">
                                         <img src="{{asset('')}}images/Video_Player_Icon.png" class="img-fluid" alt="" />
                                     </label>
                                     </a>
@@ -40,6 +40,8 @@
                             </ul>
                         </div>
                         <input type="file" name="media" class="image d-none" id="image_or_video" accept="image/*,video/*">
+                        <input type="hidden" name="media_type" id="type_input">
+                        <input type="hidden" name="timezone" class="timezone">
 
                         <div class="tags_input_wrap grid_item">
                             <div class="tags_input">
