@@ -388,10 +388,21 @@ $(function() {
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{-- toaster cdn --}}
 <script>
+
     @if (Session::has('success'))
         toastr.success('{{ Session::get('success') }}');
     @elseif (Session::has('error'))
         toastr.error('{{ Session::get('error') }}');
+    @endif
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.error('{{ $error }}');
+        @endforeach
     @endif
 
     function get_detail(id)
@@ -455,6 +466,10 @@ $(function() {
                     {
                         $('#socialTwitter').prop('checked', false);
                         toastr.error('Please Connect Your Twitter Account');
+                    }else if(errorData.message == 'insta_error')
+                    {
+                        $('#socialInstagram').prop('checked', false);
+                        toastr.error('Please Connect Your instagram Account');
                     }
                 }
         });
