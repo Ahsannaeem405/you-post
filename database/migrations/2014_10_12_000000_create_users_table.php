@@ -29,7 +29,9 @@ return new class extends Migration
 
             $table->text('insta_access_token')->nullable();
             $table->text('insta_user_id')->nullable();
-            
+
+            $table->text('linkedin_accesstoken')->nullable();
+            $table->text('linkedin_user_id')->nullable();
             
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

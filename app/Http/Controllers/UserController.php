@@ -17,7 +17,7 @@ use Session;
 use App\Services\Facebookservice;
 use App\Services\TwitterService;
 use App\Services\Instagramservice;
-
+use App\Services\Linkedinservice;
 
 class UserController extends Controller
 {
@@ -70,18 +70,25 @@ class UserController extends Controller
         return view('user.index', compact('allPosts', 'all_pages', 'all_pages_for_insta'));
 
     }
-    public function create_post(Request $req, Facebookservice $facebookservice, TwitterService $TwitterService, Instagramservice $Instagramservice)
+    public function create_post(Request $req, Facebookservice $facebookservice, TwitterService $TwitterService, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice)
     {
         $req->validate([
             'content' => 'required',
             'tag' => 'required',
         ]);
         $platforms = auth()->user()->platforms;
-        if(in_array('Instagram',$platforms) && $req->media_type == 'image')
+        if(in_array('Instagram',$platforms))
         {
             $req->validate([
-                'media' => 'dimensions:min_width=400,min_height=500',
+                'media' => 'required',
             ]);
+            if($req->media_type == 'image')
+            {
+                $req->validate([
+                    'media' => 'dimensions:min_width=400,min_height=500',
+                ]);
+            }
+            
         }
         if(count($platforms) > 0 )
         {
@@ -100,36 +107,24 @@ class UserController extends Controller
             $post->save();
             for ($i = 0; $i < count($platforms); $i++) {
             
+                $data = [
+                    'post' => $post,
+                    'media_type' => $req->media_type,
+                    'timezone' => $req->timezone,
+                    ];
                 if($platforms[$i] == 'Facebook')
                 {
-                    $data = [
-                        'post' => $post,
-                        'media_type' => $req->media_type,
-                        'timezone' => $req->timezone,
-                        ]; 
                     $facebookservice->create_post($data);
-                    
-                }elseif($platforms[$i] == 'Twitter'){
-                   $data = [
-                        'post' => $post,
-                        'media_type' => $req->media_type,
-                        'timezone' => $req->timezone,
-                        ];  
-                    $TwitterService->create_post($data);
-                    
-                }elseif($platforms[$i] == 'Instagram'){
-                    $data = [
-                        'post' => $post,
-                        'media_type' => $req->media_type,
-                        'timezone' => $req->timezone,
-                        ]; 
 
+                }elseif($platforms[$i] == 'Twitter'){
+                    $TwitterService->create_post($data);
+
+                }elseif($platforms[$i] == 'Instagram'){
                     $Instagramservice->create_post($data);
-                }else{
-                    $postdetail = new PostDetail();
-                    $postdetail->post_id = $post->id;
-                    $postdetail->plateform = $platforms[$i];
-                    $postdetail->save();
+
+                }elseif($platforms[$i] == 'Linkedin'){
+                    $Linkedinservice->create_post($data);
+
                 }
                 
             }
@@ -307,128 +302,66 @@ class UserController extends Controller
     ////////////////////linkedin/////////////////////////
     public function connect_to_linkedin()
     {
-        // return Socialite::driver('linkedin')->redirect();
-        $client_id = '77l861fu7qz6ly';
-        $client_secret = '2JCRuJKoFqCsHB3w';
-        $redirect_uri = url('connect_linkedin/calback');
-        $authorization_url = 'https://www.linkedin.com/oauth/v2/authorization?' . http_build_query(array(
-            'response_type' => 'code',
-            'client_id' => $client_id,
-            'redirect_uri' => $redirect_uri,
-            'state' => 'us',
-            'scope' => 'w_member_social r_liteprofile r_emailaddress'
-        ));
-        header('Location: ' . $authorization_url);
-        exit();
-        // Create the OAuth 2.0 client
-        // $provider = new LinkedIn([
-        //     'clientId'     => '77l861fu7qz6ly',
-        //     'clientSecret' => '2JCRuJKoFqCsHB3w',
-        //     'redirectUri'  => url('connect_linkedin/calback'),
-        //     'grant_type' => 'code',
-        //     'response_type' => 'code',
-
-        //     'scope'       => 'w_member_social'
-        // ]);
-        
-        // $authorizationUrl = $provider->getAuthorizationUrl();
-        // return redirect($authorizationUrl);
-        
+        try {
+            $linkedin = config('services.linkedin');
+            $client_id = $linkedin['client_id'];
+            $client_secret = $linkedin['client_secret'];
+            $redirect_uri = $linkedin['redirect'];
+            $authorization_url = 'https://www.linkedin.com/oauth/v2/authorization?' . http_build_query(array(
+                'response_type' => 'code',
+                'client_id' => $client_id,
+                'redirect_uri' => $redirect_uri,
+                'state' => 'us',
+                'scope' => 'w_member_social r_liteprofile r_emailaddress'
+            ));
+            return redirect($authorization_url);
+        } catch (\Exception $e) {
+            
+            return redirect('/index')->with('error', $e->getMessage());
+        }
     }
     
     public function connect_linkedin_calback(Request $request)
     {
-        // return redirect('/index')->with('success', 'linkedin Connected Successfully');
+        try {
+            $linkedin = config('services.linkedin');
+            $provider = new LinkedIn([
+                'clientId'     => $linkedin['client_id'],
+                'clientSecret' => $linkedin['client_secret'],
+                'redirectUri'  => $linkedin['redirect'],
+                'response_type' => 'code',
+                'grant_type' => 'authorization_code',
+                'scope' => 'w_member_social r_liteprofile r_emailaddress'
+            ]);
+            $accessToken = $provider->getAccessToken('authorization_code', [
+                'code' => $_GET['code']
+            ]);
+            // dd($accessToken);
+    
+            $http = new Client();
+            // Create an authenticated request for the /me endpoint
+            $request = $provider->getAuthenticatedRequest(
+                'GET',
+                'https://api.linkedin.com/v2/me',
+                $accessToken->getToken()
+            );
+            // Send the request and receive the response
+            $response = $http->sendRequest($request);
+            $userData = json_decode($response->getBody(), true);
+            $userId = $userData['id'];
+            // save userid and user access token into database for future use
+            $user = User::find(auth()->user()->id);
+            $user->linkedin_accesstoken = $accessToken->getToken();
+            $user->linkedin_user_id = $userId;
+            $user->update();
+            return redirect('/index')->with('success', 'linkedin Connected Successfully');
+          
+        } catch (\Exception $e) {
         
-        $provider = new LinkedIn([
-            'clientId'     => '77l861fu7qz6ly',
-            'clientSecret' => '2JCRuJKoFqCsHB3w',
-            'redirectUri'  => url('connect_linkedin/calback'),
-            'response_type' => 'code',
-            'grant_type' => 'authorization_code',
-            // 'scope'       => 'r_liteprofile%20r_emailaddress%20w_member_social'
-            'scope' => 'w_member_social r_liteprofile r_emailaddress'
-            
-        ]);
-        // dd($provider);
-        $accessToken = $provider->getAccessToken('authorization_code', [
-            'code' => $_GET['code']
-        ]);
- 
-        $http = new Client();
-        
-        // Create an authenticated request for the /me endpoint
-        $request = $provider->getAuthenticatedRequest(
-            'GET',
-            'https://api.linkedin.com/v2/me',
-            $accessToken->getToken()
-        );
-        
-        // Send the request and receive the response
-        $response = $http->sendRequest($request);
-        $userData = json_decode($response->getBody(), true);
-        // dd($accessToken, $userData);
-        $userId = $userData['id'];
-        
-        // 
+            return redirect('/index')->with('error', $e->getMessage());
+        }
 
 
-        $data = [
-		    'author' => "urn:li:person:$userId",
-		    'lifecycleState' => 'PUBLISHED',
-		    'specificContent' => [
-		        'com.linkedin.ugc.ShareContent' => [
-		            'shareCommentary' => [
-		                'text' => 'Check out my new blog post ans!'
-		            ],
-		            'shareMediaCategory' => 'ARTICLE',
-		            'media' => [
-		                [
-		                    'status' => 'READY',
-		                    'description' => [
-		                        'text' => 'Mydfg '
-		                    ],
-		                    'originalUrl' => 'https://www.example.com/my-blog-post',
-		                    'title' => [
-		                        'text' => 'My blog post title 22222'
-		                    ],
-		                    'thumbnails' => [
-		                        [
-		                            'resolvedUrl' => 'https://www.example.com/my-blog-post-image.jpg'
-		                        ]
-		                    ]
-		                ]
-		            ]
-		        ]
-		    ],
-		    'visibility' => [
-		        'com.linkedin.ugc.MemberNetworkVisibility' => 'PUBLIC'
-		    ]
-		];
-		$curl = curl_init();
-		curl_setopt_array($curl, [
-		    CURLOPT_URL => "https://api.linkedin.com/v2/ugcPosts",
-		    CURLOPT_RETURNTRANSFER => true,
-		    CURLOPT_ENCODING => "",
-		    CURLOPT_MAXREDIRS => 10,
-		    CURLOPT_TIMEOUT => 30,
-		    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		    CURLOPT_CUSTOMREQUEST => "POST",
-		    CURLOPT_POSTFIELDS => json_encode($data),
-		    CURLOPT_HTTPHEADER => [
-		        "Authorization: Bearer ".$accessToken,
-		        "Content-Type: application/json"
-		    ],
-		]);
-		$response3 = curl_exec($curl);
-		$err = curl_error($curl);
-		curl_close($curl);
-		if ($err) {
-		    echo "cURL Error #:" . $err;
-		} else {
-		    echo $response3;
-		}
-        dd($response3);
 
     }
     ////////////////////linkedin/////////////////////////

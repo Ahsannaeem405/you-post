@@ -11,8 +11,8 @@ class Instagramservice
     {
         // dd($data);
         $post = $data['post'];
-        $media_path = asset("content_media/$post->media");
-        // $media_path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaAImXTgjSXB57ikN3nC2CJdRBHDZeKXNGd9Bk8GU&s";
+        // $media_path = asset("content_media/$post->media");
+        $media_path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaAImXTgjSXB57ikN3nC2CJdRBHDZeKXNGd9Bk8GU&s";
         $insta = config('services.instagram');
         $accesstoken = auth()->user()->insta_access_token;
         $insta_user_id = auth()->user()->insta_user_id;
@@ -30,8 +30,9 @@ class Instagramservice
                 'caption' => "$post->content #$post->tag",
                 'access_token' => $accesstoken,
             ));
-        }else{
+        }else if($data['media_type']=='video'){
             $response = $instagram->post("/$insta_user_id/media", array(
+                'image_url' => $media_path,
                 'video_url' => $media_path,
                 'caption' => "$post->content #$post->tag",
                 'access_token' => $accesstoken,
