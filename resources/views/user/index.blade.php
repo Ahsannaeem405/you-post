@@ -14,7 +14,7 @@
                 <form action="{{url('create_post')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group emoji_parent">
-                        <textarea required name="content" id="emojiarea" cols="30" rows="3" class="form-control" placeholder="Write your post..."></textarea>
+                        <textarea required name="content" id="emojiarea" cols="30" rows="3" class="form-control" placeholder="Write your post...">{{old('content')}}</textarea>
                     </div>
 
                     <div class="icon_buttons_tags">
@@ -45,7 +45,7 @@
 
                         <div class="tags_input_wrap grid_item">
                             <div class="tags_input">
-                                <input required name="tag" type="text" class="form-control" placeholder="#tags">
+                                <input required name="tag" type="text" class="form-control" placeholder="#tags" value="{{old('tag')}}">
                             </div>
                         </div>
                     </div>

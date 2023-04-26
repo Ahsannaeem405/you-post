@@ -21,6 +21,13 @@ use App\Services\Linkedinservice;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        set_time_limit(8000000);
+    }
+
+
     public function index()
     {
         $posts = Post::where('user_id', auth()->user()->id)->select('id','tag', 'posted_at')->get();
@@ -246,7 +253,7 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['instagram_basic','pages_show_list', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement'];
+        $permissions = ['instagram_basic', 'publish_video', 'pages_show_list', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement'];
         $helper->getPersistentDataHandler()->set('state','abcdef');
         $loginUrl = $helper->getLoginUrl($insta['redirect'], $permissions);
         return redirect()->away($loginUrl);

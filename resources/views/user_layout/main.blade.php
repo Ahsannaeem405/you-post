@@ -440,12 +440,10 @@ $(function() {
     });
 
     $(document).on('click', '.plateform', function() {
-            // add_plateform();
-        // var all_plateform = $("input[name='plateform[]']:checked").serialize();
         var all_plateform = $("input[name='plateform[]']:checked");
         var plateform_val = [];
         all_plateform.each(function() {
-            plateform_val.push($(this).val());
+        plateform_val.push($(this).val());
         });
         $.ajax({
                 type: "get",
@@ -458,17 +456,22 @@ $(function() {
                 },
                 error: function(xhr, status, error) {
                     var errorData = JSON.parse(xhr.responseText);
+                    
                     if(errorData.message == 'fb_error')
                     {
                         $('#socialFB').prop('checked', false);
+                        $('#socialFB').closest('.single_platform').removeClass('active_social');
                         toastr.error('Please Connect Your Facebook Account');
                     }else if(errorData.message == 'twiter_error')
                     {
                         $('#socialTwitter').prop('checked', false);
+                        $('#socialTwitter').closest('.single_platform').removeClass('active_social');
                         toastr.error('Please Connect Your Twitter Account');
                     }else if(errorData.message == 'insta_error')
                     {
                         $('#socialInstagram').prop('checked', false);
+                        $('#socialInstagram').closest('.single_platform').removeClass('active_social');
+
                         toastr.error('Please Connect Your instagram Account');
                     }
                 }
