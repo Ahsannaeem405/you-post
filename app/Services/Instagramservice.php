@@ -13,8 +13,8 @@ class Instagramservice
         // dd($data);
         $post = $data['post'];
         // $media_path = asset("content_media/$post->media");
-        // $media_path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaAImXTgjSXB57ikN3nC2CJdRBHDZeKXNGd9Bk8GU&s";
-        $media_path = "https://youpost.social/content_media/16812977781010.mp4";
+        $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
+        // $media_path = "https://youpost.social/content_media/16812977781010.mp4";
         
         $insta = config('services.instagram');
         $accesstoken = auth()->user()->insta_access_token;

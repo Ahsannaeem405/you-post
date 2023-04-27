@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('is_posted')->default(0);
             $table->string('likes')->nullable();
             $table->string('shares')->nullable();
+            $table->string('social_id')->nullable();
             $table->string('comments')->nullable();
 
             $table->timestamps();

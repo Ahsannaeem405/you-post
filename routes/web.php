@@ -79,6 +79,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('connect_to_twitter',  [UserController::class, 'connect_to_twitter']);
     Route::get('connect_to_twitter/calback',  [UserController::class, 'connect_twitter_calback']);
     
+
+    Route::get('get-facebook-likes',  [UserController::class, 'get_facebook_likes']);
+
+    
     // http://localhost:8000/connect_facebook/calback
 });
 Route::get('logout',function (){

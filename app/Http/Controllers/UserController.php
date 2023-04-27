@@ -182,7 +182,7 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['pages_read_engagement','pages_manage_posts'];
+        $permissions = ['pages_read_engagement','pages_manage_posts', 'pages_read_user_content', 'read_insights'];
         $helper->getPersistentDataHandler()->set('state','abcdef');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
@@ -205,16 +205,6 @@ class UserController extends Controller
     
     public function select_page()
     {
-    //  $posts = Post::where('user_id', auth()->user()->id)->select('id','tag', 'posted_at')->get();
-    //     $allPosts = [];
-    //     foreach ($posts as $post) {
-    //         $allPosts[] = [
-    //             'id' => $post->id,
-    //             'title' => $post->tag,
-    //             'start' => $post->posted_at,
-    //         ];
-    //     }
-        
         $accessToken = auth()->user()->fb_access_token;
         $fb = new Facebook([
             'app_id' => env('app_id'),
@@ -409,5 +399,65 @@ class UserController extends Controller
         $oauth_verifier = filter_input(INPUT_GET, 'oauth_verifier');
         User::where('id', auth()->user()->id)->update(['twiter_oauth_verifier' => $oauth_verifier]);
         return redirect('/index')->with('success', 'Twitter Connected Successfully');
+    }
+
+    public function get_facebook_likes()
+    {
+
+
+
+        $fb = new Facebook([
+            'app_id' => env('app_id'),
+            'app_secret' => env('app_secret'),
+            'default_graph_version' => 'v16.0',
+            'default_access_token' =>  auth()->user()->fb_page_token,
+        ]);
+    
+        // likes
+        $getlikes = $fb->get(
+            // "/2922744604697890"
+            "/192626596953250"
+            // "/107179012356371_114191704990299/sharedposts"
+        );
+        // $photo = $getlikes->getGraphEdge()->asArray();
+
+        $photo = $getlikes->getGraphNode()->asArray();
+        // $shares = $photo['shares']['count'];
+        dd($photo, 000);
+
+        // likes
+        $facebook_posts = PostDetail::where('plateform', 'Facebook')->get();
+        foreach($facebook_posts as $post)
+        {
+            $user = $post->post->user;
+            $fb = new Facebook([
+                'app_id' => env('app_id'),
+                'app_secret' => env('app_secret'),
+                'default_graph_version' => 'v16.0',
+                'default_access_token' =>  $user->fb_page_token,
+            ]);
+        
+            // likes
+            $getlikes = $fb->get(
+                "/$post->social_id/likes"
+            );
+            $likes = $getlikes->getGraphEdge()->asArray();
+            
+            // likes
+            // comments
+            $getcomments = $fb->get(
+                "/$post->social_id/comments"
+            );
+        
+            $comments = $getcomments->getGraphEdge()->asArray();
+        
+            $post->update([
+                'likes' => count($likes),
+                'comments' => count($comments),
+            ]);
+            // comments
+        }
+        return redirect('/index')->with('success', 'likes and comments get successfully');
+        // likes
     }
 }

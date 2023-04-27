@@ -9,13 +9,18 @@ class Facebookservice
 {
     public function create_post($data)
     {
+
+        
+        
         $post = $data['post'];
-        $media_path = asset("content_media/$post->media");
+        // $media_path = asset("content_media/$post->media");
+        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
+        $media_path = "https://youpost.social/content_media/16812977781010.mp4";
         $accessToken = auth()->user()->fb_page_token;
         $fb = new Facebook([
             'app_id' => env('app_id'),
             'app_secret' => env('app_secret'),
-            'default_graph_version' => 'v12.0',
+            'default_graph_version' => 'v16.0',
             'default_access_token' => $accessToken,
         ]);
         $arr=[
@@ -47,11 +52,12 @@ class Facebookservice
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
             $postdetail->plateform = 'Facebook';
+            $postdetail->social_id = $response->getDecodedBody()['id'];
             $postdetail->save();
         } else {
             $error = $response->getThrownException()->getMessage();
             return back()->with('error',  $error);
         }
-        
+        dd($response);
     }
 }
