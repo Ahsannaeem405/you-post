@@ -404,26 +404,24 @@ class UserController extends Controller
     public function get_facebook_likes()
     {
 
-
-
-        $fb = new Facebook([
-            'app_id' => env('app_id'),
-            'app_secret' => env('app_secret'),
-            'default_graph_version' => 'v16.0',
-            'default_access_token' =>  auth()->user()->fb_page_token,
-        ]);
+        // $fb = new Facebook([
+        //     'app_id' => env('app_id'),
+        //     'app_secret' => env('app_secret'),
+        //     'default_graph_version' => 'v16.0',
+        //     'default_access_token' =>  auth()->user()->fb_page_token,
+        // ]);
     
-        // likes
-        $getlikes = $fb->get(
-            // "/2922744604697890"
-            "/192626596953250"
-            // "/107179012356371_114191704990299/sharedposts"
-        );
-        // $photo = $getlikes->getGraphEdge()->asArray();
+        // // likes
+        // $getlikes = $fb->get(
+        //     // "/2922744604697890"
+        //     "/192626596953250"
+        //     // "/107179012356371_114191704990299/sharedposts"
+        // );
+        // // $photo = $getlikes->getGraphEdge()->asArray();
 
-        $photo = $getlikes->getGraphNode()->asArray();
-        // $shares = $photo['shares']['count'];
-        dd($photo, 000);
+        // $photo = $getlikes->getGraphNode()->asArray();
+        // // $shares = $photo['shares']['count'];
+        // dd($photo, 000);
 
         // likes
         $facebook_posts = PostDetail::where('plateform', 'Facebook')->get();

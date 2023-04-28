@@ -13,9 +13,9 @@ class Facebookservice
         
         
         $post = $data['post'];
-        // $media_path = asset("content_media/$post->media");
+        $media_path = asset("content_media/$post->media");
         // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
-        $media_path = "https://youpost.social/content_media/16812977781010.mp4";
+        // $media_path = "https://youpost.social/content_media/16812977781010.mp4";
         $accessToken = auth()->user()->fb_page_token;
         $fb = new Facebook([
             'app_id' => env('app_id'),
@@ -58,6 +58,5 @@ class Facebookservice
             $error = $response->getThrownException()->getMessage();
             return back()->with('error',  $error);
         }
-        dd($response);
     }
 }

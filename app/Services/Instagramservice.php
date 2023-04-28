@@ -12,8 +12,8 @@ class Instagramservice
     {
         // dd($data);
         $post = $data['post'];
-        // $media_path = asset("content_media/$post->media");
-        $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
+        $media_path = asset("content_media/$post->media");
+        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
         // $media_path = "https://youpost.social/content_media/16812977781010.mp4";
         
         $insta = config('services.instagram');
@@ -90,7 +90,7 @@ class Instagramservice
 
             // Decode the response JSON
             $response_data = json_decode($response, true);
-            dd($response_data, 1212, $response);
+            // dd($response_data, 1212, $response);
             // Check for any errors
             if (isset($response_data['error'])) {
                 echo 'Error: ' . $response_data['error']['message'];
@@ -99,7 +99,7 @@ class Instagramservice
             }
     
         }
-        dd(5665,'restt', $response44);
+        // dd(5665,'restt', $response44);
         try {
 
             $result = $response->getDecodedBody();

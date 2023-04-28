@@ -29,7 +29,7 @@ class TwitterService
         
         $status = $connection->get('application/rate_limit_status', array('resources' => 'statuses'));
 
-        dd(json_encode($status));
+        // dd(json_encode($status));
 
         // request user token
         $token = $connection->oauth(
