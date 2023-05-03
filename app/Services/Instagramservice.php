@@ -13,7 +13,7 @@ class Instagramservice
         // dd($data);
         $post = $data['post'];
         $media_path = asset("content_media/$post->media");
-        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
+        // $media_path = "https://youpost.social/content_media/16811071681110.jpg";
         // $media_path = "https://youpost.social/content_media/16812977781010.mp4";
         
         $insta = config('services.instagram');
@@ -119,6 +119,7 @@ class Instagramservice
         $postdetail = new PostDetail();
         $postdetail->post_id = $post->id;
         $postdetail->plateform = 'Instagram';
+        $postdetail->social_id = $response->getDecodedBody()['id'];
         $postdetail->save();
     }
 }

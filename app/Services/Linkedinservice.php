@@ -197,6 +197,7 @@ class Linkedinservice
                     ],
                 ]);
                 $response3 = curl_exec($curl);
+                // dd($response3, 00);
                 $err = curl_error($curl);
                 curl_close($curl);
                 if ($err) {

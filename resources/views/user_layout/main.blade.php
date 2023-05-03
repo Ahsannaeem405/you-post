@@ -440,6 +440,9 @@ $(function() {
     });
 
     $(document).on('click', '.plateform', function() {
+        $('.plateform').prop('checked', false);
+        $('.plateform').closest('.single_platform').removeClass('active_social');
+        $(this).prop('checked', true);
         var all_plateform = $("input[name='plateform[]']:checked");
         var plateform_val = [];
         all_plateform.each(function() {
@@ -464,6 +467,7 @@ $(function() {
                         toastr.error('Please Connect Your Facebook Account');
                     }else if(errorData.message == 'twiter_error')
                     {
+                        
                         $('#socialTwitter').prop('checked', false);
                         $('#socialTwitter').closest('.single_platform').removeClass('active_social');
                         toastr.error('Please Connect Your Twitter Account');
@@ -473,6 +477,13 @@ $(function() {
                         $('#socialInstagram').closest('.single_platform').removeClass('active_social');
 
                         toastr.error('Please Connect Your instagram Account');
+                    }
+                    else if(errorData.message == 'linkedin_error')
+                    {
+                        $('#socialLinkedin').prop('checked', false);
+                        $('#socialLinkedin').closest('.single_platform').removeClass('active_social');
+
+                        toastr.error('Please Connect Your Linkedin Account');
                     }
                 }
         });

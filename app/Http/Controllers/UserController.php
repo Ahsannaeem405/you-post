@@ -94,8 +94,15 @@ class UserController extends Controller
                 $req->validate([
                     'media' => 'dimensions:min_width=400,min_height=500',
                 ]);
+            }elseif($req->media_type == 'video')
+            {
+                return back()->with('error', "Sorry! can't post video. this feature is coming soon.");
             }
             
+        }
+        if(in_array('Linkedin',$platforms) && ($req->media_type != ''))
+        {
+            return back()->with('error', "Sorry! can't post video or image. this feature is coming soon.");
         }
         if(count($platforms) > 0 )
         {
@@ -137,7 +144,7 @@ class UserController extends Controller
             }
             return back()->with('success', 'Post Created Successfully');
         }else {
-            return back()->with('error', 'Please Select Atleast One Platform');
+            return back()->with('error', 'Please Select Platform');
         }
     }
 
@@ -151,26 +158,28 @@ class UserController extends Controller
     {
         if($req->plateform_val != null)
         {
-
+            if(in_array('Facebook',$req->plateform_val) && (auth()->user()->fb_access_token == null || auth()->user()->fb_page_token == null))
+            {
+                $error = ['message' => 'fb_error'];
+                return response()->json($error, 404);
+            }elseif(in_array('Twitter',$req->plateform_val) && 
+            (auth()->user()->twiter_oauth_token == null || auth()->user()->twiter_secret_token == null || auth()->user()->twiter_oauth_verifier == null)){
+                $error = ['message' => 'twiter_error'];
+                return response()->json($error, 404);
+            }elseif(in_array('Instagram',$req->plateform_val) && (auth()->user()->insta_access_token == null || auth()->user()->insta_user_id == null))
+            {
+                $error = ['message' => 'insta_error'];
+                return response()->json($error, 404);
+            }elseif(in_array('Linkedin',$req->plateform_val) && (auth()->user()->linkedin_accesstoken == null || auth()->user()->linkedin_user_id == null))
+            {
+                $error = ['message' => 'linkedin_error'];
+                return response()->json($error, 404);
+            }
         }
-        if(in_array('Facebook',$req->plateform_val) && (auth()->user()->fb_access_token == null || auth()->user()->fb_page_token == null))
-        {
-            $error = ['message' => 'fb_error'];
-            return response()->json($error, 404);
-        }elseif(in_array('Twitter',$req->plateform_val) && 
-        (auth()->user()->twiter_oauth_token == null || auth()->user()->twiter_secret_token == null || auth()->user()->twiter_oauth_verifier == null)){
-            $error = ['message' => 'twiter_error'];
-            return response()->json($error, 404);
-        }elseif(in_array('Instagram',$req->plateform_val) && (auth()->user()->insta_access_token == null || auth()->user()->insta_user_id == null))
-        {
-            $error = ['message' => 'insta_error'];
-            return response()->json($error, 404);
-        }
-
-
         $user = User::find(auth()->user()->id);
         isset($req->plateform_val) ? $user->platforms = $req->plateform_val : $user->platforms = [];
         $user->update();
+        return response()->json(['message' => 'success'], 200);
     }
 
     //////////////////facebook////////////////////////
@@ -404,26 +413,20 @@ class UserController extends Controller
     public function get_facebook_likes()
     {
 
-        // $fb = new Facebook([
-        //     'app_id' => env('app_id'),
-        //     'app_secret' => env('app_secret'),
-        //     'default_graph_version' => 'v16.0',
-        //     'default_access_token' =>  auth()->user()->fb_page_token,
-        // ]);
-    
-        // // likes
-        // $getlikes = $fb->get(
-        //     // "/2922744604697890"
-        //     "/192626596953250"
-        //     // "/107179012356371_114191704990299/sharedposts"
-        // );
-        // // $photo = $getlikes->getGraphEdge()->asArray();
+        $client = new Client([
+            'base_uri' => 'https://api.linkedin.com/v2/',
+            'headers' => [
+                'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ]
+        ]);
 
-        // $photo = $getlikes->getGraphNode()->asArray();
-        // // $shares = $photo['shares']['count'];
-        // dd($photo, 000);
+        $response = $client->request('GET', 'comments?urn=urn:li:activity:7059077518938583040&count=10');
+        $likes = json_decode($response->getBody()->getContents(), true);
 
-        // likes
+        dd($response, $likes);
+        // facebook likes and comments
         $facebook_posts = PostDetail::where('plateform', 'Facebook')->get();
         foreach($facebook_posts as $post)
         {
@@ -455,7 +458,34 @@ class UserController extends Controller
             ]);
             // comments
         }
+        // facebook likes and comments
+
+        // insta likes and comments
+        $Instagram_posts = PostDetail::where('plateform', 'Instagram')->get();
+        foreach($Instagram_posts as $post)
+        {
+            $user = $post->post->user;
+        
+            $insta = config('services.instagram');
+            $tokenn = $user->insta_access_token;
+            $instagram = new Facebook([
+                'app_id' => $insta['client_id'],
+                'app_secret' => $insta['client_secret'],
+                'default_graph_version' => 'v16.0',
+                'default_access_token' => $tokenn,
+            ]);
+
+            $getcommentslikes = $instagram->get("$post->social_id?fields=comments_count,like_count");
+            $data = $getcommentslikes->getGraphNode()->asArray();
+            $commentsCount = $data['comments_count'];
+            $likessCount = $data['like_count'];
+
+            $post->update([
+                'likes' => $likessCount,
+                'comments' => $commentsCount,
+            ]);
+        }
+        // insta likes and comments
         return redirect('/index')->with('success', 'likes and comments get successfully');
-        // likes
     }
 }
