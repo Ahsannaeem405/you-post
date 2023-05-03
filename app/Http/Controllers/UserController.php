@@ -413,19 +413,19 @@ class UserController extends Controller
     public function get_facebook_likes()
     {
 
-        $client = new Client([
-            'base_uri' => 'https://api.linkedin.com/v2/',
-            'headers' => [
-                'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json'
-            ]
-        ]);
+        // $client = new Client([
+        //     'base_uri' => 'https://api.linkedin.com/v2/',
+        //     'headers' => [
+        //         'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+        //         'Content-Type' => 'application/json',
+        //         'Accept' => 'application/json'
+        //     ]
+        // ]);
 
-        $response = $client->request('GET', 'comments?urn=urn:li:activity:7059077518938583040&count=10');
-        $likes = json_decode($response->getBody()->getContents(), true);
+        // $response = $client->request('GET', 'comments?urn=urn:li:activity:7059077518938583040&count=10');
+        // $likes = json_decode($response->getBody()->getContents(), true);
 
-        dd($response, $likes);
+        // dd($response, $likes);
         // facebook likes and comments
         $facebook_posts = PostDetail::where('plateform', 'Facebook')->get();
         foreach($facebook_posts as $post)
