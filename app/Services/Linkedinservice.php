@@ -14,9 +14,11 @@ class Linkedinservice
     {
         $post = $data['post'];
         $media_path = asset("content_media/$post->media");
-        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
         $accesstoken = auth()->user()->linkedin_accesstoken;
         $linkedin_user_id = auth()->user()->linkedin_user_id;
+        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
+        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
+
         // 
         // if ($data['media_type'] == 'image') {
 

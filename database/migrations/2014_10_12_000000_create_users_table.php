@@ -23,9 +23,8 @@ return new class extends Migration
             $table->text('fb_access_token')->nullable();
             $table->text('fb_page_token')->nullable();
     
-            $table->text('twiter_oauth_token')->nullable();
-            $table->text('twiter_secret_token')->nullable();
-            $table->text('twiter_oauth_verifier')->nullable();
+            $table->text('twiter_access_token')->nullable();
+            $table->text('twiter_refresh_token')->nullable();
 
             $table->text('insta_access_token')->nullable();
             $table->text('insta_user_id')->nullable();

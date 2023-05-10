@@ -171,15 +171,15 @@
                         <a class="nav-item nav-link active" id="likes_tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="true">
                             <h4>Likes</h4>
                             <ul>
-                                <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt="" /> 1748</li>
-                                <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt="" /> 1748</li>
+                                <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt="" /> {{$data['total_fb_likes']}}</li>
+                                <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt="" /> {{$data['total_insta_likes']}}</li>
                                 <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt="" /> 1748</li>
                                 <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt="" /> 1748</li>
                                 <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt="" /> 1748</li>
                             </ul>
                         </a>
 
-                        <a class="nav-item nav-link" id="shares_tab" data-toggle="tab" href="#shares" role="tab" aria-controls="shares" aria-selected="false">
+                        <a class="nav-item nav-link" id="shares_tab" data-toggle="tab" href="#shares" role="tab" aria-controls="shares" aria-selected="false" disabled>
                             <h4>Shares</h4>
                             <ul>
                                 <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt="" /> 1748</li>
@@ -204,8 +204,8 @@
                         <a class="nav-item nav-link" id="comments_tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">
                             <h4>Comments</h4>
                             <ul>
-                                <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt="" /> 1748</li>
-                                <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt="" /> 1748</li>
+                                <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt="" /> {{$data['total_fb_comments']}}</li>
+                                <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt="" /> {{$data['total_insta_comments']}}</li>
                                 <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt="" /> 1748</li>
                                 <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt="" /> 1748</li>
                                 <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt="" /> 1748</li>

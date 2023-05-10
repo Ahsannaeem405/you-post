@@ -220,12 +220,12 @@
             <div class="modal-body">
                 <form action="{{url('connect_to_facebook')}}" method="post">
                 @csrf
-                    <button class="btn btn-primary" type="submit"> <i class="fa fa-facebook-f mr-2"></i>Connect with Facebook</button><br>
+                    <button class="btn btn-primary" type="submit"> <i class="fa fa-facebook-square mr-2"></i>Connect with Facebook</button><br>
                 </form>
                 
-                <a class="btn btn-primary  mt-2" href="{{url('connect_to_instagram')}}"> <i class="fa fa-instagram-f mr-2"></i>Connect with Instagram</a><br>
-                <a class="btn btn-primary  mt-2" href="{{url('connect_to_linkedin')}}"> <i class="fa fa-linkedin-f mr-2"></i>Connect with Linkedin</a><br>
-                <a class="btn btn-primary  mt-2" href="{{url('connect_to_twitter')}}"> <i class="fa fa-linkedin-f mr-2"></i>Connect with Twitter</a>
+                <a class="btn btn-primary  mt-2" href="{{url('connect_to_instagram')}}"> <i class="fa fa-instagram mr-2"></i>Connect with Instagram</a><br>
+                <a class="btn btn-primary  mt-2" href="{{url('connect_to_linkedin')}}"> <i class="fa fa-linkedin-square mr-2"></i>Connect with Linkedin</a><br>
+                <a class="btn btn-primary  mt-2" href="{{url('connect_to_twitter')}}"> <i class="fa fa-twitter-square mr-2"></i>Connect with Twitter</a>
             </div>
         
         
@@ -424,7 +424,7 @@ $(function() {
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('postManagerCalendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialDate: '2023-03-01',
+            initialDate: '2023-05-01',
             editable: true,
             selectable: true,
             businessHours: true,

@@ -51,5 +51,10 @@ return [
         'client_secret' => 'f7W3hq2FzCDnKckO',
         'redirect' => url("/connect_linkedin/calback"),
     ],
+    'twitter' => [
+        'client_id' => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_CLIENT_SECRET'),
+        'redirect' => url('/connect_to_twitter/calback'),
+    ],
 
 ];
