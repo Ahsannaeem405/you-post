@@ -73,7 +73,7 @@
                         <img src="{{asset('images/FB_Color.png')}}" class="color_icon" alt="" />
                         <img src="{{asset('images/FB_Black.png')}}" class="black_icon" alt="" />
                     </div>
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Facebook" id="socialFB" 
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Facebook" id="socialFB"
                     {{ in_array('Facebook', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialFB"></label>
                 </div>
@@ -83,7 +83,7 @@
                         <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt="" />
                         <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt="" />
                     </div>
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Instagram" id="socialInstagram" 
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Instagram" id="socialInstagram"
                     {{ in_array('Instagram', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialInstagram"></label>
                 </div>
@@ -94,7 +94,7 @@
                         <img src="{{asset('images/Twitter_Black.png')}}" class="black_icon" alt="" />
                     </div>
 
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Twitter" id="socialTwitter" 
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Twitter" id="socialTwitter"
                     {{ in_array('Twitter', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialTwitter"></label>
                 </div>
@@ -104,7 +104,7 @@
                         <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt="" />
                     </div>
 
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Linkedin" id="socialLinkedin" 
+                    <input type="checkbox" class="plateform" name="plateform[]" value="Linkedin" id="socialLinkedin"
                     {{ in_array('Linkedin', auth()->user()->platforms) ? 'checked' : '' }}>
                     <label for="socialLinkedin"></label>
                 </div>
@@ -149,7 +149,7 @@
                     <label for="socialWhatsApp"></label>
                 </div>
 
-                
+
             </div>
         </div>
     </div>
@@ -195,7 +195,7 @@
           </button>
         </div>
         <div class="modal-body event_detail_parent">
-            
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -237,7 +237,7 @@
                                     </label>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </div>
                         <input type="file" name="media" class="image d-none" id="image_or_video" accept="image/*,video/*">
@@ -256,11 +256,11 @@
                         <input type="submit" class="btn btn-primary post_now_btn" value="Post Now" style="text-align: end;margin-top: 4%;">
                     </div>
 
-                   
 
-                
+
+
                 </form>
-            
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -280,19 +280,19 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        
+
             <div class="modal-body">
                 <form action="{{url('connect_to_facebook')}}" method="post">
                 @csrf
                     <button class="btn btn-primary" type="submit"> <i class="fa fa-facebook-square mr-2"></i>Connect with Facebook</button><br>
                 </form>
-                
+
                 <a class="btn btn-primary  mt-2" href="{{url('connect_to_instagram')}}"> <i class="fa fa-instagram mr-2"></i>Connect with Instagram</a><br>
                 <a class="btn btn-primary  mt-2" href="{{url('connect_to_linkedin')}}"> <i class="fa fa-linkedin-square mr-2"></i>Connect with Linkedin</a><br>
                 <a class="btn btn-primary  mt-2" href="{{url('connect_to_twitter')}}"> <i class="fa fa-twitter-square mr-2"></i>Connect with Twitter</a>
             </div>
-        
-        
+
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
@@ -315,7 +315,7 @@
         <form action="{{url('set_page')}}" method="post">
             @csrf
             <div class="modal-body">
-                
+
                 <select required name="page" class="form-control">
                     <option value="">-select--</option>
                         @foreach($all_pages as $page)
@@ -327,8 +327,8 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-        
-        
+
+
       </div>
     </div>
   </div>
@@ -350,7 +350,7 @@
         <form action="{{url('set_page_for_instagram')}}" method="post">
             @csrf
             <div class="modal-body">
-                
+
                 <select required name="page" class="form-control">
                     <option value="">-select--</option>
                         @foreach($all_pages_for_insta as $page)
@@ -362,8 +362,8 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-        
-        
+
+
       </div>
     </div>
   </div>
@@ -390,7 +390,7 @@
                             @csrf
                         </form></li>
 
-                        
+
                     </ul>
                 </div>
 
@@ -451,6 +451,9 @@ $(function() {
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{-- toaster cdn --}}
+
+
+
 <script>
 
     @if (Session::has('success'))
@@ -489,17 +492,34 @@ $(function() {
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('postManagerCalendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialDate: '2023-05-01',
             editable: true,
             selectable: true,
             businessHours: true,
             dayMaxEvents: true, // allow "more" link when too many events
             events: <?php echo json_encode($allPosts); ?>,
             eventClick: function(calEvent, jsEvent, view) {
+
                 var id = calEvent.event._def.publicId;
                 get_detail(id);
-                
+
+            },
+            eventRender: function(info) {
+                alert(1);
+                var today = new Date().setHours(0, 0, 0, 0);
+                var currentDay = info.date.setHours(0, 0, 0, 0);
+
+                // Compare current day with today
+                if (currentDay >= today) {
+                    var plusIcon = $("<span>", {
+                        class: "plus-icon",
+                        text: "+"
+                    });
+
+                    // Append the plus icon to the day cell
+                    $(info.el).append(plusIcon);
+                }
             }
+
         });
         calendar.render();
     });
@@ -520,11 +540,11 @@ $(function() {
                     'plateform_val': plateform_val
                 },
                 success: function(response) {
-                    
+
                 },
                 error: function(xhr, status, error) {
                     var errorData = JSON.parse(xhr.responseText);
-                    
+
                     if(errorData.message == 'fb_error')
                     {
                         $('#socialFB').prop('checked', false);
@@ -532,7 +552,7 @@ $(function() {
                         toastr.error('Please Connect Your Facebook Account');
                     }else if(errorData.message == 'twiter_error')
                     {
-                        
+
                         $('#socialTwitter').prop('checked', false);
                         $('#socialTwitter').closest('.single_platform').removeClass('active_social');
                         toastr.error('Please Connect Your Twitter Account');
@@ -556,7 +576,7 @@ $(function() {
 
     });
     $(document).on('click', '.edit_post', function() {
-        
+
             $('#detail_modal').modal('hide');
             var tag=$(this).attr('data-tag');
             var contact=$(this).attr('data-contact');
@@ -568,15 +588,15 @@ $(function() {
 
             $('#edit_modal').modal('show');
         });
-    
+
 </script>
 <script>
     $(function () {
 			$('#emojiarea').emoji({place: 'after'});
 		});
-    
 
-        
+
+
         $( document ).ready(function() {
             var authuser = "{{auth()->user()}}";
             if(authuser != null)
@@ -585,19 +605,19 @@ $(function() {
                 var insta_user_id = "{{auth()->user()->insta_user_id}}";
                 var fb_access_token = "{{auth()->user()->fb_access_token}}";
                 var fb_page_token = "{{auth()->user()->fb_page_token}}";
-                
+
                 if(insta_access_token != '' && insta_user_id == '')
                 {
                     $('#instagram_pages_modal').modal('show');
-                    
+
                 }else if(fb_access_token != '' && fb_page_token == ''){
                     $('#pages_modal').modal('show');
                 }
 
             }
-        
+
         });
-        
+
 </script>
 
 </body>

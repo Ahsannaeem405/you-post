@@ -47,10 +47,10 @@ return [
         'redirect' => url("/connect_instagram/calback"),
     ],
     'linkedin' => [
-               // 'client_id' => '86k9qgvzogwtyu',
+        // 'client_id' => '86k9qgvzogwtyu',
         // 'client_secret' => 'f7W3hq2FzCDnKckO',
         'client_id' => '77l861fu7qz6ly',
-         'client_secret' => '2JCRuJKoFqCsHB3w',
+        'client_secret' => '2JCRuJKoFqCsHB3w',
         'redirect' => url("/connect_linkedin/calback"),
     ],
     'twitter' => [

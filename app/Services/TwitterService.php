@@ -51,7 +51,7 @@ class TwitterService
             $get = json_decode($response->body());
 
 
-        if($response->status() ==201)
+        if($response->status()==201)
         {
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;

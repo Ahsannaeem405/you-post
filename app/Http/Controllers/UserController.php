@@ -32,11 +32,6 @@ class UserController extends Controller
 
     public function index()
     {
-
-
-
-
-
         $posts = Post::where('user_id', auth()->user()->id)->select('id', 'tag', 'posted_at')->get();
         $allPosts = [];
         foreach ($posts as $post) {
@@ -179,22 +174,34 @@ class UserController extends Controller
                 if ($platforms[$i] == 'Facebook') {
                     $facebookservice->create_post($data);
 
+                } elseif ($platforms[$i] == 'Instagram') {
+                    $Instagramservice->create_post($data);
+
                 } elseif ($platforms[$i] == 'Twitter') {
                     //$this->twiter_refresh();
                     if ($req->posttime == 'later') {
                         return back()->with('success', 'Post Schedule Successfully');
                     }
-                    $TwitterService->create_post($data);
-
-                } elseif ($platforms[$i] == 'Instagram') {
-                    $Instagramservice->create_post($data);
+                    $res=$TwitterService->create_post($data);
+                    if ($res['status']){
+                        return back()->with('success', 'Post Created Successfully');
+                    }
+                    else{
+                        return back()->with('error', 'Something went wrong.');
+                    }
 
                 } elseif ($platforms[$i] == 'Linkedin') {
 
                     if ($req->posttime == 'later') {
                         return back()->with('success', 'Post Schedule Successfully');
                     }
-                    $Linkedinservice->create_post($data);
+                    $res=$Linkedinservice->create_post($data);
+                    if ($res['status']){
+                        return back()->with('success', 'Post Created Successfully');
+                    }
+                    else{
+                        return back()->with('error', 'Something went wrong.');
+                    }
 
                 }
             }

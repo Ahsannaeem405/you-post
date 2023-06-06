@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\Services;
 
 use Facebook\Facebook;
@@ -12,7 +13,7 @@ use App\Models\Post;
 
 class Instagramservice
 {
-    public function media_status($media_id,$post)
+    public function media_status($media_id, $post)
     {
         $insta = config('services.instagram');
         $accesstoken = auth()->user()->insta_access_token;
@@ -27,28 +28,23 @@ class Instagramservice
         $response = $instagram->get("/$media_id/?fields=status_code&access_token=$accesstoken");
 
         $result = $response->getDecodedBody();
-        $status=$result['status_code'];
-      
-        if($status =='ERROR')
-           {
-          //dd($status);
-               $response = $instagram->get("/$media_id/?fields=status&access_token=$accesstoken");
+        $status = $result['status_code'];
 
-                $result = $response->getDecodedBody();
-                $status=$result['status'];
-                $msg=['status'=>false ,'msg'=>$status];
-                return $msg;
-           }
-        if($status !='FINISHED')
-        {
-           
-          
-          
-            sleep(10);
-            $get=$this->media_status($media_id,$post);
+        if ($status == 'ERROR') {
+            //dd($status);
+            $response = $instagram->get("/$media_id/?fields=status&access_token=$accesstoken");
 
+            $result = $response->getDecodedBody();
+            $status = $result['status'];
+            $msg = ['status' => false, 'msg' => $status];
+            return $msg;
         }
-        else{
+        if ($status != 'FINISHED') {
+            sleep(10);
+        }
+       //    $this->media_status($media_id, $post);
+
+
             $response = $instagram->post("/$insta_user_id/media_publish", array(
                 'creation_id' => $media_id,
                 'access_token' => $accesstoken,
@@ -59,36 +55,21 @@ class Instagramservice
             $postdetail->social_id = $response->getDecodedBody()['id'];
             $postdetail->save();
 
-            $msg=['status'=>true];
-          //dd($msg);
+            $msg = ['status' => true];
+            //dd($msg);
             return $msg;
-
-        }
 
 
 
 
     }
+
     public function create_post($data)
     {
         // dd($data);
-        $post = $data['post'];
-        //$media_path = asset("content_media/$post->media");
+        $post = Post::find($data['post']->id);
         $video_path = "content_media/$post->media";
         $media_path = asset("content_media/$post->media");
-
-       
-
-
-        
-
-
-        //$media_path = asset("content_media/1681298987999.mp4");
-
-
-         //$media_path = "https://youpost.social/content_media/16811071681110.jpg";
-        //$media_path = "https://youpost.social/content_media/16812977781010.mp4";
-        
         $insta = config('services.instagram');
         $accesstoken = auth()->user()->insta_access_token;
         $insta_user_id = auth()->user()->insta_user_id;
@@ -98,101 +79,85 @@ class Instagramservice
             'app_secret' => $insta['client_secret'],
             'default_graph_version' => 'v16.0',
         ]);
-        $media_id=0;
 
-        if($data['media_type']=='image')
-        {
-          
-           $media_path = asset("content_media/$post->media");
-            //dd($media_path);
+        if ($data['media_type'] == 'image') {
+
+
             $response = $instagram->post("/$insta_user_id/media", array(
                 'image_url' => $media_path,
                 'caption' => "$post->content",
-                //'access_token' => $accesstoken,
-            ),$accesstoken);
-            // dd('image');
+            ), $accesstoken);
+
             $result = $response->getDecodedBody();
             $media_id = $result['id'];
-             try {
-                    $response = $instagram->post("/$insta_user_id/media_publish", array(
-                      'creation_id' => $media_id,
-                      'access_token' => $accesstoken,
-                     ));
-            
+            try {
+                $response = $instagram->post("/$insta_user_id/media_publish", array(
+                    'creation_id' => $media_id,
+                    'access_token' => $accesstoken,
+                ));
+                $postdetail = new PostDetail();
+                $postdetail->post_id = $post->id;
+                $postdetail->plateform = 'Instagram';
+                $postdetail->social_id = $response->getDecodedBody()['id'];
+                $postdetail->save();
+                $msg = ['status' => true];
 
-              } catch(Facebook\Exceptions\FacebookResponseException $e) {
-                  return redirect('/index')->with('error', "444 $e");
-              } catch(Facebook\Exceptions\FacebookSDKException $e) {
-                  return redirect('/index')->with('error', "555 $e");
-              }
+            } catch (\Exception $e) {
+                $msg = ['status' => false];
+                $post->delete();
+            }
 
-              $postdetail = new PostDetail();
-              $postdetail->post_id = $post->id;
-              $postdetail->plateform = 'Instagram';
-              $postdetail->social_id = $response->getDecodedBody()['id'];
-              $postdetail->save();
-              $msg=['status'=>true];
-              return $msg;
-          
-              
-        }elseif($data['media_type']=='video'){
-          
-          $getID3 = new getID3();
-          $video_info = $getID3->analyze($video_path);
-          //dd($video_info);
-          $duration_seconds = $video_info['playtime_seconds'];
-          $duration_formatted = gmdate('H:i:s', $duration_seconds);
-          if($video_info['playtime_seconds'] > 60)
-          {
-             $msg=['status'=>false ,'error'=>'max 60 Seconds video allow'];
+
+            return $msg;
+
+
+        } elseif ($data['media_type'] == 'video') {
+
+            $getID3 = new getID3();
+            $video_info = $getID3->analyze($video_path);
+            //dd($video_info);
+            $duration_seconds = $video_info['playtime_seconds'];
+            $duration_formatted = gmdate('H:i:s', $duration_seconds);
+            if ($video_info['playtime_seconds'] > 60) {
+                $msg = ['status' => false, 'error' => 'max 60 Seconds video allow'];
+                $post->delete();
                 return $msg;
-            
-            
-          }
-          if($video_info['filesize'] > 100000000)
-          {
-             $msg=['status'=>false ,'error'=>'max 100mb video allow'];
+
+
+            }
+            if ($video_info['filesize'] > 100000000) {
+                $msg = ['status' => false, 'error' => 'max 100mb video allow'];
+                $post->delete();
                 return $msg;
-            
-            
-          }
-          
-          
+
+
+            }
+
 
             $response = $instagram->post("/$insta_user_id/media", array(
                 'media_type' => 'VIDEO',
-                'video_url' =>$media_path,
+                'video_url' => $media_path,
                 'caption' => "$post->content",
-                //'access_token' => $accesstoken,
-            ),$accesstoken);
-          
-          //dd($response);
-
+            ), $accesstoken);
             sleep(10);
-            //dd($response->getDecodedBody());
             $result = $response->getDecodedBody();
             $media_id = $result['id'];
 
-            $get=$this->media_status($media_id,$post);
-            if($get ==null)
+            $get = $this->media_status($media_id, $post);
+            $msg = $get;
+            if (!$get['status']) {
+              $post->delete();
 
-            {
-                $msg=['status'=>true];
-                return $msg;
-             
             }
-             return $get;
 
-            
-            // Create a new curl file
-            
-                //dd($response);
+
+
+            return $msg;
+
 
         }
-        // dd(5665,'restt', $response44);
-       
     }
-    
+
     public function delete_post($data)
     {
         $accessToken = auth()->user()->insta_access_token;
@@ -212,15 +177,15 @@ class Instagramservice
                     'access_token' => $accessToken,
                 ],
             ]);
-            if($response->getStatusCode()==200){
-                $dell=Post::find($data->post_id);
+            if ($response->getStatusCode() == 200) {
+                $dell = Post::find($data->post_id);
                 $dell->delete();
-                $msg=['status'=>true];
+                $msg = ['status' => true];
                 return $msg;
 
             }
 
-            
+
         } catch (Exception $e) {
             echo 'Error deleting post: ' . $e->getMessage();
         }
