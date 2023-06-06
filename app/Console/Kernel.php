@@ -20,8 +20,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->command('twitter:cron')
-                 ->everyMinute();
+        $schedule->command('twitter:cron')->everyMinute();
+        $schedule->command('linkedin:cron')->everyMinute();
 
     }
 

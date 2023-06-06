@@ -46,6 +46,7 @@ class LoginController extends Controller
 
     public function redirectToGoogle()
     {
+
         return Socialite::driver('google')->redirect();
     }
 
@@ -56,7 +57,7 @@ class LoginController extends Controller
                 // $finduser = User::where('email', $user->email)->first();
                 $finduser = User::where('google_id', $user->id)->first();
                 if($finduser){
-                    
+
                     Auth::login($finduser);
                     return redirect()->intended('/index')->with('success', 'Login Successfully');
                 }else{
@@ -72,7 +73,7 @@ class LoginController extends Controller
             } catch (Exception $e) {
                 return redirect()->intended('/login')->with('error', $e->getMessage()) ;
             }
-        
+
     }
 
 
@@ -84,10 +85,10 @@ class LoginController extends Controller
 
     public function handleFacebookCallback()
     {
-       
+
         try {
             $user = Socialite::driver('facebook')->user();
-           
+
             $finduser = User::where('facebook_id', $user->id)->first();
             if($finduser){
                 Auth::login($finduser);
