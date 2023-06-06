@@ -75,12 +75,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('connect_to_linkedin',  [UserController::class, 'connect_to_linkedin']);
     Route::get('connect_linkedin/calback',  [UserController::class, 'connect_linkedin_calback']);
     
+  
+
     
     Route::get('connect_to_twitter',  [UserController::class, 'connect_to_twitter']);
     Route::get('connect_to_twitter/calback',  [UserController::class, 'connect_twitter_calback']);
     
 
     Route::get('get-facebook-likes',  [UserController::class, 'get_facebook_likes']);
+    Route::get('Linkedin_delete/{id}',  [UserController::class, 'Linkedin_delete']);
+    Route::post('update_post',  [UserController::class, 'update_post']);
+    Route::get('edit_post/{id}',  [UserController::class, 'edit_post']);
+
+
 
     
     // http://localhost:8000/connect_facebook/calback

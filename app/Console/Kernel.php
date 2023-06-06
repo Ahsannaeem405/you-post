@@ -13,9 +13,16 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+    protected $commands = [
+        Commands\TwitterCron::class,
+    ];
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->command('twitter:cron')
+                 ->everyMinute();
+
     }
 
     /**

@@ -205,6 +205,70 @@
   </div>
 {{-- event detail modal --}}
 
+{{-- event edit modal --}}
+<div class="modal fade" id="edit_modal" tabindex="-1" aria-labelledby="detail_modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detail_modalLabel">Post Detail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body ">
+            <form action="{{url('update_post')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group emoji_parent">
+                        <textarea required name="content" id="emojiarea" cols="30" rows="3" class="form-control edit_content" placeholder="Write your post...">{{old('content')}}</textarea>
+                    </div>
+
+                    <div class="icon_buttons_tags d-flex">
+                        <div class="icon_buttons grid_item">
+                            <ul class='d-flex mb-0' style="list-style-type: none;">
+                                <li style="width: 20%;">
+                                    <a href="javascript:void(0)" class="image_or_video" typpe="image"><label for="image_or_video">
+                                        <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt=""/>
+                                    </label>
+                                    </a>
+                                </li>
+                                <li style="width: 20%;">
+                                    <a href="javascript:void(0)" class="image_or_video" typpe="video"><label for="image_or_video">
+                                        <img src="{{asset('')}}images/Video_Player_Icon.png" class="img-fluid" alt="" />
+                                    </label>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <input type="file" name="media" class="image d-none" id="image_or_video" accept="image/*,video/*">
+                        <input type="hidden" name="media_type" id="type_input">
+                        <input type="hidden" name="timezone" class="timezone">
+                        <input type="hidden" name="id" class="edit_id">
+
+                        <div class="tags_input_wrap grid_item ml-auto">
+                            <div class="tags_input">
+                                <input required name="tag" type="text" class="form-control edit_tag" placeholder="#tags" value="{{old('tag')}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post_now_button">
+                        <input type="submit" class="btn btn-primary post_now_btn" value="Post Now" style="text-align: end;margin-top: 4%;">
+                    </div>
+
+                   
+
+                
+                </form>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{-- event edit modal --}}
 
 {{-- myaccount modal --}}
 <div class="modal fade" id="myaccounts_modal" tabindex="-1" aria-labelledby="myaccounts_modalLabel" aria-hidden="true">
@@ -348,7 +412,7 @@
 
 {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
 
-<script src='{{asset('js/inputEmoji.js')}}'></script>
+<script src="{{asset('js/inputEmoji.js')}}"></script>
 
 
 <!--Bootstrap v4.5.3 JS File-->
@@ -415,6 +479,7 @@ $(function() {
                 },
                 success: function(response) {
                     $('.event_detail_parent').empty().append(response);
+                    $('.fc-popover').css('display','none');
                     $('#detail_modal').modal('show');
                 }
             });
@@ -488,7 +553,21 @@ $(function() {
                 }
         });
 
+
     });
+    $(document).on('click', '.edit_post', function() {
+        
+            $('#detail_modal').modal('hide');
+            var tag=$(this).attr('data-tag');
+            var contact=$(this).attr('data-contact');
+            var id=$(this).attr('data-id');
+            $('.edit_content').val(contact);
+            $('.edit_tag').val(tag);
+
+            $('.edit_id').val(id);
+
+            $('#edit_modal').modal('show');
+        });
     
 </script>
 <script>

@@ -112,6 +112,7 @@ class UserController extends Controller
             'content' => 'required',
             'tag' => 'required',
         ]);
+
         $platforms = auth()->user()->platforms;
         if(in_array('Instagram',$platforms))
         {
@@ -120,18 +121,31 @@ class UserController extends Controller
             ]);
             if($req->media_type == 'image')
             {
-                $req->validate([
-                    'media' => 'dimensions:min_width=400,min_height=500',
-                ]);
+                // $req->validate([
+                //     'media' => 'dimensions:min_width=400,min_height=500',
+                // ]);
             }elseif($req->media_type == 'video')
             {
-                return back()->with('error', "Sorry! can't post video. this feature is coming soon.");
+                // return back()->with('error', "Sorry! can't post video. this feature is coming soon.");
             }
             
         }
         if(in_array('Linkedin',$platforms) && ($req->media_type != ''))
         {
-            return back()->with('error', "Sorry! can't post video or image. this feature is coming soon.");
+            if($req->media_type == 'image')
+            {
+                return back()->with('error', "Sorry! can't post image. this feature is coming soon.");
+                
+            }elseif($req->media_type == 'video')
+            {
+              return back()->with('error', "Sorry! can't post video. this feature is coming soon.");
+            }
+            
+
+               
+
+
+
         }
         if(count($platforms) > 0 )
         {
@@ -140,7 +154,7 @@ class UserController extends Controller
             $post->content = $req->content;
             $post->tag = $req->tag;
             $post->posted_at_moment = $req->posttime;
-            $post->posted_at = new DateTime($req->time);
+            $post->posted_at = date_format(new DateTime($req->time),"Y-m-d H:i");
             
             if ($req->hasFile('media')) {
                 $imageName = time() . rand(1111,999) . '.' . $req->media->extension();
@@ -160,6 +174,13 @@ class UserController extends Controller
                     $facebookservice->create_post($data);
 
                 }elseif($platforms[$i] == 'Twitter'){
+                    //$this->twiter_refresh();
+                   if($req->posttime == 'later')
+                    {
+                        return back()->with('success', 'Post Schedule Successfully');
+
+
+                    }
                     $TwitterService->create_post($data);
 
                 }elseif($platforms[$i] == 'Instagram'){
@@ -169,7 +190,6 @@ class UserController extends Controller
                     $Linkedinservice->create_post($data);
 
                 }
-                
             }
             return back()->with('success', 'Post Created Successfully');
         }else {
@@ -183,6 +203,128 @@ class UserController extends Controller
         return view('user.event_detail', compact('post'));
     }
 
+    public function Linkedin_delete( $id,Facebookservice $facebookservice,Instagramservice $Instagramservice,Linkedinservice $Linkedinservice,TwitterService $TwitterService)
+    {
+        $get_post=PostDetail::where('social_id',$id)->first();
+                
+        if($get_post->plateform=='Linkedin')
+        {
+            $get_data=$Linkedinservice->delete_post($id);
+        }
+        if($get_post->plateform=='Instagram')
+        {
+            $get_data=$Instagramservice->delete_post($get_post);
+        }
+        if($get_post->plateform=='Twitter')
+        {
+            //$this->twiter_refresh();
+            $get_data=$TwitterService->delete_post($get_post);
+        }
+        if($get_post->plateform=='Facebook')
+        {
+            //$this->twiter_refresh();
+            $get_data=$facebookservice->delete_post($id);
+        }
+
+        if($get_data['status'] == true)
+        {
+            return redirect('/index')->with('success', 'Post Successfully Deleted!');
+
+
+        }
+
+       
+    }
+
+    public function edit_post($id)
+    {
+        $get_post =PostDetail::where('social_id',$id)->first();
+      
+        $posts = Post::where('user_id', auth()->user()->id)->select('id','tag', 'posted_at')->get();
+        $allPosts = [];
+        foreach ($posts as $post) {
+            $allPosts[] = [
+                'id' => $post->id,
+                'title' => $post->tag,
+                'start' => $post->posted_at,
+            ];
+        }
+        $data=[];
+        $data['total_fb_likes'] = 0; 
+        $data['total_fb_comments'] = 0; 
+        $data['total_insta_likes'] = 0; 
+        $data['total_insta_comments'] = 0; 
+        if(count(auth()->user()->posts))
+        {
+            foreach(auth()->user()->posts as $post)
+            {
+                $fb_posts = PostDetail::where('post_id', $post->id)->where('plateform', 'Facebook')->first();
+                if($fb_posts)
+                {
+                    $data['total_fb_likes'] = $data['total_fb_likes'] + $fb_posts->likes;
+                    $data['total_fb_comments'] = $data['total_fb_comments'] + $fb_posts->comments;
+                }
+                  
+                $insta_posts = PostDetail::where('post_id', $post->id)->where('plateform', 'Instagram')->first();
+                if($insta_posts)
+                {
+                    $data['total_insta_likes'] = $data['total_insta_likes'] + $insta_posts->likes;
+                    $data['total_insta_comments'] = $data['total_insta_comments'] + $insta_posts->comments;
+                }
+
+            }
+        }
+       $fb_access_token = auth()->user()->fb_access_token;
+        $fb_page_token = auth()->user()->fb_page_token;
+        $insta_access_token = auth()->user()->insta_access_token;
+        $insta_user_id = auth()->user()->insta_user_id;
+        if($fb_access_token != null && $fb_page_token == null)
+        {
+            $fb = new Facebook([
+                'app_id' => env('app_id'),
+                'app_secret' => env('app_secret'),
+                'default_graph_version' => 'v16.0',
+                'default_access_token' => $fb_access_token,
+            ]);
+            $response = $fb->get('/me/accounts');
+            $all_pages = json_decode($response->getbody())->data;
+        }else{
+            $all_pages = [];
+        }
+
+        if($insta_access_token != null && $insta_user_id == null)
+        {
+            $insta = config('services.instagram');
+            $insta = new Facebook([
+                'app_id' => $insta['client_id'],
+                'app_secret' => $insta['client_secret'],
+                'default_graph_version' => 'v16.0',
+                'default_access_token' => $insta_access_token,
+            ]);
+            $insta_response = $insta->get('/me/accounts');
+            $all_pages_for_insta = json_decode($insta_response->getbody())->data;
+        }else{
+            $all_pages_for_insta =[];
+        }
+        
+        return view('user.edit_index', compact('allPosts', 'all_pages', 'all_pages_for_insta', 'data','get_post'));
+
+
+        
+        
+
+    }
+    public function update_post(Request $req,Facebookservice $facebookservice)
+    {
+        $post = Post::find($req->id);
+        
+        $get_data=$facebookservice->edit_post($post,$req);
+
+        
+        
+
+        return view('user.event_detail', compact('post'));
+    }
     public function update_user_platforms(Request $req)
     {
         if($req->plateform_val != null)
@@ -221,7 +363,7 @@ class UserController extends Controller
         ]);
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['pages_read_engagement','pages_manage_posts', 'pages_read_user_content', 'read_insights'];
-        $helper->getPersistentDataHandler()->set('state','abcdef');
+        $helper->getPersistentDataHandler()->set('state','abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
     }
@@ -293,9 +435,10 @@ class UserController extends Controller
         $fb = new Facebook([
             'app_id' => $insta['client_id'],
             'app_secret' => $insta['client_secret'],
-            'default_graph_version' => 'v16.0',
+            'default_graph_version' => 'v12.0',
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
+
         $user = User::find(auth()->user()->id);
         $user->insta_access_token = $accessToken;
         $user->update();
@@ -316,6 +459,8 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $response = $instagram->get("/$req->page?fields=instagram_business_account", auth()->user()->insta_access_token);
+
+
         $result = $response->getDecodedBody();
         // dd($result);
         if(isset($result['instagram_business_account']))
@@ -341,7 +486,7 @@ class UserController extends Controller
             $linkedin = config('services.linkedin');
             $client_id = $linkedin['client_id'];
             $client_secret = $linkedin['client_secret'];
-            $redirect_uri = $linkedin['redirect'];
+            $redirect_uri = 'http://localhost/you-post/public/connect_linkedin/calback';
             $authorization_url = 'https://www.linkedin.com/oauth/v2/authorization?' . http_build_query(array(
                 'response_type' => 'code',
                 'client_id' => $client_id,
@@ -406,6 +551,9 @@ class UserController extends Controller
         try {    
             $twitter = config('services.twitter');
             $client_id = $twitter['client_id'];
+
+
+
             // $client_secret = $twitter['client_secret'];
             $redirect_uri = $twitter['redirect'];
             $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
@@ -469,8 +617,10 @@ class UserController extends Controller
             ),
             ));
             $response = curl_exec($curl);
+
             curl_close($curl);
             $response2 = json_decode($response);
+            //dd($response2);
             if(isset($response2->error))
             {
                 return redirect('/index')->with('error', $response2->error_description);
@@ -481,7 +631,7 @@ class UserController extends Controller
             User::where('id', auth()->user()->id)->update([
                     'twiter_access_token' => $access_token,
                     'twiter_refresh_token' => $refresh_token
-                ]);
+            ]);
             return redirect('/index')->with('success', 'Twitter Connected Successfully');
         } catch (\Exception $e) {
             return redirect('/index')->with('error', $e->getMessage());
@@ -509,6 +659,51 @@ class UserController extends Controller
 
         // $oauth_verifier = filter_input(INPUT_GET, 'oauth_verifier');
         
+    }
+    public function twiter_refresh()
+    {
+        
+
+            $refresh_token = auth()->user()->twiter_refresh_token;
+            $twitter = config('services.twitter');
+            $client_id = $twitter['client_id'];
+            $client_secret = $twitter['client_secret'];
+            $redirect_uri = $twitter['redirect'];
+            // with curl
+            $basee = base64_encode($client_id . ':' . $client_secret);
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+
+
+            CURLOPT_URL => 'https://api.twitter.com/2/oauth2/token',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => "grant_type=refresh_token&refresh_token=$refresh_token",
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/x-www-form-urlencoded',
+                "Authorization: Basic $basee",
+            ),
+            ));
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+            $response2 = json_decode($response);
+           
+            
+                
+
+            $access_token = $response2->access_token;
+            $refresh_token = $response2->refresh_token;
+            User::where('id', auth()->user()->id)->update([
+                    'twiter_access_token' => $access_token,
+                    'twiter_refresh_token' => $refresh_token
+            ]);
+            //dd($response2);
     }
 
     public function get_facebook_likes()

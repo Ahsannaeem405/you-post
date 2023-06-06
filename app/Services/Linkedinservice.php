@@ -7,6 +7,7 @@ use DateTime;
 use DateTimeZone;
 use GuzzleHttp\Client;
 use App\Models\PostDetail;
+use App\Models\Post;
 
 class Linkedinservice
 {
@@ -16,207 +17,123 @@ class Linkedinservice
         $media_path = asset("content_media/$post->media");
         $accesstoken = auth()->user()->linkedin_accesstoken;
         $linkedin_user_id = auth()->user()->linkedin_user_id;
-        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
-        // $media_path = "https://play2-earn.com/youpost/images/YouPost_Logo.png";
+        
+        
+        
+        
+     $mediaFilePath="images/YouPost_Logo.png";
+     
+     
+       
 
-        // 
-        // if ($data['media_type'] == 'image') {
+    // LinkedIn API endpoint for media upload
+    $uploadEndpoint = 'https://api.linkedin.com/v2/assets?action=registerUpload';
 
-        //     // upload image first 
-        //     $linkedInClient = new Client(['base_uri' => 'https://api.linkedin.com']);
+ 
+    $postEndpoint = 'https://api.linkedin.com/v2/ugcPosts';
 
-        //     $response1 = $linkedInClient->post(
-        //             '/media/upload', [
-        //                 'headers' => [
-        //                     'Accept'                => 'application/json',
-        //                     'Authorization'         =>  "Bearer $accesstoken",
-        //                 ],
-        //                 'multipart' => [
-        //                     [
-        //                         'name'     => 'fileupload',
-        //                         'contents' => fopen($media_path, 'r'),
-        //                     ],
-        //                 ],
-        //             ]
-        //         );
-        //         dd($response1);
-        //     // upload image first 
+    
 
-        //     $post_data = [
-        //         'author' => "urn:li:person:$linkedin_user_id",
-        //         'lifecycleState' => 'PUBLISHED',
-        //         'specificContent' => [
-        //             'com.linkedin.ugc.ShareContent' => [
-        //                 'shareCommentary' => [
-        //                     'text' => "$post->content #$post->tag"
-        //                 ],
-        //                 'shareMediaCategory' => 'IMAGE',
-        //                 'media' => [
-        //                     [
-        //                         'status' => 'READY',
-        //                         'description' => [
-        //                             'text' => 'Mydfgh'
-        //                         ],
-        //                         'originalUrl' => $media_path,
-        //                         'title' => [
-        //                             'text' => 'image title'
-        //                         ],
-        //                         'thumbnails' => [
-        //                             [
-        //                                 'resolvedUrl' => $media_path
-        //                             ]
-        //                         ]
-        //                     ]
-        //                 ]
-        //             ]
-        //         ],
-        //         'visibility' => [
-        //             'com.linkedin.ugc.MemberNetworkVisibility' => 'PUBLIC'
-        //         ]
-        //     ];
-        //     $curl = curl_init();
-        //     curl_setopt_array($curl, [
-        //         CURLOPT_URL => "https://api.linkedin.com/v2/ugcPosts",
-        //         CURLOPT_RETURNTRANSFER => true,
-        //         CURLOPT_ENCODING => "",
-        //         CURLOPT_MAXREDIRS => 10,
-        //         CURLOPT_TIMEOUT => 30,
-        //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //         CURLOPT_CUSTOMREQUEST => "POST",
-        //         CURLOPT_POSTFIELDS => json_encode($post_data),
-        //         CURLOPT_HTTPHEADER => [
-        //             "Authorization: Bearer " . $accesstoken,
-        //             "Content-Type: application/json"
-        //         ],
-        //     ]);
-        //     $response3 = curl_exec($curl);
-        //     $err = curl_error($curl);
-        //     curl_close($curl);
-        //     if ($err) {
-        //         echo "cURL Error #:" . $err;
-        //         return redirect('/index')->with('error', $err);
-        //     } else {
-        //         $postdetail = new PostDetail();
-        //         $postdetail->post_id = $post->id;
-        //         $postdetail->plateform = 'Instagram';
-        //         $postdetail->save();
-        //     }
-        //     dd('image',$response3);
-
-        // } elseif ($data['media_type'] == 'video') {
-        //     $post_data = [
-        //         'author' => "urn:li:person:$linkedin_user_id",
-        //         'lifecycleState' => 'PUBLISHED',
-        //         'specificContent' => [
-        //             'com.linkedin.ugc.ShareContent' => [
-        //                 'shareCommentary' => [
-        //                     'text' => "$post->content #$post->tag"
-        //                 ],
-        //                 'shareMediaCategory' => 'IMAGE',
-        //                 'media' => [
-        //                     [
-        //                         'status' => 'READY',
-        //                         'description' => [
-        //                             'text' => 'Mydfgh'
-        //                         ],
-        //                         'originalUrl' => $media_path,
-        //                         'title' => [
-        //                             'text' => 'image title'
-        //                         ],
-        //                         'thumbnails' => [
-        //                             [
-        //                                 'resolvedUrl' => $media_path
-        //                             ]
-        //                         ]
-        //                     ]
-        //                 ]
-        //             ]
-        //         ],
-        //         'visibility' => [
-        //             'com.linkedin.ugc.MemberNetworkVisibility' => 'PUBLIC'
-        //         ]
-        //     ];
-        //     $curl = curl_init();
-        //     curl_setopt_array($curl, [
-        //         CURLOPT_URL => "https://api.linkedin.com/v2/ugcPosts",
-        //         CURLOPT_RETURNTRANSFER => true,
-        //         CURLOPT_ENCODING => "",
-        //         CURLOPT_MAXREDIRS => 10,
-        //         CURLOPT_TIMEOUT => 30,
-        //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //         CURLOPT_CUSTOMREQUEST => "POST",
-        //         CURLOPT_POSTFIELDS => json_encode($post_data),
-        //         CURLOPT_HTTPHEADER => [
-        //             "Authorization: Bearer " . $accesstoken,
-        //             "Content-Type: application/json"
-        //         ],
-        //     ]);
-        //     $response3 = curl_exec($curl);
-        //     $err = curl_error($curl);
-        //     curl_close($curl);
-        //     if ($err) {
-        //         echo "cURL Error #:" . $err;
-        //         return redirect('/index')->with('error', $err);
-        //     } else {
-        //         $postdetail = new PostDetail();
-        //         $postdetail->post_id = $post->id;
-        //         $postdetail->plateform = 'Instagram';
-        //         $postdetail->save();
-        //     }
-        //     dd('video',$response3);
-
-        // } else {
-            try{
-
-                $post_data = [
-                    'author' => "urn:li:person:$linkedin_user_id",
-                    'lifecycleState' => 'PUBLISHED',
-                    'specificContent' => [
+    $person='urn:li:person:' .$linkedin_user_id;
+    // Create the share with media
+    $response = $client->post($postEndpoint, [
+        'headers' => [
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json',
+            'X-Restli-Protocol-Version' => '2.0.0',
+        ],
+        'json' => [
+            'author' =>$person,
+            'lifecycleState' => 'PUBLISHED',
+            'specificContent' => [
                         'com.linkedin.ugc.ShareContent' => [
                             'shareCommentary' => [
                                 'text' => "$post->content #$post->tag"
                             ],
-                            'shareMediaCategory' => 'NONE'
-                        ]
+                            
+                            "shareMediaCategory"=> "NONE",
+                           // "media"=> [
+                           //              [
+                           //                  "status"=> "READY",
+                           //                  "description"=> [
+                           //                      "text"=> "Official LinkedIn Blog - Your source for insights and information about LinkedIn."
+                           //                  ],
+                           //                  "originalUrl"=> "https://blog.linkedin.com/",
+                           //                  "title"=> [
+                           //                  "text"=> "Official LinkedIn Blog"
+                           //                  ]
+                           //              ]
+                           //          ]   
+                        ],
                     ],
                     'visibility' => [
                         'com.linkedin.ugc.MemberNetworkVisibility' => 'PUBLIC'
-                    ]
-                ];
-                $curl = curl_init();
-                curl_setopt_array($curl, [
-                    CURLOPT_URL => "https://api.linkedin.com/v2/ugcPosts",
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => "",
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 30,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => "POST",
-                    CURLOPT_POSTFIELDS => json_encode($post_data),
-                    CURLOPT_HTTPHEADER => [
-                        "Authorization: Bearer " . $accesstoken,
-                        "Content-Type: application/json"
                     ],
-                ]);
-                $response3 = curl_exec($curl);
-                // dd($response3, 00);
-                $err = curl_error($curl);
-                curl_close($curl);
-                if ($err) {
-                    echo "cURL Error #:" . $err;
-                    return redirect('/index')->with('error', $err);
-                } else {
+            
+            
+            
+            
+        ],
+    ]);
+    $id=json_decode($response->getBody());
+  
+
+
+
+
+
+
+
+
                     $postdetail = new PostDetail();
                     $postdetail->post_id = $post->id;
                     $postdetail->plateform = 'Linkedin';
-                    $postdetail->save();
-                }
-            } catch (\Exception $e) {
-                
-                return redirect('/index')->with('error', $e->getMessage());
-            }
-            // dd('text',$response3);
+                    $postdetail->social_id = $id->id;
 
-        // }
+                    $postdetail->save();
+               
+
+       
     }
+    public function delete_post($data)
+    {
+        $accessToken = auth()->user()->linkedin_accesstoken;
+        $get=explode('urn:li:share:', $data);
+        $shareUrn =$get[1]; 
+
+        $deleteEndpoint = "https://api.linkedin.com/v2/shares/{$shareUrn}";
+        // Create a new Guzzle HTTP client instance
+        $client = new Client();
+
+        try {
+            // Send a DELETE request to delete the share
+            $response = $client->delete($deleteEndpoint, [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $accessToken,
+                    'Content-Type' => 'application/json',
+                    'X-Restli-Protocol-Version' => '2.0.0',
+                ],
+            ]);
+            if($response->getStatusCode()==200){
+                $get_post=PostDetail::where('social_id',$data)->first();
+                $dell=Post::find($get_post->post_id);
+                $dell->delete();
+                $msg=['status'=>true];
+                return $msg;
+
+            }
+            
+
+           
+        } catch (Exception $e) {
+            echo 'Error deleting share post: ' . $e->getMessage();
+        }
+
+    }
+
+    
+
+    
+
+    
 }

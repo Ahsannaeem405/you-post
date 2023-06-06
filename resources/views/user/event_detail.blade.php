@@ -18,6 +18,17 @@
     <p> 
         @foreach ($post->plateforms as $platform)
             <span class="social_forms">{{$platform->plateform}}</span>
+                        <a class="social_forms  btn-info" href="{{url('Linkedin_delete/' .$platform->social_id)}}">Delete</a>
+                     <!--   // @if($platform->plateform =='Facebook')
+                         //<a class="social_forms  btn-info" href="{{url('edit_post/' .$platform->social_id)}}">Delete</a>
+
+                       // @endif -->
+
+                         
+
+
+
         @endforeach 
+
     </p>
 </div>
