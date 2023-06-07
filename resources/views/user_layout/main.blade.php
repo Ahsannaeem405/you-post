@@ -560,9 +560,6 @@
 
 
     $(document).on('click', '.plateform', function () {
-        $('.plateform').prop('checked', false);
-        $('.plateform').closest('.single_platform').removeClass('active_social');
-        $(this).prop('checked', true);
         var all_plateform = $("input[name='plateform[]']:checked");
         var plateform_val = [];
         all_plateform.each(function () {

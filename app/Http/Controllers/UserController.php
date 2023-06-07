@@ -6,20 +6,18 @@ use App\Models\Post;
 use App\Models\PostDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Facebook\Facebook;
-use Laravel\Socialite\Facades\Socialite;
 use GuzzleHttp\Client;
 use HttpClient;
 use DateTime;
 use League\OAuth2\Client\Provider\LinkedIn;
-use Abraham\TwitterOAuth\TwitterOAuth;
-use Session;
 use App\Services\Facebookservice;
 use App\Services\TwitterService;
 use App\Services\Instagramservice;
 use App\Services\Linkedinservice;
 use League\OAuth2\Client\Provider\Twitter;
+use Intervention\Image\Facades\Image;
+
 
 class UserController extends Controller
 {
@@ -108,107 +106,76 @@ class UserController extends Controller
         ]);
 
         $platforms = auth()->user()->platforms;
+        if (count($platforms) == 0) {
+            return back()->with('error', 'Please select platform to post.');
+        }
 
         if (in_array('Instagram', $platforms)) {
             $req->validate([
                 'media' => 'required',
             ]);
             if ($req->media_type == 'image') {
-                $req->validate([
-                    'media' => 'dimensions:min_width=400,min_height=500',
-                ]);
-            } elseif ($req->media_type == 'video') {
-                return back()->with('error', "Sorry! can't post video. this feature is coming soon.");
+                $width = Image::make($req->media)->width();
+                $height = Image::make($req->media)->height();
+                $aspectRatio = $width / $height;
+                if (!($aspectRatio == 4 / 5)) {
+                    return back()->with('error', "Sorry! can't post image required 4:5 image");
+                }
             }
 
         }
-
-        if (in_array('Twitter', $platforms)) {
-
-            if ($req->media_type == 'image') {
-                return back()->with('error', "Sorry! can't post Image. this feature is coming soon.");
-            } elseif ($req->media_type == 'video') {
-                return back()->with('error', "Sorry! can't post video. this feature is coming soon.");
-            }
-
+        $mediaData=null;
+        if ($req->hasFile('media')) {
+            $imageName = time() . rand(1111, 999) . '.' . $req->media->extension();
+            $req->media->move('content_media', $imageName);
+           $mediaData = $imageName;
         }
 
+        for ($i = 0; $i < count($platforms); $i++) {
+            //posting code
 
-        if (in_array('Linkedin', $platforms) && ($req->media_type != '')) {
-            if ($req->media_type == 'image') {
-                return back()->with('error', "Sorry! can't post image. this feature is coming soon.");
-
-            } elseif ($req->media_type == 'video') {
-                return back()->with('error', "Sorry! can't post video. this feature is coming soon.");
-            }
-
-
-        }
-
-
-        //posting code
-        if (count($platforms) > 0) {
             $post = new Post();
             $post->user_id = auth()->user()->id;
             $post->content = $req->content;
             $post->tag = $req->tag;
             $post->posted_at_moment = $req->posttime;
             $post->posted_at = date_format(new DateTime($req->time), "Y-m-d H:i");
-            $post->plateform = $platforms[0];
+            $post->plateform = $platforms[$i];
             $post->timezone = $req->timezone;
+            $post->media=$mediaData;
 
 
-            if ($req->hasFile('media')) {
-                $imageName = time() . rand(1111, 999) . '.' . $req->media->extension();
-                $req->media->move('content_media', $imageName);
-                $post->media = $imageName;
-            }
+
             $post->save();
-            for ($i = 0; $i < count($platforms); $i++) {
 
-                $data = [
-                    'post' => $post,
-                    'media_type' => $req->media_type,
-                    'timezone' => $req->timezone,
-                ];
-                if ($platforms[$i] == 'Facebook') {
-                    $facebookservice->create_post($data);
+            $data = [
+                'post' => $post,
+                'media_type' => $req->media_type,
+                'timezone' => $req->timezone,
+            ];
+            if ($platforms[$i] == 'Facebook') {
+                $facebookservice->create_post($data);
 
-                } elseif ($platforms[$i] == 'Instagram') {
-                    $Instagramservice->create_post($data);
+            } elseif ($platforms[$i] == 'Instagram') {
+                if ($req->posttime == 'now') {
+                    $res = $Instagramservice->create_post($data);
+                }
 
-                } elseif ($platforms[$i] == 'Twitter') {
-                    //$this->twiter_refresh();
-                    if ($req->posttime == 'later') {
-                        return back()->with('success', 'Post Schedule Successfully');
-                    }
-                    $res=$TwitterService->create_post($data);
-                    if ($res['status']){
-                        return back()->with('success', 'Post Created Successfully');
-                    }
-                    else{
-                        return back()->with('error', 'Something went wrong.');
-                    }
 
-                } elseif ($platforms[$i] == 'Linkedin') {
+            } elseif ($platforms[$i] == 'Twitter') {
+                //$this->twiter_refresh();
+                if ($req->posttime == 'now') {
+                    $res = $TwitterService->create_post($data);
+                }
 
-                    if ($req->posttime == 'later') {
-                        return back()->with('success', 'Post Schedule Successfully');
-                    }
-                    $res=$Linkedinservice->create_post($data);
-                    if ($res['status']){
-                        return back()->with('success', 'Post Created Successfully');
-                    }
-                    else{
-                        return back()->with('error', 'Something went wrong.');
-                    }
-
+            } elseif ($platforms[$i] == 'Linkedin') {
+                if ($req->posttime == 'now') {
+                    $res = $Linkedinservice->create_post($data);
                 }
             }
-            return back()->with('success', 'Post Created Successfully');
-        } else {
-            return back()->with('error', 'Please Select Platform');
         }
+        return back()->with('success', 'Post Created Successfully');
+
     }
 
     public function get_event_detail(Request $request)
@@ -331,8 +298,7 @@ class UserController extends Controller
             if (in_array('Facebook', $req->plateform_val) && (auth()->user()->fb_access_token == null || auth()->user()->fb_page_token == null)) {
                 $error = ['message' => 'fb_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Twitter', $req->plateform_val) &&
-                (auth()->user()->twiter_access_token == null || auth()->user()->twiter_refresh_token == null)) {
+            } elseif (in_array('Twitter', $req->plateform_val) && (auth()->user()->twiter_access_token == null || auth()->user()->twiter_refresh_token == null)) {
                 $error = ['message' => 'twiter_error'];
                 return response()->json($error, 404);
             } elseif (in_array('Instagram', $req->plateform_val) && (auth()->user()->insta_access_token == null || auth()->user()->insta_user_id == null)) {
@@ -344,7 +310,7 @@ class UserController extends Controller
             }
         }
         $user = User::find(auth()->user()->id);
-        isset($req->plateform_val) ? $user->platforms = $req->plateform_val : $user->platforms = [];
+        $req->plateform_val ? $user->platforms = $req->plateform_val : $user->platforms = [];
         $user->update();
         return response()->json(['message' => 'success'], 200);
     }
