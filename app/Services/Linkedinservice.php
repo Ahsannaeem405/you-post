@@ -107,7 +107,7 @@ class Linkedinservice
             }
 
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $msg = ['status' => false];
             return $msg;
         }

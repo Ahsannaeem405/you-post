@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/cls', function() {
+Route::get('/cls', function () {
     $run = Artisan::call('optimize:clear');
     // $run = Artisan::call('config:clear');
     // $run = Artisan::call('cache:clear');
@@ -26,7 +27,7 @@ Route::get('/cls', function() {
 });
 
 Route::get('/', function () {
-   return redirect('login');
+    return redirect('login');
 });
 
 Auth::routes();
@@ -46,10 +47,6 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 // ///////////////////////social login/////////////////////////
 
 
-
-
-
-
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -58,41 +55,37 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('select_page', [UserController::class, 'select_page']);
     Route::post('set_page', [UserController::class, 'set_page']);
     Route::post('set_page_for_instagram', [UserController::class, 'set_page_for_instagram']);
-    
-    
+
+
     Route::post('create_post', [UserController::class, 'create_post']);
     Route::get('get_event_detail', [UserController::class, 'get_event_detail']);
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
 
-    Route::post('connect_to_facebook',  [UserController::class, 'connect_to_facebook']);
-    Route::get('connect_facebook/calback',  [UserController::class, 'connect_facebook_calback']);
+    Route::post('connect_to_facebook', [UserController::class, 'connect_to_facebook']);
+    Route::get('connect_facebook/calback', [UserController::class, 'connect_facebook_calback']);
 
 
-    Route::get('connect_to_instagram',  [UserController::class, 'connect_to_instagram']);
-    Route::get('connect_instagram/calback',  [UserController::class, 'connect_instagram_calback']);
-    
-    
-    Route::get('connect_to_linkedin',  [UserController::class, 'connect_to_linkedin']);
-    Route::get('connect_linkedin/calback',  [UserController::class, 'connect_linkedin_calback']);
-    
-  
-
-    
-    Route::get('connect_to_twitter',  [UserController::class, 'connect_to_twitter']);
-    Route::get('connect_to_twitter/calback',  [UserController::class, 'connect_twitter_calback']);
-    
-
-    Route::get('get-facebook-likes',  [UserController::class, 'get_facebook_likes']);
-    Route::get('Linkedin_delete/{id}',  [UserController::class, 'Linkedin_delete']);
-    Route::post('update_post',  [UserController::class, 'update_post']);
-    Route::get('edit_post/{id}',  [UserController::class, 'edit_post']);
+    Route::get('connect_to_instagram', [UserController::class, 'connect_to_instagram']);
+    Route::get('connect_instagram/calback', [UserController::class, 'connect_instagram_calback']);
 
 
+    Route::get('connect_to_linkedin', [UserController::class, 'connect_to_linkedin']);
+    Route::get('connect_linkedin/calback', [UserController::class, 'connect_linkedin_calback']);
 
-    
+
+    Route::get('connect_to_twitter', [UserController::class, 'connect_to_twitter']);
+    Route::get('connect_to_twitter/calback', [UserController::class, 'connect_twitter_calback']);
+
+
+    Route::get('get-facebook-likes', [UserController::class, 'get_facebook_likes']);
+    Route::get('Linkedin_delete/{id}', [UserController::class, 'Linkedin_delete']);
+    Route::post('update_post', [UserController::class, 'update_post']);
+    Route::get('edit_post/{id}', [UserController::class, 'edit_post']);
+
+
     // http://localhost:8000/connect_facebook/calback
 });
-Route::get('logout',function (){
+Route::get('logout', function () {
     Auth::logout();
     return redirect('/login');
 });
