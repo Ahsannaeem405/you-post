@@ -2,6 +2,7 @@
 @extends('user_layout.main')
 @section('content')
 
+
 <!--===== Markup For "Create & Preview Post" Starts Here =====-->
 <section class="create_preview_post_wrap">
     <div class="container">
@@ -16,6 +17,7 @@
                     <div class="form-group emoji_parent">
                         <textarea required name="content" id="emojiarea" cols="30" rows="3" class="form-control" placeholder="Write your post...">{{old('content')}}</textarea>
                     </div>
+
 
                     <div class="icon_buttons_tags">
                         <div class="icon_buttons grid_item">

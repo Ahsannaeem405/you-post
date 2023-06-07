@@ -17,18 +17,20 @@
     var selectedDate;
     function settime()
     {
+
         var select_time = $('.select_time').val();
         var hours = parseInt(select_time.split(':')[0]); // extract hours from custom time string
         var minutes = parseInt(select_time.split(':')[1]); // extract minutes from custom time string
         var new_date_time = new Date(selectedDate);
         new_date_time.setHours(hours, minutes)
         // new_date_time = new Date(new_date_time);
-        
+
         new_date_time = new Intl.DateTimeFormat('en-US', {
         year: 'numeric', month: 'numeric',
         day: 'numeric', hour: 'numeric',
         minute: 'numeric', hour12: true
         }).format(new_date_time);
+
 
         $('#browsertime').text(new_date_time);
         $('.browsertimeinput').val(new_date_time);
@@ -266,12 +268,12 @@
 
     $( document ).ready(function() {
         // $(document).on('click', '.calendar .pignose-calendar-row div', function() {
-        $(".calendar .pignose-calendar-unit").on("click", function(){
-            if($(this).hasClass('pignose-calendar-unit-active'))
-            {
-                $('#timeModal').modal('show');
-            }
-        });
+        // $(".calendar .pignose-calendar-unit").on("click", function(){
+        //     if($(this).hasClass('pignose-calendar-unit-active'))
+        //     {
+        //       //  $('#timeModal').modal('show');
+        //     }
+        // });
 
         // set current time
 
@@ -291,13 +293,11 @@
             day: 'numeric', hour: 'numeric',
             minute: 'numeric', hour12: true
             }).format(now);
-            // var browserTime = new Date();
-            // browserTime =  browserTime.toLocaleString().replace(/:\d{2},\s*/);
-            // alert(browserTime);
+
             $('#browsertime').text(browserTime);
             $('.browsertimeinput').val(browserTime);
         }
-        
+
         apend_current_time();
         // set curent date and time
 
@@ -316,11 +316,11 @@
         $(document).on('click', '.open_emoji', function() {
             $('.emoji_parent > span').click();
         });
-        
+
         $(document).on('click', '.myaccounts', function() {
             $('#myaccounts_modal').modal('show');
         });
-        
+
         $(document).on('click', '.image_or_video', function() {
             if($(this).attr('typpe') == 'image')
             {
@@ -330,7 +330,7 @@
             }
             $('#type_input').val($(this).attr('typpe'));
         });
-       
+
         var timezone_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
         $('.timezone').val(timezone_name);
 
