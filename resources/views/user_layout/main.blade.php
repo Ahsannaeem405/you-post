@@ -28,6 +28,9 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
 </head>
 
 <body>
@@ -645,6 +648,18 @@
 
     });
 
+</script>
+
+
+<script>
+    function updateDiv() {
+      var inputText = document.getElementById("emojiarea").value;
+      document.getElementById("mypostresult").textContent = inputText;
+    }
+    function Namechangefun() {
+      var inputTextname = document.getElementById("namechange").value;
+      document.getElementById("mynameresult").textContent = inputTextname;
+    }
 </script>
 
 </body>

@@ -576,14 +576,15 @@ body {
 }
 
 .create_preview_post .preview_wrap .the_preview {
-    background: var(--lightColor);
-    width: 231px;
-    height: 405px;
-    position: absolute;
-    left: 15px;
-    top: 65px;
-    border: 1px solid #756C8E;
-    overflow-y: auto;
+	background: var(--lightColor);
+	width: 231px;
+	height: 405px;
+	position: absolute;
+	left: 15px;
+	top: 65px;
+	/* border: 1px solid #756C8E; */
+	/* overflow-y: auto; */
+	padding: 5px;
 }
 
 /* ===== CSS For "Preview Post" Ends Here ===== */
@@ -1102,4 +1103,46 @@ body {
 
 .emoji_parent > div {
     z-index: 99;
+}
+
+
+/* -----------Mobile views fb card view set code ---------- */
+
+             
+.MainMobileview {
+	align-items: center;
+	/* padding: 10px 5px; */
+}
+.MainMobileview img{
+	border-radius: 50%
+}
+.MainMobileview span{
+	font-weight: 500;
+	margin-left: 8px;
+}
+.MainMobileimg {
+	padding: 15px 0px;
+}
+.actions-buttons ul{
+	list-style: none;
+}
+
+.actions-buttons ul li button{
+	padding: 3px 4px;
+	/* border: 1px solid #e3e3e3; */
+	border: unset;
+	background-color: unset;
+}
+.actions-buttons ul li button i{
+    color: #a3a6aa;
+    font-size: 22px;
+}
+.Mobcart_title span {
+	margin-left: 4px;
+}
+.Mobcart_title {
+	font-size: 12px;
+}
+.Mobcart_title .reactions{
+	margin-right: 5px;
 }

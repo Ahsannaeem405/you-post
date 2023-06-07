@@ -15,8 +15,10 @@
                 <form action="{{url('create_post')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group emoji_parent">
-                        <textarea required name="content" id="emojiarea" cols="30" rows="3" class="form-control" placeholder="Write your post...">{{old('content')}}</textarea>
+                        <textarea onchange="updateDiv()" required name="content" id="emojiarea" cols="30" rows="3" class="form-control" placeholder="Write your post...">{{old('content')}}</textarea>
                     </div>
+
+
 
 
                     <div class="icon_buttons_tags">
@@ -47,7 +49,7 @@
 
                         <div class="tags_input_wrap grid_item">
                             <div class="tags_input">
-                                <input required name="tag" type="text" class="form-control" placeholder="#tags" value="{{old('tag')}}">
+                                <input onchange="Namechangefun()" id="namechange" required name="tag" type="text" class="form-control" placeholder="#tags" value="{{old('tag')}}">
                             </div>
                         </div>
                     </div>
@@ -82,9 +84,48 @@
                     <h4>Preview Setting: <span>iPhone | Facebook</span></h4>
                 </div>
 
+
+
                 <div class="preview_wrap">
                     <div class="the_preview">
+                        
+                          
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="MainMobileview d-flex">
+                                                <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40" alt="">
+                                                <span id="mynameresult">Elad Shechter</span>
+                                                
+                                            </div>
+                                            <p class="m-0" ></p>
+                                            <div class="Mobcart_title" ><time datetime="" id="mypostresult">June 3 at 12:26 PM</time><span class="icon icon-privacy">🌎</span></div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="MainMobileimg">
+                                                <img src="https://assets.codepen.io/65740/internal/avatars/users/default.png" class="img-fluid" width="100%" height="100%" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
 
+
+
+                                  <div class="Mobcart_title bile d-flex">
+                                    <div class="reactions">8❤️</div>
+                                    <div class="total-comments u-margin-inline-start">
+                                      <a>12 Comments</a>
+                                      <a>2 Shares</a>
+                                    </div>
+                                  </div>
+                                  <div class="actions-buttons mt-2">
+                                    <ul class="actions-buttons-list d-flex">
+                                      <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-thumbs-up"></i></span><span class="text">Like</span></button></li>
+                                      <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-comment"></i></span><span class="text">Comment</span></button></li>
+                                      
+                                      <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-share"></i></span><span class="text">Share</span></button></li>
+                                      
+                                    </ul>
+                                </div>
+                             
                     </div>
                 </div>
             </div>
