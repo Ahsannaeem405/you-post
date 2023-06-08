@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('twitter:cron')->everyMinute();
         $schedule->command('linkedin:cron')->everyMinute();
+        $schedule->command('instagram:cron')->everyMinute();
 
     }
 

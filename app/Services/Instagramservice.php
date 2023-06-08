@@ -31,7 +31,7 @@ class Instagramservice
             'default_graph_version' => 'v16.0',
         ]);
 
-        if ($data['media_type'] == 'image') {
+        if ($post->media_type == 'image') {
 
             try {
             $response = $instagram->post("/$insta_user_id/media", array(

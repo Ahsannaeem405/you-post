@@ -655,7 +655,7 @@
     }
     function Namechangefun() {
       var inputTextname = document.getElementById("namechange").value;
-      document.getElementById("mynameresult").textContent = inputTextname;
+      document.getElementById("mynameresult").textContent = '#'+inputTextname;
     }
 </script>
 

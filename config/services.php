@@ -30,27 +30,30 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    //google login
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => url("/auth/google/callback"),
     ],
+    //facebook login
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect' => url("/auth/facebook/callback"),
     ],
-
+//insta posting
     'instagram' => [
         'client_id' => env('INSTAGRAM_CLIENT_ID'),
         'client_secret' => env('INSTAGRAM_CLIENT_SECRET'),
         'redirect' => url("/connect_instagram/calback"),
     ],
+    //linkedin posting
     'linkedin' => [
         // 'client_id' => '86k9qgvzogwtyu',
         // 'client_secret' => 'f7W3hq2FzCDnKckO',
-        'client_id' => '77l861fu7qz6ly',
-        'client_secret' => '2JCRuJKoFqCsHB3w',
+        'client_id' => env('CLIEND_ID_LINKEDIN'),
+        'client_secret' => env('CLIEND_SECRET_LINKEDIN'),
         'redirect' => url("/connect_linkedin/calback"),
     ],
     'twitter' => [
@@ -62,24 +65,7 @@ return [
 ];
 
 
-//Consumer Keys
 
-// JjYj3lMGzC4nghgmnR03JsZP5
-// FsFO1Rvzfe35ul9Ww1jfbS5LbEuWY024R6jLNz7ZhxhrtIRTMc
-
-
-//Authentication Tokens
-
-//AAAAAAAAAAAAAAAAAAAAAKFqngEAAAAA23vVX43q2LbHZsfLqA6eSUAAXzQ%3DA6CfeZS5gRZFs0DFLuy07kFTErWQOGV7uI6a2Gij6q8BlytV2X
-
-
-// 26968990-m2Kno6Ub7cqd7kzAL5C25mrY9WhvuJn1MmAWVSiCd
-// 08GWU8IOuMbGMWEASaluHFWdTG9tw2ErRQriZGR16X7Ar
-
-
-//OAuth 2.0 Client ID and Client Secret
-//b29vREJuUU5wMDFDNkQzVkhmYzA6MTpjaQ
-//xM_OBMzdnCOT7AJYl3A1YXxLOoDaDfQW1D0LGKckoarhFpzVcM
 
 
 

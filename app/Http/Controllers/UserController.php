@@ -143,9 +143,7 @@ class UserController extends Controller
             $post->plateform = $platforms[$i];
             $post->timezone = $req->timezone;
             $post->media=$mediaData;
-
-
-
+            $post->media_type=$req->media_type;
             $post->save();
 
             $data = [
