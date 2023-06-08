@@ -8,6 +8,10 @@
         text-overflow: ellipsis;
         line-height: 14px;
     }
+    .thumbnail {
+        width: 40px;
+        margin-right: 5px;
+    }
 </style>
 @section('content')
 <!--===== Markup For "Create & Preview Post" Starts Here =====-->

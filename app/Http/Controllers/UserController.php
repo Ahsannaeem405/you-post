@@ -17,6 +17,8 @@ use App\Services\Instagramservice;
 use App\Services\Linkedinservice;
 use League\OAuth2\Client\Provider\Twitter;
 use Intervention\Image\Facades\Image;
+use FFMpeg\FFMpeg;
+use FFMpeg\Coordinate\TimeCode;
 
 
 class UserController extends Controller
@@ -30,13 +32,18 @@ class UserController extends Controller
 
     public function index()
     {
-        $posts = Post::where('user_id', auth()->user()->id)->select('id', 'tag', 'posted_at')->get();
+        $posts = Post::select('*')->where('user_id', auth()->user()->id)->groupBy('content')->get();
         $allPosts = [];
         foreach ($posts as $post) {
+
+
             $allPosts[] = [
                 'id' => $post->id,
-                'title' => $post->tag,
+                'title' => $post->content,
                 'start' => $post->posted_at,
+                'imageUrl'=>   $post->media_type=='image' ? asset('content_media/'.$post->media) : null,
+                'videoURL'=>   $post->media_type=='video' ? asset('content_media/'.$post->media) : null,
+
             ];
         }
         $data = [];
@@ -129,6 +136,9 @@ class UserController extends Controller
             $imageName = time() . rand(1111, 999) . '.' . $req->media->extension();
             $req->media->move('content_media', $imageName);
            $mediaData = $imageName;
+           if ($req->media_type=='video'){
+
+           }
         }
 
         for ($i = 0; $i < count($platforms); $i++) {
