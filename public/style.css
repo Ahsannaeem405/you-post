@@ -569,23 +569,24 @@ body {
     width: 260px;
     height: 531px;
     margin: 0px auto;
-    background: url('images/Iphone_Frame.png') no-repeat;
-    background-position: center center;
+    background: url('images/mble-bg.png') no-repeat;
+    background-position: top center;
     background-size: 100% 100%;
     position: relative;
+    padding: 65px 26px;
 }
 
-.create_preview_post .preview_wrap .the_preview {
+/* .create_preview_post .preview_wrap .the_preview {
 	background: var(--lightColor);
 	width: 231px;
 	height: 405px;
 	position: absolute;
 	left: 15px;
 	top: 65px;
-	/* border: 1px solid #756C8E; */
-	/* overflow-y: auto; */
+	border: 1px solid #756C8E;
+	overflow-y: auto;
 	padding: 5px;
-}
+} */
 
 /* ===== CSS For "Preview Post" Ends Here ===== */
 
@@ -1108,7 +1109,38 @@ body {
 
 /* -----------Mobile views fb card view set code ---------- */
 
-             
+/* .img-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; 
+    position: relative;
+}
+
+.img-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+} */
+.media-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* 16:9 aspect ratio for videos */
+}
+
+.media-container video,
+.media-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+
 .MainMobileview {
 	align-items: center;
 	/* padding: 10px 5px; */
@@ -1122,6 +1154,7 @@ body {
 }
 .MainMobileimg {
 	padding: 15px 0px;
+    /* height: 60%; */
 }
 .actions-buttons ul{
 	list-style: none;
