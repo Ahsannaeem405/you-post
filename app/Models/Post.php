@@ -11,7 +11,7 @@ class Post extends Model
 
     public function plateforms()
     {
-        return $this->hasMany(PostDetail::class, 'post_id' ,'id');
+        return $this->hasOne(PostDetail::class, 'post_id' ,'id');
     }
 
      public function post_dt()

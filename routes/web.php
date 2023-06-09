@@ -61,7 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('get_event_detail', [UserController::class, 'get_event_detail']);
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
 
-    Route::post('connect_to_facebook', [UserController::class, 'connect_to_facebook']);
+    Route::get('connect_to_facebook', [UserController::class, 'connect_to_facebook']);
     Route::get('connect_facebook/calback', [UserController::class, 'connect_facebook_calback']);
 
 
@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('get-facebook-likes', [UserController::class, 'get_facebook_likes']);
-    Route::get('Linkedin_delete/{id}', [UserController::class, 'Linkedin_delete']);
+    Route::get('post_delete/{id}', [UserController::class, 'post_delete']);
     Route::post('update_post', [UserController::class, 'update_post']);
     Route::get('edit_post/{id}', [UserController::class, 'edit_post']);
 

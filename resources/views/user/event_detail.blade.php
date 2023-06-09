@@ -17,18 +17,12 @@
     <h5>Social Media Platforms :</h5>
     <p>
         @foreach ($platforms as $platform)
-            <span class="social_forms">{{$platform->plateform}}</span>
-{{--                        <a class="social_forms  btn-info" href="{{url('Linkedin_delete/' .$platform->social_id)}}">Delete</a>--}}
-{{--                     <!--   // @if($platform->plateform =='Facebook')--}}
-{{--                         //<a class="social_forms  btn-info" href="{{url('edit_post/' .$platform->social_id)}}">Delete</a>--}}
 
-{{--                       // @endif -->--}}
-
-
-
-
-
+               <div class="col-12 my-2">
+                   <span class="social_forms">{{$platform->plateform}}</span>
+        <a class="text-decoration-none" onclick="return confirm('Are you sure you want to delete this post?');" href="{{url('post_delete/' .encrypt($platform->id))}}"> <i class="fa fa-trash text-danger"></i> </a>
+    </div>
         @endforeach
 
-    </p>
+
 </div>

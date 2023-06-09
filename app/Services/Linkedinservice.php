@@ -98,13 +98,14 @@ class Linkedinservice
                 ],
             ]);
             if ($response->getStatusCode() == 200) {
-                $get_post = PostDetail::where('social_id', $data)->first();
-                $dell = Post::find($get_post->post_id);
-                $dell->delete();
                 $msg = ['status' => true];
-                return $msg;
-
             }
+            else{
+                $msg = ['status' => false];
+            }
+
+
+            return $msg;
 
 
         } catch (\Exception $e) {

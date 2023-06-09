@@ -76,7 +76,7 @@ class Instagramservice
     {
         $accessToken = auth()->user()->insta_access_token;
 
-        $postId = $data->social_id;
+        $postId = $data;
 
         // Instagram Graph API endpoint for deleting a post
         $deleteEndpoint = "https://graph.instagram.com/{$postId}";
@@ -92,16 +92,20 @@ class Instagramservice
                 ],
             ]);
             if ($response->getStatusCode() == 200) {
-                $dell = Post::find($data->post_id);
-                $dell->delete();
+
                 $msg = ['status' => true];
-                return $msg;
+
 
             }
+            else{
+                $msg = ['status' => false];
+            }
+            return $msg;
 
 
-        } catch (Exception $e) {
-            echo 'Error deleting post: ' . $e->getMessage();
+        } catch (\Exception $e) {
+            $msg = ['status' => false];
+            return $msg;
         }
 
     }
