@@ -41,8 +41,8 @@ class UserController extends Controller
                 'id' => $post->id,
                 'title' => $post->content,
                 'start' => $post->posted_at,
-                'imageUrl'=>   $post->media_type=='image' ? asset('content_media/'.$post->media) : null,
-                'videoURL'=>   $post->media_type=='video' ? asset('content_media/'.$post->media) : null,
+                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
+                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
 
             ];
         }
@@ -131,14 +131,14 @@ class UserController extends Controller
             }
 
         }
-        $mediaData=null;
+        $mediaData = null;
         if ($req->hasFile('media')) {
             $imageName = time() . rand(1111, 999) . '.' . $req->media->extension();
             $req->media->move('content_media', $imageName);
-           $mediaData = $imageName;
-           if ($req->media_type=='video'){
+            $mediaData = $imageName;
+            if ($req->media_type == 'video') {
 
-           }
+            }
         }
 
         for ($i = 0; $i < count($platforms); $i++) {
@@ -152,8 +152,8 @@ class UserController extends Controller
             $post->posted_at = date_format(new DateTime($req->time), "Y-m-d H:i");
             $post->plateform = $platforms[$i];
             $post->timezone = $req->timezone;
-            $post->media=$mediaData;
-            $post->media_type=$req->media_type;
+            $post->media = $mediaData;
+            $post->media_type = $req->media_type;
             $post->save();
 
             $data = [
@@ -189,34 +189,47 @@ class UserController extends Controller
     public function get_event_detail(Request $request)
     {
         $post = Post::find($request->id);
-        $platforms=Post::where('content',$post->content)->get();
-        return view('user.event_detail', compact('post','platforms'));
+        $platforms = Post::where('content', $post->content)->get();
+        return view('user.event_detail', compact('post', 'platforms'));
     }
 
-    public function Linkedin_delete($id, Facebookservice $facebookservice, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice, TwitterService $TwitterService)
+    public function post_delete($id, Facebookservice $facebookservice, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice, TwitterService $TwitterService)
     {
-        $get_post = PostDetail::where('social_id', $id)->first();
+        $get_post = Post::find(decrypt($id));
+        if ($get_post->posted_at_moment == 'later') {
+            $get_post->delete();
+            return redirect('/index')->with('success', 'Post Deleted Successfully!');
+        } else {
 
-        if ($get_post->plateform == 'Linkedin') {
-            $get_data = $Linkedinservice->delete_post($id);
-        }
-        if ($get_post->plateform == 'Instagram') {
-            $get_data = $Instagramservice->delete_post($get_post);
-        }
-        if ($get_post->plateform == 'Twitter') {
-            //$this->twiter_refresh();
-            $get_data = $TwitterService->delete_post($get_post);
-        }
-        if ($get_post->plateform == 'Facebook') {
-            //$this->twiter_refresh();
-            $get_data = $facebookservice->delete_post($id);
-        }
-
-        if ($get_data['status'] == true) {
-            return redirect('/index')->with('success', 'Post Successfully Deleted!');
+            if ($get_post->plateform == 'Linkedin') {
+                $get_data = $Linkedinservice->delete_post($get_post->plateforms->social_id);
+            }
+            if ($get_post->plateform == 'Instagram') {
+                $get_data = $Instagramservice->delete_post($get_post->plateforms->social_id);
+            }
+            if ($get_post->plateform == 'Twitter') {
+                //$this->twiter_refresh();
+                $get_data = $TwitterService->delete_post($get_post->plateforms->social_id);
+            }
+            if ($get_post->plateform == 'Facebook') {
+                //$this->twiter_refresh();
+                $get_data = $facebookservice->delete_post($get_post->plateforms->social_id);
+            }
 
 
+            if ($get_data['status'] == true) {
+                $get_post->delete();
+                return redirect('/index')->with('success', 'Post Deleted Successfully!');
+            }
+            else{
+                return redirect('/index')->with('error', 'Post cannot be Deleted');
+            }
         }
+
+
+
+
+
 
 
     }
