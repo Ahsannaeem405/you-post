@@ -1199,7 +1199,7 @@ body {
     color: white;
     border-radius: 5px;
     width: 210px;
-	list-style: none;
+	text-decoration: none;
 }
 .MDLsocial-iconmain .MDLsocial-iconmainWrp:nth-child(1) a{
 	background-color: #3b5998 !important;
