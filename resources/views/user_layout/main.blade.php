@@ -25,12 +25,10 @@
     <!--Stylesheet For The Responsiveness-->
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}"/>
     <script src="https://kit.fontawesome.com/4366d6f846.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-
 </head>
 
 <body>
@@ -475,9 +473,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
 <script>
-    var pignoseCalendar=null;
+    var pignoseCalendar = null;
     $(function () {
-         pignoseCalendar =  $('.calendar').pignoseCalendar({
+        pignoseCalendar = $('.calendar').pignoseCalendar({
             select: function (date, context) {
                 selectedDate = date; // store selected date value in variable
                 settime();
@@ -506,15 +504,26 @@
 
     $(document).ready(function () {
 
+        setTimeout(function () {
+           videoThumnail();
+        }, 100);
+        $(document).on('click','.fc-more',function () {
+            videoThumnail();
+        })
 
         $('#postManagerCalendar').fullCalendar({
             selectable: true,
             businessHours: true,
             dayMaxEvents: true, // allow "more" link when too many events
             events: <?php echo json_encode($allPosts); ?>,
+            views: {
+                month: {
+                    eventLimit: 2
+                }
+            },
             eventClick: function (event, jsEvent, view) {
                 var id = event.id;
-                get_detail(id);
+                  get_detail(id);
 
             },
             dayRender: function (date, cell) {
@@ -527,7 +536,7 @@
                 }
             },
             dayClick: function (date, jsEvent, view) {
-                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                $('html, body').animate({scrollTop: 0}, 'slow');
                 selectedDate = date;
 
                 pignoseCalendar.pignoseCalendar('destroy');
@@ -548,10 +557,54 @@
 
                 element.find('.fc-title').text(event.title);
                 element.find('.fc-time').text(''); // remove start time
+                if (event.imageUrl) {
+                    element.find('.fc-content').prepend('<img src="' + event.imageUrl + '" class="thumbnail" />');
+                }
+                if (event.videoURL) {
+                    // Create a video thumbnail element
+
+
+
+                    // Append the thumbnail to the event element
+                    element.find('.fc-content').prepend(`<img src="${event.videoURL}" class="video-thumnailmain thumbnail"  > `);
+                }
             },
 
         });
     })
+
+    function videoThumnail() {
+
+        $('.video-thumnailmain').each(function () {
+           var $obj=$(this);
+           var videoPath=$(this).attr('src');
+
+            var video = document.createElement('video');
+            video.src = videoPath;
+            video.currentTime = 3;
+            video.addEventListener('loadeddata', function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                // Draw the first frame of the video onto the canvas
+                var context = canvas.getContext('2d');
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                // Convert the canvas image data to a data URL
+                var thumbnail = canvas.toDataURL('image/png');
+                $obj.attr('src',thumbnail)
+            });
+
+
+        });
+    }
+
+    function getVideoThumbnail(videoPath, obj) {
+        // Replace the videoURL with the correct path to your video directory
+
+    }
+
 
     @if (Session::has('success'))
     toastr.success('{{ Session::get('success') }}');
@@ -675,12 +728,13 @@
 
 <script>
     function updateDiv() {
-      var inputText = document.getElementById("emojiarea").value;
-      document.getElementById("mypostresult").textContent = inputText;
+        var inputText = document.getElementById("emojiarea").value;
+        document.getElementById("mypostresult").textContent = inputText;
     }
+
     function Namechangefun() {
-      var inputTextname = document.getElementById("namechange").value;
-      document.getElementById("mynameresult").textContent = inputTextname;
+        var inputTextname = document.getElementById("namechange").value;
+        document.getElementById("mynameresult").textContent = '#' + inputTextname;
     }
 </script>
 

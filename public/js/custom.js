@@ -311,6 +311,7 @@
         });
         $(document).on('click', '.post_later_now_btn', function() {
             $('.posttime').val('later');
+            apend_current_time();
         });
 
         $(document).on('click', '.open_emoji', function() {
@@ -330,6 +331,31 @@
             }
             $('#type_input').val($(this).attr('typpe'));
         });
+        $('#image_or_video').change(function (e) {
+            var file = e.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var mediaType = file.type.split('/')[0];
+                    if (mediaType === 'image') {
+                        $('.preview_image').removeClass('d-none');
+                        $('.video_preview').addClass('d-none');
+                        $('.preview_image').attr('src',e.target.result);
+                    } else if (mediaType === 'video') {
+                        // Create a video element and set its source
+                        $('.video_preview').removeClass('d-none');
+                        $('.preview_image').addClass('d-none');
+                        // Append the video to the media container
+                        var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
+                        // Append the video to the media container
+                        $('#mediaContainervideo').html(video);
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+
 
         var timezone_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
         $('.timezone').val(timezone_name);

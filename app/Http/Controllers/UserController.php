@@ -17,6 +17,8 @@ use App\Services\Instagramservice;
 use App\Services\Linkedinservice;
 use League\OAuth2\Client\Provider\Twitter;
 use Intervention\Image\Facades\Image;
+use FFMpeg\FFMpeg;
+use FFMpeg\Coordinate\TimeCode;
 
 
 class UserController extends Controller
@@ -30,13 +32,18 @@ class UserController extends Controller
 
     public function index()
     {
-        $posts = Post::where('user_id', auth()->user()->id)->select('id', 'tag', 'posted_at')->get();
+        $posts = Post::select('*')->where('user_id', auth()->user()->id)->groupBy('content')->get();
         $allPosts = [];
         foreach ($posts as $post) {
+
+
             $allPosts[] = [
                 'id' => $post->id,
-                'title' => $post->tag,
+                'title' => $post->content,
                 'start' => $post->posted_at,
+                'imageUrl'=>   $post->media_type=='image' ? asset('content_media/'.$post->media) : null,
+                'videoURL'=>   $post->media_type=='video' ? asset('content_media/'.$post->media) : null,
+
             ];
         }
         $data = [];
@@ -129,6 +136,9 @@ class UserController extends Controller
             $imageName = time() . rand(1111, 999) . '.' . $req->media->extension();
             $req->media->move('content_media', $imageName);
            $mediaData = $imageName;
+           if ($req->media_type=='video'){
+
+           }
         }
 
         for ($i = 0; $i < count($platforms); $i++) {
@@ -143,9 +153,7 @@ class UserController extends Controller
             $post->plateform = $platforms[$i];
             $post->timezone = $req->timezone;
             $post->media=$mediaData;
-
-
-
+            $post->media_type=$req->media_type;
             $post->save();
 
             $data = [
@@ -181,7 +189,8 @@ class UserController extends Controller
     public function get_event_detail(Request $request)
     {
         $post = Post::find($request->id);
-        return view('user.event_detail', compact('post'));
+        $platforms=Post::where('content',$post->content)->get();
+        return view('user.event_detail', compact('post','platforms'));
     }
 
     public function Linkedin_delete($id, Facebookservice $facebookservice, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice, TwitterService $TwitterService)
@@ -401,6 +410,7 @@ class UserController extends Controller
             'default_graph_version' => 'v12.0',
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
+
 
         $user = User::find(auth()->user()->id);
         $user->insta_access_token = $accessToken;

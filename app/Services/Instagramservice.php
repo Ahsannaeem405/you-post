@@ -22,8 +22,8 @@ class Instagramservice
         $video_path = "content_media/$post->media";
         $media_path = asset("content_media/$post->media");
         $insta = config('services.instagram');
-        $accesstoken = auth()->user()->insta_access_token;
-        $insta_user_id = auth()->user()->insta_user_id;
+        $accesstoken = $post->user->insta_access_token;
+        $insta_user_id = $post->user->insta_user_id;
 
         $instagram = new Facebook([
             'app_id' => $insta['client_id'],
@@ -31,7 +31,7 @@ class Instagramservice
             'default_graph_version' => 'v16.0',
         ]);
 
-        if ($data['media_type'] == 'image') {
+        if ($post->media_type == 'image') {
 
             try {
             $response = $instagram->post("/$insta_user_id/media", array(
@@ -54,6 +54,7 @@ class Instagramservice
                 $msg = ['status' => true];
 
             } catch (\Exception $e) {
+
                 $msg = ['status' => false];
                 $post->delete();
             }
