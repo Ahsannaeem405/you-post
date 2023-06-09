@@ -1146,3 +1146,63 @@ body {
 .Mobcart_title .reactions{
 	margin-right: 5px;
 }
+
+
+/* --------Modal social icon css code -------- */
+
+
+
+.modal-social-icon form i {
+	font-size: 23px;
+}
+
+.MDLsocial-icon a {
+	/* background: red; */
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+	margin-bottom: 10px;
+    color: white;
+    border-radius: 5px;
+    width: 210px;
+	list-style: none;
+}
+.MDLsocial-iconmain .MDLsocial-iconmainWrp:nth-child(1) a{
+	background-color: #3b5998 !important;
+}
+.MDLsocial-iconmain .MDLsocial-iconmainWrp:nth-child(2) a{
+	background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;
+}
+.MDLsocial-iconmain .MDLsocial-iconmainWrp:nth-child(3) a{
+	background-color: #0072b1 !important;
+}
+.MDLsocial-iconmain .MDLsocial-iconmainWrp:nth-child(4) a{
+	background-color: #00acee !important;
+}
+
+/* fb */
+/* .modal-social-icon form :nth-child(2) {
+	background-color: #3b5998 !important;
+	border: unset !important;
+	padding: 5px !important;
+} */
+/* instagram */
+/* .modal-social-icon form :nth-child(3) {
+	border: unset !important;
+	padding: 5px !important;
+	background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;
+} */
+/* linkedin */
+/* .modal-social-icon form :nth-child(4) {
+	background-color:#0072b1  !important;
+	padding: 5px !important;
+	border: unset !important;
+} */
+/* twitter */
+
+/* .modal-social-icon form :nth-child(5) {
+	background-color: #00acee !important;
+	padding: 5px !important;
+	border: unset !important;
+} */

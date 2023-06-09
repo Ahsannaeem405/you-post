@@ -293,21 +293,46 @@
                 </button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body modal-social-icon">
                 <form action="{{url('connect_to_facebook')}}" method="post">
                     @csrf
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-facebook-square mr-2"></i>Connect with
+                    {{-- <button class="btn btn-primary  mt-2" type="submit"><i class="fa fa-facebook-square mr-2"></i>Connect with
                         Facebook
-                    </button>
-                    <br>
-                </form>
+                    </button> --}}
 
-                <a class="btn btn-primary  mt-2" href="{{url('connect_to_instagram')}}"> <i
-                        class="fa fa-instagram mr-2"></i>Connect with Instagram</a><br>
-                <a class="btn btn-primary  mt-2" href="{{url('connect_to_linkedin')}}"> <i
-                        class="fa fa-linkedin-square mr-2"></i>Connect with Linkedin</a><br>
-                <a class="btn btn-primary  mt-2" href="{{url('connect_to_twitter')}}"> <i
-                        class="fa fa-twitter-square mr-2"></i>Connect with Twitter</a>
+
+
+                    <div class="row MDLsocial-iconmain">
+
+                        <div class="col-md-6 MDLsocial-iconmainWrp">
+                            <div class="MDLsocial-icon">
+                                <a class="" href="{{url('connect_to_facebook')}}"> 
+                                <i class="fa fa-facebook-square mr-2"></i>Connect with Facebook</a>
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-6 MDLsocial-iconmainWrp">
+                            <div class="MDLsocial-icon">
+                                <a class="" href="{{url('connect_to_instagram')}}"> 
+                                <i class="fa fa-instagram mr-2"></i>Connect with Instagram</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 MDLsocial-iconmainWrp">
+                            <div class="MDLsocial-icon">
+                                <a class="" href="{{url('connect_to_linkedin')}}"> 
+                                <i class="fa fa-linkedin-square mr-2"></i>Connect with Linkedin</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 MDLsocial-iconmainWrp">
+                            <div class="MDLsocial-icon">
+                                <a class="" href="{{url('connect_to_twitter')}}"> 
+                                <i class="fa fa-twitter-square mr-2"></i>Connect with Twitter</a>                            </div>
+                        </div>
+                       
+                    </div>
+                </form>
             </div>
 
 
