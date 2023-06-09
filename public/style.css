@@ -1187,10 +1187,19 @@ body {
 
 .modal-social-icon form i {
 	font-size: 23px;
+	margin-right: 5px;
+}
+
+
+.modal-cross-btn button {
+	border: none;
+    background: unset;
+    font-size: 25px;
+    opacity: 0.7;
 }
 
 .MDLsocial-icon a {
-	/* background: red; */
+	
     padding: 6px;
     display: flex;
     align-items: center;
@@ -1213,29 +1222,3 @@ body {
 .MDLsocial-iconmain .MDLsocial-iconmainWrp:nth-child(4) a{
 	background-color: #00acee !important;
 }
-
-/* fb */
-/* .modal-social-icon form :nth-child(2) {
-	background-color: #3b5998 !important;
-	border: unset !important;
-	padding: 5px !important;
-} */
-/* instagram */
-/* .modal-social-icon form :nth-child(3) {
-	border: unset !important;
-	padding: 5px !important;
-	background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;
-} */
-/* linkedin */
-/* .modal-social-icon form :nth-child(4) {
-	background-color:#0072b1  !important;
-	padding: 5px !important;
-	border: unset !important;
-} */
-/* twitter */
-
-/* .modal-social-icon form :nth-child(5) {
-	background-color: #00acee !important;
-	padding: 5px !important;
-	border: unset !important;
-} */
