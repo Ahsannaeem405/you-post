@@ -34,19 +34,19 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => url("/auth/google/callback"),
+        'redirect' => env('BASE_URL')."auth/google/callback",
     ],
     //facebook login
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect' => url("/auth/facebook/callback"),
+        'redirect' => env('BASE_URL')."auth/facebook/callback",
     ],
 //insta posting
     'instagram' => [
         'client_id' => env('INSTAGRAM_CLIENT_ID'),
         'client_secret' => env('INSTAGRAM_CLIENT_SECRET'),
-        'redirect' => url("/connect_instagram/calback"),
+        'redirect' => env('BASE_URL')."connect_instagram/calback",
     ],
     //linkedin posting
     'linkedin' => [
@@ -54,12 +54,12 @@ return [
         // 'client_secret' => 'f7W3hq2FzCDnKckO',
         'client_id' => env('CLIEND_ID_LINKEDIN'),
         'client_secret' => env('CLIEND_SECRET_LINKEDIN'),
-        'redirect' => url("/connect_linkedin/calback"),
+        'redirect' => env('BASE_URL')."connect_linkedin/calback",
     ],
     'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID'),
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
-        'redirect' => url('/connect_to_twitter/calback'),
+        'redirect' => env('BASE_URL').'connect_to_twitter/calback',
     ],
 
 ];

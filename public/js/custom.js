@@ -311,6 +311,7 @@
         });
         $(document).on('click', '.post_later_now_btn', function() {
             $('.posttime').val('later');
+            apend_current_time();
         });
 
         $(document).on('click', '.open_emoji', function() {

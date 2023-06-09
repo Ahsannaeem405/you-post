@@ -189,7 +189,8 @@ class UserController extends Controller
     public function get_event_detail(Request $request)
     {
         $post = Post::find($request->id);
-        return view('user.event_detail', compact('post'));
+        $platforms=Post::where('content',$post->content)->get();
+        return view('user.event_detail', compact('post','platforms'));
     }
 
     public function Linkedin_delete($id, Facebookservice $facebookservice, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice, TwitterService $TwitterService)
@@ -409,6 +410,7 @@ class UserController extends Controller
             'default_graph_version' => 'v12.0',
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
+
 
         $user = User::find(auth()->user()->id);
         $user->insta_access_token = $accessToken;

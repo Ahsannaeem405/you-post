@@ -498,7 +498,7 @@
             },
             eventClick: function (event, jsEvent, view) {
                 var id = event.id;
-                //  get_detail(id);
+                  get_detail(id);
 
             },
             dayRender: function (date, cell) {
@@ -556,6 +556,7 @@
 
             var video = document.createElement('video');
             video.src = videoPath;
+            video.currentTime = 3;
             video.addEventListener('loadeddata', function () {
                 var canvas = document.createElement('canvas');
                 canvas.width = video.videoWidth;

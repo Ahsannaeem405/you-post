@@ -92,48 +92,6 @@
                 <div class="sub_heading">
                     <h4>Preview Setting: <span>iPhone | Facebook</span></h4>
                 </div>
-                {{-- <div class="preview_wrap">
-                    <div class="the_preview pt-2">
-                        <div class="col-md-12">
-                            <div class="MainMobileview d-flex">
-                                <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40" alt="">
-                                <span id="">{{auth()->user()->name}}</span>
-                            </div>
-                            <p class="m-0" ></p>
-                            <div class="Mobcart_title" >
-                                <time datetime="" id="mypostresult">Write your post...</time>
-                                <span class="icon icon-privacy text-primary" id="mynameresult"> #tags</span>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="MainMobileimg">
-                                <img src="" class="d-none preview_image" height="100%" width="100%" alt="" >
-                                <div id="mediaContainervideo">
-                                    <video width="100%" class="d-none video_preview" controls>
-                                        <source src="movie.mp4" type="video/*">
-                                    </video>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="Mobcart_title bile d-flex">
-                                <div class="reactions">8❤️</div>
-                                <div class="total-comments u-margin-inline-start">
-                                    <a>12 Comments</a>
-                                    <a>2 Shares</a>
-                                </div>
-                            </div>
-                            <div class="actions-buttons mt-2">
-                                <ul class="actions-buttons-list d-flex p-0">
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-thumbs-up"></i></span><span class="text">Like</span></button></li>
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-comment"></i></span><span class="text">Comment</span></button></li>
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-share"></i></span><span class="text">Share</span></button></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-
 
                 <div class="preview_wrap">
                     <div class="the_preview pt-2">
@@ -152,9 +110,11 @@
                             <div class="MainMobileimg">
                                 <div class="media-container">
                                     <img src="" class="d-none preview_image" alt="">
+                                    <div id="mediaContainervideo">
                                     <video class="d-none video_preview" controls>
                                         <source src="movie.mp4" type="video/*">
                                     </video>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
