@@ -32,6 +32,7 @@ class InstagramCron extends Command
     public function handle()
     {
 
+\Log::info('insta run');
 
         $get_post=Post::where('posted_at_moment','later')->where('plateform','Instagram')->get();
 
