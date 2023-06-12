@@ -336,222 +336,223 @@ class UserController extends Controller
         $user->update();
 
         $response = ['message' => 'success'];
-        if (in_array('Instagram', $req->plateform_val) && (auth()->user()->insta_access_token != null)) {
-            $response['instagram_message'] = 'Instagram message';
+        if (is_array($req->plateform_val)) {
+            if (in_array('Instagram', $req->plateform_val) && (auth()->user()->insta_access_token != null)) {
+                $response['instagram_message'] = 'Instagram message';
+            }
         }
 
         return response()->json($response, 200);
-}
-    //////////////////facebook////////////////////////
-        public function connect_to_facebook()
-        {
-            $fb = new Facebook([
-                'app_id' => env('app_id'),
-                'app_secret' => env('app_secret'),
-                'default_graph_version' => 'v16.0',
-            ]);
-            $helper = $fb->getRedirectLoginHelper();
-            $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights'];
-            $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
-            $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
-            return redirect()->away($loginUrl);
-        }
+    }
+    public function connect_to_facebook()
+    {
+        $fb = new Facebook([
+            'app_id' => env('app_id'),
+            'app_secret' => env('app_secret'),
+            'default_graph_version' => 'v16.0',
+        ]);
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights'];
+        $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
+        $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
+        return redirect()->away($loginUrl);
+    }
 
-        public function connect_facebook_calback(Request $request)
-        {
-            $fb = new Facebook([
-                'app_id' => env('app_id'),
-                'app_secret' => env('app_secret'),
-                'default_graph_version' => 'v16.0',
-            ]);
-            $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
-            $token = $accessToken->getValue();
-            $user = User::find(auth()->user()->id);
-            $user->fb_access_token = $token;
-            $user->update();
-            return redirect('/index')->with('success', 'Facebook Connected Successfully! kindly Select Your Page');
-        }
+    public function connect_facebook_calback(Request $request)
+    {
+        $fb = new Facebook([
+            'app_id' => env('app_id'),
+            'app_secret' => env('app_secret'),
+            'default_graph_version' => 'v16.0',
+        ]);
+        $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
+        $token = $accessToken->getValue();
+        $user = User::find(auth()->user()->id);
+        $user->fb_access_token = $token;
+        $user->update();
+        return redirect('/index')->with('success', 'Facebook Connected Successfully! kindly Select Your Page');
+    }
 
-        public function select_page()
-        {
-            $accessToken = auth()->user()->fb_access_token;
-            $fb = new Facebook([
-                'app_id' => env('app_id'),
-                'app_secret' => env('app_secret'),
-                'default_graph_version' => 'v16.0',
-                'default_access_token' => $accessToken,
-            ]);
-            $response = $fb->get('/me/accounts');
-            $all_pages = json_decode($response->getbody())->data;
-            return view('user.select_page', compact('all_pages'));
-        }
+    public function select_page()
+    {
+        $accessToken = auth()->user()->fb_access_token;
+        $fb = new Facebook([
+            'app_id' => env('app_id'),
+            'app_secret' => env('app_secret'),
+            'default_graph_version' => 'v16.0',
+            'default_access_token' => $accessToken,
+        ]);
+        $response = $fb->get('/me/accounts');
+        $all_pages = json_decode($response->getbody())->data;
+        return view('user.select_page', compact('all_pages'));
+    }
 
-        public function set_page(Request $req)
-        {
-            $req->validate([
-                'page' => 'required',
-            ]);
-            $user = User::find(auth()->user()->id);
-            $user->fb_page_token = $req->page;
-            $user->update();
-            return redirect('/index')->with('success', 'Facebook Connected Successfully!');
-        }
+    public function set_page(Request $req)
+    {
+        $req->validate([
+            'page' => 'required',
+        ]);
+        $user = User::find(auth()->user()->id);
+        $user->fb_page_token = $req->page;
+        $user->update();
+        return redirect('/index')->with('success', 'Facebook Connected Successfully!');
+    }
 
     //////////////////facebook////////////////////////////
 
 
     /////////////////////instagram////////////////////////
 
-        public function connect_to_instagram()
-        {
-            $insta = config('services.instagram');
+    public function connect_to_instagram()
+    {
+        $insta = config('services.instagram');
 
-            $fb = new Facebook([
-                'app_id' => $insta['client_id'],
-                'app_secret' => $insta['client_secret'],
-                'default_graph_version' => 'v16.0',
-            ]);
-            $helper = $fb->getRedirectLoginHelper();
-            $permissions = ['instagram_basic', 'publish_video', 'pages_show_list', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement'];
-            $helper->getPersistentDataHandler()->set('state', 'abcdef');
-            $loginUrl = $helper->getLoginUrl($insta['redirect'], $permissions);
-            return redirect()->away($loginUrl);
+        $fb = new Facebook([
+            'app_id' => $insta['client_id'],
+            'app_secret' => $insta['client_secret'],
+            'default_graph_version' => 'v16.0',
+        ]);
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['instagram_basic', 'publish_video', 'pages_show_list', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement'];
+        $helper->getPersistentDataHandler()->set('state', 'abcdef');
+        $loginUrl = $helper->getLoginUrl($insta['redirect'], $permissions);
+        return redirect()->away($loginUrl);
 
-        }
+    }
 
-        public function connect_instagram_calback(Request $request)
-        {
-            $insta = config('services.instagram');
-            $fb = new Facebook([
-                'app_id' => $insta['client_id'],
-                'app_secret' => $insta['client_secret'],
-                'default_graph_version' => 'v12.0',
-            ]);
-            $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
-
-
-            $user = User::find(auth()->user()->id);
-            $user->insta_access_token = $accessToken;
-            $user->update();
-            return redirect('/index')->with('success', 'Please Select page that you have connected with you instagram business account');
-
-        }
-
-        public function set_page_for_instagram(Request $req)
-        {
-            $req->validate([
-                'page' => 'required',
-            ]);
-
-            $insta = config('services.instagram');
-            $instagram = new Facebook([
-                'app_id' => $insta['client_id'],
-                'app_secret' => $insta['client_secret'],
-                'default_graph_version' => 'v16.0',
-            ]);
-            $response = $instagram->get("/$req->page?fields=instagram_business_account", auth()->user()->insta_access_token);
+    public function connect_instagram_calback(Request $request)
+    {
+        $insta = config('services.instagram');
+        $fb = new Facebook([
+            'app_id' => $insta['client_id'],
+            'app_secret' => $insta['client_secret'],
+            'default_graph_version' => 'v12.0',
+        ]);
+        $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
 
 
-            $result = $response->getDecodedBody();
+        $user = User::find(auth()->user()->id);
+        $user->insta_access_token = $accessToken;
+        $user->update();
+        return redirect('/index')->with('success', 'Please Select page that you have connected with you instagram business account');
+
+    }
+
+    public function set_page_for_instagram(Request $req)
+    {
+        $req->validate([
+            'page' => 'required',
+        ]);
+
+        $insta = config('services.instagram');
+        $instagram = new Facebook([
+            'app_id' => $insta['client_id'],
+            'app_secret' => $insta['client_secret'],
+            'default_graph_version' => 'v16.0',
+        ]);
+        $response = $instagram->get("/$req->page?fields=instagram_business_account", auth()->user()->insta_access_token);
+
+
+        $result = $response->getDecodedBody();
         // dd($result);
-            if (isset($result['instagram_business_account'])) {
-                $instagram_business_account_id = $result['instagram_business_account']['id'];
-                $user = User::find(auth()->user()->id);
-                $user->insta_user_id = $instagram_business_account_id;
-                $user->update();
-                return redirect('/index')->with('success', 'instagram Connected Successfully!');
-            } else {
-                return redirect('/index')->with('error', 'Sorry! no instagram account is connected with this page');
-            }
-
+        if (isset($result['instagram_business_account'])) {
+            $instagram_business_account_id = $result['instagram_business_account']['id'];
+            $user = User::find(auth()->user()->id);
+            $user->insta_user_id = $instagram_business_account_id;
+            $user->update();
+            return redirect('/index')->with('success', 'instagram Connected Successfully!');
+        } else {
+            return redirect('/index')->with('error', 'Sorry! no instagram account is connected with this page');
         }
+
+    }
 
 
     ////////////////////instagram/////////////////////////
 
     ////////////////////linkedin/////////////////////////
-        public function connect_to_linkedin()
-        {
-            try {
-                $linkedin = config('services.linkedin');
-                $client_id = $linkedin['client_id'];
-                $client_secret = $linkedin['client_secret'];
-                $redirect_uri = $linkedin['redirect'];
+    public function connect_to_linkedin()
+    {
+        try {
+            $linkedin = config('services.linkedin');
+            $client_id = $linkedin['client_id'];
+            $client_secret = $linkedin['client_secret'];
+            $redirect_uri = $linkedin['redirect'];
 
-                $authorization_url = 'https://www.linkedin.com/oauth/v2/authorization?' . http_build_query(array(
-                    'response_type' => 'code',
-                    'client_id' => $client_id,
-                    'redirect_uri' => $redirect_uri,
-                    'state' => 'us',
-                    'scope' => 'w_member_social r_liteprofile r_emailaddress'
-                ));
-                return redirect($authorization_url);
-            } catch (\Exception $e) {
+            $authorization_url = 'https://www.linkedin.com/oauth/v2/authorization?' . http_build_query(array(
+                'response_type' => 'code',
+                'client_id' => $client_id,
+                'redirect_uri' => $redirect_uri,
+                'state' => 'us',
+                'scope' => 'w_member_social r_liteprofile r_emailaddress'
+            ));
+            return redirect($authorization_url);
+        } catch (\Exception $e) {
 
-                return redirect('/index')->with('error', $e->getMessage());
-            }
+            return redirect('/index')->with('error', $e->getMessage());
         }
+    }
 
-        public function connect_linkedin_calback(Request $request)
-        {
-            try {
-                $linkedin = config('services.linkedin');
-                $provider = new LinkedIn([
-                    'clientId' => $linkedin['client_id'],
-                    'clientSecret' => $linkedin['client_secret'],
-                    'redirectUri' => $linkedin['redirect'],
-                    'response_type' => 'code',
-                    'grant_type' => 'authorization_code',
-                    'scope' => 'w_member_social r_liteprofile r_emailaddress'
-                ]);
-                $accessToken = $provider->getAccessToken('authorization_code', [
-                    'code' => $_GET['code']
-                ]);
+    public function connect_linkedin_calback(Request $request)
+    {
+        try {
+            $linkedin = config('services.linkedin');
+            $provider = new LinkedIn([
+                'clientId' => $linkedin['client_id'],
+                'clientSecret' => $linkedin['client_secret'],
+                'redirectUri' => $linkedin['redirect'],
+                'response_type' => 'code',
+                'grant_type' => 'authorization_code',
+                'scope' => 'w_member_social r_liteprofile r_emailaddress'
+            ]);
+            $accessToken = $provider->getAccessToken('authorization_code', [
+                'code' => $_GET['code']
+            ]);
             // dd($accessToken);
 
-                $http = new Client();
+            $http = new Client();
             // Create an authenticated request for the /me endpoint
-                $request = $provider->getAuthenticatedRequest(
-                    'GET',
-                    'https://api.linkedin.com/v2/me',
-                    $accessToken->getToken()
-                );
+            $request = $provider->getAuthenticatedRequest(
+                'GET',
+                'https://api.linkedin.com/v2/me',
+                $accessToken->getToken()
+            );
             // Send the request and receive the response
-                $response = $http->sendRequest($request);
-                $userData = json_decode($response->getBody(), true);
-                $userId = $userData['id'];
+            $response = $http->sendRequest($request);
+            $userData = json_decode($response->getBody(), true);
+            $userId = $userData['id'];
             // save userid and user access token into database for future use
-                $user = User::find(auth()->user()->id);
-                $user->linkedin_accesstoken = $accessToken->getToken();
-                $user->linkedin_user_id = $userId;
-                $user->update();
-                return redirect('/index')->with('success', 'linkedin Connected Successfully');
+            $user = User::find(auth()->user()->id);
+            $user->linkedin_accesstoken = $accessToken->getToken();
+            $user->linkedin_user_id = $userId;
+            $user->update();
+            return redirect('/index')->with('success', 'linkedin Connected Successfully');
 
-            } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-                return redirect('/index')->with('error', $e->getMessage());
-            }
-
-
+            return redirect('/index')->with('error', $e->getMessage());
         }
+
+
+    }
 
     ////////////////////linkedin/////////////////////////
 
-        public function connect_to_twitter()
-        {
-            try {
-                $twitter = config('services.twitter');
-                $client_id = $twitter['client_id'];
+    public function connect_to_twitter()
+    {
+        try {
+            $twitter = config('services.twitter');
+            $client_id = $twitter['client_id'];
 
 
             // $client_secret = $twitter['client_secret'];
-                $redirect_uri = $twitter['redirect'];
-                $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
-                return redirect()->away($auth_url);
-            } catch (\Exception $e) {
+            $redirect_uri = $twitter['redirect'];
+            $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
+            return redirect()->away($auth_url);
+        } catch (\Exception $e) {
 
-                return redirect('/index')->with('error', $e->getMessage());
-            }
+            return redirect('/index')->with('error', $e->getMessage());
+        }
 
         // $twitteroauth = new TwitterOAuth(env('consumer_key'), env('consumer_secret'));
 
@@ -579,52 +580,52 @@ class UserController extends Controller
         //     ]
         // );
         // return redirect($url);
-        }
+    }
 
-        public function connect_twitter_calback(Request $request)
-        {
-            try {
-                $twitter = config('services.twitter');
-                $client_id = $twitter['client_id'];
-                $client_secret = $twitter['client_secret'];
-                $redirect_uri = $twitter['redirect'];
+    public function connect_twitter_calback(Request $request)
+    {
+        try {
+            $twitter = config('services.twitter');
+            $client_id = $twitter['client_id'];
+            $client_secret = $twitter['client_secret'];
+            $redirect_uri = $twitter['redirect'];
             // with curl
-                $basee = base64_encode($client_id . ':' . $client_secret);
-                $curl = curl_init();
-                curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'https://api.twitter.com/2/oauth2/token',
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => '',
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => "code=$request->code&grant_type=authorization_code&client_id=$client_id&code_verifier=challenge&redirect_uri=$redirect_uri",
-                    CURLOPT_HTTPHEADER => array(
-                        'Content-Type: application/x-www-form-urlencoded',
-                        "Authorization: Basic $basee",
-                    ),
-                ));
-                $response = curl_exec($curl);
+            $basee = base64_encode($client_id . ':' . $client_secret);
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://api.twitter.com/2/oauth2/token',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => "code=$request->code&grant_type=authorization_code&client_id=$client_id&code_verifier=challenge&redirect_uri=$redirect_uri",
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/x-www-form-urlencoded',
+                    "Authorization: Basic $basee",
+                ),
+            ));
+            $response = curl_exec($curl);
 
-                curl_close($curl);
-                $response2 = json_decode($response);
+            curl_close($curl);
+            $response2 = json_decode($response);
             //dd($response2);
-                if (isset($response2->error)) {
-                    return redirect('/index')->with('error', $response2->error_description);
-                }
-
-                $access_token = $response2->access_token;
-                $refresh_token = $response2->refresh_token;
-                User::where('id', auth()->user()->id)->update([
-                    'twiter_access_token' => $access_token,
-                    'twiter_refresh_token' => $refresh_token
-                ]);
-                return redirect('/index')->with('success', 'Twitter Connected Successfully');
-            } catch (\Exception $e) {
-                return redirect('/index')->with('error', $e->getMessage());
+            if (isset($response2->error)) {
+                return redirect('/index')->with('error', $response2->error_description);
             }
+
+            $access_token = $response2->access_token;
+            $refresh_token = $response2->refresh_token;
+            User::where('id', auth()->user()->id)->update([
+                'twiter_access_token' => $access_token,
+                'twiter_refresh_token' => $refresh_token
+            ]);
+            return redirect('/index')->with('success', 'Twitter Connected Successfully');
+        } catch (\Exception $e) {
+            return redirect('/index')->with('error', $e->getMessage());
+        }
 
 
         // dd(123, $access_token);
@@ -648,54 +649,54 @@ class UserController extends Controller
 
         // $oauth_verifier = filter_input(INPUT_GET, 'oauth_verifier');
 
-        }
+    }
 
-        public function twiter_refresh()
-        {
+    public function twiter_refresh()
+    {
 
 
-            $refresh_token = auth()->user()->twiter_refresh_token;
-            $twitter = config('services.twitter');
-            $client_id = $twitter['client_id'];
-            $client_secret = $twitter['client_secret'];
-            $redirect_uri = $twitter['redirect'];
+        $refresh_token = auth()->user()->twiter_refresh_token;
+        $twitter = config('services.twitter');
+        $client_id = $twitter['client_id'];
+        $client_secret = $twitter['client_secret'];
+        $redirect_uri = $twitter['redirect'];
         // with curl
-            $basee = base64_encode($client_id . ':' . $client_secret);
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
+        $basee = base64_encode($client_id . ':' . $client_secret);
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
 
 
-                CURLOPT_URL => 'https://api.twitter.com/2/oauth2/token',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => "grant_type=refresh_token&refresh_token=$refresh_token",
-                CURLOPT_HTTPHEADER => array(
-                    'Content-Type: application/x-www-form-urlencoded',
-                    "Authorization: Basic $basee",
-                ),
-            ));
-            $response = curl_exec($curl);
+            CURLOPT_URL => 'https://api.twitter.com/2/oauth2/token',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => "grant_type=refresh_token&refresh_token=$refresh_token",
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/x-www-form-urlencoded',
+                "Authorization: Basic $basee",
+            ),
+        ));
+        $response = curl_exec($curl);
 
-            curl_close($curl);
-            $response2 = json_decode($response);
+        curl_close($curl);
+        $response2 = json_decode($response);
 
 
-            $access_token = $response2->access_token;
-            $refresh_token = $response2->refresh_token;
-            User::where('id', auth()->user()->id)->update([
-                'twiter_access_token' => $access_token,
-                'twiter_refresh_token' => $refresh_token
-            ]);
+        $access_token = $response2->access_token;
+        $refresh_token = $response2->refresh_token;
+        User::where('id', auth()->user()->id)->update([
+            'twiter_access_token' => $access_token,
+            'twiter_refresh_token' => $refresh_token
+        ]);
         //dd($response2);
-        }
+    }
 
-        public function get_facebook_likes()
-        {
+    public function get_facebook_likes()
+    {
 
 
         // $client_id = 'dUtBam5mcWlrVW00LVE5V0JtLUY6MTpjaQ';
