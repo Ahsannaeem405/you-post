@@ -94,6 +94,28 @@
                 </div>
 
                 <div class="preview_wrap">
+                    <div class="col-md-12">
+                       <div class="Mobcompny-title">
+                            <div class="w-50">
+                                <h6>Facebook</h6>
+                            </div>
+                            <div class="w-50 Mobsocial-icon">
+                                <span><i class="fa-solid fa-plus"></i></span>
+                                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <span><i class="fab fa-facebook-messenger"></i></span>
+                            </div>
+                       </div>
+                    </div>
+
+                    <div class="Mobcompny-smallicon">
+                        <span><i class="fa-solid fa-house"></i></span>
+                        <span><i class="fa fa-youtube-play"></i></span>
+                        <span><i class="fas fa-user-circle"></i></span>
+                        <span><i class="fa-solid fa-bell"></i></span>
+                        <span><i class="fa-solid fa-bars"></i></span>
+                    </div>
+
+
                     <div class="the_preview pt-2">
                         <div class="col-md-12">
                             <div class="MainMobileview d-flex">
@@ -128,9 +150,9 @@
                             </div>
                             <div class="actions-buttons mt-2">
                                 <ul class="actions-buttons-list d-flex p-0">
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-thumbs-up"></i></span><span class="text">Like</span></button></li>
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-comment"></i></span><span class="text">Comment</span></button></li>
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><span class="icon"><i class="fa-solid fa-share"></i></span><span class="text">Share</span></button></li>
+                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-thumbs-up"></i><span class="text">Like</span></button></li>
+                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-comment"></i><span class="text">Comment</span></button></li>
+                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span class="text">Share</span></button></li>
                                 </ul>
                             </div>
                         </div>
