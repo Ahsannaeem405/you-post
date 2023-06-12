@@ -160,9 +160,34 @@
                 </div>
 
             </div>
+
+            
+            {{-- Instagram card ------}}
+                <div class="IG_social_main">
+                    <div class="IG_main_card">
+                        <div class="d-flex align-items-center">
+                            <div class="IG_card_img">
+                                <img class="img-fluid " src="{{asset('images/instagram2.png')}}" alt="Gul">
+                            </div>
+                            <div class="IG_card_title">
+                                <h5>Instagram is selected you must upload an image</h5>
+                            </div>
+                        </div>
+                        <div class="IG_card_uploadimg">
+                            <h6>Drag and Drop or clcik to Browse</h6>
+                            {{-- <span class="d-block"><i  class="fas fa-cloud-upload-alt"></i></span> --}}
+                            <span class="d-block"><img  src="{{asset('images/Uploadicon.png')}}" alt=""></span>
+                        </div>
+                    </div>
+                
+                
+                </div>
+            {{-- End Instagram card --}}
         </div>
     </div>
 </section>
+
+
 <!--===== Markup For "Create & Preview Post" Ends Here =====-->
 
 
