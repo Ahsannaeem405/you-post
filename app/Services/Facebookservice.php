@@ -75,11 +75,7 @@ class Facebookservice
         $post_id = $id;
         try {
             $response = $fb->delete("/$post_id");
-            if ($response->getStatusCode() == 200) {
                 $msg = ['status' => true];
-            } else {
-                $msg = ['status' => false];
-            }
             return $msg;
         } catch (\Exception $e) {
             $msg = ['status' => false];
