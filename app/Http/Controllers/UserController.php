@@ -334,10 +334,16 @@ class UserController extends Controller
         $user = User::find(auth()->user()->id);
         $req->plateform_val ? $user->platforms = $req->plateform_val : $user->platforms = [];
         $user->update();
-        return response()->json(['message' => 'success'], 200);
-    }
 
-    //////////////////facebook////////////////////////
+        $response = ['message' => 'success'];
+        if (is_array($req->plateform_val)) {
+            if (in_array('Instagram', $req->plateform_val) && (auth()->user()->insta_access_token != null)) {
+                $response['instagram_message'] = 'Instagram message';
+            }
+        }
+
+        return response()->json($response, 200);
+    }
     public function connect_to_facebook()
     {
         $fb = new Facebook([
@@ -474,12 +480,12 @@ class UserController extends Controller
             $redirect_uri = $linkedin['redirect'];
 
             $authorization_url = 'https://www.linkedin.com/oauth/v2/authorization?' . http_build_query(array(
-                    'response_type' => 'code',
-                    'client_id' => $client_id,
-                    'redirect_uri' => $redirect_uri,
-                    'state' => 'us',
-                    'scope' => 'w_member_social r_liteprofile r_emailaddress'
-                ));
+                'response_type' => 'code',
+                'client_id' => $client_id,
+                'redirect_uri' => $redirect_uri,
+                'state' => 'us',
+                'scope' => 'w_member_social r_liteprofile r_emailaddress'
+            ));
             return redirect($authorization_url);
         } catch (\Exception $e) {
 
