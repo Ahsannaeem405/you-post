@@ -61,6 +61,7 @@ class TwitterService
 
         if ($response->status() == 201) {
             $postdetail = new PostDetail();
+            \Log::info($post);
             $postdetail->post_id = $post->id;
             $postdetail->plateform = 'Twitter';
             $postdetail->social_id = $get->data->id;

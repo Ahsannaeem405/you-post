@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use App\Models\PostDetail;
 use getID3;
 use App\Models\Post;
+use Illuminate\Support\Facades\Log;
 
 
 class Instagramservice
@@ -17,7 +18,7 @@ class Instagramservice
 
     public function create_post($data)
     {
-        // dd($data);
+      Log::info($data);
         $post = Post::find($data['post']->id);
         $video_path = "content_media/$post->media";
         $media_path = asset("content_media/$post->media");
@@ -91,6 +92,7 @@ class Instagramservice
                     'access_token' => $accessToken,
                 ],
             ]);
+
             if ($response->getStatusCode() == 200) {
 
                 $msg = ['status' => true];
