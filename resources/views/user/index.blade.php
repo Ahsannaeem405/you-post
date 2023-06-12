@@ -39,152 +39,147 @@
                                     <a href="javascript:void(0)" class="image_or_video" typpe="image"><label for="image_or_video">
                                         <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt=""/>
                                     </label>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="image_or_video" typpe="video"><label for="image_or_video">
-                                        <img src="{{asset('')}}images/Video_Player_Icon.png" class="img-fluid" alt="" />
-                                    </label>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="open_emoji">
-                                        <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <input type="file" name="media" class="image d-none" id="image_or_video" accept="image/*,video/*">
-                        <input type="hidden" name="media_type" id="type_input">
-                        <input type="hidden" name="timezone" class="timezone">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="image_or_video" typpe="video"><label for="image_or_video">
+                                    <img src="{{asset('')}}images/Video_Player_Icon.png" class="img-fluid" alt="" />
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="open_emoji">
+                                <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <input type="file" name="media" class="image d-none" id="image_or_video" accept="image/*,video/*">
+                <input type="hidden" name="media_type" id="type_input">
+                <input type="hidden" name="timezone" class="timezone">
 
-                        <div class="tags_input_wrap grid_item">
-                            <div class="tags_input">
-                                <input onkeyup="Namechangefun()" id="namechange" required name="tag" type="text" class="form-control" placeholder="#tags" value="{{old('tag')}}">
-                            </div>
-                        </div>
+                <div class="tags_input_wrap grid_item">
+                    <div class="tags_input">
+                        <input onkeyup="Namechangefun()" id="namechange" required name="tag" type="text" class="form-control" placeholder="#tags" value="{{old('tag')}}">
                     </div>
-
-                    <div class="post_now_button">
-                        <input type="submit" class="btn post_now_btn" value="Post Now">
-                    </div>
-
-                    <div class="post_later">
-                        <div class="tabs_type_heading_sm">
-                            <span id="browsertime"></span>
-                            <input type="hidden" class="browsertimeinput" name="time">
-                            <input type="hidden" class="posttime" value="now" name="posttime">
-                            <h4>Post Later</h4>
-                        </div>
-
-                        <div class="pick_date_from_calendar">
-                            <div class="calendar"></div>
-                        </div>
-                    </div>
-
-                    <div class="post_now_button">
-                        <input type="submit" class="btn post_later_now_btn" value="Post Later Now">
-                    </div>
-                </form>
+                </div>
             </div>
 
-            <div class="preview_post">
-                <div class="sub_heading">
-                    <h4>Preview Setting: <span>iPhone | Facebook</span></h4>
-                </div>
-
-                <div class="preview_wrap">
-                    <div class="col-md-12">
-                       <div class="Mobcompny-title">
-                            <div class="w-50">
-                                <h6>Facebook</h6>
-                            </div>
-                            <div class="w-50 Mobsocial-icon">
-                                <span><i class="fa-solid fa-plus"></i></span>
-                                <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                                <span><i class="fab fa-facebook-messenger"></i></span>
-                            </div>
-                       </div>
-                    </div>
-
-                    <div class="Mobcompny-smallicon">
-                        <span><i class="fa-solid fa-house"></i></span>
-                        <span><i class="fa fa-youtube-play"></i></span>
-                        <span><i class="fas fa-user-circle"></i></span>
-                        <span><i class="fa-solid fa-bell"></i></span>
-                        <span><i class="fa-solid fa-bars"></i></span>
-                    </div>
-
-
-                    <div class="the_preview pt-2">
-                        <div class="col-md-12">
-                            <div class="MainMobileview d-flex">
-                                <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40" alt="">
-                                <span id="">{{auth()->user()->name}}</span>
-                            </div>
-                            <p class="m-0"></p>
-                            <div class="Mobcart_title">
-                                <time datetime="" id="mypostresult">Write your post...</time>
-                                <span class="icon icon-privacy text-primary" id="mynameresult"> #tags</span>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="MainMobileimg">
-                                <div class="media-container">
-                                    <img src="" class="d-none preview_image" alt="">
-                                    <div id="mediaContainervideo">
-                                    <video class="d-none video_preview" controls>
-                                        <source src="movie.mp4" type="video/*">
-                                    </video>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="Mobcart_title bile d-flex">
-                                <div class="reactions">8❤️</div>
-                                <div class="total-comments u-margin-inline-start">
-                                    <a>12 Comments</a>
-                                    <a>2 Shares</a>
-                                </div>
-                            </div>
-                            <div class="actions-buttons mt-2">
-                                <ul class="actions-buttons-list d-flex p-0">
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-thumbs-up"></i><span class="text">Like</span></button></li>
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-comment"></i><span class="text">Comment</span></button></li>
-                                    <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span class="text">Share</span></button></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="post_now_button">
+                <input type="submit" class="btn post_now_btn" value="Post Now">
             </div>
 
-            
-            {{-- Instagram card ------}}
-                <div class="IG_social_main">
-                    <div class="IG_main_card">
-                        <div class="d-flex align-items-center">
-                            <div class="IG_card_img">
-                                <img class="img-fluid " src="{{asset('images/instagram2.png')}}" alt="Gul">
-                            </div>
-                            <div class="IG_card_title">
-                                <h5>Instagram is selected you must upload an image</h5>
-                            </div>
-                        </div>
-                        <div class="IG_card_uploadimg">
-                            <h6>Drag and Drop or clcik to Browse</h6>
-                            {{-- <span class="d-block"><i  class="fas fa-cloud-upload-alt"></i></span> --}}
-                            <span class="d-block"><img  src="{{asset('images/Uploadicon.png')}}" alt=""></span>
-                        </div>
-                    </div>
-                
-                
+            <div class="post_later">
+                <div class="tabs_type_heading_sm">
+                    <span id="browsertime"></span>
+                    <input type="hidden" class="browsertimeinput" name="time">
+                    <input type="hidden" class="posttime" value="now" name="posttime">
+                    <h4>Post Later</h4>
                 </div>
-            {{-- End Instagram card --}}
-        </div>
+
+                <div class="pick_date_from_calendar">
+                    <div class="calendar"></div>
+                </div>
+            </div>
+
+            <div class="post_now_button">
+                <input type="submit" class="btn post_later_now_btn" value="Post Later Now">
+            </div>
+        </form>
     </div>
+
+    <div class="preview_post">
+        <div class="sub_heading">
+            <h4>Preview Setting: <span>iPhone | Facebook</span></h4>
+        </div>
+
+        <div class="preview_wrap">
+            <div class="col-md-12">
+             <div class="Mobcompny-title">
+                <div class="w-50">
+                    <h6>Facebook</h6>
+                </div>
+                <div class="w-50 Mobsocial-icon">
+                    <span><i class="fa-solid fa-plus"></i></span>
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span><i class="fab fa-facebook-messenger"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="Mobcompny-smallicon">
+            <span><i class="fa-solid fa-house"></i></span>
+            <span><i class="fa fa-youtube-play"></i></span>
+            <span><i class="fas fa-user-circle"></i></span>
+            <span><i class="fa-solid fa-bell"></i></span>
+            <span><i class="fa-solid fa-bars"></i></span>
+        </div>
+
+
+        <div class="the_preview pt-2">
+            <div class="col-md-12">
+                <div class="MainMobileview d-flex">
+                    <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40" alt="">
+                    <span id="">{{auth()->user()->name}}</span>
+                </div>
+                <p class="m-0"></p>
+                <div class="Mobcart_title">
+                    <time datetime="" id="mypostresult">Write your post...</time>
+                    <span class="icon icon-privacy text-primary" id="mynameresult"> #tags</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="MainMobileimg">
+                    <div class="media-container">
+                        <img src="" class="d-none preview_image" alt="">
+                        <div id="mediaContainervideo">
+                            <video class="d-none video_preview" controls>
+                                <source src="movie.mp4" type="video/*">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="Mobcart_title bile d-flex">
+                        <div class="reactions">8❤️</div>
+                        <div class="total-comments u-margin-inline-start">
+                            <a>12 Comments</a>
+                            <a>2 Shares</a>
+                        </div>
+                    </div>
+                    <div class="actions-buttons mt-2">
+                        <ul class="actions-buttons-list d-flex p-0">
+                            <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-thumbs-up"></i><span class="text">Like</span></button></li>
+                            <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-comment"></i><span class="text">Comment</span></button></li>
+                            <li class="actions-buttons-item"><button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span class="text">Share</span></button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {{-- Instagram card ------}}
+    <div class="IG_social_main must_add_image d-none">
+        <div class="IG_main_card">
+            <div class="d-flex align-items-center">
+                <div class="IG_card_img">
+                    <img class="img-fluid " src="{{asset('images/instagram2.png')}}" alt="Gul">
+                </div>
+                <div class="IG_card_title">
+                    <h5>Instagram is selected you must upload an image</h5>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    {{-- End Instagram card --}}
+</div>
+</div>
 </section>
 
 
