@@ -144,9 +144,10 @@ class UserController extends Controller
         for ($i = 0; $i < count($platforms); $i++) {
             //posting code
 
+            $content = 'content';
             $post = new Post();
             $post->user_id = auth()->user()->id;
-            $post->content = $req->content;
+            $post->content = $req->$content;
             $post->tag = $req->tag;
             $post->posted_at_moment = $req->posttime;
             $post->posted_at = date_format(new DateTime($req->time), "Y-m-d H:i");
@@ -220,16 +221,10 @@ class UserController extends Controller
             if ($get_data['status'] == true) {
                 $get_post->delete();
                 return redirect('/index')->with('success', 'Post Deleted Successfully!');
-            }
-            else{
+            } else {
                 return redirect('/index')->with('error', 'Post cannot be Deleted');
             }
         }
-
-
-
-
-
 
 
     }
@@ -336,14 +331,10 @@ class UserController extends Controller
         $user->update();
 
         $response = ['message' => 'success'];
-        if (is_array($req->plateform_val)) {
-            if (in_array('Instagram', $req->plateform_val) && (auth()->user()->insta_access_token != null)) {
-                $response['instagram_message'] = 'Instagram message';
-            }
-        }
 
         return response()->json($response, 200);
     }
+
     public function connect_to_facebook()
     {
         $fb = new Facebook([
@@ -480,14 +471,14 @@ class UserController extends Controller
             $redirect_uri = $linkedin['redirect'];
 
             $authorization_url = 'https://www.linkedin.com/oauth/v2/authorization?' . http_build_query(array(
-                'response_type' => 'code',
-                'client_id' => $client_id,
-                'redirect_uri' => $redirect_uri,
-                'state' => 'us',
-                'scope' => 'w_member_social r_liteprofile r_emailaddress'
-            ));
+                    'response_type' => 'code',
+                    'client_id' => $client_id,
+                    'redirect_uri' => $redirect_uri,
+                    'state' => 'us',
+                    'scope' => 'w_member_social r_liteprofile r_emailaddress'
+                ));
             return redirect($authorization_url);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
 
             return redirect('/index')->with('error', $e->getMessage());
         }
@@ -528,7 +519,7 @@ class UserController extends Controller
             $user->update();
             return redirect('/index')->with('success', 'linkedin Connected Successfully');
 
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
 
             return redirect('/index')->with('error', $e->getMessage());
         }
@@ -549,43 +540,18 @@ class UserController extends Controller
             $redirect_uri = $twitter['redirect'];
             $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
             return redirect()->away($auth_url);
-        } catch (\Exception $e) {
-
+        } catch (\Throwable $e) {
             return redirect('/index')->with('error', $e->getMessage());
         }
 
-        // $twitteroauth = new TwitterOAuth(env('consumer_key'), env('consumer_secret'));
 
-        // // request token of application
-        // $request_token = $twitteroauth->oauth(
-        //     'oauth/request_token', [
-        //         'oauth_callback' => url('/connect_to_twitter/calback')
-        //     ]
-        // );
-        // // dd($request_token);
-        // // throw exception if something gone wrong
-        // if($twitteroauth->getLastHttpCode() != 200) {
-        //     throw new \Exception('There was a problem performing this request');
-        // }
-
-        // // save token of application to database
-        // $user = User::find(auth()->user()->id);
-        // $user->twiter_oauth_token = $request_token['oauth_token'];
-        // $user->twiter_secret_token = $request_token['oauth_token_secret'];
-        // $user->update();
-        // // generate the URL to make request to authorize our application
-        // $url = $twitteroauth->url(
-        //     'oauth/authorize', [
-        //         'oauth_token' => $request_token['oauth_token']
-        //     ]
-        // );
-        // return redirect($url);
     }
 
     public function connect_twitter_calback(Request $request)
     {
         try {
             $twitter = config('services.twitter');
+
             $client_id = $twitter['client_id'];
             $client_secret = $twitter['client_secret'];
             $redirect_uri = $twitter['redirect'];
@@ -623,7 +589,7 @@ class UserController extends Controller
                 'twiter_refresh_token' => $refresh_token
             ]);
             return redirect('/index')->with('success', 'Twitter Connected Successfully');
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return redirect('/index')->with('error', $e->getMessage());
         }
 

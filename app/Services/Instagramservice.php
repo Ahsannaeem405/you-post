@@ -18,10 +18,11 @@ class Instagramservice
 
     public function create_post($data)
     {
-      Log::info($data);
+        Log::info($data);
         $post = Post::find($data['post']->id);
         $video_path = "content_media/$post->media";
         $media_path = asset("content_media/$post->media");
+
         $insta = config('services.instagram');
         $accesstoken = $post->user->insta_access_token;
         $insta_user_id = $post->user->insta_user_id;
@@ -35,26 +36,29 @@ class Instagramservice
         if ($post->media_type == 'image') {
 
             try {
-            $response = $instagram->post("/$insta_user_id/media", array(
-                'image_url' => $media_path,
-                'caption' => "$post->content",
-            ), $accesstoken);
 
-            $result = $response->getDecodedBody();
-            $media_id = $result['id'];
 
-                $response = $instagram->post("/$insta_user_id/media_publish", array(
+                $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
+                    'image_url' => $media_path,
+                    'caption' => $post->content,
+                    'access_token' => $accesstoken
+                ])->json();
+
+                $media_id = $response['id'];
+
+
+                $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media_publish", [
                     'creation_id' => $media_id,
-                    'access_token' => $accesstoken,
-                ));
+                    'access_token' => $accesstoken
+                ])->json();
                 $postdetail = new PostDetail();
                 $postdetail->post_id = $post->id;
                 $postdetail->plateform = 'Instagram';
-                $postdetail->social_id = $response->getDecodedBody()['id'];
+                $postdetail->social_id = $response['id'];
                 $postdetail->save();
                 $msg = ['status' => true];
 
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
 
                 $msg = ['status' => false];
                 $post->delete();
@@ -65,10 +69,45 @@ class Instagramservice
 
 
         }
-        else{
+        if ($post->media_type == 'video') {
+
+            try {
+
+
+                $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
+                    'video_url' => $media_path,
+                    'media_type' => 'VIDEO',
+                    'caption' => $post->content,
+                    'access_token' => $accesstoken
+                ])->json();
+
+
+                $media_id = $response['id'];
+                $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media_publish", [
+                    'creation_id' => $media_id,
+                    'access_token' => $accesstoken
+                ])->json();
+
+                $postdetail = new PostDetail();
+                $postdetail->post_id = $post->id;
+                $postdetail->plateform = 'Instagram';
+                $postdetail->social_id = $response['id'];
+                $postdetail->save();
+                $msg = ['status' => true];
+
+            } catch (\Throwable $e) {
+                $msg = ['status' => false];
+                $post->delete();
+            }
+
+
+            return $msg;
+
+
+        } else {
             $msg = ['status' => false];
             $post->delete();
-            return  $msg;
+            return $msg;
         }
 
     }
@@ -98,14 +137,13 @@ class Instagramservice
                 $msg = ['status' => true];
 
 
-            }
-            else{
+            } else {
                 $msg = ['status' => false];
             }
             return $msg;
 
 
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $msg = ['status' => false];
             return $msg;
         }

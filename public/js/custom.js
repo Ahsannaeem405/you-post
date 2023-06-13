@@ -332,6 +332,7 @@
             $('#type_input').val($(this).attr('typpe'));
         });
         $('#image_or_video').change(function (e) {
+            $('.must_add_image').addClass('d-none');
             var file = e.target.files[0];
             if (file) {
                 var reader = new FileReader();

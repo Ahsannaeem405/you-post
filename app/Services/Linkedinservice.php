@@ -67,7 +67,7 @@ class Linkedinservice
             $postdetail->save();
             $msg=['status'=>true];
         }
-        catch (\Exception $exception){
+        catch (\Throwable $exception){
             $msg=['status'=>false];
             $post->delete();
         }
@@ -108,7 +108,7 @@ class Linkedinservice
             return $msg;
 
 
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $msg = ['status' => false];
             return $msg;
         }

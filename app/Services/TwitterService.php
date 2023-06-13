@@ -37,7 +37,7 @@ class TwitterService
             }
             return $msg;
 
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $msg = ['status' => false];
             return $msg;
         }

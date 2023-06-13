@@ -304,28 +304,28 @@
 
                         <div class="col-md-6 MDLsocial-iconmainWrp">
                             <div class="MDLsocial-icon">
-                                <a class="" href="{{url('connect_to_facebook')}}"> 
+                                <a class="" href="{{url('connect_to_facebook')}}">
                                     <i class="fa fa-facebook-square mr-2"></i>Connect with Facebook</a>
                                 </div>
                             </div>
 
                             <div class="col-md-6 MDLsocial-iconmainWrp">
                                 <div class="MDLsocial-icon">
-                                    <a class="" href="{{url('connect_to_instagram')}}"> 
+                                    <a class="" href="{{url('connect_to_instagram')}}">
                                         <i class="fa fa-instagram mr-2"></i>Connect with Instagram</a>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 MDLsocial-iconmainWrp">
                                     <div class="MDLsocial-icon">
-                                        <a class="" href="{{url('connect_to_linkedin')}}"> 
+                                        <a class="" href="{{url('connect_to_linkedin')}}">
                                             <i class="fa fa-linkedin-square mr-2"></i>Connect with Linkedin</a>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 MDLsocial-iconmainWrp">
                                         <div class="MDLsocial-icon">
-                                            <a class="" href="{{url('connect_to_twitter')}}"> 
+                                            <a class="" href="{{url('connect_to_twitter')}}">
                                                 <i class="fa fa-twitter-square mr-2"></i>Connect with Twitter</a>                            </div>
                                             </div>
 
@@ -648,16 +648,12 @@
                             });
                             $.ajax({
                                 type: "get",
-                                url: "{{ url('update_user_platforms') }}", 
+                                url: "{{ url('update_user_platforms') }}",
                                 data: {
                                     'plateform_val': plateform_val
                                 },
                                 success: function (response) {
-                                    if(response.instagram_message){
-                                        $('.must_add_image').removeClass('d-none');
-                                    }else{
-                                        $('.must_add_image').addClass('d-none');         
-                                    }               
+                                    instaCheck();
                                 },
                                 error: function (xhr, status, error) {
                                     var errorData = JSON.parse(xhr.responseText);
@@ -710,11 +706,7 @@
 
                         $(document).ready(function () {
 
-                           if ($('.instagram_modal').prop('checked')) {
-                            $('.must_add_image').removeClass('d-none');
-                        } else {
-                            $('.must_add_image').addClass('d-none');
-                        }
+                            instaCheck();
                         var authuser = "{{auth()->user()}}";
                         if (authuser != null) {
                             var insta_access_token = "{{auth()->user()->insta_access_token}}";
@@ -732,6 +724,14 @@
                         }
 
                     });
+
+                        function instaCheck() {
+                            if ($('.instagram_modal').prop('checked')) {
+                                $('.must_add_image').removeClass('d-none');
+                            } else {
+                                $('.must_add_image').addClass('d-none');
+                            }
+                        }
 
                 </script>
 

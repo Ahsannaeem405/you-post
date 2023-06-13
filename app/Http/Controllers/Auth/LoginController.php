@@ -70,7 +70,7 @@ class LoginController extends Controller
                     Auth::login($newUser);
                     return redirect()->intended('/index')->with('success', 'Login Successfully');
                 }
-            } catch (Exception $e) {
+            } catch (\Throwable $e) {
                 return redirect()->intended('/login')->with('error', $e->getMessage()) ;
             }
 
@@ -103,7 +103,7 @@ class LoginController extends Controller
                 Auth::login($newUser);
                 return redirect()->intended('/index')->with('success', 'Login Successfully');
             }
-        } catch (Exception $e) {
+        } catch (\Throwable $e) {
             return redirect()->intended('/login')->with('error', $e->getMessage());
         }
     }

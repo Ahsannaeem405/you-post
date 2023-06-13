@@ -55,7 +55,7 @@ class Facebookservice
             $postdetail->save();
             $msg = ['status' => true];
 
-        } catch (\Exception $exception) {
+        } catch (\Throwable $exception) {
             $msg = ['status' => false];
             $post->delete();
         }
@@ -77,7 +77,7 @@ class Facebookservice
             $response = $fb->delete("/$post_id");
                 $msg = ['status' => true];
             return $msg;
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $msg = ['status' => false];
             return $msg;
         }
