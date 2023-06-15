@@ -19,7 +19,7 @@ use League\OAuth2\Client\Provider\Twitter;
 use Intervention\Image\Facades\Image;
 use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate\TimeCode;
-
+use getID3\getID3;
 
 class UserController extends Controller
 {
@@ -85,22 +85,42 @@ class UserController extends Controller
         } else {
             $all_pages = [];
         }
+        $instapages = [];
+        if (!auth()->user()->linkedin_page_id && auth()->user()->linkedin_accesstoken) {
+            $client = new Client();
 
-        if ($insta_access_token != null && $insta_user_id == null) {
-            $insta = config('services.instagram');
-            $insta = new Facebook([
-                'app_id' => $insta['client_id'],
-                'app_secret' => $insta['client_secret'],
-                'default_graph_version' => 'v16.0',
-                'default_access_token' => $insta_access_token,
+            $response = $client->get('https://api.linkedin.com/v2/organizationalEntityAcls?q=roleAssignee', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+                    'Content-Type' => 'application/json',
+                    'X-Restli-Protocol-Version' => '2.0.0',
+                ],
             ]);
-            $insta_response = $insta->get('/me/accounts');
-            $all_pages_for_insta = json_decode($insta_response->getbody())->data;
-        } else {
-            $all_pages_for_insta = [];
+            $pageAcls = json_decode($response->getBody(), true)['elements'];
+            foreach ($pageAcls as $pageAcl) {
+                $organizationalTarget = $pageAcl['organizationalTarget'];
+
+                $pageId = explode(':', $organizationalTarget)[3];
+
+                $pageResponse = $client->get("https://api.linkedin.com/v2/organizations/{$pageId}", [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+                        'Content-Type' => 'application/json',
+                        'X-Restli-Protocol-Version' => '2.0.0',
+                    ],
+                ]);
+
+                $page = json_decode($pageResponse->getBody(), true);
+                $instapages[] = $page;
+            }
+
+
         }
 
-        return view('user.index', compact('allPosts', 'all_pages', 'all_pages_for_insta', 'data'));
+        $all_pages_for_insta = [];
+
+
+        return view('user.index', compact('allPosts', 'all_pages', 'all_pages_for_insta', 'data', 'instapages'));
 
     }
 
@@ -124,10 +144,17 @@ class UserController extends Controller
             if ($req->media_type == 'image') {
                 $width = Image::make($req->media)->width();
                 $height = Image::make($req->media)->height();
-                $aspectRatio = $width / $height;
-                if (!($aspectRatio == 4 / 5)) {
-                    return back()->with('error', "Sorry! can't post image required 4:5 image");
+                $aspectRatio = sprintf("%0.2f", $width / $height);
+                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+
+                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
                 }
+            }
+            if ($req->media_type == 'video') {
+                $req->validate([
+                    'media' => 'mimes:mp4,mov|max:8000',
+                ]);
+
             }
 
         }
@@ -137,7 +164,16 @@ class UserController extends Controller
             $req->media->move('content_media', $imageName);
             $mediaData = $imageName;
             if ($req->media_type == 'video') {
-
+                $filePath = 'content_media/' . $mediaData;
+                $getID3 = new \getID3();
+                $fileInfo = $getID3->analyze($filePath);
+                $width = $fileInfo['video']['resolution_x'] ?? 1;
+                $height = $fileInfo['video']['resolution_y'] ?? 1;
+                $aspectRatio = sprintf("%0.2f", $width / $height);
+                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+                    unlink($filePath);
+                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
+                }
             }
         }
 
@@ -429,6 +465,46 @@ class UserController extends Controller
 
     }
 
+    public function get_page_for_instagram()
+    {
+
+        $insta_access_token = auth()->user()->insta_access_token;
+        $insta_user_id = auth()->user()->insta_user_id;
+
+        if ($insta_access_token != null && $insta_user_id == null) {
+            $insta = config('services.instagram');
+            $insta = new Facebook([
+                'app_id' => $insta['client_id'],
+                'app_secret' => $insta['client_secret'],
+                'default_graph_version' => 'v16.0',
+                'default_access_token' => $insta_access_token,
+            ]);
+            $insta_response = $insta->get('/me/accounts');
+            $all_pages_for_insta = json_decode($insta_response->getbody())->data;
+        } else {
+            $all_pages_for_insta = [];
+        }
+
+        $insta = config('services.instagram');
+        $instagram = new Facebook([
+            'app_id' => $insta['client_id'],
+            'app_secret' => $insta['client_secret'],
+            'default_graph_version' => 'v16.0',
+        ]);
+        $options=null;
+        foreach ($all_pages_for_insta as $page){
+            $response = $instagram->get("/$page->id?fields=instagram_business_account", auth()->user()->insta_access_token);
+            $result = $response->getDecodedBody();
+            if (isset($result['instagram_business_account'])) {
+                $options.="<option value=".$page->id.">$page->name</option>";
+            }
+            else{
+                $options.="<option disabled value=".$page->id.">$page->name</option>";
+            }
+        }
+        return response()->json($options);
+    }
+
     public function set_page_for_instagram(Request $req)
     {
         $req->validate([
@@ -459,6 +535,21 @@ class UserController extends Controller
     }
 
 
+    public function set_page_for_linkedin(Request $req)
+    {
+        $req->validate([
+            'page' => 'required',
+        ]);
+
+        $user = User::find(auth()->user()->id);
+        $user->linkedin_page_id = $req->page;
+        $user->update();
+        return redirect('/index')->with('success', 'instagram Connected Successfully!');
+
+
+    }
+
+
     ////////////////////instagram/////////////////////////
 
     ////////////////////linkedin/////////////////////////
@@ -475,7 +566,7 @@ class UserController extends Controller
                     'client_id' => $client_id,
                     'redirect_uri' => $redirect_uri,
                     'state' => 'us',
-                    'scope' => 'w_member_social r_liteprofile r_emailaddress'
+                    'scope' => 'w_member_social r_organization_social w_organization_social r_liteprofile r_emailaddress rw_organization_admin'
                 ));
             return redirect($authorization_url);
         } catch (\Throwable $e) {

@@ -395,7 +395,7 @@
                                     @csrf
                                     <div class="modal-body">
 
-                                        <select required name="page" class="form-control">
+                                        <select required name="page" class="form-control instapage_selection">
                                             <option value="">-select--</option>
                                             @foreach($all_pages_for_insta as $page)
                                             <option value="{{$page->id}}">{{$page->name}}</option>
@@ -415,7 +415,45 @@
 
                     {{-- pages_modal for instagram --}}
 
-                    <!--===== Markup For "Footer" Starts Here =====-->
+
+{{--    modal for pages linked--}}
+    <div class="modal fade" id="linkedin_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
+         data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Linkedin
+                        Account</h5>
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                    <!--  <span aria-hidden="true">&times;</span>-->
+                    <!--</button>-->
+                </div>
+                <form action="{{url('set_page_for_linkedin')}}" method="post">
+
+                    @csrf
+                    <div class="modal-body">
+
+                        <select required name="page" class="form-control">
+                            <option value="">-select--</option>
+                            @foreach($instapages as $page)
+                                <option value="{{$page['$URN']}}">{{$page['localizedName']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===== Markup For "Footer" Starts Here =====-->
                     <footer class="footer_outer">
                         <div class="footer_inner">
                             <div class="container">
@@ -713,12 +751,27 @@
                             var insta_user_id = "{{auth()->user()->insta_user_id}}";
                             var fb_access_token = "{{auth()->user()->fb_access_token}}";
                             var fb_page_token = "{{auth()->user()->fb_page_token}}";
+                            var linkedin = "{{auth()->user()->linkedin_page_id}}";
+                            var linkedinAcces = "{{auth()->user()->linkedin_accesstoken}}";
+
 
                             if (insta_access_token != '' && insta_user_id == '') {
                                 $('#instagram_pages_modal').modal('show');
 
+                                $.ajax({
+                                    type: "get",
+                                    url: "{{ url('get_page_for_instagram') }}",
+                                    success: function (response) {
+                                     $('.instapage_selection').empty().append(response);
+                                    }
+                                });
+
+
                             } else if (fb_access_token != '' && fb_page_token == '') {
                                 $('#pages_modal').modal('show');
+                            }
+                            else if(!linkedin && linkedinAcces){
+                                $('#linkedin_pages_modal').modal('show');
                             }
 
                         }

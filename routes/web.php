@@ -55,6 +55,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('select_page', [UserController::class, 'select_page']);
     Route::post('set_page', [UserController::class, 'set_page']);
     Route::post('set_page_for_instagram', [UserController::class, 'set_page_for_instagram']);
+    Route::get('get_page_for_instagram', [UserController::class, 'get_page_for_instagram']);
+
+    Route::post('set_page_for_linkedin', [UserController::class, 'set_page_for_linkedin']);
 
 
     Route::post('create_post', [UserController::class, 'create_post']);

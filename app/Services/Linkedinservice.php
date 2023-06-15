@@ -16,79 +16,67 @@ class Linkedinservice
         $post = Post::find($data['post']->id);
         $media_path = asset("content_media/$post->media");
         $accesstoken = $post->user->linkedin_accesstoken;
-        $linkedin_user_id = $post->user->linkedin_user_id;
+        $linkedin_user_id = $post->user->linkedin_page_id;
 
         $mediaFilePath = "images/YouPost_Logo.png";
 
 
         // LinkedIn API endpoint for media upload
-        $uploadEndpoint = 'https://api.linkedin.com/v2/assets?action=registerUpload';
-        $postEndpoint = 'https://api.linkedin.com/v2/ugcPosts';
+
+        $postEndpoint = 'https://api.linkedin.com/rest/posts';
 
 
-        $person = 'urn:li:person:' . $linkedin_user_id;
         // Create the share with media
         $client = new Client();
 
         try {
-            $response = $client->post($postEndpoint, [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $accesstoken,
-                    'Content-Type' => 'application/json',
-                    'X-Restli-Protocol-Version' => '2.0.0',
-                ],
-                'json' => [
-                    'author' => $person,
-                    'lifecycleState' => 'PUBLISHED',
-                    'specificContent' => [
-                        'com.linkedin.ugc.ShareContent' => [
-                            'shareCommentary' => [
-                                'text' => "$post->content #$post->tag"
-                            ],
-
-                            "shareMediaCategory" => "NONE",
-                        ],
-                    ],
-                    'visibility' => [
-                        'com.linkedin.ugc.MemberNetworkVisibility' => 'PUBLIC'
-                    ],
-
-
-                ],
+            $response = \Http::withHeaders([
+                'Authorization' => 'Bearer ' . $accesstoken,
+                'Content-Type' => 'application/json',
+                'X-Restli-Protocol-Version' => '2.0.0',
+                'LinkedIn-Version' => '202306'
+            ])->post($postEndpoint, [
+                'author' => $linkedin_user_id,
+                'commentary' => "$post->content #$post->tag",
+                "visibility" => "PUBLIC",
+                "distribution" => array(
+                    "feedDistribution" => "MAIN_FEED",
+                    "targetEntities" => [],
+                    "thirdPartyDistributionChannels" => []
+                ),
+                "lifecycleState" => "PUBLISHED",
+                "isReshareDisabledByAuthor" => false
             ]);
 
-            $id = json_decode($response->getBody());
 
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
             $postdetail->plateform = 'Linkedin';
-            $postdetail->social_id = $id->id;
+            $postdetail->social_id = $response->header('x-restli-id');
 
             $postdetail->save();
-            $msg=['status'=>true];
-        }
-        catch (\Throwable $exception){
-            $msg=['status'=>false];
+            $msg = ['status' => true];
+        } catch (\Throwable $exception) {
+            $msg = ['status' => false];
             $post->delete();
         }
 
         return $msg;
 
 
-
     }
 
     public function delete_post($data)
     {
-        $accessToken = auth()->user()->linkedin_accesstoken;
-        $get = explode('urn:li:share:', $data);
-        $shareUrn = $get[1];
-
-        $deleteEndpoint = "https://api.linkedin.com/v2/shares/{$shareUrn}";
-        // Create a new Guzzle HTTP client instance
-        $client = new Client();
-
         try {
+            $accessToken = auth()->user()->linkedin_accesstoken;
+            $get = explode('urn:li:share:', $data);
+            $shareUrn = $get[1];
+
+            $deleteEndpoint = "https://api.linkedin.com/v2/shares/{$shareUrn}";
+            // Create a new Guzzle HTTP client instance
+            $client = new Client();
+
             // Send a DELETE request to delete the share
             $response = $client->delete($deleteEndpoint, [
                 'headers' => [
@@ -99,8 +87,7 @@ class Linkedinservice
             ]);
             if ($response->getStatusCode() == 200) {
                 $msg = ['status' => true];
-            }
-            else{
+            } else {
                 $msg = ['status' => false];
             }
 

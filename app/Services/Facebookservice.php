@@ -8,7 +8,7 @@ use DateTime;
 use DateTimeZone;
 use App\Models\PostDetail;
 
-class Facebookservice
+ class  Facebookservice
 {
     public function create_post($data)
     {

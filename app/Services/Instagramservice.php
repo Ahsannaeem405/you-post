@@ -18,7 +18,7 @@ class Instagramservice
 
     public function create_post($data)
     {
-        Log::info($data);
+
         $post = Post::find($data['post']->id);
         $video_path = "content_media/$post->media";
         $media_path = asset("content_media/$post->media");
@@ -40,7 +40,7 @@ class Instagramservice
 
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
                     'image_url' => $media_path,
-                    'caption' => $post->content,
+                    'caption' => $post->content.' #'.$post->tag,
                     'access_token' => $accesstoken
                 ])->json();
 
@@ -77,10 +77,11 @@ class Instagramservice
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
                     'video_url' => $media_path,
                     'media_type' => 'VIDEO',
-                    'caption' => $post->content,
+                    'caption' => $post->content.' #'.$post->tag,
                     'access_token' => $accesstoken
                 ])->json();
 
+                sleep(10);
 
                 $media_id = $response['id'];
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media_publish", [

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('platforms')->default('[]');
             $table->text('fb_access_token')->nullable();
             $table->text('fb_page_token')->nullable();
-    
+
             $table->text('twiter_access_token')->nullable();
             $table->text('twiter_refresh_token')->nullable();
 
@@ -31,7 +31,8 @@ return new class extends Migration
 
             $table->text('linkedin_accesstoken')->nullable();
             $table->text('linkedin_user_id')->nullable();
-            
+            $table->text('linkedin_page_id')->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
