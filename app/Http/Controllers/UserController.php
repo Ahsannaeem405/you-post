@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\PostDetail;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Facebook\Facebook;
 use GuzzleHttp\Client;
@@ -43,6 +44,7 @@ class UserController extends Controller
                 'start' => $post->posted_at,
                 'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
                 'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
+                'event_date'=>Carbon::parse($post->posted_at)->format('Y-m-d')
 
             ];
         }
