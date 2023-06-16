@@ -3,7 +3,7 @@
 <style>
     #mypostresult {
         overflow: hidden;
-        max-height: 30px;
+        height: 18px;
         display: block;
         text-overflow: ellipsis;
         line-height: 14px;

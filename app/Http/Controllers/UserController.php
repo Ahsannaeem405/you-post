@@ -210,7 +210,7 @@ class UserController extends Controller
 
 
             } elseif ($platforms[$i] == 'Twitter') {
-                //$this->twiter_refresh();
+
                 if ($req->posttime == 'now') {
                     $res = $TwitterService->create_post($data);
                 }
@@ -247,11 +247,11 @@ class UserController extends Controller
                 $get_data = $Instagramservice->delete_post($get_post->plateforms->social_id);
             }
             if ($get_post->plateform == 'Twitter') {
-                //$this->twiter_refresh();
+
                 $get_data = $TwitterService->delete_post($get_post->plateforms->social_id);
             }
             if ($get_post->plateform == 'Facebook') {
-                //$this->twiter_refresh();
+
                 $get_data = $facebookservice->delete_post($get_post->plateforms->social_id);
             }
 
@@ -375,6 +375,12 @@ class UserController extends Controller
 
     public function connect_to_facebook()
     {
+
+        auth()->user()->update([
+           'fb_access_token' => null,
+            'facebook_id' => null
+        ]);
+
         $fb = new Facebook([
             'app_id' => env('app_id'),
             'app_secret' => env('app_secret'),
@@ -434,6 +440,10 @@ class UserController extends Controller
 
     public function connect_to_instagram()
     {
+        auth()->user()->update([
+            'insta_access_token' => null,
+            'insta_user_id' => null
+        ]);
         $insta = config('services.instagram');
 
         $fb = new Facebook([
@@ -557,6 +567,11 @@ class UserController extends Controller
     ////////////////////linkedin/////////////////////////
     public function connect_to_linkedin()
     {
+        auth()->user()->update([
+            'linkedin_accesstoken' => null,
+            'linkedin_user_id' => null,
+            'linkedin_page_id' => null
+        ]);
         try {
             $linkedin = config('services.linkedin');
             $client_id = $linkedin['client_id'];
@@ -624,6 +639,11 @@ class UserController extends Controller
 
     public function connect_to_twitter()
     {
+        auth()->user()->update([
+            'twiter_access_token' => null,
+            'twiter_refresh_token' => null,
+        ]);
+
         try {
             $twitter = config('services.twitter');
             $client_id = $twitter['client_id'];
@@ -710,49 +730,7 @@ class UserController extends Controller
 
     }
 
-    public function twiter_refresh()
-    {
 
-
-        $refresh_token = auth()->user()->twiter_refresh_token;
-        $twitter = config('services.twitter');
-        $client_id = $twitter['client_id'];
-        $client_secret = $twitter['client_secret'];
-        $redirect_uri = $twitter['redirect'];
-        // with curl
-        $basee = base64_encode($client_id . ':' . $client_secret);
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-
-
-            CURLOPT_URL => 'https://api.twitter.com/2/oauth2/token',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => "grant_type=refresh_token&refresh_token=$refresh_token",
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/x-www-form-urlencoded',
-                "Authorization: Basic $basee",
-            ),
-        ));
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-        $response2 = json_decode($response);
-
-
-        $access_token = $response2->access_token;
-        $refresh_token = $response2->refresh_token;
-        User::where('id', auth()->user()->id)->update([
-            'twiter_access_token' => $access_token,
-            'twiter_refresh_token' => $refresh_token
-        ]);
-        //dd($response2);
-    }
 
     public function get_facebook_likes()
     {
