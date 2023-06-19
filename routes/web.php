@@ -46,11 +46,8 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 
 // ///////////////////////social login/////////////////////////
 
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::group(['middleware' => ['auth']], function () {
-    // Route::get('/', [UserController::class, 'home_page']);
+
     Route::get('index', [UserController::class, 'index']);
     Route::get('select_page', [UserController::class, 'select_page']);
     Route::post('set_page', [UserController::class, 'set_page']);
@@ -85,8 +82,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('update_post', [UserController::class, 'update_post']);
     Route::get('edit_post/{id}', [UserController::class, 'edit_post']);
 
-
-    // http://localhost:8000/connect_facebook/calback
 });
 Route::get('logout', function () {
     Auth::logout();

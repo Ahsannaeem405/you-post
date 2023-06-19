@@ -44,7 +44,7 @@ class UserController extends Controller
                 'start' => $post->posted_at,
                 'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
                 'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
-                'event_date'=>Carbon::parse($post->posted_at)->format('Y-m-d')
+                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
 
             ];
         }
@@ -377,7 +377,7 @@ class UserController extends Controller
     {
 
         auth()->user()->update([
-           'fb_access_token' => null,
+            'fb_access_token' => null,
             'facebook_id' => null
         ]);
 
@@ -503,15 +503,14 @@ class UserController extends Controller
             'app_secret' => $insta['client_secret'],
             'default_graph_version' => 'v16.0',
         ]);
-        $options=null;
-        foreach ($all_pages_for_insta as $page){
+        $options = null;
+        foreach ($all_pages_for_insta as $page) {
             $response = $instagram->get("/$page->id?fields=instagram_business_account", auth()->user()->insta_access_token);
             $result = $response->getDecodedBody();
             if (isset($result['instagram_business_account'])) {
-                $options.="<option value=".$page->id.">$page->name</option>";
-            }
-            else{
-                $options.="<option disabled value=".$page->id.">$page->name</option>";
+                $options .= "<option value=" . $page->id . ">$page->name</option>";
+            } else {
+                $options .= "<option disabled value=" . $page->id . ">$page->name</option>";
             }
         }
         return response()->json($options);
@@ -556,7 +555,7 @@ class UserController extends Controller
         $user = User::find(auth()->user()->id);
         $user->linkedin_page_id = $req->page;
         $user->update();
-        return redirect('/index')->with('success', 'instagram Connected Successfully!');
+        return redirect('/index')->with('success', 'Linkedin  Connected Successfully!');
 
 
     }
@@ -583,7 +582,7 @@ class UserController extends Controller
                     'client_id' => $client_id,
                     'redirect_uri' => $redirect_uri,
                     'state' => 'us',
-                    'scope' => 'w_member_social r_organization_social w_organization_social r_liteprofile r_emailaddress rw_organization_admin'
+                    'scope' => 'w_member_social r_organization_social w_organization_social r_liteprofile r_emailaddress rw_organization_admin rw_ads r_ads'
                 ));
             return redirect($authorization_url);
         } catch (\Throwable $e) {
@@ -729,7 +728,6 @@ class UserController extends Controller
         // $oauth_verifier = filter_input(INPUT_GET, 'oauth_verifier');
 
     }
-
 
 
     public function get_facebook_likes()
