@@ -124,12 +124,14 @@ class Linkedinservice
                     'initializeUploadRequest' => array(
                         'owner' => $linkedin_user_id,
                         "fileSizeBytes" => filesize($media_path),
-                        "uploadCaptions" => true,
+                        "uploadCaptions" => false,
                         "uploadThumbnail" => false,
                     )
                 ]);
 
                 $videoid = $videoupload['value']['video'];
+
+
                 $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . $accesstoken,
                     'X-Restli-Protocol-Version' => '2.0.0',
@@ -137,22 +139,19 @@ class Linkedinservice
                 ])->attach(
                     'file', file_get_contents($media_path), 'video.mp4'
                 )->post($videoupload['value']['uploadInstructions'][0]['uploadUrl']);
+                $etag = $response->header('ETag');
 
-
-
-//
-//                $videoId = $videoid;
-//                $encodedVideoId = urlencode($videoId);
-//                $try=Http::withHeaders([
-//                    'Authorization' => 'Bearer ' . $accesstoken,
-//                    'Content-Type' => 'application/json',
-//                    'X-Restli-Protocol-Version' => '2.0.0',
-//                    'LinkedIn-Version' => '202306'
-//                ])
-//                    ->get("https://api.linkedin.com/v2/videos/$encodedVideoId");
-//                dd($try->json());
-
-
+                $finalize = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $accesstoken,
+                    'X-Restli-Protocol-Version' => '2.0.0',
+                    'LinkedIn-Version' => '202306'
+                ])->post('https://api.linkedin.com/rest/videos?action=finalizeUpload', [
+                    'finalizeUploadRequest' => array(
+                        'video' => $videoid,
+                        'uploadToken' => "",
+                        'uploadedPartIds' => [$etag]
+                    ),
+                ]);
 
                 $postnow = \Http::withHeaders([
                     'Authorization' => 'Bearer ' . $accesstoken,
@@ -179,7 +178,6 @@ class Linkedinservice
                 ]);
 
 
-
                 $postdetail = new PostDetail();
                 $postdetail->post_id = $post->id;
                 $postdetail->plateform = 'Linkedin';
@@ -188,6 +186,7 @@ class Linkedinservice
                 $msg = ['status' => true];
 
             } catch (\Throwable $exception) {
+
                 $msg = ['status' => false];
                 $post->delete();
             }
@@ -201,10 +200,16 @@ class Linkedinservice
     {
         try {
             $accessToken = auth()->user()->linkedin_accesstoken;
-            $get = explode('urn:li:share:', $data);
-            $shareUrn = $get[1];
+            try {
+                $get = explode('urn:li:share:', $data);
+                $shareUrn = $get[1];
+            } catch (\Exception $exception) {
+                $get = explode('urn:li:ugcPost:', $data);
+                $shareUrn = $get[1];
+            }
 
-            $deleteEndpoint = "https://api.linkedin.com/v2/shares/{$shareUrn}";
+            $shareUrn=urlencode($data);
+            $deleteEndpoint = "https://api.linkedin.com/rest/posts/$shareUrn";
             // Create a new Guzzle HTTP client instance
             $client = new Client();
 
@@ -214,21 +219,19 @@ class Linkedinservice
                     'Authorization' => 'Bearer ' . $accessToken,
                     'Content-Type' => 'application/json',
                     'X-Restli-Protocol-Version' => '2.0.0',
+                    'LinkedIn-Version' => '202306'
                 ],
             ]);
 
-            if ($response->getStatusCode() == 200) {
+
+            if ($response->getStatusCode() == 204) {
                 $msg = ['status' => true];
             } else {
                 $msg = ['status' => false];
             }
-
-
             return $msg;
-
-
         } catch (\Throwable $e) {
-            dd($e->getMessage());
+
             $msg = ['status' => false];
             return $msg;
         }

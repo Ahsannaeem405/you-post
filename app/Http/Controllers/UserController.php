@@ -139,7 +139,7 @@ class UserController extends Controller
             return back()->with('error', 'Please select platform to post.');
         }
 
-        if (in_array('Instagram', $platforms)) {
+        if (in_array('Instagram', $platforms) || in_array('Linkedin', $platforms)) {
             $req->validate([
                 'media' => 'required',
             ]);
@@ -148,13 +148,12 @@ class UserController extends Controller
                 $height = Image::make($req->media)->height();
                 $aspectRatio = sprintf("%0.2f", $width / $height);
                 if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-
                     return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
                 }
             }
             if ($req->media_type == 'video') {
                 $req->validate([
-                    'media' => 'mimes:mp4,mov|max:8000',
+                    'media' => 'mimes:mp4|max:4000',
                 ]);
 
             }
@@ -172,10 +171,10 @@ class UserController extends Controller
                 $width = $fileInfo['video']['resolution_x'] ?? 1;
                 $height = $fileInfo['video']['resolution_y'] ?? 1;
                 $aspectRatio = sprintf("%0.2f", $width / $height);
-                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-                    unlink($filePath);
-                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
-                }
+//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+//                    unlink($filePath);
+//                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
+//                }
             }
         }
 
