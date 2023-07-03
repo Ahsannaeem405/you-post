@@ -7,6 +7,8 @@ use Facebook\Facebook;
 use DateTime;
 use DateTimeZone;
 use App\Models\PostDetail;
+
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
 
 class  Facebookservice
@@ -16,51 +18,59 @@ class  Facebookservice
 
 
         $post = Post::find($data['post']->id);
-        $media_path = asset("content_media/$post->media");
+        $media_path = public_path("content_media/$post->media");
         $accessToken = $post->user->fb_page_token;
-        $fb = new Facebook([
-            'app_id' => env('app_id'),
-            'app_secret' => env('app_secret'),
-            'default_graph_version' => 'v16.0',
-            'default_access_token' => $accessToken,
-        ]);
-        $arr = [
-            'message' => "$post->content #$post->tag",
-            'description' => "$post->content #$post->tag",
-        ];
-        $action = 'feed';
-        if ($data['post']->media_type == 'image') {
-            $action = 'photos';
-            $arr['source'] = $fb->videoToUpload($media_path);
 
+        $client = new Client();
+
+        $url = "https://graph.facebook.com/me/feed";
+        if ($data['post']->media_type == 'image') {
+            $url = "https://graph.facebook.com/me/photos";
         } else if ($data['post']->media_type == 'video') {
-            $action = 'videos';
-            $arr['source'] = $fb->videoToUpload($media_path);
+            $url = "https://graph.facebook.com/me/videos";
         }
-//        if ($post->posted_at_moment != 'now') {
-//            $arr['published'] = false;
-//            $postdate = $post->posted_at->format('Y-m-d H:i:s');
-//            $carbon = new \Carbon\Carbon($postdate, $data['timezone']);
-//            $scheduled_publish_time = $carbon->timestamp;
-//            $arr['scheduled_publish_time'] = $scheduled_publish_time;
-//        }
+
+        $options = [
+            'query' => [
+                'access_token' => $accessToken,
+            ],
+            'multipart' => [
+                [
+                    'name' => 'message',
+                    'contents' => "$post->content #$post->tag",
+                ],
+                [
+                    'name' => 'description',
+                    'contents' => "$post->content #$post->tag",
+                ],
+
+            ],
+        ];
+        if ($data['post']->media_type == 'video' || $data['post']->media_type == 'image'){
+            $options['multipart'][]= [
+                'name' => 'source',
+                'contents' => fopen($media_path, 'r'),
+            ];
+        }
 
         try {
+            $response = $client->post($url, $options);
 
-            $response = $fb->post("/me/$action", $arr);
+            $responseData = json_decode($response->getBody(), true);
 
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
             $postdetail->plateform = 'Facebook';
-            $postdetail->social_id = $response->getDecodedBody()['id'];
+            $postdetail->social_id = $responseData['id'];
             $postdetail->save();
-            $msg = ['status' => true];
 
-        } catch (\Throwable $exception) {
-            Log::info($exception->getMessage());
-            $msg = ['status' => false];
+            $msg = ['status' => true];
+        } catch (\Throwable $e) {
+            // Handles Guzzle HTTP errors
             $post->delete();
+            $msg = ['status' => false, 'error' => $e->getMessage()];
         }
+
         return $msg;
 
     }

@@ -66,7 +66,7 @@
             </div>
 
             <div class="post_now_button">
-                <input type="submit" class="btn post_now_btn d-none" value="Post Now">
+                <input type="submit" class="btn post_now_btn " value="Post Now">
             </div>
 
             <div class="post_later">
