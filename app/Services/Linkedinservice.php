@@ -15,7 +15,7 @@ class Linkedinservice
     public function create_post($data)
     {
         $post = Post::find($data['post']->id);
-        $media_path = ("content_media/$post->media");
+        $media_path = public_path("content_media/$post->media");
         $accesstoken = $post->user->linkedin_accesstoken;
         $linkedin_user_id = $post->user->linkedin_page_id;
 
@@ -56,7 +56,9 @@ class Linkedinservice
             }
 
             return $msg;
-        } else if ($post->media_type == 'image') {
+        }
+
+        else if ($post->media_type == 'image') {
 
             try {
                 $imageupload = Http::withHeaders([
@@ -112,7 +114,8 @@ class Linkedinservice
                 $post->delete();
             }
             return $msg;
-        } else if ($post->media_type == 'video') {
+        }
+        else if ($post->media_type == 'video') {
 
             try {
                 $videoupload = Http::withHeaders([

@@ -7,8 +7,9 @@ use Facebook\Facebook;
 use DateTime;
 use DateTimeZone;
 use App\Models\PostDetail;
+use Illuminate\Support\Facades\Log;
 
- class  Facebookservice
+class  Facebookservice
 {
     public function create_post($data)
     {
@@ -28,21 +29,21 @@ use App\Models\PostDetail;
             'description' => "$post->content #$post->tag",
         ];
         $action = 'feed';
-        if ($data['media_type'] == 'image') {
+        if ($data['post']->media_type == 'image') {
             $action = 'photos';
             $arr['source'] = $fb->videoToUpload($media_path);
 
-        } else if ($data['media_type'] == 'video') {
+        } else if ($data['post']->media_type == 'video') {
             $action = 'videos';
             $arr['source'] = $fb->videoToUpload($media_path);
         }
-        if ($post->posted_at_moment != 'now') {
-            $arr['published'] = false;
-            $postdate = $post->posted_at->format('Y-m-d H:i:s');
-            $carbon = new \Carbon\Carbon($postdate, $data['timezone']);
-            $scheduled_publish_time = $carbon->timestamp;
-            $arr['scheduled_publish_time'] = $scheduled_publish_time;
-        }
+//        if ($post->posted_at_moment != 'now') {
+//            $arr['published'] = false;
+//            $postdate = $post->posted_at->format('Y-m-d H:i:s');
+//            $carbon = new \Carbon\Carbon($postdate, $data['timezone']);
+//            $scheduled_publish_time = $carbon->timestamp;
+//            $arr['scheduled_publish_time'] = $scheduled_publish_time;
+//        }
 
         try {
 
@@ -56,6 +57,7 @@ use App\Models\PostDetail;
             $msg = ['status' => true];
 
         } catch (\Throwable $exception) {
+            Log::info($exception->getMessage());
             $msg = ['status' => false];
             $post->delete();
         }

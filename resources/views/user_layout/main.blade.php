@@ -54,7 +54,7 @@
             <div class="user_info">
                 <a href="javascript:void(0)">
                     <div class="profile_pic">
-                        <img src="{{asset('images/Profile_Pic.png')}}" class="img-fluid" alt=""/>
+                        <img src="{{asset('images/avatar-light.png')}}" class="img-fluid" alt=""/>
                     </div>
 
                     <div class="user_name grid_item">

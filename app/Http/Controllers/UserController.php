@@ -129,10 +129,16 @@ class UserController extends Controller
     public function create_post(Request $req, Facebookservice $facebookservice, TwitterService $TwitterService, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice)
     {
 
+
+
         $req->validate([
             'content' => 'required',
             'tag' => 'required',
+            'media' => 'required_if:media_type,image|required_if:media_type,video',
+
         ]);
+
+
 
         $platforms = auth()->user()->platforms;
         if (count($platforms) == 0) {
@@ -140,9 +146,11 @@ class UserController extends Controller
         }
 
         if (in_array('Instagram', $platforms) || in_array('Linkedin', $platforms)) {
-            $req->validate([
-                'media' => 'required',
-            ]);
+            if (in_array('Instagram', $platforms)) {
+                $req->validate([
+                    'media' => 'required',
+                ]);
+            }
             if ($req->media_type == 'image') {
                 $width = Image::make($req->media)->width();
                 $height = Image::make($req->media)->height();
@@ -171,10 +179,10 @@ class UserController extends Controller
                 $width = $fileInfo['video']['resolution_x'] ?? 1;
                 $height = $fileInfo['video']['resolution_y'] ?? 1;
                 $aspectRatio = sprintf("%0.2f", $width / $height);
-//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-//                    unlink($filePath);
-//                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
-//                }
+                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+                    unlink($filePath);
+                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
+                }
             }
         }
 
@@ -200,13 +208,14 @@ class UserController extends Controller
                 'timezone' => $req->timezone,
             ];
             if ($platforms[$i] == 'Facebook') {
-                $facebookservice->create_post($data);
+                if ($req->posttime == 'now') {
+                    $res = $facebookservice->create_post($data);
+                }
 
             } elseif ($platforms[$i] == 'Instagram') {
                 if ($req->posttime == 'now') {
                     $res = $Instagramservice->create_post($data);
                 }
-
 
             } elseif ($platforms[$i] == 'Twitter') {
 
