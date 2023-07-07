@@ -311,7 +311,7 @@
         });
         $(document).on('click', '.post_later_now_btn', function() {
             $('.posttime').val('later');
-            apend_current_time();
+            //apend_current_time();
         });
 
         $(document).on('click', '.open_emoji', function() {
@@ -325,11 +325,11 @@
         $(document).on('click', '.image_or_video', function() {
             if($(this).attr('typpe') == 'image')
             {
-                $('.image').attr('accept', 'image/*');
+                $('#'+$(this).attr('fordata')).attr('accept', 'image/*');
             }else{
-                $('.image').attr('accept', 'video/*');
+                $('#'+$(this).attr('fordata')).attr('accept', 'video/*');
             }
-            $('#type_input').val($(this).attr('typpe'));
+            $('#media_type_'+$(this).attr('social')).val($(this).attr('typpe'));
         });
         $('#image_or_video').change(function (e) {
             $('.must_add_image').addClass('d-none');

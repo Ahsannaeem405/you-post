@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Models\User;
+use App\Observers\UserObserver;
 use App\Services\Facebookservice;
 use App\Services\TwitterService;
 
@@ -19,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(Facebookservice::class, function () {
             return new Facebookservice();
         });
-        
+
         $this->app->bind(TwitterService::class, function () {
             return new TwitterService();
         });
@@ -32,6 +34,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        User::observe(UserObserver::class);
     }
 }

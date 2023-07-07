@@ -82,6 +82,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('update_post', [UserController::class, 'update_post']);
     Route::get('edit_post/{id}', [UserController::class, 'edit_post']);
 
+    Route::post('store_acount',[\App\Http\Controllers\AccountController::class,'store']);
+    Route::get('change_acount/{id}',[\App\Http\Controllers\AccountController::class,'change_account']);
+
 });
 Route::get('logout', function () {
     Auth::logout();

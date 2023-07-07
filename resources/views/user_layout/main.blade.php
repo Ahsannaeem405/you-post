@@ -11,11 +11,14 @@
     <link rel="icon" href="{{asset('')}}images/favicon.png"/>
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}"/>
     <!--FontAwesome CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <!--Normalize v8.0.1 CSS FILE-->
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}"/>
     <!--Bootstrap v4.6.0 CSS FILE-->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+
     <!--Fonts Are Loads From Here-->
     <link rel="stylesheet" href="{{asset('fonts/fonts.css')}}"/>
     <!--Pignose Calendar CSS File-->
@@ -29,17 +32,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
+
+    <style>
+        .dropdown-toggle::after {
+            content: none !important;
+        }
+
+        .user_info {
+            display: flex !important;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown a {
+            display: block !important;
+        }
+    </style>
 </head>
 
 <body>
 
 <!--===== Markup For "Header" Starts Here =====-->
 <header class="header">
+
     <div class="container">
         <div class="top">
             <div class="logo_wrap">
                 <div class="logo">
-                    <a href="{{url('/')}}"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid"
+                    <a href="{{url('/')}}"><img src="{{asset('images/YouPost_Logo.png')}}" class="img-fluid"
                                                 alt=""/></a>
                 </div>
             </div>
@@ -59,11 +79,26 @@
 
                     <div class="user_name grid_item">
                         <div class="the_name">
-                            <span>youpost.com<span class="color">/{{auth()->user()->name}}</span></span>
-                            <img src="{{asset('')}}images/V_Icon.png" class="v_icon" alt=""/>
+                            <span>youpost.com<span class="color">/{{auth()->user()->account->name}}</span></span>
+
+
                         </div>
                     </div>
                 </a>
+                <div class="dropdown">
+                    <button class="dropdown-toggle bg-transparent border-0" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{asset('')}}images/V_Icon.png" class="v_icon" alt="" width="15px"/>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @foreach($accounts as $account)
+                            <li><a class="dropdown-item {{auth()->user()->account_id==$account->id ? 'active' : null}}"
+                                   href="{{url("change_acount/".encrypt($account->id))}}"><i class="fa-solid fa-user"></i> {{$account->name}}</a></li>
+                        @endforeach
+                        <li><a class="dropdown-item" style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#addAccount">Add Account <i class="fa-solid fa-plus text-success"></i></a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
@@ -189,6 +224,41 @@
 </div>
 {{-- time modal --}}
 
+
+
+{{-- account modal --}}
+<!-- Modal -->
+<div class="modal fade" id="addAccount" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-cross-btn">
+                <h5 class="modal-title" id="timeModalLabel">Add Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('store_acount')}}" method="post">
+                    @csrf
+                    <div class="col-12 mb-2">
+                        <lable>Name</lable>
+                        <input type="text" class="form-control" required name="name" placeholder="Enter account name...">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary ">Create</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{-- account modal --}}
+
+
 {{-- event detail modal --}}
 <div class="modal fade" id="detail_modal" tabindex="-1" aria-labelledby="detail_modalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -210,75 +280,7 @@
 </div>
 {{-- event detail modal --}}
 
-{{-- event edit modal --}}
-<div class="modal fade" id="edit_modal" tabindex="-1" aria-labelledby="detail_modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detail_modalLabel">Post Detail</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <form action="{{url('update_post')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group emoji_parent">
-                                <textarea required name="content" id="emojiarea" cols="30" rows="3"
-                                          class="form-control edit_content"
-                                          placeholder="Write your post...">{{old('content')}}</textarea>
-                    </div>
 
-                    <div class="icon_buttons_tags d-flex">
-                        <div class="icon_buttons grid_item">
-                            <ul class='d-flex mb-0' style="list-style-type: none;">
-                                <li style="width: 20%;">
-                                    <a href="javascript:void(0)" class="image_or_video" typpe="image"><label
-                                            for="image_or_video">
-                                            <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt=""/>
-                                        </label>
-                                    </a>
-                                </li>
-                                <li style="width: 20%;">
-                                    <a href="javascript:void(0)" class="image_or_video" typpe="video"><label
-                                            for="image_or_video">
-                                            <img src="{{asset('')}}images/Video_Player_Icon.png" class="img-fluid"
-                                                 alt=""/>
-                                        </label>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <input type="file" name="media" class="image d-none" id="image_or_video"
-                               accept="image/*,video/*">
-                        <input type="hidden" name="media_type" id="type_input">
-                        <input type="hidden" name="timezone" class="timezone">
-                        <input type="hidden" name="id" class="edit_id">
-
-                        <div class="tags_input_wrap grid_item ml-auto">
-                            <div class="tags_input">
-                                <input required name="tag" type="text" class="form-control edit_tag" placeholder="#tags"
-                                       value="{{old('tag')}}">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="post_now_button">
-                        <input type="submit" class="btn btn-primary post_now_btn" value="Post Now"
-                               style="text-align: end;margin-top: 4%;">
-                    </div>
-
-
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 {{-- event edit modal --}}
 
 {{-- myaccount modal --}}
@@ -345,11 +347,11 @@
 {{-- pages_modal --}}
 
 <div class="modal fade" id="pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
-     data-backdrop="static" data-keyboard="false">
+>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On</h5>
+                <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Facebook</h5>
                 <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
                 <!--  <span aria-hidden="true">&times;</span>-->
                 <!--</button>-->
@@ -381,7 +383,7 @@
 {{-- pages_modal for instagram --}}
 
 <div class="modal fade" id="instagram_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
-     data-backdrop="static" data-keyboard="false">
+>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -418,7 +420,7 @@
 
 {{--    modal for pages linked--}}
 <div class="modal fade" id="linkedin_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
-     data-backdrop="static" data-keyboard="false">
+>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -495,9 +497,11 @@
 <script src="{{asset('js/inputEmoji.js')}}"></script>
 
 
-<!--Bootstrap v4.5.3 JS File-->
-<script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
 <!--Pignose Calendar JS File-->
 <script type="text/javascript" src="{{asset('js/pignose.calendar.full.min.js')}}"></script>
 <!--SimpleChart JS File-->
@@ -685,6 +689,7 @@
             },
             success: function (response) {
                 instaCheck();
+                window.location.reload();
             },
             error: function (xhr, status, error) {
                 var errorData = JSON.parse(xhr.responseText);
@@ -731,7 +736,7 @@
 </script>
 <script>
     $(function () {
-        $('#emojiarea').emoji({place: 'after'});
+        $('.emojiarea').emoji({place: 'after'});
     });
 
 
@@ -791,7 +796,7 @@
         document.getElementById("mynameresult").textContent = '#' + inputTextname;
     }
 </script>
-
+@yield('js')
 </body>
 
 </html>

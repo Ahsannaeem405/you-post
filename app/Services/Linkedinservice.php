@@ -203,14 +203,6 @@ class Linkedinservice
     {
         try {
             $accessToken = auth()->user()->linkedin_accesstoken;
-            try {
-                $get = explode('urn:li:share:', $data);
-                $shareUrn = $get[1];
-            } catch (\Exception $exception) {
-                $get = explode('urn:li:ugcPost:', $data);
-                $shareUrn = $get[1];
-            }
-
             $shareUrn=urlencode($data);
             $deleteEndpoint = "https://api.linkedin.com/rest/posts/$shareUrn";
             // Create a new Guzzle HTTP client instance
@@ -225,8 +217,6 @@ class Linkedinservice
                     'LinkedIn-Version' => '202306'
                 ],
             ]);
-
-
             if ($response->getStatusCode() == 204) {
                 $msg = ['status' => true];
             } else {

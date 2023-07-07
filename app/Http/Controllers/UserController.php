@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Post;
 use App\Models\PostDetail;
 use App\Models\User;
@@ -11,6 +12,7 @@ use Facebook\Facebook;
 use GuzzleHttp\Client;
 use HttpClient;
 use DateTime;
+use Illuminate\Support\Str;
 use League\OAuth2\Client\Provider\LinkedIn;
 use App\Services\Facebookservice;
 use App\Services\TwitterService;
@@ -34,10 +36,10 @@ class UserController extends Controller
     public function index()
     {
         $posts = Post::select('*')->where('user_id', auth()->user()->id)->groupBy('content')->get();
+        $accounts=Account::where('user_id',auth()->id())->get();
+
         $allPosts = [];
         foreach ($posts as $post) {
-
-
             $allPosts[] = [
                 'id' => $post->id,
                 'title' => $post->content,
@@ -45,7 +47,6 @@ class UserController extends Controller
                 'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
                 'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
-
             ];
         }
         $data = [];
@@ -122,114 +123,149 @@ class UserController extends Controller
         $all_pages_for_insta = [];
 
 
-        return view('user.index', compact('allPosts', 'all_pages', 'all_pages_for_insta', 'data', 'instapages'));
+        return view('user.index', compact('allPosts','accounts', 'all_pages', 'all_pages_for_insta', 'data', 'instapages'));
 
     }
 
     public function create_post(Request $req, Facebookservice $facebookservice, TwitterService $TwitterService, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice)
     {
 
-
-
-        $req->validate([
-            'content' => 'required',
-            'tag' => 'required',
-            'media' => 'required_if:media_type,image|required_if:media_type,video',
-
-        ]);
-
-
-
         $platforms = auth()->user()->platforms;
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
         }
+        $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = null;
 
-        if (in_array('Instagram', $platforms) || in_array('Linkedin', $platforms)) {
-            if (in_array('Instagram', $platforms)) {
+        //*****************facebook validation******************//
+        if (in_array('Facebook', $platforms)) {
+            $req->validate([
+                'facebook_media' => 'required_if:media_type_facebook,image|required_if:media_type_facebook,video',
+            ]);
+            if ($req->media_type_fb == 'video') {
                 $req->validate([
-                    'media' => 'required',
+                    'facebook_media' => 'mimes:mp4|max:4000',
                 ]);
             }
-            if ($req->media_type == 'image') {
-                $width = Image::make($req->media)->width();
-                $height = Image::make($req->media)->height();
+            if ($req->hasFile('facebook_media')) {
+                $imageName = time() . rand(1111, 999) . '.' . $req->facebook_media->extension();
+                $req->facebook_media->move('content_media', $imageName);
+                $mediaDatafb = $imageName;
+            }
+
+        }
+        //****************end facebook validation**************//
+
+        //****************instagram validation****************//
+        if (in_array('Instagram', $platforms)) {
+            $req->validate([
+                'insta_media' => 'required',
+            ]);
+            if ($req->media_type_insta == 'video') {
+                $req->validate([
+                    'insta_media' => 'mimes:mp4|max:4000',
+                ]);
+            }
+
+            $imageName = time() . rand(1111, 999) . '.' . $req->insta_media->extension();
+            $req->insta_media->move('content_media', $imageName);
+            $mediaDataInsta = $imageName;
+            $InstafilePath = 'content_media/' . $mediaDataInsta;
+
+            if ($req->media_type_instagram == 'image') {
+                $width = Image::make($InstafilePath)->width();
+                $height = Image::make($InstafilePath)->height();
                 $aspectRatio = sprintf("%0.2f", $width / $height);
                 if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
                     return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
                 }
             }
-            if ($req->media_type == 'video') {
-                $req->validate([
-                    'media' => 'mimes:mp4|max:4000',
-                ]);
+            if ($req->media_type_instagram == 'video') {
 
-            }
-
-        }
-        $mediaData = null;
-        if ($req->hasFile('media')) {
-            $imageName = time() . rand(1111, 999) . '.' . $req->media->extension();
-            $req->media->move('content_media', $imageName);
-            $mediaData = $imageName;
-            if ($req->media_type == 'video') {
-                $filePath = 'content_media/' . $mediaData;
                 $getID3 = new \getID3();
-                $fileInfo = $getID3->analyze($filePath);
+                $fileInfo = $getID3->analyze($InstafilePath);
                 $width = $fileInfo['video']['resolution_x'] ?? 1;
                 $height = $fileInfo['video']['resolution_y'] ?? 1;
                 $aspectRatio = sprintf("%0.2f", $width / $height);
                 if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-                    unlink($filePath);
+                    unlink($InstafilePath);
                     return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
                 }
             }
+
+
         }
+        //****************end instagram validation****************//
 
+        //****************Linkedin validation****************//
+        if (in_array('Linkedin', $platforms)) {
+            $req->validate([
+                'linkedin_media' => 'required_if:media_type_linkedin,image|required_if:media_type_linkedin,video',
+            ]);
+            if ($req->media_type_linkedin == 'video') {
+                $req->validate([
+                    'linkedin_media' => 'mimes:mp4|max:4000',
+                ]);
+            }
+
+            if ($req->hasFile('linkedin_media')) {
+                $imageName = time() . rand(1111, 999) . '.' . $req->linkedin_media->extension();
+                $req->linkedin_media->move('content_media', $imageName);
+                $mediaDataLinkedin = $imageName;
+                $linkfilePath = 'content_media/' . $mediaDataLinkedin;
+            }
+
+            if ($req->media_type_linkedin == 'image') {
+                $width = Image::make($linkfilePath)->width();
+                $height = Image::make($linkfilePath)->height();
+                $aspectRatio = sprintf("%0.2f", $width / $height);
+                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
+                }
+            }
+            if ($req->media_type_linkedin == 'video') {
+
+                $getID3 = new \getID3();
+                $fileInfo = $getID3->analyze($linkfilePath);
+                $width = $fileInfo['video']['resolution_x'] ?? 1;
+                $height = $fileInfo['video']['resolution_y'] ?? 1;
+                $aspectRatio = sprintf("%0.2f", $width / $height);
+                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+                    unlink($linkfilePath);
+                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
+                }
+            }
+
+
+        }
+        //****************end linkedin validation****************//
+
+        //****************posting code****************//
         for ($i = 0; $i < count($platforms); $i++) {
-            //posting code
+            $content = Str::lower($platforms[$i]) . '_content';
+            $tag = Str::lower($platforms[$i]) . '_tag';
+            $mediatype = 'media_type_' . Str::lower($platforms[$i]);
+            $media = null;
+            if ($platforms[$i] == 'Facebook')
+                $media = $mediaDatafb;
+            elseif ($platforms[$i] == 'Instagram')
+                $media = $mediaDataInsta;
+            elseif ($platforms[$i] == 'Linkedin')
+                $media = $mediaDataLinkedin;
 
-            $content = 'content';
             $post = new Post();
             $post->user_id = auth()->user()->id;
             $post->content = $req->$content;
-            $post->tag = $req->tag;
+            $post->tag = $req->$tag;
             $post->posted_at_moment = $req->posttime;
             $post->posted_at = date_format(new DateTime($req->time), "Y-m-d H:i");
             $post->plateform = $platforms[$i];
             $post->timezone = $req->timezone;
-            $post->media = $mediaData;
-            $post->media_type = $req->media_type;
+            $post->media = $media;
+            $post->media_type = $req->$mediatype;
             $post->save();
-
-            $data = [
-                'post' => $post,
-                'media_type' => $req->media_type,
-                'timezone' => $req->timezone,
-            ];
-            if ($platforms[$i] == 'Facebook') {
-                if ($req->posttime == 'now') {
-                    $res = $facebookservice->create_post($data);
-                }
-
-            } elseif ($platforms[$i] == 'Instagram') {
-                if ($req->posttime == 'now') {
-                    $res = $Instagramservice->create_post($data);
-                }
-
-            } elseif ($platforms[$i] == 'Twitter') {
-
-                if ($req->posttime == 'now') {
-                    $res = $TwitterService->create_post($data);
-                }
-
-            } elseif ($platforms[$i] == 'Linkedin') {
-                if ($req->posttime == 'now') {
-                    $res = $Linkedinservice->create_post($data);
-                }
-            }
         }
         return back()->with('success', 'Post Created Successfully');
+        //****************end posting code****************//
 
     }
 
@@ -367,7 +403,7 @@ class UserController extends Controller
             } elseif (in_array('Instagram', $req->plateform_val) && (auth()->user()->insta_access_token == null || auth()->user()->insta_user_id == null)) {
                 $error = ['message' => 'insta_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Linkedin', $req->plateform_val) && (auth()->user()->linkedin_accesstoken == null || auth()->user()->linkedin_user_id == null)) {
+            } elseif (in_array('Linkedin', $req->plateform_val) && (auth()->user()->linkedin_accesstoken == null || auth()->user()->linkedin_user_id == null || auth()->user()->linkedin_page_id==null )) {
                 $error = ['message' => 'linkedin_error'];
                 return response()->json($error, 404);
             }

@@ -71,6 +71,7 @@ class LoginController extends Controller
                     return redirect()->intended('/index')->with('success', 'Login Successfully');
                 }
             } catch (\Throwable $e) {
+                dd($e);
                 return redirect()->intended('/login')->with('error', $e->getMessage()) ;
             }
 
@@ -104,6 +105,7 @@ class LoginController extends Controller
                 return redirect()->intended('/index')->with('success', 'Login Successfully');
             }
         } catch (\Throwable $e) {
+
             return redirect()->intended('/login')->with('error', $e->getMessage());
         }
     }
