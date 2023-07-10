@@ -786,14 +786,14 @@
 
 
 <script>
-    function updateDiv() {
-        var inputText = document.getElementById("emojiarea").value;
+    function updateDiv($obj) {
+        var inputText = $($obj).val();
         document.getElementById("mypostresult").textContent = inputText;
     }
 
-    function Namechangefun() {
-        var inputTextname = document.getElementById("namechange").value;
-        document.getElementById("mynameresult").textContent = '#' + inputTextname;
+    function Namechangefun($obj) {
+        var inputText = $($obj).val();
+        document.getElementById("mynameresult").textContent = '#' + inputText;
     }
 </script>
 @yield('js')

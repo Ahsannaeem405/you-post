@@ -323,6 +323,7 @@
         });
 
         $(document).on('click', '.image_or_video', function() {
+
             if($(this).attr('typpe') == 'image')
             {
                 $('#'+$(this).attr('fordata')).attr('accept', 'image/*');
@@ -331,7 +332,7 @@
             }
             $('#media_type_'+$(this).attr('social')).val($(this).attr('typpe'));
         });
-        $('#image_or_video').change(function (e) {
+        $('.file_image_video').change(function (e) {
             $('.must_add_image').addClass('d-none');
             var file = e.target.files[0];
             if (file) {

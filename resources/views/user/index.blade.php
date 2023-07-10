@@ -55,7 +55,7 @@
                                             <h5>Edit Facebook</h5>
 
                                             <div class="form-group emoji_parent">
-                                                <textarea onkeyup="updateDiv()" onchange="updateDiv()" required name="facebook_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
+                                                <textarea onkeyup="updateDiv(this)" onchange="updateDiv(this)" required name="facebook_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
@@ -79,13 +79,13 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <input type="file" name="facebook_media" class="image d-none" id="image_or_videofb" accept="image/*,video/*">
+                                                <input type="file" name="facebook_media" class="image d-none file_image_video" id="image_or_videofb" accept="image/*,video/*">
                                                 <input type="hidden" name="media_type_facebook" id="media_type_fb">
 
 
                                                 <div class="tags_input_wrap grid_item">
                                                     <div class="tags_input">
-                                                        <input onkeyup="Namechangefun()" id="namechange" required name="facebook_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
+                                                        <input onkeyup="Namechangefun(this)" id="namechange" required name="facebook_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,7 +102,7 @@
                                             <h5>Edit Instagram</h5>
 
                                             <div class="form-group emoji_parent">
-                                                <textarea onkeyup="updateDiv()" onchange="updateDiv()" required name="instagram_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
+                                                <textarea onkeyup="updateDiv(this)" onchange="updateDiv(this)" required name="instagram_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
@@ -126,13 +126,13 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <input type="file" name="insta_media" class="image d-none" id="image_or_video_insta" accept="image/*,video/*">
+                                                <input type="file" name="insta_media" class="image d-none file_image_video wizard-required" id="image_or_video_insta" accept="image/*,video/*">
                                                 <input type="hidden" name="media_type_instagram" id="media_type_insta">
 
 
                                                 <div class="tags_input_wrap grid_item">
                                                     <div class="tags_input">
-                                                        <input onkeyup="Namechangefun()" id="namechange" required name="instagram_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
+                                                        <input onkeyup="Namechangefun(this)" id="namechange" required name="instagram_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -147,7 +147,7 @@
                                         <fieldset class="wizard-fieldset">
                                             <h5>Edit Twitter</h5>
                                             <div class="form-group emoji_parent">
-                                                <textarea onkeyup="updateDiv()" onchange="updateDiv()" required name="twitter_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
+                                                <textarea onkeyup="updateDiv(this)" onchange="updateDiv(this)" required name="twitter_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
@@ -164,7 +164,7 @@
 
                                                 <div class="tags_input_wrap grid_item">
                                                     <div class="tags_input">
-                                                        <input onkeyup="Namechangefun()" id="namechange" required name="twitter_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
+                                                        <input onkeyup="Namechangefun(this)" id="namechange" required name="twitter_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +181,7 @@
                                             <h5>Edit Linkedin</h5>
 
                                             <div class="form-group emoji_parent">
-                                                <textarea onkeyup="updateDiv()" onchange="updateDiv()" required name="linkedin_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
+                                                <textarea onkeyup="updateDiv(this)" onchange="updateDiv(this)" required name="linkedin_content" id="" cols="30" rows="3" class="form-control wizard-required emojiarea" placeholder="Write your post...">{{old('content')}}</textarea>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
@@ -205,13 +205,13 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <input type="file" name="linkedin_media" class="image d-none" id="image_or_video_linkedin" accept="image/*,video/*">
+                                                <input type="file" name="linkedin_media" class="image d-none file_image_video" id="image_or_video_linkedin" accept="image/*,video/*">
                                                 <input type="hidden" name="media_type_linkedin" id="media_type_linkedin">
 
 
                                                 <div class="tags_input_wrap grid_item">
                                                     <div class="tags_input">
-                                                        <input onkeyup="Namechangefun()" id="namechange" required name="linkedin_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
+                                                        <input onkeyup="Namechangefun(this)" id="namechange" required name="linkedin_tag" type="text" class="form-control wizard-required" placeholder="#tags" value="{{old('tag')}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -255,7 +255,7 @@
             <div class="d-lg-flex">
                 <div class="preview_post">
                     <div class="sub_heading">
-                        <h4>Preview Setting: <span>iPhone | Facebook</span></h4>
+                        <h4>Post Preview</h4>
                     </div>
 
                     <div class="preview_wrap">
@@ -327,7 +327,7 @@
                 </div>
                 <div class="preview_post">
                     <div class="sub_heading">
-                        <h4>Preview Setting: <span>iPhone | Facebook</span></h4>
+                        <h4>Post Suggested</h4>
                     </div>
 
                     <div class="preview_wrap">
@@ -361,16 +361,16 @@
                                 </div>
                                 <p class="m-0"></p>
                                 <div class="Mobcart_title">
-                                    <time datetime="" id="mypostresult">Write your post...</time>
-                                    <span class="icon icon-privacy text-primary" id="mynameresult"> #tags</span>
+                                    <time datetime="" id="mypostresult_gpt">Write your post...</time>
+                                    <span class="icon icon-privacy text-primary" id="mynameresult_gpt"> #tags</span>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="MainMobileimg">
                                     <div class="media-container">
-                                        <img src="" class="d-none preview_image" alt="">
+                                        <img src="" class="d-none " alt="">
                                         <div id="mediaContainervideo">
-                                            <video class="d-none video_preview" controls>
+                                            <video class="d-none " controls>
                                                 <source src="movie.mp4" type="video/*">
                                             </video>
                                         </div>

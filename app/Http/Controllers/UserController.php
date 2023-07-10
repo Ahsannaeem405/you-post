@@ -35,8 +35,26 @@ class UserController extends Controller
 
     public function index()
     {
-        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id',auth()->user()->account_id)->groupBy('content')->get();
-        $accounts=Account::where('user_id',auth()->id())->get();
+
+//        $response = \Http::withHeaders([
+//            'Authorization' => 'Bearer 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',
+//            'Content-Type' => 'application/json',
+//        ])->post('https://api.openai.com/v1/chat/completions', [
+//            'model'=>'gpt-3.5-turbo',
+//            'messages' => [
+//                array('role'=>'assistant','content'=>'give preferred text for "My"')
+//            ],
+//            'temperature' => 0.8,
+//        ]);
+//
+//        $responseData = $response->json();
+//        $preferredText = $responseData['choices'][0]['message']['content'] ?? '';
+//
+//       dd($preferredText,$responseData);
+
+
+        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
+        $accounts = Account::where('user_id', auth()->id())->get();
 
         $allPosts = [];
         foreach ($posts as $post) {
@@ -123,7 +141,7 @@ class UserController extends Controller
         $all_pages_for_insta = [];
 
 
-        return view('user.index', compact('allPosts','accounts', 'all_pages', 'all_pages_for_insta', 'data', 'instapages'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'data', 'instapages'));
 
     }
 
@@ -253,7 +271,7 @@ class UserController extends Controller
                 $media = $mediaDataLinkedin;
 
             $post = new Post();
-            $post->account_id=auth()->user()->account_id;
+            $post->account_id = auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
             $post->content = $req->$content;
             $post->tag = $req->$tag;
@@ -404,7 +422,7 @@ class UserController extends Controller
             } elseif (in_array('Instagram', $req->plateform_val) && (auth()->user()->account->insta_access_token == null || auth()->user()->account->insta_user_id == null)) {
                 $error = ['message' => 'insta_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Linkedin', $req->plateform_val) && (auth()->user()->account->linkedin_accesstoken == null || auth()->user()->account->linkedin_user_id == null || auth()->user()->account->linkedin_page_id==null )) {
+            } elseif (in_array('Linkedin', $req->plateform_val) && (auth()->user()->account->linkedin_accesstoken == null || auth()->user()->account->linkedin_user_id == null || auth()->user()->account->linkedin_page_id == null)) {
                 $error = ['message' => 'linkedin_error'];
                 return response()->json($error, 404);
             }
@@ -741,7 +759,7 @@ class UserController extends Controller
 
             $access_token = $response2->access_token;
             $refresh_token = $response2->refresh_token;
-            User::find( auth()->user()->id)->account()->update([
+            User::find(auth()->user()->id)->account()->update([
                 'twiter_access_token' => $access_token,
                 'twiter_refresh_token' => $refresh_token
             ]);
