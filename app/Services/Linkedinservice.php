@@ -16,8 +16,8 @@ class Linkedinservice
     {
         $post = Post::find($data['post']->id);
         $media_path = public_path("content_media/$post->media");
-        $accesstoken = $post->user->linkedin_accesstoken;
-        $linkedin_user_id = $post->user->linkedin_page_id;
+        $accesstoken = $post->account->linkedin_accesstoken;
+        $linkedin_user_id = $post->account->linkedin_page_id;
 
 
         // LinkedIn API endpoint for media upload
@@ -202,7 +202,7 @@ class Linkedinservice
     public function delete_post($data)
     {
         try {
-            $accessToken = auth()->user()->linkedin_accesstoken;
+            $accessToken = auth()->user()->account->linkedin_accesstoken;
             $shareUrn=urlencode($data);
             $deleteEndpoint = "https://api.linkedin.com/rest/posts/$shareUrn";
             // Create a new Guzzle HTTP client instance

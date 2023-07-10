@@ -35,7 +35,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $posts = Post::select('*')->where('user_id', auth()->user()->id)->groupBy('content')->get();
+        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id',auth()->user()->account_id)->groupBy('content')->get();
         $accounts=Account::where('user_id',auth()->id())->get();
 
         $allPosts = [];
@@ -72,10 +72,10 @@ class UserController extends Controller
         }
 
 
-        $fb_access_token = auth()->user()->fb_access_token;
-        $fb_page_token = auth()->user()->fb_page_token;
-        $insta_access_token = auth()->user()->insta_access_token;
-        $insta_user_id = auth()->user()->insta_user_id;
+        $fb_access_token = auth()->user()->account->fb_access_token;
+        $fb_page_token = auth()->user()->account->fb_page_token;
+        $insta_access_token = auth()->user()->account->insta_access_token;
+        $insta_user_id = auth()->user()->account->insta_user_id;
         if ($fb_access_token != null && $fb_page_token == null) {
             $fb = new Facebook([
                 'app_id' => env('app_id'),
@@ -89,12 +89,12 @@ class UserController extends Controller
             $all_pages = [];
         }
         $instapages = [];
-        if (!auth()->user()->linkedin_page_id && auth()->user()->linkedin_accesstoken) {
+        if (!auth()->user()->account->linkedin_page_id && auth()->user()->account->linkedin_accesstoken) {
             $client = new Client();
 
             $response = $client->get('https://api.linkedin.com/v2/organizationalEntityAcls?q=roleAssignee', [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+                    'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
                     'Content-Type' => 'application/json',
                     'X-Restli-Protocol-Version' => '2.0.0',
                 ],
@@ -107,7 +107,7 @@ class UserController extends Controller
 
                 $pageResponse = $client->get("https://api.linkedin.com/v2/organizations/{$pageId}", [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+                        'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
                         'Content-Type' => 'application/json',
                         'X-Restli-Protocol-Version' => '2.0.0',
                     ],
@@ -130,7 +130,7 @@ class UserController extends Controller
     public function create_post(Request $req, Facebookservice $facebookservice, TwitterService $TwitterService, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice)
     {
 
-        $platforms = auth()->user()->platforms;
+        $platforms = auth()->user()->account->platforms;
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
         }
@@ -253,6 +253,7 @@ class UserController extends Controller
                 $media = $mediaDataLinkedin;
 
             $post = new Post();
+            $post->account_id=auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
             $post->content = $req->$content;
             $post->tag = $req->$tag;
@@ -345,10 +346,10 @@ class UserController extends Controller
 
             }
         }
-        $fb_access_token = auth()->user()->fb_access_token;
-        $fb_page_token = auth()->user()->fb_page_token;
-        $insta_access_token = auth()->user()->insta_access_token;
-        $insta_user_id = auth()->user()->insta_user_id;
+        $fb_access_token = auth()->user()->account->fb_access_token;
+        $fb_page_token = auth()->user()->account->fb_page_token;
+        $insta_access_token = auth()->user()->account->insta_access_token;
+        $insta_user_id = auth()->user()->account->insta_user_id;
         if ($fb_access_token != null && $fb_page_token == null) {
             $fb = new Facebook([
                 'app_id' => env('app_id'),
@@ -394,21 +395,21 @@ class UserController extends Controller
     public function update_user_platforms(Request $req)
     {
         if ($req->plateform_val != null) {
-            if (in_array('Facebook', $req->plateform_val) && (auth()->user()->fb_access_token == null || auth()->user()->fb_page_token == null)) {
+            if (in_array('Facebook', $req->plateform_val) && (auth()->user()->account->fb_access_token == null || auth()->user()->account->fb_page_token == null)) {
                 $error = ['message' => 'fb_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Twitter', $req->plateform_val) && (auth()->user()->twiter_access_token == null || auth()->user()->twiter_refresh_token == null)) {
+            } elseif (in_array('Twitter', $req->plateform_val) && (auth()->user()->account->twiter_access_token == null || auth()->user()->account->twiter_refresh_token == null)) {
                 $error = ['message' => 'twiter_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Instagram', $req->plateform_val) && (auth()->user()->insta_access_token == null || auth()->user()->insta_user_id == null)) {
+            } elseif (in_array('Instagram', $req->plateform_val) && (auth()->user()->account->insta_access_token == null || auth()->user()->account->insta_user_id == null)) {
                 $error = ['message' => 'insta_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Linkedin', $req->plateform_val) && (auth()->user()->linkedin_accesstoken == null || auth()->user()->linkedin_user_id == null || auth()->user()->linkedin_page_id==null )) {
+            } elseif (in_array('Linkedin', $req->plateform_val) && (auth()->user()->account->linkedin_accesstoken == null || auth()->user()->account->linkedin_user_id == null || auth()->user()->account->linkedin_page_id==null )) {
                 $error = ['message' => 'linkedin_error'];
                 return response()->json($error, 404);
             }
         }
-        $user = User::find(auth()->user()->id);
+        $user = Account::find(auth()->user()->account_id);
         $req->plateform_val ? $user->platforms = $req->plateform_val : $user->platforms = [];
         $user->update();
 
@@ -420,9 +421,9 @@ class UserController extends Controller
     public function connect_to_facebook()
     {
 
-        auth()->user()->update([
+        auth()->user()->account()->update([
             'fb_access_token' => null,
-            'facebook_id' => null
+            'fb_page_token' => null
         ]);
 
         $fb = new Facebook([
@@ -446,15 +447,15 @@ class UserController extends Controller
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
         $token = $accessToken->getValue();
-        $user = User::find(auth()->user()->id);
-        $user->fb_access_token = $token;
-        $user->update();
+        $account = Account::find(auth()->user()->account_id);
+        $account->fb_access_token = $token;
+        $account->update();
         return redirect('/index')->with('success', 'Facebook Connected Successfully! kindly Select Your Page');
     }
 
     public function select_page()
     {
-        $accessToken = auth()->user()->fb_access_token;
+        $accessToken = auth()->user()->account->fb_access_token;
         $fb = new Facebook([
             'app_id' => env('app_id'),
             'app_secret' => env('app_secret'),
@@ -471,7 +472,7 @@ class UserController extends Controller
         $req->validate([
             'page' => 'required',
         ]);
-        $user = User::find(auth()->user()->id);
+        $user = Account::find(auth()->user()->account_id);
         $user->fb_page_token = $req->page;
         $user->update();
         return redirect('/index')->with('success', 'Facebook Connected Successfully!');
@@ -484,7 +485,7 @@ class UserController extends Controller
 
     public function connect_to_instagram()
     {
-        auth()->user()->update([
+        auth()->user()->account()->update([
             'insta_access_token' => null,
             'insta_user_id' => null
         ]);
@@ -514,7 +515,7 @@ class UserController extends Controller
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
 
 
-        $user = User::find(auth()->user()->id);
+        $user = Account::find(auth()->user()->account_id);
         $user->insta_access_token = $accessToken;
         $user->update();
         return redirect('/index')->with('success', 'Please Select page that you have connected with you instagram business account');
@@ -524,8 +525,8 @@ class UserController extends Controller
     public function get_page_for_instagram()
     {
 
-        $insta_access_token = auth()->user()->insta_access_token;
-        $insta_user_id = auth()->user()->insta_user_id;
+        $insta_access_token = auth()->user()->account->insta_access_token;
+        $insta_user_id = auth()->user()->account->insta_user_id;
 
         if ($insta_access_token != null && $insta_user_id == null) {
             $insta = config('services.instagram');
@@ -549,7 +550,7 @@ class UserController extends Controller
         ]);
         $options = null;
         foreach ($all_pages_for_insta as $page) {
-            $response = $instagram->get("/$page->id?fields=instagram_business_account", auth()->user()->insta_access_token);
+            $response = $instagram->get("/$page->id?fields=instagram_business_account", auth()->user()->account->insta_access_token);
             $result = $response->getDecodedBody();
             if (isset($result['instagram_business_account'])) {
                 $options .= "<option value=" . $page->id . ">$page->name</option>";
@@ -572,14 +573,14 @@ class UserController extends Controller
             'app_secret' => $insta['client_secret'],
             'default_graph_version' => 'v16.0',
         ]);
-        $response = $instagram->get("/$req->page?fields=instagram_business_account", auth()->user()->insta_access_token);
+        $response = $instagram->get("/$req->page?fields=instagram_business_account", auth()->user()->account->insta_access_token);
 
 
         $result = $response->getDecodedBody();
         // dd($result);
         if (isset($result['instagram_business_account'])) {
             $instagram_business_account_id = $result['instagram_business_account']['id'];
-            $user = User::find(auth()->user()->id);
+            $user = Account::find(auth()->user()->account_id);
             $user->insta_user_id = $instagram_business_account_id;
             $user->update();
             return redirect('/index')->with('success', 'instagram Connected Successfully!');
@@ -596,7 +597,7 @@ class UserController extends Controller
             'page' => 'required',
         ]);
 
-        $user = User::find(auth()->user()->id);
+        $user = Account::find(auth()->user()->account_id);
         $user->linkedin_page_id = $req->page;
         $user->update();
         return redirect('/index')->with('success', 'Linkedin  Connected Successfully!');
@@ -610,7 +611,7 @@ class UserController extends Controller
     ////////////////////linkedin/////////////////////////
     public function connect_to_linkedin()
     {
-        auth()->user()->update([
+        auth()->user()->account()->update([
             'linkedin_accesstoken' => null,
             'linkedin_user_id' => null,
             'linkedin_page_id' => null
@@ -664,7 +665,7 @@ class UserController extends Controller
             $userData = json_decode($response->getBody(), true);
             $userId = $userData['id'];
             // save userid and user access token into database for future use
-            $user = User::find(auth()->user()->id);
+            $user = Account::find(auth()->user()->account_id);
             $user->linkedin_accesstoken = $accessToken->getToken();
             $user->linkedin_user_id = $userId;
             $user->update();
@@ -682,7 +683,7 @@ class UserController extends Controller
 
     public function connect_to_twitter()
     {
-        auth()->user()->update([
+        auth()->user()->account()->update([
             'twiter_access_token' => null,
             'twiter_refresh_token' => null,
         ]);
@@ -740,7 +741,7 @@ class UserController extends Controller
 
             $access_token = $response2->access_token;
             $refresh_token = $response2->refresh_token;
-            User::where('id', auth()->user()->id)->update([
+            User::find( auth()->user()->id)->account()->update([
                 'twiter_access_token' => $access_token,
                 'twiter_refresh_token' => $refresh_token
             ]);
@@ -815,7 +816,7 @@ class UserController extends Controller
         // ///////////////////////
 
         $urn = 'urn:li:activity:7059887884065026049'; // replace with your post URN
-        $accessToken = auth()->user()->linkedin_accesstoken; // replace with your access token
+        $accessToken = auth()->user()->account->linkedin_accesstoken; // replace with your access token
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -910,7 +911,7 @@ class UserController extends Controller
         // dd('34');
         $response = $client->request('GET', 'https://api.linkedin.com/v2/socialActions/7059887884065026049', [
             'headers' => [
-                'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+                'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
                 "Linkedin-Version" => "202208",
             ]
         ]);
@@ -922,7 +923,7 @@ class UserController extends Controller
         $client = new Client([
             'base_uri' => 'https://api.linkedin.com/v2/',
             'headers' => [
-                'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken,
+                'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ]
@@ -942,7 +943,7 @@ class UserController extends Controller
                 'app_id' => env('app_id'),
                 'app_secret' => env('app_secret'),
                 'default_graph_version' => 'v16.0',
-                'default_access_token' => $user->fb_page_token,
+                'default_access_token' => $user->account->fb_page_token,
             ]);
 
             // likes
@@ -973,7 +974,7 @@ class UserController extends Controller
             $user = $post->post->user;
 
             $insta = config('services.instagram');
-            $tokenn = $user->insta_access_token;
+            $tokenn = $user->account->insta_access_token;
             $instagram = new Facebook([
                 'app_id' => $insta['client_id'],
                 'app_secret' => $insta['client_secret'],

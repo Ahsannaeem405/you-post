@@ -19,7 +19,7 @@ class  Facebookservice
 
         $post = Post::find($data['post']->id);
         $media_path = public_path("content_media/$post->media");
-        $accessToken = $post->user->fb_page_token;
+        $accessToken = $post->account->fb_page_token;
 
         $client = new Client();
 
@@ -77,7 +77,7 @@ class  Facebookservice
 
     function delete_post($id)
     {
-        $accessToken = auth()->user()->fb_page_token;
+        $accessToken = auth()->user()->account->fb_page_token;
 
         $fb = new Facebook([
             'app_id' => env('app_id'),
@@ -98,7 +98,7 @@ class  Facebookservice
 
     function edit_post($post, $req)
     {
-        $accessToken = auth()->user()->fb_page_token;
+        $accessToken = auth()->user()->account->fb_page_token;
 
 
         $fb = new Facebook([

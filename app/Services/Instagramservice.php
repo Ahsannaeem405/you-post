@@ -24,8 +24,8 @@ class Instagramservice
         $media_path = asset("content_media/$post->media");
 
         $insta = config('services.instagram');
-        $accesstoken = $post->user->insta_access_token;
-        $insta_user_id = $post->user->insta_user_id;
+        $accesstoken = $post->account->insta_access_token;
+        $insta_user_id = $post->account->insta_user_id;
 
         $instagram = new Facebook([
             'app_id' => $insta['client_id'],
@@ -88,9 +88,8 @@ class Instagramservice
                     'creation_id' => $media_id,
                     'access_token' => $accesstoken
                 ])->json();
-
-                $postdetail = new PostDetail();
-                $postdetail->post_id = $post->id;
+                 $postdetail = new PostDetail();
+               $postdetail->post_id = $post->id;
                 $postdetail->plateform = 'Instagram';
                 $postdetail->social_id = $response['id'];
                 $postdetail->save();
@@ -115,7 +114,7 @@ class Instagramservice
 
     public function delete_post($data)
     {
-        $accessToken = auth()->user()->insta_access_token;
+        $accessToken = auth()->user()->account->insta_access_token;
 
         $postId = $data;
 

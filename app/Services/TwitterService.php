@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use App\Models\Account;
 use App\Models\PostDetail;
 use App\Models\User;
 use CURLFile;
@@ -16,9 +17,7 @@ class TwitterService
 {
     public function delete_post($data)
     {
-        $this->twiter_refresh(auth()->user());
-
-
+        $this->twiter_refresh(auth()->user()->account);
         $postId = $data;
 
 
@@ -26,7 +25,7 @@ class TwitterService
 
         try {
             auth()->user()->refresh();
-            $bearerToken = auth()->user()->twiter_access_token;
+            $bearerToken = auth()->user()->account->twiter_access_token;
 
             $response = Http::withToken($bearerToken)->delete('https://api.twitter.com/2/tweets/' . $postId);
 
@@ -52,11 +51,11 @@ class TwitterService
 
 
         $post = Post::find($data['post']->id);
-        $this->twiter_refresh($post->user);
+        $this->twiter_refresh($post->account);
         $post = Post::find($data['post']->id);
 
         $content = "$post->content #$post->tag";
-        $bearerToken = $post->user->twiter_access_token;
+        $bearerToken = $post->account->twiter_access_token;
 
 
         $response = Http::withToken($bearerToken)->post('https://api.twitter.com/2/tweets',
@@ -85,11 +84,10 @@ class TwitterService
     }
 
 
-    public function twiter_refresh($user)
+    public function twiter_refresh($account)
     {
 
-
-        $refresh_token = $user->twiter_refresh_token;
+        $refresh_token = $account->twiter_refresh_token;
         $twitter = config('services.twitter');
         $client_id = $twitter['client_id'];
         $client_secret = $twitter['client_secret'];
@@ -114,7 +112,7 @@ class TwitterService
 
         $access_token = $response2->access_token;
         $refresh_token = $response2->refresh_token;
-        $user = User::where('id', $user->id)->update([
+        $user = Account::find( $account->id)->update([
             'twiter_access_token' => $access_token,
             'twiter_refresh_token' => $refresh_token
         ]);

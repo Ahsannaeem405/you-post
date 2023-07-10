@@ -114,7 +114,7 @@
                         <img src="{{asset('images/FB_Black.png')}}" class="black_icon" alt=""/>
                     </div>
                     <input type="checkbox" class="plateform" name="plateform[]" value="Facebook" id="socialFB"
-                        {{ in_array('Facebook', auth()->user()->platforms) ? 'checked' : '' }}>
+                        {{ in_array('Facebook', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialFB"></label>
                 </div>
 
@@ -125,7 +125,7 @@
                     </div>
                     <input type="checkbox" class="plateform instagram_modal" name="plateform[]" value="Instagram"
                            id="socialInstagram"
-                        {{ in_array('Instagram', auth()->user()->platforms) ? 'checked' : '' }}>
+                        {{ in_array('Instagram', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialInstagram"></label>
                 </div>
 
@@ -136,7 +136,7 @@
                     </div>
 
                     <input type="checkbox" class="plateform" name="plateform[]" value="Twitter" id="socialTwitter"
-                        {{ in_array('Twitter', auth()->user()->platforms) ? 'checked' : '' }}>
+                        {{ in_array('Twitter', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialTwitter"></label>
                 </div>
                 <div class="single_platform">
@@ -146,7 +146,7 @@
                     </div>
 
                     <input type="checkbox" class="plateform" name="plateform[]" value="Linkedin" id="socialLinkedin"
-                        {{ in_array('Linkedin', auth()->user()->platforms) ? 'checked' : '' }}>
+                        {{ in_array('Linkedin', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialLinkedin"></label>
                 </div>
 
@@ -745,12 +745,12 @@
         instaCheck();
         var authuser = "{{auth()->user()}}";
         if (authuser != null) {
-            var insta_access_token = "{{auth()->user()->insta_access_token}}";
-            var insta_user_id = "{{auth()->user()->insta_user_id}}";
-            var fb_access_token = "{{auth()->user()->fb_access_token}}";
-            var fb_page_token = "{{auth()->user()->fb_page_token}}";
-            var linkedin = "{{auth()->user()->linkedin_page_id}}";
-            var linkedinAcces = "{{auth()->user()->linkedin_accesstoken}}";
+            var insta_access_token = "{{auth()->user()->account->insta_access_token}}";
+            var insta_user_id = "{{auth()->user()->account->insta_user_id}}";
+            var fb_access_token = "{{auth()->user()->account->fb_access_token}}";
+            var fb_page_token = "{{auth()->user()->account->fb_page_token}}";
+            var linkedin = "{{auth()->user()->account->linkedin_page_id}}";
+            var linkedinAcces = "{{auth()->user()->account->linkedin_accesstoken}}";
 
 
             if (insta_access_token != '' && insta_user_id == '') {

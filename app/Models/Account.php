@@ -9,4 +9,8 @@ class Account extends Model
 {
     protected $guarded=[];
     use HasFactory;
+
+    protected $casts=[
+        'platforms' => 'array'
+    ];
 }

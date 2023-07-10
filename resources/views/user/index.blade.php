@@ -36,21 +36,21 @@
                                     <div class="form-wizard-header">
                                         <p>Let's edit your post for each platform</p>
                                         <ul class="list-unstyled form-wizard-steps clearfix">
-                                            @if(in_array(('Facebook'),auth()->user()->platforms))
+                                            @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                                 <li><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/FB_Color.png')}}" width="20px" alt=""></span></li>
                                             @endif
-                                            @if(in_array(('Instagram'),auth()->user()->platforms))
+                                            @if(in_array(('Instagram'),auth()->user()->account->platforms))
                                                 <li><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/Instagram_Color.png')}}" width="20px" alt=""></span></li>
                                             @endif
-                                            @if(in_array(('Twitter'),auth()->user()->platforms))
+                                            @if(in_array(('Twitter'),auth()->user()->account->platforms))
                                                 <li><span><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/Twitter_Color.png')}}" width="20px" alt=""></span></span></li>
                                             @endif
-                                            @if(in_array(('Linkedin'),auth()->user()->platforms))
+                                            @if(in_array(('Linkedin'),auth()->user()->account->platforms))
                                                 <li><span><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/Linkedin_Color.png')}}" width="20px" alt=""></span></span></li>
                                             @endif
                                         </ul>
                                     </div>
-                                    @if(in_array(('Facebook'),auth()->user()->platforms))
+                                    @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset ">
                                             <h5>Edit Facebook</h5>
 
@@ -97,7 +97,7 @@
                                         </fieldset>
                                     @endif
 
-                                    @if(in_array(('Instagram'),auth()->user()->platforms))
+                                    @if(in_array(('Instagram'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset">
                                             <h5>Edit Instagram</h5>
 
@@ -143,7 +143,7 @@
                                         </fieldset>
                                     @endif
 
-                                    @if(in_array(('Twitter'),auth()->user()->platforms))
+                                    @if(in_array(('Twitter'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset">
                                             <h5>Edit Twitter</h5>
                                             <div class="form-group emoji_parent">
@@ -176,7 +176,7 @@
                                     @endif
 
 
-                                    @if(in_array(('Linkedin'),auth()->user()->platforms))
+                                    @if(in_array(('Linkedin'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset">
                                             <h5>Edit Linkedin</h5>
 
