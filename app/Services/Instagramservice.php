@@ -32,7 +32,7 @@ class Instagramservice
             'app_secret' => $insta['client_secret'],
             'default_graph_version' => 'v16.0',
         ]);
-
+        $tags = $post->tag ? " #$post->tag" : '';
         if ($post->media_type == 'image') {
 
             try {
@@ -40,7 +40,7 @@ class Instagramservice
 
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
                     'image_url' => $media_path,
-                    'caption' => $post->content.' #'.$post->tag,
+                    'caption' => $post->content.$tags,
                     'access_token' => $accesstoken
                 ])->json();
 
@@ -77,7 +77,7 @@ class Instagramservice
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
                     'video_url' => $media_path,
                     'media_type' => 'VIDEO',
-                    'caption' => $post->content.' #'.$post->tag,
+                    'caption' => $post->content.$tags,
                     'access_token' => $accesstoken
                 ])->json();
 

@@ -333,7 +333,10 @@
             $('#media_type_'+$(this).attr('social')).val($(this).attr('typpe'));
         });
         $('.file_image_video').change(function (e) {
-            $('.must_add_image').addClass('d-none');
+            if($(this).attr('id')=='image_or_video_insta'){
+                $('.must_add_image').addClass('d-none');
+            }
+
             var file = e.target.files[0];
             if (file) {
                 var reader = new FileReader();

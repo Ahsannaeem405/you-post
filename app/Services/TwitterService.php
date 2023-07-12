@@ -53,8 +53,8 @@ class TwitterService
         $post = Post::find($data['post']->id);
         $this->twiter_refresh($post->account);
         $post = Post::find($data['post']->id);
-
-        $content = "$post->content #$post->tag";
+        $tags = $post->tag ? " #$post->tag" : '';
+        $content = "$post->content $tags";
         $bearerToken = $post->account->twiter_access_token;
 
 

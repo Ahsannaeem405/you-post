@@ -22,6 +22,7 @@ class Linkedinservice
 
         // LinkedIn API endpoint for media upload
         $postEndpoint = 'https://api.linkedin.com/rest/posts';
+        $tags = $post->tag ? " #$post->tag" : '';
         if (!$post->media_type) {
             try {
                 $response = \Http::withHeaders([
@@ -31,7 +32,7 @@ class Linkedinservice
                     'LinkedIn-Version' => '202306'
                 ])->post($postEndpoint, [
                     'author' => $linkedin_user_id,
-                    'commentary' => "$post->content #$post->tag",
+                    'commentary' => "$post->content $tags",
                     "visibility" => "PUBLIC",
                     "distribution" => array(
                         "feedDistribution" => "MAIN_FEED",
@@ -84,7 +85,7 @@ class Linkedinservice
                     'LinkedIn-Version' => '202306'
                 ])->post($postEndpoint, [
                     'author' => $linkedin_user_id,
-                    'commentary' => "$post->content #$post->tag",
+                    'commentary' => "$post->content $tags",
                     "visibility" => "PUBLIC",
                     "distribution" => array(
                         "feedDistribution" => "MAIN_FEED",
@@ -163,7 +164,7 @@ class Linkedinservice
                     'LinkedIn-Version' => '202306'
                 ])->post($postEndpoint, [
                     'author' => $linkedin_user_id,
-                    'commentary' => "$post->content #$post->tag",
+                    'commentary' => "$post->content $tags",
                     "visibility" => "PUBLIC",
                     "distribution" => array(
                         "feedDistribution" => "MAIN_FEED",

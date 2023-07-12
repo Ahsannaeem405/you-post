@@ -29,7 +29,7 @@ class  Facebookservice
         } else if ($data['post']->media_type == 'video') {
             $url = "https://graph.facebook.com/me/videos";
         }
-
+        $tags = $post->tag ? " #$post->tag" : '';
         $options = [
             'query' => [
                 'access_token' => $accessToken,
@@ -37,17 +37,17 @@ class  Facebookservice
             'multipart' => [
                 [
                     'name' => 'message',
-                    'contents' => "$post->content #$post->tag",
+                    'contents' => "$post->content $tags",
                 ],
                 [
                     'name' => 'description',
-                    'contents' => "$post->content #$post->tag",
+                    'contents' => "$post->content $tags",
                 ],
 
             ],
         ];
-        if ($data['post']->media_type == 'video' || $data['post']->media_type == 'image'){
-            $options['multipart'][]= [
+        if ($data['post']->media_type == 'video' || $data['post']->media_type == 'image') {
+            $options['multipart'][] = [
                 'name' => 'source',
                 'contents' => fopen($media_path, 'r'),
             ];
@@ -87,7 +87,7 @@ class  Facebookservice
         $post_id = $id;
         try {
             $response = $fb->delete("/$post_id");
-                $msg = ['status' => true];
+            $msg = ['status' => true];
             return $msg;
         } catch (\Throwable $e) {
             $msg = ['status' => false];
@@ -96,31 +96,31 @@ class  Facebookservice
 
     }
 
-    function edit_post($post, $req)
-    {
-        $accessToken = auth()->user()->account->fb_page_token;
-
-
-        $fb = new Facebook([
-            'app_id' => env('app_id'),
-            'app_secret' => env('app_secret'),
-            'default_access_token' => $accessToken,
-        ]);
-
-        $post_id = $req->id;
-        $message = "$req->content #$req->tag";
-
-
-        $response = $fb->post("/$post_id", ['message' => $message]);
-
-        if ($response->getStatusCode() == 200) {
-            $get_post = PostDetail::where('social_id', $data)->first();
-            $dell = Post::find($get_post->post_id);
-            $dell->delete();
-            $msg = ['status' => true];
-            return $msg;
-
-        }
-    }
+//    function edit_post($post, $req)
+//    {
+//        $accessToken = auth()->user()->account->fb_page_token;
+//
+//
+//        $fb = new Facebook([
+//            'app_id' => env('app_id'),
+//            'app_secret' => env('app_secret'),
+//            'default_access_token' => $accessToken,
+//        ]);
+//
+//        $post_id = $req->id;
+//        $message = "$req->content #$req->tag";
+//
+//
+//        $response = $fb->post("/$post_id", ['message' => $message]);
+//
+//        if ($response->getStatusCode() == 200) {
+//            $get_post = PostDetail::where('social_id', $data)->first();
+//            $dell = Post::find($get_post->post_id);
+//            $dell->delete();
+//            $msg = ['status' => true];
+//            return $msg;
+//
+//        }
+//    }
 
 }

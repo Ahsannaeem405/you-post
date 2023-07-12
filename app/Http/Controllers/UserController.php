@@ -36,21 +36,9 @@ class UserController extends Controller
     public function index()
     {
 
-//        $response = \Http::withHeaders([
-//            'Authorization' => 'Bearer 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',
-//            'Content-Type' => 'application/json',
-//        ])->post('https://api.openai.com/v1/chat/completions', [
-//            'model'=>'gpt-3.5-turbo',
-//            'messages' => [
-//                array('role'=>'assistant','content'=>'give preferred text for "My"')
-//            ],
-//            'temperature' => 0.8,
-//        ]);
-//
-//        $responseData = $response->json();
-//        $preferredText = $responseData['choices'][0]['message']['content'] ?? '';
-//
-//       dd($preferredText,$responseData);
+
+
+
 
 
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
@@ -120,7 +108,6 @@ class UserController extends Controller
             $pageAcls = json_decode($response->getBody(), true)['elements'];
             foreach ($pageAcls as $pageAcl) {
                 $organizationalTarget = $pageAcl['organizationalTarget'];
-
                 $pageId = explode(':', $organizationalTarget)[3];
 
                 $pageResponse = $client->get("https://api.linkedin.com/v2/organizations/{$pageId}", [
@@ -130,22 +117,16 @@ class UserController extends Controller
                         'X-Restli-Protocol-Version' => '2.0.0',
                     ],
                 ]);
-
                 $page = json_decode($pageResponse->getBody(), true);
                 $instapages[] = $page;
             }
-
-
         }
-
         $all_pages_for_insta = [];
-
-
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'data', 'instapages'));
 
     }
 
-    public function create_post(Request $req, Facebookservice $facebookservice, TwitterService $TwitterService, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice)
+    public function create_post(Request $req)
     {
 
         $platforms = auth()->user()->account->platforms;
@@ -302,7 +283,6 @@ class UserController extends Controller
             $get_post->delete();
             return redirect('/index')->with('success', 'Post Deleted Successfully!');
         } else {
-
             if ($get_post->plateform == 'Linkedin') {
                 $get_data = $Linkedinservice->delete_post($get_post->plateforms->social_id);
             }
@@ -310,16 +290,12 @@ class UserController extends Controller
                 $get_data = $Instagramservice->delete_post($get_post->plateforms->social_id);
             }
             if ($get_post->plateform == 'Twitter') {
-
                 $get_data = $TwitterService->delete_post($get_post->plateforms->social_id);
             }
             if ($get_post->plateform == 'Facebook') {
-
                 $get_data = $facebookservice->delete_post($get_post->plateforms->social_id);
             }
-
-
-            if ($get_data['status'] == true) {
+            if ($get_data['status']== true) {
                 $get_post->delete();
                 return redirect('/index')->with('success', 'Post Deleted Successfully!');
             } else {

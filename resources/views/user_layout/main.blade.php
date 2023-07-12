@@ -5,6 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatble" content="ie=edge"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <!--Website Title-->
     <title>YOUPOST</title>
     <!--Calling Favicon-->
@@ -64,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="new_post_button_wrap">
+            <div class="new_post_button_wrap" style="visibility: hidden">
                 <div class="new_post_button">
                     <a href="javascript:void(0)">+ New Post</a>
                 </div>
@@ -93,9 +94,12 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         @foreach($accounts as $account)
                             <li><a class="dropdown-item {{auth()->user()->account_id==$account->id ? 'active' : null}}"
-                                   href="{{url("change_acount/".encrypt($account->id))}}"><i class="fa-solid fa-user"></i> {{$account->name}}</a></li>
+                                   href="{{url("change_acount/".encrypt($account->id))}}"><i
+                                        class="fa-solid fa-user"></i> {{$account->name}}</a></li>
                         @endforeach
-                        <li><a class="dropdown-item" style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#addAccount">Add Account <i class="fa-solid fa-plus text-success"></i></a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer" data-bs-toggle="modal"
+                               data-bs-target="#addAccount">Add Account <i
+                                    class="fa-solid fa-plus text-success"></i></a></li>
                     </ul>
                 </div>
 
@@ -242,7 +246,8 @@
                     @csrf
                     <div class="col-12 mb-2">
                         <lable>Name</lable>
-                        <input type="text" class="form-control" required name="name" placeholder="Enter account name...">
+                        <input type="text" class="form-control" required name="name"
+                               placeholder="Enter account name...">
                     </div>
 
                     <div class="col-12 text-center">
@@ -688,7 +693,6 @@
                 'plateform_val': plateform_val
             },
             success: function (response) {
-                instaCheck();
                 window.location.reload();
             },
             error: function (xhr, status, error) {
@@ -742,7 +746,7 @@
 
     $(document).ready(function () {
 
-        instaCheck();
+
         var authuser = "{{auth()->user()}}";
         if (authuser != null) {
             var insta_access_token = "{{auth()->user()->account->insta_access_token}}";
@@ -774,13 +778,7 @@
 
     });
 
-    function instaCheck() {
-        if ($('.instagram_modal').prop('checked')) {
-            $('.must_add_image').removeClass('d-none');
-        } else {
-            $('.must_add_image').addClass('d-none');
-        }
-    }
+
 
 </script>
 
@@ -794,6 +792,28 @@
     function Namechangefun($obj) {
         var inputText = $($obj).val();
         document.getElementById("mynameresult").textContent = '#' + inputText;
+    }
+
+    function suggested_text($obj) {
+$('.preview_post .loader').removeClass('d-none');
+        var contentData=$($obj).val();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '{{ url('preferred-text')}}',
+            type: 'POST',
+            data: {'contentData': contentData},
+            success: function (result) {
+                $('.preview_post .loader').addClass('d-none');
+                document.getElementById("mypostresult_gpt").textContent = result['content'];
+                document.getElementById("mynameresult_gpt").textContent = '#'+result['tags'];
+            }
+        });
+
     }
 </script>
 @yield('js')
