@@ -95,6 +95,8 @@ Route::group(['middleware' => ['auth']], function () {
     //preferred text gpt
     Route::post('preferred-text', [\App\Http\Controllers\GptController::class, 'PreferredText']);
 });
+
+Route::get('preview-page',[\App\Http\Controllers\GptController::class,'previewPage']);
 Route::get('logout', function () {
     Auth::logout();
     return redirect('/login');

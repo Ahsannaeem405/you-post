@@ -64,8 +64,6 @@ class TwitterService
 
             ]);
         $get = json_decode($response->body());
-
-
         if ($response->status() == 201) {
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
@@ -118,6 +116,18 @@ class TwitterService
         ]);
 
 
+
+    }
+
+    function stats($post)
+    {
+        $getStats = \Http::withToken($post->account->twiter_access_token)
+            ->get("https://api.twitter.com/2/tweets/{$post->post_dt->social_id}/liking_users")->json();
+        $post->post_dt->update([
+            'likes'=>$getStats['like_count'] ?? 0,
+            'comments'=>$getStats['comments_count'] ?? 0,
+            'shares'=>$getStats['shares_count'] ?? 0,
+        ]);
 
     }
 }

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GptController extends Controller
 {
+
     public function PreferredText(Request $request)
     {
+
         $response = \Http::withHeaders([
             'Authorization' => 'Bearer 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',
             'Content-Type' => 'application/json',
@@ -41,5 +44,10 @@ class GptController extends Controller
         $tags = $responseData['choices'][0]['message']['content'] ?? '';
 
         return response()->json(['success' => true, 'content' => $preferredText,'tags'=>$tags]);
+    }
+
+    public function previewPage(){
+
+        return view('preview');
     }
 }

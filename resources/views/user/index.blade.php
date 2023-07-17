@@ -97,7 +97,7 @@
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                    name="facebook_tag" type="text"
+                                                                   name="facebook_tag" type="text"
                                                                    class="form-control "
                                                                    placeholder="tags" value="{{old('facebook_tag')}}">
                                                         </div>
@@ -107,7 +107,8 @@
 
                                                 <div class="form-group clearfix">
                                                     <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
-                                                    <a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+                                                    <a href="javascript:;"
+                                                       class="form-wizard-next-btn float-right">Next</a>
                                                 </div>
                                             </fieldset>
                                         @endif
@@ -175,7 +176,7 @@
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                    name="instagram_tag" type="text"
+                                                                   name="instagram_tag" type="text"
                                                                    class="form-control"
                                                                    placeholder="tags" value="{{old('instagram_tag')}}">
                                                         </div>
@@ -214,7 +215,7 @@
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                    name="twitter_tag" type="text"
+                                                                   name="twitter_tag" type="text"
                                                                    class="form-control "
                                                                    placeholder="tags" value="{{old('twitter_tag')}}">
                                                         </div>
@@ -280,7 +281,9 @@
 
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
-                                                            <input onkeyup="Namechangefun(this)" id="namechange" name="linkedin_tag" type="text" class="form-control" placeholder="tags" value="{{old('linkedin_tag')}}">
+                                                            <input onkeyup="Namechangefun(this)" id="namechange"
+                                                                   name="linkedin_tag" type="text" class="form-control"
+                                                                   placeholder="tags" value="{{old('linkedin_tag')}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -579,13 +582,14 @@
                                 <h4>Likes</h4>
                                 <ul>
                                     <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid"
-                                             alt=""/> {{$data['total_fb_likes']}}</li>
+                                             alt=""/> {{$stattistics['total_fb_likes']}}</li>
                                     <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid"
-                                             alt=""/> {{$data['total_insta_likes']}}</li>
-                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/> 1748
+                                             alt=""/> {{$stattistics['total_insta_likes']}}</li>
+                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid"
+                                             alt=""/> {{$stattistics['total_twitter_likes']}}
                                     </li>
                                     <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt=""/>
-                                        1748
+                                        {{$stattistics['total_linkedin_likes']}}
                                     </li>
                                     <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt=""/> 1748
                                     </li>
@@ -596,91 +600,42 @@
                                aria-controls="shares" aria-selected="false" disabled>
                                 <h4>Shares</h4>
                                 <ul>
-                                    <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt=""/> 1748</li>
+                                    <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt=""/>   {{$stattistics['total_fb_shares']}}</li>
                                     <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt=""/>
-                                        1748
+                                        {{$stattistics['total_insta_shares']}}
                                     </li>
-                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/> 1748
+                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/>   {{$stattistics['total_twitter_shares']}}
                                     </li>
                                     <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt=""/>
-                                        1748
+                                        {{$stattistics['total_linkedin_shares']}}
                                     </li>
                                     <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt=""/> 1748
                                     </li>
                                 </ul>
                             </a>
 
-                            <a class="nav-item nav-link" id="rePosted_tab" data-toggle="tab" href="#rePosted" role="tab"
-                               aria-controls="rePosted" aria-selected="false">
-                                <h4>RePosted</h4>
-                                <ul>
-                                    <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt=""/> 1748</li>
-                                    <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt=""/>
-                                        1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/> 1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt=""/>
-                                        1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt=""/> 1748
-                                    </li>
-                                </ul>
-                            </a>
+
 
                             <a class="nav-item nav-link" id="comments_tab" data-toggle="tab" href="#comments" role="tab"
                                aria-controls="comments" aria-selected="false">
                                 <h4>Comments</h4>
                                 <ul>
                                     <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid"
-                                             alt=""/> {{$data['total_fb_comments']}}</li>
+                                             alt=""/> {{$stattistics['total_fb_comments']}}</li>
                                     <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid"
-                                             alt=""/> {{$data['total_insta_comments']}}</li>
-                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/> 1748
+                                             alt=""/> {{$stattistics['total_insta_comments']}}</li>
+                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/>
+                                        {{$stattistics['total_twitter_comments']}}
                                     </li>
                                     <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt=""/>
-                                        1748
+                                        {{$stattistics['total_linkedin_comments']}}
                                     </li>
                                     <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt=""/> 1748
                                     </li>
                                 </ul>
                             </a>
 
-                            <a class="nav-item nav-link" id="favorited_tab" data-toggle="tab" href="#favorited"
-                               role="tab" aria-controls="favorited" aria-selected="false">
-                                <h4>Favorited</h4>
-                                <ul>
-                                    <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt=""/> 1748</li>
-                                    <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt=""/>
-                                        1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/> 1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt=""/>
-                                        1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt=""/> 1748
-                                    </li>
-                                </ul>
-                            </a>
 
-                            <a class="nav-item nav-link" id="friendsFollow_tab" data-toggle="tab" href="#friendsFollow"
-                               role="tab" aria-controls="friendsFollow" aria-selected="false">
-                                <h4>Friends / Follow</h4>
-                                <ul>
-                                    <li><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt=""/> 1748</li>
-                                    <li><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt=""/>
-                                        1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt=""/> 1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt=""/>
-                                        1748
-                                    </li>
-                                    <li><img src="{{asset('')}}images/Tiktok_Color.png" class="img-fluid" alt=""/> 1748
-                                    </li>
-                                </ul>
-                            </a>
                         </div>
 
 
@@ -706,15 +661,7 @@
 
                             </div>
 
-                            <div class="tab-pane fade" id="rePosted" role="tabpanel" aria-labelledby="rePosted_tab">
 
-                                <div class="states_graph">
-                                    <div id="repostedGraph" style="width: 100%; height: 500px">
-
-                                    </div>
-                                </div>
-
-                            </div>
 
                             <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments_tab">
 
@@ -726,26 +673,6 @@
 
                             </div>
 
-                            <div class="tab-pane fade" id="favorited" role="tabpanel" aria-labelledby="favorited_tab">
-
-                                <div class="states_graph">
-                                    <div id="favoritedGraph" style="width: 100%; height: 500px">
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="tab-pane fade" id="friendsFollow" role="tabpanel"
-                                 aria-labelledby="friendsFollow_tab">
-
-                                <div class="states_graph">
-                                    <div id="friendsFollowGraph" style="width: 100%; height: 500px">
-
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </section>
                 </div>

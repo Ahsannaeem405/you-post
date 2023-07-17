@@ -20,7 +20,7 @@ class Instagramservice
     {
 
         $post = Post::find($data['post']->id);
-        $video_path = "content_media/$post->media";
+
         $media_path = asset("content_media/$post->media");
 
         $insta = config('services.instagram');
@@ -147,6 +147,18 @@ class Instagramservice
             $msg = ['status' => false];
             return $msg;
         }
+
+    }
+
+    function stats($post)
+    {
+
+        $getStats = \Http::withToken($post->account->insta_access_token)->get("https://graph.facebook.com/{$post->post_dt->social_id}?fields=like_count,comments_count")->json();
+        $post->post_dt->update([
+            'likes'=>$getStats['like_count'] ?? 0,
+            'comments'=>$getStats['comments_count'] ?? 0,
+            'shares'=>$getStats['shares_count'] ?? 0,
+        ]);
 
     }
 }

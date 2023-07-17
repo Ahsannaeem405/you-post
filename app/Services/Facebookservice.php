@@ -96,31 +96,16 @@ class  Facebookservice
 
     }
 
-//    function edit_post($post, $req)
-//    {
-//        $accessToken = auth()->user()->account->fb_page_token;
-//
-//
-//        $fb = new Facebook([
-//            'app_id' => env('app_id'),
-//            'app_secret' => env('app_secret'),
-//            'default_access_token' => $accessToken,
-//        ]);
-//
-//        $post_id = $req->id;
-//        $message = "$req->content #$req->tag";
-//
-//
-//        $response = $fb->post("/$post_id", ['message' => $message]);
-//
-//        if ($response->getStatusCode() == 200) {
-//            $get_post = PostDetail::where('social_id', $data)->first();
-//            $dell = Post::find($get_post->post_id);
-//            $dell->delete();
-//            $msg = ['status' => true];
-//            return $msg;
-//
-//        }
-//    }
+    function stats($post)
+    {
+
+        $getStats = \Http::withToken($post->account->fb_page_token)->get("https://graph.facebook.com/{$post->post_dt->social_id}?fields=comments.summary(true),likes.summary(true),shares.summary(true)")->json();
+        $post->post_dt->update([
+            'likes'=>$getStats['likes']['summary']['total_count'] ?? 0,
+            'comments'=>$getStats['comments']['summary']['total_count'] ?? 0,
+            'shares'=>$getStats['shares']['count'] ?? 0,
+        ]);
+
+    }
 
 }

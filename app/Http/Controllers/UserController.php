@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Models\Post;
 use App\Models\PostDetail;
 use App\Models\User;
+use App\Services\CreatePostService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Facebook\Facebook;
@@ -27,23 +28,19 @@ use getID3\getID3;
 class UserController extends Controller
 {
 
-    public function __construct()
+    public $createPostService;
+
+    public function __construct(CreatePostService $createPostService)
     {
+        $this->createPostService = $createPostService;
         set_time_limit(8000000);
     }
-
 
     public function index()
     {
 
-
-
-
-
-
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
-
         $allPosts = [];
         foreach ($posts as $post) {
             $allPosts[] = [
@@ -55,74 +52,14 @@ class UserController extends Controller
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
             ];
         }
-        $data = [];
-        $data['total_fb_likes'] = 0;
-        $data['total_fb_comments'] = 0;
-        $data['total_insta_likes'] = 0;
-        $data['total_insta_comments'] = 0;
-        if (count(auth()->user()->posts)) {
-            foreach (auth()->user()->posts as $post) {
-                $fb_posts = PostDetail::where('post_id', $post->id)->where('plateform', 'Facebook')->first();
-                if ($fb_posts) {
-                    $data['total_fb_likes'] = $data['total_fb_likes'] + $fb_posts->likes;
-                    $data['total_fb_comments'] = $data['total_fb_comments'] + $fb_posts->comments;
-                }
-
-                $insta_posts = PostDetail::where('post_id', $post->id)->where('plateform', 'Instagram')->first();
-                if ($insta_posts) {
-                    $data['total_insta_likes'] = $data['total_insta_likes'] + $insta_posts->likes;
-                    $data['total_insta_comments'] = $data['total_insta_comments'] + $insta_posts->comments;
-                }
-
-            }
-        }
-
-
-        $fb_access_token = auth()->user()->account->fb_access_token;
-        $fb_page_token = auth()->user()->account->fb_page_token;
-        $insta_access_token = auth()->user()->account->insta_access_token;
-        $insta_user_id = auth()->user()->account->insta_user_id;
-        if ($fb_access_token != null && $fb_page_token == null) {
-            $fb = new Facebook([
-                'app_id' => env('app_id'),
-                'app_secret' => env('app_secret'),
-                'default_graph_version' => 'v16.0',
-                'default_access_token' => $fb_access_token,
-            ]);
-            $response = $fb->get('/me/accounts');
-            $all_pages = json_decode($response->getbody())->data;
-        } else {
-            $all_pages = [];
-        }
-        $instapages = [];
-        if (!auth()->user()->account->linkedin_page_id && auth()->user()->account->linkedin_accesstoken) {
-            $client = new Client();
-
-            $response = $client->get('https://api.linkedin.com/v2/organizationalEntityAcls?q=roleAssignee', [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
-                    'Content-Type' => 'application/json',
-                    'X-Restli-Protocol-Version' => '2.0.0',
-                ],
-            ]);
-            $pageAcls = json_decode($response->getBody(), true)['elements'];
-            foreach ($pageAcls as $pageAcl) {
-                $organizationalTarget = $pageAcl['organizationalTarget'];
-                $pageId = explode(':', $organizationalTarget)[3];
-
-                $pageResponse = $client->get("https://api.linkedin.com/v2/organizations/{$pageId}", [
-                    'headers' => [
-                        'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
-                        'Content-Type' => 'application/json',
-                        'X-Restli-Protocol-Version' => '2.0.0',
-                    ],
-                ]);
-                $page = json_decode($pageResponse->getBody(), true);
-                $instapages[] = $page;
-            }
-        }
+        $response = $this->createPostService->InitilizeData();
+        $stattistics = $this->createPostService->Statisics();
+        $instapages = $response['linkedin'];
+        $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'data', 'instapages'));
+
+
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
 
     }
 
@@ -295,7 +232,7 @@ class UserController extends Controller
             if ($get_post->plateform == 'Facebook') {
                 $get_data = $facebookservice->delete_post($get_post->plateforms->social_id);
             }
-            if ($get_data['status']== true) {
+            if ($get_data['status'] == true) {
                 $get_post->delete();
                 return redirect('/index')->with('success', 'Post Deleted Successfully!');
             } else {
@@ -304,86 +241,6 @@ class UserController extends Controller
         }
 
 
-    }
-
-    public function edit_post($id)
-    {
-        $get_post = PostDetail::where('social_id', $id)->first();
-
-        $posts = Post::where('user_id', auth()->user()->id)->select('id', 'tag', 'posted_at')->get();
-        $allPosts = [];
-        foreach ($posts as $post) {
-            $allPosts[] = [
-                'id' => $post->id,
-                'title' => $post->tag,
-                'start' => $post->posted_at,
-            ];
-        }
-        $data = [];
-        $data['total_fb_likes'] = 0;
-        $data['total_fb_comments'] = 0;
-        $data['total_insta_likes'] = 0;
-        $data['total_insta_comments'] = 0;
-        if (count(auth()->user()->posts)) {
-            foreach (auth()->user()->posts as $post) {
-                $fb_posts = PostDetail::where('post_id', $post->id)->where('plateform', 'Facebook')->first();
-                if ($fb_posts) {
-                    $data['total_fb_likes'] = $data['total_fb_likes'] + $fb_posts->likes;
-                    $data['total_fb_comments'] = $data['total_fb_comments'] + $fb_posts->comments;
-                }
-
-                $insta_posts = PostDetail::where('post_id', $post->id)->where('plateform', 'Instagram')->first();
-                if ($insta_posts) {
-                    $data['total_insta_likes'] = $data['total_insta_likes'] + $insta_posts->likes;
-                    $data['total_insta_comments'] = $data['total_insta_comments'] + $insta_posts->comments;
-                }
-
-            }
-        }
-        $fb_access_token = auth()->user()->account->fb_access_token;
-        $fb_page_token = auth()->user()->account->fb_page_token;
-        $insta_access_token = auth()->user()->account->insta_access_token;
-        $insta_user_id = auth()->user()->account->insta_user_id;
-        if ($fb_access_token != null && $fb_page_token == null) {
-            $fb = new Facebook([
-                'app_id' => env('app_id'),
-                'app_secret' => env('app_secret'),
-                'default_graph_version' => 'v16.0',
-                'default_access_token' => $fb_access_token,
-            ]);
-            $response = $fb->get('/me/accounts');
-            $all_pages = json_decode($response->getbody())->data;
-        } else {
-            $all_pages = [];
-        }
-
-        if ($insta_access_token != null && $insta_user_id == null) {
-            $insta = config('services.instagram');
-            $insta = new Facebook([
-                'app_id' => $insta['client_id'],
-                'app_secret' => $insta['client_secret'],
-                'default_graph_version' => 'v16.0',
-                'default_access_token' => $insta_access_token,
-            ]);
-            $insta_response = $insta->get('/me/accounts');
-            $all_pages_for_insta = json_decode($insta_response->getbody())->data;
-        } else {
-            $all_pages_for_insta = [];
-        }
-
-        return view('user.edit_index', compact('allPosts', 'all_pages', 'all_pages_for_insta', 'data', 'get_post'));
-
-
-    }
-
-    public function update_post(Request $req, Facebookservice $facebookservice)
-    {
-        $post = Post::find($req->id);
-
-        $get_data = $facebookservice->edit_post($post, $req);
-
-
-        return view('user.event_detail', compact('post'));
     }
 
     public function update_user_platforms(Request $req)
@@ -447,20 +304,6 @@ class UserController extends Controller
         return redirect('/index')->with('success', 'Facebook Connected Successfully! kindly Select Your Page');
     }
 
-    public function select_page()
-    {
-        $accessToken = auth()->user()->account->fb_access_token;
-        $fb = new Facebook([
-            'app_id' => env('app_id'),
-            'app_secret' => env('app_secret'),
-            'default_graph_version' => 'v16.0',
-            'default_access_token' => $accessToken,
-        ]);
-        $response = $fb->get('/me/accounts');
-        $all_pages = json_decode($response->getbody())->data;
-        return view('user.select_page', compact('all_pages'));
-    }
-
     public function set_page(Request $req)
     {
         $req->validate([
@@ -471,11 +314,6 @@ class UserController extends Controller
         $user->update();
         return redirect('/index')->with('success', 'Facebook Connected Successfully!');
     }
-
-    //////////////////facebook////////////////////////////
-
-
-    /////////////////////instagram////////////////////////
 
     public function connect_to_instagram()
     {
@@ -584,7 +422,6 @@ class UserController extends Controller
 
     }
 
-
     public function set_page_for_linkedin(Request $req)
     {
         $req->validate([
@@ -599,10 +436,6 @@ class UserController extends Controller
 
     }
 
-
-    ////////////////////instagram/////////////////////////
-
-    ////////////////////linkedin/////////////////////////
     public function connect_to_linkedin()
     {
         auth()->user()->account()->update([
@@ -673,8 +506,6 @@ class UserController extends Controller
 
     }
 
-    ////////////////////linkedin/////////////////////////
-
     public function connect_to_twitter()
     {
         auth()->user()->account()->update([
@@ -689,7 +520,7 @@ class UserController extends Controller
 
             // $client_secret = $twitter['client_secret'];
             $redirect_uri = $twitter['redirect'];
-            $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
+            $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20like.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
             return redirect()->away($auth_url);
         } catch (\Throwable $e) {
             return redirect('/index')->with('error', $e->getMessage());
@@ -769,224 +600,22 @@ class UserController extends Controller
     }
 
 
-    public function get_facebook_likes()
+    public function get_facebook_likes(Facebookservice $facebookservice,Instagramservice $instagramservice,TwitterService $twitterService)
     {
 
 
-        // $client_id = 'dUtBam5mcWlrVW00LVE5V0JtLUY6MTpjaQ';
-        // // $redirect_uri = env('consumer_secret');
-        // $redirect_uri = url('/connect_to_twitter/calback');
-
-        // // https://twitter.com/i/oauth2/authorize?response_type=code&client_id=M1M5R3BMVy13QmpScXkzTUt5OE46MTpjaQ&redirect_uri=https://www.example.com&scope=tweet.read%20tweet.write%20users.read&state=state&code_challenge=challenge&code_challenge_method=plain
-        // $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
-        // // header("Location: $auth_url");
-        // return redirect()->away($auth_url);
-        // exit();
-
-
-        // $twiter_oauth_token = auth()->user()->twiter_oauth_token;
-        // $twiter_secret_token = auth()->user()->twiter_secret_token;
-
-        // $client = new Client([
-        //     'base_uri' => 'https://api.twitter.com/2/',
-        //     'auth' => [
-        //         env('consumer_key'),
-        //         env('consumer_secret'),
-        //         $twiter_oauth_token,
-        //         $twiter_secret_token
-        //     ]
-        // ]);
-
-        // $response = $client->post('tweets', [
-        //     'form_params' => [
-        //         'status' => 'Hello, Twitter! This is my first tweet from Laravel.'
-        //     ]
-        // ]);
-        // dd($client, $response);
-
-        // echo $response->getBody();
-
-
-        // ///////////////////////
-
-        $urn = 'urn:li:activity:7059887884065026049'; // replace with your post URN
-        $accessToken = auth()->user()->account->linkedin_accesstoken; // replace with your access token
-
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.linkedin.com/rest/reactions/$urn/likes",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => array(
-                "Authorization: Bearer $accessToken",
-                "cache-control: no-cache",
-                "Linkedin-Version: 202206"
-            ),
-        ));
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
-            echo $response;
+        $posts = Post::withWhereHas('post_dt')->get();
+        foreach ($posts as $post) {
+            if ($post->plateform == 'Facebook')
+                $facebookservice->stats($post);
+            elseif ($post->plateform == 'Instagram')
+                $instagramservice->stats($post);
+            elseif ($post->plateform == 'Twitter')
+                $twitterService->stats($post);
+            elseif ($post->plateform == 'Linkedin')
+               true;// $twitterService->stats($post);
         }
-        dd($response, 'new one');
 
 
-        // $activity_id = "7059887884065026049";
-        // $accesstoken = auth()->user()->linkedin_accesstoken;
-
-        // $curl = curl_init();
-        // curl_setopt_array($curl, [
-        //     // CURLOPT_URL => "https://api.linkedin.com/v2/socialActions/urn:li:activity:$activity_id?projection=(likes)",
-        //     CURLOPT_URL => "https://api.linkedin.com/v2/socialActions/urn:li:activity:$activity_id/likes",
-        //     CURLOPT_RETURNTRANSFER => true,
-        //     CURLOPT_HTTPHEADER => [        "Authorization: Bearer " . $accesstoken,        "Content-Type: application/json"    ],
-        // ]);
-        // $response = curl_exec($curl);
-        // curl_close($curl);
-
-        // // $likes = json_decode($response, true)["likes"]["summary"]["total"];
-        // dd($response, 992);
-
-
-        // $activity_id = '7059887884065026049'; // Replace with the ID(s) of the comment(s) you want to retrieve likes for
-        // $access_token = auth()->user()->linkedin_accesstoken; // Replace with your LinkedIn access token
-        // $linkedin_version = '202205'; // Replace with the version number in the format YYYYMM
-
-        // $url = "https://api.linkedin.com/rest/v2/reactions/(actor:urn:li:person:123456,entity:urn:li:post:(activity:$activity_id))";
-        // $headers = [
-        //     "Authorization: Bearer $access_token",
-        //     "Linkedin-Version: $linkedin_version",
-        //     "X-Restli-Protocol-Version: 2.0.0"
-        // ];
-
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-        // $response = curl_exec($ch);
-        // $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        // if ($http_code == 200) {
-        //     $likes = json_decode($response, true);
-        //     echo "Number of likes: " . count($likes['elements']);
-        // } else {
-        //     echo "Error: " . $response;
-        // }
-
-        // curl_close($ch);
-
-        // dd($response,$http_code, 22);
-
-
-//
-        $client = new Client();
-        // $response = $client->request('GET', 'https://api.linkedin.com/v2/me', [
-        //     'headers' => [
-        //         'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken
-        //     ]
-        // ]);
-        // $response = $client->request('GET', 'https://api.linkedin.com/v2/socialActions/urn:li:activity:7059887884065026049?projection=(likes,comments)', [
-        //     'headers' => [
-        //         'Authorization' => 'Bearer ' . auth()->user()->linkedin_accesstoken
-        //     ]
-        // ]);
-        // dd('34');
-        $response = $client->request('GET', 'https://api.linkedin.com/v2/socialActions/7059887884065026049', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
-                "Linkedin-Version" => "202208",
-            ]
-        ]);
-        $me = json_decode($response->getBody()->getContents(), true);
-
-        dd($me, 'meeee');
-
-        //
-        $client = new Client([
-            'base_uri' => 'https://api.linkedin.com/v2/',
-            'headers' => [
-                'Authorization' => 'Bearer ' . auth()->user()->account->linkedin_accesstoken,
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json'
-            ]
-        ]);
-
-        $response = $client->request('GET', 'https://api.linkedin.com/v2/socialActions/urn:li:activity:7059887884065026049?projection=(likes,comments)');
-        $likes = json_decode($response->getBody()->getContents(), true);
-
-        dd($response, $likes);
-
-
-        // facebook likes and comments
-        $facebook_posts = PostDetail::where('plateform', 'Facebook')->get();
-        foreach ($facebook_posts as $post) {
-            $user = $post->post->user;
-            $fb = new Facebook([
-                'app_id' => env('app_id'),
-                'app_secret' => env('app_secret'),
-                'default_graph_version' => 'v16.0',
-                'default_access_token' => $user->account->fb_page_token,
-            ]);
-
-            // likes
-            $getlikes = $fb->get(
-                "/$post->social_id/likes"
-            );
-            $likes = $getlikes->getGraphEdge()->asArray();
-
-            // likes
-            // comments
-            $getcomments = $fb->get(
-                "/$post->social_id/comments"
-            );
-
-            $comments = $getcomments->getGraphEdge()->asArray();
-
-            $post->update([
-                'likes' => count($likes),
-                'comments' => count($comments),
-            ]);
-            // comments
-        }
-        // facebook likes and comments
-
-        // insta likes and comments
-        $Instagram_posts = PostDetail::where('plateform', 'Instagram')->get();
-        foreach ($Instagram_posts as $post) {
-            $user = $post->post->user;
-
-            $insta = config('services.instagram');
-            $tokenn = $user->account->insta_access_token;
-            $instagram = new Facebook([
-                'app_id' => $insta['client_id'],
-                'app_secret' => $insta['client_secret'],
-                'default_graph_version' => 'v16.0',
-                'default_access_token' => $tokenn,
-            ]);
-
-            $getcommentslikes = $instagram->get("$post->social_id?fields=comments_count,like_count");
-            $data = $getcommentslikes->getGraphNode()->asArray();
-            $commentsCount = $data['comments_count'];
-            $likessCount = $data['like_count'];
-
-            $post->update([
-                'likes' => $likessCount,
-                'comments' => $commentsCount,
-            ]);
-        }
-        // insta likes and comments
-        return redirect('/index')->with('success', 'likes and comments get successfully');
     }
 }
