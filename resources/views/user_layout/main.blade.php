@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{{asset('css/pignose.calendar.min.css')}}"/>
     <!--Main Stylesheet-->
     <link rel="stylesheet" href="{{asset('style.css')}}"/>
+    {{-- -------------------------- --}}
+    <link rel="stylesheet" href="{{asset('css/slider/owl.carousel.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/slider/owl.theme.default.min.css')}}"/>
+    {{-- -------------------------- --}}
     <!--Stylesheet For The Responsiveness-->
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}"/>
     <script src="https://kit.fontawesome.com/4366d6f846.js" crossorigin="anonymous"></script>
@@ -500,6 +504,9 @@
 {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
 
 <script src="{{asset('js/inputEmoji.js')}}"></script>
+{{-- ------------------ --}}
+<script src="{{asset('js/slider/owl.carousel.js')}}"></script>
+{{-- ------------------ --}}
 
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

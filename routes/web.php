@@ -88,6 +88,17 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('get-facebook-likes', [UserController::class, 'get_facebook_likes']);
 
+    // --------------------------
+
+    Route::get('socialPlatform', function () {
+        return view('user.socialPlatform');
+    });
+    Route::get('successfullyAdded', function () {
+        return view('user.successfullyAdded');
+    });
+    // --------------------------
+    Route::get('get-facebook-likes', [UserController::class, 'get_facebook_likes']);
+
     //Multiple accounts
     Route::post('store_acount', [\App\Http\Controllers\AccountController::class, 'store']);
     Route::get('change_acount/{id}', [\App\Http\Controllers\AccountController::class, 'change_account']);

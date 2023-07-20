@@ -1,13 +1,100 @@
 @extends('user_layout.main')
 <style>
+.AIgeneratedContent .AIgeneratedContentInner {
+    background: rgb(235 235 235);
+    padding: 10px;
+    border-radius: 10px;
+}
+.create_preview_post_index {
+    display: flex !important;
+    max-width: 100% !important;
+    gap: 0px !important;
+    overflow: hidden;
+}
+.create_preview_post_index .create_preview_post_index_item {
+    width: calc(100% / 3 - 10px);
+    margin: 5px 0;
+}
+ .create_preview_post_index_item .preview_post,
+ .create_preview_post_index_item .preview_post .preview_wrap {
+    width: 100% !important;
+}
+.create_preview_post_index .create_post {}
+.create_preview_post_index .justify-content-center {}
+.create_preview_post_index .AIgeneratedContent {}
+.AIgeneratedContentAdd {
+    width: 60px;
+}
+.AIgeneratedContentAdd a {
+    background: rgb(15 116 206);
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    padding: 1px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.AIgeneratedContentText {
+    width: calc(100% - 65px);
+    margin-left: 5px;
+}
+.AIgeneratedContentText p {
+    font-size: 12px;
+}
+.AIgeneratedCarouselWrp {
+    margin-top: 15px;
+}
+.AIgeneratedCarousel {}
+.AIgeneratedCarousel .item .itemCnt {
+    position: relative;
+}
+.AIgeneratedCarousel .item .itemCntPlusWrp {}
+.AIgeneratedCarousel .item .itemCntPlusWrp i {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    margin: auto;
+    z-index: 999;
+    font-size: 20px;
+    background: #0f74ce;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    cursor: pointer;
+    display: none;
+}
+.AIgeneratedCarousel .owl-item.active .item .itemCntPlusWrp i {
+    display: flex;
+}
+.AIgeneratedCarousel .owl-item .item {
+    /* opacity: 0.5; */
+}
+.AIgeneratedCarousel .owl-item.active {}
+.AIgeneratedCarousel .owl-item.active .item {}
+.AIgeneratedCarousel .owl-item.active:first-of-type {}
+
+@media screen and (max-width:768px) {
+    .create_preview_post_index {
+        flex-direction: column;
+    }
+    .create_preview_post_index .create_preview_post_index_item {
+        width: 100% !important;
+    }
+}
 
 </style>
 @section('content')
     <!--===== Markup For "Create & Preview Post" Starts Here =====-->
     <section class="create_preview_post_wrap">
         <div class="container">
-            <div class="create_preview_post">
-                <div class="create_post">
+            <div class="create_preview_post create_preview_post_index">
+
+                <div class="create_post create_preview_post_index_item">
 
 
                     <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data">
@@ -322,7 +409,7 @@
                     </form>
                 </div>
 
-                <div class="d-lg-flex justify-content-center">
+                <div class="d-lg-flex justify-content-center create_preview_post_index_item">
                     <div class="preview_post">
                         <div class="sub_heading">
                             <h4>Post Preview</h4>
@@ -485,6 +572,87 @@
                         </div>
 
                     </div>
+                </div>
+
+                <div class="AIgeneratedContent create_preview_post_index_item">
+
+                    <div class="AIgeneratedContentInner">
+                        <div class="sub_heading">
+                            <h4>AI Generated Content</h4>
+                        </div>
+                        <div class="AIgeneratedContentData">
+
+                            <div class="AIgeneratedContentDataWrp d-flex mb-2">
+                                <div class="AIgeneratedContentAdd">
+                                    <a href="">Add +</a>
+                                </div>
+                                <div class="AIgeneratedContentText">
+                                    <p class=" mb-0">This is an AIgenerated post from ChatGPT, designedfor, facebook</p>
+                                </div> 
+                            </div>
+
+                            <div class="AIgeneratedContentDataWrp d-flex mb-2">
+                                <div class="AIgeneratedContentAdd">
+                                    <a href="">Add +</a>
+                                </div>
+                                <div class="AIgeneratedContentText">
+                                    <p class=" mb-0">AI Generated Tags : #Tag1#, #TAG2, #TAG3</p>
+                                </div> 
+                            </div>
+
+                            <div class="AIgeneratedContentDataWrp d-flex mb-2">
+                                <div class="AIgeneratedContentAdd">
+                                    <a href="">Add +</a>
+                                </div>
+                                <div class="AIgeneratedContentText">
+                                    <p class=" mb-0">AI Generated Image</p>
+                                </div> 
+                            </div>
+
+                            <div class="AIgeneratedCarouselWrp">
+                                <div class="owl-carousel owl-theme AIgeneratedCarousel">
+                        
+                                    <div class="item">
+                                        <div class="itemCnt">
+                                            <div class="itemCntImg">
+                                                <img src="{{asset('images/Instagram_Color.png')}}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="itemCntPlusWrp">
+                                                <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="item">
+                                        <div class="itemCnt">
+                                            <div class="itemCntImg">
+                                                <img src="{{asset('images/Tiktok_Color.png')}}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="itemCntPlusWrp">
+                                                <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="item">
+                                        <div class="itemCnt">
+                                            <div class="itemCntImg">
+                                                <img src="{{asset('images/WhatsApp_Color.png')}}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="itemCntPlusWrp">
+                                                <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -814,5 +982,28 @@
         });
 
 
+
+
+
+        
+    // ---------------------
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        dots: false,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:2
+            }
+        }
+    })
+    // ---------------------
     </script>
 @endsection
