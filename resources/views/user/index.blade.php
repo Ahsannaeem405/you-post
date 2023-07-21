@@ -147,7 +147,7 @@
 .post_manage_calendar {
     padding-top: unset !important;
 }
-.post_manage_calendar .container { 
+.post_manage_calendar .container {
     background: #fff;
     padding-top: 30px;
 }
@@ -683,35 +683,35 @@
 
                             <div class="AIgeneratedContentDataWrp d-flex mb-2">
                                 <div class="AIgeneratedContentAdd">
-                                    <a href="">Add +</a>
+                                    <a href="#">Add +</a>
                                 </div>
                                 <div class="AIgeneratedContentText">
                                     <p class=" mb-0">This is an AIgenerated post from ChatGPT, designedfor, facebook</p>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="AIgeneratedContentDataWrp d-flex mb-2">
                                 <div class="AIgeneratedContentAdd">
-                                    <a href="">Add +</a>
+                                    <a href="#">Add +</a>
                                 </div>
                                 <div class="AIgeneratedContentText">
                                     <p class=" mb-0">AI Generated Tags : #Tag1#, #TAG2, #TAG3</p>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="AIgeneratedContentDataWrp d-flex mb-2">
                                 <div class="AIgeneratedContentAdd">
-                                    <a href="">Add +</a>
+                                    <a href="#">Add +</a>
                                 </div>
                                 <div class="AIgeneratedContentText">
                                     <p class=" mb-0">AI Generated Image</p>
-                                </div> 
+                                </div>
                             </div>
 
                             <div class="AIgeneratedCarouselWrp">
 
                                 <div class="owl-carousel owl-theme AIgeneratedCarousel">
-                        
+
                                     <div class="item">
                                         <div class="itemCnt">
                                             <div class="itemCntImg">
@@ -722,7 +722,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="item">
                                         <div class="itemCnt">
                                             <div class="itemCntImg">
@@ -733,7 +733,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="item">
                                         <div class="itemCnt">
                                             <div class="itemCntImg">
@@ -744,14 +744,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                 </div>
 
 
                                 <div class="AIgeneratedCarouselBtmBtn">
-                                    <a href="">Edit / Prompt</a>
-                                    <a href="">Add to Post</a>
+                                    <a href="#">Edit / Prompt</a>
+                                    <a href="#">Add to Post</a>
                                 </div>
                             </div>
 
@@ -1091,7 +1091,7 @@
 
 
 
-        
+
     // ---------------------
     $('.owl-carousel').owlCarousel({
         loop:true,
