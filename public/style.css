@@ -1073,20 +1073,23 @@ body {
 .footer .site_links ul li a:hover {
     color: var(--baseColor);
 }
-
+.fc-row .fc-bg .fc-day.fc-widget-content {
+    position: relative;
+}
 .plus-icon-calender {
     background: #0a53be;
-    padding: 10px 10px 14px;
+    padding: 10px 10px 10px;
     border-radius: 50%;
     color: white;
-    width: 19px;
+    width: 17px;
     height: 17px;
     position: absolute;
-    top: 2px;
+    top: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 25px;
+    left: 40px;
 
 }
 

@@ -1,15 +1,22 @@
 @extends('user_layout.main')
 <style>
+.create_preview_post_wrapInner {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
 .AIgeneratedContent .AIgeneratedContentInner {
     background: rgb(235 235 235);
     padding: 10px;
     border-radius: 10px;
 }
+
 .create_preview_post_index {
     display: flex !important;
     max-width: 100% !important;
     gap: 0px !important;
     overflow: hidden;
+    justify-content: space-between;
 }
 .create_preview_post_index .create_preview_post_index_item {
     width: calc(100% / 3 - 10px);
@@ -33,6 +40,7 @@
     padding: 1px 10px;
     border-radius: 5px;
     font-size: 14px;
+    border: 1px solid transparent;
 }
 .AIgeneratedContentText {
     width: calc(100% - 65px);
@@ -40,6 +48,9 @@
 }
 .AIgeneratedContentText p {
     font-size: 12px;
+}
+.AIgeneratedCarousel {
+    position: relative;
 }
 .AIgeneratedCarouselWrp {
     margin-top: 15px;
@@ -72,11 +83,97 @@
     display: flex;
 }
 .AIgeneratedCarousel .owl-item .item {
-    /* opacity: 0.5; */
+    opacity: 0.5;
 }
+
 .AIgeneratedCarousel .owl-item.active {}
-.AIgeneratedCarousel .owl-item.active .item {}
+.AIgeneratedCarousel .owl-item.cloned {}
+
+.AIgeneratedCarousel .owl-item.cloned:nth-child(2) {}
+
+.AIgeneratedCarousel .owl-item.active:nth-child(2) {}
+
+.AIgeneratedCarousel .owl-item.active .item {
+    opacity: unset;
+}
 .AIgeneratedCarousel .owl-item.active:first-of-type {}
+
+.AIgeneratedCarousel .owl-nav {
+    position: absolute;
+    right: 30px;
+    top: 40%;
+    width: 80px;
+    margin-top: unset !important;
+    background: #0f74ce;
+    color: #fff;
+    border-radius: 5px;
+}
+.AIgeneratedCarousel .owl-nav .owl-prev {
+    display: none !important;
+}
+.AIgeneratedCarousel .owl-nav button:hover {
+    background: transparent !important;
+}
+
+.AIgeneratedCarouselBtmBtn {
+    display: flex;
+    justify-content: end;
+    margin: 60px 0 0px;
+}
+.AIgeneratedCarouselBtmBtn a {
+    display: inline-block;
+    background: rgb(15 116 206);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font: 13px;
+    margin: 2px;
+    border: 1px solid transparent;
+}
+.AIgeneratedCarouselBtmBtn a:hover,
+.AIgeneratedContentAdd a:hover {
+    background: transparent;
+    color: rgb(15 116 206);
+    border: 1px solid rgb(15 116 206);
+}
+
+
+
+
+.create_preview_post_wrap {
+    padding-bottom: 20px !important;
+}
+.post_manage_calendar {
+    padding-top: unset !important;
+}
+.post_manage_calendar .container { 
+    background: #fff;
+    padding-top: 30px;
+}
+.post_manage_calendar .fc .fc-toolbar {
+    background: #fff !important;
+}
+.post_manage_calendar .the_post_manager {
+    max-width: 100% !important;
+}
+
+.fc-head {}
+.fc-head .fc-row {}
+.fc-head .fc-row thead {}
+.fc-head .fc-row thead .fc-day-header {
+    padding: 40px 0;
+}
+
+.fc-unthemed .fc-content, .fc-unthemed .fc-divider,
+.fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view,
+.fc-unthemed .fc-popover, .fc-unthemed .fc-row,
+.fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th,
+.fc-unthemed thead {
+    border-color: transparent !important;
+}
+
+
 
 @media screen and (max-width:768px) {
     .create_preview_post_index {
@@ -89,9 +186,11 @@
 
 </style>
 @section('content')
+
+
     <!--===== Markup For "Create & Preview Post" Starts Here =====-->
     <section class="create_preview_post_wrap">
-        <div class="container">
+        <div class="container create_preview_post_wrapInner">
             <div class="create_preview_post create_preview_post_index">
 
                 <div class="create_post create_preview_post_index_item">
@@ -610,6 +709,7 @@
                             </div>
 
                             <div class="AIgeneratedCarouselWrp">
+
                                 <div class="owl-carousel owl-theme AIgeneratedCarousel">
                         
                                     <div class="item">
@@ -647,6 +747,12 @@
                                     
                                     
                                 </div>
+
+
+                                <div class="AIgeneratedCarouselBtmBtn">
+                                    <a href="">Edit / Prompt</a>
+                                    <a href="">Add to Post</a>
+                                </div>
                             </div>
 
 
@@ -669,7 +775,7 @@
 
     <!--===== Markup For "Post Manager" Starts Here =====-->
     <section class="post_manager">
-        <div class="title_bar_wrap">
+        <div class="title_bar_wrap d-none">
             <div class="container">
                 <div class="title_bar">
                     <div class="tabs_type_heading">
@@ -992,6 +1098,7 @@
         margin:10,
         nav:true,
         dots: false,
+        onTranslated: setActiveItem,
         responsive:{
             0:{
                 items:1
@@ -1003,7 +1110,16 @@
                 items:2
             }
         }
-    })
+    });
+
+
+    function setActiveItem(event) {
+    var current = event.item.index;
+    var owlItems = $('.owl-carousel .owl-item');
+
+    owlItems.removeClass('active');
+    owlItems.eq(current).addClass('active');
+    }
     // ---------------------
     </script>
 @endsection
