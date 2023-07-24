@@ -1,14 +1,16 @@
 @extends('user_layout.main')
 <style>
 .create_preview_post_wrapInner {
-    background: #fff;
+    /* background: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 5px; */
+    padding: unset !important;
 }
 .AIgeneratedContent .AIgeneratedContentInner {
     background: rgb(235 235 235);
     padding: 10px;
     border-radius: 10px;
+    margin-top: 25px !important;
 }
 
 .create_preview_post_index {
@@ -18,9 +20,24 @@
     overflow: hidden;
     justify-content: space-between;
 }
-.create_preview_post_index .create_preview_post_index_item {
-    width: calc(100% / 3 - 10px);
-    margin: 5px 0;
+.create_preview_post_index .create_preview_post_index_itemLeft {
+    width: 30%;
+    background: #fff;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+.create_preview_post_index .create_preview_post_index_itemRight {
+    width: calc(70% - 20px);
+    display: flex;
+    background: #fff;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+ .create_preview_post_index_itemRight .create_preview_post_index_itemRightInner {
+    width: 40%;
+}
+ .create_preview_post_index_itemRight .AIgeneratedContent.create_preview_post_index_itemRightInner {
+    width: 60%;
 }
  .create_preview_post_index_item .preview_post,
  .create_preview_post_index_item .preview_post .preview_wrap {
@@ -53,7 +70,7 @@
     position: relative;
 }
 .AIgeneratedCarouselWrp {
-    margin-top: 15px;
+    margin-top: 30px;
 }
 .AIgeneratedCarousel {}
 .AIgeneratedCarousel .item .itemCnt {
@@ -174,13 +191,95 @@
 }
 
 
+.form-wizard {
+    padding: 0px !important;
+    margin: unset;
+    border: unset !important;
+}
+.form-wizard .wizard-fieldset.show {
+    padding: 0 !important;
+}
+.create_preview_post .create_post .icon_buttons_tags .form-control {
+    box-shadow: -1px 0px 3px 2px rgba(0, 0, 0, 0.25) inset !important;
+}
+
+.post_now_button {
+    display: flex;
+}
+.post_now_button input {
+    min-width: unset !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    border: 1px solid transparent !important;
+    width: calc(50% - 10px) !important;
+    margin: 5px !important;
+    background: rgb(15 116 206) !important;
+}
+.post_now_button.next_plat_button {}
+.post_now_button.schedule_post input {}
+.post_now_button.schedule_post_button input:nth-child(1) {
+    background: #28a745!important;
+}
+.post_now_button.schedule_post_button input:nth-child(2) {
+    background: #dc3545!important;
+}
+.list-unstyled.form-wizard-steps {
+    margin-top: 20px;
+}
+.Customemojiarea {
+    min-height: 130px !important;
+}
+
+
 
 @media screen and (max-width:768px) {
+    .create_preview_post_wrapInner {
+        padding: 10px !important;
+    }
     .create_preview_post_index {
         flex-direction: column;
     }
     .create_preview_post_index .create_preview_post_index_item {
         width: 100% !important;
+    }
+    .create_preview_post_index .create_preview_post_index_itemLeft {
+        margin-bottom: 15px;
+    }
+    .create_preview_post_index .create_preview_post_index_item.create_preview_post_index_itemRight {
+        flex-direction: column;
+    }
+    .AIgeneratedCarousel .item .itemCntPlusWrp i {
+
+    }
+    .create_preview_post_index_itemRight .create_preview_post_index_itemRightInner,
+    .create_preview_post_index_itemRight .AIgeneratedContent.create_preview_post_index_itemRightInner {
+        width: 100% !important;
+    }
+    .create_preview_post_index .AIgeneratedContent h4 {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+@media screen and (max-width:575px) {
+    .AIgeneratedCarousel .item .itemCntPlusWrp i {
+        top: 45%;
+        left: 45%;
+    }
+    .plus-icon-calender {
+        padding: 5px !important;
+        font-size: 12px !important;
+        width: 10px !important;
+        height: 10px !important;
+        left: 50px !important;
+    }
+    .fc-scroller.fc-day-grid-container {
+        height: 300px !important;
+    }
+    .AIgeneratedCarousel .owl-nav {
+        bottom: -40px;
+        left: calc(50% - 35px);
+        top: unset;
+        right: unset;
     }
 }
 
@@ -193,7 +292,7 @@
         <div class="container create_preview_post_wrapInner">
             <div class="create_preview_post create_preview_post_index">
 
-                <div class="create_post create_preview_post_index_item">
+                <div class="create_post create_preview_post_index_item create_preview_post_index_itemLeft">
 
 
                     <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data">
@@ -423,7 +522,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="linkedin_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea"
+                                                              class="Customemojiarea form-control wizard-required emojiarea"
                                                               placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -480,9 +579,52 @@
                                                 </div>
                                             </fieldset>
                                         @endif
-                                        <div class="post_now_button">
-                                            <input type="submit" class="btn post_later_now_btn" value="Post">
+
+                                        <div class="post_now_button next_plat_button my-4">
+                                            <input type="submit" class="btn post_later_now_btn" value="Back">
+                                            <input type="submit" class="btn post_later_now_btn" value="Next Platform">
                                         </div>
+
+                                        <div class="post_now_button schedule_post_button">
+                                            <input type="submit" class="btn post_later_now_btn" value="Schedule Post"  data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
+                                            <input type="submit" class="btn post_later_now_btn" value="Post Now">
+                                        </div>
+
+
+                                        {{-- -------------------------------- --}}
+                                       
+  
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Time to upload post</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="post_later">
+                                                        <div class="tabs_type_heading_sm">
+                                                            <span id="browsertime"></span>
+                                                            <input type="hidden" class="browsertimeinput" name="time">
+                                                            <input type="hidden" class="posttime" value="now" name="posttime">
+                                                            <input type="hidden" name="timezone" class="timezone">
+                                                            <h4>Post Later</h4>
+                                                        </div>
+                            
+                                                        <div class="pick_date_from_calendar">
+                                                            <div class="calendar"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary d-none">Save changes</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        {{-- -------------------------------- --}}
 
                                     </div>
                                 </div>
@@ -490,7 +632,11 @@
                         </section>
 
 
-                        <div class="post_later">
+
+
+
+                        
+                        {{-- <div class="post_later d-none">
                             <div class="tabs_type_heading_sm">
                                 <span id="browsertime"></span>
                                 <input type="hidden" class="browsertimeinput" name="time">
@@ -502,264 +648,270 @@
                             <div class="pick_date_from_calendar">
                                 <div class="calendar"></div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                     </form>
                 </div>
 
-                <div class="d-lg-flex justify-content-center create_preview_post_index_item">
-                    <div class="preview_post">
-                        <div class="sub_heading">
-                            <h4>Post Preview</h4>
-                        </div>
+                <div class="create_preview_post_index_item create_preview_post_index_itemRight">
 
-                        <div class="preview_wrap">
-                            <div class="col-md-12">
-                                <div class="Mobcompny-title">
-                                    <div class="w-50">
-                                        <h6>Facebook</h6>
-                                    </div>
-                                    <div class="w-50 Mobsocial-icon">
-                                        <span><i class="fa-solid fa-plus"></i></span>
-                                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                                        <span><i class="fab fa-facebook-messenger"></i></span>
-                                    </div>
-                                </div>
+                    <div class="d-lg-flex justify-content-center create_preview_post_index_itemRightInner">
+                        <div class="preview_post">
+                            <div class="sub_heading">
+                                <h4>Post Preview</h4>
                             </div>
 
-                            <div class="Mobcompny-smallicon">
-                                <span><i class="fa-solid fa-house"></i></span>
-                                <span><i class="fa fa-youtube-play"></i></span>
-                                <span><i class="fas fa-user-circle"></i></span>
-                                <span><i class="fa-solid fa-bell"></i></span>
-                                <span><i class="fa-solid fa-bars"></i></span>
-                            </div>
-
-
-                            <div class="the_preview pt-2">
-                                <div class="col-md-12" style="height: 100px">
-                                    <div class="MainMobileview d-flex">
-                                        <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40"
-                                             alt="">
-                                        <span id="">{{auth()->user()->name}}</span>
-                                    </div>
-                                    <p class="m-0"></p>
-                                    <div class="Mobcart_title">
-                                        <span id="mypostresult">Write your post...</span>
-                                        <span class="icon icon-privacy text-primary" id="mynameresult"></span>
-                                    </div>
-                                </div>
+                            <div class="preview_wrap">
                                 <div class="col-md-12">
-                                    <div class="MainMobileimg">
-                                        <div class="media-container">
-                                            <img src="" class="d-none preview_image" alt="">
-                                            <div id="mediaContainervideo">
-                                                <video class="d-none video_preview" controls>
-                                                    <source src="movie.mp4" type="video/*">
-                                                </video>
+                                    <div class="Mobcompny-title">
+                                        <div class="w-50">
+                                            <h6>Facebook</h6>
+                                        </div>
+                                        <div class="w-50 Mobsocial-icon">
+                                            <span><i class="fa-solid fa-plus"></i></span>
+                                            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                                            <span><i class="fab fa-facebook-messenger"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="Mobcompny-smallicon">
+                                    <span><i class="fa-solid fa-house"></i></span>
+                                    <span><i class="fa fa-youtube-play"></i></span>
+                                    <span><i class="fas fa-user-circle"></i></span>
+                                    <span><i class="fa-solid fa-bell"></i></span>
+                                    <span><i class="fa-solid fa-bars"></i></span>
+                                </div>
+
+
+                                <div class="the_preview pt-2">
+                                    <div class="col-md-12" style="height: 100px">
+                                        <div class="MainMobileview d-flex">
+                                            <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40"
+                                                alt="">
+                                            <span id="">{{auth()->user()->name}}</span>
+                                        </div>
+                                        <p class="m-0"></p>
+                                        <div class="Mobcart_title">
+                                            <span id="mypostresult">Write your post...</span>
+                                            <span class="icon icon-privacy text-primary" id="mynameresult"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="MainMobileimg">
+                                            <div class="media-container">
+                                                <img src="" class="d-none preview_image" alt="">
+                                                <div id="mediaContainervideo">
+                                                    <video class="d-none video_preview" controls>
+                                                        <source src="movie.mp4" type="video/*">
+                                                    </video>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="Mobcart_title bile d-flex">
-                                        <div class="reactions">8❤️</div>
-                                        <div class="total-comments u-margin-inline-start">
-                                            <a>12 Comments</a>
-                                            <a>2 Shares</a>
+                                    <div class="col-md-12">
+                                        <div class="Mobcart_title bile d-flex">
+                                            <div class="reactions">8❤️</div>
+                                            <div class="total-comments u-margin-inline-start">
+                                                <a>12 Comments</a>
+                                                <a>2 Shares</a>
+                                            </div>
+                                        </div>
+                                        <div class="actions-buttons mt-2">
+                                            <ul class="actions-buttons-list d-flex p-0">
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button"><i
+                                                            class="fa-solid fa-thumbs-up"></i><span class="text">Like</span>
+                                                    </button>
+                                                </li>
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button"><i
+                                                            class="fa-solid fa-comment"></i><span
+                                                            class="text">Comment</span></button>
+                                                </li>
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span
+                                                            class="text">Share</span></button>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <div class="actions-buttons mt-2">
-                                        <ul class="actions-buttons-list d-flex p-0">
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i
-                                                        class="fa-solid fa-thumbs-up"></i><span class="text">Like</span>
-                                                </button>
-                                            </li>
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i
-                                                        class="fa-solid fa-comment"></i><span
-                                                        class="text">Comment</span></button>
-                                            </li>
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span
-                                                        class="text">Share</span></button>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
+
                         </div>
+                        <div class="preview_post position-relative d-none">
 
-                    </div>
-                    <div class="preview_post position-relative d-none">
-
-                        <div class="loader d-none"></div>
+                            <div class="loader d-none"></div>
 
 
-                        <div class="sub_heading">
-                            <h4>Post Suggested</h4>
-                        </div>
-
-                        <div class="preview_wrap">
-                            <div class="col-md-12">
-                                <div class="Mobcompny-title">
-                                    <div class="w-50">
-                                        <h6>Facebook</h6>
-                                    </div>
-                                    <div class="w-50 Mobsocial-icon">
-                                        <span><i class="fa-solid fa-plus"></i></span>
-                                        <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                                        <span><i class="fab fa-facebook-messenger"></i></span>
-                                    </div>
-                                </div>
+                            <div class="sub_heading">
+                                <h4>Post Suggested</h4>
                             </div>
 
-                            <div class="Mobcompny-smallicon">
-                                <span><i class="fa-solid fa-house"></i></span>
-                                <span><i class="fa fa-youtube-play"></i></span>
-                                <span><i class="fas fa-user-circle"></i></span>
-                                <span><i class="fa-solid fa-bell"></i></span>
-                                <span><i class="fa-solid fa-bars"></i></span>
-                            </div>
-
-
-                            <div class="the_preview pt-2">
-                                <div class="col-md-12" style="height: 67%">
-
-                                    <div class="MainMobileview d-flex">
-                                        <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40"
-                                             alt="">
-                                        <span id="">{{auth()->user()->name}}</span>
-                                    </div>
-                                    <p class="m-0"></p>
-                                    <div class="Mobcart_title">
-                                        <span id="mypostresult_gpt">Write your post...</span>
-                                        <span class="icon icon-privacy text-primary" id="mynameresult_gpt"> #tags</span>
-                                    </div>
-                                </div>
-
+                            <div class="preview_wrap">
                                 <div class="col-md-12">
-                                    <div class="Mobcart_title bile d-flex">
-                                        <div class="reactions">8❤️</div>
-                                        <div class="total-comments u-margin-inline-start">
-                                            <a>12 Comments</a>
-                                            <a>2 Shares</a>
+                                    <div class="Mobcompny-title">
+                                        <div class="w-50">
+                                            <h6>Facebook</h6>
+                                        </div>
+                                        <div class="w-50 Mobsocial-icon">
+                                            <span><i class="fa-solid fa-plus"></i></span>
+                                            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                                            <span><i class="fab fa-facebook-messenger"></i></span>
                                         </div>
                                     </div>
-                                    <div class="actions-buttons mt-2">
-                                        <ul class="actions-buttons-list d-flex p-0">
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i
-                                                        class="fa-solid fa-thumbs-up"></i><span class="text">Like</span>
-                                                </button>
-                                            </li>
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i
-                                                        class="fa-solid fa-comment"></i><span
-                                                        class="text">Comment</span></button>
-                                            </li>
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span
-                                                        class="text">Share</span></button>
-                                            </li>
-                                        </ul>
+                                </div>
+
+                                <div class="Mobcompny-smallicon">
+                                    <span><i class="fa-solid fa-house"></i></span>
+                                    <span><i class="fa fa-youtube-play"></i></span>
+                                    <span><i class="fas fa-user-circle"></i></span>
+                                    <span><i class="fa-solid fa-bell"></i></span>
+                                    <span><i class="fa-solid fa-bars"></i></span>
+                                </div>
+
+
+                                <div class="the_preview pt-2">
+                                    <div class="col-md-12" style="height: 67%">
+
+                                        <div class="MainMobileview d-flex">
+                                            <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40"
+                                                alt="">
+                                            <span id="">{{auth()->user()->name}}</span>
+                                        </div>
+                                        <p class="m-0"></p>
+                                        <div class="Mobcart_title">
+                                            <span id="mypostresult_gpt">Write your post...</span>
+                                            <span class="icon icon-privacy text-primary" id="mynameresult_gpt"> #tags</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="Mobcart_title bile d-flex">
+                                            <div class="reactions">8❤️</div>
+                                            <div class="total-comments u-margin-inline-start">
+                                                <a>12 Comments</a>
+                                                <a>2 Shares</a>
+                                            </div>
+                                        </div>
+                                        <div class="actions-buttons mt-2">
+                                            <ul class="actions-buttons-list d-flex p-0">
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button"><i
+                                                            class="fa-solid fa-thumbs-up"></i><span class="text">Like</span>
+                                                    </button>
+                                                </li>
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button"><i
+                                                            class="fa-solid fa-comment"></i><span
+                                                            class="text">Comment</span></button>
+                                                </li>
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span
+                                                            class="text">Share</span></button>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <div class="AIgeneratedContent create_preview_post_index_item">
-
-                    <div class="AIgeneratedContentInner">
+                    <div class="AIgeneratedContent create_preview_post_index_itemRightInner">
                         <div class="sub_heading">
                             <h4>AI Generated Content</h4>
                         </div>
-                        <div class="AIgeneratedContentData">
 
-                            <div class="AIgeneratedContentDataWrp d-flex mb-2">
-                                <div class="AIgeneratedContentAdd">
-                                    <a href="">Add +</a>
+                        <div class="AIgeneratedContentInner">
+                            <div class="AIgeneratedContentData">
+
+                                <div class="AIgeneratedContentDataWrp d-flex mb-3">
+                                    <div class="AIgeneratedContentAdd">
+                                        <a href="">Add +</a>
+                                    </div>
+                                    <div class="AIgeneratedContentText">
+                                        <p class=" mb-0">This is an AIgenerated post from ChatGPT, designedfor, facebook</p>
+                                    </div> 
                                 </div>
-                                <div class="AIgeneratedContentText">
-                                    <p class=" mb-0">This is an AIgenerated post from ChatGPT, designedfor, facebook</p>
-                                </div> 
-                            </div>
 
-                            <div class="AIgeneratedContentDataWrp d-flex mb-2">
-                                <div class="AIgeneratedContentAdd">
-                                    <a href="">Add +</a>
+                                <div class="AIgeneratedContentDataWrp d-flex mb-3">
+                                    <div class="AIgeneratedContentAdd">
+                                        <a href="">Add +</a>
+                                    </div>
+                                    <div class="AIgeneratedContentText">
+                                        <p class=" mb-0">AI Generated Tags : #Tag1#, #TAG2, #TAG3</p>
+                                    </div> 
                                 </div>
-                                <div class="AIgeneratedContentText">
-                                    <p class=" mb-0">AI Generated Tags : #Tag1#, #TAG2, #TAG3</p>
-                                </div> 
-                            </div>
 
-                            <div class="AIgeneratedContentDataWrp d-flex mb-2">
-                                <div class="AIgeneratedContentAdd">
-                                    <a href="">Add +</a>
+                                <div class="AIgeneratedContentDataWrp d-flex mb-3">
+                                    <div class="AIgeneratedContentAdd">
+                                        <a href="">Add +</a>
+                                    </div>
+                                    <div class="AIgeneratedContentText">
+                                        <p class=" mb-0">AI Generated Image</p>
+                                    </div> 
                                 </div>
-                                <div class="AIgeneratedContentText">
-                                    <p class=" mb-0">AI Generated Image</p>
-                                </div> 
-                            </div>
 
-                            <div class="AIgeneratedCarouselWrp">
+                                <div class="AIgeneratedCarouselWrp">
 
-                                <div class="owl-carousel owl-theme AIgeneratedCarousel">
-                        
-                                    <div class="item">
-                                        <div class="itemCnt">
-                                            <div class="itemCntImg">
-                                                <img src="{{asset('images/Instagram_Color.png')}}" class="img-fluid" alt="">
-                                            </div>
-                                            <div class="itemCntPlusWrp">
-                                                <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                    <div class="owl-carousel owl-theme AIgeneratedCarousel">
+                            
+                                        <div class="item">
+                                            <div class="itemCnt">
+                                                <div class="itemCntImg">
+                                                    <img src="{{asset('images/Instagram_Color.png')}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="itemCntPlusWrp">
+                                                    <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="itemCnt">
-                                            <div class="itemCntImg">
-                                                <img src="{{asset('images/Tiktok_Color.png')}}" class="img-fluid" alt="">
-                                            </div>
-                                            <div class="itemCntPlusWrp">
-                                                <i class="fa-solid fa-plus itemCntPlus" id=""></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="itemCnt">
-                                            <div class="itemCntImg">
-                                                <img src="{{asset('images/WhatsApp_Color.png')}}" class="img-fluid" alt="">
-                                            </div>
-                                            <div class="itemCntPlusWrp">
-                                                <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                        
+                                        <div class="item">
+                                            <div class="itemCnt">
+                                                <div class="itemCntImg">
+                                                    <img src="{{asset('images/Tiktok_Color.png')}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="itemCntPlusWrp">
+                                                    <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                                </div>
                                             </div>
                                         </div>
+                                        
+                                        <div class="item">
+                                            <div class="itemCnt">
+                                                <div class="itemCntImg">
+                                                    <img src="{{asset('images/WhatsApp_Color.png')}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="itemCntPlusWrp">
+                                                    <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
                                     </div>
-                                    
-                                    
+
+
+                                    <div class="AIgeneratedCarouselBtmBtn">
+                                        <a href="">Edit / Prompt</a>
+                                        <a href="">Add to Post</a>
+                                    </div>
                                 </div>
 
 
-                                <div class="AIgeneratedCarouselBtmBtn">
-                                    <a href="">Edit / Prompt</a>
-                                    <a href="">Add to Post</a>
-                                </div>
                             </div>
-
-
                         </div>
+
                     </div>
 
                 </div>
+
+
 
 
                 {{-- Instagram card ------}}
@@ -1058,6 +1210,7 @@
                     }
                 });
             });
+
             // focus on input field check empty or not
             $(".form-control").on('focus', function () {
                 var tmpThis = $(this).val();

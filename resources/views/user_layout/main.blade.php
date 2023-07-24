@@ -531,7 +531,7 @@
             select: function (date, context) {
                 selectedDate = date; // store selected date value in variable
                 settime();
-                $('#timeModal').modal('show');
+                $('#TimetoUploadPost').modal('show');
             }
         });
 
@@ -600,10 +600,10 @@
                     select: function (date, context) {
                         selectedDate = date; // store selected date value in variable
                         settime();
-                        $('#timeModal').modal('show');
+                        $('#TimetoUploadPost').modal('show');
                     }
                 });
-                $('#timeModal').modal('show');
+                $('#TimetoUploadPost').modal('show');
                 settime();
 
             },
