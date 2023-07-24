@@ -131,6 +131,21 @@
 .AIgeneratedCarousel .owl-nav button:hover {
     background: transparent !important;
 }
+.AIgeneratedCarousel .owl-nav .owl-next {
+    width: 100%;
+}
+.AIgeneratedCarousel .owl-nav .owl-next span {
+    position: relative;
+    width: 90%;
+    display: inline-block;
+    text-align: end;
+    padding-right: 20px;
+}
+.AIgeneratedCarousel .owl-nav .owl-next span::before {
+    position: absolute;
+    content: 'Next';
+    left: 10px;
+}
 
 .AIgeneratedCarouselBtmBtn {
     display: flex;
@@ -227,7 +242,61 @@
     margin-top: 20px;
 }
 .Customemojiarea {
-    min-height: 130px !important;
+    /* min-height: 130px !important; */
+}
+
+.MainMobileview img {
+    width: 30px;
+    border: 2px solid #0f74ce;
+}
+.MainMobileview span {
+    font-size: 12px;
+    font-weight: 600 !important;
+    margin-left: 4px !important;
+}
+.MainMobileview span.sponsored {
+    margin-left: 0 !important;
+    color: #888888;
+    font-weight: 400 !important;
+    font-size: 10px;
+}
+.MainMobileview span.sponsored i {
+    font-size: 8px;
+}
+.Mobcart_title span {
+    margin-left: unset !important;
+    margin-top: 3px;
+    font-weight: 600;
+}
+.Mobcart_titleCustom,
+.actions-buttons {
+    border-top: 1px solid #d7d7d7;
+    padding: 5px 0;
+}
+.actions-buttons {
+    
+}
+.actions-buttons ul {}
+.actions-buttons ul li button {}
+.actions-buttons ul li button i {
+    font-size: 12px !important;
+}
+.actions-buttons ul li span {
+    font-size: 10px !important;
+    margin-left: 3px;
+    font-weight: 600;
+    color: #646464;
+}
+
+.PostDateTimePicker {
+    text-align: end;
+}
+.PostDateTimePicker span {
+    color: #0f74ce;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    display: inline-block;
 }
 
 
@@ -305,6 +374,12 @@
                                     <div class="form-wizard card my-2">
 
                                         <div class="form-wizard-header">
+                                            <div class="PostDateTimePicker">
+                                                <span data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
+                                                    PostDate:07/13/2023 <br>
+                                                    PostTime:2:30pm
+                                                </span>
+                                            </div>
 
                                             <ul class="list-unstyled form-wizard-steps clearfix">
                                                 @if(in_array(('Facebook'),auth()->user()->account->platforms))
@@ -690,7 +765,9 @@
                                         <div class="MainMobileview d-flex">
                                             <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40"
                                                 alt="">
-                                            <span id="">{{auth()->user()->name}}</span>
+                                            <span id="">{{auth()->user()->name}} <br>
+                                                <span class="sponsored">Public . <i class="fa-solid fa-earth-americas"></i></span>
+                                            </span>
                                         </div>
                                         <p class="m-0"></p>
                                         <div class="Mobcart_title">
@@ -711,15 +788,15 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="Mobcart_title bile d-flex">
+                                        <div class="Mobcart_title bile d-flex justify-content-between Mobcart_titleCustom">
                                             <div class="reactions">8❤️</div>
                                             <div class="total-comments u-margin-inline-start">
                                                 <a>12 Comments</a>
                                                 <a>2 Shares</a>
                                             </div>
                                         </div>
-                                        <div class="actions-buttons mt-2">
-                                            <ul class="actions-buttons-list d-flex p-0">
+                                        <div class="actions-buttons">
+                                            <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                                 <li class="actions-buttons-item">
                                                     <button class="actions-buttons-button"><i
                                                             class="fa-solid fa-thumbs-up"></i><span class="text">Like</span>
