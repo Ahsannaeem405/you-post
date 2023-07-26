@@ -221,8 +221,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <label for="">Select Time:</label>
-                <input type="time" name="" id="" class="form-control select_time" value="00:00">
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary change_time" data-dismiss="modal">Save</button>
@@ -304,11 +303,6 @@
             </div>
 
             <div class="modal-body modal-social-icon">
-                <form action="{{url('connect_to_facebook')}}" method="post">
-                    @csrf
-                    {{-- <button class="btn btn-primary  mt-2" type="submit"><i class="fa fa-facebook-square mr-2"></i>Connect with
-                        Facebook
-                    </button> --}}
 
 
                     <div class="row MDLsocial-iconmain">
@@ -316,32 +310,32 @@
                         <div class="col-md-6 MDLsocial-iconmainWrp">
                             <div class="MDLsocial-icon">
                                 <a class="" href="{{url('connect_to_facebook')}}">
-                                    <i class="fa fa-facebook-square mr-2"></i>Connect with Facebook</a>
+                                    <i class="fa fa-facebook-square me-2"></i>Connect with Facebook</a>
                             </div>
                         </div>
 
                         <div class="col-md-6 MDLsocial-iconmainWrp">
                             <div class="MDLsocial-icon">
                                 <a class="" href="{{url('connect_to_instagram')}}">
-                                    <i class="fa fa-instagram mr-2"></i>Connect with Instagram</a>
+                                    <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
                             </div>
                         </div>
 
                         <div class="col-md-6 MDLsocial-iconmainWrp">
                             <div class="MDLsocial-icon">
                                 <a class="" href="{{url('connect_to_linkedin')}}">
-                                    <i class="fa fa-linkedin-square mr-2"></i>Connect with Linkedin</a>
+                                    <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
                             </div>
                         </div>
 
                         <div class="col-md-6 MDLsocial-iconmainWrp">
                             <div class="MDLsocial-icon">
                                 <a class="" href="{{url('connect_to_twitter')}}">
-                                    <i class="fa fa-twitter-square mr-2"></i>Connect with Twitter</a></div>
+                                    <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a></div>
                         </div>
 
                     </div>
-                </form>
+
             </div>
 
 
@@ -469,8 +463,8 @@
             <div class="footer">
                 <div class="site_links grid_item">
                     <ul>
-                        <li><a href="javascript:void(0)" class="myaccounts">My Account</a></li>
-                        <li><a href="javascript:void(0)">Add New Social Profile</a></li>
+                        <li><a href="javascript:void(0)" >My Account</a></li>
+                        <li><a href="javascript:void(0)" class="myaccounts">Add Social Account</a></li>
                         <li><a href="javascript:void(0)">Privacy Policy</a></li>
                         <li><a href="javascript:void(0)">Support</a></li>
                         <li><a href="javascript:void(0)">Public Profile</a></li>
@@ -529,9 +523,10 @@
     $(function () {
         pignoseCalendar = $('.calendar').pignoseCalendar({
             select: function (date, context) {
-                selectedDate = date; // store selected date value in variable
+                selectedDate = date;
+                // store selected date value in variable
                 settime();
-                $('#TimetoUploadPost').modal('show');
+                //$('#TimetoUploadPost').modal('show');
             }
         });
 
@@ -600,7 +595,6 @@
                     select: function (date, context) {
                         selectedDate = date; // store selected date value in variable
                         settime();
-                        $('#TimetoUploadPost').modal('show');
                     }
                 });
                 $('#TimetoUploadPost').modal('show');
@@ -708,22 +702,44 @@
                 if (errorData.message == 'fb_error') {
                     $('#socialFB').prop('checked', false);
                     $('#socialFB').closest('.single_platform').removeClass('active_social');
-                    toastr.error('Please Connect Your Facebook Account');
+                    toastr.error(`Please Connect Your Facebook Account.
+                    <div class="MDLsocial-icon">
+                                <a class="" href="{{url('connect_to_facebook')}}" style="background:#3b5998 !important">
+                                    <i class="fa fa-facebook-square me-2"></i> <span> Connect with Facebook</span> </a>
+                            </div>
+
+                    `);
                 } else if (errorData.message == 'twiter_error') {
 
                     $('#socialTwitter').prop('checked', false);
                     $('#socialTwitter').closest('.single_platform').removeClass('active_social');
-                    toastr.error('Please Connect Your Twitter Account');
+                    toastr.error(`Please Connect Your Twitter Account
+                     <div class="MDLsocial-icon" style="background-color: #00acee !important;">
+                                <a class="" href="{{url('connect_to_twitter')}}">
+                                    <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a></div>
+                        </div>
+                    `);
                 } else if (errorData.message == 'insta_error') {
                     $('#socialInstagram').prop('checked', false);
                     $('#socialInstagram').closest('.single_platform').removeClass('active_social');
 
-                    toastr.error('Please Connect Your instagram Account');
+                    toastr.error(`Please Connect Your instagram Account
+                     <div class="MDLsocial-icon" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;">
+                                <a class="" href="{{url('connect_to_instagram')}}">
+                                    <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
+                            </div>
+
+                    `);
                 } else if (errorData.message == 'linkedin_error') {
                     $('#socialLinkedin').prop('checked', false);
                     $('#socialLinkedin').closest('.single_platform').removeClass('active_social');
 
-                    toastr.error('Please Connect Your Linkedin Account');
+                    toastr.error(`Please Connect Your Linkedin Account
+                     <div class="MDLsocial-icon" style="background-color: #0072b1 !important;">
+                                <a class="" href="{{url('connect_to_linkedin')}}">
+                                    <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
+                            </div>
+                    `);
                 }
             }
         });

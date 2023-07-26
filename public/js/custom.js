@@ -14,10 +14,9 @@
     });
 
     // Initialize Pignose Calendar
-    var selectedDate;
+    var selectedDate=new Date();
     function settime()
     {
-
         var select_time = $('.select_time').val();
         var hours = parseInt(select_time.split(':')[0]); // extract hours from custom time string
         var minutes = parseInt(select_time.split(':')[1]); // extract minutes from custom time string
@@ -33,6 +32,7 @@
 
 
         $('#browsertime').text(new_date_time);
+        $('#browsertime2').text(new_date_time);
         $('.browsertimeinput').val(new_date_time);
         $('.posttime').val('later');
     }
@@ -295,6 +295,7 @@
             }).format(now);
 
             $('#browsertime').text(browserTime);
+            $('#browsertime2').text(browserTime);
             $('.browsertimeinput').val(browserTime);
         }
 

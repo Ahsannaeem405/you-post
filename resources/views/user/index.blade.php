@@ -179,7 +179,7 @@
 .post_manage_calendar {
     padding-top: unset !important;
 }
-.post_manage_calendar .container { 
+.post_manage_calendar .container {
     background: #fff;
     padding-top: 30px;
 }
@@ -274,7 +274,7 @@
     padding: 5px 0;
 }
 .actions-buttons {
-    
+
 }
 .actions-buttons ul {}
 .actions-buttons ul li button {}
@@ -375,9 +375,9 @@
 
                                         <div class="form-wizard-header">
                                             <div class="PostDateTimePicker">
-                                                <span data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
-                                                    PostDate:07/13/2023 <br>
-                                                    PostTime:2:30pm
+                                                Posted Date & Time
+                                                <span data-bs-toggle="modal" data-bs-target="#TimetoUploadPost" id="browsertime2">
+
                                                 </span>
                                             </div>
 
@@ -468,7 +468,7 @@
                                                 <div class="form-group clearfix">
                                                     <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
                                                     <a href="javascript:;"
-                                                       class="form-wizard-next-btn float-right">Next</a>
+                                                       class="form-wizard-next-btn float-right">Next Platform</a>
                                                 </div>
                                             </fieldset>
                                         @endif
@@ -545,7 +545,7 @@
                                                 <div class="form-group clearfix">
                                                     <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
                                                     <a href="javascript:;"
-                                                       class="form-wizard-next-btn float-right">Next</a>
+                                                       class="form-wizard-next-btn float-right">Next Platform</a>
                                                 </div>
                                             </fieldset>
                                         @endif
@@ -584,7 +584,7 @@
                                                 <div class="form-group clearfix">
                                                     <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
                                                     <a href="javascript:;"
-                                                       class="form-wizard-next-btn float-right">Next</a>
+                                                       class="form-wizard-next-btn float-right">Next Platform</a>
                                                 </div>
                                             </fieldset>
                                         @endif
@@ -650,25 +650,22 @@
                                                 <div class="form-group clearfix">
                                                     <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
                                                     <a href="javascript:;"
-                                                       class="form-wizard-next-btn float-right">Next</a>
+                                                       class="form-wizard-next-btn float-right">Next Platform</a>
                                                 </div>
                                             </fieldset>
                                         @endif
 
-                                        <div class="post_now_button next_plat_button my-4">
-                                            <input type="submit" class="btn post_later_now_btn" value="Back">
-                                            <input type="submit" class="btn post_later_now_btn" value="Next Platform">
-                                        </div>
+
 
                                         <div class="post_now_button schedule_post_button">
-                                            <input type="submit" class="btn post_later_now_btn" value="Schedule Post"  data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
+                                            <input type="button" class="btn post_later_now_btn" value="Schedule Post"  data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
                                             <input type="submit" class="btn post_later_now_btn" value="Post Now">
                                         </div>
 
 
                                         {{-- -------------------------------- --}}
-                                       
-  
+
+
                                         <!-- Modal -->
                                         <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -686,10 +683,12 @@
                                                             <input type="hidden" name="timezone" class="timezone">
                                                             <h4>Post Later</h4>
                                                         </div>
-                            
+
                                                         <div class="pick_date_from_calendar">
                                                             <div class="calendar"></div>
                                                         </div>
+                                                        <label for="">Select Time:</label>
+                                                        <input type="time" name="" id="" class="form-control select_time" value="00:00">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -706,33 +705,13 @@
                             </div>
                         </section>
 
-
-
-
-
-                        
-                        {{-- <div class="post_later d-none">
-                            <div class="tabs_type_heading_sm">
-                                <span id="browsertime"></span>
-                                <input type="hidden" class="browsertimeinput" name="time">
-                                <input type="hidden" class="posttime" value="now" name="posttime">
-                                <input type="hidden" name="timezone" class="timezone">
-                                <h4>Post Later</h4>
-                            </div>
-
-                            <div class="pick_date_from_calendar">
-                                <div class="calendar"></div>
-                            </div>
-                        </div> --}}
-
-
                     </form>
                 </div>
 
                 <div class="create_preview_post_index_item create_preview_post_index_itemRight">
 
                     <div class="d-lg-flex justify-content-center create_preview_post_index_itemRightInner">
-                        <div class="preview_post">
+                        <div class="preview_post" style="width: 80%!important;">
                             <div class="sub_heading">
                                 <h4>Post Preview</h4>
                             </div>
@@ -912,7 +891,7 @@
                                     </div>
                                     <div class="AIgeneratedContentText">
                                         <p class=" mb-0">This is an AIgenerated post from ChatGPT, designedfor, facebook</p>
-                                    </div> 
+                                    </div>
                                 </div>
 
                                 <div class="AIgeneratedContentDataWrp d-flex mb-3">
@@ -921,7 +900,7 @@
                                     </div>
                                     <div class="AIgeneratedContentText">
                                         <p class=" mb-0">AI Generated Tags : #Tag1#, #TAG2, #TAG3</p>
-                                    </div> 
+                                    </div>
                                 </div>
 
                                 <div class="AIgeneratedContentDataWrp d-flex mb-3">
@@ -930,13 +909,13 @@
                                     </div>
                                     <div class="AIgeneratedContentText">
                                         <p class=" mb-0">AI Generated Image</p>
-                                    </div> 
+                                    </div>
                                 </div>
 
                                 <div class="AIgeneratedCarouselWrp">
 
                                     <div class="owl-carousel owl-theme AIgeneratedCarousel">
-                            
+
                                         <div class="item">
                                             <div class="itemCnt">
                                                 <div class="itemCntImg">
@@ -947,7 +926,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="item">
                                             <div class="itemCnt">
                                                 <div class="itemCntImg">
@@ -958,7 +937,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="item">
                                             <div class="itemCnt">
                                                 <div class="itemCntImg">
@@ -969,8 +948,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        
+
+
                                     </div>
 
 
@@ -1321,7 +1300,7 @@
 
 
 
-        
+
     // ---------------------
     $('.owl-carousel').owlCarousel({
         loop:true,
