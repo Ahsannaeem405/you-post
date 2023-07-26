@@ -79,8 +79,8 @@
 .AIgeneratedCarousel .item .itemCntPlusWrp {}
 .AIgeneratedCarousel .item .itemCntPlusWrp i {
     position: absolute;
-    top: 40%;
-    left: 40%;
+    top: 45%;
+    left: 45%;
     margin: auto;
     z-index: 999;
     font-size: 20px;
