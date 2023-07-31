@@ -84,7 +84,7 @@
 
                     <div class="user_name grid_item">
                         <div class="the_name">
-                            <span>youpost.com<span class="color">/{{auth()->user()->account->name}}</span></span>
+                            <span>youpost.social<span class="color">/{{auth()->user()->account->name}}</span></span>
 
 
                         </div>
@@ -121,7 +121,7 @@
                         <img src="{{asset('images/FB_Color.png')}}" class="color_icon" alt=""/>
                         <img src="{{asset('images/FB_Black.png')}}" class="black_icon" alt=""/>
                     </div>
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Facebook" id="socialFB"
+                    <input type="checkbox" class="plateform" name="plateform[]" data-account="{{auth()->user()->account_id}}" value="Facebook" id="socialFB"
                         {{ in_array('Facebook', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialFB"></label>
                 </div>
@@ -131,7 +131,7 @@
                         <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt=""/>
                         <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt=""/>
                     </div>
-                    <input type="checkbox" class="plateform instagram_modal" name="plateform[]" value="Instagram"
+                    <input type="checkbox" class="plateform instagram_modal" data-account="{{auth()->user()->account_id}}" name="plateform[]" value="Instagram"
                            id="socialInstagram"
                         {{ in_array('Instagram', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialInstagram"></label>
@@ -143,7 +143,7 @@
                         <img src="{{asset('images/Twitter_Black.png')}}" class="black_icon" alt=""/>
                     </div>
 
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Twitter" id="socialTwitter"
+                    <input type="checkbox" class="plateform" name="plateform[]" data-account="{{auth()->user()->account_id}}" value="Twitter" id="socialTwitter"
                         {{ in_array('Twitter', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialTwitter"></label>
                 </div>
@@ -153,7 +153,7 @@
                         <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt=""/>
                     </div>
 
-                    <input type="checkbox" class="plateform" name="plateform[]" value="Linkedin" id="socialLinkedin"
+                    <input type="checkbox" class="plateform" name="plateform[]" data-account="{{auth()->user()->account_id}}" value="Linkedin" id="socialLinkedin"
                         {{ in_array('Linkedin', auth()->user()->account->platforms) ? 'checked' : '' }}>
                     <label for="socialLinkedin"></label>
                 </div>
@@ -264,198 +264,7 @@
     </div>
 </div>
 
-{{-- account modal --}}
-
-
-{{-- event detail modal --}}
-<div class="modal fade" id="detail_modal" tabindex="-1" aria-labelledby="detail_modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detail_modalLabel">Post Detail</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body event_detail_parent">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- event detail modal --}}
-
-
-{{-- event edit modal --}}
-
-{{-- myaccount modal --}}
-<div class="modal fade" id="myaccounts_modal" tabindex="-1" aria-labelledby="myaccounts_modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-cross-btn">
-                <h5 class="modal-title" id="myaccounts_modalLabel">Connect Accounts</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body modal-social-icon">
-
-
-                    <div class="row MDLsocial-iconmain">
-
-                        <div class="col-md-6 MDLsocial-iconmainWrp">
-                            <div class="MDLsocial-icon">
-                                <a class="" href="{{url('connect_to_facebook')}}">
-                                    <i class="fa fa-facebook-square me-2"></i>Connect with Facebook</a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 MDLsocial-iconmainWrp">
-                            <div class="MDLsocial-icon">
-                                <a class="" href="{{url('connect_to_instagram')}}">
-                                    <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 MDLsocial-iconmainWrp">
-                            <div class="MDLsocial-icon">
-                                <a class="" href="{{url('connect_to_linkedin')}}">
-                                    <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 MDLsocial-iconmainWrp">
-                            <div class="MDLsocial-icon">
-                                <a class="" href="{{url('connect_to_twitter')}}">
-                                    <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a></div>
-                        </div>
-
-                    </div>
-
-            </div>
-
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- myaccount modal --}}
-
-{{-- pages_modal --}}
-
-<div class="modal fade" id="pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Facebook</h5>
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--  <span aria-hidden="true">&times;</span>-->
-                <!--</button>-->
-            </div>
-            <form action="{{url('set_page')}}" method="post">
-                @csrf
-                <div class="modal-body">
-
-                    <select required name="page" class="form-control">
-                        <option value="">-select--</option>
-                        @foreach($all_pages as $page)
-                            <option value="{{$page->access_token}}">{{$page->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-
-
-        </div>
-    </div>
-</div>
-
-
-{{-- pages_modal --}}
-
-{{-- pages_modal for instagram --}}
-
-<div class="modal fade" id="instagram_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Instagram
-                    Account</h5>
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--  <span aria-hidden="true">&times;</span>-->
-                <!--</button>-->
-            </div>
-            <form action="{{url('set_page_for_instagram')}}" method="post">
-                @csrf
-                <div class="modal-body">
-
-                    <select required name="page" class="form-control instapage_selection">
-                        <option value="">-select--</option>
-                        @foreach($all_pages_for_insta as $page)
-                            <option value="{{$page->id}}">{{$page->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-
-
-        </div>
-    </div>
-</div>
-
-
-{{-- pages_modal for instagram --}}
-
-
-{{--    modal for pages linked--}}
-<div class="modal fade" id="linkedin_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Linkedin
-                    Account</h5>
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--  <span aria-hidden="true">&times;</span>-->
-                <!--</button>-->
-            </div>
-            <form action="{{url('set_page_for_linkedin')}}" method="post">
-
-                @csrf
-                <div class="modal-body">
-
-                    <select required name="page" class="form-control">
-                        <option value="">-select--</option>
-                        @foreach($instapages as $page)
-                            <option value="{{$page['$URN']}}">{{$page['localizedName']}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-
-
-        </div>
-    </div>
-</div>
-
-
+@include('user.component.modals')
 <!--===== Markup For "Footer" Starts Here =====-->
 <footer class="footer_outer">
     <div class="footer_inner">
@@ -682,6 +491,7 @@
 
 
     $(document).on('click', '.plateform', function () {
+        var account_id=$(this).data('account');
         var all_plateform = $("input[name='plateform[]']:checked");
         var plateform_val = [];
         all_plateform.each(function () {
@@ -691,7 +501,8 @@
             type: "get",
             url: "{{ url('update_user_platforms') }}",
             data: {
-                'plateform_val': plateform_val
+                'plateform_val': plateform_val,
+                'account_id':account_id
             },
             success: function (response) {
                 window.location.reload();
@@ -715,7 +526,7 @@
                     $('#socialTwitter').closest('.single_platform').removeClass('active_social');
                     toastr.error(`Please Connect Your Twitter Account
                      <div class="MDLsocial-icon" style="background-color: #00acee !important;">
-                                <a class="" href="{{url('connect_to_twitter')}}">
+                                <a class="" href="{{url('connect_twitter')}}">
                                     <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a></div>
                         </div>
                     `);
@@ -746,19 +557,7 @@
 
 
     });
-    $(document).on('click', '.edit_post', function () {
 
-        $('#detail_modal').modal('hide');
-        var tag = $(this).attr('data-tag');
-        var contact = $(this).attr('data-contact');
-        var id = $(this).attr('data-id');
-        $('.edit_content').val(contact);
-        $('.edit_tag').val(tag);
-
-        $('.edit_id').val(id);
-
-        $('#edit_modal').modal('show');
-    });
 
 </script>
 <script>

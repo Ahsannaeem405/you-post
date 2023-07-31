@@ -18,7 +18,7 @@ class UserObserver
 
         $account = Account::create([
             'user_id' => $user->id,
-            'name' => $user->name,
+            'name' => '',
         ]);
 
         $user->update([

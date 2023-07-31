@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 
@@ -48,8 +49,13 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('index', [UserController::class, 'index']);
-    //Route::get('select_page', [UserController::class, 'select_page']);
+    Route::get('dashboard', [UserController::class, 'dashbaord']);
+
+    //account page
+    Route::get('index', [AccountController::class,'index']);
+    Route::post('update-account-name', [AccountController::class,'update_account_name'])->name('update-account-name');
+    Route::post('refresh-accounts', [AccountController::class,'refresh_accounts'])->name('refresh-accounts');
+
 
     //get instagram pages using ajax
     Route::get('get_page_for_instagram', [UserController::class, 'get_page_for_instagram']);
@@ -73,34 +79,24 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
 
     //connect to facebook
-    Route::get('connect_to_facebook', [UserController::class, 'connect_to_facebook']);
+    Route::get('connect_to_facebook/{account?}', [UserController::class, 'connect_to_facebook']);
     Route::get('connect_facebook/calback', [UserController::class, 'connect_facebook_calback']);
 //connect to instagram
-    Route::get('connect_to_instagram', [UserController::class, 'connect_to_instagram']);
+    Route::get('connect_to_instagram/{account?}', [UserController::class, 'connect_to_instagram']);
     Route::get('connect_instagram/calback', [UserController::class, 'connect_instagram_calback']);
 //connect to linkedin
-    Route::get('connect_to_linkedin', [UserController::class, 'connect_to_linkedin']);
+    Route::get('connect_to_linkedin/{account?}', [UserController::class, 'connect_to_linkedin']);
     Route::get('connect_linkedin/calback', [UserController::class, 'connect_linkedin_calback']);
 //connect to twitter
-    Route::get('connect_to_twitter', [UserController::class, 'connect_to_twitter']);
+    Route::get('connect_twitter/{account?}', [UserController::class, 'connect_to_twitter']);
     Route::get('connect_to_twitter/calback', [UserController::class, 'connect_twitter_calback']);
 
 
     Route::get('get-facebook-likes', [UserController::class, 'get_facebook_likes']);
 
-    // --------------------------
-
-    Route::get('socialPlatform', function () {
-        return view('user.socialPlatform');
-    });
-    Route::get('successfullyAdded', function () {
-        return view('user.successfullyAdded');
-    });
-    // --------------------------
-    Route::get('get-facebook-likes', [UserController::class, 'get_facebook_likes']);
 
     //Multiple accounts
-    Route::post('store_acount', [\App\Http\Controllers\AccountController::class, 'store']);
+    Route::post('store_acount', [\App\Http\Controllers\AccountController::class, 'store'])->name('store-acount');
     Route::get('change_acount/{id}', [\App\Http\Controllers\AccountController::class, 'change_account']);
 
     //preferred text gpt

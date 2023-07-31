@@ -36,7 +36,7 @@ class UserController extends Controller
         set_time_limit(8000000);
     }
 
-    public function index()
+    public function dashbaord()
     {
 
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
@@ -62,6 +62,8 @@ class UserController extends Controller
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
 
     }
+
+
 
     public function create_post(Request $req)
     {
@@ -218,7 +220,7 @@ class UserController extends Controller
         $get_post = Post::find(decrypt($id));
         if ($get_post->posted_at_moment == 'later') {
             $get_post->delete();
-            return redirect('/index')->with('success', 'Post Deleted Successfully!');
+            return redirect('/dashboard')->with('success', 'Post Deleted Successfully!');
         } else {
             if ($get_post->plateform == 'Linkedin') {
                 $get_data = $Linkedinservice->delete_post($get_post->plateforms->social_id);
@@ -234,9 +236,9 @@ class UserController extends Controller
             }
             if ($get_data['status'] == true) {
                 $get_post->delete();
-                return redirect('/index')->with('success', 'Post Deleted Successfully!');
+                return redirect('/dashboard')->with('success', 'Post Deleted Successfully!');
             } else {
-                return redirect('/index')->with('error', 'Post cannot be Deleted');
+                return redirect('/dashboard')->with('error', 'Post cannot be Deleted');
             }
         }
 
@@ -245,33 +247,40 @@ class UserController extends Controller
 
     public function update_user_platforms(Request $req)
     {
+
+        $account=Account::find($req->account_id);
+
         if ($req->plateform_val != null) {
-            if (in_array('Facebook', $req->plateform_val) && (auth()->user()->account->fb_access_token == null || auth()->user()->account->fb_page_token == null)) {
+            if (in_array('Facebook', $req->plateform_val) && ($account->fb_access_token == null || $account->fb_page_token == null)) {
                 $error = ['message' => 'fb_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Twitter', $req->plateform_val) && (auth()->user()->account->twiter_access_token == null || auth()->user()->account->twiter_refresh_token == null)) {
+            } elseif (in_array('Twitter', $req->plateform_val) && ($account->twiter_access_token == null || $account->twiter_refresh_token == null)) {
                 $error = ['message' => 'twiter_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Instagram', $req->plateform_val) && (auth()->user()->account->insta_access_token == null || auth()->user()->account->insta_user_id == null)) {
+            } elseif (in_array('Instagram', $req->plateform_val) && ($account->insta_access_token == null || $account->insta_user_id == null)) {
                 $error = ['message' => 'insta_error'];
                 return response()->json($error, 404);
-            } elseif (in_array('Linkedin', $req->plateform_val) && (auth()->user()->account->linkedin_accesstoken == null || auth()->user()->account->linkedin_user_id == null || auth()->user()->account->linkedin_page_id == null)) {
+            } elseif (in_array('Linkedin', $req->plateform_val) && ($account->linkedin_accesstoken == null || $account->linkedin_user_id == null || $account->linkedin_page_id == null)) {
                 $error = ['message' => 'linkedin_error'];
                 return response()->json($error, 404);
             }
         }
-        $user = Account::find(auth()->user()->account_id);
-        $req->plateform_val ? $user->platforms = $req->plateform_val : $user->platforms = [];
-        $user->update();
+
+        $req->plateform_val ? $account->platforms = $req->plateform_val : $account->platforms = [];
+        $account->update();
 
         $response = ['message' => 'success'];
 
         return response()->json($response, 200);
     }
 
-    public function connect_to_facebook()
+    public function connect_to_facebook($account=null)
     {
-
+        if ($account){
+            auth()->user()->update([
+                'account_id' => $account
+            ]);
+        }
         auth()->user()->account()->update([
             'fb_access_token' => null,
             'fb_page_token' => null
@@ -301,7 +310,7 @@ class UserController extends Controller
         $account = Account::find(auth()->user()->account_id);
         $account->fb_access_token = $token;
         $account->update();
-        return redirect('/index')->with('success', 'Facebook Connected Successfully! kindly Select Your Page');
+        return redirect('/index')->with('success', 'Facebook, Successfully Added');
     }
 
     public function set_page(Request $req)
@@ -312,11 +321,16 @@ class UserController extends Controller
         $user = Account::find(auth()->user()->account_id);
         $user->fb_page_token = $req->page;
         $user->update();
-        return redirect('/index')->with('success', 'Facebook Connected Successfully!');
+        return back()->with('success', 'Facebook, Successfully Added');
     }
 
-    public function connect_to_instagram()
+    public function connect_to_instagram($account=null)
     {
+        if ($account){
+            auth()->user()->update([
+                'account_id' => $account
+            ]);
+        }
         auth()->user()->account()->update([
             'insta_access_token' => null,
             'insta_user_id' => null
@@ -350,7 +364,7 @@ class UserController extends Controller
         $user = Account::find(auth()->user()->account_id);
         $user->insta_access_token = $accessToken;
         $user->update();
-        return redirect('/index')->with('success', 'Please Select page that you have connected with you instagram business account');
+        return redirect('/index')->with('success', 'Instagram, Successfully Added');
 
     }
 
@@ -415,29 +429,22 @@ class UserController extends Controller
             $user = Account::find(auth()->user()->account_id);
             $user->insta_user_id = $instagram_business_account_id;
             $user->update();
-            return redirect('/index')->with('success', 'instagram Connected Successfully!');
+            return back()->with('success', 'instagram Connected Successfully!');
         } else {
-            return redirect('/index')->with('error', 'Sorry! no instagram account is connected with this page');
+            return back()->with('error', 'Sorry! no instagram account is connected with this page');
         }
 
     }
 
-    public function set_page_for_linkedin(Request $req)
+
+
+    public function connect_to_linkedin($account=null)
     {
-        $req->validate([
-            'page' => 'required',
-        ]);
-
-        $user = Account::find(auth()->user()->account_id);
-        $user->linkedin_page_id = $req->page;
-        $user->update();
-        return redirect('/index')->with('success', 'Linkedin  Connected Successfully!');
-
-
-    }
-
-    public function connect_to_linkedin()
-    {
+        if ($account){
+            auth()->user()->update([
+                'account_id' => $account
+            ]);
+        }
         auth()->user()->account()->update([
             'linkedin_accesstoken' => null,
             'linkedin_user_id' => null,
@@ -459,7 +466,7 @@ class UserController extends Controller
             return redirect($authorization_url);
         } catch (\Throwable $e) {
 
-            return redirect('/index')->with('error', $e->getMessage());
+            return back()->with('error', $e->getMessage());
         }
     }
 
@@ -496,7 +503,7 @@ class UserController extends Controller
             $user->linkedin_accesstoken = $accessToken->getToken();
             $user->linkedin_user_id = $userId;
             $user->update();
-            return redirect('/index')->with('success', 'linkedin Connected Successfully');
+            return redirect('/index')->with('success', 'Linkedin, Successfully Added');
 
         } catch (\Throwable $e) {
 
@@ -506,8 +513,27 @@ class UserController extends Controller
 
     }
 
-    public function connect_to_twitter()
+    public function set_page_for_linkedin(Request $req)
     {
+        $req->validate([
+            'page' => 'required',
+        ]);
+
+        $user = Account::find(auth()->user()->account_id);
+        $user->linkedin_page_id = $req->page;
+        $user->update();
+        return back()->with('success', 'Linkedin  Connected Successfully!');
+
+
+    }
+
+    public function connect_to_twitter($account=null)
+    {
+        if ($account){
+            auth()->user()->update([
+                'account_id' => $account
+            ]);
+        }
         auth()->user()->account()->update([
             'twiter_access_token' => null,
             'twiter_refresh_token' => null,
@@ -523,7 +549,7 @@ class UserController extends Controller
             $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20like.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
             return redirect()->away($auth_url);
         } catch (\Throwable $e) {
-            return redirect('/index')->with('error', $e->getMessage());
+            return back()->with('error', $e->getMessage());
         }
 
 
@@ -570,37 +596,18 @@ class UserController extends Controller
                 'twiter_access_token' => $access_token,
                 'twiter_refresh_token' => $refresh_token
             ]);
-            return redirect('/index')->with('success', 'Twitter Connected Successfully');
+            return redirect('/index')->with('success', 'Twitter, Successfully Added');
         } catch (\Throwable $e) {
             return redirect('/index')->with('error', $e->getMessage());
         }
 
 
-        // dd(123, $access_token);
 
-
-// $client_id = 'your_client_id';
-// $client_secret = 'your_client_secret';
-// $redirect_uri = 'https://yourapp.com/callback';
-// $code = $_GET['code'];
-
-// $client = new Client([
-//     'base_uri' => 'https://api.twitter.com/',
-//     'headers' => [
-//         'Authorization' => 'Basic ' . base64_encode($client_id . ':' . $client_secret),
-//         'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8',
-//     ],
-// ]);
-
-        // //////////////
-
-
-        // $oauth_verifier = filter_input(INPUT_GET, 'oauth_verifier');
 
     }
 
 
-    public function get_facebook_likes(Facebookservice $facebookservice,Instagramservice $instagramservice,TwitterService $twitterService)
+    public function get_facebook_likes(Facebookservice $facebookservice, Instagramservice $instagramservice, TwitterService $twitterService)
     {
 
 
@@ -613,7 +620,7 @@ class UserController extends Controller
             elseif ($post->plateform == 'Twitter')
                 $twitterService->stats($post);
             elseif ($post->plateform == 'Linkedin')
-               true;// $twitterService->stats($post);
+                true;// $twitterService->stats($post);
         }
 
 

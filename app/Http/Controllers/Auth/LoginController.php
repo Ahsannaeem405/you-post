@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'dashboard';
 
     /**
      * Create a new controller instance.
@@ -59,7 +59,7 @@ class LoginController extends Controller
                 if($finduser){
 
                     Auth::login($finduser);
-                    return redirect()->intended('/index')->with('success', 'Login Successfully');
+                    return redirect('dashboard')->with('success', 'Login Successfully');
                 }else{
 
                     $newUser = User::updateOrCreate(['email' => $user->email],[
@@ -68,10 +68,9 @@ class LoginController extends Controller
                         'password' => encrypt('123456dummy')
                     ]);
                     Auth::login($newUser);
-                    return redirect()->intended('/index')->with('success', 'Login Successfully');
+                    return redirect('index')->with('success-register', 'Login Successfully');
                 }
             } catch (\Throwable $e) {
-                dd($e);
                 return redirect()->intended('/login')->with('error', $e->getMessage()) ;
             }
 
@@ -93,7 +92,7 @@ class LoginController extends Controller
             $finduser = User::where('facebook_id', $user->id)->first();
             if($finduser){
                 Auth::login($finduser);
-                return redirect()->intended('/index')->with('success', 'Login Successfully');
+                return redirect('dashboard')->with('success', 'Login Successfully');
             }else{
                 $user->email != null ? $email = $user->email : $email = "$user->id@gmail.com";
                 $newUser = User::updateOrCreate(['email' => $email],[
@@ -102,7 +101,7 @@ class LoginController extends Controller
                     'password' => encrypt('123456dummy')
                 ]);
                 Auth::login($newUser);
-                return redirect()->intended('/index')->with('success', 'Login Successfully');
+                return redirect('index')->with('success-register', 'Login Successfully');
             }
         } catch (\Throwable $e) {
 
