@@ -24,6 +24,7 @@ use Intervention\Image\Facades\Image;
 use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate\TimeCode;
 use getID3\getID3;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -247,7 +248,6 @@ class UserController extends Controller
 
     public function update_user_platforms(Request $req)
     {
-
         $account=Account::find($req->account_id);
 
         if ($req->plateform_val != null) {
@@ -319,7 +319,12 @@ class UserController extends Controller
             'page' => 'required',
         ]);
         $user = Account::find(auth()->user()->account_id);
+        
+        $platforms=$user->platforms;
+        array_push($platforms,'Facebook');
+
         $user->fb_page_token = $req->page;
+        $user->platforms = $platforms;
         $user->update();
         return back()->with('success', 'Facebook, Successfully Added');
     }
@@ -427,7 +432,12 @@ class UserController extends Controller
         if (isset($result['instagram_business_account'])) {
             $instagram_business_account_id = $result['instagram_business_account']['id'];
             $user = Account::find(auth()->user()->account_id);
+
+            $platforms=$user->platforms;
+            array_push($platforms,'Instagram');
+
             $user->insta_user_id = $instagram_business_account_id;
+            $user->platforms = $platforms;
             $user->update();
             return back()->with('success', 'instagram Connected Successfully!');
         } else {
@@ -520,7 +530,12 @@ class UserController extends Controller
         ]);
 
         $user = Account::find(auth()->user()->account_id);
+
+        $platforms=$user->platforms;
+        array_push($platforms,'Linkedin');
+
         $user->linkedin_page_id = $req->page;
+        $user->platforms = $platforms;
         $user->update();
         return back()->with('success', 'Linkedin  Connected Successfully!');
 
@@ -589,15 +604,21 @@ class UserController extends Controller
             if (isset($response2->error)) {
                 return redirect('/index')->with('error', $response2->error_description);
             }
-
             $access_token = $response2->access_token;
             $refresh_token = $response2->refresh_token;
-            User::find(auth()->user()->id)->account()->update([
+            $accountUser=User::find(auth()->user()->id);
+            $platforms=$accountUser->account->platforms;
+            array_push($platforms,'Twitter');
+           
+     
+            $accountUser->account()->update([
                 'twiter_access_token' => $access_token,
-                'twiter_refresh_token' => $refresh_token
+                'twiter_refresh_token' => $refresh_token,
+                'platforms' => $platforms,
             ]);
             return redirect('/index')->with('success', 'Twitter, Successfully Added');
         } catch (\Throwable $e) {
+            dd($e);
             return redirect('/index')->with('error', $e->getMessage());
         }
 
