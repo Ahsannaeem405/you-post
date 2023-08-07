@@ -51,7 +51,7 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('dashboard', [UserController::class, 'dashbaord']);
-    Route::get('getPreferredText', [GptController::class, 'PreferredText']);
+
 
     //account page
     Route::get('index', [AccountController::class,'index']);
@@ -102,7 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('change_acount/{id}', [\App\Http\Controllers\AccountController::class, 'change_account']);
 
     //preferred text gpt
-    Route::post('preferred-text', [\App\Http\Controllers\GptController::class, 'PreferredText']);
+    Route::any('preferred-text', [\App\Http\Controllers\GptController::class, 'PreferredText']);
 });
 
 Route::get('preview-page',[\App\Http\Controllers\GptController::class,'previewPage']);

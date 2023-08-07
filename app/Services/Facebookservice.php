@@ -29,7 +29,7 @@ class  Facebookservice
         } else if ($data['post']->media_type == 'video') {
             $url = "https://graph.facebook.com/me/videos";
         }
-        $tags = $post->tag ? " #$post->tag" : '';
+        $tags = $post->tag ? " $post->tag" : '';
         $options = [
             'query' => [
                 'access_token' => $accessToken,

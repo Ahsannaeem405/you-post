@@ -264,6 +264,64 @@
     </div>
 </div>
 
+
+
+<div class="modal fade" id="addAccount" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-cross-btn">
+                <h5 class="modal-title" id="timeModalLabel">Add Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('store_acount')}}" method="post">
+                    @csrf
+                    <div class="col-12 mb-2">
+                        <lable>Name</lable>
+                        <input type="text" class="form-control" required name="name"
+                               placeholder="Enter account name...">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary ">Create</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_prompt" tabindex="-1" aria-labelledby="edit_prompt" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-cross-btn">
+                <h5 class="modal-title" id="timeModalLabel">Prompt</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                    <div class="col-12 mb-2">
+                        <input type="text" class="form-control edit_promotedtext"  required name="name"
+                               placeholder="Prompt text">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary save_prompt">Save</button>
+                    </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 @include('user.component.modals')
 <!--===== Markup For "Footer" Starts Here =====-->
 <footer class="footer_outer">
@@ -328,6 +386,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
 <script>
+    var owl = $('.owl-carousel');
     var pignoseCalendar = null;
     $(function () {
         pignoseCalendar = $('.calendar').pignoseCalendar({
@@ -613,11 +672,12 @@
 
     function Namechangefun($obj) {
         var inputText = $($obj).val();
-        document.getElementById("mynameresult").textContent = '#' + inputText;
+        document.getElementById("mynameresult").textContent =  inputText;
     }
 
     function suggested_text($obj) {
-$('.preview_post .loader').removeClass('d-none');
+
+$('.loader').removeClass('d-none');
         var contentData=$($obj).val();
 
         $.ajaxSetup({
@@ -630,13 +690,58 @@ $('.preview_post .loader').removeClass('d-none');
             type: 'POST',
             data: {'contentData': contentData},
             success: function (result) {
-                $('.preview_post .loader').addClass('d-none');
-                document.getElementById("mypostresult_gpt").textContent = result['content'];
-                document.getElementById("mynameresult_gpt").textContent = '#'+result['tags'];
+                $('.loader').addClass('d-none');
+                $('#gpt_content').html(result['content'])  ;
+                $('#gpt_tags').html(result['tags']);
+                $('.AIgeneratedCarousel').empty();
+                for(let i=0;i<result['images'].length;i++){
+                    $('.AIgeneratedCarousel').append(`
+
+                     <div class="item">
+                                            <div class="itemCnt">
+                                                <div class="itemCntImg">
+                                                    <img src="data:image/png;base64,${result['images'][i]['base64']}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="itemCntPlusWrp">
+                                                    <i class="fa-solid fa-plus itemCntPlus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                    `);
+                }
+                owl.trigger('destroy.owl.carousel');
+                $('.owl-carousel').owlCarousel({
+                    loop:true,
+                    margin:10,
+                    nav:true,
+                    dots: false,
+                    onTranslated: setActiveItem,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:2
+                        },
+                        1000:{
+                            items:2
+                        }
+                    }
+                });
+
             }
         });
 
     }
+
+    $('.save_prompt').click(function () {
+       var obj=$('.edit_promotedtext');
+       suggested_text(obj);
+       $('#edit_prompt').modal('hide');
+    });
+
+
 </script>
 @yield('js')
 </body>

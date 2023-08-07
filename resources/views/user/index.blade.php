@@ -415,7 +415,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="facebook_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea ai-content"
+                                                              class="form-control wizard-required emojiarea "
                                                               placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -457,7 +457,7 @@
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                   name="facebook_tag" type="text" 
+                                                                   name="facebook_tag" type="text"
                                                                    class="form-control ai-tag"
                                                                    placeholder="tags" value="{{old('facebook_tag')}}">
                                                         </div>
@@ -491,7 +491,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="instagram_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea ai-content"
+                                                              class="form-control wizard-required emojiarea "
                                                               placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -556,7 +556,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="twitter_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea ai-content"
+                                                              class="form-control wizard-required emojiarea "
                                                               placeholder="Write your post...">{{old('twitter_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -597,7 +597,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="linkedin_content" id="" cols="30" rows="3"
-                                                              class="Customemojiarea form-control wizard-required emojiarea ai-content"
+                                                              class="Customemojiarea form-control wizard-required emojiarea "
                                                               placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -708,10 +708,11 @@
                     </form>
                 </div>
 
-                <div class="create_preview_post_index_item create_preview_post_index_itemRight">
+                <div class="create_preview_post_index_item create_preview_post_index_itemRight ">
 
                     <div class="d-lg-flex justify-content-center create_preview_post_index_itemRightInner">
-                        <div class="preview_post" style="width: 80%!important;">
+                        <div class="preview_post position-relative" style="width: 80%!important;">
+                            <div class="loader d-none"></div>
                             <div class="sub_heading">
                                 <h4>Post Preview</h4>
                             </div>
@@ -797,87 +798,11 @@
                             </div>
 
                         </div>
-                        <div class="preview_post position-relative d-none">
 
-                            <div class="loader d-none"></div>
-
-
-                            <div class="sub_heading">
-                                <h4>Post Suggested</h4>
-                            </div>
-
-                            <div class="preview_wrap">
-                                <div class="col-md-12">
-                                    <div class="Mobcompny-title">
-                                        <div class="w-50">
-                                            <h6>Facebook</h6>
-                                        </div>
-                                        <div class="w-50 Mobsocial-icon">
-                                            <span><i class="fa-solid fa-plus"></i></span>
-                                            <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                                            <span><i class="fab fa-facebook-messenger"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="Mobcompny-smallicon">
-                                    <span><i class="fa-solid fa-house"></i></span>
-                                    <span><i class="fa fa-youtube-play"></i></span>
-                                    <span><i class="fas fa-user-circle"></i></span>
-                                    <span><i class="fa-solid fa-bell"></i></span>
-                                    <span><i class="fa-solid fa-bars"></i></span>
-                                </div>
-
-
-                                <div class="the_preview pt-2">
-                                    <div class="col-md-12" style="height: 67%">
-
-                                        <div class="MainMobileview d-flex">
-                                            <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40"
-                                                alt="">
-                                            <span id="">{{auth()->user()->name}}</span>
-                                        </div>
-                                        <p class="m-0"></p>
-                                        <div class="Mobcart_title">
-                                            <span id="mypostresult_gpt">Write your post...</span>
-                                            <span class="icon icon-privacy text-primary" id="mynameresult_gpt"> #tags</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="Mobcart_title bile d-flex">
-                                            <div class="reactions">8❤️</div>
-                                            <div class="total-comments u-margin-inline-start">
-                                                <a>12 Comments</a>
-                                                <a>2 Shares</a>
-                                            </div>
-                                        </div>
-                                        <div class="actions-buttons mt-2">
-                                            <ul class="actions-buttons-list d-flex p-0">
-                                                <li class="actions-buttons-item">
-                                                    <button class="actions-buttons-button"><i
-                                                            class="fa-solid fa-thumbs-up"></i><span class="text">Like</span>
-                                                    </button>
-                                                </li>
-                                                <li class="actions-buttons-item">
-                                                    <button class="actions-buttons-button"><i
-                                                            class="fa-solid fa-comment"></i><span
-                                                            class="text">Comment</span></button>
-                                                </li>
-                                                <li class="actions-buttons-item">
-                                                    <button class="actions-buttons-button"><i class="fa-solid fa-share"></i><span
-                                                            class="text">Share</span></button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
 
-                    <div class="AIgeneratedContent create_preview_post_index_itemRightInner">
+                    <div class="AIgeneratedContent create_preview_post_index_itemRightInner position-relative ">
+
                         <div class="sub_heading">
                             <h4>AI Generated Content</h4>
                         </div>
@@ -887,19 +812,19 @@
 
                                 <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                     <div class="AIgeneratedContentAdd">
-                                        <a id="addContent">Add +</a>
+                                        <a id="addContent" href="#">Add +</a>
                                     </div>
                                     <div class="AIgeneratedContentText">
-                                        <p class="mb-0">AI Generated Content: <span id="content"></span></p>
+                                        <p class="mb-0">AI Generated Content: <span id="gpt_content"></span></p>
                                     </div>
                                 </div>
 
                                 <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                     <div class="AIgeneratedContentAdd">
-                                        <a id="addTags">Add +</a>
+                                        <a id="addTags" href="#">Add +</a>
                                     </div>
                                     <div class="AIgeneratedContentText">
-                                        <p class="mb-0">AI Generated Tags: <span id="tags"></span></p>
+                                        <p class="mb-0">AI Generated Tags: <span id="gpt_tags"></span></p>
                                     </div>
                                 </div>
 
@@ -907,46 +832,17 @@
 
                                     <div class="owl-carousel owl-theme AIgeneratedCarousel">
 
-                                        <div class="item">
-                                            <div class="itemCnt">
-                                                <div class="itemCntImg">
-                                                    <img src="{{asset('images/Instagram_Color.png')}}" class="img-fluid" alt="">
-                                                </div>
-                                                <div class="itemCntPlusWrp">
-                                                    <i class="fa-solid fa-plus itemCntPlus"></i>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="item">
-                                            <div class="itemCnt">
-                                                <div class="itemCntImg">
-                                                    <img src="{{asset('images/Tiktok_Color.png')}}" class="img-fluid" alt="">
-                                                </div>
-                                                <div class="itemCntPlusWrp">
-                                                    <i class="fa-solid fa-plus itemCntPlus"></i>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="item">
-                                            <div class="itemCnt">
-                                                <div class="itemCntImg">
-                                                    <img src="{{asset('images/WhatsApp_Color.png')}}" class="img-fluid" alt="">
-                                                </div>
-                                                <div class="itemCntPlusWrp">
-                                                    <i class="fa-solid fa-plus itemCntPlus"></i>
-                                                </div>
-                                            </div>
-                                        </div>
+
 
 
                                     </div>
 
 
                                     <div class="AIgeneratedCarouselBtmBtn">
-                                        <a href="">Edit / Prompt</a>
-                                        <a href="">Add to Post</a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt">Edit / Prompt</a>
+                                        <a href="#" class="add_to_post">Add to Post</a>
                                     </div>
                                 </div>
 
@@ -1293,7 +1189,7 @@
 
 
     // ---------------------
-    $('.owl-carousel').owlCarousel({
+    owl.owlCarousel({
         loop:true,
         margin:10,
         nav:true,
@@ -1324,40 +1220,35 @@
     </script>
 
 <script>
-    $(document).on('input', '.ai-content', function () {
-        $.ajax({
-            url: '/getPreferredText',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                if (data.success) {
-                    if(data.content){
-                        $('#content').text(data.content);
-                    }
-                    if(data.tags){
-                        $('#tags').text(data.tags);
-                    }
-                }
-            },
-            error: function (error) {
-                console.error('Error:', error);
-            }
-        });
-    });
+
 
     $(document).ready(function() {
+
+        $('.add_to_post').click(function () {
+            var content = $('#gpt_content').text();
+            insertContent(content);
+
+            var tags = $('#gpt_tags').text();
+            insertTag(tags);
+
+            var imageSrc=$('.owl-item.active').find('img').attr('src');
+            $('.preview_image').attr('src', imageSrc).removeClass('d-none');
+            $('.video_preview').addClass('d-none');
+
+        });
+
         $("#addContent").on("click", function() {
-            var content = $('#content').text();
+            var content = $('#gpt_content').text();
             insertContent(content);
         });
 
         $("#addTags").on("click", function() {
-            var tags = $('#tags').text();
+            var tags = $('#gpt_tags').text();
             insertTag(tags);
         });
 
         function insertContent(text) {
-            $('.wizard-fieldset.show').find('.ai-content').val(text);
+            $('.wizard-fieldset.show').find('.emojiarea').val(text);
             $('#mypostresult').text(text);
         }
 
@@ -1369,8 +1260,8 @@
 </script>
 <script>
     $(document).ready(function () {
-        $('.itemCntPlus').click(function () {
-              var imageSrc =  $(this).parent().siblings('.itemCntImg').find('img').attr('src');
+        $(document).on('click','.itemCntPlus',function () {
+              var imageSrc =  $(this).parent().parent().find('img').attr('src');
                 if (imageSrc) {
                     $('.preview_image').attr('src', imageSrc).removeClass('d-none');
                     $('.video_preview').addClass('d-none');

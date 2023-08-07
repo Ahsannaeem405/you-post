@@ -32,7 +32,7 @@ class Instagramservice
             'app_secret' => $insta['client_secret'],
             'default_graph_version' => 'v16.0',
         ]);
-        $tags = $post->tag ? " #$post->tag" : '';
+        $tags = $post->tag ? " $post->tag" : '';
         if ($post->media_type == 'image') {
 
             try {
