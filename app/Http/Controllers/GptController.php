@@ -10,7 +10,6 @@ class GptController extends Controller
 
     public function PreferredText(Request $request)
     {
-
         $response = \Http::withHeaders([
             'Authorization' => 'Bearer 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',
             'Content-Type' => 'application/json',
@@ -24,10 +23,7 @@ class GptController extends Controller
 
         $responseData = $response->json();
         $preferredText = $responseData['choices'][0]['message']['content'] ?? '';
-
-
-
-
+        
         $response = \Http::withHeaders([
             'Authorization' => 'Bearer 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',
             'Content-Type' => 'application/json',
@@ -42,8 +38,8 @@ class GptController extends Controller
 
         $responseData = $response->json();
         $tags = $responseData['choices'][0]['message']['content'] ?? '';
-
-        return response()->json(['success' => true, 'content' => $preferredText,'tags'=>$tags]);
+        
+        return response()->json(['success' => true, 'content' => '$preferredText', 'tags'=>'$tags']);
     }
 
     public function previewPage(){

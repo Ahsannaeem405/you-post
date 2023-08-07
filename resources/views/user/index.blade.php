@@ -415,7 +415,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="facebook_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea"
+                                                              class="form-control wizard-required emojiarea ai-content"
                                                               placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -457,8 +457,8 @@
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                   name="facebook_tag" type="text"
-                                                                   class="form-control "
+                                                                   name="facebook_tag" type="text" 
+                                                                   class="form-control ai-tag"
                                                                    placeholder="tags" value="{{old('facebook_tag')}}">
                                                         </div>
                                                     </div>
@@ -491,7 +491,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="instagram_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea"
+                                                              class="form-control wizard-required emojiarea ai-content"
                                                               placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -537,7 +537,7 @@
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
                                                                    name="instagram_tag" type="text"
-                                                                   class="form-control"
+                                                                   class="form-control ai-tag"
                                                                    placeholder="tags" value="{{old('instagram_tag')}}">
                                                         </div>
                                                     </div>
@@ -556,7 +556,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="twitter_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea"
+                                                              class="form-control wizard-required emojiarea ai-content"
                                                               placeholder="Write your post...">{{old('twitter_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -576,7 +576,7 @@
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
                                                                    name="twitter_tag" type="text"
-                                                                   class="form-control "
+                                                                   class="form-control ai-tag"
                                                                    placeholder="tags" value="{{old('twitter_tag')}}">
                                                         </div>
                                                     </div>
@@ -597,7 +597,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="linkedin_content" id="" cols="30" rows="3"
-                                                              class="Customemojiarea form-control wizard-required emojiarea"
+                                                              class="Customemojiarea form-control wizard-required emojiarea ai-content"
                                                               placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 </div>
                                                 <div class="icon_buttons_tags mt-3">
@@ -642,7 +642,7 @@
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
                                                             <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                   name="linkedin_tag" type="text" class="form-control"
+                                                                   name="linkedin_tag" type="text" class="form-control ai-tag"
                                                                    placeholder="tags" value="{{old('linkedin_tag')}}">
                                                         </div>
                                                     </div>
@@ -887,28 +887,19 @@
 
                                 <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                     <div class="AIgeneratedContentAdd">
-                                        <a href="">Add +</a>
+                                        <a id="addContent">Add +</a>
                                     </div>
                                     <div class="AIgeneratedContentText">
-                                        <p class=" mb-0">This is an AIgenerated post from ChatGPT, designedfor, facebook</p>
+                                        <p class="mb-0">AI Generated Content: <span id="content"></span></p>
                                     </div>
                                 </div>
 
                                 <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                     <div class="AIgeneratedContentAdd">
-                                        <a href="">Add +</a>
+                                        <a id="addTags">Add +</a>
                                     </div>
                                     <div class="AIgeneratedContentText">
-                                        <p class=" mb-0">AI Generated Tags : #Tag1#, #TAG2, #TAG3</p>
-                                    </div>
-                                </div>
-
-                                <div class="AIgeneratedContentDataWrp d-flex mb-3">
-                                    <div class="AIgeneratedContentAdd">
-                                        <a href="">Add +</a>
-                                    </div>
-                                    <div class="AIgeneratedContentText">
-                                        <p class=" mb-0">AI Generated Image</p>
+                                        <p class="mb-0">AI Generated Tags: <span id="tags"></span></p>
                                     </div>
                                 </div>
 
@@ -922,7 +913,7 @@
                                                     <img src="{{asset('images/Instagram_Color.png')}}" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="itemCntPlusWrp">
-                                                    <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                                    <i class="fa-solid fa-plus itemCntPlus"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -933,7 +924,7 @@
                                                     <img src="{{asset('images/Tiktok_Color.png')}}" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="itemCntPlusWrp">
-                                                    <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                                    <i class="fa-solid fa-plus itemCntPlus"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -944,7 +935,7 @@
                                                     <img src="{{asset('images/WhatsApp_Color.png')}}" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="itemCntPlusWrp">
-                                                    <i class="fa-solid fa-plus itemCntPlus" id=""></i>
+                                                    <i class="fa-solid fa-plus itemCntPlus"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -1331,4 +1322,61 @@
     }
     // ---------------------
     </script>
+
+<script>
+    $(document).on('input', '.ai-content', function () {
+        $.ajax({
+            url: '/getPreferredText',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.success) {
+                    if(data.content){
+                        $('#content').text(data.content);
+                    }
+                    if(data.tags){
+                        $('#tags').text(data.tags);
+                    }
+                }
+            },
+            error: function (error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $("#addContent").on("click", function() {
+            var content = $('#content').text();
+            insertContent(content);
+        });
+
+        $("#addTags").on("click", function() {
+            var tags = $('#tags').text();
+            insertTag(tags);
+        });
+
+        function insertContent(text) {
+            $('.wizard-fieldset.show').find('.ai-content').val(text);
+            $('#mypostresult').text(text);
+        }
+
+        function insertTag(tag) {
+            $('.wizard-fieldset.show').find('.ai-tag').val(tag);
+            $('#mynameresult').text(tag);
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.itemCntPlus').click(function () {
+              var imageSrc =  $(this).parent().siblings('.itemCntImg').find('img').attr('src');
+                if (imageSrc) {
+                    $('.preview_image').attr('src', imageSrc).removeClass('d-none');
+                    $('.video_preview').addClass('d-none');
+                }
+        });
+    });
+</script>
+
 @endsection

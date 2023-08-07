@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\GptController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 
@@ -50,6 +51,7 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('dashboard', [UserController::class, 'dashbaord']);
+    Route::get('getPreferredText', [GptController::class, 'PreferredText']);
 
     //account page
     Route::get('index', [AccountController::class,'index']);

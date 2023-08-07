@@ -59,7 +59,6 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
 
     }
