@@ -62,6 +62,32 @@ class UserController extends Controller
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
 
     }
+    public function dashbaord2()
+    {
+
+
+        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
+        $accounts = Account::where('user_id', auth()->id())->get();
+        $allPosts = [];
+        foreach ($posts as $post) {
+            $allPosts[] = [
+                'id' => $post->id,
+                'title' => $post->content,
+                'start' => $post->posted_at,
+                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
+                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
+                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
+            ];
+        }
+        $response = $this->createPostService->InitilizeData();
+        $stattistics = $this->createPostService->Statisics();
+        $instapages = $response['linkedin'];
+        $all_pages = $response['facebook'];
+        $all_pages_for_insta = [];
+
+        return view('user.index2', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
+
+    }
 
 
 
@@ -318,7 +344,7 @@ class UserController extends Controller
             'page' => 'required',
         ]);
         $user = Account::find(auth()->user()->account_id);
-        
+
         $platforms=$user->platforms;
         array_push($platforms,'Facebook');
 
@@ -608,8 +634,8 @@ class UserController extends Controller
             $accountUser=User::find(auth()->user()->id);
             $platforms=$accountUser->account->platforms;
             array_push($platforms,'Twitter');
-           
-     
+
+
             $accountUser->account()->update([
                 'twiter_access_token' => $access_token,
                 'twiter_refresh_token' => $refresh_token,
