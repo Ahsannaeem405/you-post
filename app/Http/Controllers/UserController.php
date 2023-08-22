@@ -21,10 +21,8 @@ use App\Services\Instagramservice;
 use App\Services\Linkedinservice;
 use League\OAuth2\Client\Provider\Twitter;
 use Intervention\Image\Facades\Image;
-use FFMpeg\FFMpeg;
-use FFMpeg\Coordinate\TimeCode;
 use getID3\getID3;
-use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
