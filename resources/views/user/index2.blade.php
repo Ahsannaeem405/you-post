@@ -171,8 +171,6 @@
 }
 
 
-
-
 .create_preview_post_wrap {
     padding-bottom: 20px !important;
 }
