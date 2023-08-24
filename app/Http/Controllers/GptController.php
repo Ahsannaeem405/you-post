@@ -10,7 +10,7 @@ class GptController extends Controller
 
     public function PreferredText(Request $request)
     {
-        $gptKey = "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";
+        $gptKey = "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";
         //generate prefred text
         $response = \Http::withHeaders([
             'Authorization' => "Bearer $gptKey",
@@ -35,7 +35,7 @@ class GptController extends Controller
             'model' => 'gpt-3.5-turbo',
             'messages' => [
                 //   array('role' => 'user', 'content' => 'generate preferred text for "My name" in 2-3 lines'),
-                array('role' => 'user', 'content' => 'generate 3-4 tags for "' . $request->contentData . '" in one line with space between tags and dont use , use # ')
+                array('role' => 'user', 'content' => 'generate 3-4 tags for "' . $request->contentData . '" format is #tag1 #tag2 #tag3 ')
             ],
             'temperature' => 0.8,
         ]);
@@ -72,7 +72,6 @@ class GptController extends Controller
 
     public function previewPage()
     {
-
         return view('preview');
     }
 }

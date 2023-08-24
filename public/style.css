@@ -420,7 +420,7 @@ body {
 
 .create_preview_post .create_post .icon_buttons_tags ul {
     margin-bottom: 0px;
-    font-size: 0px;
+    /*font-size: 0px;*/
 }
 
 .create_preview_post .create_post .icon_buttons_tags ul li {

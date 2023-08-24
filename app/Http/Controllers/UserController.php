@@ -13,6 +13,7 @@ use Facebook\Facebook;
 use GuzzleHttp\Client;
 use HttpClient;
 use DateTime;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Provider\LinkedIn;
 use App\Services\Facebookservice;
@@ -22,6 +23,7 @@ use App\Services\Linkedinservice;
 use League\OAuth2\Client\Provider\Twitter;
 use Intervention\Image\Facades\Image;
 use getID3\getID3;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 
 class UserController extends Controller
@@ -60,8 +62,20 @@ class UserController extends Controller
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
 
     }
+
     public function dashbaord2()
     {
+
+       // $bearerToken = auth()->user()->account->twiter_access_token;
+//        $connection = new TwitterOAuth(
+//            'p3cltII7k9o69s6uVSj0CSVkz',
+//            'YUy4ffBgnPY0zJoqLSbCY7MynmADtdm5vOiJFbPhJeIkuOBSiq',
+//            '940303773922152449-EMXoOU0WYM8v0MOakGdoXOL3i4Srl5L',
+//            'XtwVYZigWLj35VrsVJ4OxzXdyovEKRPK20jGmOxyMMj9K'
+//        );
+//
+//        $status = $connection->get("statuses/show", ["screen_name" => 'Rehman211']);
+//        dd($status, $connection->getLastHttpCode());
 
 
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
@@ -86,7 +100,6 @@ class UserController extends Controller
         return view('user.index2', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
 
     }
-
 
 
     public function create_post(Request $req)
@@ -168,14 +181,12 @@ class UserController extends Controller
                     'linkedin_media' => 'mimes:mp4|max:4000',
                 ]);
             }
-
             if ($req->hasFile('linkedin_media')) {
                 $imageName = time() . rand(1111, 999) . '.' . $req->linkedin_media->extension();
                 $req->linkedin_media->move('content_media', $imageName);
                 $mediaDataLinkedin = $imageName;
                 $linkfilePath = 'content_media/' . $mediaDataLinkedin;
             }
-
             if ($req->media_type_linkedin == 'image') {
                 $width = Image::make($linkfilePath)->width();
                 $height = Image::make($linkfilePath)->height();
@@ -205,6 +216,8 @@ class UserController extends Controller
         for ($i = 0; $i < count($platforms); $i++) {
             $content = Str::lower($platforms[$i]) . '_content';
             $tag = Str::lower($platforms[$i]) . '_tag';
+
+
             $mediatype = 'media_type_' . Str::lower($platforms[$i]);
             $media = null;
             if ($platforms[$i] == 'Facebook')
@@ -218,7 +231,7 @@ class UserController extends Controller
             $post->account_id = auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
             $post->content = $req->$content;
-            $post->tag = $req->$tag;
+            $post->tag = $req->$tag ? '#' . implode(' #', $req->$tag) : '';
             $post->posted_at_moment = $req->posttime;
             $post->posted_at = date_format(new DateTime($req->time), "Y-m-d H:i");
             $post->plateform = $platforms[$i];
@@ -271,7 +284,7 @@ class UserController extends Controller
 
     public function update_user_platforms(Request $req)
     {
-        $account=Account::find($req->account_id);
+        $account = Account::find($req->account_id);
 
         if ($req->plateform_val != null) {
             if (in_array('Facebook', $req->plateform_val) && ($account->fb_access_token == null || $account->fb_page_token == null)) {
@@ -297,9 +310,9 @@ class UserController extends Controller
         return response()->json($response, 200);
     }
 
-    public function connect_to_facebook($account=null)
+    public function connect_to_facebook($account = null)
     {
-        if ($account){
+        if ($account) {
             auth()->user()->update([
                 'account_id' => $account
             ]);
@@ -343,8 +356,8 @@ class UserController extends Controller
         ]);
         $user = Account::find(auth()->user()->account_id);
 
-        $platforms=$user->platforms;
-        array_push($platforms,'Facebook');
+        $platforms = $user->platforms;
+        array_push($platforms, 'Facebook');
 
         $user->fb_page_token = $req->page;
         $user->platforms = $platforms;
@@ -352,9 +365,9 @@ class UserController extends Controller
         return back()->with('success', 'Facebook, Successfully Added');
     }
 
-    public function connect_to_instagram($account=null)
+    public function connect_to_instagram($account = null)
     {
-        if ($account){
+        if ($account) {
             auth()->user()->update([
                 'account_id' => $account
             ]);
@@ -456,8 +469,8 @@ class UserController extends Controller
             $instagram_business_account_id = $result['instagram_business_account']['id'];
             $user = Account::find(auth()->user()->account_id);
 
-            $platforms=$user->platforms;
-            array_push($platforms,'Instagram');
+            $platforms = $user->platforms;
+            array_push($platforms, 'Instagram');
 
             $user->insta_user_id = $instagram_business_account_id;
             $user->platforms = $platforms;
@@ -470,10 +483,9 @@ class UserController extends Controller
     }
 
 
-
-    public function connect_to_linkedin($account=null)
+    public function connect_to_linkedin($account = null)
     {
-        if ($account){
+        if ($account) {
             auth()->user()->update([
                 'account_id' => $account
             ]);
@@ -554,8 +566,8 @@ class UserController extends Controller
 
         $user = Account::find(auth()->user()->account_id);
 
-        $platforms=$user->platforms;
-        array_push($platforms,'Linkedin');
+        $platforms = $user->platforms;
+        array_push($platforms, 'Linkedin');
 
         $user->linkedin_page_id = $req->page;
         $user->platforms = $platforms;
@@ -565,9 +577,9 @@ class UserController extends Controller
 
     }
 
-    public function connect_to_twitter($account=null)
+    public function connect_to_twitter($account = null)
     {
-        if ($account){
+        if ($account) {
             auth()->user()->update([
                 'account_id' => $account
             ]);
@@ -629,9 +641,9 @@ class UserController extends Controller
             }
             $access_token = $response2->access_token;
             $refresh_token = $response2->refresh_token;
-            $accountUser=User::find(auth()->user()->id);
-            $platforms=$accountUser->account->platforms;
-            array_push($platforms,'Twitter');
+            $accountUser = User::find(auth()->user()->id);
+            $platforms = $accountUser->account->platforms;
+            array_push($platforms, 'Twitter');
 
 
             $accountUser->account()->update([
@@ -644,8 +656,6 @@ class UserController extends Controller
             dd($e);
             return redirect('/index')->with('error', $e->getMessage());
         }
-
-
 
 
     }
