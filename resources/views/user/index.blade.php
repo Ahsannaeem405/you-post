@@ -183,14 +183,13 @@
 
 .AIgeneratedCarouselBtmBtn a {
     display: inline-block;
-    background: rgb(15 116 206);
     color: #fff;
     padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    font: 13px;
+    border-radius: 6px;
+    font-size: 13px;
     margin: 2px;
-    border: 1px solid transparent;
+    font-family: 'Poppins', sans-serif;
+
 }
 
 .AIgeneratedCarouselBtmBtn a:hover,
@@ -358,7 +357,6 @@
     text-align: left;
     display: inline-block;
 }
-
 
 
 @media screen and (max-width:768px) {
@@ -885,22 +883,93 @@
                             <div>
                                 <label for="" class="add_cap_label">Add Caption</label>
                                 <div class="add_caption">
-                                    <input type="text" placeholder="">
-                                    <img src="{{asset('images/add.png')}}" class="img-fluid add_icon" alt="" />
-
+                                    <a href="#">
+                                        <input type="text" placeholder="">
+                                        <img src="{{asset('images/add.png')}}" class="img-fluid add_icon" alt="" />
+                                    </a>
                                 </div>
                             </div>
                             <div>
                                 <label for="" class="add_cap_label">Add Tags</label>
-                                <div>
-                                    <select id="slect_drop" class="js-example-basic-single form-control" name="state" multiple>
-                                        <option value="AL">Alabama</option>
+                                <div class="add_caption">
+                                    <select id="slect_drop" class="js-example-basic-single form-control" name="state"
+                                        multiple>
+                                        <option value="AL">Facebook +</option>
                                         ...
-                                        <option value="WY">Wyoming</option>
+                                        <option value="WY">Instagram +</option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="suggest_img">
+                                <p class="mb-0">Suggested Images :</p>
+                            </div>
+                            <div class="owl-carousel owl_carousel">
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                          <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
@@ -925,10 +994,11 @@
 
                                 <div class="owl-carousel owl-theme AIgeneratedCarousel">
                                 </div>
-                                <!-- <div class="AIgeneratedCarouselBtmBtn">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt">Edit / Prompt</a>
-                                        <a href="#" class="add_to_post">Add to Post</a>
-                                    </div> -->
+                                <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"
+                                        class="btn btn-primary">Edit / Prompt</a>
+                                    <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1144,7 +1214,6 @@
 
 @section('js')
 <script>
-
 $(document).ready(function() {
 
     if ($('.wizard-fieldset').length == 0) {
@@ -1283,12 +1352,33 @@ $(document).ready(function() {
 
 
 // ---------------------
-owl.owlCarousel({
+// owl.owlCarousel({
+//     loop: true,
+//     margin: 10,
+//     nav: true,
+//     dots: false,
+//     onTranslated: setActiveItem,
+//     responsive: {
+//         0: {
+//             items: 1
+//         },
+//         600: {
+//             items: 2
+//         },
+//         1000: {
+//             items: 2
+//         }
+//     }
+// });
+
+$('.owl-carousel').owlCarousel({
     loop: true,
+    autoplay:true,
     margin: 10,
     nav: true,
-    dots: false,
-    onTranslated: setActiveItem,
+    pages: true,
+    pagination: false,
+    navigation: true,
     responsive: {
         0: {
             items: 1
@@ -1297,10 +1387,10 @@ owl.owlCarousel({
             items: 2
         },
         1000: {
-            items: 2
+            items: 3
         }
     }
-});
+})
 
 
 function setActiveItem(event) {
@@ -1315,7 +1405,7 @@ function setActiveItem(event) {
 
 <script>
 $(document).ready(function() {
-    
+
     // $('.js-example-basic-single').select2();
     $('.add_to_post').click(function() {
         var content = $('#gpt_content').text();

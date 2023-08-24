@@ -39,9 +39,11 @@
     <script src="https://kit.fontawesome.com/4366d6f846.js" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
-   <style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <style>
         .dropdown-toggle::after {
             content: none !important;
         }
@@ -60,6 +62,9 @@
     z-index: 1;
 }
        /* sidebar */
+        .select2-container{
+            width: 100%!important;
+        }
     </style>
 </head>
 
@@ -141,7 +146,11 @@
 <script>
 
     $(document).ready(function () {
-
+        $('.selectmultiple').select2({
+            tags: true,
+            placeholder:'Add Tags',
+            tokenSeparators: [',', ' ']
+        });
         setTimeout(function () {
             videoThumnail();
         }, 100);

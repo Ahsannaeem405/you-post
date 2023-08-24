@@ -429,7 +429,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="facebook_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea "
+                                                              class="form-control wizard-required emojiarea mention"
                                                               placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                     <div id="dropdown" class="dropdown-content-search"></div>
                                                 </div>
@@ -471,10 +471,9 @@
 
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
-                                                            <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                   name="facebook_tag" type="text"
-                                                                   class="form-control ai-tag"
-                                                                   placeholder="tags" value="{{old('facebook_tag')}}">
+                                                            <select name="facebook_tag[]" class="form-control selectmultiple" multiple id="">
+                                                            </select>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -551,10 +550,10 @@
 
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
-                                                            <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                   name="instagram_tag" type="text"
-                                                                   class="form-control ai-tag"
-                                                                   placeholder="tags" value="{{old('instagram_tag')}}">
+                                                            <select name="instagram_tag[]" class="form-control selectmultiple" multiple id="">
+
+                                                            </select>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -572,7 +571,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="twitter_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea "
+                                                              class="form-control wizard-required emojiarea mention"
                                                               placeholder="Write your post...">{{old('twitter_content')}}</textarea>
 
                                                     <div id="dropdown" class="dropdown-content-search"></div>
@@ -593,10 +592,13 @@
 
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
-                                                            <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                   name="twitter_tag" type="text"
-                                                                   class="form-control ai-tag"
-                                                                   placeholder="tags" value="{{old('twitter_tag')}}">
+                                                            <select name="twitter_tag[]" class="form-control selectmultiple" multiple id="">
+
+                                                            </select>
+{{--                                                            <input onkeyup="Namechangefun(this)" id="namechange"--}}
+{{--                                                                   name="twitter_tag" type="text"--}}
+{{--                                                                   class="form-control ai-tag"--}}
+{{--                                                                   placeholder="tags" value="{{old('twitter_tag')}}">--}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -616,7 +618,7 @@
                                                 <div class="form-group emoji_parent">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                               required name="linkedin_content" id="" cols="30" rows="3"
-                                                              class="Customemojiarea form-control wizard-required emojiarea "
+                                                              class="Customemojiarea form-control wizard-required emojiarea mention "
                                                               placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                     <div id="dropdown" class="dropdown-content-search"></div>
                                                 </div>
@@ -661,9 +663,10 @@
 
                                                     <div class="tags_input_wrap grid_item">
                                                         <div class="tags_input">
-                                                            <input onkeyup="Namechangefun(this)" id="namechange"
-                                                                   name="linkedin_tag" type="text" class="form-control ai-tag"
-                                                                   placeholder="tags" value="{{old('linkedin_tag')}}">
+                                                            <select name="linkedin_tag[]" class="form-control selectmultiple" multiple id="">
+
+                                                            </select>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1076,7 +1079,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.emojiarea').each(function() {
+            $('.mention').each(function() {
                 const textarea = $(this);
                 const dropdown = textarea.parent().find('.dropdown-content-search');
 
@@ -1275,7 +1278,7 @@
         loop:true,
         margin:10,
         nav:true,
-        dots: false,
+        dots: true,
         onTranslated: setActiveItem,
         responsive:{
             0:{
