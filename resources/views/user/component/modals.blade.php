@@ -187,3 +187,113 @@
     </div>
 </div>
 
+<!-- Main modals -->
+{{-- time modal --}}
+<!-- Modal -->
+<div class="modal fade" id="timeModal" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-cross-btn">
+                <h5 class="modal-title" id="timeModalLabel">Time to upload post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary change_time" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- time modal --}}
+{{-- account modal --}}
+<!-- Modal -->
+<div class="modal fade" id="addAccount" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-cross-btn">
+                <h5 class="modal-title" id="timeModalLabel">Add Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('store_acount')}}" method="post">
+                    @csrf
+                    <div class="col-12 mb-2">
+                        <lable>Name</lable>
+                        <input type="text" class="form-control" required name="name"
+                               placeholder="Enter account name...">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary ">Create</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="addAccount" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-cross-btn">
+                <h5 class="modal-title" id="timeModalLabel">Add Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('store_acount')}}" method="post">
+                    @csrf
+                    <div class="col-12 mb-2">
+                        <lable>Name</lable>
+                        <input type="text" class="form-control" required name="name"
+                               placeholder="Enter account name...">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary ">Create</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_prompt" tabindex="-1" aria-labelledby="edit_prompt" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modal-cross-btn">
+                <h5 class="modal-title" id="timeModalLabel">Prompt</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                    <div class="col-12 mb-2">
+                        <input type="text" class="form-control edit_promotedtext"  required name="name"
+                               placeholder="Prompt text">
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary save_prompt">Save</button>
+                    </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -171,8 +171,6 @@
 }
 
 
-
-
 .create_preview_post_wrap {
     padding-bottom: 20px !important;
 }
@@ -1285,7 +1283,7 @@
         loop:true,
         margin:10,
         nav:true,
-        dots: false,
+        dots: true,
         onTranslated: setActiveItem,
         responsive:{
             0:{

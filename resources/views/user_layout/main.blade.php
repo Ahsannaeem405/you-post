@@ -9,6 +9,10 @@
     <!--Website Title-->
     <title>YOUPOST</title>
     <!--Calling Favicon-->
+    
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+     <!-- style.css -->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="icon" href="{{asset('')}}images/favicon.png"/>
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}"/>
     <!--FontAwesome CDN-->
@@ -53,6 +57,11 @@
         .dropdown a {
             display: block !important;
         }
+        /* sidebar */
+        .sidebar:hover {
+    z-index: 1;
+}
+       /* sidebar */
         .select2-container{
             width: 100%!important;
         }
@@ -61,306 +70,22 @@
 
 <body>
 
-<!--===== Markup For "Header" Starts Here =====-->
-<header class="header">
+@include('user_layout.sidebar')
 
-    <div class="container">
-        <div class="top">
-            <div class="logo_wrap">
-                <div class="logo">
-                    <a href="{{url('/')}}"><img src="{{asset('images/YouPost_Logo.png')}}" class="img-fluid"
-                                                alt=""/></a>
-                </div>
-            </div>
-
-            <div class="new_post_button_wrap" style="visibility: hidden">
-                <div class="new_post_button">
-                    <a href="javascript:void(0)">+ New Post</a>
-                </div>
-            </div>
-
-
-            <div class="user_info">
-                <a href="javascript:void(0)">
-                    <div class="profile_pic">
-                        <img src="{{asset('images/avatar-light.png')}}" class="img-fluid" alt=""/>
-                    </div>
-
-                    <div class="user_name grid_item">
-                        <div class="the_name">
-                            <span>youpost.social<span class="color">/{{auth()->user()->account->name}}</span></span>
-
-
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown">
-                    <button class="dropdown-toggle bg-transparent border-0" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{asset('')}}images/V_Icon.png" class="v_icon" alt="" width="15px"/>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        @foreach($accounts as $account)
-                            <li><a class="dropdown-item {{auth()->user()->account_id==$account->id ? 'active' : null}}"
-                                   href="{{url("change_acount/".encrypt($account->id))}}"><i
-                                        class="fa-solid fa-user"></i> {{$account->name}}</a></li>
-                        @endforeach
-                        <li><a class="dropdown-item" style="cursor: pointer" data-bs-toggle="modal"
-                               data-bs-target="#addAccount">Add Account <i
-                                    class="fa-solid fa-plus text-success"></i></a></li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="bottom">
-            <div class="select_the_platform grid_item">
-                <h5>Select the platforms to post on:</h5>
-            </div>
-
-            <div class="all_social_platform">
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/FB_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/FB_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-                    <input type="checkbox" class="plateform" name="plateform[]" data-account="{{auth()->user()->account_id}}" value="Facebook" id="socialFB"
-                        {{ in_array('Facebook', auth()->user()->account->platforms) ? 'checked' : '' }}>
-                    <label for="socialFB"></label>
-                </div>
-
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-                    <input type="checkbox" class="plateform instagram_modal" data-account="{{auth()->user()->account_id}}" name="plateform[]" value="Instagram"
-                           id="socialInstagram"
-                        {{ in_array('Instagram', auth()->user()->account->platforms) ? 'checked' : '' }}>
-                    <label for="socialInstagram"></label>
-                </div>
-
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/Twitter_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/Twitter_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-
-                    <input type="checkbox" class="plateform" name="plateform[]" data-account="{{auth()->user()->account_id}}" value="Twitter" id="socialTwitter"
-                        {{ in_array('Twitter', auth()->user()->account->platforms) ? 'checked' : '' }}>
-                    <label for="socialTwitter"></label>
-                </div>
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/Linkedin_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-
-                    <input type="checkbox" class="plateform" name="plateform[]" data-account="{{auth()->user()->account_id}}" value="Linkedin" id="socialLinkedin"
-                        {{ in_array('Linkedin', auth()->user()->account->platforms) ? 'checked' : '' }}>
-                    <label for="socialLinkedin"></label>
-                </div>
-
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/Tiktok_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/Tiktok_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-
-                    <input type="checkbox" name="" id="socialTiktok" disabled>
-                    <label for="socialTiktok"></label>
-                </div>
-
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-
-                    <input type="checkbox" name="" id="socialYoutube" disabled>
-                    <label for="socialYoutube"></label>
-                </div>
-
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/Telegram_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-
-                    <input type="checkbox" name="" id="socialTelegram" disabled>
-                    <label for="socialTelegram"></label>
-                </div>
-
-                <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/WhatsApp_Color.png')}}" class="color_icon" alt=""/>
-                        <img src="{{asset('images/WhatsApp_Black.png')}}" class="black_icon" alt=""/>
-                    </div>
-
-                    <input type="checkbox" name="" id="socialWhatsApp" disabled>
-                    <label for="socialWhatsApp"></label>
-                </div>
-
-
-            </div>
-        </div>
+<section class="home">
+    <section  class="create_preview_post_wrap">
+    <div class="container px-0">
+        <!--===== Markup For "Header" Starts Here =====-->
+        @include('user_layout.header')
+        <!--===== Markup For "Header" Ends Here =====-->
+        @yield('content')
+        @include('user_layout.footer')
     </div>
-</header>
-<!--===== Markup For "Header" Ends Here =====-->
-
-
-@yield('content')
-
-
-{{-- time modal --}}
-<!-- Modal -->
-<div class="modal fade" id="timeModal" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-cross-btn">
-                <h5 class="modal-title" id="timeModalLabel">Time to upload post</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary change_time" data-dismiss="modal">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- time modal --}}
-
-
-
-{{-- account modal --}}
-<!-- Modal -->
-<div class="modal fade" id="addAccount" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-cross-btn">
-                <h5 class="modal-title" id="timeModalLabel">Add Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{url('store_acount')}}" method="post">
-                    @csrf
-                    <div class="col-12 mb-2">
-                        <lable>Name</lable>
-                        <input type="text" class="form-control" required name="name"
-                               placeholder="Enter account name...">
-                    </div>
-
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-primary ">Create</button>
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-
-<div class="modal fade" id="addAccount" tabindex="-1" aria-labelledby="timeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-cross-btn">
-                <h5 class="modal-title" id="timeModalLabel">Add Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{url('store_acount')}}" method="post">
-                    @csrf
-                    <div class="col-12 mb-2">
-                        <lable>Name</lable>
-                        <input type="text" class="form-control" required name="name"
-                               placeholder="Enter account name...">
-                    </div>
-
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-primary ">Create</button>
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="edit_prompt" tabindex="-1" aria-labelledby="edit_prompt" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-cross-btn">
-                <h5 class="modal-title" id="timeModalLabel">Prompt</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                    <div class="col-12 mb-2">
-                        <input type="text" class="form-control edit_promotedtext"  required name="name"
-                               placeholder="Prompt text">
-                    </div>
-
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-primary save_prompt">Save</button>
-                    </div>
-
-
-            </div>
-
-        </div>
-    </div>
-</div>
+    </section>
+ </section>
 
 @include('user.component.modals')
 <!--===== Markup For "Footer" Starts Here =====-->
-<footer class="footer_outer">
-    <div class="footer_inner">
-        <div class="container">
-            <div class="footer">
-                <div class="site_links grid_item">
-                    <ul>
-                        <li><a href="javascript:void(0)" >My Account</a></li>
-                        <li><a href="javascript:void(0)" class="myaccounts">Add Social Account</a></li>
-                        <li><a href="javascript:void(0)">Privacy Policy</a></li>
-                        <li><a href="javascript:void(0)">Support</a></li>
-                        <li><a href="javascript:void(0)">Public Profile</a></li>
-                        <li><a class="nav-link" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
-
-
-                    </ul>
-                </div>
-
-                <div class="logo_wrap grid_item">
-                    <div class="logo">
-                        <a href="{{url('index')}}"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid"
-                                                        alt=""/></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 <!--===== Markup For "Footer" Ends Here =====-->
 
 
@@ -372,7 +97,6 @@
 {{-- ------------------ --}}
 <script src="{{asset('js/slider/owl.carousel.js')}}"></script>
 {{-- ------------------ --}}
-
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -749,7 +473,34 @@ $('.loader').removeClass('d-none');
        $('#edit_prompt').modal('hide');
     });
 
+</script>
+<script>
+ const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
 
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+
+modeSwitch.addEventListener("click" , () =>{
+    body.classList.toggle("dark");
+    
+    if(body.classList.contains("dark")){
+        modeText.innerText = "Light mode";
+    }else{
+        modeText.innerText = "Dark mode";
+        
+    }
+});
 </script>
 @yield('js')
 </body>

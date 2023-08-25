@@ -24,6 +24,17 @@
     <link rel="stylesheet" href="{{asset('style.css')}}"/>
     <!--Stylesheet For The Responsiveness-->
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}"/>
+    <!-- font-family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Poppins:wght@300;500&family=Proza+Libre:ital@0;1&display=swap" rel="stylesheet">
+        <!-- font-family -->
+<!-- select2 -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+<!-- select2 -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap">
 </head>
 
 <body>
@@ -463,9 +474,6 @@
     </div>
 </footer>
 <!--===== Markup For "Footer" Ends Here =====-->
-
-
-
 
 <!--jQuery Main Libraty Latest Version-->
 <script type="text/javascript" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
