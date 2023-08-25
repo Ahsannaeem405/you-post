@@ -382,7 +382,12 @@
 
                     <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data">
                         @csrf
+                        <div class="PostDateTimePicker">
+                            Posted Date & Time
+                            <span data-bs-toggle="modal" data-bs-target="#TimetoUploadPost" id="browsertime2">
 
+                                                </span>
+                        </div>
                         <section class="wizard-section" style="display: none">
                             <div class="row no-gutters">
 
@@ -390,12 +395,7 @@
                                     <div class="form-wizard card my-2">
 
                                         <div class="form-wizard-header">
-                                            <div class="PostDateTimePicker">
-                                                Posted Date & Time
-                                                <span data-bs-toggle="modal" data-bs-target="#TimetoUploadPost" id="browsertime2">
 
-                                                </span>
-                                            </div>
 
                                             <ul class="list-unstyled form-wizard-steps clearfix">
                                                 @if(in_array(('Facebook'),auth()->user()->account->platforms))
@@ -688,47 +688,51 @@
                                         </div>
 
 
-                                        {{-- -------------------------------- --}}
 
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Time to upload post</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="post_later">
-                                                        <div class="tabs_type_heading_sm">
-                                                            <span id="browsertime"></span>
-                                                            <input type="hidden" class="browsertimeinput" name="time">
-                                                            <input type="hidden" class="posttime" value="now" name="posttime">
-                                                            <input type="hidden" name="timezone" class="timezone">
-                                                            <h4>Post Later</h4>
-                                                        </div>
-
-                                                        <div class="pick_date_from_calendar">
-                                                            <div class="calendar"></div>
-                                                        </div>
-                                                        <label for="">Select Time:</label>
-                                                        <input type="time" name="" id="" class="form-control select_time" value="00:00">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary d-none">Save changes</button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        {{-- -------------------------------- --}}
 
                                     </div>
                                 </div>
                             </div>
                         </section>
+
+
+
+                        {{-- -------------------------------- --}}
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Time to upload post</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="post_later">
+                                            <div class="tabs_type_heading_sm">
+                                                <span id="browsertime"></span>
+                                                <input type="hidden" class="browsertimeinput" name="time">
+                                                <input type="hidden" class="posttime" value="now" name="posttime">
+                                                <input type="hidden" name="timezone" class="timezone">
+                                                <h4>Post Later</h4>
+                                            </div>
+
+                                            <div class="pick_date_from_calendar">
+                                                <div class="calendar"></div>
+                                            </div>
+                                            <label for="">Select Time:</label>
+                                            <input type="time" name="" id="" class="form-control select_time" value="00:00">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary d-none">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- -------------------------------- --}}
 
                     </form>
                 </div>
@@ -878,6 +882,7 @@
                     </div>
 
                 </div>
+
 
 
 

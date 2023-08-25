@@ -65,6 +65,11 @@ class UserController extends Controller
 
     public function dashbaord2()
     {
+        $accesstoken = auth()->user()->account->linkedin_accesstoken;
+        $linkedin=Http::withHeaders([
+            'Authorization' => 'Bearer ' . $accesstoken,
+        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
+        dd($linkedin);
 
        // $bearerToken = auth()->user()->account->twiter_access_token;
 //        $connection = new TwitterOAuth(
@@ -506,7 +511,7 @@ class UserController extends Controller
                     'client_id' => $client_id,
                     'redirect_uri' => $redirect_uri,
                     'state' => 'us',
-                    'scope' => 'w_member_social r_organization_social w_organization_social r_liteprofile r_emailaddress rw_organization_admin rw_ads r_ads'
+                    'scope' => 'rw_organization_admin  w_member_social r_organization_social w_organization_social r_liteprofile r_emailaddress rw_organization_admin rw_ads r_ads'
                 ));
             return redirect($authorization_url);
         } catch (\Throwable $e) {
