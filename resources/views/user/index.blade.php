@@ -421,6 +421,8 @@
 </style>
 @section('content')
 
+<link rel="stylesheet" href="/public/css/lightbox.min.css">
+
 
 <!--===== Markup For "Create & Preview Post" Starts Here =====-->
 <section class="create_preview_post_wrap">
@@ -900,16 +902,23 @@
                                     </select>
                                 </div>
                             </div>
+
+                            
+                             
+                            <h2>Modal</h2>
                             <div class="suggest_img">
                                 <p class="mb-0">Suggested Images :</p>
                             </div>
+
+                          
+
                             <div class="owl-carousel owl_carousel">
                                 <div class="opacity-cover">
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -918,8 +927,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a></div>
+                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -928,17 +937,18 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="opacity-cover">
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a></div>
+                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -946,8 +956,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
+                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -955,8 +965,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -964,13 +974,45 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                          <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- modal  -->
+                            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <!-- <h5 class="modal-title" id="exampleModalLabel">Modal Title 1</h5> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body modal-image" data-lightbox="modals">
+                                            <img src="{{asset('images/carousel2.png')}}" class="modal-img"/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <!-- <h5 class="modal-title" id="exampleModalLabel">Modal Title 2</h5> -->
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body modal-image" data-lightbox="modals">
+                                            <img src="{{asset('images/carousel1.png')}}" alt="">
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+
+   
 
 
 
@@ -1063,6 +1105,9 @@
         </div>
     </div>
 </section>
+
+<script src="/public/js/bootstrap.bundle.js"></script>
+<script src="/public/js/lightbox-plux-jquery.min.js"></script>
 <!--===== Markup For "Post Manager" Ends Here =====-->
 
 
