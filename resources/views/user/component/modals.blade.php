@@ -272,23 +272,117 @@
 </div>
 
 <div class="modal fade" id="edit_prompt" tabindex="-1" aria-labelledby="edit_prompt" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-cross-btn">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" id="promp-modal-content">
+            <div class="modal-header modal-cross-btn" id="promp-modal-header">
                 <h5 class="modal-title" id="timeModalLabel">Prompt</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" id="close-prompt-modal" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" >
 
                     <div class="col-12 mb-2">
                         <input type="text" class="form-control edit_promotedtext"  required name="name"
-                               placeholder="Prompt text">
+                               placeholder="Concert">
+                    </div>
+                    <div class="suggested-text">
+                    <p> Suggested Images :</p>
+                    </div>
+                    <div class="owl-carousel owl_carousel" id="prompt-carousel">
+                    <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2" ><i class="fa-solid fa-plus"></i></a>
+                                         </div>
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal1" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal1" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                         <div>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal1" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                            <div>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                        <div>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal2" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
 
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-primary save_prompt">Save</button>
+                    <div class=" text-left" id="generate-btn-div">
+                        <button type="submit" class="btn btn-primary save_prompt">Generate</button>
                     </div>
 
 
@@ -297,3 +391,28 @@
         </div>
     </div>
 </div>
+<!-- <script>
+//promp owl carousel
+
+$(document).ready(function(){
+$("#prompt-carousel").owlCarousel({
+items: 4, 
+loop: true, 
+dots:false,
+margin: 20,
+nav: false, 
+
+responsive: {
+    0: {
+        items: 1 
+    },
+    768: {
+        items: 3 
+    },
+    1024: {
+        items: 4 
+    }
+}
+});
+});
+</script> -->

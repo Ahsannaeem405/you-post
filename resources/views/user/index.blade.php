@@ -917,7 +917,10 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2" ><i class="fa-solid fa-plus"></i></a>
+                                         </div>
                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
@@ -927,7 +930,10 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a></div>
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal1" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
                                          <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
@@ -937,7 +943,10 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                        </div>
                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
@@ -947,7 +956,10 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a></div>
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal1" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
                                          <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
@@ -956,8 +968,13 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
-                                         <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                         <div>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -965,8 +982,13 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
+                                        <div>
+                                        
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal1" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
+                                            <div>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -974,7 +996,9 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a></div>
+                                        <div>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal2" ><i class="fa-solid fa-plus"></i></a>
+                                        </div>
                                             <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
@@ -983,9 +1007,9 @@
 
                             <!-- modal  -->
                             <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content" id="image-modal-content">
+                                        <div class="modal-header" id="modal-header1">
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body modal-image" data-lightbox="modals">
@@ -997,9 +1021,9 @@
                             </div>
 
                             <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content" id="image-modal-content">
+                                        <div class="modal-header" id="modal-header1">
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body modal-image" data-lightbox="modals">
@@ -1010,7 +1034,17 @@
                                 </div>
                             </div>
 
-   
+                            <!-- <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                const imageContainer = document.querySelector(".image-container");
+                                const expandButton = document.querySelector(".expand-button");
+
+                                expandButton.addEventListener("click", function() {
+                                    imageContainer.classList.toggle("expanded");
+                                });
+                            });
+
+                            </script> -->
 
 
 
@@ -1033,6 +1067,7 @@
                             <div class="AIgeneratedCarouselWrp">
 
                                 <div class="owl-carousel owl-theme AIgeneratedCarousel">
+                                    
                                 </div>
                                 <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"

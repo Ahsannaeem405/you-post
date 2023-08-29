@@ -859,11 +859,6 @@
 
                                     <div class="owl-carousel owl-theme AIgeneratedCarousel">
 
-
-
-
-
-
                                     </div>
 
 
@@ -1278,12 +1273,14 @@
 
 
 
+
+
     // ---------------------
     owl.owlCarousel({
         loop:true,
         margin:10,
         nav:true,
-        dots: true,
+        dots: false,
         onTranslated: setActiveItem,
         responsive:{
             0:{
