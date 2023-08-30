@@ -1045,8 +1045,7 @@
                             });
 
                             </script> -->
-
-
+                         
 
                             <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                     <div class="AIgeneratedContentAdd">
@@ -1071,7 +1070,7 @@
                                 </div>
                                 <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"
-                                        class="btn btn-primary">Edit / Prompt</a>
+                                        class="btn btn-primary" >Edit / Prompt</a>
                                     <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
                                 </div>
                             </div>
@@ -1292,6 +1291,9 @@
 
 @section('js')
 <script>
+   
+                          
+                           
 $(document).ready(function() {
 
     if ($('.wizard-fieldset').length == 0) {
@@ -1448,11 +1450,159 @@ $(document).ready(function() {
 //         }
 //     }
 // });
+// $(function(){
+//     $('#showBtn1').click(function(){
+//         $('#modal1').modal(show);
+        // $('#edit_prompt').modal(show);
+    // })
+    // $('#showBtn1').click(function(){
+    //     $('#modal1').modal(hide);
+    //     // $('#edit_prompt').modal(hide);
+    // })
+// })
+
+                            // $('#edit_prompt').modal({
+                            //     backdrop: 'static',                        
+                            //     keyboard: false
+                            // })
+                            // $('#modal2').modal({
+                            //     backdrop: 'static',
+                            //     keyboard: false
+                            // })
+
+$('#prompt-carousel').owlCarousel({
+    loop: true,
+    autoplay:true,
+    margin: 10,
+    dots:false,
+    nav: false,
+    pages: true,
+    pagination: false,
+    navigation: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 3
+        },
+        1000: {
+            items: 4
+        }
+    }
+})
+
+
+
+// $(document).ready(function() {
+//     // Prevent the #edit_prompt modal from closing
+//     $('#edit_prompt').modal({
+//         backdrop: 'false',
+    
+//     });
+
+//     $(document).ready(function() {
+//     // Open the modal
+//     $('#edit_prompt').modal('show');
+
+//     // Prevent modal from closing when clicking on inner content
+//     $('#inner-content, #inner-button').click(function(event) {
+//         event.stopPropagation(); // Prevent the click event from reaching the modal close button
+//     });
+// });
+
+$(document).ready(function() {
+    // Open the outer modal
+    $('#edit_prompt').modal({
+        backdrop:false,
+        keyboard:false,
+        show:true
+        
+    });
+//     $('#edit_prompt').click(function() {
+//     alert('Main modal is listening');
+// });
+    // $('#showBtn1').click(function(){
+    //     $('#edit_prompt').modal('show');
+    //     $('#modal3').modal('show');
+    //     $('#modal4').modal('show');
+    //     alert("button is clicked");
+    // });
+    $(document).on('click', '#showBtn1', function() {
+        $('#edit_prompt').modal('show');
+        $('#modal3').modal('show');
+        // $('#modal4').modal('show');
+        // alert("Button is clicked");
+    });
+    $(document).on('click', '#showBtn2', function() {
+        $('#edit_prompt').modal('show');
+        $('#modal4').modal('show');
+        // $('#modal4').modal('show');
+        // alert("Button is clicked");
+    });
+  
+    });
+    // $('#showBtn1').click(function() {
+    //     $('#modal1').modal('show');
+    //     $('#modal2').modal('show');
+    //     $('#modal3').modal('show');
+    // });
+
+    // // Prevent the outer modal from closing when interacting with the inner modal
+    // $('.inner-modal').click(function(event) {
+    //     event.stopPropagation();
+    // });
+
+    // // Open the inner modal when clicking the inner modal button
+    // $('#inner-modal-button').click(function() {
+    //     $('#modal2').modal('show');
+    // });
+
+
+
+    // Open the secondary modals when clicking the plus or spread icons
+    // $('.#modal1').click(function(e) {
+    //     e.preventDefault();
+    //     var targetModal = $(this).data('bs-target');
+    //     $(targetModal).modal('show');
+    // });
+
+    // Prevent the modal from closing when clicking a button within it
+    // $('#modal1').click(function(e) {
+    //     e.stopPropagation(); // Stop the event from bubbling up
+    // });
+
+    // Close the secondary modals
+    // $('.close-modal').click(function(e) {
+    //     e.preventDefault();
+    //     var targetModal = $(this).closest('.modal');
+    //     $(targetModal).modal('hide');
+    // });
+// });
+
+
+//     $(document).ready(function() {
+  
+//     $('.open-modal').click(function(e) {
+//         e.preventDefault();
+//         var targetModal = $(this).data('bs-target');
+//         $(targetModal).modal('show');
+//     });
+// });
+
+// $(document).on('hidden.bs.modal', function (event) {
+//   if ($('.modal:visible').length) {
+//     $('body').addClass('modal-open');
+//   }
+// });
+
+
 
 $('.owl-carousel').owlCarousel({
     loop: true,
     autoplay:true,
     margin: 10,
+    dots:true,
     nav: true,
     pages: true,
     pagination: false,
@@ -1469,6 +1619,8 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+
+
 
 
 function setActiveItem(event) {

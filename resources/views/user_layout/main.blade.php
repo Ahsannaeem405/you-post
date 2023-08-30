@@ -502,6 +502,7 @@ modeSwitch.addEventListener("click" , () =>{
     }
 });
 </script>
+
 @yield('js')
 </body>
 

@@ -32,7 +32,7 @@
     height: 50vh;
     margin: 0;
     padding: 0;
-    width: auto;
+    /* width: auto; */
 }
 
 .modal-image img {
@@ -82,7 +82,7 @@
 }
 
 #promp-modal-header {
-    padding: 20px;
+    padding: 20px 10px 0px 20px;
     border-bottom: none !important;
     font-size: 35px;
     font-weight: 500;
@@ -95,19 +95,19 @@
     color: #000;
 }
 
-#prompt-carousel .owl-dot {
+/* #prompt-carousel .owl-dot {
     display: none;
-}
+} */
 #prompt-carousel .owl-item{
-    width: 180px !important;
-    height: 150px !important;
+    /* width: 180px !important; */
+    /* height: 150px !important; */
 }
 #prompt-carousel .owl-item img{
-    /* width: 200px !important; */
+    /* width: 220px !important; */
 }
-#prompt-carousel .owl-nav{
+/* #prompt-carousel .owl-nav{
     display: none;
-}
+} */
 #promp-modal-content {
     /* height: 70vh !important; */
     overflow: auto;
@@ -119,6 +119,7 @@
     align-items: end;
     justify-content: flex-end;
     margin-right: 30px;
+    margin-top: 30px;
 }
 
 #generate-btn-div button {
@@ -129,6 +130,7 @@
     padding: 10px 15px;
     border: none;
     width: 200px;
+    /* margin-bottom: 10px; */
 }
 
 #prompt-carousel .opacity_sheet_icons{
@@ -143,3 +145,6 @@
     font-size: 40px;
     color: #000;
 }
+
+/* Style for #edit_prompt modal */
+
