@@ -1037,8 +1037,8 @@
 
 
 <!--===== Markup For "Post Manager" Starts Here =====-->
-<section class="post_manager">
-    <div class="title_bar_wrap d-none">
+<!-- <section class="post_manager">
+     <div class="title_bar_wrap d-none">
         <div class="container container_2">
             <div class="title_bar">
                 <div class="tabs_type_heading">
@@ -1077,6 +1077,272 @@
             </div>
         </div>
     </div>
+</section>  -->
+
+<!-- =======Calender========= -->
+
+<section>
+    <div class="row container section5">
+        <div class="col-sm-12 col-md-12 col-lg-3 calender">
+            <div class="calendarmain">
+                <div class="l1">
+                    <div class="navigation">
+                        <h2 id="month-year"></h2>
+                        <!-- <h2 id="current-day"></h2> -->
+                        <div class="leftrightbtn">
+                            <button onclick="prevMonth()" class="prev">&#10094;</button>
+                            <button onclick="nextMonth()" class="next"> &#10095;</button>
+                        </div>
+
+                    </div>
+                    <div id="calendar-container">
+
+                    </div>
+                </div>
+                <div class="R1">
+                    <div class="Thumbnail">
+                        <h3>
+                            Thumbnail
+                        </h3>
+                        <a href=""><i class='fa fa-info red-color'></i></a>
+
+                    </div>
+                    <div class="div2">
+                        <h1>
+                            TUESDAY
+                        </h1>
+                        <h3>9/8/2023</h3>
+
+                    </div>
+                    <div class="div3">
+                        <div>
+                            <span class="clr"></span>
+                        </div>
+                        <div>
+                            <img src="\images\Ellipse 17 (1).png" alt="">
+                        </div>
+                        <div class="myspan">
+                            <span class="sp1">This is the caption </span>
+                            <p class="sp2">Scheduled</p>
+                        </div>
+
+
+                        <div class="Edit">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+                    <div class="div3">
+                        <div>
+                            <span class="clr2"></span>
+                        </div>
+                        <div>
+                            <img src="\images\Ellipse 17 (2).png" alt="">
+                        </div>
+                        <div class="myspan">
+                            <span class="sp1">This is the caption </span>
+                            <p class="sp2">Scheduled</p>
+                        </div>
+
+
+                        <div class="Edit2">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+
+                    <div class="div2">
+                        <h1>
+                            Friday
+                        </h1>
+                        <h3>21/8/2023</h3>
+
+                    </div>
+
+
+                    <div class="div3">
+                        <div>
+                            <span class="clr3"></span>
+                        </div>
+                        <div>
+                            <img src="\images\Ellipse 17 (3).png" alt="">
+                        </div>
+                        <div class="myspan">
+                            <span class="sp1">This is the caption </span>
+                            <p class="sp2">Scheduled</p>
+                        </div>
+
+
+                        <div class="Edit3">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+                    <div class="div3">
+                        <div>
+                            <span class="clr4"></span>
+                        </div>
+                        <div>
+                            <img src="\images\Ellipse 17.png" alt="">
+                        </div>
+                        <div class="myspan">
+                            <span class="sp1">This is the caption </span>
+                            <p class="sp2">Scheduled</p>
+                        </div>
+
+
+                        <div class="Edit4">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-9 calendar2">
+
+            <!--
+  <div class="event-calendar">
+    <div class="calendar-header">
+      <button id="today-btn">Today</button>
+      <div class="nav-buttons">
+        <button id="prev-btn">&lt;</button>
+        <button id="next-btn">&gt;</button>
+      </div>
+      <div class="view-options">
+        <button class="view-option">Day</button>
+        <button class="view-option view2">Week</button>
+        <button class="view-option">Month</button>
+        <button class="view-option">Year</button>
+
+      </div>
+      <div class="date-details">
+        <span id="current-date"></span>
+      </div>
+    </div>
+
+      <div class="day-names"></div>
+
+
+
+
+    <div class="calendar-body">
+      <div class="time-slots">
+        <div class="time-slot slot1">7 AM</div>
+        <div class="time-slot">8 AM</div>
+        <div class="time-slot">9 AM</div>
+        <div class="time-slot">10 AM</div>
+        <div class="time-slot">11 AM</div>
+        <div class="time-slot">12 AM</div>
+        <div class="time-slot">1 AM</div>
+        <div class="time-slot">2 AM</div>
+        <div class="time-slot">3 AM</div>
+        <div class="time-slot">4 AM</div>
+        <div class="time-slot">5 AM</div>
+
+      </div>
+
+      <div class="calendar-content">
+
+        <div class="calendar-days">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+            <div class="title_bar_wrap d-none">
+                <div class="container container_2">
+                    <div class="title_bar">
+                        <div class="tabs_type_heading">
+                            <h3>Post Manager</h3>
+                        </div>
+
+                        <div class="right_contents">
+                            <ul>
+                                <li class="filter_by">
+                                    <span>Filter by:</span>
+                                </li>
+                                <li>
+                                    <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
+                                </li>
+                                <li>
+                                    <a class="filter_link" href="javascript:void(0)">VIDEO</a>
+                                </li>
+                                <li>
+                                    <a class="filter_link" href="javascript:void(0)">IMAGE</a>
+                                <li class="month_name">
+                                    <span>December 2022</span>
+                                    <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}"
+                                            class="img-fluid" alt="" /></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
+                <div class="container container_2">
+                    <div class="the_post_manager">
+                        <!-- <div class="view-options"> -->
+                        <!-- <button class="view-option">Day</button>
+        <button class="view-option view2">Week</button>
+        <button class="view-option">Month</button>
+        <button class="view-option">Year</button> -->
+                        <!-- <div id="calendar-tabs">
+    <button class="calendar-tab view-option" data-view="day">Day</button>
+    <button class="calendar-tab view-option view2" data-view="week">Week</button>
+    <button class="calendar-tab view-option" data-view="month">Month</button>
+    <button class="calendar-tab view-option" data-view="year">Year</button>
+</div> -->
+
+                        <!-- </div> -->
+                        <div id='postManagerCalendar'></div>
+
+
+                        <!-- </div>
+        </div>
+    </div> -->
+
+
+                        <!-- <div id='calendar'></div> -->
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
 </section>
 
 
@@ -1375,25 +1641,461 @@ $(document).ready(function() {
     }
 });
 </script>
+
+
+
+
+
+@endsection
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-$(document).ready(function() {
-    $(document).on('click', '.itemCntPlus', function() {
-        var imageSrc = $(this).parent().parent().find('img').attr('src');
-        if (imageSrc) {
-            $('.preview_image').attr('src', imageSrc).removeClass('d-none');
-            $('.video_preview').addClass('d-none');
+let currentDate = new Date();
+
+function displayCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    // const today = currentDate.getDate();
+    const day = currentDate.getDay();
+    const today = new Date(year, month, currentDate.getDate());
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"
+    ];
+
+    document.getElementById("month-year").textContent = monthNames[month] + " , " + year;
+
+    // Add day names row
+    let tableHtml = `
+      <table class="table">
+        <tr>
+          <th style="opacity:0.5;">Sun</th>
+          <th style="opacity:0.5;">Mon</th>
+          <th style="opacity:0.5;">Tue</th>
+          <th style="opacity:0.5;">Wed</th>
+          <th style="opacity:0.5;">Thu</th>
+          <th style="opacity:0.5;">Fri</th>
+          <th style="opacity:0.5;">Sat</th>
+        </tr>
+    `;
+
+    let prevMonth = new Date(year, month, 0).getDate();
+    let dayNum = 1 - firstDay;
+    for (let i = 0; i < 6; i++) {
+        tableHtml += '<tr>';
+        for (let j = 0; j < 7; j++) {
+
+            // if (dayNum <= 0) {
+            //   tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
+            // } else if (dayNum <= daysInMonth) {
+            //   const isCurrentDay = (i === 0 && j === dayNum - 1);
+            //   const dayClass = isCurrentDay ? "current-day" : "";
+            //   tableHtml += `<td class="${dayClass}">${String(dayNum).padStart(2, '0')}</td>`;
+            // } else {
+            //   tableHtml += `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
+            // }
+
+
+            if (dayNum <= 0) {
+                tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
+            } else if (dayNum <= daysInMonth) {
+                const isCurrentDay = (dayNum === today.getDate());
+
+                const dayClass = isCurrentDay ? "current-day current-date" : "current-day";
+                tableHtml += `<td class="${dayClass}">${String(dayNum).padStart(2, '0')}</td>`;
+            } else {
+                tableHtml +=
+                    `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
+            }
+            dayNum++;
         }
+        tableHtml += '</tr>';
+    }
+
+
+    tableHtml += '</table>';
+
+    document.getElementById('calendar-container').innerHTML = tableHtml;
+    document.getElementById('current-day').textContent = ` ${daysOfWeek[day]}`;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function prevMonth() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    displayCalendar();
+}
+
+function nextMonth() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    displayCalendar();
+
+}
+
+
+// Call the displayCalendar function when the page loads
+window.onload = function() {
+    displayCalendar();
+
+};
+</script>
+
+<script>
+//   document.addEventListener("DOMContentLoaded", function () {
+//   const todayBtn = document.getElementById("today-btn");
+//   const prevBtn = document.getElementById("prev-btn");
+//   const nextBtn = document.getElementById("next-btn");
+//   const currentDateElem = document.getElementById("current-date");
+//   const calendarDaysContainer = document.querySelector(".calendar-days");
+
+//   // Set the current date to display initially
+//   let currentDate = new Date();
+//   currentDateElem.textContent = currentDate.toDateString();
+
+//   // Event listeners for buttons
+//   todayBtn.addEventListener("click", () => {
+//     // Set the current date as today's date
+//     currentDate = new Date();
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   prevBtn.addEventListener("click", () => {
+//     currentDate.setMonth(currentDate.getMonth() - 1);
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   nextBtn.addEventListener("click", () => {
+//     currentDate.setMonth(currentDate.getMonth() + 1);
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+
+//   // Function to generate calendar days and events
+//   function generateCalendar() {
+//     // Clear existing content
+//     calendarDaysContainer.innerHTML = "";
+
+//     const year = currentDate.getFullYear();
+//     const month = currentDate.getMonth();
+//     const daysInMonth = new Date(year, month + 1, 0).getDate();
+//     const firstDay = new Date(year, month, 1).getDay();
+
+//     // Generate calendar days
+//     let dayNum = 1 - firstDay;
+//     for (let i = 0; i < 6; i++) {
+//       const weekRow = document.createElement("div");
+//       weekRow.classList.add("week-row");
+
+//       for (let j = 0; j < 7; j++) {
+//         const dayCell = document.createElement("div");
+//         dayCell.classList.add("day-cell");
+
+//         if (dayNum <= 0 || dayNum > daysInMonth) {
+//           dayCell.classList.add("other-month");
+//         } else {
+//           dayCell.textContent = dayNum;
+//         }
+
+//         weekRow.appendChild(dayCell);
+//         dayNum++;
+//       }
+
+//       calendarDaysContainer.appendChild(weekRow);
+//     }
+//   }
+
+//   // Initial calendar generation
+//   generateCalendar();
+
+
+// });
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const todayBtn = document.getElementById("today-btn");
+//   const prevBtn = document.getElementById("prev-btn");
+//   const nextBtn = document.getElementById("next-btn");
+//   const currentDateElem = document.getElementById("current-date");
+//   const calendarDaysContainer = document.querySelector(".calendar-days");
+
+//   // Set the current date to display initially
+//   let currentDate = new Date();
+//   currentDateElem.textContent = currentDate.toDateString();
+
+//   // Event listeners for buttons
+//   todayBtn.addEventListener("click", () => {
+//     // Set the current date as today's date
+//     currentDate = new Date();
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   prevBtn.addEventListener("click", () => {
+//     currentDate.setMonth(currentDate.getMonth() - 1);
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   nextBtn.addEventListener("click", () => {
+//     currentDate.setMonth(currentDate.getMonth() + 1);
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   // Function to generate calendar days and events
+//   function generateCalendar() {
+//     // Clear existing content
+//     calendarDaysContainer.innerHTML = "";
+
+//     const year = currentDate.getFullYear();
+//     const month = currentDate.getMonth();
+//     const daysInMonth = new Date(year, month + 1, 0).getDate();
+//     const firstDay = new Date(year, month, 1).getDay();
+
+//     // Generate calendar days
+//     let dayNum = 1 - firstDay;
+//     for (let i = 0; i < 6; i++) {
+//       const weekRow = document.createElement("div");
+//       weekRow.classList.add("week-row");
+
+//       for (let j = 0; j < 7; j++) {
+//         const dayCell = document.createElement("div");
+//         dayCell.classList.add("day-cell");
+
+//         if (dayNum <= 0 || dayNum > daysInMonth) {
+//           dayCell.classList.add("other-month");
+//         } else {
+//           dayCell.textContent = dayNum;
+
+//           const addEventButton = document.createElement("button");
+//           addEventButton.textContent = "+";
+//           addEventButton.classList.add("add-event-btn");
+//           addEventButton.addEventListener("click", () => openEventModal(year, month, dayNum));
+//           dayCell.appendChild(addEventButton);
+//         }
+
+//         weekRow.appendChild(dayCell);
+//         dayNum++;
+//       }
+
+//       calendarDaysContainer.appendChild(weekRow);
+//     }
+//   }
+
+//   function openEventModal(year, month, day) {
+//     const modalContent = prompt(`Enter event for ${day}/${month + 1}/${year}:`);
+//     if (modalContent) {
+//       // In this example, we are just displaying the event as an alert
+//       alert(`Event added: ${modalContent}`);
+//     }
+//   }
+
+//   // Initial calendar generation
+//   generateCalendar();
+// });
+</script>
+
+<script>
+// document.addEventListener("DOMContentLoaded", function () {
+//   const todayBtn = document.getElementById("today-btn");
+//   const prevBtn = document.getElementById("prev-btn");
+//   const nextBtn = document.getElementById("next-btn");
+//   const currentDateElem = document.getElementById("current-date");
+//   const calendarDaysContainer = document.querySelector(".calendar-days");
+//   const dayNamesContainer = document.querySelector(".day-names");
+
+//   // Set the current date to display initially
+//   let currentDate = new Date();
+//   currentDateElem.textContent = currentDate.toDateString();
+
+//   // Define day names
+//   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+//   // Populate day names at the top of the calendar
+//   dayNames.forEach(dayName => {
+//     const dayNameCell = document.createElement("div");
+//     dayNameCell.classList.add("day-name-cell");
+//     dayNameCell.textContent = dayName;
+//     dayNamesContainer.appendChild(dayNameCell);
+
+//   });
+
+//   // Event listeners for buttons
+//   todayBtn.addEventListener("click", () => {
+//     // Set the current date as today's date
+//     currentDate = new Date();
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   prevBtn.addEventListener("click", () => {
+//     currentDate.setMonth(currentDate.getMonth() - 1);
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   nextBtn.addEventListener("click", () => {
+//     currentDate.setMonth(currentDate.getMonth() + 1);
+//     currentDateElem.textContent = currentDate.toDateString();
+//     generateCalendar();
+//   });
+
+//   // Function to generate calendar days and events
+//   function generateCalendar() {
+//     // Clear existing content
+//     calendarDaysContainer.innerHTML = "";
+
+//     const year = currentDate.getFullYear();
+//     const month = currentDate.getMonth();
+//     const daysInMonth = new Date(year, month + 1, 0).getDate();
+//     const firstDay = new Date(year, month, 1).getDay();
+
+//     // Generate calendar days
+//     let dayNum = 1 - firstDay;
+//     for (let i = 0; i < 6; i++) {
+//       const weekRow = document.createElement("div");
+//       weekRow.classList.add("week-row");
+
+//       for (let j = 0; j < 7; j++) {
+//         const dayCell = document.createElement("div");
+//         dayCell.classList.add("day-cell");
+
+//         if (dayNum <= 0 || dayNum > daysInMonth) {
+//           dayCell.classList.add("other-month");
+//         } else {
+//           dayCell.textContent = dayNum;
+//           const dayOfWeek = new Date(year, month, dayNum).toLocaleDateString("en-US", { weekday: "short" });
+//     dayCell.addEventListener("click", () => openEventModal(year, month, dayNum));
+
+//         }
+
+//         weekRow.appendChild(dayCell);
+//         dayNum++;
+//       }
+
+//       calendarDaysContainer.appendChild(weekRow);
+//     }
+
+//   }
+
+//   // Initial calendar generation
+//   generateCalendar();
+
+
+// });
+document.addEventListener("DOMContentLoaded", function() {
+    const todayBtn = document.getElementById("today-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const currentDateElem = document.getElementById("current-date");
+    const calendarDaysContainer = document.querySelector(".calendar-days");
+    const dayNamesContainer = document.querySelector(".day-names");
+
+    // Set the current date to display initially
+    let currentDate = new Date();
+    currentDateElem.textContent = currentDate.toDateString();
+
+    // Define day names
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    // Populate day names at the top of the calendar
+    dayNames.forEach(dayName => {
+        const dayNameCell = document.createElement("div");
+        dayNameCell.classList.add("day-name-cell");
+        dayNameCell.textContent = dayName;
+        dayNamesContainer.appendChild(dayNameCell);
     });
-});
 
+    // Event listeners for buttons
+    todayBtn.addEventListener("click", () => {
+        // Set the current date as today's date
+        currentDate = new Date();
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
 
+    prevBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
 
-// select2_jquery
-// In your Javascript (external .js resource or <script> tag)
-$(document).ready(function() {
-    $('.js-example-basic-single').select2();
-    // alert("fdfd");
+    nextBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
+
+    // Function to generate calendar days and events
+    function generateCalendar() {
+        // Clear existing content
+        calendarDaysContainer.innerHTML = "";
+
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+
+        // Generate calendar days
+        let dayNum = 1 - firstDay;
+        for (let i = 0; i < 6; i++) {
+            const weekRow = document.createElement("div");
+            weekRow.classList.add("week-row");
+
+            for (let j = 0; j < 7; j++) {
+                const dayCell = document.createElement("div");
+                dayCell.classList.add("day-cell");
+
+                if (dayNum <= 0 || dayNum > daysInMonth) {
+                    const otherMonthDate = new Date(year, month, dayNum);
+                    dayCell.classList.add("other-month");
+                    dayCell.textContent = otherMonthDate.getDate();
+                } else {
+                    dayCell.textContent = dayNum;
+                }
+
+                if (dayNum === 1) {
+                    dayCell.classList.add("first-day");
+                }
+
+                dayCell.addEventListener("click", () => openEventModal(year, month, dayNum));
+                weekRow.appendChild(dayCell);
+                dayNum++;
+            }
+
+            calendarDaysContainer.appendChild(weekRow);
+        }
+    }
+
+    // Initial calendar generation
+    generateCalendar();
 });
 </script>
 
-@endsection
+
+<script>
+function openEventModal(year, month, day) {
+    const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
+    if (event) {
+        const eventElement = document.createElement("div");
+        eventElement.classList.add("event");
+        eventElement.textContent = event;
+        calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
+    }
+}
+</script>
