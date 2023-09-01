@@ -1411,8 +1411,10 @@
                 textarea.val(newText);
                 $(this).parent().css('display', 'none');
             });
+
         });
     </script>
+
 <script>
 $(document).ready(function() {
 
