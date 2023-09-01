@@ -163,7 +163,7 @@
 
 <!--===== Markup For "Create & Preview Post" Starts Here =====-->
 <section class="create_preview_post_wrap">
-    <div class="container">
+    <div class="container container_test">
         <div class="create_preview_post">
             <div class="create_post">
                 <div class="sub_heading">

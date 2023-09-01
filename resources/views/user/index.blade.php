@@ -908,8 +908,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -918,18 +918,18 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
 
-                                 <div class="opacity-cover">
+                                <div class="opacity-cover">
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -937,8 +937,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -946,8 +946,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -955,8 +955,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -964,8 +964,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                          <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1064,7 +1064,6 @@
     </div>
 </section>
 <!--===== Markup For "Post Manager" Ends Here =====-->
-
 
 <!--===== Markup For "States Viewer" Starts Here =====-->
 
@@ -1373,7 +1372,7 @@ $(document).ready(function() {
 
 $('.owl-carousel').owlCarousel({
     loop: true,
-    autoplay:true,
+    autoplay: true,
     margin: 10,
     nav: true,
     pages: true,

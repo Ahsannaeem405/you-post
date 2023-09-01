@@ -4,9 +4,9 @@
     padding: 0;
 }
 
-body {
+/* body {
     background: #FFFFFF;
-}
+} */
 
 :root {
     --baseColor: #2176BB;
@@ -1403,7 +1403,7 @@ width: 30%;
 
 /*my css wizard*/
 
-body {
+/* body {
     background-color: #ffffff;
     color: #444444;
     font-family: 'Roboto', sans-serif;
@@ -1411,7 +1411,7 @@ body {
     font-weight: 300;
     margin: 0;
     padding: 0;
-}
+} */
 .wizard-content-left {
     background-blend-mode: darken;
     background-color: rgba(0, 0, 0, 0.45);
@@ -1635,6 +1635,7 @@ body {
     border: 1px solid red!important;
 }
 
+/* ahmadfaraz */
 /* ahmad faraz code youpost */
 .menu-links.menu_links{
     padding-left: unset !important;
@@ -1647,7 +1648,7 @@ body {
 }
 
 
-/* ahmadfaraz */
+
 
 .home{
     position: absolute;
@@ -1842,4 +1843,7 @@ body.dark .home .text{
     align-items: center;
     padding-top: 5px;
     color: white;
+}
+.all_social_platform.all_social_platform2{
+    padding: 10px !important;
 }

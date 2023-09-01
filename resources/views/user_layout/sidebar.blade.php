@@ -37,21 +37,21 @@
     color: #fff;
 } */
 
-body.dark {
+/* body.dark {
     --body-color: #18191a;
     --sidebar-color: #242526;
     --primary-color: #3a3b3c;
     --primary-color-light: #3a3b3c;
     --toggle-color: #fff;
     --text-color: #ccc;
-}
+} */
 
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
-    width: 250px;
+    width: 150px;
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
@@ -93,7 +93,7 @@ body.dark {
 
 .sidebar .text,
 .sidebar .icon {
-    color:#000;
+    color: #000;
     transition: var(--tran-03);
 }
 
@@ -316,19 +316,21 @@ body.dark .switch::before {
 .home .text {
     font-size: 30px;
     font-weight: 500;
-    /* color: var(--text-color); */
-    color:black;
-    /* padding: 12px 60px; */
+    color: black;
+   
 }
 
 .sidebar.close~.home {
     left: 88px;
     height: 100vh;
     width: calc(100% - 88px);
-}
-.sideWidth{
-    width: 250px !important;
-}
+}`
+
+.sideWidth {
+    width: 250px !important; */
+ background-color:red;
+} 
+
 body.dark .home .text {
     color: var(--text-color);
 }
@@ -394,10 +396,17 @@ body.dark .home .text {
 } */
 
 @media (max-width: 768px) {
-    .sidebar {
-        display: none;
-        /* Hide sidebar on small screens */
-    }
+   ..home {
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
 
     /* Additional styles for content adjustment */
     .content {
@@ -431,7 +440,7 @@ body.dark .home .text {
             </li> -->
 
             <ul class="menu-links menu_links">
-                    <li class="nav-link nav_link2" style="background-color:#E8E8E8; border-radius:7px;">
+                <li class="nav-link nav_link2" style="background-color:#E8E8E8; border-radius:7px;">
                     <div class="user_info pl-1">
                         <a href="javascript:void(0)">
                             <div class="user_name grid_item">
@@ -439,15 +448,16 @@ body.dark .home .text {
                                     <span><span class="color">{{auth()->user()->account->name}}</span></span>
                                 </div>
                             </div>
-                            </a>
-                       
+                        </a>
+
                         <div class="dropdown">
                             <button class="dropdown-toggle bg-transparent border-0" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{asset('')}}images/admin.png" class="v_icon" alt="" width="45px" />
                                 <span class="text nav-text text2" style="padding-left:12px;">My Company</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
-                                <img src="{{asset('')}}images/drop_arrow.png" class="v_icon" alt="" style="padding-left:30px; " />
+                                <img src="{{asset('')}}images/drop_arrow.png" class="v_icon" alt=""
+                                    style="padding-left:30px; " />
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($accounts as $account)
@@ -462,8 +472,8 @@ body.dark .home .text {
                         </div>
 
                     </div>
-                </li> 
-                    
+                </li>
+
                 <li><a href="javascript:void(0)"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
                             Account</span></a></li>
                 </li>
@@ -483,7 +493,8 @@ body.dark .home .text {
                         <span class="text nav-text">Notifications</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)"><i class="fa-regular fa-file icon"></i><span class="text nav-text">Privacy
+                <li><a href="javascript:void(0)"><i class="fa-regular fa-file icon"></i><span
+                            class="text nav-text">Privacy
                             Policy</span></a></li>
 
                 <!-- <li class="nav-link">
@@ -547,27 +558,48 @@ body.dark .home .text {
 
 </nav>
 <script>
-    $(document).on('mouseenter','.side_bar',function () {
-        // $(this).removeClass('close');
-        $(this).css('width', '250px');
-        $(".text").css('opacity', '1');
-        $(this).css('z-index', '9999');
-      
-    });
 
-    $(document).on('mouseleave','.side_bar',function () {
+
+// $(document).on('mouseleave','.side_bar',function () {
+//     $(this).addClass('close');
+//     $(this).css('width', '88px');
+//     $(this).css('z-index', '1');
+//     $(".text").css('opacity', '1');
+// });
+
+// $(".toggle").click(function(){
+// });
+// $(".toggle").click(function(){
+//     alert(1);
+//     $(".side_bar").toggleClass('sideWidth');
+//     $(".test_con").toggleClass("width","1040px");
+//     $('nav').removeClass('close');
+// // $(".create_preview_post_wrapInner").toggleClass('custom_con');
+// })
+
+var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
+
+$(document).on('mouseleave', '.side_bar', function() {
+    if (mouseLeaveEnabled) {
         $(this).addClass('close');
         $(this).css('width', '88px');
         $(this).css('z-index', '1');
         $(".text").css('opacity', '1');
+    }
+});
+$(document).on('mouseenter', '.side_bar', function() {
 
-    });
+$(this).css('width', '250px');
+$(".text").css('opacity', '1');
+$(this).css('z-index', '9999');
 
-    $(".toggle").click(function(){
-       
-    });
-    $(".toggle").click(function(){
+});
+
+$(".toggle").click(function() {
     $(".side_bar").toggleClass('sideWidth');
-    // $(".create_preview_post_wrapInner").toggleClass('custom_con');
-    })
+    $(".test_con").toggleClass('test_con1');
+
+    // Toggle the mouseLeaveEnabled flag
+    mouseLeaveEnabled = !mouseLeaveEnabled;
+});
 </script>

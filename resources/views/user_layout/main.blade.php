@@ -74,7 +74,7 @@
 
 <section class="home">
     <section  class="create_preview_post_wrap">
-    <div class="container px-0">
+    <div class="container test_con  px-0">
         <!--===== Markup For "Header" Starts Here =====-->
         @include('user_layout.header')
         <!--===== Markup For "Header" Ends Here =====-->

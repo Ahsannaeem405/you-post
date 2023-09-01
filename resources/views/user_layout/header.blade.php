@@ -55,7 +55,7 @@
                     <h5>Select the platforms to post on:</h5>
                 </div>
 
-                <div class="all_social_platform">
+                <div class="all_social_platform all_social_platform2">
                     <div class="single_platform">
                         <div class="social_icon">
                             <img src="{{asset('images/FB_Color.png')}}" class="color_icon" alt="" />
