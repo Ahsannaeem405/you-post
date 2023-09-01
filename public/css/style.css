@@ -24,6 +24,9 @@
     height: 65vh !important;
 
 }
+.modal-backdrop {
+   display: none;
+}
 
 .modal-image {
     display: flex;
