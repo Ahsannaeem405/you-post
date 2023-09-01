@@ -57,26 +57,47 @@ class Linkedinservice
             }
 
             return $msg;
-        }
-
-        else if ($post->media_type == 'image') {
-
+        } else if ($post->media_type == 'image') {
+            $imageids = [];
+            $images = explode(',', $post->media);
             try {
-                $imageupload = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . $accesstoken,
-                    'Content-Type' => 'application/json',
-                    'X-Restli-Protocol-Version' => '2.0.0',
-                    'LinkedIn-Version' => '202306'
-                ])->post("https://api.linkedin.com/rest/images?action=initializeUpload", [
-                    'initializeUploadRequest' => array(
-                        'owner' => $linkedin_user_id
-                    )
-                ])->json();
-                $imageid = $imageupload['value']['image'];
-                $response = Http::attach(
-                    'file', file_get_contents($media_path), 'image.jpg'
-                )->post($imageupload['value']['uploadUrl']);
+                foreach ($images as $image) {
+                    $path = public_path('content_media/' . $image);
+                    $imageupload = Http::withHeaders([
+                        'Authorization' => 'Bearer ' . $accesstoken,
+                        'Content-Type' => 'application/json',
+                        'X-Restli-Protocol-Version' => '2.0.0',
+                        'LinkedIn-Version' => '202306'
+                    ])->post("https://api.linkedin.com/rest/images?action=initializeUpload", [
+                        'initializeUploadRequest' => array(
+                            'owner' => $linkedin_user_id
+                        )
+                    ])->json();
+                    $imageid = $imageupload['value']['image'];
+                    $imageids[] = ['id'=>$imageid,'altText'=>'Image'];
+                    $response = Http::attach(
+                        'file', file_get_contents($path), 'image.jpg'
+                    )->post($imageupload['value']['uploadUrl']);
 
+                }
+
+
+                if (count($imageids) == 1) {
+                    $content = [
+                        "media" =>[
+                            "title" => "title of the video",
+                            "id" => $imageid
+                        ]
+                    ];
+                }
+                else{
+                    $content=[
+                        'multiImage'=>[
+                            'images'=> $imageids
+
+                        ]
+                    ];
+                }
 
                 $postnow = \Http::withHeaders([
                     'Authorization' => 'Bearer ' . $accesstoken,
@@ -87,17 +108,12 @@ class Linkedinservice
                     'author' => $linkedin_user_id,
                     'commentary' => "$post->content $tags",
                     "visibility" => "PUBLIC",
-                    "distribution" => array(
+                    "distribution" => [
                         "feedDistribution" => "MAIN_FEED",
                         "targetEntities" => [],
                         "thirdPartyDistributionChannels" => []
-                    ),
-                    "content" => array(
-                        "media" => array(
-                            "title" => "title of the video",
-                            "id" => $imageid
-                        )
-                    ),
+                    ],
+                    "content" =>  $content,
                     "lifecycleState" => "PUBLISHED",
                     "isReshareDisabledByAuthor" => false
                 ]);
@@ -111,12 +127,12 @@ class Linkedinservice
                 $msg = ['status' => true];
 
             } catch (\Throwable $exception) {
+                \Log::info($exception);
                 $msg = ['status' => false];
                 $post->delete();
             }
             return $msg;
-        }
-        else if ($post->media_type == 'video') {
+        } else if ($post->media_type == 'video') {
 
             try {
                 $videoupload = Http::withHeaders([
@@ -204,7 +220,7 @@ class Linkedinservice
     {
         try {
             $accessToken = auth()->user()->account->linkedin_accesstoken;
-            $shareUrn=urlencode($data);
+            $shareUrn = urlencode($data);
             $deleteEndpoint = "https://api.linkedin.com/rest/posts/$shareUrn";
             // Create a new Guzzle HTTP client instance
             $client = new Client();
