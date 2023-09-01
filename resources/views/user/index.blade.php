@@ -787,7 +787,10 @@
 
                 </form>
             </div>
-
+            <input type="checkbox" id="click">
+            <label for="click" class="menu_btn">
+            <p>jdjdj</p>
+            </label>
             <div
                 class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
