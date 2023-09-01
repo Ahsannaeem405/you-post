@@ -1016,5 +1016,12 @@ button {
     .current-day {
         padding: 10px 10.1px !important;
     }
-  
+   
+    .calendarmain {
+        width: 100%;
+    }
+    .current-day {
+        padding: 16px 8.1px !important;
+    }
+    
 }
