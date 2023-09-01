@@ -19,7 +19,7 @@
     gap: 0px !important;
     overflow: hidden;
     justify-content: space-between;
-}
+} 
 .create_preview_post_index .create_preview_post_index_itemLeft {
     width: 30%;
     background: #fff;

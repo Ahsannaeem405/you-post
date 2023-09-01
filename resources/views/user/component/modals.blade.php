@@ -18,7 +18,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
-    </div>
+    </div> 
 </div>
 {{-- event detail modal --}}
 
@@ -65,7 +65,8 @@
                     <div class="col-md-6 MDLsocial-iconmainWrp">
                         <div class="MDLsocial-icon">
                             <a class="" href="{{url('connect_twitter')}}">
-                                <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a></div>
+                                <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a>
+                        </div>
                     </div>
 
                 </div>
@@ -83,8 +84,7 @@
 
 {{-- pages_modal --}}
 
-<div class="modal fade" id="pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
->
+<div class="modal fade" id="pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -100,7 +100,7 @@
                     <select required name="page" class="form-control">
                         <option value="">-select--</option>
                         @foreach($all_pages as $page)
-                            <option value="{{$page->access_token}}">{{$page->name}}</option>
+                        <option value="{{$page->access_token}}">{{$page->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -119,8 +119,7 @@
 
 {{-- pages_modal for instagram --}}
 
-<div class="modal fade" id="instagram_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
->
+<div class="modal fade" id="instagram_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -136,7 +135,7 @@
                     <select required name="page" class="form-control instapage_selection">
                         <option value="">-select--</option>
                         @foreach($all_pages_for_insta as $page)
-                            <option value="{{$page->id}}">{{$page->name}}</option>
+                        <option value="{{$page->id}}">{{$page->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -154,9 +153,8 @@
 {{-- pages_modal for instagram --}}
 
 
-{{--    modal for pages linked--}}
-<div class="modal fade" id="linkedin_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true"
->
+{{-- modal for pages linked--}}
+<div class="modal fade" id="linkedin_pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -173,7 +171,7 @@
                     <select required name="page" class="form-control">
                         <option value="">-select--</option>
                         @foreach($instapages as $page)
-                            <option value="{{$page['$URN']}}">{{$page['localizedName']}}</option>
+                        <option value="{{$page['$URN']}}">{{$page['localizedName']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -225,8 +223,7 @@
                     @csrf
                     <div class="col-12 mb-2">
                         <lable>Name</lable>
-                        <input type="text" class="form-control" required name="name"
-                               placeholder="Enter account name...">
+                        <input type="text" class="form-control" required name="name" placeholder="Enter account name...">
                     </div>
 
                     <div class="col-12 text-center">
@@ -256,8 +253,7 @@
                     @csrf
                     <div class="col-12 mb-2">
                         <lable>Name</lable>
-                        <input type="text" class="form-control" required name="name"
-                               placeholder="Enter account name...">
+                        <input type="text" class="form-control" required name="name" placeholder="Enter account name...">
                     </div>
 
                     <div class="col-12 text-center">
@@ -273,8 +269,8 @@
 
 <!-- -------------------------------- Edit Prompt --------------------------------------------------------------- -->
 
-<div class="modal fade" id="edit_prompt"  tabindex="-1" aria-labelledby="edit_prompt" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg " >
+<div class="modal fade" id="edit_prompt" tabindex="-1" aria-labelledby="edit_prompt" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg ">
         <div class="modal-content" id="promp-modal-content">
             <div class="modal-header modal-cross-btn" id="promp-modal-header">
                 <h5 class="modal-title" id="timeModalLabel">Prompt</h5>
@@ -282,117 +278,114 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" >
-                    <div class="col-12 mb-2">
-                        <input type="text" class="form-control edit_promotedtext"  required name="name"
-                               placeholder="Concert">
-                    </div>
-                    <div class="suggested-text">
+            <div class="modal-body">
+                <div class="col-12 mb-2">
+                    <input type="text" class="form-control edit_promotedtext" required name="name" placeholder="Concert">
+                </div>
+                <div class="suggested-text">
                     <p> Suggested Images :</p>
+                </div>
+
+                <div class="owl-carousel owl_carousel" id="prompt-carousel">
+                <div class="opacity-cover">
+                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                        <div class="opacity_sheet">
+                            <div class="opacity_sheet_icons inner-modal">
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-plus"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-expand"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="owl-carousel owl_carousel" id="prompt-carousel">
+
                     <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons inner-modal">
-                                        <div>
-                                            <div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4" ><i class="fa-solid fa-plus"></i></div>
-                                         </div>
-                                        <div><div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4"><i class="fa-solid fa-expand"></i></div></div>
-                                        </div>
-                                    </div>
+                        <img src="{{asset('images/carousel2.png')}}" alt="">
+                        <div class="opacity_sheet">
+                            <div class="opacity_sheet_icons inner-modal">
+                                <div>
+                                    <a href="#" id="showBtn2"> <i class="fa-solid fa-plus"></i></a>
                                 </div>
-
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel2.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                        <div>
-                                        
-                                            <div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal3" ><i class="fa-solid fa-plus"></i></div>
-                                        </div>
-                                         <div><div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal3"><i class="fa-solid fa-expand"></i></div></div>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <a href="#" id="showBtn2"> <i class="fa-solid fa-expand"></i></a>
                                 </div>
-
-                                 <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons inner-modal">
-                                        <div>
-                                        
-                                            <div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4"><i class="fa-solid fa-plus"></i></div>
-                                        </div>
-                                        <div><div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4"><i class="fa-solid fa-expand"></i></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel2.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons inner-modal">
-                                        <div>
-                                        <a href="#" id="showBtn2" > <i class="fa-solid fa-plus"></i></a>
-                                            <!-- <div href="#"  id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal3" ><i class="fa-solid fa-plus"></i></div> -->
-                                        </div>
-                                        <a href="#" id="showBtn1" > <i class="fa-solid fa-expand"></i></a>  
-                                         <!-- <div><div href="#"  id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal3"><i class="fa-solid fa-expand"></i></div></div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                        <div>
-                                        <a href="#" id="showBtn1" > <i class="fa-solid fa-plus"></i></a>
-                                            <!-- <div href="#"  id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4"><i class="fa-solid fa-plus"></i></div> -->
-                                        </div>
-                                         <div>
-                                         <a href="#" id="showBtn1" > <i class="fa-solid fa-expand"></i></a>
-                                            <!-- <div href="#"  id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4"><i class="fa-solid fa-expand"></i></div> -->
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel2.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons inner-modal">
-                                        <div>
-                                        <a href="#" id="showBtn2" > <i class="fa-solid fa-plus"></i></a>
-                                            <!-- <div href="#"  id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal3" ><i class="fa-solid fa-plus"></i></div> -->
-                                        </div>
-                                            <div>
-                                            <a href="#" id="showBtn2" > <i class="fa-solid fa-expand"></i></a>
-                                                <!-- <div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal3"><i class="fa-solid fa-expand"></i></div> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons inner-modal">
-                                        <div>
-                                        <!-- <div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4" ><i class="fa-solid fa-plus"></i></div> -->
-                                        <a href="#" id="showBtn1" > <i class="fa-solid fa-plus"></i></a>
-                                    </div>
-                                            <div>
-                                                <!-- <div href="#" id="showBtn1" data-bs-toggle="modal" data-bs-target="#modal4"><i class="fa-solid fa-expand"></i></div> -->
-                                                <a href="#" id="showBtn1" > <i class="fa-solid fa-expand"></i></a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class=" text-left" id="generate-btn-div">
-                        <button type="submit" class="btn btn-primary save_prompt">Generate</button>
+                    <div class="opacity-cover">
+                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                        <div class="opacity_sheet">
+                            <div class="opacity_sheet_icons inner-modal">
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-plus"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-expand"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="opacity-cover">
+                        <img src="{{asset('images/carousel2.png')}}" alt="">
+                        <div class="opacity_sheet">
+                            <div class="opacity_sheet_icons inner-modal">
+                                <div>
+                                    <a href="#" id="showBtn2"> <i class="fa-solid fa-plus"></i></a>
+                                </div>
+                               <div>
+                                 <a href="#" id="showBtn2"> <i class="fa-solid fa-expand"></i></a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opacity-cover">
+                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                        <div class="opacity_sheet">
+                            <div class="opacity_sheet_icons">
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-plus"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-expand"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opacity-cover">
+                        <img src="{{asset('images/carousel2.png')}}" alt="">
+                        <div class="opacity_sheet">
+                            <div class="opacity_sheet_icons inner-modal">
+                                <div>
+                                    <a href="#" id="showBtn2"> <i class="fa-solid fa-plus"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" id="showBtn2"> <i class="fa-solid fa-expand"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opacity-cover">
+                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                        <div class="opacity_sheet">
+                            <div class="opacity_sheet_icons inner-modal">
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-plus"></i></a>
+                                </div>
+                                <div>
+                                    <a href="#" id="showBtn1"> <i class="fa-solid fa-expand"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" text-left" id="generate-btn-div">
+                    <button type="submit" class="btn btn-primary save_prompt">Generate</button>
+                </div>
 
 
             </div>
@@ -401,36 +394,36 @@
     </div>
 </div>
 
-<!-- --------------------------------------------------toggle modal----------------------------------------------- -->
+<!-- --------------------------------------------------modal over another modal----------------------------------------------- -->
 
-                                 <!-- modal  -->
-                        <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg">
-                                    <div class="modal-content " id="image-modal-content">
-                                        <div class="modal-header" id="modal-header1">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body modal-image" data-lightbox="modals">
-                                            <img src="{{asset('images/carousel2.png')}}" class="modal-img"/>
-                                        </div>
+<!-- modal  -->
+<div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content " id="image-modal-content">
+            <div class="modal-header" id="modal-header1">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-image" data-lightbox="modals">
+                <img src="{{asset('images/carousel1.png')}}" class="modal-img" />
+            </div>
 
-                                    </div>
-                                </div>
-                            </div>
+        </div>
+    </div>
+</div>
 
-                            <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg">
-                                    <div class="modal-content" id="image-modal-content">
-                                        <div class="modal-header" id="modal-header1">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body modal-image" data-lightbox="modals">
-                                            <img src="{{asset('images/carousel1.png')}}" alt="">
-                                        </div>
-                                     
-                                    </div>
-                                </div>
-                            </div>
+<div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" id="image-modal-content">
+            <div class="modal-header" id="modal-header1">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-image" data-lightbox="modals">
+                <img src="{{asset('images/carousel2.png')}}" alt="">
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!-- <div class="modal fade" id="edit_prompt1" tabindex="-1" aria-labelledby="edit_prompt" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg ">
@@ -466,27 +459,27 @@
 </div> -->
 
 <script>
-//promp owl carousel
+    //promp owl carousel
 
-$(document).ready(function(){
-$("#prompt-carousel").owlCarousel({
-items: 4, 
-loop: false, 
-dots:false,
-margin: 20,
-nav: false, 
+    $(document).ready(function() {
+        $("#prompt-carousel").owlCarousel({
+            items: 4,
+            loop: false,
+            dots: false,
+            margin: 20,
+            nav: false,
 
-responsive: {
-    0: {
-        items: 1 
-    },
-    768: {
-        items: 4
-    },
-    992: {
-        items: 4 
-    }
-}
-});
-});
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 4
+                },
+                992: {
+                    items: 4
+                }
+            }
+        });
+    });
 </script>

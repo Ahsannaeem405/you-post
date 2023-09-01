@@ -95,21 +95,8 @@
     color: #000;
 }
 
-/* #prompt-carousel .owl-dot {
-    display: none;
-} */
-#prompt-carousel .owl-item{
-    /* width: 180px !important; */
-    /* height: 150px !important; */
-}
-#prompt-carousel .owl-item img{
-    /* width: 220px !important; */
-}
-/* #prompt-carousel .owl-nav{
-    display: none;
-} */
 #promp-modal-content {
-    /* height: 70vh !important; */
+
     overflow: auto;
     border-radius: 30px;
 }
@@ -130,7 +117,7 @@
     padding: 10px 15px;
     border: none;
     width: 200px;
-    /* margin-bottom: 10px; */
+  
 }
 
 #prompt-carousel .opacity_sheet_icons{
@@ -147,4 +134,3 @@
 }
 
 /* Style for #edit_prompt modal */
-

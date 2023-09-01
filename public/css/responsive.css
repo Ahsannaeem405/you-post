@@ -54,11 +54,13 @@
 	.all_social_platform {
 		text-align: center;
 		font-size: 0px;
+		padding-left: 0%;
 	}
 
 	.all_social_platform .single_platform {
 		width: 32px;
 		margin-right: 10px;
+
 	}
 	.all_social_platform .single_platform .social_icon img {
 		width: 32px;

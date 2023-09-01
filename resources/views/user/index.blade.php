@@ -1132,7 +1132,7 @@
     <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
         <div class="container container_2">
             <div class="the_post_manager">
-                <div id='postManagerCalendar'></div>
+                <div id='postManagerCalendar'></div> 
             </div>
         </div>
     </div>
