@@ -909,7 +909,7 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                         <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -919,7 +919,7 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                         <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -929,7 +929,7 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                         <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -938,7 +938,7 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                         <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -947,7 +947,7 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                         <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -956,7 +956,7 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                         <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -965,7 +965,7 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                           <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -990,7 +990,7 @@
                                         <p class="mb-0">AI Generated Tags: <span id="gpt_tags"></span></p>
                                     </div>
                                 </div> -->
-                            <div class="AIgeneratedCarouselWrp">
+                            <div class="AIgeneratedCarouselWrp d-none">
 
                                 <div class="owl-carousel owl-theme AIgeneratedCarousel">
                                 </div>

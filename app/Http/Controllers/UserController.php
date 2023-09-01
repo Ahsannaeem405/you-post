@@ -333,7 +333,7 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights'];
+        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights','pages_manage_metadata'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
@@ -511,7 +511,7 @@ class UserController extends Controller
                     'client_id' => $client_id,
                     'redirect_uri' => $redirect_uri,
                     'state' => 'us',
-                    'scope' => 'rw_organization_admin  w_member_social r_organization_social w_organization_social r_liteprofile r_emailaddress rw_organization_admin rw_ads r_ads'
+                    'scope' => 'w_member_social r_organization_social w_organization_social r_liteprofile r_emailaddress rw_organization_admin rw_ads r_ads'
                 ));
             return redirect($authorization_url);
         } catch (\Throwable $e) {

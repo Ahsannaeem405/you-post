@@ -9,6 +9,7 @@ use DateTimeZone;
 use App\Models\PostDetail;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class  Facebookservice
@@ -19,6 +20,7 @@ class  Facebookservice
 
         $post = Post::find($data['post']->id);
         $media_path = public_path("content_media/$post->media");
+        $media_path2 = public_path("content_media/16911507181001.png");
         $accessToken = $post->account->fb_page_token;
 
         $client = new Client();
@@ -46,28 +48,81 @@ class  Facebookservice
 
             ],
         ];
-        if ($data['post']->media_type == 'video' || $data['post']->media_type == 'image') {
+        if ($data['post']->media_type == 'video' ) {
             $options['multipart'][] = [
                 'name' => 'source',
                 'contents' => fopen($media_path, 'r'),
             ];
+        }      if ( $data['post']->media_type == 'image') {
+            $options['multipart'][] = [
+                'name' => 'source',
+                'contents' => fopen($media_path2, 'r'),
+            ];
         }
 
+
         try {
-            $response = $client->post($url, $options);
+//
+            $response = Http::attach(
+                'source', fopen($media_path, 'r'), basename($media_path)
+            )->post("https://graph.facebook.com/v13.0/me/photos", [
+                'access_token' => $accessToken,
+                'message' => 'testing',
+                'published'=>false
+            ])->json();
+            Log::info($response);
+            $response2 = Http::attach(
+                'source', fopen($media_path2, 'r'), basename($media_path2)
+            )->post("https://graph.facebook.com/v13.0/me/photos", [
+                'access_token' => $accessToken,
+                'message' => 'testing',
+                'published'=>false
+            ])->json();
+            Log::info($response2);
 
-            $responseData = json_decode($response->getBody(), true);
+            $fb = new Facebook([
+                'app_id' => env('app_id'),
+                'app_secret' => env('app_secret'),
+                'default_access_token' => $accessToken,
+            ]);
+//            $response3=$fb->post('me/feed',[
+//                'attached_media'=>[
+//                    '{"media_fbid":"'.$response['id'].'"}',
+//                    '{"media_fbid":"'.$response2['id'].'"}'
+//                    ]
+//
+//            ]);
 
-            $postdetail = new PostDetail();
-            $postdetail->post_id = $post->id;
-            $postdetail->plateform = 'Facebook';
-            $postdetail->social_id = $responseData['id'];
-            $postdetail->save();
 
-            $msg = ['status' => true];
+            $response3 = Http::post("https://graph.facebook.com/v13.0/me/feed", [
+                'access_token' => $accessToken,
+               // 'message' => 'photto 1',
+                'attached_media'=>[
+                    '{"media_fbid":"'.$response['id'].'"}',
+                    '{"media_fbid":"'.$response2['id'].'"}'
+                ]
+
+            ])->json();
+            Log::info($response3);
+            die();
+
+
+
+//            $response = $client->post($url, $options);
+//
+//            $responseData = json_decode($response->getBody(), true);
+
+//            $postdetail = new PostDetail();
+//            $postdetail->post_id = $post->id;
+//            $postdetail->plateform = 'Facebook';
+//            $postdetail->social_id = $responseData['id'];
+//            $postdetail->save();
+//
+//            $msg = ['status' => true];
         } catch (\Throwable $e) {
             // Handles Guzzle HTTP errors
-            $post->delete();
+          //  $post->delete();
+            Log::error($e);
             $msg = ['status' => false, 'error' => $e->getMessage()];
         }
 
