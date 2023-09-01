@@ -9,7 +9,13 @@
     <!--Website Title-->
     <title>YOUPOST</title>
     <!--Calling Favicon-->
-    
+    <!-- Full Calendar -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script> -->
+         
+   
+
+
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
      <!-- style.css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
@@ -113,6 +119,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
+  
+
+
 <script>
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;
@@ -159,6 +168,64 @@
         })
         var eventDates =@json(collect($allPosts)->pluck('event_date'));
 
+
+
+
+     
+
+//         $(function() {
+
+// $('#postManagerCalendar').fullCalendar({
+//     eventSources: [
+//         {
+//             events: [
+//                 {
+//                     title: 'Event1',
+//                     start: '2018-07-13',
+//                     end: '2018-07-16',
+//                     allDay: true,
+//                     color: 'green',
+//                     backgroundColor: 'green'
+//                 },
+//                 {
+//                     title: 'Event2',
+//                     start: '2018-07-10',
+//                     color: '#ff7538',
+//                     backgroundColor: '#ff7538'
+//                 }
+      
+
+
+//             ],
+//         }
+//     ],
+//     header: {
+//         right: 'month,agendaWeek,timelineCustom,agendaDay,prev,today,next',
+//         left: 'title',
+//     },
+//     fixedWeekCount: false,
+//     contentHeight: 800,
+//     views: {
+//         timelineCustom: {
+//             type: 'timeline',
+//             buttonText: 'Year',
+//             dateIncrement: { years: 1 },
+//             slotDuration: { months: 1 },
+//             visibleRange: function (currentDate) {
+//                 return {
+//                     start: currentDate.clone().startOf('year'),
+//                     end: currentDate.clone().endOf("year")
+//                 };
+       
+//             }
+//         }
+//     }
+
+
+// });
+
+// });
+
         var calendar = $('#postManagerCalendar').fullCalendar({
             selectable: true,
             businessHours: true,
@@ -169,6 +236,62 @@
                     eventLimit: 2
                 }
             },
+
+
+            eventSources: [
+        {
+            events: [
+                {
+                    title: 'Event1',
+                    start: '2018-07-13',
+                    end: '2018-07-16',
+                    allDay: true,
+                    color: 'green',
+                    backgroundColor: 'green'
+                },
+                {
+                    title: 'Event2',
+                    start: '2018-07-10',
+                    color: '#ff7538',
+                    backgroundColor: '#ff7538'
+                }
+             
+            ],
+        }
+    ],
+   
+    header: {
+        center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
+        // left: 'title',
+    },
+    fixedWeekCount: false,
+    contentHeight: 850,
+    views: {
+                    timelineCustom: {
+                        type: 'timelineCustom',
+                        buttonText: 'Year',
+                        dateIncrement: { years: 1 },
+                        slotDuration: { months: 1 },
+                        visibleRange: function (currentDate) {
+                            return {
+                                start: currentDate.clone().startOf('year'),
+                                end: currentDate.clone().endOf("year")
+                            };
+                        }
+                    }
+                }
+  
+          
+          
+
+
+
+
+
+
+
+
+
             eventClick: function (event, jsEvent, view) {
                 var id = event.id;
                 get_detail(id);
@@ -201,6 +324,8 @@
                 settime();
 
             },
+
+
             eventRender: function (event, element) {
                 element.find('.fc-title').text(event.title);
                 element.find('.fc-time').text(''); // remove start time
@@ -211,8 +336,48 @@
                     element.find('.fc-content').prepend(`<img src="${event.videoURL}" class="video-thumnailmain thumbnail"  > `);
                 }
             },
+
+            viewRender: function (view, element) {
+            // Get the active view name
+            var activeView = view.type;
+
+            // Remove active class from all tabs
+            $('.calendar-tab').removeClass('active');
+
+            // Add active class to the currently active tab
+            $('.calendar-tab[data-view="' + activeView + '"]').addClass('active');
+
+            $('#calendar').fullCalendar('changeView', 'agendaDay');   
+
+        }
         });
-    })
+// // Handle day view tab click
+// $(document).on('click', '.calendar-tab[data-view="day"]', function () {
+//     calendar.fullCalendar('changeView', 'agendaDay');
+    
+//     // Toggle active class for tabs
+//     $('.calendar-tab').removeClass('active');
+//     $(this).addClass('active');
+// });
+
+
+// // Handle week view tab click
+// $(document).on('click', '.calendar-tab[data-view="week"]', function () {
+//     calendar.fullCalendar('changeView', 'agendaWeek');
+//     // Toggle active class for tabs
+//     $('.calendar-tab').removeClass('active');
+//     $(this).addClass('active');
+// });
+
+        
+//     // Handle tab clicks
+//     $(document).on('click', '.calendar-tab', function () {
+//         var viewName = $(this).data('view');
+
+//         // Change the calendar view
+//         calendar.fullCalendar('changeView', viewName);
+//     });
+    });
 
     function videoThumnail() {
 
@@ -502,6 +667,87 @@ modeSwitch.addEventListener("click" , () =>{
     }
 });
 </script>
+
+<!-- <script>
+    
+    function draw() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      };
+       document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      initialDate: '2023-07-07',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      events: [
+        {
+          title: 'All Day Event',
+          start: '2023-07-01'
+        },
+        {
+          title: 'Long Event',
+          start: '2023-07-07',
+          end: '2023-07-10'
+        },
+        {
+          groupId: '999',
+          title: 'Repeating Event',
+          start: '2023-07-09T16:00:00'
+        },
+        {
+          groupId: '999',
+          title: 'Repeating Event',
+          start: '2023-07-16T16:00:00'
+        },
+        {
+          title: 'Conference',
+          start: '2023-07-11',
+          end: '2023-07-13'
+        },
+        {
+          title: 'Meeting',
+          start: '2023-07-12T10:30:00',
+          end: '2023-07-12T12:30:00'
+        },
+        {
+          title: 'Lunch',
+          start: '2023-07-12T12:00:00'
+        },
+        {
+          title: 'Meeting',
+          start: '2023-07-12T14:30:00'
+        },
+        {
+          title: 'Birthday Party',
+          start: '2023-07-13T07:00:00'
+        },
+        {
+          title: 'Click for Google',
+          url: 'https://google.com/',
+          start: '2023-07-28'
+        }
+      ]
+    });
+
+    calendar.render();
+  });
+
+</script> -->
+
+
+
+
+
+
 @yield('js')
 </body>
 
