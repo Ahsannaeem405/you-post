@@ -119,7 +119,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
-  
+<
 
 
 <script>
@@ -227,6 +227,7 @@
 // });
 
         var calendar = $('#postManagerCalendar').fullCalendar({
+          
             selectable: true,
             businessHours: true,
             dayMaxEvents: true, // allow "more" link when too many events
@@ -235,6 +236,8 @@
                 month: {
                     eventLimit: 2
                 }
+        
+
             },
 
 
@@ -262,30 +265,13 @@
    
     header: {
         center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
-        // left: 'title',
     },
     fixedWeekCount: false,
     contentHeight: 850,
-    views: {
-                    timelineCustom: {
-                        type: 'timelineCustom',
-                        buttonText: 'Year',
-                        dateIncrement: { years: 1 },
-                        slotDuration: { months: 1 },
-                        visibleRange: function (currentDate) {
-                            return {
-                                start: currentDate.clone().startOf('year'),
-                                end: currentDate.clone().endOf("year")
-                            };
-                        }
-                    }
-                }
+
   
+           
           
-          
-
-
-
 
 
 

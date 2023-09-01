@@ -908,8 +908,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -918,18 +918,18 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
 
-                                 <div class="opacity-cover">
+                                <div class="opacity-cover">
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -937,8 +937,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -946,8 +946,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -955,8 +955,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -964,8 +964,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                          <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div> 
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1022,7 +1022,7 @@
 
 
 <!--===== Markup For "Post Manager" Starts Here =====-->
- <!-- <section class="post_manager">
+<!-- <section class="post_manager">
      <div class="title_bar_wrap d-none">
         <div class="container container_2">
             <div class="title_bar">
@@ -1067,127 +1067,132 @@
 <!-- =======Calender========= -->
 
 <section>
-        <div class="row container section5">
-            <div class="col-sm-12 col-md-3 col-lg-3 calender">
-                        <div class="navigation">
-                            <h2 id="month-year"></h2>
-                            <!-- <h2 id="current-day"></h2> -->
-                            <div class="leftrightbtn">
-                                <button onclick="prevMonth()" class="prev">&#10094;</button>
-                                <button onclick="nextMonth()" class="next"> &#10095;</button>
-                            </div>
-
+    <div class="row container section5">
+        <div class="col-sm-12 col-md-12 col-lg-3 calender">
+            <div class="calendarmain">
+                <div class="l1">
+                    <div class="navigation">
+                        <h2 id="month-year"></h2>
+                        <!-- <h2 id="current-day"></h2> -->
+                        <div class="leftrightbtn">
+                            <button onclick="prevMonth()" class="prev">&#10094;</button>
+                            <button onclick="nextMonth()" class="next"> &#10095;</button>
                         </div>
-                        <div  id="calendar-container" >
 
-                        </div>
-                       
-                        <div class="Thumbnail">
-                            <h3>
+                    </div>
+                    <div id="calendar-container">
+
+                    </div>
+                </div>
+                <div class="R1">
+                    <div class="Thumbnail">
+                        <h3>
                             Thumbnail
-                            </h3>
-                            <a href=""><i class='fa fa-info red-color'></i></a>
+                        </h3>
+                        <a href=""><i class='fa fa-info red-color'></i></a>
 
-                        </div>
-                        <div class="div2">
-                      <h1>
-                        TUESDAY
-                      </h1>
-                      <h3>9/8/2023</h3>
-                       
-                        </div>
-                        <div class="div3">
-                            <div>
+                    </div>
+                    <div class="div2">
+                        <h1>
+                            TUESDAY
+                        </h1>
+                        <h3>9/8/2023</h3>
+
+                    </div>
+                    <div class="div3">
+                        <div>
                             <span class="clr"></span>
-                            </div>
-                            <div>
+                        </div>
+                        <div>
                             <img src="\images\Ellipse 17 (1).png" alt="">
-                            </div>
-                            <div class="myspan">
+                        </div>
+                        <div class="myspan">
                             <span class="sp1">This is the caption </span>
                             <p class="sp2">Scheduled</p>
-                            </div>
-
-                            
-                            <div class="Edit">
-                            <i class='fas fa-edit' style='font-size:23px; color:#fff'></i>
-                               <a href=""> <span>Edit</span></a>
-                            </div>
-
                         </div>
-                        <div class="div3">
-                            <div>
+
+
+                        <div class="Edit">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+                    <div class="div3">
+                        <div>
                             <span class="clr2"></span>
-                            </div>
-                            <div>
+                        </div>
+                        <div>
                             <img src="\images\Ellipse 17 (2).png" alt="">
-                            </div>
-                            <div class="myspan">
+                        </div>
+                        <div class="myspan">
                             <span class="sp1">This is the caption </span>
                             <p class="sp2">Scheduled</p>
-                            </div>
-
-                            
-                            <div class="Edit2">
-                            <i class='fas fa-edit' style='font-size:23px; color:#fff'></i>
-                               <a href=""> <span>Edit</span></a>
-                            </div>
-
-                        </div>
-
-                        <div class="div2">
-                      <h1>
-                        Friday
-                      </h1>
-                      <h3>21/8/2023</h3>
-                       
                         </div>
 
 
-                        <div class="div3">
-                            <div>
+                        <div class="Edit2">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+
+                    <div class="div2">
+                        <h1>
+                            Friday
+                        </h1>
+                        <h3>21/8/2023</h3>
+
+                    </div>
+
+
+                    <div class="div3">
+                        <div>
                             <span class="clr3"></span>
-                            </div>
-                            <div>
+                        </div>
+                        <div>
                             <img src="\images\Ellipse 17 (3).png" alt="">
-                            </div>
-                            <div class="myspan">
+                        </div>
+                        <div class="myspan">
                             <span class="sp1">This is the caption </span>
                             <p class="sp2">Scheduled</p>
-                            </div>
-
-                            
-                            <div class="Edit3">
-                            <i class='fas fa-edit' style='font-size:23px; color:#fff'></i>
-                               <a href=""> <span>Edit</span></a>
-                            </div>
-
                         </div>
-                        <div class="div3">
-                            <div>
+
+
+                        <div class="Edit3">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+                    <div class="div3">
+                        <div>
                             <span class="clr4"></span>
-                            </div>
-                            <div>
+                        </div>
+                        <div>
                             <img src="\images\Ellipse 17.png" alt="">
-                            </div>
-                            <div class="myspan">
+                        </div>
+                        <div class="myspan">
                             <span class="sp1">This is the caption </span>
                             <p class="sp2">Scheduled</p>
-                            </div>
-
-                            
-                            <div class="Edit4">
-                            <i class='fas fa-edit' style='font-size:23px; color:#fff'></i>
-                               <a href=""> <span>Edit</span></a>
-                            </div>
-
                         </div>
-</div>
-                 
 
-<div class="col-sm-12 col-md-9 col-lg-9 calendar2">   
 
-<!-- 
+                        <div class="Edit4">
+                            <i class='fas fa-edit'></i>
+                            <a href=""> <span>Edit</span></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-9 calendar2">
+
+            <!-- 
   <div class="event-calendar">
     <div class="calendar-header">
       <button id="today-btn">Today</button>
@@ -1238,78 +1243,66 @@
   </div>
   -->
 
-     <div class="title_bar_wrap d-none">
-        <div class="container container_2">
-            <div class="title_bar">
-                <div class="tabs_type_heading">
-                    <h3>Post Manager</h3>
-                </div>
+            <div class="title_bar_wrap d-none">
+                <div class="container container_2">
+                    <div class="title_bar">
+                        <div class="tabs_type_heading">
+                            <h3>Post Manager</h3>
+                        </div>
 
-                <div class="right_contents">
-                    <ul>
-                        <li class="filter_by">
-                            <span>Filter by:</span>
-                        </li>
-                        <li>
-                            <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
-                        </li>
-                        <li>
-                            <a class="filter_link" href="javascript:void(0)">VIDEO</a>
-                        </li>
-                        <li>
-                            <a class="filter_link" href="javascript:void(0)">IMAGE</a>
-                        </li>
-                        <li class="month_name">
-                            <span>December 2022</span>
-                            <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid"
-                                    alt="" /></a>
-                        </li>
-                    </ul>
+                        <div class="right_contents">
+                            <ul>
+                                <li class="filter_by">
+                                    <span>Filter by:</span>
+                                </li>
+                                <li>
+                                    <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
+                                </li>
+                                <li>
+                                    <a class="filter_link" href="javascript:void(0)">VIDEO</a>
+                                </li>
+                                <li>
+                                    <a class="filter_link" href="javascript:void(0)">IMAGE</a>
+                                <li class="month_name">
+                                    <span>December 2022</span>
+                                    <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}"
+                                            class="img-fluid" alt="" /></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div> 
-    
-    <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
-        <div class="container container_2">
-            <div class="the_post_manager">
-            <!-- <div class="view-options"> -->
-        <!-- <button class="view-option">Day</button>
+
+            <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
+                <div class="container container_2">
+                    <div class="the_post_manager">
+                        <!-- <div class="view-options"> -->
+                        <!-- <button class="view-option">Day</button>
         <button class="view-option view2">Week</button>
         <button class="view-option">Month</button>
         <button class="view-option">Year</button> -->
-        <!-- <div id="calendar-tabs">
+                        <!-- <div id="calendar-tabs">
     <button class="calendar-tab view-option" data-view="day">Day</button>
     <button class="calendar-tab view-option view2" data-view="week">Week</button>
     <button class="calendar-tab view-option" data-view="month">Month</button>
     <button class="calendar-tab view-option" data-view="year">Year</button>
 </div> -->
 
-      <!-- </div> -->
-                <div id='postManagerCalendar'></div>
-                
-                
-            <!-- </div>
+                        <!-- </div> -->
+                        <div id='postManagerCalendar'></div>
+
+
+                        <!-- </div>
         </div>
     </div> -->
 
 
-    <!-- <div id='calendar'></div> -->
+                        <!-- <div id='calendar'></div> -->
 
-</div>
-</div>
-</div>
-
-
-
-
-
-
-   
-
-
-
-</div>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -1320,7 +1313,18 @@
 
 
 
-</div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
 
 
 
@@ -1337,7 +1341,7 @@
 
 <!--===== Markup For "States Viewer" Starts Here =====-->
 
- <!-- <section class="stats_viewer_wrap">
+<!-- <section class="stats_viewer_wrap">
         <div class="title_bar_wrap">
             <div class="container container_2">
                 <div class="title_bar">
@@ -1642,7 +1646,7 @@ $(document).ready(function() {
 
 $('.owl-carousel').owlCarousel({
     loop: true,
-    autoplay:true,
+    autoplay: true,
     margin: 10,
     nav: true,
     pages: true,
@@ -1711,17 +1715,17 @@ $(document).ready(function() {
 });
 </script>
 
-   
 
-  
+
+
 
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  let currentDate = new Date();
+let currentDate = new Date();
 
-  function displayCalendar() {
+function displayCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     // const today = currentDate.getDate();
@@ -1731,8 +1735,8 @@ $(document).ready(function() {
     const firstDay = new Date(year, month, 1).getDay();
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const monthNames = [
-      "January", "February", "March", "April", "May", "June", "July",
-      "August", "September", "October", "November", "December"
+        "January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"
     ];
 
     document.getElementById("month-year").textContent = monthNames[month] + " , " + year;
@@ -1754,33 +1758,34 @@ $(document).ready(function() {
     let prevMonth = new Date(year, month, 0).getDate();
     let dayNum = 1 - firstDay;
     for (let i = 0; i < 6; i++) {
-      tableHtml += '<tr>';
-      for (let j = 0; j < 7; j++) {
+        tableHtml += '<tr>';
+        for (let j = 0; j < 7; j++) {
 
-        // if (dayNum <= 0) {
-        //   tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
-        // } else if (dayNum <= daysInMonth) {
-        //   const isCurrentDay = (i === 0 && j === dayNum - 1);
-        //   const dayClass = isCurrentDay ? "current-day" : "";
-        //   tableHtml += `<td class="${dayClass}">${String(dayNum).padStart(2, '0')}</td>`;
-        // } else {
-        //   tableHtml += `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
-        // }
+            // if (dayNum <= 0) {
+            //   tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
+            // } else if (dayNum <= daysInMonth) {
+            //   const isCurrentDay = (i === 0 && j === dayNum - 1);
+            //   const dayClass = isCurrentDay ? "current-day" : "";
+            //   tableHtml += `<td class="${dayClass}">${String(dayNum).padStart(2, '0')}</td>`;
+            // } else {
+            //   tableHtml += `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
+            // }
 
 
-        if (dayNum <= 0) {
-  tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
-} else if (dayNum <= daysInMonth) {
-  const isCurrentDay = (dayNum === today.getDate());
-  
-  const dayClass = isCurrentDay ? "current-day current-date" : "current-day";
-  tableHtml += `<td class="${dayClass}">${String(dayNum).padStart(2, '0')}</td>`;
-} else {
-  tableHtml += `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
-}
-        dayNum++;
-      }
-      tableHtml += '</tr>';
+            if (dayNum <= 0) {
+                tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
+            } else if (dayNum <= daysInMonth) {
+                const isCurrentDay = (dayNum === today.getDate());
+
+                const dayClass = isCurrentDay ? "current-day current-date" : "current-day";
+                tableHtml += `<td class="${dayClass}">${String(dayNum).padStart(2, '0')}</td>`;
+            } else {
+                tableHtml +=
+                    `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
+            }
+            dayNum++;
+        }
+        tableHtml += '</tr>';
     }
 
 
@@ -1788,8 +1793,7 @@ $(document).ready(function() {
 
     document.getElementById('calendar-container').innerHTML = tableHtml;
     document.getElementById('current-day').textContent = ` ${daysOfWeek[day]}`;
-  }
-  
+}
 
 
 
@@ -1800,29 +1804,29 @@ $(document).ready(function() {
 
 
 
-  
 
-  function prevMonth() {
+
+
+function prevMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);
     displayCalendar();
-  }
+}
 
-  function nextMonth() {
+function nextMonth() {
     currentDate.setMonth(currentDate.getMonth() + 1);
     displayCalendar();
 
-  }
+}
 
 
-  // Call the displayCalendar function when the page loads
-  window.onload = function () {
+// Call the displayCalendar function when the page loads
+window.onload = function() {
     displayCalendar();
-    
-  };
+
+};
 </script>
 
 <script>
-
 //   document.addEventListener("DOMContentLoaded", function () {
 //   const todayBtn = document.getElementById("today-btn");
 //   const prevBtn = document.getElementById("prev-btn");
@@ -1977,11 +1981,6 @@ $(document).ready(function() {
 //   // Initial calendar generation
 //   generateCalendar();
 // });
-
-
-
-
-
 </script>
 
 <script>
@@ -1999,16 +1998,16 @@ $(document).ready(function() {
 
 //   // Define day names
 //   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  
+
 //   // Populate day names at the top of the calendar
 //   dayNames.forEach(dayName => {
 //     const dayNameCell = document.createElement("div");
 //     dayNameCell.classList.add("day-name-cell");
 //     dayNameCell.textContent = dayName;
 //     dayNamesContainer.appendChild(dayNameCell);
-   
+
 //   });
-   
+
 //   // Event listeners for buttons
 //   todayBtn.addEventListener("click", () => {
 //     // Set the current date as today's date
@@ -2072,125 +2071,104 @@ $(document).ready(function() {
 
 
 // });
-document.addEventListener("DOMContentLoaded", function () {
-  const todayBtn = document.getElementById("today-btn");
-  const prevBtn = document.getElementById("prev-btn");
-  const nextBtn = document.getElementById("next-btn");
-  const currentDateElem = document.getElementById("current-date");
-  const calendarDaysContainer = document.querySelector(".calendar-days");
-  const dayNamesContainer = document.querySelector(".day-names");
+document.addEventListener("DOMContentLoaded", function() {
+    const todayBtn = document.getElementById("today-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const currentDateElem = document.getElementById("current-date");
+    const calendarDaysContainer = document.querySelector(".calendar-days");
+    const dayNamesContainer = document.querySelector(".day-names");
 
-  // Set the current date to display initially
-  let currentDate = new Date();
-  currentDateElem.textContent = currentDate.toDateString();
-
-  // Define day names
-  const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  // Populate day names at the top of the calendar
-  dayNames.forEach(dayName => {
-    const dayNameCell = document.createElement("div");
-    dayNameCell.classList.add("day-name-cell");
-    dayNameCell.textContent = dayName;
-    dayNamesContainer.appendChild(dayNameCell);
-  });
-
-  // Event listeners for buttons
-  todayBtn.addEventListener("click", () => {
-    // Set the current date as today's date
-    currentDate = new Date();
+    // Set the current date to display initially
+    let currentDate = new Date();
     currentDateElem.textContent = currentDate.toDateString();
-    generateCalendar();
-  });
 
-  prevBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    currentDateElem.textContent = currentDate.toDateString();
-    generateCalendar();
-  });
+    // Define day names
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  nextBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    currentDateElem.textContent = currentDate.toDateString();
-    generateCalendar();
-  });
+    // Populate day names at the top of the calendar
+    dayNames.forEach(dayName => {
+        const dayNameCell = document.createElement("div");
+        dayNameCell.classList.add("day-name-cell");
+        dayNameCell.textContent = dayName;
+        dayNamesContainer.appendChild(dayNameCell);
+    });
 
-  // Function to generate calendar days and events
-  function generateCalendar() {
-    // Clear existing content
-    calendarDaysContainer.innerHTML = "";
+    // Event listeners for buttons
+    todayBtn.addEventListener("click", () => {
+        // Set the current date as today's date
+        currentDate = new Date();
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
 
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const firstDay = new Date(year, month, 1).getDay();
+    prevBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
 
-    // Generate calendar days
-    let dayNum = 1 - firstDay;
-    for (let i = 0; i < 6; i++) {
-      const weekRow = document.createElement("div");
-      weekRow.classList.add("week-row");
+    nextBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
 
-      for (let j = 0; j < 7; j++) {
-        const dayCell = document.createElement("div");
-        dayCell.classList.add("day-cell");
+    // Function to generate calendar days and events
+    function generateCalendar() {
+        // Clear existing content
+        calendarDaysContainer.innerHTML = "";
 
-        if (dayNum <= 0 || dayNum > daysInMonth) {
-          const otherMonthDate = new Date(year, month, dayNum);
-          dayCell.classList.add("other-month");
-          dayCell.textContent = otherMonthDate.getDate();
-        } else {
-          dayCell.textContent = dayNum;
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+
+        // Generate calendar days
+        let dayNum = 1 - firstDay;
+        for (let i = 0; i < 6; i++) {
+            const weekRow = document.createElement("div");
+            weekRow.classList.add("week-row");
+
+            for (let j = 0; j < 7; j++) {
+                const dayCell = document.createElement("div");
+                dayCell.classList.add("day-cell");
+
+                if (dayNum <= 0 || dayNum > daysInMonth) {
+                    const otherMonthDate = new Date(year, month, dayNum);
+                    dayCell.classList.add("other-month");
+                    dayCell.textContent = otherMonthDate.getDate();
+                } else {
+                    dayCell.textContent = dayNum;
+                }
+
+                if (dayNum === 1) {
+                    dayCell.classList.add("first-day");
+                }
+
+                dayCell.addEventListener("click", () => openEventModal(year, month, dayNum));
+                weekRow.appendChild(dayCell);
+                dayNum++;
+            }
+
+            calendarDaysContainer.appendChild(weekRow);
         }
-
-        if (dayNum === 1) {
-          dayCell.classList.add("first-day");
-        }
-
-        dayCell.addEventListener("click", () => openEventModal(year, month, dayNum));
-        weekRow.appendChild(dayCell);
-        dayNum++;
-      }
-
-      calendarDaysContainer.appendChild(weekRow);
     }
-  }
 
-  // Initial calendar generation
-  generateCalendar();
+    // Initial calendar generation
+    generateCalendar();
 });
-
-
-
-
 </script>
 
 
 <script>
-    function openEventModal(year, month, day) {
-  const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
-  if (event) {
-    const eventElement = document.createElement("div");
-    eventElement.classList.add("event");
-    eventElement.textContent = event;
-    calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
-  }
+function openEventModal(year, month, day) {
+    const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
+    if (event) {
+        const eventElement = document.createElement("div");
+        eventElement.classList.add("event");
+        eventElement.textContent = event;
+        calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
+    }
 }
-
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
