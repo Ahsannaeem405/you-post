@@ -1640,10 +1640,6 @@ $(document).ready(function() {
 </script>
 
 
-
-
-
-@endsection
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
@@ -1718,18 +1714,6 @@ function displayCalendar() {
     document.getElementById('calendar-container').innerHTML = tableHtml;
     document.getElementById('current-day').textContent = ` ${daysOfWeek[day]}`;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 function prevMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);
@@ -2096,3 +2080,4 @@ function openEventModal(year, month, day) {
     }
 }
 </script>
+@endsection
