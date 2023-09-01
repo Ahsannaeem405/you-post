@@ -40,6 +40,8 @@ class UserController extends Controller
     public function dashbaord()
     {
 
+
+
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
@@ -65,8 +67,13 @@ class UserController extends Controller
 
     public function dashbaord2()
     {
+        $accesstoken = auth()->user()->account->linkedin_accesstoken;
+        $linkedin = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $accesstoken,
+        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
+        dd($linkedin);
 
-       // $bearerToken = auth()->user()->account->twiter_access_token;
+        // $bearerToken = auth()->user()->account->twiter_access_token;
 //        $connection = new TwitterOAuth(
 //            'p3cltII7k9o69s6uVSj0CSVkz',
 //            'YUy4ffBgnPY0zJoqLSbCY7MynmADtdm5vOiJFbPhJeIkuOBSiq',
@@ -106,66 +113,79 @@ class UserController extends Controller
     {
 
         $platforms = auth()->user()->account->platforms;
+
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
         }
-        $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = null;
+
+        $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = [];
 
         //*****************facebook validation******************//
         if (in_array('Facebook', $platforms)) {
             $req->validate([
-                'facebook_media' => 'required_if:media_type_facebook,image|required_if:media_type_facebook,video',
+                'facebook_media.*' => 'required_if:media_type_facebook,image|required_if:media_type_facebook,video',
             ]);
-            if ($req->media_type_fb == 'video') {
+
+            if ($req->media_type_facebook == 'video') {
+
                 $req->validate([
-                    'facebook_media' => 'mimes:mp4|max:4000',
+                    'facebook_media.*' => 'mimes:mp4|max:4000',
                 ]);
             }
-            if ($req->hasFile('facebook_media')) {
-                $imageName = time() . rand(1111, 999) . '.' . $req->facebook_media->extension();
-                $req->facebook_media->move('content_media', $imageName);
-                $mediaDatafb = $imageName;
-            }
 
+            if ($req->hasFile('facebook_media')) {
+
+                foreach ($req->facebook_media as $media) {
+                    $imageName = time() . rand(1111, 999) . '.' . $media->extension();
+                    $media->move('content_media', $imageName);
+                    $mediaDatafb[] = $imageName;
+                }
+
+            }
         }
+
+
         //****************end facebook validation**************//
 
         //****************instagram validation****************//
         if (in_array('Instagram', $platforms)) {
             $req->validate([
-                'insta_media' => 'required',
+                'insta_media.*' => 'required',
             ]);
-            if ($req->media_type_insta == 'video') {
+            if ($req->media_type_instagram == 'video') {
                 $req->validate([
-                    'insta_media' => 'mimes:mp4|max:4000',
+                    'insta_media.*' => 'mimes:mp4|max:4000',
                 ]);
             }
+            foreach ($req->insta_media as $media) {
+                $imageName = time() . rand(1111, 999) . '.' . $media->extension();
+                $media->move('content_media', $imageName);
+                $mediaDataInsta[] = $imageName;
 
-            $imageName = time() . rand(1111, 999) . '.' . $req->insta_media->extension();
-            $req->insta_media->move('content_media', $imageName);
-            $mediaDataInsta = $imageName;
-            $InstafilePath = 'content_media/' . $mediaDataInsta;
-
-            if ($req->media_type_instagram == 'image') {
-                $width = Image::make($InstafilePath)->width();
-                $height = Image::make($InstafilePath)->height();
-                $aspectRatio = sprintf("%0.2f", $width / $height);
-                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
-                }
             }
-            if ($req->media_type_instagram == 'video') {
 
-                $getID3 = new \getID3();
-                $fileInfo = $getID3->analyze($InstafilePath);
-                $width = $fileInfo['video']['resolution_x'] ?? 1;
-                $height = $fileInfo['video']['resolution_y'] ?? 1;
-                $aspectRatio = sprintf("%0.2f", $width / $height);
-                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-                    unlink($InstafilePath);
-                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
-                }
-            }
+
+            //  $InstafilePath = 'content_media/' . $mediaDataInsta;
+//            if ($req->media_type_instagram == 'image') {
+//                $width = Image::make($InstafilePath)->width();
+//                $height = Image::make($InstafilePath)->height();
+//                $aspectRatio = sprintf("%0.2f", $width / $height);
+//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+//                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
+//                }
+//            }
+//            if ($req->media_type_instagram == 'video') {
+//
+//                $getID3 = new \getID3();
+//                $fileInfo = $getID3->analyze($InstafilePath);
+//                $width = $fileInfo['video']['resolution_x'] ?? 1;
+//                $height = $fileInfo['video']['resolution_y'] ?? 1;
+//                $aspectRatio = sprintf("%0.2f", $width / $height);
+//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+//                    unlink($InstafilePath);
+//                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
+//                }
+//            }
 
 
         }
@@ -174,39 +194,42 @@ class UserController extends Controller
         //****************Linkedin validation****************//
         if (in_array('Linkedin', $platforms)) {
             $req->validate([
-                'linkedin_media' => 'required_if:media_type_linkedin,image|required_if:media_type_linkedin,video',
+                'linkedin_media.*' => 'required_if:media_type_linkedin,image|required_if:media_type_linkedin,video',
             ]);
             if ($req->media_type_linkedin == 'video') {
                 $req->validate([
-                    'linkedin_media' => 'mimes:mp4|max:4000',
+                    'linkedin_media.*' => 'mimes:mp4|max:4000',
                 ]);
             }
             if ($req->hasFile('linkedin_media')) {
-                $imageName = time() . rand(1111, 999) . '.' . $req->linkedin_media->extension();
-                $req->linkedin_media->move('content_media', $imageName);
-                $mediaDataLinkedin = $imageName;
-                $linkfilePath = 'content_media/' . $mediaDataLinkedin;
-            }
-            if ($req->media_type_linkedin == 'image') {
-                $width = Image::make($linkfilePath)->width();
-                $height = Image::make($linkfilePath)->height();
-                $aspectRatio = sprintf("%0.2f", $width / $height);
-                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
+                foreach ($req->linkedin_media as $media) {
+                    $imageName = time() . rand(1111, 999) . '.' . $media->extension();
+                    $media->move('content_media', $imageName);
+                    $mediaDataLinkedin[] = $imageName;
                 }
-            }
-            if ($req->media_type_linkedin == 'video') {
 
-                $getID3 = new \getID3();
-                $fileInfo = $getID3->analyze($linkfilePath);
-                $width = $fileInfo['video']['resolution_x'] ?? 1;
-                $height = $fileInfo['video']['resolution_y'] ?? 1;
-                $aspectRatio = sprintf("%0.2f", $width / $height);
-                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-                    unlink($linkfilePath);
-                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
-                }
             }
+            // $linkfilePath = 'content_media/' . $mediaDataLinkedin;
+//            if ($req->media_type_linkedin == 'image') {
+//                $width = Image::make($linkfilePath)->width();
+//                $height = Image::make($linkfilePath)->height();
+//                $aspectRatio = sprintf("%0.2f", $width / $height);
+//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+//                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
+//                }
+//            }
+//            if ($req->media_type_linkedin == 'video') {
+//
+//                $getID3 = new \getID3();
+//                $fileInfo = $getID3->analyze($linkfilePath);
+//                $width = $fileInfo['video']['resolution_x'] ?? 1;
+//                $height = $fileInfo['video']['resolution_y'] ?? 1;
+//                $aspectRatio = sprintf("%0.2f", $width / $height);
+//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
+//                    unlink($linkfilePath);
+//                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
+//                }
+//            }
 
 
         }
@@ -221,11 +244,11 @@ class UserController extends Controller
             $mediatype = 'media_type_' . Str::lower($platforms[$i]);
             $media = null;
             if ($platforms[$i] == 'Facebook')
-                $media = $mediaDatafb;
+                $media = implode(',', $mediaDatafb);
             elseif ($platforms[$i] == 'Instagram')
-                $media = $mediaDataInsta;
+                $media = implode(',', $mediaDataInsta);
             elseif ($platforms[$i] == 'Linkedin')
-                $media = $mediaDataLinkedin;
+                $media = implode(',', $mediaDataLinkedin);
 
             $post = new Post();
             $post->account_id = auth()->user()->account_id;
@@ -317,9 +340,16 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
+        $platform = auth()->user()->account->platforms;
+        $valueToRemove = 'Facebook';
+        foreach (array_keys($platform, $valueToRemove) as $key) {
+            unset($platform[$key]);
+        }
+
         auth()->user()->account()->update([
             'fb_access_token' => null,
-            'fb_page_token' => null
+            'fb_page_token' => null,
+            'platforms' => $platform
         ]);
 
         $fb = new Facebook([
@@ -328,7 +358,7 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights'];
+        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
@@ -357,7 +387,9 @@ class UserController extends Controller
         $user = Account::find(auth()->user()->account_id);
 
         $platforms = $user->platforms;
+
         array_push($platforms, 'Facebook');
+
 
         $user->fb_page_token = $req->page;
         $user->platforms = $platforms;
@@ -372,9 +404,16 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
+        $platform = auth()->user()->account->platforms;
+        $valueToRemove = 'Instagram';
+        foreach (array_keys($platform, $valueToRemove) as $key) {
+            unset($platform[$key]);
+        }
+
         auth()->user()->account()->update([
             'insta_access_token' => null,
-            'insta_user_id' => null
+            'insta_user_id' => null,
+            'platforms' => $platform
         ]);
         $insta = config('services.instagram');
 
@@ -490,10 +529,17 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
+        $platform = auth()->user()->account->platforms;
+        $valueToRemove = 'Linkedin';
+        foreach (array_keys($platform, $valueToRemove) as $key) {
+            unset($platform[$key]);
+        }
+
         auth()->user()->account()->update([
             'linkedin_accesstoken' => null,
             'linkedin_user_id' => null,
-            'linkedin_page_id' => null
+            'linkedin_page_id' => null,
+            'platforms' => $platform
         ]);
         try {
             $linkedin = config('services.linkedin');
@@ -584,9 +630,16 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
+        $platform = auth()->user()->account->platforms;
+        $valueToRemove = 'Twitter';
+        foreach (array_keys($platform, $valueToRemove) as $key) {
+            unset($platform[$key]);
+        }
+
         auth()->user()->account()->update([
             'twiter_access_token' => null,
             'twiter_refresh_token' => null,
+            'platforms' => $platform
         ]);
 
         try {

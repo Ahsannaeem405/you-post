@@ -20,32 +20,45 @@ class Instagramservice
     {
 
         $post = Post::find($data['post']->id);
-
         $media_path = asset("content_media/$post->media");
-
-        $insta = config('services.instagram');
         $accesstoken = $post->account->insta_access_token;
         $insta_user_id = $post->account->insta_user_id;
 
-        $instagram = new Facebook([
-            'app_id' => $insta['client_id'],
-            'app_secret' => $insta['client_secret'],
-            'default_graph_version' => 'v16.0',
-        ]);
+
         $tags = $post->tag ? " $post->tag" : '';
         if ($post->media_type == 'image') {
-
+            $child_id = [];
             try {
 
+                $images = explode(',', $post->media);
+                foreach ($images as $image) {
+                   // $path = 'https://youpost.social/content_media/16892543581029.jpg';
+                    $path = asset("content_media/$image");
+                    $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
+                        'image_url' => $path,
+                        'is_carousel_item' => count($images)>1,
+                        'access_token' => $accesstoken
+                    ])->json();
 
-                $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
-                    'image_url' => $media_path,
-                    'caption' => $post->content.$tags,
-                    'access_token' => $accesstoken
-                ])->json();
+                    if (count($images)>1){
+                        $child_id[] = $response['id'];
+                    }
+                    else{
+                        $media_id = $response['id'];
+                    }
 
-                $media_id = $response['id'];
+                }
 
+
+                if (count($images)>1){
+                    $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
+                        'caption' => $post->content . $tags,
+                        'media_type' => 'CAROUSEL',
+                        'children' => implode(',', $child_id),
+                        'access_token' => $accesstoken
+                    ])->json();
+                    $media_id = $response['id'];
+                }
 
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media_publish", [
                     'creation_id' => $media_id,
@@ -71,13 +84,15 @@ class Instagramservice
         }
         if ($post->media_type == 'video') {
 
+            $video = explode(',', $post->media);
+            $path = asset('content_media/' . $video[0]);
             try {
 
 
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
-                    'video_url' => $media_path,
+                    'video_url' => $path,
                     'media_type' => 'VIDEO',
-                    'caption' => $post->content.$tags,
+                    'caption' => $post->content . $tags,
                     'access_token' => $accesstoken
                 ])->json();
 
@@ -88,8 +103,8 @@ class Instagramservice
                     'creation_id' => $media_id,
                     'access_token' => $accesstoken
                 ])->json();
-                 $postdetail = new PostDetail();
-               $postdetail->post_id = $post->id;
+                $postdetail = new PostDetail();
+                $postdetail->post_id = $post->id;
                 $postdetail->plateform = 'Instagram';
                 $postdetail->social_id = $response['id'];
                 $postdetail->save();
@@ -155,9 +170,9 @@ class Instagramservice
 
         $getStats = \Http::withToken($post->account->insta_access_token)->get("https://graph.facebook.com/{$post->post_dt->social_id}?fields=like_count,comments_count")->json();
         $post->post_dt->update([
-            'likes'=>$getStats['like_count'] ?? 0,
-            'comments'=>$getStats['comments_count'] ?? 0,
-            'shares'=>$getStats['shares_count'] ?? 0,
+            'likes' => $getStats['like_count'] ?? 0,
+            'comments' => $getStats['comments_count'] ?? 0,
+            'shares' => $getStats['shares_count'] ?? 0,
         ]);
 
     }

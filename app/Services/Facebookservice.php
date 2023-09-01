@@ -9,6 +9,7 @@ use DateTimeZone;
 use App\Models\PostDetail;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class  Facebookservice
@@ -46,17 +47,47 @@ class  Facebookservice
 
             ],
         ];
-        if ($data['post']->media_type == 'video' || $data['post']->media_type == 'image') {
+        if ($data['post']->media_type == 'video') {
+            $video = explode(',', $post->media);
+            $path = public_path('content_media/' . $video[0]);
             $options['multipart'][] = [
                 'name' => 'source',
-                'contents' => fopen($media_path, 'r'),
+                'contents' => fopen($path, 'r'),
             ];
         }
+        if ($data['post']->media_type == 'image') {
+            $images = explode(',', $post->media);
+            $imagesdIds = [];
+            foreach ($images as $image) {
+                $path = public_path('content_media/' . $image);
+                $response = Http::attach(
+                    'source', fopen($path, 'r'), basename($path)
+                )->post("https://graph.facebook.com/v13.0/me/photos", [
+                    'access_token' => $accessToken,
+                    'message' => 'testing',
+                    'published' => false
+                ])->json();
+                $imagesdIds[] = '{"media_fbid":"' . $response['id'] . '"}';
+            }
+
+        }
+
 
         try {
-            $response = $client->post($url, $options);
 
-            $responseData = json_decode($response->getBody(), true);
+            if ($data['post']->media_type == 'image') {
+                $response = Http::post("https://graph.facebook.com/v13.0/me/feed", [
+                    'access_token' => $accessToken,
+                    'message' => "$post->content $tags",
+                    'attached_media' => $imagesdIds
+
+                ])->json();
+                $responseData = $response;
+            } else {
+                $response = $client->post($url, $options);
+                $responseData = json_decode($response->getBody(), true);
+            }
+
 
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
@@ -101,9 +132,9 @@ class  Facebookservice
 
         $getStats = \Http::withToken($post->account->fb_page_token)->get("https://graph.facebook.com/{$post->post_dt->social_id}?fields=comments.summary(true),likes.summary(true),shares.summary(true)")->json();
         $post->post_dt->update([
-            'likes'=>$getStats['likes']['summary']['total_count'] ?? 0,
-            'comments'=>$getStats['comments']['summary']['total_count'] ?? 0,
-            'shares'=>$getStats['shares']['count'] ?? 0,
+            'likes' => $getStats['likes']['summary']['total_count'] ?? 0,
+            'comments' => $getStats['comments']['summary']['total_count'] ?? 0,
+            'shares' => $getStats['shares']['count'] ?? 0,
         ]);
 
     }

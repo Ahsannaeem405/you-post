@@ -390,7 +390,7 @@ body.dark .home .text {
 
     .sidebar.close ~ .home {
         left: 0;
-        height: calc(100vh - 50px); 
+        height: calc(100vh - 50px);
         width: 100%;
     }
 } */
@@ -433,7 +433,7 @@ body.dark .home .text {
 
     <div class="menu-bar">
         <div class="menu">
-            <!-- 
+            <!--
             <li class="search-box">
                 <i class='bx bx-search icon'></i>
                 <input type="text" placeholder="Search...">
@@ -445,19 +445,18 @@ body.dark .home .text {
                         <a href="javascript:void(0)">
                             <div class="user_name grid_item">
                                 <div class="the_name">
-                                    <span><span class="color">{{auth()->user()->account->name}}</span></span>
+{{--                                    <span><span class="color">{{auth()->user()->account->name}}</span></span>--}}
                                 </div>
                             </div>
-                        </a>
+                            </a>
 
                         <div class="dropdown">
                             <button class="dropdown-toggle bg-transparent border-0" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{asset('')}}images/admin.png" class="v_icon" alt="" width="45px" />
-                                <span class="text nav-text text2" style="padding-left:12px;">My Company</span>
+                                <img src="{{asset('images/admin.png')}}" class="v_icon" alt="" width="45px" />
+                                <span class="text nav-text text2" style="padding-left:12px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
-                                <img src="{{asset('')}}images/drop_arrow.png" class="v_icon" alt=""
-                                    style="padding-left:30px; " />
+                                <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt="" style="padding-left:30px; " />
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($accounts as $account)
@@ -536,12 +535,12 @@ body.dark .home .text {
         </div>
 
         <div class="bottom-content">
-            <li class="">
-                <a href="#">
-                    <i class='bx bx-log-out icon'></i>
-                    <span class="text nav-text">sample</span>
-                </a>
-            </li>
+{{--            <li class="">--}}
+{{--                <a href="#">--}}
+{{--                    <i class='bx bx-log-out icon'></i>--}}
+{{--                    <span class="text nav-text">sample</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
             <!-- <li class="mode">
                 <div class="sun-moon">
                     <i class='bx bx-moon icon moon'></i>
