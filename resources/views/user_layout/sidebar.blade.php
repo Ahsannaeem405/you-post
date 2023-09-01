@@ -396,15 +396,13 @@ body.dark .home .text {
 } */
 
 @media (max-width: 768px) {
-   ..home {
-    position: absolute;
-    top: 0;
-    top: 0;
-    left: 250px;
-    height: 100vh;
-    width: calc(100% - 250px);
-    background-color: var(--body-color);
-    transition: var(--tran-05);
+   .side_bar{
+    width: 100%;
+    position: fixed;
+    left: -100%;
+}
+#click:checked ~ .side_bar{
+    left:0%;
 }
 
 
