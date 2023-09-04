@@ -317,104 +317,329 @@ body.dark .switch::before {
     font-size: 30px;
     font-weight: 500;
     color: black;
-   
+
 }
 
 .sidebar.close~.home {
     left: 88px;
     height: 100vh;
     width: calc(100% - 88px);
-}`
+}
 
-.sideWidth {
-    width: 250px !important; */
- background-color:red;
-} 
+` .sideWidth {
+    width: 250px !important;
+    */ background-color: red;
+}
 
 body.dark .home .text {
     color: var(--text-color);
 }
 
-/* Your existing CSS code */
+/* --------------------------------------------offcanvas-start --------------------------------------- */
+.offcanvas-start header .image,
+.offcanvas-start .icon {
+    min-width: 60px;
+    border-radius: 6px;
+}
 
-/* Add a media query for tablet view */
+.offcanvas-start .text {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
 
-/* Your existing CSS code */
+.sidebar li {
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
 
-/* Add a media query for mobile view */
-/* Your existing CSS code */
+.offcanvas-start .menu {
+    margin-top: 40px;
+}
 
-/* Add a media query for mobile view */
-/* Your existing CSS code */
+.bottom-content li {
+    list-style: none;
+}
 
-/* Adjust sidebar for tablet view */
-/* Your existing CSS code */
+.offcanvas-start .text,
+.offcanvas-start .icon {
+    color: #000;
+    transition: var(--tran-03);
+}
 
-/* Adjust sidebar for tablet and mobile view */
-/* Your existing CSS code */
+.offcanvas-start .icon {
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    /* color: #000; */
+}
 
-/* Adjust sidebar for small screens */
-/* @media (max-width: 768px) {
-    .sidebar {
+.offcanvas-start header .image-text {
+    display: flex;
+    align-items: center;
+}
+
+.offcanvas-start header {
+    position: relative;
+}
+
+.offcanvas-start header .logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.offcanvas-start header .image img {
+    width: 40px;
+    border-radius: 6px;
+}
+
+.offcanvas-start .menu-bar .mode {
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.offcanvas-start .menu-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.offcanvas-start li a:hover .icon,
+.offcanvas-start li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+.offcanvas-start li a:hover {
+    background-color: var(--primary-color);
+}
+
+.offcanvas-start li a {
+    list-style: none;
+    /* height: 100%; */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    /* height: 100%; */
+    /* width: 100%; */
+    border-radius: 6px;
+    padding: 10px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.offcanvas-start li.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+
+/* ----------------------------------------end of .offcanvas-start ------------------------------------- */
+
+
+@media (max-width: 768px) {
+    .content {
         width: 100%;
-        height: auto;
-        position: fixed;
-        top: 0;
-        left: 0;
-        transition: none;
-        transform: translateY(-100%);
-        z-index: 999;
+        margin-left: 0;
     }
 
-    .sidebar.close {
-        transform: translateY(0);
-    }
-
-    .sidebar header .toggle {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        display: block;
+    .sidebar {
+        display: none;
     }
 
     .home {
-        position: relative;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100%;
-        background-color: var(--body-color);
-        transition: var(--tran-05);
-        z-index: 0;
+        left: unset;
+        width: unset;
+        position: unset !important;
     }
 
-    .sidebar.close ~ .home {
-        left: 0;
-        height: calc(100vh - 50px);
-        width: 100%;
+    /* .sidebar.collapsed {
+        width: 88px;
+        } */
+    .menu-links.menu_links .nav-link {
+        padding-left: none !important;
     }
-} */
 
-@media (max-width: 768px) {
-   .side_bar{
-    width: 100%;
-    position: fixed;
-    left: -100%;
-}
-#click:checked ~ .side_bar{
-    left:0%;
-}
+    .logout-li {
+        padding-left: 10px;
+    }
 
+    .image-text.image_text {
+        padding: 14px 32px 5px 29px;
+    }
 
-    /* Additional styles for content adjustment */
+    .sidebar.active {
+        display: block;
+        /* z-index: 100; */
+        z-index: 9999 !important;
+        width: 250px;
+        /* width: 100%; */
+        /* position: absolute; */
+    }
+
+    .sidebar.close {
+        width: 88px !important;
+    }
+
     .content {
-        width: 100%;
-        /* Take full width */
+        /* width: 100%; */
         margin-left: 0;
         /* Reset margin for full width */
     }
+
+    .home {
+        z-index: 1;
+    }
+
+    .offcanvas-start {
+        width: 250px;
+    }
+
+    #offcanvas-btn {
+        position: absolute;
+        z-index: 9999;
+        left: 19px;
+        /* background-color: #000; */
+        color: white;
+        border: 0;
+        border-radius: 30px;
+        box-shadow: 0 !important;
+    }
+
+    .sidebar.close~.home {
+        left: 0px;
+        height: 100vh;
+        width: calc(100% - 0px);
+    }
+
+    .create_preview_post_index {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 </style>
+<!-- ------------------------------------------- offcanvas sidebar ----------------------------------------- -->
+<i class="fa-solid fa-bars d-lg-none d-sm-block" id="offcanvas-btn" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></i>
+<div class="offcanvas offcanvas-start d-lg-none d-sm-block" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <div class="image-text image_text">
+            <a href="index.html"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid" alt="" /></a>
+
+        </div>
+        <!-- <i class='bx bx-chevron-right toggle '></i> -->
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="menu-links menu_links">
+                <li class="nav-link nav_link2" style="background-color:#E8E8E8; border-radius:7px;">
+                    <div class="user_info pl-1">
+                        <a href="javascript:void(0)">
+                            <div class="user_name grid_item">
+                                <div class="the_name">
+                                    <span><span class="color">{{auth()->user()->account->name}}</span></span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle bg-transparent border-0" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{asset('')}}images/admin.png" class="v_icon" alt="" width="45px" />
+                                <span class="text nav-text text2" style="padding-left:12px;">My Company</span>
+                                <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
+                                <img src="{{asset('')}}images/drop_arrow.png" class="v_icon" alt=""
+                                    style="padding-left:30px; " />
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                @foreach($accounts as $account)
+                                <li><a class="dropdown-item {{auth()->user()->account_id==$account->id ? 'active' : null}}"
+                                        href="{{url("change_acount/".encrypt($account->id))}}"> <i
+                                            class="fa-solid fa-user"></i> {{$account->name}}</a></li>
+                                @endforeach
+                                <li><a class="dropdown-item" style="cursor: pointer" data-bs-toggle="modal"
+                                        data-bs-target="#addAccount">Add Account <i
+                                            class="fa-solid fa-plus text-success"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="javascript:void(0)"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
+                            Account</span></a></li>
+                </li>
+
+                </li>
+                <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
+                            class="text nav-text">Add Social Account</span></a></li>
+
+                <li><a href="javascript:void(0)"><i class="fa-regular fa-file icon"></i><span
+                            class="text nav-text">Privacy
+                            Policy</span></a></li>
+
+                <li><a href="javascript:void(0)"><i class='bx bx-pie-chart-alt icon'></i><span
+                            class="text nav-text">Support</span></a></li>
+
+                <li><a href="javascript:void(0)"><i class='bx bx-heart icon'></i> <span class="text nav-text">Public
+                            Profile</span></a></li>
+
+                <li class="logout-li">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom-content">
+            <li class="">
+                <a href="#">
+                    <i class='bx bx-log-out icon'></i>
+                    <span class="text nav-text">sample</span>
+                </a>
+            </li>
+            <!-- <li class="mode">
+                <div class="sun-moon">
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
+                </div>
+                <span class="mode-text text">Dark mode</span>
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li> -->
+        </div>
+    </div>
+    <!-- </div> -->
+</div>
+<!-- ------------------------------------------- offcanvas sidebar end ----------------------------------------- -->
+
+
+<!-- large screen sidebar -->
 <nav class="sidebar side_bar close">
     <header>
         <div class="image-text image_text">
@@ -443,18 +668,20 @@ body.dark .home .text {
                         <a href="javascript:void(0)">
                             <div class="user_name grid_item">
                                 <div class="the_name">
-{{--                                    <span><span class="color">{{auth()->user()->account->name}}</span></span>--}}
+                                    {{--                                    <span><span class="color">{{auth()->user()->account->name}}</span></span>--}}
                                 </div>
                             </div>
-                            </a>
+                        </a>
 
                         <div class="dropdown">
                             <button class="dropdown-toggle bg-transparent border-0" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{asset('images/admin.png')}}" class="v_icon" alt="" width="45px" />
-                                <span class="text nav-text text2" style="padding-left:12px;">{{auth()->user()->account->name}}</span>
+                                <span class="text nav-text text2"
+                                    style="padding-left:12px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
-                                <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt="" style="padding-left:30px; " />
+                                <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
+                                    style="padding-left:30px; " />
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($accounts as $account)
@@ -533,12 +760,12 @@ body.dark .home .text {
         </div>
 
         <div class="bottom-content">
-{{--            <li class="">--}}
-{{--                <a href="#">--}}
-{{--                    <i class='bx bx-log-out icon'></i>--}}
-{{--                    <span class="text nav-text">sample</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            {{--            <li class="">--}}
+            {{--                <a href="#">--}}
+            {{--                    <i class='bx bx-log-out icon'></i>--}}
+            {{--                    <span class="text nav-text">sample</span>--}}
+            {{--                </a>--}}
+            {{--            </li>--}}
             <!-- <li class="mode">
                 <div class="sun-moon">
                     <i class='bx bx-moon icon moon'></i>
@@ -554,9 +781,9 @@ body.dark .home .text {
     </div>
 
 </nav>
+<!-- end large screen side bar -->
+
 <script>
-
-
 // $(document).on('mouseleave','.side_bar',function () {
 //     $(this).addClass('close');
 //     $(this).css('width', '88px');
@@ -586,9 +813,9 @@ $(document).on('mouseleave', '.side_bar', function() {
 });
 $(document).on('mouseenter', '.side_bar', function() {
 
-$(this).css('width', '250px');
-$(".text").css('opacity', '1');
-$(this).css('z-index', '9999');
+    $(this).css('width', '250px');
+    $(".text").css('opacity', '1');
+    $(this).css('z-index', '9999');
 
 });
 

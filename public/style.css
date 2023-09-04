@@ -591,7 +591,8 @@
     background-position: top center;
     background-size: 100% 100%;
     position: relative;
-    padding: 65px 26px;
+    /* padding: 65px 26px; */
+    padding: 47px 22px;
 }
 
 /* .create_preview_post .preview_wrap .the_preview {
@@ -1277,12 +1278,30 @@
 .Mobcompny-smallicon , .Mobsocial-icon span {
 	cursor: pointer;
 	color: #878383;
+    margin-right: 8px;
 }
 .Mobcompny-smallicon span:nth-child(1) i{
 	color: #63abf5;
 	/* color: #2176bb; */
 }
+.Mobsocial-icon.Mobsocial_icon {
+   display: flex;
+   justify-content: space-around;
 
+}
+.Mobsocial-icon.Mobsocial_icon div{
+    background: gray;
+    border-radius: 55px;
+    height: 25px;
+    width: 25px;
+    background: #55535385;
+    opacity: 0.8;
+}
+.i_one{
+    padding: 5px;
+   
+    color: #fff !important;
+}
 /* instagram Card css */
 .IG_social_main {
 	padding: 3px;
@@ -1493,10 +1512,13 @@ width: 30%;
     background-color: #63ABF5;
     color: #ffffff;
     display: inline-block;
-    min-width: 100px;
-    min-width: 120px;
+    /* min-width: 100px;
+    min-width: 120px; */
+    width: 100%;
+    border-radius: 9px;
     padding: 10px;
     text-align: center;
+    text-decoration: none;
 }
 .form-wizard .form-wizard-next-btn:hover, .form-wizard .form-wizard-next-btn:focus, .form-wizard .form-wizard-previous-btn:hover, .form-wizard .form-wizard-previous-btn:focus, .form-wizard .form-wizard-submit:hover, .form-wizard .form-wizard-submit:focus {
     color: #ffffff;
@@ -1553,17 +1575,17 @@ width: 30%;
  cursor: pointer;
 }
 .form-wizard .form-wizard-steps li {
-    width: 25%;
-    float: left;
+    /* width: 25%;
+    float: left; */
     position: relative;
 }
 .form-wizard .form-wizard-steps li::after {
-    background-color: #f3f3f3;
-    content: "";
-    height: 5px;
-    left: 0;
+    /* background-color: #f3f3f3; */
+    /* content: ""; */
+    /* height: 5px; */
+    /* left: 0; */
     position: absolute;
-    right: 0;
+    /* right: 0; */
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
@@ -1571,7 +1593,7 @@ width: 30%;
     border-top: 1px solid #dddddd;
 }
 .form-wizard .form-wizard-steps li span {
-    background-color: #dddddd;
+    background-color: #F6F6F6;
     border-radius: 50%;
     display: inline-block;
     height: 40px;
@@ -1585,14 +1607,17 @@ width: 30%;
     width: 50%;
 }
 .form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
-    background-color: #63ABF5;
-    color: #ffffff;
+    /* background-color: #63ABF5;
+    color: #ffffff; */
+background-color:#f6f6f6;
+  box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.18);
+ 
 }
 .form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
-    background-color: #63ABF5;
+    /* background-color: #63ABF5;
     left: 50%;
+    border-color: #63ABF5; */
     width: 50%;
-    border-color: #63ABF5;
 }
 .form-wizard .form-wizard-steps li.activated::after {
     width: 100%;
@@ -1844,3 +1869,77 @@ body.dark .home .text{
 .all_social_platform.all_social_platform2{
     padding: 10px !important;
 }
+.form-wizard-steps.form_wizard_steps{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 25px;
+} 
+.clearfix.clearfix2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0px;
+}
+.PostDateTimePicker.PostDate_Time_Picker{
+    margin-top: 7rem;
+}
+.postname{
+    color: #e6dbdb;
+}
+.mypostresult{
+    color: #e6dbdb; 
+}
+.total_comments a{
+    color: #e6dbdb !important;    
+}
+.reactions2{
+    color: #e6dbdb !important;   
+}
+.one_img{
+    height: 17px;
+    width: 17px;
+}
+.one_img img{
+width: 100%;
+}
+.icons_d{
+    margin-right: 17px;
+    margin-bottom: 25px;
+}
+.icons_d i{
+    color: #e6dbdb;
+    font-size: 14px;
+}
+
+/* raziullah card css */
+#product-order-chart{
+    margin: 0px !important;
+}
+.like-card{
+border: none;   
+background: linear-gradient(180deg, rgba(181, 181, 181, 0.20) 0%, rgba(255, 58, 58, 0.20) 100%), linear-gradient(145deg, #61E3FF 4.51%, rgba(216, 216, 216, 0.84) 61.4%, rgba(154, 255, 158, 0.69) 104.07%);
+box-shadow: 0 0 20% #000;
+border-radius: 18px;
+}
+/* .cirle-img{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #288EFF;
+}
+.cirle-img2{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #DA8741;
+}
+.cirle-img3{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #000;
+} */
+/* raziullah card css */
