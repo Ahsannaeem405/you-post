@@ -10,6 +10,7 @@
     <title>YOUPOST</title>
     <!--Calling Favicon-->
     <!-- Full Calendar -->
+    <!-- V6 -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script> -->
          
@@ -119,7 +120,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
-<
+
 
 
 <script>

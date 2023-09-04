@@ -437,7 +437,7 @@
                         Posted Date & Time
                         <span data-bs-toggle="modal" data-bs-target="#TimetoUploadPost" id="browsertime2">
 
-                                                </span>
+                        </span>
                     </div>
                     <section class="wizard-section" style="display: none">
                         <div class="row no-gutters">
@@ -450,291 +450,291 @@
 
                                         <ul class="list-unstyled form-wizard-steps clearfix">
                                             @if(in_array(('Facebook'),auth()->user()->account->platforms))
-                                                <li section="fb"><span
-                                                        class="d-flex justify-content-center align-items-center"><img
-                                                            src="{{asset('images/FB_Color.png')}}" width="20px"
-                                                            alt=""></span></li>
+                                            <li section="fb"><span
+                                                    class="d-flex justify-content-center align-items-center"><img
+                                                        src="{{asset('images/FB_Color.png')}}" width="20px"
+                                                        alt=""></span></li>
                                             @endif
                                             @if(in_array(('Instagram'),auth()->user()->account->platforms))
-                                                <li section="insta"><span
-                                                        class="d-flex justify-content-center align-items-center"><img
-                                                            src="{{asset('images/Instagram_Color.png')}}"
-                                                            width="20px" alt=""></span></li>
+                                            <li section="insta"><span
+                                                    class="d-flex justify-content-center align-items-center"><img
+                                                        src="{{asset('images/Instagram_Color.png')}}" width="20px"
+                                                        alt=""></span></li>
                                             @endif
                                             @if(in_array(('Twitter'),auth()->user()->account->platforms))
-                                                <li section="twitter"><span><span
-                                                            class="d-flex justify-content-center align-items-center"><img
-                                                                src="{{asset('images/Twitter_Color.png')}}"
-                                                                width="20px" alt=""></span></span></li>
+                                            <li section="twitter"><span><span
+                                                        class="d-flex justify-content-center align-items-center"><img
+                                                            src="{{asset('images/Twitter_Color.png')}}" width="20px"
+                                                            alt=""></span></span></li>
                                             @endif
                                             @if(in_array(('Linkedin'),auth()->user()->account->platforms))
-                                                <li section="linkedin"><span><span
-                                                            class="d-flex justify-content-center align-items-center"><img
-                                                                src="{{asset('images/Linkedin_Color.png')}}"
-                                                                width="20px" alt=""></span></span></li>
+                                            <li section="linkedin"><span><span
+                                                        class="d-flex justify-content-center align-items-center"><img
+                                                            src="{{asset('images/Linkedin_Color.png')}}" width="20px"
+                                                            alt=""></span></span></li>
                                             @endif
                                         </ul>
                                     </div>
                                     @if(in_array(('Facebook'),auth()->user()->account->platforms))
-                                        <fieldset class="wizard-fieldset fb">
-                                            <h5>Edit Facebook</h5>
+                                    <fieldset class="wizard-fieldset fb">
+                                        <h5>Edit Facebook</h5>
 
-                                            <div class="form-group emoji_parent">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="facebook_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea mention"
-                                                              placeholder="Write your post...">{{old('facebook_content')}}</textarea>
-                                                <div id="dropdown" class="dropdown-content-search"></div>
+                                        <div class="form-group emoji_parent">
+                                            <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)" required
+                                                name="facebook_content" id="" cols="30" rows="3"
+                                                class="form-control wizard-required emojiarea mention"
+                                                placeholder="Write your post...">{{old('facebook_content')}}</textarea>
+                                            <div id="dropdown" class="dropdown-content-search"></div>
+                                        </div>
+                                        <div class="icon_buttons_tags mt-3">
+                                            <div class="icon_buttons grid_item">
+                                                <ul class="p-0">
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="image" social="fb" fordata="image_or_videofb"><label
+                                                                for="image_or_videofb">
+                                                                <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="video" social="fb" fordata="image_or_videofb"><label
+                                                                for="image_or_videofb">
+                                                                <img src="{{asset('')}}images/Video_Player_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="open_emoji">
+                                                            <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                class="img-fluid" alt="" />
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="icon_buttons_tags mt-3">
-                                                <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                               typpe="image" social="fb" fordata="image_or_videofb"><label
-                                                                    for="image_or_videofb">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
-                                                                         class="img-fluid" alt=""/>
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                               typpe="video" social="fb" fordata="image_or_videofb"><label
-                                                                    for="image_or_videofb">
-                                                                    <img
-                                                                        src="{{asset('')}}images/Video_Player_Icon.png"
-                                                                        class="img-fluid" alt=""/>
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
-                                                                     class="img-fluid" alt=""/>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                            <input type="file" name="facebook_media[]" multiple
+                                                class="image d-none file_image_video" id="image_or_videofb"
+                                                accept="image/*,video/*">
+                                            <input type="hidden" name="media_type_facebook" id="media_type_fb">
+
+
+                                            <div class="tags_input_wrap grid_item">
+                                                <div class="tags_input">
+                                                    <select name="facebook_tag[]" class="form-control selectmultiple"
+                                                        multiple id="">
+                                                    </select>
+
                                                 </div>
-                                                <input type="file" name="facebook_media[]" multiple
-                                                       class="image d-none file_image_video" id="image_or_videofb"
-                                                       accept="image/*,video/*">
-                                                <input type="hidden" name="media_type_facebook" id="media_type_fb">
-
-
-                                                <div class="tags_input_wrap grid_item">
-                                                    <div class="tags_input">
-                                                        <select name="facebook_tag[]" class="form-control selectmultiple" multiple id="">
-                                                        </select>
-
-                                                    </div>
-                                                </div>
                                             </div>
+                                        </div>
 
 
-                                            <div class="form-group clearfix">
-                                                <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
-                                                <a href="javascript:;"
-                                                   class="form-wizard-next-btn float-right">Next Platform</a>
-                                            </div>
-                                        </fieldset>
+                                        <div class="form-group clearfix">
+                                            <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
+                                            <a href="javascript:;" class="form-wizard-next-btn float-right">Next
+                                                Platform</a>
+                                        </div>
+                                    </fieldset>
                                     @endif
 
                                     @if(in_array(('Instagram'),auth()->user()->account->platforms))
-                                        <fieldset class="wizard-fieldset insta">
-                                            <h5>Edit Instagram</h5>
-                                            <div class="IG_social_main must_add_image ">
-                                                <div class="IG_main_card">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="IG_card_title">
-                                                            <h5>Instagram is selected you must upload an media</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-                                            <div class="form-group emoji_parent">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="instagram_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea "
-                                                              placeholder="Write your post...">{{old('instagram_content')}}</textarea>
-                                                <div id="dropdown" class="dropdown-content-search"></div>
-                                            </div>
-                                            <div class="icon_buttons_tags mt-3">
-                                                <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                               typpe="image" social="insta"
-                                                               fordata="image_or_video_insta"><label
-                                                                    for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
-                                                                         class="img-fluid" alt=""/>
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                               typpe="video" social="insta"
-                                                               fordata="image_or_video_insta"><label
-                                                                    for="image_or_video_insta">
-                                                                    <img
-                                                                        src="{{asset('')}}images/Video_Player_Icon.png"
-                                                                        class="img-fluid" alt=""/>
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
-                                                                     class="img-fluid" alt=""/>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <input type="file" name="insta_media[]" required multiple
-                                                       class="image d-none file_image_video wizard-required"
-                                                       id="image_or_video_insta" accept="image/*,video/*">
-                                                <input type="hidden" name="media_type_instagram"
-                                                       id="media_type_insta">
-
-
-                                                <div class="tags_input_wrap grid_item">
-                                                    <div class="tags_input">
-                                                        <select name="instagram_tag[]" class="form-control selectmultiple" multiple id="">
-
-                                                        </select>
-
+                                    <fieldset class="wizard-fieldset insta">
+                                        <h5>Edit Instagram</h5>
+                                        <div class="IG_social_main must_add_image ">
+                                            <div class="IG_main_card">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="IG_card_title">
+                                                        <h5>Instagram is selected you must upload an media</h5>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group clearfix">
-                                                <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
-                                                <a href="javascript:;"
-                                                   class="form-wizard-next-btn float-right">Next Platform</a>
+
+
+                                        </div>
+
+                                        <div class="form-group emoji_parent">
+                                            <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)" required
+                                                name="instagram_content" id="" cols="30" rows="3"
+                                                class="form-control wizard-required emojiarea "
+                                                placeholder="Write your post...">{{old('instagram_content')}}</textarea>
+                                            <div id="dropdown" class="dropdown-content-search"></div>
+                                        </div>
+                                        <div class="icon_buttons_tags mt-3">
+                                            <div class="icon_buttons grid_item">
+                                                <ul class="p-0">
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="image" social="insta"
+                                                            fordata="image_or_video_insta"><label
+                                                                for="image_or_video_insta">
+                                                                <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="video" social="insta"
+                                                            fordata="image_or_video_insta"><label
+                                                                for="image_or_video_insta">
+                                                                <img src="{{asset('')}}images/Video_Player_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="open_emoji">
+                                                            <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                class="img-fluid" alt="" />
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </fieldset>
+                                            <input type="file" name="insta_media[]" required multiple
+                                                class="image d-none file_image_video wizard-required"
+                                                id="image_or_video_insta" accept="image/*,video/*">
+                                            <input type="hidden" name="media_type_instagram" id="media_type_insta">
+
+
+                                            <div class="tags_input_wrap grid_item">
+                                                <div class="tags_input">
+                                                    <select name="instagram_tag[]" class="form-control selectmultiple"
+                                                        multiple id="">
+
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
+                                            <a href="javascript:;" class="form-wizard-next-btn float-right">Next
+                                                Platform</a>
+                                        </div>
+                                    </fieldset>
                                     @endif
 
                                     @if(in_array(('Twitter'),auth()->user()->account->platforms))
-                                        <fieldset class="wizard-fieldset twitter">
-                                            <h5>Edit Twitter</h5>
-                                            <div class="form-group emoji_parent">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="twitter_content" id="" cols="30" rows="3"
-                                                              class="form-control wizard-required emojiarea mention"
-                                                              placeholder="Write your post...">{{old('twitter_content')}}</textarea>
+                                    <fieldset class="wizard-fieldset twitter">
+                                        <h5>Edit Twitter</h5>
+                                        <div class="form-group emoji_parent">
+                                            <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)" required
+                                                name="twitter_content" id="" cols="30" rows="3"
+                                                class="form-control wizard-required emojiarea mention"
+                                                placeholder="Write your post...">{{old('twitter_content')}}</textarea>
 
-                                                <div id="dropdown" class="dropdown-content-search"></div>
+                                            <div id="dropdown" class="dropdown-content-search"></div>
 
+                                        </div>
+                                        <div class="icon_buttons_tags mt-3">
+                                            <div class="icon_buttons grid_item">
+                                                <ul class="p-0">
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="open_emoji">
+                                                            <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                class="img-fluid" alt="" />
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="icon_buttons_tags mt-3">
-                                                <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
-                                                                     class="img-fluid" alt=""/>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+
+
+                                            <div class="tags_input_wrap grid_item">
+                                                <div class="tags_input">
+                                                    <select name="twitter_tag[]" class="form-control selectmultiple"
+                                                        multiple id="">
+
+                                                    </select>
+                                                    {{--                                                            <input onkeyup="Namechangefun(this)" id="namechange"--}}
+                                                    {{--                                                                   name="twitter_tag" type="text"--}}
+                                                    {{--                                                                   class="form-control ai-tag"--}}
+                                                    {{--                                                                   placeholder="tags" value="{{old('twitter_tag')}}">--}}
                                                 </div>
-
-
-                                                <div class="tags_input_wrap grid_item">
-                                                    <div class="tags_input">
-                                                        <select name="twitter_tag[]" class="form-control selectmultiple" multiple id="">
-
-                                                        </select>
-                                                        {{--                                                            <input onkeyup="Namechangefun(this)" id="namechange"--}}
-                                                        {{--                                                                   name="twitter_tag" type="text"--}}
-                                                        {{--                                                                   class="form-control ai-tag"--}}
-                                                        {{--                                                                   placeholder="tags" value="{{old('twitter_tag')}}">--}}
-                                                    </div>
-                                                </div>
                                             </div>
-                                            <div class="form-group clearfix">
-                                                <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
-                                                <a href="javascript:;"
-                                                   class="form-wizard-next-btn float-right">Next Platform</a>
-                                            </div>
-                                        </fieldset>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
+                                            <a href="javascript:;" class="form-wizard-next-btn float-right">Next
+                                                Platform</a>
+                                        </div>
+                                    </fieldset>
                                     @endif
 
 
                                     @if(in_array(('Linkedin'),auth()->user()->account->platforms))
-                                        <fieldset class="wizard-fieldset linkedin">
-                                            <h5>Edit Linkedin</h5>
+                                    <fieldset class="wizard-fieldset linkedin">
+                                        <h5>Edit Linkedin</h5>
 
-                                            <div class="form-group emoji_parent">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="linkedin_content" id="" cols="30" rows="3"
-                                                              class="Customemojiarea form-control wizard-required emojiarea mention "
-                                                              placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
-                                                <div id="dropdown" class="dropdown-content-search"></div>
+                                        <div class="form-group emoji_parent">
+                                            <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)" required
+                                                name="linkedin_content" id="" cols="30" rows="3"
+                                                class="Customemojiarea form-control wizard-required emojiarea mention "
+                                                placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
+                                            <div id="dropdown" class="dropdown-content-search"></div>
+                                        </div>
+                                        <div class="icon_buttons_tags mt-3">
+                                            <div class="icon_buttons grid_item">
+                                                <ul class="p-0">
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="image" social="linkedin"
+                                                            fordata="image_or_video_linkedin"><label
+                                                                for="image_or_video_linkedin">
+                                                                <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="video" social="linkedin"
+                                                            fordata="image_or_video_linkedin"><label
+                                                                for="image_or_video_linkedin">
+                                                                <img src="{{asset('')}}images/Video_Player_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="open_emoji">
+                                                            <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                class="img-fluid" alt="" />
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="icon_buttons_tags mt-3">
-                                                <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                               typpe="image" social="linkedin"
-                                                               fordata="image_or_video_linkedin"><label
-                                                                    for="image_or_video_linkedin">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
-                                                                         class="img-fluid" alt=""/>
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                               typpe="video" social="linkedin"
-                                                               fordata="image_or_video_linkedin"><label
-                                                                    for="image_or_video_linkedin">
-                                                                    <img
-                                                                        src="{{asset('')}}images/Video_Player_Icon.png"
-                                                                        class="img-fluid" alt=""/>
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
-                                                                     class="img-fluid" alt=""/>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <input type="file" name="linkedin_media[]" multiple
-                                                       class="image d-none file_image_video"
-                                                       id="image_or_video_linkedin" accept="image/*,video/*">
-                                                <input type="hidden" name="media_type_linkedin"
-                                                       id="media_type_linkedin">
+                                            <input type="file" name="linkedin_media[]" multiple
+                                                class="image d-none file_image_video" id="image_or_video_linkedin"
+                                                accept="image/*,video/*">
+                                            <input type="hidden" name="media_type_linkedin" id="media_type_linkedin">
 
 
-                                                <div class="tags_input_wrap grid_item">
-                                                    <div class="tags_input">
-                                                        <select name="linkedin_tag[]" class="form-control selectmultiple" multiple id="">
+                                            <div class="tags_input_wrap grid_item">
+                                                <div class="tags_input">
+                                                    <select name="linkedin_tag[]" class="form-control selectmultiple"
+                                                        multiple id="">
 
-                                                        </select>
+                                                    </select>
 
-                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group clearfix">
-                                                <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
-                                                <a href="javascript:;"
-                                                   class="form-wizard-next-btn float-right">Next Platform</a>
-                                            </div>
-                                        </fieldset>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <a href="javascript:;" class="form-wizard-previous-btn float-left">Back</a>
+                                            <a href="javascript:;" class="form-wizard-next-btn float-right">Next
+                                                Platform</a>
+                                        </div>
+                                    </fieldset>
                                     @endif
 
 
 
                                     <div class="post_now_button schedule_post_button">
-                                        <input type="button" class="btn post_later_now_btn" value="Schedule Post"  data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
+                                        <input type="button" class="btn post_later_now_btn" value="Schedule Post"
+                                            data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
                                         <input type="submit" class="btn post_later_now_btn" value="Post Now">
                                     </div>
 
@@ -752,12 +752,14 @@
 
 
                     <!-- Modal -->
-                    <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Time to upload post</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="post_later">
@@ -777,7 +779,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
                                     <button type="button" class="btn btn-primary d-none">Save changes</button>
                                 </div>
                             </div>
@@ -787,10 +790,7 @@
 
                 </form>
             </div>
-            <input type="checkbox" id="click">
-            <label for="click" class="menu_btn">
-            <p>jdjdj</p>
-            </label>
+           
             <div
                 class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
@@ -830,13 +830,15 @@
                                         <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40" height="40"
                                             alt="">
                                         <span id="">{{auth()->user()->name}} <br>
-                                            <span class="sponsored">Public . <i
+                                            <span class="sponsored">Sponsored . <i
                                                     class="fa-solid fa-earth-americas"></i></span>
                                         </span>
+                                        <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
+                                        <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title">
-                                        <span id="mypostresult">Write your post...</span>
+                                        <span id="mypostresult">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam... <strong>See more</strong></span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                 </div>
@@ -854,10 +856,11 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="Mobcart_title bile d-flex justify-content-between Mobcart_titleCustom">
-                                        <div class="reactions">8❤️</div>
+                                    <div class="reactions1"><span><i class="fa-solid fa-thumbs-up"></i></span></div>
+                                        <div class="reactions"><span><i class="fa-solid fa-heart"></i></span></div>
                                         <div class="total-comments u-margin-inline-start">
-                                            <a>12 Comments</a>
-                                            <a>2 Shares</a>
+                                            <a>24K others</a>
+                                            <a>8.3K comments</a>
                                         </div>
                                     </div>
                                     <div class="actions-buttons">
@@ -923,8 +926,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -933,8 +936,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -943,8 +946,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -952,8 +955,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -961,8 +964,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -970,8 +973,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                        <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -979,8 +982,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                          <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                           <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1206,58 +1209,6 @@
 
 
         <div class="col-sm-12 col-md-12 col-lg-9 calendar2">
-
-            <!--
-  <div class="event-calendar">
-    <div class="calendar-header">
-      <button id="today-btn">Today</button>
-      <div class="nav-buttons">
-        <button id="prev-btn">&lt;</button>
-        <button id="next-btn">&gt;</button>
-      </div>
-      <div class="view-options">
-        <button class="view-option">Day</button>
-        <button class="view-option view2">Week</button>
-        <button class="view-option">Month</button>
-        <button class="view-option">Year</button>
-
-      </div>
-      <div class="date-details">
-        <span id="current-date"></span>
-      </div>
-    </div>
-
-      <div class="day-names"></div>
-
-
-
-
-    <div class="calendar-body">
-      <div class="time-slots">
-        <div class="time-slot slot1">7 AM</div>
-        <div class="time-slot">8 AM</div>
-        <div class="time-slot">9 AM</div>
-        <div class="time-slot">10 AM</div>
-        <div class="time-slot">11 AM</div>
-        <div class="time-slot">12 AM</div>
-        <div class="time-slot">1 AM</div>
-        <div class="time-slot">2 AM</div>
-        <div class="time-slot">3 AM</div>
-        <div class="time-slot">4 AM</div>
-        <div class="time-slot">5 AM</div>
-
-      </div>
-
-      <div class="calendar-content">
-
-        <div class="calendar-days">
-
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
-
             <div class="title_bar_wrap d-none">
                 <div class="container container_2">
                     <div class="title_bar">
@@ -1292,53 +1243,18 @@
             <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
                 <div class="container container_2">
                     <div class="the_post_manager">
-                        <!-- <div class="view-options"> -->
-                        <!-- <button class="view-option">Day</button>
-        <button class="view-option view2">Week</button>
-        <button class="view-option">Month</button>
-        <button class="view-option">Year</button> -->
-                        <!-- <div id="calendar-tabs">
-    <button class="calendar-tab view-option" data-view="day">Day</button>
-    <button class="calendar-tab view-option view2" data-view="week">Week</button>
-    <button class="calendar-tab view-option" data-view="month">Month</button>
-    <button class="calendar-tab view-option" data-view="year">Year</button>
-</div> -->
-
-                        <!-- </div> -->
                         <div id='postManagerCalendar'></div>
-
-
-                        <!-- </div>
-        </div>
-    </div> -->
-
-
-                        <!-- <div id='calendar'></div> -->
-
                     </div>
                 </div>
             </div>
 
 
-
-
-
-
+           </div>
 
 
 
 
         </div>
-
-
-
-
-
-
-
-
-
-
     </div>
 
 
@@ -1355,65 +1271,69 @@
 
 @section('js')
 
-    <script>
-        $(document).ready(function() {
-            $('.mention').each(function() {
-                const textarea = $(this);
-                const dropdown = textarea.parent().find('.dropdown-content-search');
+<script>
+$(document).ready(function() {
+    $('.mention').each(function() {
+        const textarea = $(this);
+        const dropdown = textarea.parent().find('.dropdown-content-search');
 
-                textarea.on('input', function() {
+        textarea.on('input', function() {
 
-                    const text = textarea.val();
-                    const atIndex = text.lastIndexOf('@');
+            const text = textarea.val();
+            const atIndex = text.lastIndexOf('@');
 
-                    if (atIndex !== -1) {
+            if (atIndex !== -1) {
 
-                        const searchString = text.slice(atIndex + 1);
-                        const suggestions = getFriendSuggestions(searchString); // Replace with your friend suggestion logic
+                const searchString = text.slice(atIndex + 1);
+                const suggestions = getFriendSuggestions(
+                searchString); // Replace with your friend suggestion logic
 
 
-                        if (suggestions.length > 0) {
-                            const dropdownHTML = suggestions.map(suggestion => `<div class="suggestion">${suggestion}</div>`).join('');
-                            dropdown.html(dropdownHTML);
-                            dropdown.css('display', 'block');
-                        } else {
-                            dropdown.css('display', 'none');
-                        }
-                    } else {
-                        dropdown.css('display', 'none');
-                    }
-                });
-
-                // Rest of your code...
-            });
-            // Replace this with your actual logic to fetch friend suggestions
-            function getFriendSuggestions(searchString) {
-                // Your suggestion logic here...
-                const mockSuggestions = [
-                    'Friend1',
-                    'Friend2',
-                    'Friend3',
-                    // ...
-                ];
-
-                return mockSuggestions.filter(suggestion => suggestion.toLowerCase().includes(searchString.toLowerCase()));
+                if (suggestions.length > 0) {
+                    const dropdownHTML = suggestions.map(suggestion =>
+                        `<div class="suggestion">${suggestion}</div>`).join('');
+                    dropdown.html(dropdownHTML);
+                    dropdown.css('display', 'block');
+                } else {
+                    dropdown.css('display', 'none');
+                }
+            } else {
+                dropdown.css('display', 'none');
             }
-
-
-            // Handle dropdown suggestion click
-            $('.dropdown-content-search').on('click', '.suggestion', function() {
-                const suggestionText = $(this).text();
-                const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
-                const currentText = textarea.val();
-                const atIndex = currentText.lastIndexOf('@');
-
-                const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(atIndex + suggestionText.length + 1);
-                textarea.val(newText);
-                $(this).parent().css('display', 'none');
-            });
-
         });
-    </script>
+
+        // Rest of your code...
+    });
+    // Replace this with your actual logic to fetch friend suggestions
+    function getFriendSuggestions(searchString) {
+        // Your suggestion logic here...
+        const mockSuggestions = [
+            'Friend1',
+            'Friend2',
+            'Friend3',
+            // ...
+        ];
+
+        return mockSuggestions.filter(suggestion => suggestion.toLowerCase().includes(searchString
+        .toLowerCase()));
+    }
+
+
+    // Handle dropdown suggestion click
+    $('.dropdown-content-search').on('click', '.suggestion', function() {
+        const suggestionText = $(this).text();
+        const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
+        const currentText = textarea.val();
+        const atIndex = currentText.lastIndexOf('@');
+
+        const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(
+            atIndex + suggestionText.length + 1);
+        textarea.val(newText);
+        $(this).parent().css('display', 'none');
+    });
+
+});
+</script>
 
 <script>
 $(document).ready(function() {
@@ -1670,13 +1590,13 @@ function displayCalendar() {
     let tableHtml = `
       <table class="table">
         <tr>
-          <th style="opacity:0.5;">Sun</th>
-          <th style="opacity:0.5;">Mon</th>
-          <th style="opacity:0.5;">Tue</th>
-          <th style="opacity:0.5;">Wed</th>
-          <th style="opacity:0.5;">Thu</th>
-          <th style="opacity:0.5;">Fri</th>
-          <th style="opacity:0.5;">Sat</th>
+          <th style="opacity:0.5;" class="myro">Sun</th>
+          <th style="opacity:0.5;" class="myro">Mon</th>
+          <th style="opacity:0.5;" class="myro">Tue</th>
+          <th style="opacity:0.5;" class="myro">Wed</th>
+          <th style="opacity:0.5;" class="myro">Thu</th>
+          <th style="opacity:0.5;" class="myro">Fri</th>
+          <th style="opacity:0.5;" class="myro">Sat</th>
         </tr>
     `;
 
@@ -2073,7 +1993,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-
 <script>
 function openEventModal(year, month, day) {
     const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
@@ -2085,4 +2004,20 @@ function openEventModal(year, month, day) {
     }
 }
 </script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('mycalendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+</script> -->
+
+
+
+
+
 @endsection
