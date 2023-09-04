@@ -323,6 +323,7 @@
             $('#myaccounts_modal').modal('show');
         });
 
+
         $(document).on('click', '.image_or_video', function() {
 
             if($(this).attr('typpe') == 'image')
@@ -333,24 +334,68 @@
             }
             $('#media_type_'+$(this).attr('social')).val($(this).attr('typpe'));
         });
+// my code
+        $(document).on('click', '.image_or_video_div', function() {
+           $('#image_div').toggleClass('d-none');
+           
+           
+        });
+
+// my code end
         $('.file_image_video').change(function (e) {
+
+
+// my code
+                     
+                    $("#file_error").html("");
+                    var file_size = e.target.files[0].size;
+                    if(file_size>300000) {
+                    $("#file_error").html("<p style='color:#FF0000'>Image size is greater than 300kb</p>");
+                    return false;
+                    }
+
+
+                  
+// my code end
+
+
+
+
+
+
             if($(this).attr('id')=='image_or_video_insta'){
                 $('.must_add_image').addClass('d-none');
             }
 
             var file = e.target.files[0];
+
             if (file) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     var mediaType = file.type.split('/')[0];
+
                     if (mediaType === 'image') {
                         $('.preview_image').removeClass('d-none');
+                        $('.preview_image_my').removeClass('d-none');
                         $('.video_preview').addClass('d-none');
                         $('.preview_image').attr('src',e.target.result);
+                        // my code
+
+                        // $('.preview_image_my').attr('src',e.target.result);
+                         $("#image_or_videofb").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result})).append("");
+                         $("#image_or_videofb").parent().append($("<input/>",{name:"myfile",id:'myfile',type:'file','src':e.target.result}).addClass('d-none')).append("");
+
+
+                        
+                      
+
+                        // end my code
+
                     } else if (mediaType === 'video') {
                         // Create a video element and set its source
                         $('.video_preview').removeClass('d-none');
                         $('.preview_image').addClass('d-none');
+                        $('.preview_image_my').addClass('d-none');
                         // Append the video to the media container
                         var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
                         // Append the video to the media container
@@ -365,5 +410,6 @@
 
         var timezone_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
         $('.timezone').val(timezone_name);
+return true;
 
     });
