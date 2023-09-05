@@ -1,5 +1,17 @@
 @extends('user_layout.main')
 <style>
+/*    #image_div{
+position: relative;
+    }
+    .cancel_mark{
+      position: absolute;
+        top: 14px;
+        right: 70px;
+        color: #000;
+        font-weight: 800;
+        display: none;
+
+    }*/
 .create_preview_post_wrapInner {
     /* background: #fff;
     padding: 20px;
@@ -482,9 +494,16 @@
                                             <div class="icon_buttons grid_item">
                                                 <ul class="p-0">
                                                     <li>
-                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                       <!--  <a href="javascript:void(0)" class="image_or_video"
                                                             typpe="image" social="fb" fordata="image_or_videofb"><label
                                                                 for="image_or_videofb">
+                                                                <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a> -->
+                                                         <a href="javascript:void(0)" class="image_or_video_div"
+                                                            typpe="image" social="fb" fordata="image_div"><label
+                                                                for="">
                                                                 <img src="{{asset('')}}images/Camera_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </label>
@@ -506,12 +525,36 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-                                            </div>
-                                            <input type="file" name="facebook_media[]" multiple
+                                                <!-- my code -->
+
+                                                <div class="d-none" id="image_div"><label for="file" style="margin-top: 20px;">
+                                                   <!--  <i class="fa-solid fa-xmark cancel_mark"></i> -->
+                                                <span id="file_error"></span>
+
+
+                                                    <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="image" social="fb" fordata="image_or_videofb"><label
+                                                                for="image_or_videofb">
+                                                                <img src="{{asset('')}}images/plus.png"
+                                                                    class="img-fluid" alt=""  width="20px" height="20px" />
+                                                            </label>
+                                                        </a> 
+                                                       <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
+                                                        <input type="file" name="facebook_media[]" multiple
                                                 class="image d-none file_image_video" id="image_or_videofb"
                                                 accept="image/*,video/*">
                                             <input type="hidden" name="media_type_facebook" id="media_type_fb">
+                                            <p id="error1" style="display:none; color:#FF0000;">
 
+                                                </div>
+
+                                                 <!-- end my coed -->
+
+
+
+                                            </div>
+
+                                           
 
                                             <div class="tags_input_wrap grid_item">
                                                 <div class="tags_input">
@@ -558,7 +601,7 @@
                                             <div class="icon_buttons grid_item">
                                                 <ul class="p-0">
                                                     <li>
-                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                        <a href="javascript:void(0)" class="image_or_video_div"
                                                             typpe="image" social="insta"
                                                             fordata="image_or_video_insta"><label
                                                                 for="image_or_video_insta">
