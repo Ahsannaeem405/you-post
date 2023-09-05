@@ -1,0 +1,574 @@
+@media (max-width:2000px){
+    .show-this-section-992{
+        display: none;
+    }
+}
+@media (min-width:992px) and (max-width:1376px) {
+
+    /* Post calendar */
+    .fc-widget-header {
+        font-size: 16px !important;
+    }
+
+    .fc-left h2 {
+        font-size: 16px !important;
+        width: 123px !important;
+        float: right !important;
+        margin-top: 13px !important;
+    }
+
+    .fc-left {
+        width: 116px !important;
+        float: right !important;
+    }
+
+    .fc-state-default {
+        font-size: 13px !important;
+    }
+
+    .calender {
+        border: none;
+    }
+
+    .current-day {
+        padding: 10px 10.1px !important;
+    }
+
+    #month-year {
+
+        font-size: 16px;
+
+    }
+
+    .leftrightbtn {
+
+        left: 8rem;
+    }
+
+    .prev,
+    .next {
+
+        margin-right: 8px;
+
+    }
+
+    .div3 .Edit {
+
+        margin-left: 64px;
+    }
+
+    .div3 .Edit2 {
+
+        margin-left: 64px;
+    }
+
+    .div3 .Edit3 {
+
+        margin-left: 64px;
+    }
+
+    .div3 .Edit4 {
+
+        margin-left: 64px;
+    }
+
+    .fa-edit {
+        font-size: 19px;
+    }
+
+    .Thumbnail a {
+        margin-top: 35px;
+
+
+    }
+
+    .Thumbnail a i {
+
+        font-size: 14px;
+        height: 19px;
+        width: 19px;
+
+
+    }
+
+    .current-day {
+        /* text-align: left; */
+        padding-right: 0% !important;
+        padding-left: 0% !important;
+    }
+
+    .other-month {
+        /* text-align: left; */
+        padding-right: 0% !important;
+        padding-left: 0% !important;
+    }
+
+    .table {
+        width: 50% !important;
+    }
+
+    .calendarmain {
+        background: #2C2C2C;
+        width: 266px;
+        height: 1000px;
+    }
+
+    .calendar2 {
+        padding-left: 55px !important;
+    }
+
+    .leftrightbtn {
+        width: 100%;
+        left: 13rem;
+    }
+
+
+
+
+
+}
+
+
+@media (min-width:768px) and (max-width:991px) {
+    .calendarmain {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .fc-left {
+        margin-top: 7px;
+    }
+
+    .fc-left h2 {
+        font-size: 15px !important;
+
+    }
+
+    .fc-day-header {
+
+        font-size: 18px !important;
+
+    }
+
+    .calender {
+        border-radius: 13px 13px 13px 13px;
+        height: 475px;
+        margin-bottom: 20px;
+    }
+
+    .post_manage_calendar.post_manage_calendar_card {
+        border-radius: 13px 13px 13px 13px !important;
+    }
+
+    .current-day {
+        padding: 10px 10.1px !important;
+    }
+
+    .leftrightbtn {
+        left: 13rem;
+    }
+
+    #month-year {
+        font-size: 18px;
+    }
+
+    .plus-icon-calender {
+        top: 44px;
+        left: 2px;
+    }
+
+    .fc .fc-toolbar>*>:first-child {
+        margin-left: 13px;
+    }
+
+    .fc-month-button,
+    .fc-agendaWeek-button,
+    .fc-agendaDay-button {
+
+        font-size: 11px !important;
+
+    }
+
+    .fc .fc-toolbar>*>* {
+        float: right !important;
+
+    }
+
+    .fc-next-button {
+        margin-left: 92px !important;
+
+    }
+
+    .fc-right {
+        font-size: 11px;
+    }
+
+    .plus-icon-calender {
+
+        width: 9px !important;
+        height: 8px !important;
+        top: 47px !important;
+        left: 4px !important;
+    }
+
+    /* razi card_media query start */
+    .fb-text{
+        font-size: 10px;
+    }
+    .like-counter h4{
+        font-size: 15px;
+    }
+    .oval-img-div{
+        gap: 2px !important;
+    }
+    .captions{
+        gap: 2px !important;
+    }
+    .cirle-img{
+        width: 8px;
+        height: 8px;
+    }
+    .cirle-img img{
+       
+        width: 8px;
+
+        align-self: center;
+    }
+    .fb-image .fb-img{
+        margin-bottom: 5px;
+    }
+    .x-com .x-com-img{
+        margin-bottom: 2px;
+    }
+    .like-para{
+        margin-bottom: 8px !important;
+    }
+    #product-order-chart{
+        min-height: 245px !important;
+    }
+   .cirle-img img{
+        padding-top: 17px;
+   }
+   .social_cards{
+    padding: 0 4px !important ;
+   }
+.AIgeneratedContent_hiddenpart{
+    display: none;
+}
+.post_preview_small_screen{
+    width: 60% !important;
+    margin: auto;
+}
+.add_caption_small_scree_view{
+    display: block;
+}
+.show-this-section-992{
+    display: block;
+}
+
+    /* razi card_media query end */
+}
+
+@media (min-width:577px) and (max-width:767px) {
+
+    .prev,
+    .next {
+        margin-right: 5px !important;
+
+    }
+
+    .fc .fc-toolbar>*>* {
+        float: unset !important;
+    }
+
+    .fc-left h2 {
+        text-align: center !important;
+        font-size: 14px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .fc-toolbar {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fc-right {
+        margin-bottom: 20px;
+    }
+
+    .div3 {
+        width: 100%;
+    }
+
+    .div3 .Edit {
+        width: 100%;
+        text-align: end;
+    }
+
+    .div3 .Edit2 {
+        width: 100%;
+        text-align: end;
+    }
+
+    .div3 .Edit3 {
+        width: 100%;
+        text-align: end;
+    }
+
+    .div3 .Edit4 {
+        width: 100%;
+        text-align: end;
+    }
+
+    .leftrightbtn {
+        left: 83%;
+    }
+
+    .myro {
+        text-align: center;
+    }
+
+    .fc-day-header {
+        font-size: 13px !important;
+
+    }
+
+    .fc-day-top {
+        font-size: 15px !important;
+
+    }
+
+    .plus-icon-calender {
+        top: 50px !important;
+        left: 1px !important;
+    }
+
+    .calendar2 {
+        margin-top: 20px !important;
+    }
+    .show-this-section-992{
+        display: none;
+    }
+}
+ 
+
+
+
+@media (min-width:320px) and (max-width:576px) {
+    .fc-content-skeleton,
+    .fc-content-skeleton table,
+    .fc-content-skeleton table thead {
+        height: 100%;
+    }
+    .post_manage_calendar.post_manage_calendar_card {
+        border-radius: 0px 13px 13px 0px !important;
+    }
+    .fc-scroller.fc-day-grid-container {
+        height: max-content !important;
+    }
+
+    .calendarmain {
+        width: 300px;
+    }
+
+    .prev,
+    .next {
+        font-size: 14px;
+        margin: 0%;
+    }
+
+    .leftrightbtn {
+        left: 10rem;
+    }
+
+    #month-year {
+        font-size: 14px;
+    }
+
+    .post_manage_calendar.post_manage_calendar_card {
+        border-radius: 13px 13px 13px 13px !important;
+    }
+
+    .current-day {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .current-day {
+        font-size: 6px;
+        padding: 7px 10.1px !important;
+    }
+
+    .other-month {
+        font-size: 6px;
+    }
+
+    .calendarmain {
+        width: 100%;
+    }
+
+    .other-month {
+        padding-left: 0% !important;
+        padding-right: 0% !important;
+    }
+
+    .div3 .Edit {
+        margin-left: 24px;
+    }
+
+    .div3 .Edit1 {
+        margin-left: 24px;
+    }
+
+    .div3 .Edit2 {
+        margin-left: 24px;
+    }
+
+    .div3 .Edit3 {
+        margin-left: 24px;
+    }
+
+    .div3 .Edit4 {
+        margin-left: 24px;
+    }
+
+    .div3 .Edit a {
+        font-size: 9px;
+
+    }
+
+    .div3 .Edit1 a {
+        font-size: 9px;
+
+    }
+
+    .div3 .Edit2 a {
+        font-size: 9px;
+
+    }
+
+    .div3 .Edit2 a {
+        font-size: 9px;
+
+    }
+
+    .div3 .Edit3 a {
+        font-size: 9px;
+
+    }
+
+    .div3 .Edit4 a {
+        font-size: 9px;
+
+    }
+
+    .fa-edit {
+        font-size: 16px;
+
+    }
+
+    .myro {
+        font-size: 6px;
+    }
+
+    .Thumbnail h3 {
+
+        font-size: 14px;
+
+    }
+
+    .Thumbnail a i {
+        font-size: 11px;
+        height: 15px;
+        width: 14px;
+    }
+
+    .Thumbnail a {
+        margin-top: 32px;
+        margin-left: 3px;
+    }
+
+    .leftrightbtn {
+        margin-top: 14px;
+
+    }
+
+    .div2 h1 {
+
+        font-size: 14px;
+
+    }
+
+    .div2 h3 {
+        font-size: 14px;
+
+    }
+
+    .fc-toolbar {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fc-left h2 {
+        text-align: center !important;
+        font-size: 14px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .fc .fc-toolbar>*>* {
+        float: unset !important;
+    }
+
+
+    .the_post_manager .fc .fc-button {
+        font-size: 12px !important;
+
+    }
+
+    .fc-next-button {
+        margin-left: 70px !important;
+
+    }
+
+    .fc-right {
+        margin-bottom: 20px;
+    }
+
+    .fc-button-group {
+        display: flex !important;
+    }
+
+    .fc-day-header span {
+        font-size: 8px;
+        padding-right: 5px;
+    }
+
+    .fc-day-top {
+        font-size: 10px !important;
+
+    }
+
+    .plus-icon-calender {
+        padding: 5px !important;
+        font-size: 8px !important;
+        width: 8px !important;
+        height: 8px !important;
+        left: 0px !important;
+        top: 51px !important;
+    }
+
+    .fc-next-button {
+        margin-left: 84px !important;
+    }
+
+    .calendar2 {
+        margin-top: 20px !important;
+    }
+    .show-this-section-992{
+        display: none;
+    }
+}
+
+/* media  query */

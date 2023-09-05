@@ -19,6 +19,7 @@
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
      <!-- style.css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/responsive2.css')}}">
     <link rel="icon" href="{{asset('')}}images/favicon.png"/>
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}"/>
     <!--FontAwesome CDN-->
@@ -93,8 +94,6 @@
 @include('user.component.modals')
 <!--===== Markup For "Footer" Starts Here =====-->
 <!--===== Markup For "Footer" Ends Here =====-->
-
-
 <!--jQuery Main Libraty Latest Version-->
 
 {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}

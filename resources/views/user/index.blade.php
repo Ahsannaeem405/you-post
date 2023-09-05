@@ -325,7 +325,7 @@
 
 .Mobcart_titleCustom,
 .actions-buttons {
-    border-top: 1px solid #d7d7d7;
+    border-top: 1px solid #e6dbdb;
     padding: 5px 0;
 }
 
@@ -429,8 +429,6 @@
 
             <div
                 class="create_post create_preview_post_index_item create_preview_post_index_itemLeft section2_borderleft_card mx-2 my-2">
-
-
                 <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data">
                     @csrf
                     <section class="wizard-section" style="display: none">
@@ -783,7 +781,9 @@
             <div
                 class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
-                <div class="d-lg-flex justify-content-center create_preview_post_index_itemRightInner">
+                <div
+                    class="d-lg-flex justify-content-center post_preview_small_screen create_preview_post_index_itemRightInner">
+                    <!-- <div class="preview_post position-relative" style="width: 80%!important;"> -->
                     <div class="preview_post position-relative" style="width: 80%!important;">
                         <div class="loader d-none"></div>
                         <div class="sub_heading">
@@ -799,34 +799,55 @@
                                     <div class="w-50 Mobsocial-icon Mobsocial_icon">
                                         <div><i class="fa-solid fa-plus text-light i_one"></i></div>
                                         <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
-                                        <div><i class="fab fa-facebook-messenger text-light i_one"></i></div>
+                                        <div class="messenger"><i
+                                                class="fab fa-facebook-messenger text-light i_one"></i>
+                                            <div class="msg_2">
+                                                <p>2</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="Mobcompny-smallicon pt-2">
+                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2">
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <!-- <span><i class="fa fa-youtube-play"></i></span>  -->
                                 <div class="one_img"> <img src="{{asset('images/ad.png')}}" class="" alt=""></div>
-                                <div class="one_img"> <img src="{{asset('images/you.png')}}" class="" alt=""></div>
-                                <div class="one_img"> <img src="{{asset('images/reel.png')}}" class="" alt=""></div>
+                                <div class="one_img messenger"> <img src="{{asset('images/you.png')}}" class="" alt="">
+                                    <div class="msg_1">
+                                        <p>8</p>
+                                    </div>
+                                </div>
+                                <div class="one_img messenger">
+                                    <img src="{{asset('images/reel.png')}}" class="" alt="">
+                                    <div class="msg_1">
+                                        <p>1</p>
+                                    </div>
+
+
+                                </div>
                                 <div class="one_img"> <img src="{{asset('images/bell.png')}}" class="" alt=""></div>
                                 <div class="one_img"> <img src="{{asset('images/br.png')}}" class="" alt=""></div>
 
                             </div>
+                            <div class="line"></div>
 
-
-                            <div class="the_preview pt-2">
-                                <div class="col-md-12" style="height: 100px">
-                                    <div class="MainMobileview d-flex justify-content-between">
-                                        <div>
-                                            <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
-                                                height="40" alt="">
-                                            <span id="" class="postname">{{auth()->user()->name}} <br>
-                                                <span class="sponsored">Public . <i
-                                                        class="fa-solid fa-earth-americas"></i></span>
-                                            </span>
+                            <div class="the_preview">
+                                <div class="col-md-12 the_preview_card" style="height: 100px">
+                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between">
+                                        <div class="post_img_name">
+                                            <div class="post_img">
+                                                <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
+                                                    height="40" alt="">
+                                            </div>
+                                            <div>
+                                                <span id="" class="postname">{{auth()->user()->name}} <br>
+                                                    <span class="sponsored">Public . <i
+                                                            class="fa-solid fa-earth-americas"></i></span>
+                                                </span>
+                                            </div>
                                         </div>
+
                                         <div class="icons_d">
                                             <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
                                             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
@@ -841,7 +862,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="MainMobileimg">
-                                        <div class="media-container">
+                                        <div class="media-container media_container">
                                             <img src="" class="d-none preview_image" alt="">
                                             <div id="mediaContainervideo">
                                                 <video class="d-none video_preview" controls>
@@ -852,29 +873,48 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="Mobcart_title bile d-flex justify-content-between Mobcart_titleCustom">
-                                        <div class="reactions reactions2">8❤️</div>
+                                    <div
+                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom">
+                                        <!-- <div class="reactions reactions2">8❤️</div> -->
+                                        <div
+                                            class="reactions reactions2 d-flex justify-content-center align-items-center">
+                                            <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />
+                                            <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
+                                                height="12" /> </div>
+
                                         <div class="total-comments total_comments u-margin-inline-start">
-                                            <a>12 Comments</a>
-                                            <a>2 Shares</a>
+                                            <!-- <a>12 Comments</a>
+                                            <a>2 Shares</a> -->
+                                            <a>Muhammad Talha and 24k others 8.3k comments</a>
+
                                         </div>
                                     </div>
-                                    <div class="actions-buttons">
+                                    <div class="actions-buttons actions_buttons">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i
-                                                        class="fa-solid fa-thumbs-up"></i><span class="text">Like</span>
+                                                <button class="actions-buttons-button">
+                                                    <!-- <i class="fa-solid fa-thumbs-up"></i> -->
+                                                    <img src="{{asset('')}}images/up.png" class="" alt="" height="20" />
+                                                    <span class="text text2">Like</span>
                                                 </button>
                                             </li>
                                             <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i
-                                                        class="fa-solid fa-comment"></i><span
-                                                        class="text">Comment</span></button>
+                                                <button class="actions-buttons-button">
+                                                    <!-- <i
+                                                        class="fa-solid fa-comment"></i> -->
+                                                    <img src="{{asset('')}}images/mes.png" class="" alt=""
+                                                        height="20" />
+                                                    <span class="text text2">Comment</span>
+                                                </button>
                                             </li>
                                             <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button"><i
-                                                        class="fa-solid fa-share"></i><span
-                                                        class="text">Share</span></button>
+                                                <button class="actions-buttons-button">
+                                                    <img src="{{asset('')}}images/share.png" class="" alt=""
+                                                        height="18" />
+                                                    <!-- <i
+                                                        class="fa-solid fa-share"></i> -->
+                                                    <span class="text text2">Share</span>
+                                                </button>
                                             </li>
                                         </ul>
                                     </div>
@@ -886,7 +926,8 @@
 
                 </div>
 
-                <div class="AIgeneratedContent create_preview_post_index_itemRightInner position-relative ">
+                <div
+                    class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner position-relative ">
 
                     <div class="sub_heading">
                         <h4>AI Generated Content</h4>
@@ -1030,6 +1071,195 @@
         </div>
     </div>
 </section>
+
+<!-------------------------------- razi show AI GENERATOR START ------------------------------>
+<section class="new-section">
+    <div class="container" id="new-section1">
+        <div class="row">
+            <div class="col-12">
+                <div class="AIgeneratedContent create_preview_post_index_itemRightInner position-relative show-this-section-992">
+                
+                    <div class="sub_heading pt-3">
+                        <h4>AI Generated Content</h4>
+                    </div>
+
+                    <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade ">
+                        <div class="AIgeneratedContentData">
+                            <div>
+                                <label for="" class="add_cap_label">Add Caption</label>
+                                <div class="add_caption">
+                                    <a href="#">
+                                        <input type="text" placeholder="">
+                                        <img src="{{asset('images/add.png')}}" class="img-fluid add_icon" alt="" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="" class="add_cap_label">Add Tags</label>
+                                <div class="add_caption">
+                                    <select id="slect_drop" class="js-example-basic-single form-control" name="state" multiple>
+                                        <option value="AL">Facebook +</option>
+                                        ...
+                                        <option value="WY">Instagram +</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <h2>Modal</h2>
+                            <div class="suggest_img">
+                                <p class="mb-0">Suggested Images :</p>
+                            </div>
+
+
+
+                            <div class="owl-carousel owl_carousel">
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                            <div>
+
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                            <div>
+
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                            <div>
+
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                            <div>
+
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                            <div>
+
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                            <div>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel2.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                            <div>
+
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                            <div>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="opacity-cover">
+                                    <img src="{{asset('images/carousel1.png')}}" alt="">
+                                    <div class="opacity_sheet">
+                                        <div class="opacity_sheet_icons">
+                                            <div>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                            <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i class="fa-solid fa-expand"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                       
+
+                            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content" id="image-modal-content">
+                                        <div class="modal-header" id="modal-header1">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body modal-image" data-lightbox="modals">
+                                            <img src="{{asset('images/carousel2.png')}}" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content" id="image-modal-content">
+                                        <div class="modal-header" id="modal-header1">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body modal-image" data-lightbox="modals">
+                                            <img src="{{asset('images/carousel1.png')}}" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                         
+                            <div class="AIgeneratedCarouselWrp">
+
+                                <div class="owl-carousel owl-theme AIgeneratedCarousel">
+
+                                </div>
+                                <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt" class="btn btn-primary">Edit / Prompt</a>
+                                    <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-------------------------------- razi show AI GENERATOR END------------------------------>
+
+
 
 
 <!--===== Markup For "Create & Preview Post" Ends Here =====-->
@@ -1283,104 +1513,476 @@
             </div>
         </div>
     </div>
-
-
     <div class="container">
+        <div class="dropdown dropdown1 ">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Last 7 days
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card mt-3 like-card">
-                    <div class="card-body">
-                        <h3 class="card-title">Likes</h3>
-                        <div class="card-content">
-                            <div class="svg-div">
-                                <div class="text-center" id="product-order-chart" class="mb-3"
-                                    style="min-height: 320px;">
-                                    <!-- <div id="apexchartsdf3fohp" class="apexcharts-canvas apexchartsdf3fohp light"
+            <div class="col-lg-4 col-sm-12 col-md-4 ">
+                <div class="card-main">
+                    <div class="card custom_card mt-3" id="like-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Likes</h3>
+                            <div class="card-content">
+                                <div class="svg-div">
+                                    <div class="text-center" id="product-order-chart" class="mb-3"
+                                        style="min-height: 285px;">
+                                        <!-- <div id="apexchartsdf3fohp" class="apexcharts-canvas apexchartsdf3fohp light"
                                             style="width: 280px; height: 320px;"> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="239" height="239"
-                                        viewBox="0 0 239 239" fill="none">
-                                        <path
-                                            d="M239 119.5C239 185.498 185.498 239 119.5 239C53.502 239 0 185.498 0 119.5C0 53.502 53.502 0 119.5 0C185.498 0 239 53.502 239 119.5ZM10.198 119.5C10.198 179.866 59.1342 228.802 119.5 228.802C179.866 228.802 228.802 179.866 228.802 119.5C228.802 59.1342 179.866 10.198 119.5 10.198C59.1342 10.198 10.198 59.1342 10.198 119.5Z"
-                                            fill="#E9EBF3" />
-                                        <path
-                                            d="M119.5 5.09901C119.5 2.28291 121.784 -0.0113555 124.598 0.108768C139.535 0.746517 154.236 4.18261 167.932 10.2542C183.183 17.0155 196.849 26.8951 208.051 39.2571C219.254 51.6192 227.743 66.1899 232.974 82.0313C238.205 97.8726 240.061 114.634 238.422 131.236C236.784 147.838 231.688 163.913 223.461 178.426C215.235 192.939 204.061 205.57 190.659 215.504C177.256 225.438 161.922 232.455 145.644 236.105C131.025 239.383 115.936 239.879 101.163 237.585C98.3798 237.153 96.5882 234.456 97.1387 231.694C97.6891 228.932 100.373 227.152 103.158 227.573C116.533 229.596 130.184 229.12 143.413 226.154C158.302 222.816 172.327 216.397 184.586 207.311C196.845 198.225 207.065 186.672 214.589 173.397C222.114 160.123 226.775 145.419 228.274 130.234C229.772 115.049 228.075 99.7183 223.29 85.2288C218.506 70.7393 210.741 57.4121 200.494 46.105C190.248 34.7979 177.748 25.7614 163.798 19.5772C151.404 14.0826 138.11 10.9478 124.597 10.3169C121.784 10.1856 119.5 7.91512 119.5 5.09901Z"
-                                            fill="black" />
-                                        <path
-                                            d="M213 119.5C213 171.055 171.206 212.849 119.652 212.849C68.0965 212.849 26.303 171.055 26.303 119.5C26.303 67.9451 68.0965 26.1515 119.652 26.1515C171.206 26.1515 213 67.9451 213 119.5ZM35.1991 119.5C35.1991 166.142 73.0097 203.952 119.652 203.952C166.293 203.952 204.104 166.142 204.104 119.5C204.104 72.8582 166.293 35.0476 119.652 35.0476C73.0097 35.0476 35.1991 72.8582 35.1991 119.5Z"
-                                            fill="#E9EBF3" />
-                                        <path
-                                            d="M119.652 30.5995C119.652 28.143 121.644 26.1404 124.098 26.2574C144.63 27.2361 164.313 34.9708 180.05 48.3241C196.919 62.6387 208.155 82.4796 211.756 104.309C215.356 126.138 211.086 148.536 199.708 167.51C189.093 185.209 172.936 198.855 153.806 206.376C151.52 207.275 148.99 206.018 148.201 203.692C147.412 201.365 148.664 198.851 150.946 197.94C168.08 191.105 182.548 178.826 192.078 162.935C202.373 145.769 206.235 125.505 202.978 105.756C199.721 86.0076 189.555 68.0576 174.294 55.1071C160.165 43.1183 142.52 36.1355 124.098 35.1647C121.645 35.0354 119.652 33.0561 119.652 30.5995Z"
-                                            fill="#DA8741" />
-                                        <path
-                                            d="M187 119.5C187 156.511 156.996 186.515 119.985 186.515C82.9734 186.515 52.9697 156.511 52.9697 119.5C52.9697 82.4886 82.9734 52.4849 119.985 52.4849C156.996 52.4849 187 82.4886 187 119.5ZM61.3667 119.5C61.3667 151.874 87.611 178.118 119.985 178.118C152.359 178.118 178.603 151.874 178.603 119.5C178.603 87.1261 152.359 60.8819 119.985 60.8819C87.611 60.8819 61.3667 87.1261 61.3667 119.5Z"
-                                            fill="#E9EBF3" />
-                                        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                                            font-size="16" fill="black">
-                                            Total Likes
-                                        </text>
-                                        <text x="50%" y="59%" dominant-baseline="middle" text-anchor="middle"
-                                            font-size="22" fill="black">
-                                            26.20k
-                                        </text>
-                                        <path
-                                            d="M119.985 56.6834C119.985 54.3646 121.867 52.4712 124.181 52.6163C139.03 53.5473 153.153 59.3972 164.312 69.2388C166.051 70.7726 166.043 73.4423 164.403 75.0819C162.763 76.7215 160.114 76.7086 158.362 75.1905C148.797 66.9057 136.802 61.9372 124.18 61.0321C121.867 60.8662 119.985 59.0021 119.985 56.6834Z"
-                                            fill="#288EFF" />
-                                    </svg>
-                                    <div class="apexcharts-legend"></div>
-                                    <!-- </div> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="239"
+                                            viewBox="0 0 239 239" fill="none" id="svg-id">
+                                            <path
+                                                d="M239 119.5C239 185.498 185.498 239 119.5 239C53.502 239 0 185.498 0 119.5C0 53.502 53.502 0 119.5 0C185.498 0 239 53.502 239 119.5ZM10.198 119.5C10.198 179.866 59.1342 228.802 119.5 228.802C179.866 228.802 228.802 179.866 228.802 119.5C228.802 59.1342 179.866 10.198 119.5 10.198C59.1342 10.198 10.198 59.1342 10.198 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <path
+                                                d="M119.5 5.09901C119.5 2.28291 121.784 -0.0113555 124.598 0.108768C139.535 0.746517 154.236 4.18261 167.932 10.2542C183.183 17.0155 196.849 26.8951 208.051 39.2571C219.254 51.6192 227.743 66.1899 232.974 82.0313C238.205 97.8726 240.061 114.634 238.422 131.236C236.784 147.838 231.688 163.913 223.461 178.426C215.235 192.939 204.061 205.57 190.659 215.504C177.256 225.438 161.922 232.455 145.644 236.105C131.025 239.383 115.936 239.879 101.163 237.585C98.3798 237.153 96.5882 234.456 97.1387 231.694C97.6891 228.932 100.373 227.152 103.158 227.573C116.533 229.596 130.184 229.12 143.413 226.154C158.302 222.816 172.327 216.397 184.586 207.311C196.845 198.225 207.065 186.672 214.589 173.397C222.114 160.123 226.775 145.419 228.274 130.234C229.772 115.049 228.075 99.7183 223.29 85.2288C218.506 70.7393 210.741 57.4121 200.494 46.105C190.248 34.7979 177.748 25.7614 163.798 19.5772C151.404 14.0826 138.11 10.9478 124.597 10.3169C121.784 10.1856 119.5 7.91512 119.5 5.09901Z"
+                                                fill="black" />
+                                            <path
+                                                d="M213 119.5C213 171.055 171.206 212.849 119.652 212.849C68.0965 212.849 26.303 171.055 26.303 119.5C26.303 67.9451 68.0965 26.1515 119.652 26.1515C171.206 26.1515 213 67.9451 213 119.5ZM35.1991 119.5C35.1991 166.142 73.0097 203.952 119.652 203.952C166.293 203.952 204.104 166.142 204.104 119.5C204.104 72.8582 166.293 35.0476 119.652 35.0476C73.0097 35.0476 35.1991 72.8582 35.1991 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <path
+                                                d="M119.652 30.5995C119.652 28.143 121.644 26.1404 124.098 26.2574C144.63 27.2361 164.313 34.9708 180.05 48.3241C196.919 62.6387 208.155 82.4796 211.756 104.309C215.356 126.138 211.086 148.536 199.708 167.51C189.093 185.209 172.936 198.855 153.806 206.376C151.52 207.275 148.99 206.018 148.201 203.692C147.412 201.365 148.664 198.851 150.946 197.94C168.08 191.105 182.548 178.826 192.078 162.935C202.373 145.769 206.235 125.505 202.978 105.756C199.721 86.0076 189.555 68.0576 174.294 55.1071C160.165 43.1183 142.52 36.1355 124.098 35.1647C121.645 35.0354 119.652 33.0561 119.652 30.5995Z"
+                                                fill="#DA8741" />
+                                            <path
+                                                d="M187 119.5C187 156.511 156.996 186.515 119.985 186.515C82.9734 186.515 52.9697 156.511 52.9697 119.5C52.9697 82.4886 82.9734 52.4849 119.985 52.4849C156.996 52.4849 187 82.4886 187 119.5ZM61.3667 119.5C61.3667 151.874 87.611 178.118 119.985 178.118C152.359 178.118 178.603 151.874 178.603 119.5C178.603 87.1261 152.359 60.8819 119.985 60.8819C87.611 60.8819 61.3667 87.1261 61.3667 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                                                font-size="16" fill="black">
+                                                Total Likes
+                                            </text>
+                                            <text x="50%" y="59%" dominant-baseline="middle" text-anchor="middle"
+                                                font-size="22" fill="black">
+                                                26.20k
+                                            </text>
+                                            <path
+                                                d="M119.985 56.6834C119.985 54.3646 121.867 52.4712 124.181 52.6163C139.03 53.5473 153.153 59.3972 164.312 69.2388C166.051 70.7726 166.043 73.4423 164.403 75.0819C162.763 76.7215 160.114 76.7086 158.362 75.1905C148.797 66.9057 136.802 61.9372 124.18 61.0321C121.867 60.8662 119.985 59.0021 119.985 56.6834Z"
+                                                fill="#288EFF" />
+                                        </svg>
+
+                                        <div class="apexcharts-legend"></div>
+                                        <!-- </div> -->
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div>
-                                        <div class="d-flex gap-2">
-                                            <div class="cirle-img ">
-                                                <img src="{{asset('images/Oval (1).png')}}" width="20px" alt="">
-                                            </div>
-                                            <h5>Facebook</h5>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-4 social_cards">
                                         <div>
-                                            <h4 class="text-center">1.12k</h4>
+                                            <div class="oval-img-div d-flex ">
+                                                <div class="cirle-img fb-image">
+                                                    <!-- <img src="/Oval (1).png" class="fb-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">Facebook</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">1.12k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class=" oval-img-div d-flex ">
+                                                <div class="cirle-img fb-image ">
+                                                    <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">Instagram</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">11.89k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class="oval-img-div d-flex ">
+                                                <div class="cirle-img x-com">
+                                                    <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">x.com</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">14k</h4>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div>
-                                        <div class="d-flex gap-2">
-                                            <div class="cirle-img ">
-                                                <img src="{{asset('images/Oval (2).png')}}" width="20px" alt="">
-                                            </div>
-                                            <h5>Instagram</h5>
+                                <div class="caption-main d-flex align-center justify-space-between">
+                                    <div class="d-flex gap-2 captions">
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
                                         </div>
                                         <div>
-                                            <h4 class="text-center">1.12k</h4>
+                                            <!-- <img src="/caption-image1.png" alt=""> -->
+                                            <img src="{{asset('')}}images/circle2.png" class="img-fluid" alt="" />
+                                        </div>
+                                        <p class="caption-text mt-3">This is the caption </p>
+                                    </div>
+                                    <div class="likesAndShare d-flex align-center justify-content-end ">
+                                        <div class="d-flex align-center justify-content-end ">
+                                            <div class="only-like me-1">
+                                                <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                <p class="like-para">likes</p>
+                                            </div>
+                                            <div class="only-share ms-1">
+                                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                <p class="like-para">share</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div>
-                                        <div class="d-flex gap-2">
-                                            <div class="cirle-img">
-                                                <img src="{{asset('images/Oval (3).png')}}" width="20px" alt="">
-                                            </div>
-                                            <h5>X.com</h5>
+                                <div class="caption-main d-flex align-center justify-space-between mt-2">
+                                    <div class="d-flex gap-2 captions">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
                                         </div>
                                         <div>
-                                            <h4 class="text-center">1.12k</h4>
+                                            <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
+                                        </div>
+                                        <p class="caption-text mt-3">This is the caption </p>
+                                    </div>
+                                    <div class="likesAndShare d-flex align-center justify-content-end ">
+                                        <div class="d-flex align-center justify-content-end ">
+                                            <div class="only-like me-1">
+                                                <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                <p class="like-para">likes</p>
+                                            </div>
+                                            <div class="only-share ms-1">
+                                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                <p class="like-para">share</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-4 ">
+                <div class="card-main">
+                    <div class="card custom_card mt-3" id="like-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Likes</h3>
+                            <div class="card-content">
+                                <div class="svg-div">
+                                    <div class="text-center" id="product-order-chart" class="mb-3"
+                                        style="min-height: 285px;">
+                                        <!-- <div id="apexchartsdf3fohp" class="apexcharts-canvas apexchartsdf3fohp light"
+                                            style="width: 280px; height: 320px;"> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="239"
+                                            viewBox="0 0 239 239" fill="none" id="svg-id">
+                                            <path
+                                                d="M239 119.5C239 185.498 185.498 239 119.5 239C53.502 239 0 185.498 0 119.5C0 53.502 53.502 0 119.5 0C185.498 0 239 53.502 239 119.5ZM10.198 119.5C10.198 179.866 59.1342 228.802 119.5 228.802C179.866 228.802 228.802 179.866 228.802 119.5C228.802 59.1342 179.866 10.198 119.5 10.198C59.1342 10.198 10.198 59.1342 10.198 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <path
+                                                d="M119.5 5.09901C119.5 2.28291 121.784 -0.0113555 124.598 0.108768C139.535 0.746517 154.236 4.18261 167.932 10.2542C183.183 17.0155 196.849 26.8951 208.051 39.2571C219.254 51.6192 227.743 66.1899 232.974 82.0313C238.205 97.8726 240.061 114.634 238.422 131.236C236.784 147.838 231.688 163.913 223.461 178.426C215.235 192.939 204.061 205.57 190.659 215.504C177.256 225.438 161.922 232.455 145.644 236.105C131.025 239.383 115.936 239.879 101.163 237.585C98.3798 237.153 96.5882 234.456 97.1387 231.694C97.6891 228.932 100.373 227.152 103.158 227.573C116.533 229.596 130.184 229.12 143.413 226.154C158.302 222.816 172.327 216.397 184.586 207.311C196.845 198.225 207.065 186.672 214.589 173.397C222.114 160.123 226.775 145.419 228.274 130.234C229.772 115.049 228.075 99.7183 223.29 85.2288C218.506 70.7393 210.741 57.4121 200.494 46.105C190.248 34.7979 177.748 25.7614 163.798 19.5772C151.404 14.0826 138.11 10.9478 124.597 10.3169C121.784 10.1856 119.5 7.91512 119.5 5.09901Z"
+                                                fill="black" />
+                                            <path
+                                                d="M213 119.5C213 171.055 171.206 212.849 119.652 212.849C68.0965 212.849 26.303 171.055 26.303 119.5C26.303 67.9451 68.0965 26.1515 119.652 26.1515C171.206 26.1515 213 67.9451 213 119.5ZM35.1991 119.5C35.1991 166.142 73.0097 203.952 119.652 203.952C166.293 203.952 204.104 166.142 204.104 119.5C204.104 72.8582 166.293 35.0476 119.652 35.0476C73.0097 35.0476 35.1991 72.8582 35.1991 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <path
+                                                d="M119.652 30.5995C119.652 28.143 121.644 26.1404 124.098 26.2574C144.63 27.2361 164.313 34.9708 180.05 48.3241C196.919 62.6387 208.155 82.4796 211.756 104.309C215.356 126.138 211.086 148.536 199.708 167.51C189.093 185.209 172.936 198.855 153.806 206.376C151.52 207.275 148.99 206.018 148.201 203.692C147.412 201.365 148.664 198.851 150.946 197.94C168.08 191.105 182.548 178.826 192.078 162.935C202.373 145.769 206.235 125.505 202.978 105.756C199.721 86.0076 189.555 68.0576 174.294 55.1071C160.165 43.1183 142.52 36.1355 124.098 35.1647C121.645 35.0354 119.652 33.0561 119.652 30.5995Z"
+                                                fill="#DA8741" />
+                                            <path
+                                                d="M187 119.5C187 156.511 156.996 186.515 119.985 186.515C82.9734 186.515 52.9697 156.511 52.9697 119.5C52.9697 82.4886 82.9734 52.4849 119.985 52.4849C156.996 52.4849 187 82.4886 187 119.5ZM61.3667 119.5C61.3667 151.874 87.611 178.118 119.985 178.118C152.359 178.118 178.603 151.874 178.603 119.5C178.603 87.1261 152.359 60.8819 119.985 60.8819C87.611 60.8819 61.3667 87.1261 61.3667 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                                                font-size="16" fill="black">
+                                                Total Likes
+                                            </text>
+                                            <text x="50%" y="59%" dominant-baseline="middle" text-anchor="middle"
+                                                font-size="22" fill="black">
+                                                26.20k
+                                            </text>
+                                            <path
+                                                d="M119.985 56.6834C119.985 54.3646 121.867 52.4712 124.181 52.6163C139.03 53.5473 153.153 59.3972 164.312 69.2388C166.051 70.7726 166.043 73.4423 164.403 75.0819C162.763 76.7215 160.114 76.7086 158.362 75.1905C148.797 66.9057 136.802 61.9372 124.18 61.0321C121.867 60.8662 119.985 59.0021 119.985 56.6834Z"
+                                                fill="#288EFF" />
+                                        </svg>
+
+                                        <div class="apexcharts-legend"></div>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class="oval-img-div d-flex ">
+                                                <div class="cirle-img fb-image">
+                                                    <!-- <img src="/Oval (1).png" class="fb-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">Facebook</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">1.12k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class=" oval-img-div d-flex ">
+                                                <div class="cirle-img fb-image ">
+                                                    <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">Instagram</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">11.89k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class="oval-img-div d-flex ">
+                                                <div class="cirle-img x-com">
+                                                    <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">x.com</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">14k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption-main d-flex align-center justify-space-between">
+                                    <div class="d-flex gap-2 captions">
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </div>
+                                        <div>
+                                            <!-- <img src="/caption-image1.png" alt=""> -->
+                                            <img src="{{asset('')}}images/circle2.png" class="img-fluid" alt="" />
+                                        </div>
+                                        <p class="caption-text mt-3">This is the caption </p>
+                                    </div>
+                                    <div class="likesAndShare d-flex align-center justify-content-end ">
+                                        <div class="d-flex align-center justify-content-end ">
+                                            <div class="only-like me-1">
+                                                <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                <p class="like-para">likes</p>
+                                            </div>
+                                            <div class="only-share ms-1">
+                                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                <p class="like-para">share</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption-main d-flex align-center justify-space-between mt-2">
+                                    <div class="d-flex gap-2 captions">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </div>
+                                        <div>
+                                            <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
+                                        </div>
+                                        <p class="caption-text mt-3">This is the caption </p>
+                                    </div>
+                                    <div class="likesAndShare d-flex align-center justify-content-end ">
+                                        <div class="d-flex align-center justify-content-end ">
+                                            <div class="only-like me-1">
+                                                <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                <p class="like-para">likes</p>
+                                            </div>
+                                            <div class="only-share ms-1">
+                                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                <p class="like-para">share</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-md-4 ">
+                <div class="card-main">
+                    <div class="card custom_card mt-3" id="like-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Likes</h3>
+                            <div class="card-content">
+                                <div class="svg-div">
+                                    <div class="text-center" id="product-order-chart" class="mb-3"
+                                        style="min-height: 285px;">
+                                        <!-- <div id="apexchartsdf3fohp" class="apexcharts-canvas apexchartsdf3fohp light"
+                                            style="width: 280px; height: 320px;"> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="239"
+                                            viewBox="0 0 239 239" fill="none" id="svg-id">
+                                            <path
+                                                d="M239 119.5C239 185.498 185.498 239 119.5 239C53.502 239 0 185.498 0 119.5C0 53.502 53.502 0 119.5 0C185.498 0 239 53.502 239 119.5ZM10.198 119.5C10.198 179.866 59.1342 228.802 119.5 228.802C179.866 228.802 228.802 179.866 228.802 119.5C228.802 59.1342 179.866 10.198 119.5 10.198C59.1342 10.198 10.198 59.1342 10.198 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <path
+                                                d="M119.5 5.09901C119.5 2.28291 121.784 -0.0113555 124.598 0.108768C139.535 0.746517 154.236 4.18261 167.932 10.2542C183.183 17.0155 196.849 26.8951 208.051 39.2571C219.254 51.6192 227.743 66.1899 232.974 82.0313C238.205 97.8726 240.061 114.634 238.422 131.236C236.784 147.838 231.688 163.913 223.461 178.426C215.235 192.939 204.061 205.57 190.659 215.504C177.256 225.438 161.922 232.455 145.644 236.105C131.025 239.383 115.936 239.879 101.163 237.585C98.3798 237.153 96.5882 234.456 97.1387 231.694C97.6891 228.932 100.373 227.152 103.158 227.573C116.533 229.596 130.184 229.12 143.413 226.154C158.302 222.816 172.327 216.397 184.586 207.311C196.845 198.225 207.065 186.672 214.589 173.397C222.114 160.123 226.775 145.419 228.274 130.234C229.772 115.049 228.075 99.7183 223.29 85.2288C218.506 70.7393 210.741 57.4121 200.494 46.105C190.248 34.7979 177.748 25.7614 163.798 19.5772C151.404 14.0826 138.11 10.9478 124.597 10.3169C121.784 10.1856 119.5 7.91512 119.5 5.09901Z"
+                                                fill="black" />
+                                            <path
+                                                d="M213 119.5C213 171.055 171.206 212.849 119.652 212.849C68.0965 212.849 26.303 171.055 26.303 119.5C26.303 67.9451 68.0965 26.1515 119.652 26.1515C171.206 26.1515 213 67.9451 213 119.5ZM35.1991 119.5C35.1991 166.142 73.0097 203.952 119.652 203.952C166.293 203.952 204.104 166.142 204.104 119.5C204.104 72.8582 166.293 35.0476 119.652 35.0476C73.0097 35.0476 35.1991 72.8582 35.1991 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <path
+                                                d="M119.652 30.5995C119.652 28.143 121.644 26.1404 124.098 26.2574C144.63 27.2361 164.313 34.9708 180.05 48.3241C196.919 62.6387 208.155 82.4796 211.756 104.309C215.356 126.138 211.086 148.536 199.708 167.51C189.093 185.209 172.936 198.855 153.806 206.376C151.52 207.275 148.99 206.018 148.201 203.692C147.412 201.365 148.664 198.851 150.946 197.94C168.08 191.105 182.548 178.826 192.078 162.935C202.373 145.769 206.235 125.505 202.978 105.756C199.721 86.0076 189.555 68.0576 174.294 55.1071C160.165 43.1183 142.52 36.1355 124.098 35.1647C121.645 35.0354 119.652 33.0561 119.652 30.5995Z"
+                                                fill="#DA8741" />
+                                            <path
+                                                d="M187 119.5C187 156.511 156.996 186.515 119.985 186.515C82.9734 186.515 52.9697 156.511 52.9697 119.5C52.9697 82.4886 82.9734 52.4849 119.985 52.4849C156.996 52.4849 187 82.4886 187 119.5ZM61.3667 119.5C61.3667 151.874 87.611 178.118 119.985 178.118C152.359 178.118 178.603 151.874 178.603 119.5C178.603 87.1261 152.359 60.8819 119.985 60.8819C87.611 60.8819 61.3667 87.1261 61.3667 119.5Z"
+                                                fill="#E9EBF3" />
+                                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                                                font-size="16" fill="black">
+                                                Total Likes
+                                            </text>
+                                            <text x="50%" y="59%" dominant-baseline="middle" text-anchor="middle"
+                                                font-size="22" fill="black">
+                                                26.20k
+                                            </text>
+                                            <path
+                                                d="M119.985 56.6834C119.985 54.3646 121.867 52.4712 124.181 52.6163C139.03 53.5473 153.153 59.3972 164.312 69.2388C166.051 70.7726 166.043 73.4423 164.403 75.0819C162.763 76.7215 160.114 76.7086 158.362 75.1905C148.797 66.9057 136.802 61.9372 124.18 61.0321C121.867 60.8662 119.985 59.0021 119.985 56.6834Z"
+                                                fill="#288EFF" />
+                                        </svg>
+
+                                        <div class="apexcharts-legend"></div>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class="oval-img-div d-flex ">
+                                                <div class="cirle-img fb-image">
+                                                    <!-- <img src="/Oval (1).png" class="fb-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (1).png" class="x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">Facebook</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">1.12k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class=" oval-img-div d-flex ">
+                                                <div class="cirle-img fb-image ">
+                                                    <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">Instagram</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">11.89k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4 social_cards">
+                                        <div>
+                                            <div class="oval-img-div d-flex ">
+                                                <div class="cirle-img x-com">
+                                                    <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
+                                                    <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                        alt="" />
+                                                </div>
+                                                <h5 class="fb-text">x.com</h5>
+                                            </div>
+                                            <div class="like-counter">
+                                                <h4 class="text-center">14k</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption-main d-flex align-center justify-space-between">
+                                    <div class="d-flex gap-2 captions">
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </div>
+                                        <div>
+                                            <!-- <img src="/caption-image1.png" alt=""> -->
+                                            <img src="{{asset('')}}images/circle2.png" class="img-fluid" alt="" />
+                                        </div>
+                                        <p class="caption-text mt-3">This is the caption </p>
+                                    </div>
+                                    <div class="likesAndShare d-flex align-center justify-content-end ">
+                                        <div class="d-flex align-center justify-content-end ">
+                                            <div class="only-like me-1">
+                                                <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                <p class="like-para">likes</p>
+                                            </div>
+                                            <div class="only-share ms-1">
+                                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                <p class="like-para">share</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption-main d-flex align-center justify-space-between mt-2">
+                                    <div class="d-flex gap-2 captions">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </div>
+                                        <div>
+                                            <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
+                                        </div>
+                                        <p class="caption-text mt-3">This is the caption </p>
+                                    </div>
+                                    <div class="likesAndShare d-flex align-center justify-content-end ">
+                                        <div class="d-flex align-center justify-content-end ">
+                                            <div class="only-like me-1">
+                                                <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                <p class="like-para">likes</p>
+                                            </div>
+                                            <div class="only-share ms-1">
+                                                <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                <p class="like-para">share</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-
     </div>
 
 
@@ -1689,7 +2291,7 @@ $(document).ready(function() {
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 <script>
 let currentDate = new Date();

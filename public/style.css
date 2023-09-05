@@ -592,7 +592,8 @@
     background-size: 100% 100%;
     position: relative;
     /* padding: 65px 26px; */
-    padding: 47px 22px;
+    /* padding: 47px 22px; */
+    padding: 44px 18px;
 }
 
 /* .create_preview_post .preview_wrap .the_preview {
@@ -1257,6 +1258,8 @@
     align-items: center;
     /* justify-content: space-around; */
     padding: 5px;
+    width: 95%;
+    background: #242424;
 }
 .Mobcompny-title .Mobsocial-icon {
 	text-align: end;
@@ -1903,43 +1906,175 @@ body.dark .home .text{
 width: 100%;
 }
 .icons_d{
-    margin-right: 17px;
-    margin-bottom: 25px;
+    margin-top: 8px;
+    margin-right: 22px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 0 12px;
 }
 .icons_d i{
     color: #e6dbdb;
     font-size: 14px;
+    cursor: pointer;
+}
+.Mobcompny-smallicon.Mobcompny_smallicon{
+    margin-top: unset !important;
+    background-color: #242424;
+    border-radius: unset !important;
+    width: 95%;
+    border-bottom: 0.1px solid#e6dbdb;
+}
+.MainMobileview.MainMobileview2{
+    background-color: #242424; 
+    width: 95%;
+} 
+.post_img_name{
+    display: flex ;
+    gap: 0 5px;
+}
+.sponsored{
+    padding-left: 5px;
+}
+.the_preview_card{
+    background-color: #242424; 
+    width: 95%;
+    padding: 0 5px;
+}
+.media-container.media_container{
+width: 95%;
+}
+.media-container.media_container img{
+    object-fit: cover !important;
+}
+.Mobcart_title.Mobcart_title2{
+    width: 95%;
+}
+.total-comments.total_comments a{
+   font-size: 9px;
+} 
+.actions-buttons.actions_buttons{
+    width: 95%; 
+}
+.text.text2{
+    color: #fff !important;
+}
+.msg_2{
+    height: 14px !important;
+    width: 14px !important;
+    background-color: red !important;
+    border-radius: 50px !important;
+    position: absolute;
+    top: 1px;
+    left: 14px;
+    z-index: 1;
+    
+}
+.msg_2 p{
+    font-size: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.msg_1{
+    height: 14px !important;
+    width: 14px !important;
+    background-color: red !important;
+    border-radius: 50px !important;
+    position: absolute;
+    bottom: 8px;
+    left: 12px; 
+    z-index: 1;
+}
+
+.msg_1 p{
+    font-size: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.messenger{
+    position: relative;
 }
 
 /* raziullah card css */
-#product-order-chart{
+
+#product-order-chart {
     margin: 0px !important;
+
 }
-.like-card{
-border: none;   
-background: linear-gradient(180deg, rgba(181, 181, 181, 0.20) 0%, rgba(255, 58, 58, 0.20) 100%), linear-gradient(145deg, #61E3FF 4.51%, rgba(216, 216, 216, 0.84) 61.4%, rgba(154, 255, 158, 0.69) 104.07%);
-box-shadow: 0 0 20% #000;
-border-radius: 18px;
+.card-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-/* .cirle-img{
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #288EFF;
+.card.custom_card {
+    border: none;
+    border-radius: 30px;
+    width: 325px;
+    height: auto;
+    filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.20));
+    background: linear-gradient(180deg, rgba(181, 181, 181, 0.20) 0%, rgba(255, 58, 58, 0.20) 100%), linear-gradient(145deg, #61E3FF 4.51%, rgba(216, 216, 216, 0.84) 61.4%, rgba(154, 255, 158, 0.69) 104.07%);
 }
-.cirle-img2{
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #DA8741;
+
+.card-title {
+    color: #243465;
+    font-size: 20px;
+    font-family: 'poppins';
+    font-weight: 500;
+    margin-bottom: 30px;
 }
-.cirle-img3{
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #000;
-} */
+
+.fb-text {
+    color: #848A9C;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+
+.caption-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.captions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.like-para {
+    font-size: 10px;
+    font-weight: 400;
+    /* line-height: 0px; */
+    color: #575757;
+}
+
+.caption-text {
+    font-size: 10px;
+    font-weight: 500;
+}
+.only-like a{
+    color: #575757;
+    font-size: 14px;
+}
+.only-share a{
+    font-size: 14px;
+    color: #575757;
+}
+.oval-img-div{
+    gap: 5px;
+}
+.cirle-img{
+    display: flex ;
+    justify-content:center ;
+    align-items: center ;
+}
+.dropdown.dropdown1{
+    margin: 28px 10px 10px 10px;
+    text-align: right;
+}
+
 /* raziullah card css */
