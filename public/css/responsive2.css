@@ -40,10 +40,9 @@
 
     }
 
-    .leftrightbtn {
-
+    /* .leftrightbtn {
         left: 8rem;
-    }
+    } */
 
     .prev,
     .next {
@@ -81,13 +80,19 @@
 
 
     }
-
+    .myro {
+        text-align: center;
+        padding-right: 7px !important;
+    }
+    .table>:not(caption)>*>* {
+        /* padding: 12px 3px !important; */
+        padding: 13px 8px !important;
+    }
     .Thumbnail a i {
 
         font-size: 14px;
         height: 19px;
         width: 19px;
-
 
     }
 
@@ -109,23 +114,21 @@
 
     .calendarmain {
         background: #2C2C2C;
-        width: 266px;
+        /* width: 266px; */
         height: 1000px;
     }
 
-    .calendar2 {
+    /* .calendar2 {
         padding-left: 55px !important;
-    }
+    } */
 
     .leftrightbtn {
         width: 100%;
         left: 13rem;
     }
-
-
-
-
-
+    .leftrightbtn {
+        margin-left: -4rem;
+    }
 }
 
 
@@ -265,6 +268,20 @@
 .show-this-section-992{
     display: block;
 }
+.owl-nav .owl-prev{
+    position: absolute;
+    top: 127px !important;
+    left: 0;
+}
+.owl-nav .owl-next{
+    position: absolute;
+    top: 127px !important;
+    right: 0;
+}
+.table>:not(caption)>*>* {
+    padding: 9px 4px !important;
+}
+
 
     /* razi card_media query end */
 }
@@ -350,9 +367,54 @@
     .show-this-section-992{
         display: none;
     }
+    .create_preview_post_index_item .preview_post, .create_preview_post_index_item .preview_post .preview_wrap {
+        width: 80% !important;
+        margin: auto;
+    }
+    .the_preview_card {
+        width: 91% !important;
+        margin-left: 7px !important;
+    }
+    .Mobcompny-title {
+        width: 91% !important;
+        margin-left: 6px !important;
+    }
+    .Mobcompny-smallicon.Mobcompny_smallicon {
+        width: 91% !important;
+        margin-left: 6px !important;
 }
- 
+.Mobcart_title.Mobcart_title2 {
+    width: 91% !important;
+    margin-left: 6px !important;
+}
+.owl-nav .owl-prev{
+    position: absolute;
+    top: 85px !important;
+    left: 0;
+    font-size: 20px;
+}
+.owl-nav .owl-next{
+    position: absolute;
+    top: 85px !important;
+    right: 0;
+    font-size: 20px;
+}
 
+/* salman 7/9/23*/
+.fc-content-skeleton,
+.fc-content-skeleton table,
+.fc-content-skeleton table thead {
+    height: 100%;
+}
+.post_manage_calendar.post_manage_calendar_card {
+    border-radius: 0px 13px 13px 0px !important;
+}
+.fc-scroller.fc-day-grid-container {
+    height: max-content !important;
+}
+
+/* salman */
+}
 
 
 @media (min-width:320px) and (max-width:576px) {
@@ -569,6 +631,51 @@
     .show-this-section-992{
         display: none;
     }
+    .create_preview_post_index_item .preview_post, .create_preview_post_index_item .preview_post .preview_wrap {
+        width: 80% !important;
+        margin: auto;
+    }
+    .the_preview_card {
+        width: 91% !important;
+        margin-left: 7px !important;
+    }
+    .Mobcompny-title {
+        width: 91% !important;
+        margin-left: 6px !important;
+    }
+    .Mobcompny-smallicon.Mobcompny_smallicon {
+        width: 91% !important;
+        margin-left: 6px !important;
+}
+.Mobcart_title.Mobcart_title2 {
+    width: 91% !important;
+    margin-left: 6px !important;
+}
+.owl-nav .owl-prev{
+    position: absolute ;
+    top: 163px !important;
+    left: 0;
+ 
+}
+.owl-nav .owl-next{
+    position: absolute;
+    top: 163px !important;
+    right: 0;
+
+}
+.myro {
+    text-align: center;
+    font-size: 10px;
+    padding: 0% !important;
+}
+.other-month {
+    font-size: 10px;
+    padding: 11px 7.1px !important;
+}
+.current-day {
+    font-size: 10px;
+    padding: 28px 7.1px !important;
+}
 }
 
 /* media  query */

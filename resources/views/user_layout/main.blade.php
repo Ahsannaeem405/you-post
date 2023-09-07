@@ -13,7 +13,10 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script> -->
          
-   
+   <!-- google_font_poppin -->
+
+   <!-- google_font_poppin -->
+
 
 
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
@@ -225,21 +228,71 @@
 
 // });
 
-        var calendar = $('#postManagerCalendar').fullCalendar({
+    //     var calendar = $('#postManagerCalendar').fullCalendar({
           
-            selectable: true,
+    //         selectable: true,
+    //         businessHours: true,
+    //         dayMaxEvents: true, // allow "more" link when too many events
+    //         events: @json(collect($allPosts)),
+    //         views: {
+    //             month: {
+    //                 eventLimit: 2
+    //             }
+        
+
+    //         },
+
+
+    //         eventSources: [
+    //     {
+    //         events: [
+    //             {
+    //                 title: 'Event1',
+    //                 start: '2018-07-13',
+    //                 end: '2018-07-16',
+    //                 allDay: true,
+    //                 color: 'green',
+    //                 backgroundColor: 'green'
+    //             },
+    //             {
+    //                 title: 'Event2',
+    //                 start: '2018-07-10',
+    //                 color: '#ff7538',
+    //                 backgroundColor: '#ff7538'
+    //             }
+             
+    //         ],
+    //     }
+    // ],
+   
+    // header: {
+    //     center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
+    // },
+    // fixedWeekCount: false,
+    // contentHeight: 850,
+
+//   salman new code calendar 7/9/23
+var calendar = $('#postManagerCalendar').fullCalendar({
+            defaultView: 'agendaWeek',
+          selectable: true,
             businessHours: true,
+            schedulerLicenseKey: 'YOUR_LICENSE_KEY',
             dayMaxEvents: true, // allow "more" link when too many events
             events: @json(collect($allPosts)),
             views: {
                 month: {
-                    eventLimit: 2
+                    eventLimit: 2,
                 }
-        
-
             },
-
-
+            views: {
+                agendaWeek: {
+        columnFormat: 'ddd\nD',
+        slotLabelFormat: [
+        'h A',
+        'h A',
+    ],
+    }
+},
             eventSources: [
         {
             events: [
@@ -247,28 +300,26 @@
                     title: 'Event1',
                     start: '2018-07-13',
                     end: '2018-07-16',
-                    allDay: true,
+                    allDay: false,
                     color: 'green',
-                    backgroundColor: 'green'
+                    backgroundColor: 'green',
                 },
                 {
                     title: 'Event2',
                     start: '2018-07-10',
-                    color: '#ff7538',
-                    backgroundColor: '#ff7538'
+                    color: '#FF7538',
+                    backgroundColor: '#FF7538',
                 }
-             
             ],
         }
     ],
-   
     header: {
         center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
     },
     fixedWeekCount: false,
     contentHeight: 850,
+    // salman new code calendar 7/9/23
 
-  
            
           
 
