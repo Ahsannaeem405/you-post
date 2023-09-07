@@ -1,17 +1,13 @@
 @extends('user_layout.main')
 <style>
-/*    #image_div{
+    #image_div{
 position: relative;
     }
     .cancel_mark{
-      position: absolute;
-        top: 14px;
-        right: 70px;
-        color: #000;
-        font-weight: 800;
-        display: none;
+    
+        
 
-    }*/
+    }
 .create_preview_post_wrapInner {
     /* background: #fff;
     padding: 20px;
@@ -524,32 +520,28 @@ position: relative;
 
                                                 <!-- my code -->
 
-                                                <div class="d-none" id="image_div"><label for="file"
-                                                        style="margin-top: 20px;">
-                                                        <!--  <i class="fa-solid fa-xmark cancel_mark"></i> -->
-                                                        <span id="file_error"></span>
-
-
-                                                        <a href="javascript:void(0)" class="image_or_video"
-                                                            typpe="image" social="fb" fordata="image_or_videofb"><label
-                                                                for="image_or_videofb">
-                                                                <img src="{{asset('')}}images/plus.png"
-                                                                    class="img-fluid" alt="" width="20px"
-                                                                    height="20px" />
-                                                            </label>
-                                                        </a>
-                                                        <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                        <input type="file" name="facebook_media[]" multiple
-                                                            class="image d-none file_image_video" id="image_or_videofb"
-                                                            accept="image/*,video/*">
-                                                        <input type="hidden" name="media_type_facebook"
-                                                            id="media_type_fb">
-                                                        <p id="error1" style="display:none; color:#FF0000;">
+                                                <div class="d-none" id="image_div"><label for="file" style="margin-top: 20px;">
+                                                       
+                                                    <span id="file_error_fb"></span>
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="fb" fordata="image_or_videofb">
+                                                                <label for="image_or_videofb">
+                                                                        <img src="{{asset('')}}images/plus.png"
+                                                                        class="img-fluid" alt=""  width="20px" height="20px"/>
+                                                                </label>
+                                                            </a> 
+                                                           <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
+                                                    <input type="file" name="facebook_media[]" multiple
+                                                    class="image d-none file_image_video" id="image_or_videofb"
+                                                    accept="image/*,video/*" div_to_open="facebook">
+                                                    <input type="hidden" name="media_type_facebook" id="media_type_fb">
+                                                    <p id="error1" style="display:none; color:#FF0000;">
 
                                                 </div>
+                     <!-- end my coed -->  </div>
 
-                                                <!-- end my coed -->
-                                            </div>
+                                           
+
                                             <div class="tags_input_wrap grid_item">
                                                 <div class="tags_input">
                                                     <select name="facebook_tag[]" class="form-control selectmultiple"
@@ -595,10 +587,17 @@ position: relative;
                                             <div class="icon_buttons grid_item">
                                                 <ul class="p-0">
                                                     <li>
-                                                        <a href="javascript:void(0)" class="image_or_video_div"
+                                                        <!-- <a href="javascript:void(0)" class="image_or_video_div"
                                                             typpe="image" social="insta"
                                                             fordata="image_or_video_insta"><label
                                                                 for="image_or_video_insta">
+                                                                <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a> -->
+                                                         <a href="javascript:void(0)" class="image_or_video_div"
+                                                            typpe="image" social="insta" fordata="image_or_video_insta"><label
+                                                                for="">
                                                                 <img src="{{asset('')}}images/Camera_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </label>
@@ -621,11 +620,25 @@ position: relative;
                                                         </a>
                                                     </li>
                                                 </ul>
+                                                <div class="d-none" id="image_div_ins"><label for="file" style="margin-top: 20px;  "">
+                                                       <!--  <i class="fa-solid fa-xmark cancel_mark"></i> -->
+                                                     <span id="file_error_ins"></span>
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="fb" fordata="image_or_video_insta">
+                                                                <label for="image_or_video_insta">
+                                                                        <img src="{{asset('')}}images/plus.png"
+                                                                        class="img-fluid" alt=""  width="20px" height="20px"/>
+                                                                </label>
+                                                            </a> 
+                                                           <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
+                                                    <input type="file" name="insta_media[]" required multiple
+                                                    class="image d-none file_image_video wizard-required"
+                                                   id="image_or_video_insta" accept="image/*,video/*" div_to_open="instagram">
+                                                  <input type="hidden" name="media_type_instagram" id="media_type_insta">
+
+                                                </div>
                                             </div>
-                                            <input type="file" name="insta_media[]" required multiple
-                                                class="image d-none file_image_video wizard-required"
-                                                id="image_or_video_insta" accept="image/*,video/*">
-                                            <input type="hidden" name="media_type_instagram" id="media_type_insta">
+                                            
 
 
                                             <div class="tags_input_wrap grid_item">
@@ -708,10 +721,17 @@ position: relative;
                                             <div class="icon_buttons grid_item">
                                                 <ul class="p-0">
                                                     <li>
-                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                        <!-- <a href="javascript:void(0)" class="image_or_video"
                                                             typpe="image" social="linkedin"
                                                             fordata="image_or_video_linkedin"><label
                                                                 for="image_or_video_linkedin">
+                                                                <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    class="img-fluid" alt="" />
+                                                            </label>
+                                                        </a> -->
+                                                          <a href="javascript:void(0)" class="image_or_video_div"
+                                                            typpe="image" social="linkedin" fordata="image_or_video_linkedin"><label
+                                                                for="">
                                                                 <img src="{{asset('')}}images/Camera_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </label>
@@ -734,11 +754,25 @@ position: relative;
                                                         </a>
                                                     </li>
                                                 </ul>
+                                                <div class="d-none" id="image_div_linked"><label for="file" style="margin-top: 20px;"">
+                                                       <!--  <i class="fa-solid fa-xmark cancel_mark"></i> -->
+                                                    <span id="file_error_link"></span>
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="fb" fordata="image_or_video_linkedin">
+                                                                <label for="image_or_video_linkedin">
+                                                                        <img src="{{asset('')}}images/plus.png"
+                                                                        class="img-fluid" alt=""  width="20px" height="20px"/>
+                                                                </label>
+                                                            </a> 
+                                                           <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
+                                                  <input type="file" name="linkedin_media[]" multiple
+                                                 class="image d-none file_image_video" id="image_or_video_linkedin"
+                                                 accept="image/*,video/*">
+                                                 <input type="hidden" name="media_type_linkedin" id="media_type_linkedin">
+
+                                                </div>
                                             </div>
-                                            <input type="file" name="linkedin_media[]" multiple
-                                                class="image d-none file_image_video" id="image_or_video_linkedin"
-                                                accept="image/*,video/*">
-                                            <input type="hidden" name="media_type_linkedin" id="media_type_linkedin">
+                                           
 
                                             <div class="tags_input_wrap grid_item">
                                                 <div class="tags_input">
