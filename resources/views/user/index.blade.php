@@ -547,7 +547,7 @@
                                                         </label>
                                                     </a>
                                                     <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                    <input type="file" name="facebook_media[]" 
+                                                    <input type="file" name="facebook_media[]" multiple 
                                                         class="image d-none file_image_video" id="image_or_videofb"
                                                         accept="image/*,video/*" div_to_open="facebook">
                                                     <input type="hidden" name="media_type_facebook" id="media_type_fb">
