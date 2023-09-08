@@ -339,11 +339,14 @@
 
          if($(this).attr('social') == 'fb')
             {
-                         $('#image_div').toggleClass('d-none');
+              $('#image_div').toggleClass('d-none');
 
             }else if($(this).attr('social') == 'insta'){
+
                 $('#image_div_ins').toggleClass('d-none');
+
             }else if($(this).attr('social') == 'linkedin'){
+
                 $('#image_div_linked').toggleClass('d-none');
             }
 
@@ -352,17 +355,22 @@
            
         });
 
-// my code end
+
       $(document).on("click","#cnad",function() {
       
-       
-        $(this).closest('input').remove();
+        $(this).prev('.removeit_preview').remove();
+        $(this).next('.removeit_file').remove();
+        $(this).remove();
 
     });
 
 
+     
+
+// my code end
 
         $('.file_image_video').change(function (e) {
+
 
         // my code
                  var file, img,imgwidh,imgheight;
@@ -372,6 +380,7 @@
                      ext=  String(ext).split('/');
                      ext = ext[1];
                  var socialicon=$(this).attr('id');
+                 var error_status= "false";
 
                    $("#file_error_fb").html("");
                    $("#file_error_ins").html("");
@@ -379,48 +388,44 @@
 
 
                 if ((file = this.files[0])) {
+
+
                     img = new Image();
                     var objectUrl = _URL.createObjectURL(file);
                     img.onload = function ()
                     {
+
                             imgwidh=this.width;
                             imgheight= this.height;
-
-//////********************************//**************Valiation of Facebook dimension start**************//****************//****************//
-
-                             if (socialicon == 'image_or_videofb')
-                            {
-                                if((imgwidh > '2000') || (imgheight > '2000')) 
-                                  {
-
-                                     $("#file_error_fb").html("<p style='color:#FF0000'>Dimension should be 100x100</p>");
-                                   return false;
-                                  }
-                            }
+                           var aspectRatio = (imgwidh/imgheight).toFixed(2);
+                         
+                      
 //////********************************//**************Valiation of Insta dimension start**************//****************//****************//
-
-                      else if (socialicon=='image_or_video_insta')
+                      if (socialicon=='image_or_video_insta')
                             {
-                                if(imgwidh>'1000' || imgheight > '1000') 
+                                if (!(aspectRatio ==((4/5).toFixed(2)) || aspectRatio == ((16/9).toFixed(2)))) 
                                   {
-                                     $("#file_error_ins").html("<p style='color:#FF0000'>Dimension should be 100x100</p>");
-                                    return false;
+                                     $("#file_error_ins").html("<p style='color:#FF0000'>Sorry! can't post image required 4:5 or 16:9 ratio image</p>");
+                                      error_status= "true";
+                                   
+                                  return false;
                                   }
                             }
 //////********************************//**************Valiation of Linked dimension start**************//****************//****************//
 
                      else if (socialicon=='image_or_video_linkedin')
                             {
-                                if(imgwidh>'1000' || imgheight>'1000') 
+                               if (!(aspectRatio ==((4/5).toFixed(2)) || aspectRatio == ((16/9).toFixed(2))))
                                   {
-                                     $("#file_error_link").html("<p style='color:#FF0000'>Dimension should be 100x100</p>");
-                                    return false;
+                                     $("#file_error_link").html("<p style='color:#FF0000'>Sorry! can't post image required 4:5 or 16:9 ratio image</p>");
+                                     error_status= "true";
+                                     return false;
                                   }
                             }
                    };
+
                     img.src = objectUrl;
                 }    
-
 //////********************************//**************Valiation of Facebook start**************//****************//****************//
 
                   if (socialicon=='image_or_videofb')
@@ -435,7 +440,7 @@
 //  extension valiation
                     if((ext != 'png') && (ext != 'jpeg') && (ext !='gif') && (ext != 'jpg') ) 
                           {
-                            $("#file_error_fb").html("<p style='color:#FF0000'>Image should be png</p>");
+                            $("#file_error_fb").html("<p style='color:#FF0000'>Image should be jpeg,jpg,png,gif</p>");
                             return false;
                           }
                     }
@@ -454,7 +459,7 @@
 //  extension valiation
                     if((ext != 'png') && (ext != 'jpeg') && (ext !='gif') && (ext != 'jpg') ) 
                           {
-                             $("#file_error_ins").html("<p style='color:#FF0000'>Image should be jpeg</p>");
+                             $("#file_error_ins").html("<p style='color:#FF0000'>Image should be jpeg,jpg,png,gif</p>");
                             return false;
                           }
 
@@ -471,7 +476,7 @@
 //  extension valiation
                     if((ext != 'png') && (ext != 'jpeg') && (ext !='gif') && (ext != 'jpg') ) 
                           {
-                             $("#file_error_link").html("<p style='color:#FF0000'>Image should be jpeg</p>");
+                             $("#file_error_link").html("<p style='color:#FF0000'>Image should be jpeg,jpg,png,gif</p>");
                             return false;
                           }
                    }
@@ -489,7 +494,6 @@
             if($(this).attr('id')=='image_or_video_insta'){
                 $('.must_add_image').addClass('d-none');
             }
-
             var file = e.target.files[0];
 
             if (file) {
@@ -509,19 +513,19 @@
 
                         if(socialicon=='image_or_videofb')                      
                             {
-                               $("#image_or_videofb").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result})).append("<a href='#' id='cnad'><i class='fa-solid fa-xmark cancel_mark'></i></a>");
-                               $("#image_or_videofb").parent().append($("<input/>",{name:"myfile[]",id:'myfile',type:'file','src':e.target.result}).addClass('d-none')).append("");
+                               $("#image_or_videofb").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result, class:'removeit_preview'})).append("<a href='#' id='cnad'><i class='fa-solid fa-xmark cancel_mark'></i></a>");
+                               $("#image_or_videofb").parent().append($("<input/>",{name:"myfile_fb[]",id:'myfile_fb',type:'file','src':e.target.result, class:'removeit_file'}).addClass('d-none')).append("");
                        
                             }else if(socialicon=='image_or_video_insta')                    
 
                             {
-                              $("#image_or_video_insta").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result})).append("");
-                              $("#image_or_video_insta").parent().append($("<input/>",{name:"myfile[]",id:'myfile',type:'file','src':e.target.result}).addClass('d-none')).append("");
+                              $("#image_or_video_insta").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result,class:'removeit_preview'})).append("<a href='#' id='cnad'><i class='fa-solid fa-xmark cancel_mark'></i></a>");
+                              $("#image_or_video_insta").parent().append($("<input/>",{name:"myfile_insta[]",id:'myfile_insta',type:'file','src':e.target.result, class:'removeit_file'}).addClass('d-none')).append("");
                        
                             }
                             else if (socialicon=='image_or_video_linkedin') {
-                                $("#image_or_video_linkedin").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result})).append("");
-                              $("#image_or_video_linkedin").parent().append($("<input/>",{name:"myfile[]",id:'myfile',type:'file','src':e.target.result}).addClass('d-none')).append("");
+                                $("#image_or_video_linkedin").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result,class:'removeit_preview'})).append("<a href='#' id='cnad'><i class='fa-solid fa-xmark cancel_mark'></i></a>");
+                              $("#image_or_video_linkedin").parent().append($("<input/>",{name:"myfile_link[]",id:'myfile_link',type:'file','src':e.target.result, class:'removeit_file'}).addClass('d-none')).append("");
                        
                             }
 

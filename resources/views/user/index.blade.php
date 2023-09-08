@@ -534,8 +534,13 @@ position: relative;
                                                     <input type="file" name="facebook_media[]" multiple
                                                     class="image d-none file_image_video" id="image_or_videofb"
                                                     accept="image/*,video/*" div_to_open="facebook">
+
                                                     <input type="hidden" name="media_type_facebook" id="media_type_fb">
                                                     <p id="error1" style="display:none; color:#FF0000;">
+
+                                                          <input type="file" name="nowtesting[]" multiple
+                                                    class="image d-none " id=""
+                                                    accept="image/*,video/*" div_to_open="facebook">
 
                                                 </div>
                      <!-- end my coed -->  </div>
