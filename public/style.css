@@ -24,7 +24,7 @@
 :root {
     --baseColor: #2176BB;
     --secondaryColor: #1D3557;
-    --lightColor: #FFFFFF;
+    /* --lightColor: #FFFFFF; */
     --grayColor: #E3E3E3;
     --darkColor: #475464;
 
@@ -447,15 +447,21 @@
     padding: 10px 10px;
     height: inherit;
     line-height: 1.25;
-    border: 1px solid #e4e2e2;
+    /* border: 1px solid #e4e2e2; */
     -moz-box-shadow: -1px 2px 7px 3px rgba(0, 0, 0, 0.25) inset;
-    min-height: 130px;
+    min-height: 100px;
+    font-weight: 300 !important;
+    color: #000;
 }
-
+.create_preview_post .create_post .form-control::placeholder{
+    font-weight: 300 !important;
+    color: #000;
+}
 .create_preview_post .create_post .form-control:active,
 .create_preview_post .create_post .form-control:focus {
-    box-shadow: none;
-    border: 1px solid var(--baseColor);
+    /* box-shadow: none; */
+    /* border: 1px solid var(--baseColor); */
+    
 }
 
 /* .create_preview_post .create_post .icon_buttons_tags {
@@ -499,19 +505,22 @@
 }
 
 .create_preview_post .create_post .post_now_button .btn {
-    color: var(--lightColor);
-    background: #63ABF5;
+    /* color: var(--lightColor);
+    background: #63ABF5; */
+    background-color: transparent;
+    border: 1px solid #e4e2e2 !important;
     font-family: var(--baseFont);
     font-weight: 700;
     font-size: 16px;
     min-width: 140px;
     border: 1px solid var(--darkColor);
     border-radius: 5px;
-    padding: 8px 15px;
+    padding: 6px 15px;
     text-align: center;
     -webkit-transition: all 0.2s ease-in;
     -moz-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
+    border-radius: 10px;
 }
 
 .create_preview_post .create_post .post_now_button .btn:hover {
@@ -1918,7 +1927,7 @@ body.dark .home .text{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 25px;
+    /* padding-left: 25px; */
 } 
 .clearfix.clearfix2{
     display: flex;
@@ -2070,6 +2079,9 @@ width: 95%;
 }
 .emoji_parent.emoji_parent2{
 position: relative;
+border: 1px solid #e4e2e2;
+box-shadow: inset 0 0 6px 0px rgba(0, 0, 0, 0.18);
+border-radius: 5px;
 }
 .expand_icon{
         position: absolute;
@@ -2079,14 +2091,74 @@ position: relative;
 
 .tags_input .selection .select2-selection{
     border: 1px solid #e4e2e2;
+    box-shadow: inset 0 0 6px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    height: 40px;
 }
 .tags_input .select2-container--default.select2-container--focus .select2-selection--multiple {
     border: 1px solid #e4e2e2 !important;
     outline: 0;
+    margin-top: 9px;
 }
 .plus_add_icon{
     position: relative;
 }
+.fb_card_v{
+   color: #243465;
+   font-size: 23px;
+}
+.fouteen_k_custom{
+    margin-right: 16px;
+}
+.select2-container .select2-search--inline .select2-search__field{
+margin-top: 10px !important;
+}
+.post_later_now_btn.post_later_now_btn2{
+background: transparent;
+color: #000;
+}
+.pos_card{
+    padding: 0 10px;
+}
+.post_later_now_btn.post_later_now_btn2:hover{
+background-color: transparent !important;
+color: #000 !important;
+}
+.post_later_now_btn:hover{
+    color: #fff !important;
+}
+.plus_img{
+    margin-left: 10px;
+}
+.sm_container{
+    display: flex;
+    gap: 0 4px;
+}
+.cross_img_con{
+    position: relative;
+}
+#cnad{
+    position: absolute;
+    right: -4px;
+    color: #000;
+    text-decoration: none;
+    /* bottom: 3px; */
+    top: -5px;
+}
+.cancel_mark{
+    background: #fff;
+    border-radius: 50px;
+    width: 15px;
+    display: flex !important;
+    justify-content: center;
+    color: #0c0c0b;
+    font-size: 14px;
+}
+
+
+
+
+
 /* raziullah card css */
 
 #product-order-chart {
@@ -2100,7 +2172,7 @@ position: relative;
 }
 .card.custom_card {
     border: none;
-    border-radius: 30px;
+    border-radius: 18px;
     width: 325px;
     height: auto;
     filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.20));
@@ -2119,6 +2191,7 @@ position: relative;
     color: #848A9C;
     font-size: 14px;
     margin-top: 5px;
+    font-weight: 400;
 }
 
 
@@ -2162,7 +2235,7 @@ position: relative;
     align-items: center ;
 }
 .dropdown.dropdown1{
-    margin: 28px 10px 10px 10px;
+    margin: 10px;
     text-align: right;
 }
 

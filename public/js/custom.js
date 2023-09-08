@@ -500,7 +500,7 @@
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     var mediaType = file.type.split('/')[0];
-
+                    var img_con = `<div class="cross_img_con"> <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>  </div>`;
                     if (mediaType === 'image') {
                         $('.preview_image').removeClass('d-none');
                         $('.preview_image_my').removeClass('d-none');
@@ -513,8 +513,11 @@
 
                         if(socialicon=='image_or_videofb')                      
                             {
-                               $("#image_or_videofb").parent().append($("<img/>",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result, class:'removeit_preview'})).append("<a href='#' id='cnad'><i class='fa-solid fa-xmark cancel_mark'></i></a>");
-                               $("#image_or_videofb").parent().append($("<input/>",{name:"myfile_fb[]",id:'myfile_fb',type:'file','src':e.target.result, class:'removeit_file'}).addClass('d-none')).append("");
+
+                                $("#image_or_videofb").parent().append(img_con);
+                            //    $("#image_or_videofb").parent().append($("",{name:"pic",accept:'image/*',id:'teting',width:50,height:50,'src':e.target.result})).append("<a href='#' id='cnad'><i class='fa-solid fa-xmark cancel_mark'></i></a>");
+                               $("#image_or_videofb").parent().append($("<input/>",{name:"myfile[]",id:'myfile',type:'file','src':e.target.result}).addClass('d-none')).append("");
+
                        
                             }else if(socialicon=='image_or_video_insta')                    
 
