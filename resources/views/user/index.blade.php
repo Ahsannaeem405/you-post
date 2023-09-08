@@ -476,70 +476,11 @@
                                             </ul>
                                         </div>
 
-                                        <div class="icon_buttons_tags mt-3">
-                                            <div class="icon_buttons grid_item">
-                                                <ul class="p-0">
-                                                    <li>
-                                                        <a href="javascript:void(0)" class="image_or_video_div"
-                                                            typpe="image" social="fb" fordata="image_div"><label for="">
-                                                                <img src="{{asset('')}}images/Camera_Icon.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </label>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)" class="image_or_video"
-                                                            typpe="video" social="fb" fordata="image_or_videofb"><label
-                                                                for="image_or_videofb">
-                                                                <img src="{{asset('')}}images/Video_Player_Icon.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </label>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)" class="open_emoji">
-                                                            <img src="{{asset('')}}images/Emoji_Icon.png"
-                                                                class="img-fluid" alt="" />
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
-                                                <!-- my code -->
-
-                                                <div class="d-none" id="image_div"><label for="file" style="margin-top: 20px;">
-                                                       
-                                                    <span id="file_error_fb"></span>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                                typpe="image" social="fb" fordata="image_or_videofb">
-                                                                <label for="image_or_videofb">
-                                                                        <img src="{{asset('')}}images/plus.png"
-                                                                        class="img-fluid" alt=""  width="20px" height="20px"/>
-                                                                </label>
-                                                            </a> 
-                                                           <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                    <input type="file" name="facebook_media[]" multiple
-                                                    class="image d-none file_image_video" id="image_or_videofb"
-                                                    accept="image/*,video/*" div_to_open="facebook">
-
-                                                    <input type="hidden" name="media_type_facebook" id="media_type_fb">
-                                                    <p id="error1" style="display:none; color:#FF0000;">
-
-                                                          <input type="file" name="nowtesting[]" multiple
-                                                    class="image d-none " id=""
-                                                    accept="image/*,video/*" div_to_open="facebook">
-
-                                                </div>
-                     <!-- end my coed -->  </div>
-
-                                           
-
-                                            <div class="tags_input_wrap grid_item">
-                                                <div class="tags_input">
-                                                    <select name="facebook_tag[]" class="form-control selectmultiple"
-                                                        multiple id="">
-                                                    </select>
-
-                                                </div>
+                                        @if(in_array(('Facebook'),auth()->user()->account->platforms))
+                                        <fieldset class="wizard-fieldset fb">
+                                            <div class="ml-2">
+                                                <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                    class="wizard-fieldset_facebook">Facebook</span>
 
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2">
@@ -606,7 +547,7 @@
                                                         </label>
                                                     </a>
                                                     <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                    <input type="file" name="facebook_media[]" multiple
+                                                    <input type="file" name="facebook_media[]" 
                                                         class="image d-none file_image_video" id="image_or_videofb"
                                                         accept="image/*,video/*" div_to_open="facebook">
                                                     <input type="hidden" name="media_type_facebook" id="media_type_fb">
