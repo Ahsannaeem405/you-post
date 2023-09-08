@@ -522,6 +522,7 @@ body.dark .home .text {
         border: 0;
         border-radius: 30px;
         box-shadow: 0 !important;
+        padding: 4px 0px;
     }
 
     .sidebar.close~.home {
@@ -681,7 +682,7 @@ body.dark .home .text {
                                     style="padding-left:12px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
                                 <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
-                                    style="padding-left:30px; " />
+                                    style="padding-left:8rem" />
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($accounts as $account)

@@ -1577,6 +1577,7 @@ display: none;
      font-family: 'popins', sans-serif !important;
      font-weight: 600;
      color: #71717A;
+     display: none;
  }
  
  .fc-right {
@@ -1996,6 +1997,7 @@ display: none;
  .create_preview_post .create_post .form-control {
      font-family: 'Poppins', sans-serif !important;
      box-shadow: none !important;
+     min-height: 66px !important;
  
  }
  
