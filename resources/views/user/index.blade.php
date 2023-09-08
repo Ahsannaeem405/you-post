@@ -53,7 +53,9 @@
 
 .create_preview_post_index_item .preview_post,
 .create_preview_post_index_item .preview_post .preview_wrap {
-    width: 100% !important;
+    width: 95% !important;
+    margin: auto;
+
 }
 
 .create_preview_post_index .create_post {}
@@ -425,6 +427,10 @@
         right: unset;
     }
 }
+
+#selectedValues span {
+    color: #fff;
+}
 </style>
 @section('content')
 
@@ -525,9 +531,8 @@
                                                 <div class="tags_input_wrap grid_item">
                                                     <div class="tags_input">
                                                         <select name="facebook_tag[]"
-                                                            class="form-control selectmultiple" multiple id="">
+                                                            class="form-control selectmultiple1" multiple id="">
                                                         </select>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -535,22 +540,24 @@
                                             <!-- append div waleed start -->
                                             <div class="d-none" id="image_div"><label for="file"
                                                     style="margin-top: 20px;">
-                                                <div class="sm_container">
-                                                    <span id="file_error_fb"></span>
-                                                    <a href="javascript:void(0)" class="image_or_video" typpe="image"
-                                                        social="fb" fordata="image_or_videofb">
-                                                        <label for="image_or_videofb" class="plus_img">
-                                                            <img src="{{asset('')}}images/plus.png" class="img-fluid"
-                                                                alt="" width="20px" height="20px" />
-                                                        </label>
-                                                    </a>
-                                                    <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                    <input type="file" name="facebook_media[]" multiple
-                                                        class="image d-none file_image_video" id="image_or_videofb"
-                                                        accept="image/*,video/*" div_to_open="facebook">
-                                                    <input type="hidden" name="media_type_facebook" id="media_type_fb">
-                                                    <p id="error1" style="display:none; color:#FF0000;">
-                                                 </div>
+                                                    <div class="sm_container">
+                                                        <span id="file_error_fb"></span>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="image" social="fb" fordata="image_or_videofb">
+                                                            <label for="image_or_videofb" class="plus_img">
+                                                                <img src="{{asset('')}}images/plus.png"
+                                                                    class="img-fluid" alt="" width="20px"
+                                                                    height="20px" />
+                                                            </label>
+                                                        </a>
+                                                        <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
+                                                        <input type="file" name="facebook_media[]" multiple
+                                                            class="image d-none file_image_video" id="image_or_videofb"
+                                                            accept="image/*,video/*" div_to_open="facebook">
+                                                        <input type="hidden" name="media_type_facebook"
+                                                            id="media_type_fb">
+                                                        <p id="error1" style="display:none; color:#FF0000;">
+                                                    </div>
 
                                             </div>
                                             <!-- append div waleed start -->
@@ -991,6 +998,7 @@
                                         <span id="mypostresult" class="mypostresult">Write your post...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
+                                    <div id="selectedValues"></div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="MainMobileimg">
@@ -2348,42 +2356,67 @@ function setActiveItem(event) {
 </script>
 
 <script>
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    // $('.js-example-basic-single').select2();
-    $('.add_to_post').click(function() {
-        var content = $('#gpt_content').text();
-        insertContent(content);
+//     // $('.js-example-basic-single').select2();
+//     $('.add_to_post').click(function() {
+//         var content = $('#gpt_content').text();
+//         insertContent(content);
 
-        var tags = $('#gpt_tags').text();
-        insertTag(tags);
+//         var tags = $('#gpt_tags').text();
+//         insertTag(tags);
 
-        var imageSrc = $('.owl-item.active').find('img').attr('src');
-        $('.preview_image').attr('src', imageSrc).removeClass('d-none');
-        $('.video_preview').addClass('d-none');
+//         var imageSrc = $('.owl-item.active').find('img').attr('src');
+//         $('.preview_image').attr('src', imageSrc).removeClass('d-none');
+//         $('.video_preview').addClass('d-none');
 
-    });
+//     });
 
-    $("#addContent").on("click", function() {
-        var content = $('#gpt_content').text();
-        insertContent(content);
-    });
+//     $("#addContent").on("click", function() {
+//         var content = $('#gpt_content').text();
+//         insertContent(content);
+//     });
 
-    $("#addTags").on("click", function() {
-        var tags = $('#gpt_tags').text();
-        insertTag(tags);
-    });
+//     $("#addTags").on("click", function() {
+//         var tags = $('#gpt_tags').text();
+//         insertTag(tags);
+//     });
 
-    function insertContent(text) {
-        $('.wizard-fieldset.show').find('.emojiarea').val(text);
-        $('#mypostresult').text(text);
-    }
+//     function insertContent(text) {
+//         $('.wizard-fieldset.show').find('.emojiarea').val(text);
+//         $('#mypostresult').text(text);
+//     }
 
-    function insertTag(tag) {
-        $('.wizard-fieldset.show').find('.ai-tag').val(tag);
-        $('#mynameresult').text(tag);
-    }
-});
+//     // Array to store selected values
+//     var selectedValues = [];
+
+//     // Event handler for select2 change
+//     $('.selectmultiple1').on('change', function(e) {
+//         var selectedValue = e.target.value;
+//         selectedValues.push(selectedValue);
+//         // Append selected value to the div
+//         $('#selectedValues').append('<span class="tag">#' + selectedValue + '</span>');
+//     });
+//     // Event handler for removing a tag
+//     $(document).on('click', '.select2-selection__choice__remove', function() {
+//         alert(1);
+//         $(this).find('#selectedValues').remove('span.tag');
+//     });
+//     // Event handler for save button
+//     $('#saveButton').on('click', function() {
+//         // Convert selectedValues to tags
+//         var tags = selectedValues.map(function(value) {
+//             return '#' + value;
+//         });
+//         // Display the tags
+//         alert(tags.join(' '));
+//     });
+
+//     function insertTag(tag) {
+//         $('.wizard-fieldset.show').find('.ai-tag').val(tag);
+//         $('#mynameresult').text(tag);
+//     }
+// });
 </script>
 
 

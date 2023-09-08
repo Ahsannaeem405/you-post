@@ -132,6 +132,9 @@
     .table>:not(caption)>*>* {
         padding: 6px 4px !important;
     }
+    .create_preview_post .create_post .post_now_button .btn {
+        font-size: 12px !important;
+    }
 }
 
 /* salman small break point only for calendar start*/
@@ -228,6 +231,10 @@
         height: 8px !important;
         top: 47px !important;
         left: 4px !important;
+    }
+    .post_now_button input {
+        width: calc(95% - 0px) !important;
+        /* margin: 5px ; */
     }
 
     /* salman 9/8/23 */

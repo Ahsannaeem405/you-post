@@ -162,6 +162,11 @@
             placeholder:'Add Tags',
             tokenSeparators: [',', ' ']
         });
+        $('.selectmultiple1').select2({
+            tags: true,
+            placeholder:'Add Tags',
+            tokenSeparators: [',', ' ']
+        });
         setTimeout(function () {
             videoThumnail();
         }, 100);
