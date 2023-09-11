@@ -542,22 +542,24 @@
                                             <!-- append div waleed start -->
                                             <div class="d-none" id="image_div"><label for="file"
                                                     style="margin-top: 20px;">
-                                                <div class="sm_container">
-                                                    <span id="file_error_fb"></span>
-                                                    <a href="javascript:void(0)" class="image_or_video" typpe="image"
-                                                        social="fb" fordata="image_or_videofb">
-                                                        <label for="image_or_videofb" class="plus_img">
-                                                            <img src="{{asset('')}}images/plus.png" class="img-fluid"
-                                                                alt="" width="20px" height="20px" />
-                                                        </label>
-                                                    </a>
-                                                    <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                    <input type="file" name="facebook_media[]" multiple 
-                                                        class="image d-none file_image_video" id="image_or_videofb"
-                                                        accept="image/*,video/*" div_to_open="facebook">
-                                                    <input type="hidden" name="media_type_facebook" id="media_type_fb">
-                                                    <p id="error1" style="display:none; color:#FF0000;">
-                                                 </div>
+                                                    <div class="sm_container">
+                                                        <span id="file_error_fb"></span>
+                                                        <a href="javascript:void(0)" class="image_or_video"
+                                                            typpe="image" social="fb" fordata="image_or_videofb">
+                                                            <label for="image_or_videofb" class="plus_img">
+                                                                <img src="{{asset('')}}images/plus.png"
+                                                                    class="img-fluid" alt="" width="20px"
+                                                                    height="20px" />
+                                                            </label>
+                                                        </a>
+                                                        <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
+                                                        <input type="file" name="facebook_media[]" multiple
+                                                            class="image d-none file_image_video" id="image_or_videofb"
+                                                            accept="image/*,video/*" div_to_open="facebook">
+                                                        <input type="hidden" name="media_type_facebook"
+                                                            id="media_type_fb">
+                                                        <p id="error1" style="display:none; color:#FF0000;">
+                                                    </div>
 
                                             </div>
                                             <!-- append div waleed start -->
@@ -587,7 +589,7 @@
 
                                             </div>
 
-                                            <div class="form-group emoji_parent">
+                                            <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     required name="instagram_content" id="" cols="30" rows="3"
                                                     class="form-control wizard-required emojiarea "
@@ -598,14 +600,6 @@
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0">
                                                         <li>
-                                                            <!-- <a href="javascript:void(0)" class="image_or_video_div"
-                                                            typpe="image" social="insta"
-                                                            fordata="image_or_video_insta"><label
-                                                                for="image_or_video_insta">
-                                                                <img src="{{asset('')}}images/Camera_Icon.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </label>
-                                                        </a> -->
                                                             <a href="javascript:void(0)" class="image_or_video_div"
                                                                 typpe="image" social="insta"
                                                                 fordata="image_or_video_insta"><label for="">
@@ -631,32 +625,7 @@
                                                             </a>
                                                         </li>
                                                     </ul>
-                                                    <div class="d-none" id="image_div_ins"><label for="file"
-                                                            style="margin-top: 20px;  "">
-                                                       <!--  <i class=" fa-solid fa-xmark cancel_mark"></i> -->
-                                                            <span id="file_error_ins"></span>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                                typpe="image" social="fb"
-                                                                fordata="image_or_video_insta">
-                                                                <label for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/plus.png"
-                                                                        class="img-fluid" alt="" width="20px"
-                                                                        height="20px" />
-                                                                </label>
-                                                            </a>
-                                                            <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                            <input type="file" name="insta_media[]" required multiple
-                                                                class="image d-none file_image_video wizard-required"
-                                                                id="image_or_video_insta" accept="image/*,video/*"
-                                                                div_to_open="instagram">
-                                                            <input type="hidden" name="media_type_instagram"
-                                                                id="media_type_insta">
-
-                                                    </div>
                                                 </div>
-
-
-
                                                 <div class="tags_input_wrap grid_item">
                                                     <div class="tags_input">
                                                         <select name="instagram_tag[]"
@@ -666,6 +635,26 @@
 
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="d-none" id="image_div_ins"><label for="file"
+                                                    style="margin-top: 20px;  "">
+                                                       <!--  <i class=" fa-solid fa-xmark cancel_mark"></i> -->
+                                                    <span id="file_error_ins"></span>
+                                                    <a href="javascript:void(0)" class="image_or_video" typpe="image"
+                                                        social="fb" fordata="image_or_video_insta">
+                                                        <label for="image_or_video_insta" class="plus_img">
+                                                            <img src="{{asset('')}}images/plus.png" class="img-fluid"
+                                                                alt="" width="20px" height="20px" />
+                                                        </label>
+                                                    </a>
+                                                    <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
+                                                    <input type="file" name="insta_media[]" required multiple
+                                                        class="image d-none file_image_video wizard-required"
+                                                        id="image_or_video_insta" accept="image/*,video/*"
+                                                        div_to_open="instagram">
+                                                    <input type="hidden" name="media_type_instagram"
+                                                        id="media_type_insta">
+
                                             </div>
                                             <div class="form-group clearfix clearfix2">
                                                 <a href="javascript:;"
@@ -679,7 +668,7 @@
                                         @if(in_array(('Twitter'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset twitter">
                                             <h5>Edit Twitter</h5>
-                                            <div class="form-group emoji_parent">
+                                            <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     required name="twitter_content" id="" cols="30" rows="3"
                                                     class="form-control wizard-required emojiarea mention"
@@ -728,7 +717,7 @@
                                         <fieldset class="wizard-fieldset linkedin">
                                             <h5>Edit Linkedin</h5>
 
-                                            <div class="form-group emoji_parent">
+                                            <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     required name="linkedin_content" id="" cols="30" rows="3"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
@@ -772,27 +761,6 @@
                                                             </a>
                                                         </li>
                                                     </ul>
-                                                    <div class="d-none" id="image_div_linked"><label for="file"
-                                                            style="margin-top: 20px;"">
-                                                       <!--  <i class=" fa-solid fa-xmark cancel_mark"></i> -->
-                                                            <span id="file_error_link"></span>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                                typpe="image" social="fb"
-                                                                fordata="image_or_video_linkedin">
-                                                                <label for="image_or_video_linkedin">
-                                                                    <img src="{{asset('')}}images/plus.png"
-                                                                        class="img-fluid" alt="" width="20px"
-                                                                        height="20px" />
-                                                                </label>
-                                                            </a>
-                                                            <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                            <input type="file" name="linkedin_media[]" multiple
-                                                                class="image d-none file_image_video"
-                                                                id="image_or_video_linkedin" accept="image/*,video/*">
-                                                            <input type="hidden" name="media_type_linkedin"
-                                                                id="media_type_linkedin">
-
-                                                    </div>
                                                 </div>
 
 
@@ -804,6 +772,25 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="d-none" id="image_div_linked"><label for="file"
+                                                            style="margin-top: 20px;"">
+                                                            <span id="file_error_link"></span>
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="fb"
+                                                                fordata="image_or_video_linkedin">
+                                                                <label for="image_or_video_linkedin" class="plus_img">
+                                                                    <img src="{{asset('')}}images/plus.png"
+                                                                        class="img-fluid" alt="" width="20px"
+                                                                        height="20px" />
+                                                                </label>
+                                                            </a>
+                                                            <input type="file" name="linkedin_media[]" multiple
+                                                                class="image d-none file_image_video"
+                                                                id="image_or_video_linkedin" accept="image/*,video/*">
+                                                            <input type="hidden" name="media_type_linkedin"
+                                                                id="media_type_linkedin">
+
+                                                    </div>
                                             <div class="form-group clearfix clearfix2">
                                                 <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
