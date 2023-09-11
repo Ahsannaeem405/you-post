@@ -540,8 +540,9 @@
                                             </div>
                                             <!-- my code -->
                                             <!-- append div waleed start -->
-                                            <div class="d-none" id="image_div"><label for="file"
+                                            <div class="d-none image_div" id="image_div"><label for="file"
                                                     style="margin-top: 20px;">
+                                                    <span id="file_error_fb"></span>
                                                     <div class="sm_container">
                                                         <span id="file_error_fb"></span>
                                                         <a href="javascript:void(0)" class="image_or_video"
@@ -553,7 +554,7 @@
                                                             </label>
                                                         </a>
                                                         <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                        <input type="file" name="facebook_media[]" multiple
+                                                        <input type="file" name="facebook_media[]" 
                                                             class="image d-none file_image_video" id="image_or_videofb"
                                                             accept="image/*,video/*" div_to_open="facebook">
                                                         <input type="hidden" name="media_type_facebook"
@@ -639,7 +640,9 @@
                                             <div class="d-none" id="image_div_ins"><label for="file"
                                                     style="margin-top: 20px;  "">
                                                        <!--  <i class=" fa-solid fa-xmark cancel_mark"></i> -->
-                                                    <span id="file_error_ins"></span>
+                                                       <span id="file_error_ins"></span>
+                                                 <div class="sm_container">
+
                                                     <a href="javascript:void(0)" class="image_or_video" typpe="image"
                                                         social="fb" fordata="image_or_video_insta">
                                                         <label for="image_or_video_insta" class="plus_img">
@@ -648,13 +651,13 @@
                                                         </label>
                                                     </a>
                                                     <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                    <input type="file" name="insta_media[]" required multiple
+                                                    <input type="file" name="insta_media[]" required 
                                                         class="image d-none file_image_video wizard-required"
                                                         id="image_or_video_insta" accept="image/*,video/*"
                                                         div_to_open="instagram">
                                                     <input type="hidden" name="media_type_instagram"
                                                         id="media_type_insta">
-
+                                                </div>
                                             </div>
                                             <div class="form-group clearfix clearfix2">
                                                 <a href="javascript:;"
@@ -773,8 +776,10 @@
                                                 </div>
                                             </div>
                                             <div class="d-none" id="image_div_linked"><label for="file"
-                                                            style="margin-top: 20px;"">
-                                                            <span id="file_error_link"></span>
+                                                            style="margin-top: 20px;">
+                                                           <span id="file_error_link"></span>
+                                                         <div class="sm_container">
+                                                                       
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="fb"
                                                                 fordata="image_or_video_linkedin">
@@ -784,12 +789,12 @@
                                                                         height="20px" />
                                                                 </label>
                                                             </a>
-                                                            <input type="file" name="linkedin_media[]" multiple
+                                                            <input type="file" name="linkedin_media[]" 
                                                                 class="image d-none file_image_video"
                                                                 id="image_or_video_linkedin" accept="image/*,video/*">
                                                             <input type="hidden" name="media_type_linkedin"
                                                                 id="media_type_linkedin">
-
+                                                        </div>
                                                     </div>
                                             <div class="form-group clearfix clearfix2">
                                                 <a href="javascript:;"
