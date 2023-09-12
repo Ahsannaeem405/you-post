@@ -41,8 +41,8 @@ class UserController extends Controller
     {
 
 
-
-        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
+        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->get();
+        $todayPost = Post::where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
         foreach ($posts as $post) {
@@ -50,8 +50,8 @@ class UserController extends Controller
                 'id' => $post->id,
                 'title' => $post->content,
                 'start' => $post->posted_at,
-                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
-                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
+//                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
+//                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
             ];
         }
@@ -61,7 +61,7 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages','todayPost'));
 
     }
 

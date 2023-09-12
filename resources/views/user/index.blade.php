@@ -554,7 +554,7 @@
                                                             </label>
                                                         </a>
                                                         <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                        <input type="file" name="facebook_media[]" 
+                                                        <input type="file" name="facebook_media[]"
                                                             class="image d-none file_image_video" id="image_or_videofb"
                                                             accept="image/*,video/*" div_to_open="facebook">
                                                         <input type="hidden" name="media_type_facebook"
@@ -651,7 +651,7 @@
                                                         </label>
                                                     </a>
                                                     <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                    <input type="file" name="insta_media[]" required 
+                                                    <input type="file" name="insta_media[]" required
                                                         class="image d-none file_image_video wizard-required"
                                                         id="image_or_video_insta" accept="image/*,video/*"
                                                         div_to_open="instagram">
@@ -779,7 +779,7 @@
                                                             style="margin-top: 20px;">
                                                            <span id="file_error_link"></span>
                                                          <div class="sm_container">
-                                                                       
+
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="fb"
                                                                 fordata="image_or_video_linkedin">
@@ -789,7 +789,7 @@
                                                                         height="20px" />
                                                                 </label>
                                                             </a>
-                                                            <input type="file" name="linkedin_media[]" 
+                                                            <input type="file" name="linkedin_media[]"
                                                                 class="image d-none file_image_video"
                                                                 id="image_or_video_linkedin" accept="image/*,video/*">
                                                             <input type="hidden" name="media_type_linkedin"
@@ -1488,80 +1488,30 @@
                     </div>
                     <div class="div2">
                         <h1>
-                            TUESDAY
+                            {{\Carbon\Carbon::now()->format('l')}}
                         </h1>
-                        <h3>9/8/2023</h3>
+                        <h3>{{\Carbon\Carbon::now()->format('d/m/Y')}}</h3>
                     </div>
-                    <div class="div3">
-                        <div>
-                            <span class="clr"></span>
+                    @foreach($todayPost as $today)
+                        <div class="div3">
+                            <div>
+                                <span class="{{$today->posted_at_moment=='now' ? 'clr4' : 'clr2'}}"></span>
+                            </div>
+                            <div>
+                                <img src="\images\Ellipse 17 (1).png" alt="">
+                            </div>
+                            <div class="myspan">
+                                <span class="sp1">{{$today->content}} </span>
+                                <p class="sp2">{{$today->posted_at_moment=='now' ? 'Posted' : 'Scheduled'}}</p>
+                            </div>
+                            <div class="Edit" onclick="get_detail({{$today->id}});">
+                                <i class='fas fa-edit'></i>
+                                <a href="#"> <span>Edit</span></a>
+                            </div>
                         </div>
-                        <div>
-                            <img src="\images\Ellipse 17 (1).png" alt="">
-                        </div>
-                        <div class="myspan">
-                            <span class="sp1">This is the caption </span>
-                            <p class="sp2">Scheduled</p>
-                        </div>
-                        <div class="Edit">
-                            <i class='fas fa-edit'></i>
-                            <a href=""> <span>Edit</span></a>
-                        </div>
-                    </div>
-                    <div class="div3">
-                        <div>
-                            <span class="clr2"></span>
-                        </div>
-                        <div>
-                            <img src="\images\Ellipse 17 (2).png" alt="">
-                        </div>
-                        <div class="myspan">
-                            <span class="sp1">This is the caption </span>
-                            <p class="sp2">Scheduled</p>
-                        </div>
-                        <div class="Edit2">
-                            <i class='fas fa-edit'></i>
-                            <a href=""> <span>Edit</span></a>
-                        </div>
-                    </div>
-                    <div class="div2">
-                        <h1>
-                            Friday
-                        </h1>
-                        <h3>21/8/2023</h3>
-                    </div>
-                    <div class="div3">
-                        <div>
-                            <span class="clr3"></span>
-                        </div>
-                        <div>
-                            <img src="\images\Ellipse 17 (3).png" alt="">
-                        </div>
-                        <div class="myspan">
-                            <span class="sp1">This is the caption </span>
-                            <p class="sp2">Scheduled</p>
-                        </div>
-                        <div class="Edit3">
-                            <i class='fas fa-edit'></i>
-                            <a href=""> <span>Edit</span></a>
-                        </div>
-                    </div>
-                    <div class="div3">
-                        <div>
-                            <span class="clr4"></span>
-                        </div>
-                        <div>
-                            <img src="\images\Ellipse 17.png" alt="">
-                        </div>
-                        <div class="myspan">
-                            <span class="sp1">This is the caption </span>
-                            <p class="sp2">Scheduled</p>
-                        </div>
-                        <div class="Edit4">
-                            <i class='fas fa-edit'></i>
-                            <a href=""> <span>Edit</span></a>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
             </div>
         </div>
@@ -2082,7 +2032,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div></div>
 </section>
 </div>
 
@@ -2292,29 +2242,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-// ---------------------
-// owl.owlCarousel({
-//     loop: true,
-//     margin: 10,
-//     nav: true,
-//     dots: false,
-//     onTranslated: setActiveItem,
-//     responsive: {
-//         0: {
-//             items: 1
-//         },
-//         600: {
-//             items: 2
-//         },
-//         1000: {
-//             items: 2
-//         }
-//     }
-// });
-
 $('.owl-carousel').owlCarousel({
     loop: true,
     autoplay: true,
@@ -2348,67 +2275,7 @@ function setActiveItem(event) {
 </script>
 
 <script>
-// $(document).ready(function() {
 
-//     // $('.js-example-basic-single').select2();
-//     $('.add_to_post').click(function() {
-//         var content = $('#gpt_content').text();
-//         insertContent(content);
-
-//         var tags = $('#gpt_tags').text();
-//         insertTag(tags);
-
-//         var imageSrc = $('.owl-item.active').find('img').attr('src');
-//         $('.preview_image').attr('src', imageSrc).removeClass('d-none');
-//         $('.video_preview').addClass('d-none');
-
-//     });
-
-//     $("#addContent").on("click", function() {
-//         var content = $('#gpt_content').text();
-//         insertContent(content);
-//     });
-
-//     $("#addTags").on("click", function() {
-//         var tags = $('#gpt_tags').text();
-//         insertTag(tags);
-//     });
-
-//     function insertContent(text) {
-//         $('.wizard-fieldset.show').find('.emojiarea').val(text);
-//         $('#mypostresult').text(text);
-//     }
-
-//     // Array to store selected values
-//     var selectedValues = [];
-
-//     // Event handler for select2 change
-//     $('.selectmultiple1').on('change', function(e) {
-//         var selectedValue = e.target.value;
-//         selectedValues.push(selectedValue);
-//         // Append selected value to the div
-//         $('#selectedValues').append('<span class="tag">#' + selectedValue + '</span>');
-//     });
-//     // Event handler for removing a tag
-//     $(document).on('click', '.select2-selection__choice__remove', function() {
-//         alert(1);
-//         $(this).find('#selectedValues').remove('span.tag');
-//     });
-//     // Event handler for save button
-//     $('#saveButton').on('click', function() {
-//         // Convert selectedValues to tags
-//         var tags = selectedValues.map(function(value) {
-//             return '#' + value;
-//         });
-//         // Display the tags
-//         alert(tags.join(' '));
-//     });
-
-//     function insertTag(tag) {
-//         $('.wizard-fieldset.show').find('.ai-tag').val(tag);
-//         $('#mynameresult').text(tag);
-//     }
-// });
 </script>
 
 
@@ -2449,15 +2316,6 @@ function displayCalendar() {
     for (let i = 0; i < 6; i++) {
         tableHtml += '<tr>';
         for (let j = 0; j < 7; j++) {
-            // if (dayNum <= 0) {
-            //   tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
-            // } else if (dayNum <= daysInMonth) {
-            //   const isCurrentDay = (i === 0 && j === dayNum - 1);
-            //   const dayClass = isCurrentDay ? "current-day" : "";
-            //   tableHtml += `<td class="${dayClass}">${String(dayNum).padStart(2, '0')}</td>`;
-            // } else {
-            //   tableHtml += `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
-            // }
             if (dayNum <= 0) {
                 tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
             } else if (dayNum <= daysInMonth) {
@@ -2492,251 +2350,10 @@ window.onload = function() {
 };
 </script>
 
-<script>
-//   document.addEventListener("DOMContentLoaded", function () {
-//   const todayBtn = document.getElementById("today-btn");
-//   const prevBtn = document.getElementById("prev-btn");
-//   const nextBtn = document.getElementById("next-btn");
-//   const currentDateElem = document.getElementById("current-date");
-//   const calendarDaysContainer = document.querySelector(".calendar-days");
 
-//   // Set the current date to display initially
-//   let currentDate = new Date();
-//   currentDateElem.textContent = currentDate.toDateString();
-
-//   // Event listeners for buttons
-//   todayBtn.addEventListener("click", () => {
-//     // Set the current date as today's date
-//     currentDate = new Date();
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   prevBtn.addEventListener("click", () => {
-//     currentDate.setMonth(currentDate.getMonth() - 1);
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   nextBtn.addEventListener("click", () => {
-//     currentDate.setMonth(currentDate.getMonth() + 1);
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-
-//   // Function to generate calendar days and events
-//   function generateCalendar() {
-//     // Clear existing content
-//     calendarDaysContainer.innerHTML = "";
-
-//     const year = currentDate.getFullYear();
-//     const month = currentDate.getMonth();
-//     const daysInMonth = new Date(year, month + 1, 0).getDate();
-//     const firstDay = new Date(year, month, 1).getDay();
-
-//     // Generate calendar days
-//     let dayNum = 1 - firstDay;
-//     for (let i = 0; i < 6; i++) {
-//       const weekRow = document.createElement("div");
-//       weekRow.classList.add("week-row");
-
-//       for (let j = 0; j < 7; j++) {
-//         const dayCell = document.createElement("div");
-//         dayCell.classList.add("day-cell");
-
-//         if (dayNum <= 0 || dayNum > daysInMonth) {
-//           dayCell.classList.add("other-month");
-//         } else {
-//           dayCell.textContent = dayNum;
-//         }
-
-//         weekRow.appendChild(dayCell);
-//         dayNum++;
-//       }
-
-//       calendarDaysContainer.appendChild(weekRow);
-//     }
-//   }
-
-//   // Initial calendar generation
-//   generateCalendar();
-
-
-// });
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   const todayBtn = document.getElementById("today-btn");
-//   const prevBtn = document.getElementById("prev-btn");
-//   const nextBtn = document.getElementById("next-btn");
-//   const currentDateElem = document.getElementById("current-date");
-//   const calendarDaysContainer = document.querySelector(".calendar-days");
-
-//   // Set the current date to display initially
-//   let currentDate = new Date();
-//   currentDateElem.textContent = currentDate.toDateString();
-
-//   // Event listeners for buttons
-//   todayBtn.addEventListener("click", () => {
-//     // Set the current date as today's date
-//     currentDate = new Date();
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   prevBtn.addEventListener("click", () => {
-//     currentDate.setMonth(currentDate.getMonth() - 1);
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   nextBtn.addEventListener("click", () => {
-//     currentDate.setMonth(currentDate.getMonth() + 1);
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   // Function to generate calendar days and events
-//   function generateCalendar() {
-//     // Clear existing content
-//     calendarDaysContainer.innerHTML = "";
-
-//     const year = currentDate.getFullYear();
-//     const month = currentDate.getMonth();
-//     const daysInMonth = new Date(year, month + 1, 0).getDate();
-//     const firstDay = new Date(year, month, 1).getDay();
-
-//     // Generate calendar days
-//     let dayNum = 1 - firstDay;
-//     for (let i = 0; i < 6; i++) {
-//       const weekRow = document.createElement("div");
-//       weekRow.classList.add("week-row");
-
-//       for (let j = 0; j < 7; j++) {
-//         const dayCell = document.createElement("div");
-//         dayCell.classList.add("day-cell");
-
-//         if (dayNum <= 0 || dayNum > daysInMonth) {
-//           dayCell.classList.add("other-month");
-//         } else {
-//           dayCell.textContent = dayNum;
-
-//           const addEventButton = document.createElement("button");
-//           addEventButton.textContent = "+";
-//           addEventButton.classList.add("add-event-btn");
-//           addEventButton.addEventListener("click", () => openEventModal(year, month, dayNum));
-//           dayCell.appendChild(addEventButton);
-//         }
-
-//         weekRow.appendChild(dayCell);
-//         dayNum++;
-//       }
-
-//       calendarDaysContainer.appendChild(weekRow);
-//     }
-//   }
-
-//   function openEventModal(year, month, day) {
-//     const modalContent = prompt(`Enter event for ${day}/${month + 1}/${year}:`);
-//     if (modalContent) {
-//       // In this example, we are just displaying the event as an alert
-//       alert(`Event added: ${modalContent}`);
-//     }
-//   }
-
-//   // Initial calendar generation
-//   generateCalendar();
-// });
-</script>
 
 <script>
-// document.addEventListener("DOMContentLoaded", function () {
-//   const todayBtn = document.getElementById("today-btn");
-//   const prevBtn = document.getElementById("prev-btn");
-//   const nextBtn = document.getElementById("next-btn");
-//   const currentDateElem = document.getElementById("current-date");
-//   const calendarDaysContainer = document.querySelector(".calendar-days");
-//   const dayNamesContainer = document.querySelector(".day-names");
 
-//   // Set the current date to display initially
-//   let currentDate = new Date();
-//   currentDateElem.textContent = currentDate.toDateString();
-
-//   // Define day names
-//   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-//   // Populate day names at the top of the calendar
-//   dayNames.forEach(dayName => {
-//     const dayNameCell = document.createElement("div");
-//     dayNameCell.classList.add("day-name-cell");
-//     dayNameCell.textContent = dayName;
-//     dayNamesContainer.appendChild(dayNameCell);
-
-//   });
-
-//   // Event listeners for buttons
-//   todayBtn.addEventListener("click", () => {
-//     // Set the current date as today's date
-//     currentDate = new Date();
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   prevBtn.addEventListener("click", () => {
-//     currentDate.setMonth(currentDate.getMonth() - 1);
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   nextBtn.addEventListener("click", () => {
-//     currentDate.setMonth(currentDate.getMonth() + 1);
-//     currentDateElem.textContent = currentDate.toDateString();
-//     generateCalendar();
-//   });
-
-//   // Function to generate calendar days and events
-//   function generateCalendar() {
-//     // Clear existing content
-//     calendarDaysContainer.innerHTML = "";
-
-//     const year = currentDate.getFullYear();
-//     const month = currentDate.getMonth();
-//     const daysInMonth = new Date(year, month + 1, 0).getDate();
-//     const firstDay = new Date(year, month, 1).getDay();
-
-//     // Generate calendar days
-//     let dayNum = 1 - firstDay;
-//     for (let i = 0; i < 6; i++) {
-//       const weekRow = document.createElement("div");
-//       weekRow.classList.add("week-row");
-
-//       for (let j = 0; j < 7; j++) {
-//         const dayCell = document.createElement("div");
-//         dayCell.classList.add("day-cell");
-
-//         if (dayNum <= 0 || dayNum > daysInMonth) {
-//           dayCell.classList.add("other-month");
-//         } else {
-//           dayCell.textContent = dayNum;
-//           const dayOfWeek = new Date(year, month, dayNum).toLocaleDateString("en-US", { weekday: "short" });
-//     dayCell.addEventListener("click", () => openEventModal(year, month, dayNum));
-
-//         }
-
-//         weekRow.appendChild(dayCell);
-//         dayNum++;
-//       }
-
-//       calendarDaysContainer.appendChild(weekRow);
-//     }
-
-//   }
-
-//   // Initial calendar generation
-//   generateCalendar();
-
-
-// });
 document.addEventListener("DOMContentLoaded", function() {
     const todayBtn = document.getElementById("today-btn");
     const prevBtn = document.getElementById("prev-btn");
