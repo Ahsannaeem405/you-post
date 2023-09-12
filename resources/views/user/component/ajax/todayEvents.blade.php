@@ -3,8 +3,8 @@
         <div>
             <span class="{{$today->posted_at_moment=='now' ? 'clr4' : 'clr2'}}"></span>
         </div>
-        <div>
-            <img src="\images\Ellipse 17 (1).png" alt="">
+        <div class="d-flex">
+            {!! $today->getPlatformGroupImages() !!}
         </div>
         <div class="myspan">
             <span class="sp1">{{$today->content}} </span>
