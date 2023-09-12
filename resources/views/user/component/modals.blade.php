@@ -216,7 +216,7 @@
         <div class="modal-content">
             <div class="modal-header modal-cross-btn">
                 <h5 class="modal-title" id="timeModalLabel">Add Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-bs-toggle="modal">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
