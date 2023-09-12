@@ -41,8 +41,8 @@ class UserController extends Controller
     {
 
 
-        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->get();
-        $todayPost = Post::where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->get();
+        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
+        $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
         foreach ($posts as $post) {
@@ -238,6 +238,7 @@ class UserController extends Controller
         //****************end linkedin validation****************//
 
         //****************posting code****************//
+        $group_id = Str::random(40);
         for ($i = 0; $i < count($platforms); $i++) {
             $content = Str::lower($platforms[$i]) . '_content';
             $tag = Str::lower($platforms[$i]) . '_tag';
@@ -263,6 +264,7 @@ class UserController extends Controller
             $post->timezone = $req->timezone;
             $post->media = $media;
             $post->media_type = $req->$mediatype;
+            $post->group_id - $group_id;
             $post->save();
         }
         return back()->with('success', 'Post Created Successfully');
@@ -273,7 +275,7 @@ class UserController extends Controller
     public function get_event_detail(Request $request)
     {
         $post = Post::find($request->id);
-        $platforms = Post::where('content', $post->content)->get();
+        $platforms = Post::where('group_id', $post->group_id)->get();
         return view('user.event_detail', compact('post', 'platforms'));
     }
 
@@ -281,7 +283,7 @@ class UserController extends Controller
     {
 
         $date = Carbon::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
-        $todayPost = Post::where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', $date)->get();
+        $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', $date)->groupBy('group_id')->get();
         return view('user.component.ajax.todayEvents', compact('todayPost'));
     }
 
