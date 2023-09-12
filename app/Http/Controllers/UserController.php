@@ -113,7 +113,7 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-        dd($req);
+      
         $platforms = auth()->user()->account->platforms;
 
         if (count($platforms) == 0) {
@@ -264,7 +264,7 @@ class UserController extends Controller
             $post->timezone = $req->timezone;
             $post->media = $media;
             $post->media_type = $req->$mediatype;
-            $post->group_id - $group_id;
+            $post->group_id = $group_id;
             $post->save();
         }
         return back()->with('success', 'Post Created Successfully');
