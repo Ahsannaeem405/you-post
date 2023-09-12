@@ -390,142 +390,18 @@
 
 
 // validation  ********************************** ********************************* validation//
-   function validateDimenstion(file,socialicon) {
-                    var error_status ='';
-                    var _URL = window.URL || window.webkitURL;
-                    img = new Image();
-                    var objectUrl = _URL.createObjectURL(file);
-                    img.onload = function ()
-                    {
+   function validateDimenstion(file) {
+                          var file, img,status;
+                          var _URL = window.URL;
 
-                            imgwidh=this.width;
-                            imgheight= this.height;
-                            var aspectRatio = (imgwidh/imgheight).toFixed(2);
-                        
                       
-//////********************************//**************Valiation of Insta dimension start**************//****************//****************//
-                      if (socialicon=='image_or_video_insta')
-                            {
-                                if (!(aspectRatio ==((4/5).toFixed(2)) || aspectRatio == ((16/9).toFixed(2)))) 
-                                  {
-                                     $("#file_error_ins").html("<p style='color:#FF0000'>Sorry! can't post image required 4:5 or 16:9 ratio image</p>");
-                                     error_status = true;
-                                    
-                                  }
-                                  else{error_status = false;}
-                            }
-//////********************************//**************Valiation of Linked dimension start**************//****************//****************//
-
-                     else if (socialicon=='image_or_video_linkedin')
-                            {
-                               if (!(aspectRatio ==((4/5).toFixed(2)) || aspectRatio == ((16/9).toFixed(2))))
-                                  {
-                                     $("#file_error_link").html("<p style='color:#FF0000'>Sorry! can't post image required 4:5 or 16:9 ratio image</p>");
-                                     error_status = true;
-                                    
-                                  }else{error_status = false;}
-                            }
-                   };
-
-                    img.src = objectUrl;
-                    return error_status;
-
-          }
-
-
-   function validateimage(file,socialicon) {
-                 
-                 var file, img,imgwidh,imgheight;
-                 var _URL = window.URL || window.webkitURL;
-                 var file_size = file.size;
-                 var ext = file.type;
-                 ext=  String(ext).split('/');
-                 ext = ext[1];
-                  var mediaType = file.type.split('/')[0];
-
-// validation of images ************************* 
-             if (mediaType === 'image') {
-
-// Valiation of Facebook start******************* *************//****************************Valiation of Facebook start
-
-           if (socialicon=='image_or_videofb')
-                     {
-                      
-// size validation
-                    if(file_size>300000) 
-                          {
-                             $("#file_error_fb").html("<p style='color:#FF0000'>Image size is greater than 300kb</p>");
-                            return false;
-                         }else{ $("#file_error_fb").html('');}
-//  extension valiation
-                    if((ext != 'png') && (ext != 'jpeg') && (ext !='gif') && (ext != 'jpg') ) 
-                          {
-                            $("#file_error_fb").html("<p style='color:#FF0000'>Image should be jpeg,jpg,png,gif</p>");
-                            return false;
-                          }else{$("#file_error_fb").html('');}
-                    }
-                     if (socialicon=='image_or_video_insta')
-                     {
-                      
-// size validation
-                    if(file_size>300000) 
-                          {
-                             $("#file_error_ins").html("<p style='color:#FF0000'>Image size is greater than 300kb</p>");
-                            return false;
-                         }else{ $("#file_error_ins").html('');}
-//  extension valiation
-                    if((ext != 'png') && (ext != 'jpeg') && (ext !='gif') && (ext != 'jpg') ) 
-                          {
-                            $("#file_error_ins").html("<p style='color:#FF0000'>Image should be jpeg,jpg,png,gif</p>");
-                            return false;
-                          }else{$("#file_error_ins").html('');}
-                    }
-                     if (socialicon=='image_or_video_linkedin')
-                     {
-                      
-// size validation
-                    if(file_size>300000) 
-                          {
-                             $("#file_error_link").html("<p style='color:#FF0000'>Image size is greater than 300kb</p>");
-                            return false;
-                         }else{ $("#file_error_link").html('');}
-//  extension valiation
-                    if((ext != 'png') && (ext != 'jpeg') && (ext !='gif') && (ext != 'jpg') ) 
-                          {
-                            $("#file_error_link").html("<p style='color:#FF0000'>Image should be jpeg,jpg,png,gif</p>");
-                            return false;
-                          }else{$("#file_error_link").html('');}
-                    }
-
-                   return true;
-               }
-               // video validation
-               else
-               {
-
-                   return true;
-
-
-               }
-           }
-
-        
-// my code end
-
-           var _URL = window.URL;
-        $('.file_image_video').change(function (e) {
-
-                var socialicon=$(this).attr('id');
-                var result = validateimage(e.target.files[0],socialicon);
-                // var result_dimention = validateDimenstion(e.target.files[0],socialicon);
-
-                    var file, img,status;
-
-                        if ((file = this.files[0])) {
                             img = new Image();
-                            img.onload = function () {
-                                
-                     if (this.width != 468 && this.height != 60)
+                              img.onload = function () {
+                               imgwidh=this.width;
+                               imgheight= this.height;
+                               var aspectRatio = (imgwidh/imgheight).toFixed(2);  
+
+                     if ((aspectRatio !=((4/5).toFixed(2)) && aspectRatio != ((16/9).toFixed(2)))) 
                           {
                              alert( 'error : only these image sizes are accepted : 468x60' );
                             return false;
@@ -536,13 +412,117 @@
                                 alert( 'error : this is not a valid image');
                             return false;
                              };
-                            img.src = _URL.createObjectURL(file);
-                            return true;
+                               img.src = _URL.createObjectURL(file);
+                               return true;
+                       
+
+          }
+
+
+   function validateFile(file,socialicon) {
+                 
+                 var file, img,imgwidh,imgheight;
+                 var file_size = file.size;
+                 var ext = file.type;
+                 ext=  String(ext).split('/');
+                 ext = ext[1];
+                 var mediaType = file.type.split('/')[0];
+                
+             if (mediaType === 'image') 
+             {
+                if(file_size>=400000 ){
+                    
+                                       toastr.error('size should be less than 4MB.', 'Image', {timeOut: 5000})
+                                       return false;
+                                     }
+                                   else{
+                                         return true;
+                                     }
+                if((ext != 'png') && (ext != 'jpeg') && (ext !='gif') && (ext != 'jpg') ) 
+                                     {
+                                     toastr.error('type should be jpeg,jpg,png,gif.', 'Image', {timeOut: 5000})
+                                       return false;
+                                     }
+                                   else{
+                                         return true;
+                                     }
+                }
+             else
+               {
+
+                 // ************************* Video Validatoin ************************
+                
+                 if (file) {
+
+                  var videoEl = document.createElement("video");
+                           videoEl.onloadedmetadata = event => {
+                           window.URL.revokeObjectURL(videoEl.src);
+                           var { name, type } = file;
+                           var { videoWidth, videoHeight } = videoEl;
+
+                      var aspectRatio = (videoWidth/videoHeight).toFixed(2);  
+                      if ((aspectRatio !=((4/5).toFixed(2)) || aspectRatio != ((16/9).toFixed(2)))) {
+                          
+                            toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
+                             return false;
+                             }
+
+                       };
+                    videoEl.onerror = function() 
+                            {
+                                 return false;
+                            };
+                                videoEl.src = window.URL.createObjectURL(file);
+                               return true;
                         }
-               
-               if(!result){
-                return false;
+                 
                }
+        //************************** Video Validatoin End *********************************
+           }
+
+        //*************************** calculate MB ****************************
+
+        function getMB(bytes) {
+
+                       if(bytes == 0) return '0 Bytes';
+                       var k = 1000,
+                           // dm = decimalPoint || 2,
+                           sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                           i = Math.floor(Math.log(bytes) / Math.log(k));
+                       return parseFloat(bytes / Math.pow(k, i));
+             }
+        //*************************** calculate MB End ****************************
+
+                    
+       var _URL = window.URL;
+       var wto;
+        $('.file_image_video').change(function (e) 
+        {
+
+                       var socialicon=$(this).attr('id');
+                       var file, img,status;
+
+         
+
+         // *********************  Validate Size and Memes ************************
+
+                   
+                     
+               clearTimeout(wto);
+                      wto = setTimeout(function() {
+
+                       result= validateFile(e.target.files[0],socialicon);
+                         
+                     
+                      });
+
+                  alert(result);
+                      if(!result){
+                            return;
+                           }
+                              
+               
+         // *********************  Validate Size and Memes End*********************
 
 
                if($(this).attr('id')=='image_or_video_insta')
@@ -556,7 +536,35 @@
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     var mediaType = file.type.split('/')[0];
-                    if (mediaType === 'image') {
+            if (mediaType === 'image') {
+
+                        // *********************  Validate dimenstion *************************
+            if( (socialicon=='image_or_video_insta') || (socialicon=='image_or_video_linkedin')) 
+             {
+                        if (file) {
+                              img = new Image();
+                              img.onload = function () {
+                              imgwidh=this.width;
+                              imgheight= this.height;
+
+                       var aspectRatio = (imgwidh/imgheight).toFixed(2);  
+
+                     if ((aspectRatio !=((4/5).toFixed(2)) && aspectRatio != ((16/9).toFixed(2)))) 
+                          {
+                          toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
+                            return false;
+                          }
+                    };
+                    img.onerror = function() 
+                            {
+                                 return false;
+                            };
+                               img.src = _URL.createObjectURL(file);
+                               return true;
+                        }
+             }
+
+         // *********************  Validate dimenstion End*************************
                       
                         $('.preview_image').removeClass('d-none');
                       //  $('.preview_image_my').removeClass('d-none');
