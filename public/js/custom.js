@@ -400,7 +400,30 @@ $(document).ready(function () {
         img.src = _URL.createObjectURL(file);
 
     }
+function validateDimenstionVideo(file, socialicon) {
+       var videoEl = document.createElement("video");
+                videoEl.onloadedmetadata = event => {
+                    window.URL.revokeObjectURL(videoEl.src);
+                    var {name, type} = file;
+                    var {videoWidth, videoHeight} = videoEl;
+                
+                    var aspectRatio = (videoWidth / videoHeight).toFixed(2);
+                    if ((aspectRatio != ((4 / 5).toFixed(2)) || aspectRatio != ((16 / 9).toFixed(2)))) {
+                
+                        toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
+                        return false;
+                    }
+                    else{
 
+                       appendVideo(file, socialicon);
+
+                    }
+                
+                };
+                
+                videoEl.src = window.URL.createObjectURL(file);
+
+    }
 
     function validateFileImage(file, socialicon) {
 
@@ -426,30 +449,18 @@ $(document).ready(function () {
             }
         } else {
 
-            // ************************* Video Validatoin ************************
-
-            if (file) {
-
-                // var videoEl = document.createElement("video");
-                // videoEl.onloadedmetadata = event => {
-                //     window.URL.revokeObjectURL(videoEl.src);
-                //     var {name, type} = file;
-                //     var {videoWidth, videoHeight} = videoEl;
-                //
-                //     var aspectRatio = (videoWidth / videoHeight).toFixed(2);
-                //     if ((aspectRatio != ((4 / 5).toFixed(2)) || aspectRatio != ((16 / 9).toFixed(2)))) {
-                //
-                //         toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
-                //         return false;
-                //     }
-                //
-                // };
-                // videoEl.onerror = function () {
-                //     return false;
-                // };
-                // videoEl.src = window.URL.createObjectURL(file);
-                return true;
+             var total_size= getMB(file_size);
+             if (total_size > 40) {
+                toastr.error('size should be less than 4MB.', 'Video', {timeOut: 5000})
+                response = false;
             }
+          
+
+            if (response) {
+                validateDimenstionVideo(file, socialicon);
+            }
+
+            
 
         }
         //************************** Video Validatoin End *********************************
@@ -489,6 +500,39 @@ $(document).ready(function () {
                     $("#image_or_video_linkedin").parent().append(img_con_lin);
                     $('#media_type_linkedin').val('image');
                     $('.sm_container .cross_img_con:last-child').find('.removeit_file').val(e.target.result);
+
+                }
+
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function appendVideo(file, socialicon) {
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var mediaType = file.type.split('/')[0];
+
+
+                $('.video_preview').removeClass('d-none');
+                $('.preview_image').addClass('d-none');
+                var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
+                $('#mediaContainervideo').html(video);
+
+                if (socialicon == 'image_or_videofb') {
+
+                 $('#media_type_facebook').val('video');
+
+
+                } else if (socialicon == 'image_or_video_insta') {
+                   
+              $('#media_type_insta').val('video');
+
+
+                } else if (socialicon == 'image_or_video_linkedin') {
+                   
+                      $('#media_type_linkedin').val('video');
 
                 }
 
@@ -568,12 +612,9 @@ $(document).ready(function () {
 
                 }
 
+                validateFileImage(file, socialicon);
 
-                // Create a video element and set its source
-                $('.video_preview').removeClass('d-none');
-                $('.preview_image').addClass('d-none');
-                var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
-                $('#mediaContainervideo').html(video);
+                
 
 
             }
