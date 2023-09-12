@@ -61,7 +61,7 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages','todayPost'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost'));
 
     }
 
@@ -275,6 +275,14 @@ class UserController extends Controller
         $post = Post::find($request->id);
         $platforms = Post::where('content', $post->content)->get();
         return view('user.event_detail', compact('post', 'platforms'));
+    }
+
+    public function get_events(Request $request)
+    {
+
+        $date = Carbon::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+        $todayPost = Post::where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', $date)->get();
+        return view('user.component.ajax.todayEvents', compact('todayPost'));
     }
 
     public function post_delete($id, Facebookservice $facebookservice, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice, TwitterService $TwitterService)
