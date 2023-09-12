@@ -67,22 +67,24 @@ class UserController extends Controller
 
     public function dashbaord2()
     {
-        $accesstoken = auth()->user()->account->linkedin_accesstoken;
-        $linkedin = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $accesstoken,
-        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
-        dd($linkedin);
+//        $accesstoken = auth()->user()->account->linkedin_accesstoken;
+//        $linkedin = Http::withHeaders([
+//            'Authorization' => 'Bearer ' . $accesstoken,
+//        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
+//        dd($linkedin);
 
-        // $bearerToken = auth()->user()->account->twiter_access_token;
-//        $connection = new TwitterOAuth(
-//            'p3cltII7k9o69s6uVSj0CSVkz',
-//            'YUy4ffBgnPY0zJoqLSbCY7MynmADtdm5vOiJFbPhJeIkuOBSiq',
-//            '940303773922152449-EMXoOU0WYM8v0MOakGdoXOL3i4Srl5L',
-//            'XtwVYZigWLj35VrsVJ4OxzXdyovEKRPK20jGmOxyMMj9K'
-//        );
-//
-//        $status = $connection->get("statuses/show", ["screen_name" => 'Rehman211']);
-//        dd($status, $connection->getLastHttpCode());
+//         $bearerToken = auth()->user()->account->twiter_access_token;
+//        $api= Http::withToken($bearerToken)->get('https://api.twitter.com/2/users/by?usernames=reh');
+//        dd($api->body(),$api->status());
+        $connection = new TwitterOAuth(
+            'JxLliRfEO3ts7mivk6ZQfgPrX',
+            'DAAtIK4sE7YGJLT870HTlAyN5QbukYqfLaCnDIamQCeR7opSgu',
+            '26968990-Y5SIkP6EiBJBPNzBDh8NPd7grtnBzLAtxqiH23Hd7',
+            'V9X1ktJhqYIJUygMS3NulZX8utKGbpbF8We3MFmqcwEGv'
+        );
+
+        $status = $connection->get("statuses/show", ["screen_name" => 'Rehman211']);
+        dd($status, $connection->getLastHttpCode());
 
 
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
