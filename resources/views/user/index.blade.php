@@ -773,24 +773,22 @@
                                                 </div>
                                             </div>
                                             <div class="d-none" id="image_div_linked"><label for="file"
-                                                            style="margin-top: 20px;"">
-                                                            <span id="file_error_link"></span>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                                typpe="image" social="fb"
-                                                                fordata="image_or_video_linkedin">
-                                                                <label for="image_or_video_linkedin" class="plus_img">
-                                                                    <img src="{{asset('')}}images/plus.png"
-                                                                        class="img-fluid" alt="" width="20px"
-                                                                        height="20px" />
-                                                                </label>
-                                                            </a>
-                                                            <input type="file" name="linkedin_media[]" multiple
-                                                                class="image d-none file_image_video"
-                                                                id="image_or_video_linkedin" accept="image/*,video/*">
-                                                            <input type="hidden" name="media_type_linkedin"
-                                                                id="media_type_linkedin">
+                                                    style="margin-top: 20px;"">
+                                                            <span id=" file_error_link"></span>
+                                                    <a href="javascript:void(0)" class="image_or_video" typpe="image"
+                                                        social="fb" fordata="image_or_video_linkedin">
+                                                        <label for="image_or_video_linkedin" class="plus_img">
+                                                            <img src="{{asset('')}}images/plus.png" class="img-fluid"
+                                                                alt="" width="20px" height="20px" />
+                                                        </label>
+                                                    </a>
+                                                    <input type="file" name="linkedin_media[]" multiple
+                                                        class="image d-none file_image_video"
+                                                        id="image_or_video_linkedin" accept="image/*,video/*">
+                                                    <input type="hidden" name="media_type_linkedin"
+                                                        id="media_type_linkedin">
 
-                                                    </div>
+                                            </div>
                                             <div class="form-group clearfix clearfix2">
                                                 <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
@@ -1619,52 +1617,77 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-sm-12 col-md-4 ">
+                <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3" id="like-card">
                             <div class="card-body">
                                 <h3 class="card-title">Likes</h3>
                                 <div class="card-content">
-                                    <div class="svg-div">
-                                        <div class="text-center" id="product-order-chart" class="mb-3"
-                                            style="min-height: 255px;">
-                                            <!-- <div id="apexchartsdf3fohp" class="apexcharts-canvas apexchartsdf3fohp light"
-                                            style="width: 280px; height: 320px;"> -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="220"
-                                                viewBox="0 0 239 239" fill="none" id="svg-id">
-                                                <path
-                                                    d="M239 119.5C239 185.498 185.498 239 119.5 239C53.502 239 0 185.498 0 119.5C0 53.502 53.502 0 119.5 0C185.498 0 239 53.502 239 119.5ZM10.198 119.5C10.198 179.866 59.1342 228.802 119.5 228.802C179.866 228.802 228.802 179.866 228.802 119.5C228.802 59.1342 179.866 10.198 119.5 10.198C59.1342 10.198 10.198 59.1342 10.198 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <path
-                                                    d="M119.5 5.09901C119.5 2.28291 121.784 -0.0113555 124.598 0.108768C139.535 0.746517 154.236 4.18261 167.932 10.2542C183.183 17.0155 196.849 26.8951 208.051 39.2571C219.254 51.6192 227.743 66.1899 232.974 82.0313C238.205 97.8726 240.061 114.634 238.422 131.236C236.784 147.838 231.688 163.913 223.461 178.426C215.235 192.939 204.061 205.57 190.659 215.504C177.256 225.438 161.922 232.455 145.644 236.105C131.025 239.383 115.936 239.879 101.163 237.585C98.3798 237.153 96.5882 234.456 97.1387 231.694C97.6891 228.932 100.373 227.152 103.158 227.573C116.533 229.596 130.184 229.12 143.413 226.154C158.302 222.816 172.327 216.397 184.586 207.311C196.845 198.225 207.065 186.672 214.589 173.397C222.114 160.123 226.775 145.419 228.274 130.234C229.772 115.049 228.075 99.7183 223.29 85.2288C218.506 70.7393 210.741 57.4121 200.494 46.105C190.248 34.7979 177.748 25.7614 163.798 19.5772C151.404 14.0826 138.11 10.9478 124.597 10.3169C121.784 10.1856 119.5 7.91512 119.5 5.09901Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M213 119.5C213 171.055 171.206 212.849 119.652 212.849C68.0965 212.849 26.303 171.055 26.303 119.5C26.303 67.9451 68.0965 26.1515 119.652 26.1515C171.206 26.1515 213 67.9451 213 119.5ZM35.1991 119.5C35.1991 166.142 73.0097 203.952 119.652 203.952C166.293 203.952 204.104 166.142 204.104 119.5C204.104 72.8582 166.293 35.0476 119.652 35.0476C73.0097 35.0476 35.1991 72.8582 35.1991 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <path
-                                                    d="M119.652 30.5995C119.652 28.143 121.644 26.1404 124.098 26.2574C144.63 27.2361 164.313 34.9708 180.05 48.3241C196.919 62.6387 208.155 82.4796 211.756 104.309C215.356 126.138 211.086 148.536 199.708 167.51C189.093 185.209 172.936 198.855 153.806 206.376C151.52 207.275 148.99 206.018 148.201 203.692C147.412 201.365 148.664 198.851 150.946 197.94C168.08 191.105 182.548 178.826 192.078 162.935C202.373 145.769 206.235 125.505 202.978 105.756C199.721 86.0076 189.555 68.0576 174.294 55.1071C160.165 43.1183 142.52 36.1355 124.098 35.1647C121.645 35.0354 119.652 33.0561 119.652 30.5995Z"
-                                                    fill="#DA8741" />
-                                                <path
-                                                    d="M187 119.5C187 156.511 156.996 186.515 119.985 186.515C82.9734 186.515 52.9697 156.511 52.9697 119.5C52.9697 82.4886 82.9734 52.4849 119.985 52.4849C156.996 52.4849 187 82.4886 187 119.5ZM61.3667 119.5C61.3667 151.874 87.611 178.118 119.985 178.118C152.359 178.118 178.603 151.874 178.603 119.5C178.603 87.1261 152.359 60.8819 119.985 60.8819C87.611 60.8819 61.3667 87.1261 61.3667 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                                                    font-size="16" fill="black" class="total_likes">
-                                                    Total Likes
-                                                </text>
-                                                <text x="50%" y="59%" dominant-baseline="middle" text-anchor="middle"
-                                                    font-size="22" fill="black" class="total_likes_value">
-                                                    26.20k
-                                                </text>
-                                                <path
-                                                    d="M119.985 56.6834C119.985 54.3646 121.867 52.4712 124.181 52.6163C139.03 53.5473 153.153 59.3972 164.312 69.2388C166.051 70.7726 166.043 73.4423 164.403 75.0819C162.763 76.7215 160.114 76.7086 158.362 75.1905C148.797 66.9057 136.802 61.9372 124.18 61.0321C121.867 60.8662 119.985 59.0021 119.985 56.6834Z"
-                                                    fill="#288EFF" />
-                                            </svg>
-
-                                            <div class="apexcharts-legend"></div>
-                                            <!-- </div> -->
+                                    <div class="widget-chart text-center">
+                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;"
+                                            class="morris-chart">
+                                            <div class="width:238px;">
+                                                <svg height="245" version="1.1" width="100%"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence"
+                                                    style="overflow: hidden; position: relative; top: -0.375px;">
+                                                    <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created
+                                                        with Raphaël 2.3.0</desc>
+                                                    <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+                                                    <path fill="none" stroke=""
+                                                        d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296"
+                                                        stroke-width="0" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    </path>
+                                                    <path fill="#FF9966" stroke="#000000"
+                                                        d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#000"
+                                                        d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871"
+                                                        stroke-width="2" opacity="1"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
+                                                    </path>
+                                                    <path fill="#000000" stroke="#000000"
+                                                        d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#288eff"
+                                                        d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984"
+                                                        stroke-width="2" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    </path>
+                                                    <path fill="#288eff" stroke="#000000"
+                                                        d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)"
+                                                        stroke-width="0.7405364990234375">
+                                                        <tspan dy="5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes">Total Likes</tspan>
+                                                    </text>
+                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)"
+                                                        stroke-width="0.6799999999999999">
+                                                        <tspan dy="4.5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes_value">26.20k
+                                                        </tspan>
+                                                    </text>
+                                                </svg>
+                                            </div>
                                         </div>
+
                                     </div>
+
+
+
                                     <div class="row">
                                         <div class="col-4 social_cards">
                                             <div>
@@ -1772,51 +1795,77 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-md-4 ">
+                <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3" id="like-card">
                             <div class="card-body">
                                 <h3 class="card-title">Share</h3>
                                 <div class="card-content">
-                                    <div class="svg-div">
-                                        <div class="text-center" id="product-order-chart" class="mb-3"
-                                            style="min-height: 255px;">
-                                            <!-- <div id="apexchartsdf3fohp" class="apexcharts-canvas apexchartsdf3fohp light"
-                                            style="width: 280px; height: 320px;"> -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="220"
-                                                viewBox="0 0 239 239" fill="none" id="svg-id">
-                                                <path
-                                                    d="M239 119.5C239 185.498 185.498 239 119.5 239C53.502 239 0 185.498 0 119.5C0 53.502 53.502 0 119.5 0C185.498 0 239 53.502 239 119.5ZM10.198 119.5C10.198 179.866 59.1342 228.802 119.5 228.802C179.866 228.802 228.802 179.866 228.802 119.5C228.802 59.1342 179.866 10.198 119.5 10.198C59.1342 10.198 10.198 59.1342 10.198 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <path
-                                                    d="M119.5 5.09901C119.5 2.28291 121.784 -0.0113555 124.598 0.108768C139.535 0.746517 154.236 4.18261 167.932 10.2542C183.183 17.0155 196.849 26.8951 208.051 39.2571C219.254 51.6192 227.743 66.1899 232.974 82.0313C238.205 97.8726 240.061 114.634 238.422 131.236C236.784 147.838 231.688 163.913 223.461 178.426C215.235 192.939 204.061 205.57 190.659 215.504C177.256 225.438 161.922 232.455 145.644 236.105C131.025 239.383 115.936 239.879 101.163 237.585C98.3798 237.153 96.5882 234.456 97.1387 231.694C97.6891 228.932 100.373 227.152 103.158 227.573C116.533 229.596 130.184 229.12 143.413 226.154C158.302 222.816 172.327 216.397 184.586 207.311C196.845 198.225 207.065 186.672 214.589 173.397C222.114 160.123 226.775 145.419 228.274 130.234C229.772 115.049 228.075 99.7183 223.29 85.2288C218.506 70.7393 210.741 57.4121 200.494 46.105C190.248 34.7979 177.748 25.7614 163.798 19.5772C151.404 14.0826 138.11 10.9478 124.597 10.3169C121.784 10.1856 119.5 7.91512 119.5 5.09901Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M213 119.5C213 171.055 171.206 212.849 119.652 212.849C68.0965 212.849 26.303 171.055 26.303 119.5C26.303 67.9451 68.0965 26.1515 119.652 26.1515C171.206 26.1515 213 67.9451 213 119.5ZM35.1991 119.5C35.1991 166.142 73.0097 203.952 119.652 203.952C166.293 203.952 204.104 166.142 204.104 119.5C204.104 72.8582 166.293 35.0476 119.652 35.0476C73.0097 35.0476 35.1991 72.8582 35.1991 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <path
-                                                    d="M119.652 30.5995C119.652 28.143 121.644 26.1404 124.098 26.2574C144.63 27.2361 164.313 34.9708 180.05 48.3241C196.919 62.6387 208.155 82.4796 211.756 104.309C215.356 126.138 211.086 148.536 199.708 167.51C189.093 185.209 172.936 198.855 153.806 206.376C151.52 207.275 148.99 206.018 148.201 203.692C147.412 201.365 148.664 198.851 150.946 197.94C168.08 191.105 182.548 178.826 192.078 162.935C202.373 145.769 206.235 125.505 202.978 105.756C199.721 86.0076 189.555 68.0576 174.294 55.1071C160.165 43.1183 142.52 36.1355 124.098 35.1647C121.645 35.0354 119.652 33.0561 119.652 30.5995Z"
-                                                    fill="#DA8741" />
-                                                <path
-                                                    d="M187 119.5C187 156.511 156.996 186.515 119.985 186.515C82.9734 186.515 52.9697 156.511 52.9697 119.5C52.9697 82.4886 82.9734 52.4849 119.985 52.4849C156.996 52.4849 187 82.4886 187 119.5ZM61.3667 119.5C61.3667 151.874 87.611 178.118 119.985 178.118C152.359 178.118 178.603 151.874 178.603 119.5C178.603 87.1261 152.359 60.8819 119.985 60.8819C87.611 60.8819 61.3667 87.1261 61.3667 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                                                    font-size="16" fill="black" class="total_likes">
-                                                    Total Share
-                                                </text>
-                                                <text x="50%" y="59%" dominant-baseline="middle" text-anchor="middle"
-                                                    font-size="22" fill="black" class="total_likes_value">
-                                                    26.20k
-                                                </text>
-                                                <path
-                                                    d="M119.985 56.6834C119.985 54.3646 121.867 52.4712 124.181 52.6163C139.03 53.5473 153.153 59.3972 164.312 69.2388C166.051 70.7726 166.043 73.4423 164.403 75.0819C162.763 76.7215 160.114 76.7086 158.362 75.1905C148.797 66.9057 136.802 61.9372 124.18 61.0321C121.867 60.8662 119.985 59.0021 119.985 56.6834Z"
-                                                    fill="#288EFF" />
-                                            </svg>
-
-                                            <div class="apexcharts-legend"></div>
-                                            <!-- </div> -->
+                                    <div class="widget-chart text-center">
+                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;"
+                                            class="morris-chart">
+                                            <div class="width:238px;">
+                                                <svg height="245" version="1.1" width="100%"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence"
+                                                    style="overflow: hidden; position: relative; top: -0.375px;">
+                                                    <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created
+                                                        with Raphaël 2.3.0</desc>
+                                                    <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+                                                    <path fill="none" stroke=""
+                                                        d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296"
+                                                        stroke-width="0" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    </path>
+                                                    <path fill="#FF9966" stroke="#000000"
+                                                        d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#000"
+                                                        d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871"
+                                                        stroke-width="2" opacity="1"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
+                                                    </path>
+                                                    <path fill="#000000" stroke="#000000"
+                                                        d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#288eff"
+                                                        d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984"
+                                                        stroke-width="2" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    </path>
+                                                    <path fill="#288eff" stroke="#000000"
+                                                        d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)"
+                                                        stroke-width="0.7405364990234375">
+                                                        <tspan dy="5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes">Total Share</tspan>
+                                                    </text>
+                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)"
+                                                        stroke-width="0.6799999999999999">
+                                                        <tspan dy="4.5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes_value">26.20k
+                                                        </tspan>
+                                                    </text>
+                                                </svg>
+                                            </div>
                                         </div>
+
                                     </div>
+
+
+
                                     <div class="row">
                                         <div class="col-4 social_cards">
                                             <div>
@@ -1924,58 +1973,84 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-md-4 ">
+                <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3" id="like-card">
                             <div class="card-body">
                                 <h3 class="card-title">Engagement</h3>
                                 <div class="card-content">
-                                    <div class="svg-div">
-                                        <div class="text-center" id="product-order-chart" class="mb-3"
-                                            style="min-height: 255px;">
-                                            <!-- <div id="apexchartsdf3fohp" class="apexcharts-canvas apexchartsdf3fohp light"
-                                            style="width: 280px; height: 320px;"> -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="220"
-                                                viewBox="0 0 239 239" fill="none" id="svg-id">
-                                                <path
-                                                    d="M239 119.5C239 185.498 185.498 239 119.5 239C53.502 239 0 185.498 0 119.5C0 53.502 53.502 0 119.5 0C185.498 0 239 53.502 239 119.5ZM10.198 119.5C10.198 179.866 59.1342 228.802 119.5 228.802C179.866 228.802 228.802 179.866 228.802 119.5C228.802 59.1342 179.866 10.198 119.5 10.198C59.1342 10.198 10.198 59.1342 10.198 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <path
-                                                    d="M119.5 5.09901C119.5 2.28291 121.784 -0.0113555 124.598 0.108768C139.535 0.746517 154.236 4.18261 167.932 10.2542C183.183 17.0155 196.849 26.8951 208.051 39.2571C219.254 51.6192 227.743 66.1899 232.974 82.0313C238.205 97.8726 240.061 114.634 238.422 131.236C236.784 147.838 231.688 163.913 223.461 178.426C215.235 192.939 204.061 205.57 190.659 215.504C177.256 225.438 161.922 232.455 145.644 236.105C131.025 239.383 115.936 239.879 101.163 237.585C98.3798 237.153 96.5882 234.456 97.1387 231.694C97.6891 228.932 100.373 227.152 103.158 227.573C116.533 229.596 130.184 229.12 143.413 226.154C158.302 222.816 172.327 216.397 184.586 207.311C196.845 198.225 207.065 186.672 214.589 173.397C222.114 160.123 226.775 145.419 228.274 130.234C229.772 115.049 228.075 99.7183 223.29 85.2288C218.506 70.7393 210.741 57.4121 200.494 46.105C190.248 34.7979 177.748 25.7614 163.798 19.5772C151.404 14.0826 138.11 10.9478 124.597 10.3169C121.784 10.1856 119.5 7.91512 119.5 5.09901Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M213 119.5C213 171.055 171.206 212.849 119.652 212.849C68.0965 212.849 26.303 171.055 26.303 119.5C26.303 67.9451 68.0965 26.1515 119.652 26.1515C171.206 26.1515 213 67.9451 213 119.5ZM35.1991 119.5C35.1991 166.142 73.0097 203.952 119.652 203.952C166.293 203.952 204.104 166.142 204.104 119.5C204.104 72.8582 166.293 35.0476 119.652 35.0476C73.0097 35.0476 35.1991 72.8582 35.1991 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <path
-                                                    d="M119.652 30.5995C119.652 28.143 121.644 26.1404 124.098 26.2574C144.63 27.2361 164.313 34.9708 180.05 48.3241C196.919 62.6387 208.155 82.4796 211.756 104.309C215.356 126.138 211.086 148.536 199.708 167.51C189.093 185.209 172.936 198.855 153.806 206.376C151.52 207.275 148.99 206.018 148.201 203.692C147.412 201.365 148.664 198.851 150.946 197.94C168.08 191.105 182.548 178.826 192.078 162.935C202.373 145.769 206.235 125.505 202.978 105.756C199.721 86.0076 189.555 68.0576 174.294 55.1071C160.165 43.1183 142.52 36.1355 124.098 35.1647C121.645 35.0354 119.652 33.0561 119.652 30.5995Z"
-                                                    fill="#DA8741" />
-                                                <path
-                                                    d="M187 119.5C187 156.511 156.996 186.515 119.985 186.515C82.9734 186.515 52.9697 156.511 52.9697 119.5C52.9697 82.4886 82.9734 52.4849 119.985 52.4849C156.996 52.4849 187 82.4886 187 119.5ZM61.3667 119.5C61.3667 151.874 87.611 178.118 119.985 178.118C152.359 178.118 178.603 151.874 178.603 119.5C178.603 87.1261 152.359 60.8819 119.985 60.8819C87.611 60.8819 61.3667 87.1261 61.3667 119.5Z"
-                                                    fill="#E9EBF3" />
-                                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                                                    font-size="16" fill="black" class="total_likes">
-                                                    Total Engagement
-                                                </text>
-                                                <text x="50%" y="59%" dominant-baseline="middle" text-anchor="middle"
-                                                    font-size="22" fill="black" class="total_likes_value">
-                                                    26.20k
-                                                </text>
-                                                <path
-                                                    d="M119.985 56.6834C119.985 54.3646 121.867 52.4712 124.181 52.6163C139.03 53.5473 153.153 59.3972 164.312 69.2388C166.051 70.7726 166.043 73.4423 164.403 75.0819C162.763 76.7215 160.114 76.7086 158.362 75.1905C148.797 66.9057 136.802 61.9372 124.18 61.0321C121.867 60.8662 119.985 59.0021 119.985 56.6834Z"
-                                                    fill="#288EFF" />
-                                            </svg>
-
-                                            <div class="apexcharts-legend"></div>
-                                            <!-- </div> -->
+                                    <div class="widget-chart text-center">
+                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;"
+                                            class="morris-chart">
+                                            <div class="width:238px;">
+                                                <svg height="245" version="1.1" width="100%"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence"
+                                                    style="overflow: hidden; position: relative; top: -0.375px;">
+                                                    <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created
+                                                        with Raphaël 2.3.0</desc>
+                                                    <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+                                                    <path fill="none" stroke=""
+                                                        d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296"
+                                                        stroke-width="0" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    </path>
+                                                    <path fill="#FF9966" stroke="#000000"
+                                                        d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#000"
+                                                        d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871"
+                                                        stroke-width="2" opacity="1"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
+                                                    </path>
+                                                    <path fill="#000000" stroke="#000000"
+                                                        d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#288eff"
+                                                        d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984"
+                                                        stroke-width="2" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    </path>
+                                                    <path fill="#288eff" stroke="#000000"
+                                                        d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)"
+                                                        stroke-width="0.7405364990234375">
+                                                        <tspan dy="5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes">Total Likes</tspan>
+                                                    </text>
+                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)"
+                                                        stroke-width="0.6799999999999999">
+                                                        <tspan dy="4.5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes_value">26.20k
+                                                        </tspan>
+                                                    </text>
+                                                </svg>
+                                            </div>
                                         </div>
+
                                     </div>
+
+
+
                                     <div class="row">
                                         <div class="col-4 social_cards">
                                             <div>
                                                 <div class="oval-img-div d-flex ">
                                                     <div class="cirle-img fb-image">
                                                         <!-- <img src="/Oval (1).png" class="fb-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (1).png" class="x-com-img"
+                                                        <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
                                                             alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Facebook</h5>
@@ -1997,7 +2072,7 @@
                                                     <h5 class="fb-text">Instagram</h5>
                                                 </div>
                                                 <div class="like-counter">
-                                                    <h4 class="text-center fb_card_v">11.89k</h4>
+                                                    <h4 class="text-center fb_card_v ">11.89k</h4>
                                                 </div>
 
                                             </div>
@@ -2079,6 +2154,45 @@
             </div>
         </div>
 </section>
+
+<!-- modal test1 start -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="@mdo">Open modal for @mdo</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content success_modal_content">
+            <div class="modal-header success_modal_header ">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">New message</h5> -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pb-0 mb">
+                <div class="woohoo mt-5">
+                    <h2>Woohoo!</h2>
+                    <div class="success_social_icons">
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/FB_Color.png" class="img-fluid"
+                                    alt="" /></a></div>
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Twitter_Color.png"
+                                    class="img-fluid" alt="" /></a></div>
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Instagram_Color.png"
+                                    class="img-fluid" alt="" /></a></div>
+                    </div>
+                    <div class="success_modal_para mt-3">
+                        <p class="mb-0">You just published your first post! Keep posting and let the world know what you’ve got to say.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer success_modal_footer pb-5">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                <button type="button" class="btn btn-danger">GO BACK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal test1 end -->
+
+
 </div>
 
 
@@ -2833,4 +2947,28 @@ function openEventModal(year, month, day) {
     }
 }
 </script>
+<!-- <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+               
+                <div class="modal-header">
+                    <h5 class="modal-title">Simple Bootstrap Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                
+                <div class="modal-body">
+                    This is a simple Bootstrap modal. You can add your content here.
+                </div>
+                
+              
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+                
+            </div>
+        </div>
+    </div> -->
 @endsection

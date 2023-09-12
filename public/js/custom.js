@@ -459,11 +459,19 @@
            
                                if(socialicon=='image_or_videofb')                      
                             {
+                                // var crossImgConCount = $('.cross_img_con').length;
+                                // if(crossImgConCount > 2){
+                                //     img_con = `<div class="cross_img_con d-none" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" class="removeit_file d-none"></textarea></div>`;
+                                //     plus = `<div class="cross_img_con plus" id="remove_id">  <img name='image/*' id="teting" src="https://img.freepik.com/free-vector/flat-design-enter-sign-design_23-2149277710.jpg?w=2000" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" class="removeit_file d-none"></textarea></div>`;
+                                    
+                                //     if( $('.plus').length==0)
+                                //     $("#image_or_videofb").parent().append(plus);
+                                // }
 
                                 $("#image_or_videofb").parent().append(img_con);
                                 $('#media_type_fb').val('image');
                                 $('.sm_container .cross_img_con:last-child').find('.removeit_file').val(e.target.result);
-
+                                
                        
                             }else if(socialicon=='image_or_video_insta')                    
 
@@ -530,3 +538,36 @@
 return true;
 
     });
+
+
+
+
+
+    //     $(document).on('click', '.plus', function() {
+    //         // Call the popupmodal function when a "plus" element is clicked
+    //         popupmodal();
+    //       });
+    // function popupmodal() {
+    //     // Find all elements with class1 within the parent element
+    //     var elements = document.getElementsByClassName('cross_img_con');
+      
+    //     // Filter elements that also have class2
+    //     var elementsWithBothClasses = Array.from(elements).filter(function(element) {
+    //       return element.classList.contains('d-none');
+    //     });
+    //     elementsWithBothClasses.forEach(function(element) {
+    //         element.classList.remove('d-none');
+    //       });
+    //     // Log the elements with both classes to the console
+    //     // var plusImage = element.querySelector('.plus-image');
+    //     // if (plusImage) {
+    //     //   plusImage.addEventListener('click', function() {
+    //         $('#myModal').modal('show');
+    //         $('.modal-body').empty().append([...elementsWithBothClasses]);
+    //     //   });
+    //     // }
+      
+    //     // Remove the 'd-none' class from the elements
+        
+    //   };
+    

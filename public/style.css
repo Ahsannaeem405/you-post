@@ -2154,7 +2154,134 @@ color: #000 !important;
     color: #0c0c0b;
     font-size: 14px;
 }
+.svg_sequence{
+position: relative;
+left: 15px;
+}
+.modal-header.success_modal_header{
+    background: none !important;
+    border-bottom: none;
+}
+.modal-content.success_modal_content{
+    background-image: url("images/smi.png") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+.woohoo h2{
+    text-align: center;
+    padding-top: 3rem;
+    font-weight: 700;
+ 
+}
+.success_social_icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 25px;
+}
+.success_modal_para{
+    text-align: center;
+    max-width: 430px;
+    margin: auto;
+}
+.success_modal_para p{
+    color: #525252;
+}
+.modal-footer.success_modal_footer{
+    border-top:none ;
+    display: flex;
+    justify-content: center
+    
+}
+.modal-footer.success_modal_footer button{
+    border-radius: 9px;
+    padding: 3px 15px;
+}
+/* newpopup start*/
+/* Pop up  */
+.post-detail{
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 0.7px solid #e4e2e2;
+}
+.mymodalheader{
+    background: none !important;
+    border: none !important;
+}
+.detail_modalLabel2{
+    display: flex;
+    gap: 0 10px;
+    justify-content: center;
+}
+.mytabactive{
+  
+    border: none !important;
+}
 
+.shadedcirclefb{
+    /* background-color: #f6f6f6; */
+    box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.18);
+    border-radius: 50%; 
+    background-color: #F6F6F6;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 40px;
+    z-index: 1;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #f6f6f6;
+    box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.18);
+    background-color:transparent !important;
+    border: none !important;
+    border-radius: 50px;
+  
+}
+.nav-tabs.nav_tabs{
+display: flex;
+justify-content: center;
+border-bottom:none ;
+}
+.nav-tabs.nav_tabs .nav-link {
+    background-color: #f6f6f6;
+    /* box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.18); */
+    background-color:transparent !important;
+    border: none !important;
+    border-radius: 50px;
+}
+.nav_card1{
+    max-width: 450px;
+    margin: auto;
+    border-radius: 6.798px;
+    background: #F6F6F6;
+    box-shadow: 0px 0px 3.88477px 1.94239px rgba(0, 0, 0, 0.15);
+
+}
+.Evano span{
+    font-weight: 400;
+    font-size: 12px;
+}
+.eleven_k{
+    font-size: 11px;
+
+}
+.two_point{
+    font-size: 10px;
+    margin-top: 5px;
+    color:#9DA1A5;
+}
+.text3{
+    color:#9DA1A5;
+}
+.border_top{
+    border-top: 1px solid #e4e2e2;
+}
+/* newpopup end*/
 
 
 

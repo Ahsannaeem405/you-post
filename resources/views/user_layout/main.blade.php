@@ -298,26 +298,26 @@ var calendar = $('#postManagerCalendar').fullCalendar({
     ],
     }
 },
-            eventSources: [
-        {
-            events: [
-                {
-                    title: 'Event1',
-                    start: '2018-07-13',
-                    end: '2018-07-16',
-                    allDay: false,
-                    color: 'green',
-                    backgroundColor: 'green',
-                },
-                {
-                    title: 'Event2',
-                    start: '2018-07-10',
-                    color: '#FF7538',
-                    backgroundColor: '#FF7538',
-                }
-            ],
-        }
-    ],
+    //         eventSources: [
+    //     {
+    //         events: [
+    //             {
+    //                 title: 'Event1',
+    //                 start: '2018-07-13',
+    //                 end: '2018-07-16',
+    //                 allDay: false,
+    //                 color: 'green',
+    //                 backgroundColor: 'green',
+    //             },
+    //             {
+    //                 title: 'Event2',
+    //                 start: '2018-07-10',
+    //                 color: '#FF7538',
+    //                 backgroundColor: '#FF7538',
+    //             }
+    //         ],
+    //     }
+    // ],
     header: {
         center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
     },
