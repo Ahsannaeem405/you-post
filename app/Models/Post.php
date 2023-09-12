@@ -8,26 +8,44 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
-   protected $guarded=[];
+    protected $guarded = [];
 
     public function plateforms()
     {
-        return $this->hasOne(PostDetail::class, 'post_id' ,'id');
+        return $this->hasOne(PostDetail::class, 'post_id', 'id');
     }
 
-     public function post_dt()
+    public function post_dt()
     {
-        return $this->hasOne(PostDetail::class, 'post_id' ,'id');
+        return $this->hasOne(PostDetail::class, 'post_id', 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id' ,'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function account():BelongsTo
+    public function account(): BelongsTo
     {
-        return $this->belongsTo(Account::class, 'account_id' ,'id');
+        return $this->belongsTo(Account::class, 'account_id', 'id');
+    }
+
+    public function getPlatformGroupImages()
+    {
+        $groups = Post::where('group_id', $this->group_id)->get();
+        $content = '';
+        foreach ($groups as $group) {
+            if ($group->plateform == 'Facebook')
+                $content .= '<div><img src="' . asset('images/FB_Color.png') . '" alt=""></div>';
+            elseif ($group->plateform == 'Instagram')
+                $content .= '<div><img src="' . asset('images/Linkedin_Color.png') . '" alt=""></div>';
+            elseif ($group->plateform == 'Twitter')
+                $content .= '<div><img src="' . asset('images/Twitter_Color.png') . '" alt=""></div>';
+            elseif ($group->plateform == 'Linkedin')
+                $content .= '<div><img src="' . asset('images/Linkedin_Color.png') . '" alt=""></div>';
+        }
+
+        return $content;
     }
 
 

@@ -41,8 +41,8 @@ class UserController extends Controller
     {
 
 
-
-        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
+        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
+        $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
         foreach ($posts as $post) {
@@ -50,8 +50,8 @@ class UserController extends Controller
                 'id' => $post->id,
                 'title' => $post->content,
                 'start' => $post->posted_at,
-                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
-                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
+//                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
+//                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
             ];
         }
@@ -61,28 +61,30 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost'));
 
     }
 
     public function dashbaord2()
     {
-        $accesstoken = auth()->user()->account->linkedin_accesstoken;
-        $linkedin = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $accesstoken,
-        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
-        dd($linkedin);
+//        $accesstoken = auth()->user()->account->linkedin_accesstoken;
+//        $linkedin = Http::withHeaders([
+//            'Authorization' => 'Bearer ' . $accesstoken,
+//        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
+//        dd($linkedin);
 
-        // $bearerToken = auth()->user()->account->twiter_access_token;
-//        $connection = new TwitterOAuth(
-//            'p3cltII7k9o69s6uVSj0CSVkz',
-//            'YUy4ffBgnPY0zJoqLSbCY7MynmADtdm5vOiJFbPhJeIkuOBSiq',
-//            '940303773922152449-EMXoOU0WYM8v0MOakGdoXOL3i4Srl5L',
-//            'XtwVYZigWLj35VrsVJ4OxzXdyovEKRPK20jGmOxyMMj9K'
-//        );
-//
-//        $status = $connection->get("statuses/show", ["screen_name" => 'Rehman211']);
-//        dd($status, $connection->getLastHttpCode());
+//         $bearerToken = auth()->user()->account->twiter_access_token;
+//        $api= Http::withToken($bearerToken)->get('https://api.twitter.com/2/users/by?usernames=reh');
+//        dd($api->body(),$api->status());
+        $connection = new TwitterOAuth(
+            'JxLliRfEO3ts7mivk6ZQfgPrX',
+            'DAAtIK4sE7YGJLT870HTlAyN5QbukYqfLaCnDIamQCeR7opSgu',
+            '26968990-Y5SIkP6EiBJBPNzBDh8NPd7grtnBzLAtxqiH23Hd7',
+            'V9X1ktJhqYIJUygMS3NulZX8utKGbpbF8We3MFmqcwEGv'
+        );
+
+        $status = $connection->get("statuses/show", ["screen_name" => 'Rehman211']);
+        dd($status, $connection->getLastHttpCode());
 
 
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
@@ -111,7 +113,7 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-
+        dd($req);
         $platforms = auth()->user()->account->platforms;
 
         if (count($platforms) == 0) {
@@ -236,6 +238,7 @@ class UserController extends Controller
         //****************end linkedin validation****************//
 
         //****************posting code****************//
+        $group_id = Str::random(40);
         for ($i = 0; $i < count($platforms); $i++) {
             $content = Str::lower($platforms[$i]) . '_content';
             $tag = Str::lower($platforms[$i]) . '_tag';
@@ -261,6 +264,7 @@ class UserController extends Controller
             $post->timezone = $req->timezone;
             $post->media = $media;
             $post->media_type = $req->$mediatype;
+            $post->group_id - $group_id;
             $post->save();
         }
         return back()->with('success', 'Post Created Successfully');
@@ -271,8 +275,16 @@ class UserController extends Controller
     public function get_event_detail(Request $request)
     {
         $post = Post::find($request->id);
-        $platforms = Post::where('content', $post->content)->get();
+        $platforms = Post::where('group_id', $post->group_id)->get();
         return view('user.event_detail', compact('post', 'platforms'));
+    }
+
+    public function get_events(Request $request)
+    {
+
+        $date = Carbon::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+        $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', $date)->groupBy('group_id')->get();
+        return view('user.component.ajax.todayEvents', compact('todayPost'));
     }
 
     public function post_delete($id, Facebookservice $facebookservice, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice, TwitterService $TwitterService)

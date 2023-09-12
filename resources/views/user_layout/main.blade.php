@@ -12,7 +12,7 @@
     <!-- Full Calendar -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script> -->
-         
+
    <!-- google_font_poppin -->
 
    <!-- google_font_poppin -->
@@ -178,7 +178,7 @@
 
 
 
-     
+
 
 //         $(function() {
 
@@ -200,7 +200,7 @@
 //                     color: '#ff7538',
 //                     backgroundColor: '#ff7538'
 //                 }
-      
+
 
 
 //             ],
@@ -223,7 +223,7 @@
 //                     start: currentDate.clone().startOf('year'),
 //                     end: currentDate.clone().endOf("year")
 //                 };
-       
+
 //             }
 //         }
 //     }
@@ -234,7 +234,7 @@
 // });
 
     //     var calendar = $('#postManagerCalendar').fullCalendar({
-          
+
     //         selectable: true,
     //         businessHours: true,
     //         dayMaxEvents: true, // allow "more" link when too many events
@@ -243,7 +243,7 @@
     //             month: {
     //                 eventLimit: 2
     //             }
-        
+
 
     //         },
 
@@ -265,11 +265,11 @@
     //                 color: '#ff7538',
     //                 backgroundColor: '#ff7538'
     //             }
-             
+
     //         ],
     //     }
     // ],
-   
+
     // header: {
     //     center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
     // },
@@ -325,8 +325,8 @@ var calendar = $('#postManagerCalendar').fullCalendar({
     contentHeight: 850,
     // salman new code calendar 7/9/23
 
-           
-          
+
+
 
 
 
@@ -388,14 +388,14 @@ var calendar = $('#postManagerCalendar').fullCalendar({
             // Add active class to the currently active tab
             $('.calendar-tab[data-view="' + activeView + '"]').addClass('active');
 
-            $('#calendar').fullCalendar('changeView', 'agendaDay');   
+            $('#calendar').fullCalendar('changeView', 'agendaDay');
 
         }
         });
 // // Handle day view tab click
 // $(document).on('click', '.calendar-tab[data-view="day"]', function () {
 //     calendar.fullCalendar('changeView', 'agendaDay');
-    
+
 //     // Toggle active class for tabs
 //     $('.calendar-tab').removeClass('active');
 //     $(this).addClass('active');
@@ -410,7 +410,7 @@ var calendar = $('#postManagerCalendar').fullCalendar({
 //     $(this).addClass('active');
 // });
 
-        
+
 //     // Handle tab clicks
 //     $(document).on('click', '.calendar-tab', function () {
 //         var viewName = $(this).data('view');
@@ -699,18 +699,18 @@ searchBtn.addEventListener("click" , () =>{
 
 modeSwitch.addEventListener("click" , () =>{
     body.classList.toggle("dark");
-    
+
     if(body.classList.contains("dark")){
         modeText.innerText = "Light mode";
     }else{
         modeText.innerText = "Dark mode";
-        
+
     }
 });
 </script>
 
 <!-- <script>
-    
+
     function draw() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
