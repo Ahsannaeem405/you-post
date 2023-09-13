@@ -110,10 +110,33 @@ class UserController extends Controller
 
     }
 
+public function saveImageAndVideo(Request $request)
+{
+   
+    if ($request->type=="video") {
+       
+                    $base64Data = $request->input('video');
+                    $filename = uniqid() . '.mp4';
+                    $videoData = base64_decode($base64Data);
+                   file_put_contents(public_path('content_media/' . $filename), $videoData);
+                   $videoPath  = $filename;
+                   return response()->json(['path' => $videoPath]);
+    }
+else{
+                $base64Data = $request->input('image');
+                $filename = uniqid() . '.png';
+                $imageData = base64_decode($base64Data);
+                file_put_contents(public_path('content_media/' . $filename), $imageData);
+                $imagePath = $filename;
+                return response()->json(['path' => $imagePath]);
 
+    }
+
+   
+}
     public function create_post(Request $req)
     {
-      
+     dd($req->all());
         $platforms = auth()->user()->account->platforms;
 
         if (count($platforms) == 0) {
