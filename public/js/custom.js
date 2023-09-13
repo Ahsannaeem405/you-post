@@ -405,11 +405,12 @@ $(document).ready(function () {
                 videoEl.onloadedmetadata = event => {
                     window.URL.revokeObjectURL(videoEl.src);
                     var {name, type} = file;
+
                     var {videoWidth, videoHeight} = videoEl;
-                
+
                     var aspectRatio = (videoWidth / videoHeight).toFixed(2);
-                    if ((aspectRatio != ((4 / 5).toFixed(2)) || aspectRatio != ((16 / 9).toFixed(2)))) {
-                
+                    if ((aspectRatio != ((4 / 5).toFixed(2)) && aspectRatio != ((16 / 9).toFixed(2)))) {
+
                         toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
                         return false;
                     }
@@ -418,9 +419,9 @@ $(document).ready(function () {
                        appendVideo(file, socialicon);
 
                     }
-                
+
                 };
-                
+
                 videoEl.src = window.URL.createObjectURL(file);
 
     }
@@ -450,17 +451,17 @@ $(document).ready(function () {
         } else {
 
              var total_size= getMB(file_size);
-             if (total_size > 40) {
+             if (total_size > 4) {
                 toastr.error('size should be less than 4MB.', 'Video', {timeOut: 5000})
                 response = false;
             }
-          
+
 
             if (response) {
                 validateDimenstionVideo(file, socialicon);
             }
 
-            
+
 
         }
         //************************** Video Validatoin End *********************************
@@ -528,12 +529,12 @@ $(document).ready(function () {
 
 
                 } else if (socialicon == 'image_or_video_insta') {
-                   
+
               $('#media_type_insta').val('video');
 
 
                 } else if (socialicon == 'image_or_video_linkedin') {
-                   
+
                       $('#media_type_linkedin').val('video');
 
                 }
@@ -617,7 +618,7 @@ $(document).ready(function () {
 
                 validateFileImageVideo(file, socialicon);
 
-                
+
 
 
             }
