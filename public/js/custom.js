@@ -400,7 +400,7 @@ $(document).ready(function () {
         img.src = _URL.createObjectURL(file);
 
     }
-function validateDimenstionVideo(file, socialicon) {
+ function validateDimenstionVideo(file, socialicon) {
        var videoEl = document.createElement("video");
                 videoEl.onloadedmetadata = event => {
                     window.URL.revokeObjectURL(videoEl.src);
@@ -425,7 +425,7 @@ function validateDimenstionVideo(file, socialicon) {
 
     }
 
-    function validateFileImage(file, socialicon) {
+    function validateFileImageVideo(file, socialicon) {
 
         var file, img, imgwidh, imgheight;
         var file_size = file.size;
@@ -468,6 +468,8 @@ function validateDimenstionVideo(file, socialicon) {
 
 
     function appendImage(file, socialicon) {
+
+
         if (file) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -559,10 +561,11 @@ function validateDimenstionVideo(file, socialicon) {
     var _URL = window.URL;
 
     $('.file_image_video').change(function (e) {
+ var selectedFile = $(this)[0].files[0];
+ alert(selectedFile);
 
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
-
 
 
         // *********************  Validate Size and Memes ************************
@@ -589,7 +592,7 @@ function validateDimenstionVideo(file, socialicon) {
                     }
                 }
 
-                validateFileImage(file, socialicon);
+                validateFileImageVideo(file, socialicon);
             } else if (mediaType === 'video') {
 
                 if (socialicon == 'image_or_videofb') {
@@ -612,7 +615,7 @@ function validateDimenstionVideo(file, socialicon) {
 
                 }
 
-                validateFileImage(file, socialicon);
+                validateFileImageVideo(file, socialicon);
 
                 
 
