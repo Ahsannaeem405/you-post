@@ -2262,9 +2262,14 @@ border-bottom:none ;
     box-shadow: 0px 0px 3.88477px 1.94239px rgba(0, 0, 0, 0.15);
 
 }
-.Evano span{
+.Evano span {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 10px;
+}
+.Evano h3{
+    font-weight: 400;
+    font-size: 13px;
+    color: #000;
 }
 .eleven_k{
     font-size: 11px;
@@ -2281,7 +2286,83 @@ border-bottom:none ;
 .border_top{
     border-top: 1px solid #e4e2e2;
 }
+.post_text p,a{
+    font-size: 12px;
+}
+.post_text{
+
+} 
+
+
 /* newpopup end*/
+
+
+/* salman card css start */
+.sociallinkedin{
+    margin: 0 -7px;
+}
+.socialtwitter{
+    width: 24px !important;
+    height: 26px !important;
+    margin: 0 -6px;
+}
+.socialinsta{
+    margin: 0 -8px;
+}
+.nav-tabs.nav_tabs .nav-link {
+    background-color: rgb(245 245 245);
+    border: none !important;
+    border-radius: 50px;
+}
+
+.dropimg1{
+    margin-top: 2px;
+    height: 30px;
+    width: 30px;
+}
+.dropimg2{
+    margin-top: 2px;
+    height: 20px;
+    width: 20px;
+}
+.mycoment{
+    width: 20px;
+    height: 20px;
+}
+.mycomnent2{
+    width: 20px;
+    height: 20px;
+}
+.navcard_3_img2{
+    height: 100%;
+    width: 90%;
+}
+.navcard_3mainimg{
+    text-align: center;
+}
+.myicon{
+    color: #9DA1A5;
+}
+.bottom-content{
+    margin: auto !important;
+    width: 89% !important;
+}
+.card4_mainimg{
+    width: 100%;
+    background: #EDF3F8;
+}
+.background-card4{
+    width: 100%;
+    border-top: 30px solid #EDF3F8;
+    padding-bottom: 10px;
+}
+.bottom_padd{
+    padding: 18 !important;
+}
+.border-card3{
+    border-top: none;
+}
+/* salman card css end */
 
 
 

@@ -136,7 +136,8 @@ else{
 }
     public function create_post(Request $req)
     {
-     dd($req->all());
+
+
         $platforms = auth()->user()->account->platforms;
 
         if (count($platforms) == 0) {
@@ -290,7 +291,7 @@ else{
             $post->group_id = $group_id;
             $post->save();
         }
-        return back()->with('success', 'Post Created Successfully');
+        return back()->with('success-post', 'Post Created Successfully');
         //****************end posting code****************//
 
     }
@@ -299,7 +300,8 @@ else{
     {
         $post = Post::find($request->id);
         $platforms = Post::where('group_id', $post->group_id)->get();
-        return view('user.event_detail', compact('post', 'platforms'));
+        $platformsName=$platforms->pluck('plateform')->toArray();
+        return view('user.event_detail', compact('post', 'platforms','platformsName'));
     }
 
     public function get_events(Request $request)
