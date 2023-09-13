@@ -87,7 +87,6 @@
 {{-- myaccount modal --}}
 
 {{-- pages_modal --}}
-
 <div class="modal fade" id="pages_modal" tabindex="-1" aria-labelledby="pages_modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

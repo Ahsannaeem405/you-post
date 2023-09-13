@@ -2247,9 +2247,10 @@ left: 15px;
   
 }
 .nav-tabs.nav_tabs{
-display: flex;
-justify-content: center;
-border-bottom:none ;
+    display: flex;
+    justify-content: center;
+    border-bottom:none ;
+    gap: 0 18px;
 }
 .nav-tabs.nav_tabs .nav-link {
     background-color: #f6f6f6;
@@ -2262,7 +2263,7 @@ border-bottom:none ;
     max-width: 450px;
     margin: auto;
     border-radius: 6.798px;
-    background: #F6F6F6;
+    background: #ffffff;
     box-shadow: 0px 0px 3.88477px 1.94239px rgba(0, 0, 0, 0.15);
 
 }
@@ -2296,7 +2297,10 @@ border-bottom:none ;
 .post_text{
 
 } 
-
+.account_icon{
+    color: #e4e2e2;
+    padding-top: 5px;
+}
 
 /* newpopup end*/
 
