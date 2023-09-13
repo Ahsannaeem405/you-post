@@ -137,8 +137,8 @@ else{
     public function create_post(Request $req)
     {
 
-
         $platforms = auth()->user()->account->platforms;
+
 
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
@@ -147,118 +147,69 @@ else{
         $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = [];
 
         //*****************facebook validation******************//
-        if (in_array('Facebook', $platforms)) {
-            $req->validate([
-                'facebook_media.*' => 'required_if:media_type_facebook,image|required_if:media_type_facebook,video',
-            ]);
+        if (in_array('Facebook', $platforms))
+        {
+           if ($req->media_type_facebook =='image')
+            {
 
-            if ($req->media_type_facebook == 'video') {
-
-                $req->validate([
-                    'facebook_media.*' => 'mimes:mp4|max:4000',
-                ]);
-            }
-
-            if ($req->hasFile('facebook_media')) {
-
-                foreach ($req->facebook_media as $media) {
-                    $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                    $media->move('content_media', $imageName);
-                    $mediaDatafb[] = $imageName;
+                foreach ($req->fb_image as $media) 
+                {
+                    $mediaDatafb[] = $media;
                 }
-
+                   
+            }else if($req->media_type_facebook =='video')
+            {
+                
+                     $mediaDatafb[] = $req->fb_video;
+               
             }
         }
+        
 
 
         //****************end facebook validation**************//
 
         //****************instagram validation****************//
-        if (in_array('Instagram', $platforms)) {
-            $req->validate([
-                'insta_media.*' => 'required',
-            ]);
-            if ($req->media_type_instagram == 'video') {
-                $req->validate([
-                    'insta_media.*' => 'mimes:mp4|max:4000',
-                ]);
-            }
-            foreach ($req->insta_media as $media) {
-                $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                $media->move('content_media', $imageName);
-                $mediaDataInsta[] = $imageName;
+        if (in_array('Instagram', $platforms)) 
+        {
+            if ($req->media_type_instagram =='image')
+             {
+                            foreach ($req->inst_image as $media) 
+                            {
+                                $mediaDataInsta[] = $media;
+                            }
 
-            }
-
-
-            //  $InstafilePath = 'content_media/' . $mediaDataInsta;
-//            if ($req->media_type_instagram == 'image') {
-//                $width = Image::make($InstafilePath)->width();
-//                $height = Image::make($InstafilePath)->height();
-//                $aspectRatio = sprintf("%0.2f", $width / $height);
-//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-//                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
-//                }
-//            }
-//            if ($req->media_type_instagram == 'video') {
-//
-//                $getID3 = new \getID3();
-//                $fileInfo = $getID3->analyze($InstafilePath);
-//                $width = $fileInfo['video']['resolution_x'] ?? 1;
-//                $height = $fileInfo['video']['resolution_y'] ?? 1;
-//                $aspectRatio = sprintf("%0.2f", $width / $height);
-//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-//                    unlink($InstafilePath);
-//                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
-//                }
-//            }
-
-
+            }else if($req->media_type_instagram =='video')
+            {
+                 
+                        $mediaDataInsta[] = $req->inst_video;
+                     
+             }
+                      
         }
-        //****************end instagram validation****************//
 
-        //****************Linkedin validation****************//
+
         if (in_array('Linkedin', $platforms)) {
-            $req->validate([
-                'linkedin_media.*' => 'required_if:media_type_linkedin,image|required_if:media_type_linkedin,video',
-            ]);
-            if ($req->media_type_linkedin == 'video') {
-                $req->validate([
-                    'linkedin_media.*' => 'mimes:mp4|max:4000',
-                ]);
-            }
-            if ($req->hasFile('linkedin_media')) {
-                foreach ($req->linkedin_media as $media) {
-                    $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                    $media->move('content_media', $imageName);
-                    $mediaDataLinkedin[] = $imageName;
-                }
+         
+               if ($req->media_type_linkedin =='image')
+             {
+                            foreach ($req->lin_image as $media) 
+                            {
+                                $mediaDataLinkedin[] = $media;
+                            }
+
+            }else if($req->media_type_linkedin =='video')
+            {
+                  
+                        $mediaDataLinkedin[] = $req->link_video;
+                      
+             }
 
             }
-            // $linkfilePath = 'content_media/' . $mediaDataLinkedin;
-//            if ($req->media_type_linkedin == 'image') {
-//                $width = Image::make($linkfilePath)->width();
-//                $height = Image::make($linkfilePath)->height();
-//                $aspectRatio = sprintf("%0.2f", $width / $height);
-//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-//                    return back()->with('error', "Sorry! can't post image required 4:5 or 16:9 ratio image");
-//                }
-//            }
-//            if ($req->media_type_linkedin == 'video') {
-//
-//                $getID3 = new \getID3();
-//                $fileInfo = $getID3->analyze($linkfilePath);
-//                $width = $fileInfo['video']['resolution_x'] ?? 1;
-//                $height = $fileInfo['video']['resolution_y'] ?? 1;
-//                $aspectRatio = sprintf("%0.2f", $width / $height);
-//                if (!($aspectRatio == sprintf("%0.2f", 4 / 5) || $aspectRatio == sprintf("%0.2f", 16 / 9))) {
-//                    unlink($linkfilePath);
-//                    return back()->with('error', "Sorry! can't post video required 4:5 or 16:9 ratio video");
-//                }
-//            }
 
 
-        }
+
+        
         //****************end linkedin validation****************//
 
         //****************posting code****************//
@@ -295,6 +246,9 @@ else{
         //****************end posting code****************//
 
     }
+
+
+
 
     public function get_event_detail(Request $request)
     {

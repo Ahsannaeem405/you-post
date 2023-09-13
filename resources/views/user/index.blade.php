@@ -579,13 +579,16 @@
                                                                     </label>
                                                                 </a>
                                                                 <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                                <input type="file" name="facebook_media[]"
+                                                                <input type="file" name=""
                                                                        class="image d-none file_image_video"
                                                                        id="image_or_videofb"
                                                                        accept="image/*,video/*" div_to_open="facebook">
                                                                 <input type="hidden" name="media_type_facebook"
                                                                        id="media_type_fb">
                                                                 <p id="error1" style="display:none; color:#FF0000;">
+                                                                 <input type="hidden" name="fb_video"
+                                                                       id="fb_video">
+                                                               
                                                             </div>
 
                                                     </div>
@@ -684,12 +687,14 @@
                                                                 </label>
                                                             </a>
                                                             <!--  <img src="" class="d-none preview_image_my" alt="" width="50px" height="50px"> -->
-                                                            <input type="file" name="insta_media[]" required
+                                                            <input type="file" name="" required
                                                                    class="image d-none file_image_video wizard-required"
                                                                    id="image_or_video_insta" accept="image/*,video/*"
                                                                    div_to_open="instagram">
                                                             <input type="hidden" name="media_type_instagram"
                                                                    id="media_type_insta">
+                                                                    <input type="hidden" name="inst_video"
+                                                                       id="inst_video">
                                                         </div>
                                                     </div>
                                                     <div class="form-group clearfix clearfix2">
@@ -828,12 +833,14 @@
                                                                              height="20px"/>
                                                                     </label>
                                                                 </a>
-                                                                <input type="file" name="linkedin_media[]"
+                                                                <input type="file" name=""
                                                                        class="image d-none file_image_video"
                                                                        id="image_or_video_linkedin"
                                                                        accept="image/*,video/*">
                                                                 <input type="hidden" name="media_type_linkedin"
                                                                        id="media_type_linkedin">
+                                                                        <input type="hidden" name="link_video"
+                                                                       id="link_video">
                                                             </div>
                                                     </div>
                                                     <div class="form-group clearfix clearfix2">

@@ -353,7 +353,7 @@ $(document).ready(function () {
     $(document).on("click", ".cancel_mark", function () {
 
 
-        var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
+        var id_of_div = $(this).closest(".sm_container").find('input[type=text]:first').attr('id');
 
         var parent = $(this).closest('.sm_container');
         $(this).closest('.cross_img_con').remove();
@@ -489,7 +489,7 @@ $(document).ready(function () {
                     success: function(response) {
                        
                 if (socialicon == 'image_or_videofb') {
-                    var img_con = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= fb_file[] class="removeit_file d-none">${response.path}</textarea></div>`;
+                    var img_con = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= fb_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
 
                     $("#image_or_videofb").parent().append(img_con);
                     $('#media_type_fb').val('image');
@@ -497,7 +497,7 @@ $(document).ready(function () {
 
 
                 } else if (socialicon == 'image_or_video_insta') {
-                    var img_con_ins = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= inst_file[] class="removeit_file d-none">${response.path}</textarea></div>`;
+                    var img_con_ins = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= inst_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
 
                     $("#image_or_video_insta").parent().append(img_con_ins);
                     $('#media_type_insta').val('image');
@@ -505,7 +505,7 @@ $(document).ready(function () {
 
 
                 } else if (socialicon == 'image_or_video_linkedin') {
-                    var img_con_lin = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= lin_file[] class="removeit_file d-none">${response.path}</textarea></div>`;
+                    var img_con_lin = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= lin_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
 
                     $("#image_or_video_linkedin").parent().append(img_con_lin);
                     $('#media_type_linkedin').val('image');
@@ -556,19 +556,31 @@ $(document).ready(function () {
                 var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
                 $('#mediaContainervideo').html(video);
 
+
+
                 if (socialicon == 'image_or_videofb') {
 
-                 $('#media_type_facebook').val('video');
+                 $('#fb_video').val(response.path);
+                 $('#media_type_fb').val('video');
+                 $('#image_div').addClass('d-none');
+                 $("#image_or_videofb").parent().find('.cross_img_con').remove();
 
 
                 } else if (socialicon == 'image_or_video_insta') {
 
+                 $('#inst_video').val(response.path);
                  $('#media_type_insta').val('video');
+                 $('#image_div_ins').addClass('d-none');
+                 $("#image_or_video_insta").parent().find('.cross_img_con').remove();
 
 
                 } else if (socialicon == 'image_or_video_linkedin') {
 
+                 $('#link_video').val(response.path);
                  $('#media_type_linkedin').val('video');
+                 $('#image_div_linked').addClass('d-none');
+                 
+                 $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
 
                 }
             },
@@ -612,48 +624,11 @@ $(document).ready(function () {
         var reader = new FileReader();
         reader.onload = function (e) {
             var mediaType = file.type.split('/')[0];
+           
             if (mediaType === 'image') {
-
-                if (socialicon == 'image_or_videofb') {
-                   if($('#media_type_fb').val()=='video'){
-                       $('#media_type_fb').val('');
-                   }
-                }
-
-                else if (socialicon == 'image_or_video_insta') {
-                    if($('#media_type_insta').val()=='video'){
-                        $('#media_type_insta').val('');
-                    }
-                }
-
-                else if (socialicon == 'image_or_video_linkedin') {
-                    if($('#media_type_linkedin').val()=='video'){
-                        $('#media_type_linkedin').val('');
-                    }
-                }
-
+                
                 validateFileImageVideo(file, socialicon);
             } else if (mediaType === 'video') {
-
-                if (socialicon == 'image_or_videofb') {
-                    $('#media_type_fb').val('');
-                    $('#image_div').addClass('d-none');
-                    $("#image_or_videofb").parent().find('.cross_img_con').remove();
-
-
-                } else if (socialicon == 'image_or_video_insta') {
-                    $('#media_type_insta').val('');
-                    $('#image_div_ins').addClass('d-none');
-                    $("#image_or_video_insta").parent().find('.cross_img_con').remove();
-
-
-                } else if (socialicon == 'image_or_video_linkedin') {
-                    $('#media_type_linkedin').val('');
-                    $('#image_div_linked').addClass('d-none');
-                    $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
-
-
-                }
 
                 validateFileImageVideo(file, socialicon);
 
