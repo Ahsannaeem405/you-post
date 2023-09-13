@@ -37,6 +37,10 @@ Route::get('/migratefresh/seed', function () {
     $run = Artisan::call('migrate:fresh --seed');
     return 'Completedd';
 });
+Route::get('/migrate', function () {
+    $run = Artisan::call('migrate');
+    return 'Completedd';
+});
 
 // //////////////////////// social login////////////////////////
 
@@ -73,7 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 //post routes
     Route::post('create_post', [UserController::class, 'create_post']);
-   
+
     Route::post('/save-image-video', [UserController::class, 'saveImageAndVideo']);
 
     Route::get('post_delete/{id}', [UserController::class, 'post_delete']);
