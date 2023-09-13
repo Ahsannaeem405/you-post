@@ -22,7 +22,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header  mymodalheader">
-                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal with 4 Tabs</h5> -->
+
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="post-detail">
@@ -35,22 +35,22 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active mytabactive" id="tab1-tab" data-bs-toggle="tab" href="#tab1"
                             role="tab" aria-controls="tab1" aria-selected="true"><img
-                                src="{{asset('')}}images/FB_Color.png" class="" alt="" /></a>
+                                src="{{asset('')}}images/FB_Color.png" class="socialfb" alt="" /></a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="tab2-tab" data-bs-toggle="tab" href="#tab2" role="tab"
                             aria-controls="tab2" aria-selected="false"><img
-                                src="{{asset('')}}images/Instagram_Color.png" class="" alt="" /></a>
+                                src="{{asset('')}}images/Instagram_Color.png" class="socialinsta" alt="" /></a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="tab3-tab" data-bs-toggle="tab" href="#tab3" role="tab"
                             aria-controls="tab3" aria-selected="false"><img src="{{asset('')}}images/Twitter_Color.png"
-                                class="" alt="" /></a>
+                                class="socialtwitter" alt="" /></a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="tab4-tab" data-bs-toggle="tab" href="#tab4" role="tab"
                             aria-controls="tab4" aria-selected="false"><img src="{{asset('')}}images/Linkedin_Color.png"
-                                class="" alt="" /></a>
+                                class="sociallinkedin" alt="" /></a>
                     </li>
                 </ul>
                 <!-- Tab content -->
@@ -63,13 +63,13 @@
                                 <div class="col-7">
                                     <div class="d-flex">
                                         <div>
-                                            <img src="{{asset('')}}images/elp2.png" class="img-fluid" alt="" />
+                                            <img src="{{asset('')}}images/fb_p.png" class="img-fluid" alt="" />
                                         </div>
 
                                         <div class="Evano">
-                                            <h3 class="mb-0">Evano <img src="{{asset('')}}images/offical.png" class=""
-                                                    alt="" height="14" /></h3>
-                                            <span class="text-secondary">Scheduled at</span>: <span
+                                            <h3 class="mb-0">John Doe <img src="{{asset('')}}images/offical2.png"
+                                                    class="" alt="" height="" /></h3>
+                                            <span class="text-secondary">Scheduled at:</span> <span
                                                 class="text-primary">23
                                                 Aug 2023 07:15 AM</span>
                                         </div>
@@ -77,52 +77,26 @@
                                 </div>
                                 <div class="col-5">
                                     <div>
-                                        <a href="" style="font-size:14px;"><img src="{{asset('')}}images/copy.png"
+                                        <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png"
                                                 class="" alt="" /> View post
                                             in live feed</a>
-                                        <p class="text-warning text-center" style="font-size:12px;"> (In case of
+                                        <p class="text-warning text-center" style="font-size:12px; padding-right:26px;">
+                                            (In case of
                                             published)</p>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <p class="">psum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer
-                                        took a galley of type and scrambled it to make a type specimen book mbled it to
-                                        make a type specimen book. It has survived not only five centuries, but also the
-                                        leap.</p>
+                                    <div class="post_text pb-2">
+                                        <p class="mb-0">Ready for the next ride?</p>
+                                        <a href="">#MercedesBenz #MercedesAMG #Sportscar</a>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <div>
                                         <img src="{{asset('')}}images/Rectangle 33.png" class="img-fluid" alt="" />
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-between ">
-                                        <div class="d-flex align-item-center pt-2">
-                                            <div> <img src="{{asset('')}}images/fb_thumb.png" class="" alt=""
-                                                    height="14" /></div>
-                                            <div> <img src="{{asset('')}}images/smile.png" class="" alt=""
-                                                    height="14" /></div>
-                                            <div class="eleven_k">
-                                                <p class="mb-0">11k</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="d-flex gap-2">
-                                                <div class="d-flex">
-                                                    <p class="mb-0 two_point">2.3k</p>
-                                                    <img src="http://localhost:8000/images/m2.png" alt="" height="15"
-                                                        style="margin-top:6px;">
-                                                </div>
-                                                <div class="d-flex">
-                                                    <p class="mb-0 two_point">2.3k</p>
-                                                    <img src="http://localhost:8000/images/m1.png" class="mt-1" alt=""
-                                                        height="18">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-12">
                                     <div
                                         class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
@@ -133,24 +107,16 @@
                                                 height="20" />
                                             <span class="text text3">Like</span>
                                         </div>
-
-
                                         <div class="actions-buttons-button">
-
-                                            <!-- <img src="{{asset('')}}images/mes.png" class="img-fluid" alt=""
-                                                height="20" /> -->
                                             <i class="fa-regular fa-message"
                                                 style="color:#9DA1A5; padding-top:4px;"></i>
                                             <span class="text text3">Comment</span>
                                         </div>
-
-
                                         <div class="actions-buttons-button">
                                             <img src="{{asset('')}}images/tt3.png" class="img-fluid" alt=""
                                                 height="20" />
                                             <span class="text text3">Share</span>
                                         </div>
-
                                         <div class="actions-buttons-button d-flex">
                                             <div><img src="{{asset('')}}images/admn.png" class="img-fluid" alt=""
                                                     height="13" style="height:25px;" /></div>
@@ -168,14 +134,13 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                        <!-- Content for Tab 2 -->
-                        <!-- <p>Content for Tab 2 goes here.</p> -->
+
                         <div class="nav_card1 mt-3">
                             <div class="row p-3">
                                 <div class="col-7">
                                     <div class="d-flex">
                                         <div>
-                                            <img src="{{asset('')}}images/elp2.png" class="img-fluid" alt="" />
+                                            <img src="{{asset('')}}images/insta_elp.png" class="img-fluid" alt="" />
                                         </div>
 
                                         <div class="Evano">
@@ -186,25 +151,21 @@
                                 </div>
                                 <div class="col-5">
                                     <div>
-                                        <a href="" style="font-size:14px;"><img src="{{asset('')}}images/copy.png"
+                                        <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png"
                                                 class="" alt="" /> View post
                                             in live feed</a>
-                                        <p class="text-warning text-center" style="font-size:12px;"> (In case of
+                                        <p class="text-warning text-center" style="font-size:12px; padding-right:26px;">
+                                            (In case of
                                             published)</p>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <p class="">psum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer
-                                        took a galley of type and scrambled it to make a type specimen book mbled it to
-                                        make a type specimen book. It has survived not only five centuries, but also the
-                                        leap.</p>
-                                </div>
+
                                 <div class="col-12">
                                     <div>
                                         <img src="{{asset('')}}images/Rectangle 33.png" class="img-fluid" alt="" />
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="d-flex justify-content-between ">
                                         <div>
@@ -212,29 +173,10 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="d-flex gap-2">
-                                            <div class="d-flex">
-                                                <p class="mb-0 two_point">2.3k</p>
-                                                <!-- <img src="http://localhost:8000/images/m2.png" alt="" height="15"
-                                                        style="margin-top:6px;"> -->
-                                                <img src="{{asset('')}}images/Rectangle m2.png" class="img-fluid" alt=""
-                                                    height="15" />
-                                            </div>
-                                            <div class="d-flex">
-                                                <p class="mb-0 two_point">2.3k</p>
-                                                <img src="http://localhost:8000/images/m1.png" class="mt-1" alt=""
-                                                    height="18">
-                                            </div>
-                                        </div>
-                                        <!-- <div class="actions-buttons-button">
-                                                <span class="text text2" style="opacity: 1;">Share</span>
-                                                <img src="http://localhost:8000/images/share.png" class="" alt=""
-                                                    height="18">
-                                            </div> -->
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 px-3">
                                 <div class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
 
                                     <div class="actions-buttons-button">
@@ -273,12 +215,11 @@
                     </div>
 
                     <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-                        <!-- Content for Tab 3 -->
-                        <!-- <p>Content for Tab 3 goes here.</p> -->
-                        <div class="nav_card1 mt-3">
+
+                        <div class="nav_card1 mt-3 navcard_3">
                             <div class="row p-3">
-                                <div class="col-2">
-                                    <img src="{{asset('')}}images/elp2.png" class="" alt="" />
+                                <div class="col-2 ">
+                                    <img src="{{asset('')}}images/elp2.png" class="navcard_3_img1" alt="" />
                                 </div>
                                 <div class="col-10">
                                     <div class="Evano">
@@ -288,92 +229,54 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <p class="">psum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer
-                                        took a galley of type and scrambled it to make a type specimen book mbled it to
-                                        make a type specimen book. It has survived not only five centuries, but also the
-                                        leap.</p>
+                                    <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias,
+                                        quos?</p>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 navcard_3mainimg">
                                     <div>
-                                        <img src="{{asset('')}}images/Rectangle 33.png" class="img-fluid" alt="" />
+                                        <img src="{{asset('')}}images/Rectangle 33.png" class="img-fluid navcard_3_img2"
+                                            alt="" />
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-between ">
-                                        <div class="d-flex align-item-center pt-2">
-                                            <div> <img src="{{asset('')}}images/fb_thumb.png" class="" alt=""
-                                                    height="14" />
-                                            </div>
-                                            <div> <img src="{{asset('')}}images/smile.png" class="" alt=""
-                                                    height="14" />
-                                            </div>
-                                            <div class="eleven_k">
-                                                <p class="mb-0">11k</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="d-flex gap-2">
-                                                <div class="d-flex">
-                                                    <p class="mb-0 two_point">2.3k</p>
-                                                    <img src="http://localhost:8000/images/m2.png" alt="" height="15"
-                                                        style="margin-top:6px;">
-                                                </div>
-                                                <div class="d-flex">
-                                                    <p class="mb-0 two_point">2.3k</p>
-                                                    <img src="http://localhost:8000/images/m1.png" class="mt-1" alt=""
-                                                        height="18">
-                                                </div>
-                                            </div>
-                                            <!-- <div class="actions-buttons-button">
-                                                <span class="text text2" style="opacity: 1;">Share</span>
-                                                <img src="http://localhost:8000/images/share.png" class="" alt=""
-                                                    height="18">
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
+
+                                <div class="col-12 bottom-content">
                                     <div
-                                        class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
-
+                                        class="actions-buttons-list d-flex p-0 justify-content-between border_top border-card3 mt-3">
                                         <div class="actions-buttons-button">
-                                            <!-- <i class="fa-solid fa-thumbs-up"></i> -->
-                                            <!-- <img src="http://localhost:8000/t1.png" class="" alt=""
-                                                    height="20">  -->
-                                            <img src="{{asset('')}}images/t1.png" class="img-fluid" alt=""
-                                                height="20" />
-                                            <span class="text text3">Like</span>
+
+                                            <i class="fa-regular fa-comment myicon"></i>
+                                            <span class="text text3"></span>
                                         </div>
-
-
                                         <div class="actions-buttons-button">
-                                            <!-- <i
-                                                        class="fa-solid fa-comment"></i> -->
-                                            <img src="{{asset('')}}images/t1.png" class="img-fluid" alt=""
-                                                height="20" />
-                                            <span class="text text3">Comment</span>
+
+                                            <i class="fa-solid fa-retweet myicon"></i>
+                                            <span class="text text3"></span>
                                         </div>
-
-
                                         <div class="actions-buttons-button">
-                                            <img src="{{asset('')}}images/tt3.png" class="img-fluid" alt=""
-                                                height="20" />
-                                            <span class="text text3">Share</span>
-                                        </div>
 
+                                            <i class="fa-regular fa-heart myicon"></i>
+                                            <span class="text text3"></span>
+                                        </div>
+                                        <div class="actions-buttons-button">
+
+                                            <i class="fa-solid fa-chart-simple myicon"></i>
+                                            <span class="text text3"></span>
+                                        </div>
+                                        <div class="actions-buttons-button">
+
+                                            <i class="fa-solid fa-arrow-up-from-bracket myicon"></i>
+                                            <span class="text text3"></span>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
                     <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
-                        <!-- Content for Tab 4 -->
-                        <!-- <p>Content for Tab 4 goes here.</p> -->
+
                         <div class="nav_card1 mt-3">
-                            <div class="row p-3">
+                            <div class="row">
                                 <div class="col-2">
                                     <img src="{{asset('')}}images/elp2.png" class="" alt="" />
                                 </div>
@@ -384,96 +287,58 @@
                                             21/8/2023</span>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <p class="">psum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer
-                                        took a galley of type and scrambled it to make a type specimen book mbled it to
-                                        make a type specimen book. It has survived not only five centuries, but also the
-                                        leap.</p>
+                                <div class="col-12 ">
+                                    <p class=" px-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae eos
+                                        perspiciatis quibusdam dolore quis possimus necessitatibus recusandae debitis
+                                        ipsam nam?</p>
                                 </div>
                                 <div class="col-12">
                                     <div>
-                                        <img src="{{asset('')}}images/Rectangle 33.png" class="img-fluid" alt="" />
+                                        <img src="{{asset('')}}images/Rectangle 33.png" class="img-fluid card4_mainimg"
+                                            alt="" />
                                     </div>
+                                    <div class="background-card4"></div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-between ">
-                                        <div class="d-flex align-item-center pt-2">
-                                            <div> <img src="{{asset('')}}images/fb_thumb.png" class="" alt=""
-                                                    height="14" />
-                                            </div>
-                                            <div> <img src="{{asset('')}}images/smile.png" class="" alt=""
-                                                    height="14" />
-                                            </div>
-                                            <div class="eleven_k">
-                                                <p class="mb-0">11k</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="d-flex gap-2">
-                                                <div class="d-flex">
-                                                    <p class="mb-0 two_point">2.3k</p>
-                                                    <img src="http://localhost:8000/images/m2.png" alt="" height="15"
-                                                        style="margin-top:6px;">
-                                                </div>
-                                                <div class="d-flex">
-                                                    <p class="mb-0 two_point">2.3k</p>
-                                                    <img src="http://localhost:8000/images/m1.png" class="mt-1" alt=""
-                                                        height="18">
-                                                </div>
-                                            </div>
-                                            <!-- <div class="actions-buttons-button">
-                                                <span class="text text2" style="opacity: 1;">Share</span>
-                                                <img src="http://localhost:8000/images/share.png" class="" alt=""
-                                                    height="18">
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-12">
                                     <div
-                                        class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
+                                        class="actions-buttons-list d-flex  justify-content-between border_top  mt-3 bottom_padd">
+                                        <div class="dropimg">
+                                            <img src="{{asset('')}}images/elp2.png" class="dropimg1" alt="" />
 
+
+                                            <i class="fa-solid fa-caret-down myicon dropimg2"></i>
+                                        </div>
                                         <div class="actions-buttons-button">
-                                            <!-- <i class="fa-solid fa-thumbs-up"></i> -->
-                                            <!-- <img src="http://localhost:8000/t1.png" class="" alt=""
-                                                    height="20">  -->
-                                            <img src="{{asset('')}}images/t1.png" class="img-fluid" alt=""
-                                                height="20" />
+
+                                            <i class="fa-regular fa-thumbs-up myicon"></i>
                                             <span class="text text3">Like</span>
                                         </div>
-
-
                                         <div class="actions-buttons-button">
-                                            <!-- <i
-                                                        class="fa-solid fa-comment"></i> -->
-                                            <img src="{{asset('')}}images/t1.png" class="img-fluid" alt=""
-                                                height="20" />
+
+                                            <i class="fa-solid fa-comments myicon"></i>
                                             <span class="text text3">Comment</span>
                                         </div>
-
-
                                         <div class="actions-buttons-button">
-                                            <img src="{{asset('')}}images/tt3.png" class="img-fluid" alt=""
-                                                height="20" />
-                                            <!-- <i
-                                                        class="fa-solid fa-share"></i> -->
-                                            <span class="text text3">Share</span>
+                                            <i class="fa-solid fa-retweet myicon"></i>
+                                            <span class="text text3">Repost</span>
                                         </div>
-
+                                        <div class="actions-buttons-button">
+                                            <i class="fa-solid fa-paper-plane myicon"></i>
+                                            <span class="text text3">Send</span>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+            </div>
         </div>
-        </div>
-        
+
     </div>
 </div>
 </div>
@@ -547,9 +412,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Facebook Account
                     {{auth()->user()->account->name}}</h5>
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--  <span aria-hidden="true">&times;</span>-->
-                <!--</button>-->
+
             </div>
             <form action="{{url('set_page')}}" method="post">
                 @csrf
@@ -583,9 +446,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Instagram Account
                     {{auth()->user()->account->name}}</h5>
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--  <span aria-hidden="true">&times;</span>-->
-                <!--</button>-->
+
             </div>
             <form action="{{url('set_page_for_instagram')}}" method="post">
                 @csrf
@@ -619,9 +480,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Linkedin Account
                     {{auth()->user()->account->name}} </h5>
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--  <span aria-hidden="true">&times;</span>-->
-                <!--</button>-->
+
             </div>
             <form action="{{url('set_page_for_linkedin')}}" method="post">
 
