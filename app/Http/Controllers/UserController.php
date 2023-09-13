@@ -137,8 +137,8 @@ class UserController extends Controller
     public function create_post(Request $req)
     {
 
-
         $platforms = auth()->user()->account->platforms;
+
 
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
@@ -147,46 +147,70 @@ class UserController extends Controller
         $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = [];
 
         //*****************facebook validation******************//
-        if (in_array('Facebook', $platforms)) {
+        if (in_array('Facebook', $platforms))
+        {
+           if ($req->media_type_facebook =='image')
+            {
 
-            foreach ($req->facebook_media as $media) {
-                $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                $media->move('content_media', $imageName);
-                $mediaDatafb[] = $imageName;
+                foreach ($req->fb_image as $media) 
+                {
+                    $mediaDatafb[] = $media;
+                }
+                   
+            }else if($req->media_type_facebook =='video')
+            {
+                
+                     $mediaDatafb[] = $req->fb_video;
+               
             }
 
-
         }
+        
 
 
         //****************end facebook validation**************//
 
         //****************instagram validation****************//
-        if (in_array('Instagram', $platforms)) {
+        if (in_array('Instagram', $platforms)) 
+        {
+            if ($req->media_type_instagram =='image')
+             {
+                            foreach ($req->inst_image as $media) 
+                            {
+                                $mediaDataInsta[] = $media;
+                            }
 
-            foreach ($req->insta_media as $media) {
-                $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                $media->move('content_media', $imageName);
-                $mediaDataInsta[] = $imageName;
-
-            }
-
+            }else if($req->media_type_instagram =='video')
+            {
+                 
+                        $mediaDataInsta[] = $req->inst_video;
+                     
+             }
+                      
 
         }
-        //****************end instagram validation****************//
 
-        //****************Linkedin validation****************//
+
         if (in_array('Linkedin', $platforms)) {
+         
+               if ($req->media_type_linkedin =='image')
+             {
+                            foreach ($req->lin_image as $media) 
+                            {
+                                $mediaDataLinkedin[] = $media;
+                            }
+
+            }else if($req->media_type_linkedin =='video')
+            {
+                  
+                        $mediaDataLinkedin[] = $req->link_video;
+                      
+             }
 
 
-            foreach ($req->linkedin_media as $media) {
-                $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                $media->move('content_media', $imageName);
-                $mediaDataLinkedin[] = $imageName;
-            }
 
 
-        }
+        
         //****************end linkedin validation****************//
 
         //****************posting code****************//
@@ -223,6 +247,9 @@ class UserController extends Controller
         //****************end posting code****************//
 
     }
+
+
+
 
     public function get_event_detail(Request $request)
     {
