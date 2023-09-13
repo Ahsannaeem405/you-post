@@ -110,30 +110,30 @@ class UserController extends Controller
 
     }
 
-public function saveImageAndVideo(Request $request)
-{
+    public function saveImageAndVideo(Request $request)
+    {
 
-    if ($request->type=="video") {
+        if ($request->type == "video") {
 
-                    $base64Data = $request->input('video');
-                    $filename = uniqid() . '.mp4';
-                    $videoData = base64_decode($base64Data);
-                   file_put_contents(public_path('content_media/' . $filename), $videoData);
-                   $videoPath  = $filename;
-                   return response()->json(['path' => $videoPath]);
+            $base64Data = $request->input('video');
+            $filename = uniqid() . '.mp4';
+            $videoData = base64_decode($base64Data);
+            file_put_contents(public_path('content_media/' . $filename), $videoData);
+            $videoPath = $filename;
+            return response()->json(['path' => $videoPath]);
+        } else {
+            $base64Data = $request->input('image');
+            $filename = uniqid() . '.png';
+            $imageData = base64_decode($base64Data);
+            file_put_contents(public_path('content_media/' . $filename), $imageData);
+            $imagePath = $filename;
+            return response()->json(['path' => $imagePath]);
+
+        }
+
+
     }
-else{
-                $base64Data = $request->input('image');
-                $filename = uniqid() . '.png';
-                $imageData = base64_decode($base64Data);
-                file_put_contents(public_path('content_media/' . $filename), $imageData);
-                $imagePath = $filename;
-                return response()->json(['path' => $imagePath]);
 
-    }
-
-
-}
     public function create_post(Request $req)
     {
 
@@ -149,11 +149,11 @@ else{
         //*****************facebook validation******************//
         if (in_array('Facebook', $platforms)) {
 
-                foreach ($req->facebook_media as $media) {
-                    $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                    $media->move('content_media', $imageName);
-                    $mediaDatafb[] = $imageName;
-                }
+            foreach ($req->facebook_media as $media) {
+                $imageName = time() . rand(1111, 999) . '.' . $media->extension();
+                $media->move('content_media', $imageName);
+                $mediaDatafb[] = $imageName;
+            }
 
 
         }
@@ -172,8 +172,6 @@ else{
             }
 
 
-
-
         }
         //****************end instagram validation****************//
 
@@ -181,13 +179,11 @@ else{
         if (in_array('Linkedin', $platforms)) {
 
 
-                foreach ($req->linkedin_media as $media) {
-                    $imageName = time() . rand(1111, 999) . '.' . $media->extension();
-                    $media->move('content_media', $imageName);
-                    $mediaDataLinkedin[] = $imageName;
-                }
-
-
+            foreach ($req->linkedin_media as $media) {
+                $imageName = time() . rand(1111, 999) . '.' . $media->extension();
+                $media->move('content_media', $imageName);
+                $mediaDataLinkedin[] = $imageName;
+            }
 
 
         }
@@ -231,9 +227,11 @@ else{
     public function get_event_detail(Request $request)
     {
         $post = Post::find($request->id);
-        $platforms = Post::where('group_id', $post->group_id)->get();
-        $platformsName=$platforms->pluck('plateform')->toArray();
-        return view('user.event_detail', compact('post', 'platforms','platformsName'));
+        $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
+        $platformsName = $platforms->pluck('plateform')->toArray();
+        $platforms = $platforms->groupBy('plateform');
+
+        return view('user.event_detail', compact('post', 'platforms', 'platformsName'));
     }
 
     public function get_events(Request $request)
