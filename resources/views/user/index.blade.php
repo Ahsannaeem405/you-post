@@ -1579,25 +1579,14 @@
         </div>
     </section>
     <section style="background-color:#e4e2e2;">
-        <div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="dropdown dropdown1 ">
-                            <button style="background-color:#6CB0FF; border:none;"
-                                    class="btn btn-primary dropdown-toggle"
-                                    type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Last 7 days <img src="{{asset('images/vector.png')}}" class="img-fluid" alt=""/>
-
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </div>
-                    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="dropdown dropdown1 ">
+                        <button style="background-color:#6CB0FF; border:none;" class="btn btn-primary dropdown-toggle"
+                            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Last 7 days <img src="{{asset('images/vector.png')}}" class="img-fluid" alt="" />
 
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -1687,102 +1676,99 @@
                                                         <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
                                                             alt="" />
                                                     </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v">1.12k</h4>
-                                                    </div>
-
+                                                    <h5 class="fb-text">Facebook</h5>
                                                 </div>
-                                            </div>
-                                            <div class="col-4 social_cards">
-                                                <div>
-                                                    <div class=" oval-img-div d-flex ">
-                                                        <div class="cirle-img fb-image ">
-                                                            <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
-                                                            <img src="{{asset('')}}images/Oval (2).png"
-                                                                 class=" x-com-img"
-                                                                 alt=""/>
-                                                        </div>
-                                                        <h5 class="fb-text">Instagram</h5>
-                                                    </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v ">11.89k</h4>
-                                                    </div>
-
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v">1.12k</h4>
                                                 </div>
-                                            </div>
-                                            <div class="col-4 social_cards">
-                                                <div>
-                                                    <div class="oval-img-div d-flex ">
-                                                        <div class="cirle-img x-com">
-                                                            <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
-                                                            <img src="{{asset('')}}images/Oval (3).png"
-                                                                 class="x-com-img"
-                                                                 alt=""/>
-                                                        </div>
-                                                        <h5 class="fb-text">x.com</h5>
-                                                    </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v fouteen_k_custom">14k</h4>
-                                                    </div>
 
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="caption-main d-flex align-center justify-space-between">
-                                            <div class="d-flex gap-2 captions">
+                                        <div class="col-4 social_cards">
+                                            <div>
+                                                <div class=" oval-img-div d-flex ">
+                                                    <div class="cirle-img fb-image ">
+                                                        <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
+                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                            alt="" />
+                                                    </div>
+                                                    <h5 class="fb-text">Instagram</h5>
+                                                </div>
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v ">11.89k</h4>
+                                                </div>
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault">
-                                                </div>
-                                                <div>
-                                                    <!-- <img src="/caption-image1.png" alt=""> -->
-                                                    <img src="{{asset('')}}images/circle2.png" class="img-fluid"
-                                                         alt=""/>
-                                                </div>
-                                                <p class="caption-text mt-3">This is the caption </p>
-                                            </div>
-                                            <div class="likesAndShare d-flex align-center justify-content-end ">
-                                                <div class="d-flex align-center justify-content-end ">
-                                                    <div class="only-like me-1">
-                                                        <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
-                                                        <p class="like-para">likes</p>
-                                                    </div>
-                                                    <div class="only-share ms-1">
-                                                        <a href=""><i class="fa-solid fa-share-nodes"></i></a>
-                                                        <p class="like-para">share</p>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="caption-main d-flex align-center justify-space-between mt-2">
-                                            <div class="d-flex gap-2 captions">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault">
-                                                </div>
-                                                <div>
-                                                    <img src="{{asset('')}}images/circle1.png" class="img-fluid"
-                                                         alt=""/>
-                                                </div>
-                                                <p class="caption-text mt-3">This is the caption </p>
-                                            </div>
-                                            <div class="likesAndShare d-flex align-center justify-content-end ">
-                                                <div class="d-flex align-center justify-content-end ">
-                                                    <div class="only-like me-1">
-                                                        <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
-                                                        <p class="like-para">likes</p>
+                                        <div class="col-4 social_cards">
+                                            <div>
+                                                <div class="oval-img-div d-flex ">
+                                                    <div class="cirle-img x-com">
+                                                        <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
+                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                            alt="" />
                                                     </div>
-                                                    <div class="only-share ms-1">
-                                                        <a href=""><i class="fa-solid fa-share-nodes"></i></a>
-                                                        <p class="like-para">share</p>
-                                                    </div>
+                                                    <h5 class="fb-text">x.com</h5>
                                                 </div>
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v fouteen_k_custom">14k</h4>
+                                                </div>
+
                                             </div>
                                         </div>
-
-
                                     </div>
+                                    <div class="caption-main d-flex align-center justify-space-between">
+                                        <div class="d-flex gap-2 captions">
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div>
+                                                <!-- <img src="/caption-image1.png" alt=""> -->
+                                                <img src="{{asset('')}}images/circle2.png" class="img-fluid" alt="" />
+                                            </div>
+                                            <p class="caption-text mt-3">This is the caption </p>
+                                        </div>
+                                        <div class="likesAndShare d-flex align-center justify-content-end ">
+                                            <div class="d-flex align-center justify-content-end ">
+                                                <div class="only-like me-1">
+                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <p class="like-para">likes</p>
+                                                </div>
+                                                <div class="only-share ms-1">
+                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <p class="like-para">share</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="caption-main d-flex align-center justify-space-between mt-2">
+                                        <div class="d-flex gap-2 captions">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div>
+                                                <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
+                                            </div>
+                                            <p class="caption-text mt-3">This is the caption </p>
+                                        </div>
+                                        <div class="likesAndShare d-flex align-center justify-content-end ">
+                                            <div class="d-flex align-center justify-content-end ">
+                                                <div class="only-like me-1">
+                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <p class="like-para">likes</p>
+                                                </div>
+                                                <div class="only-share ms-1">
+                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <p class="like-para">share</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -1868,102 +1854,99 @@
                                                         <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
                                                             alt="" />
                                                     </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v">1.12k</h4>
-                                                    </div>
-
+                                                    <h5 class="fb-text">Facebook</h5>
                                                 </div>
-                                            </div>
-                                            <div class="col-4 social_cards">
-                                                <div>
-                                                    <div class=" oval-img-div d-flex ">
-                                                        <div class="cirle-img fb-image ">
-                                                            <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
-                                                            <img src="{{asset('')}}images/Oval (2).png"
-                                                                 class=" x-com-img"
-                                                                 alt=""/>
-                                                        </div>
-                                                        <h5 class="fb-text">Instagram</h5>
-                                                    </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v ">11.89k</h4>
-                                                    </div>
-
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v">1.12k</h4>
                                                 </div>
-                                            </div>
-                                            <div class="col-4 social_cards">
-                                                <div>
-                                                    <div class="oval-img-div d-flex ">
-                                                        <div class="cirle-img x-com">
-                                                            <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
-                                                            <img src="{{asset('')}}images/Oval (3).png"
-                                                                 class="x-com-img"
-                                                                 alt=""/>
-                                                        </div>
-                                                        <h5 class="fb-text">x.com</h5>
-                                                    </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v fouteen_k_custom">14k</h4>
-                                                    </div>
 
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="caption-main d-flex align-center justify-space-between">
-                                            <div class="d-flex gap-2 captions">
+                                        <div class="col-4 social_cards">
+                                            <div>
+                                                <div class=" oval-img-div d-flex ">
+                                                    <div class="cirle-img fb-image ">
+                                                        <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
+                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                            alt="" />
+                                                    </div>
+                                                    <h5 class="fb-text">Instagram</h5>
+                                                </div>
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v ">11.89k</h4>
+                                                </div>
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault">
-                                                </div>
-                                                <div>
-                                                    <!-- <img src="/caption-image1.png" alt=""> -->
-                                                    <img src="{{asset('')}}images/circle2.png" class="img-fluid"
-                                                         alt=""/>
-                                                </div>
-                                                <p class="caption-text mt-3">This is the caption </p>
-                                            </div>
-                                            <div class="likesAndShare d-flex align-center justify-content-end ">
-                                                <div class="d-flex align-center justify-content-end ">
-                                                    <div class="only-like me-1">
-                                                        <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
-                                                        <p class="like-para">likes</p>
-                                                    </div>
-                                                    <div class="only-share ms-1">
-                                                        <a href=""><i class="fa-solid fa-share-nodes"></i></a>
-                                                        <p class="like-para">share</p>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="caption-main d-flex align-center justify-space-between mt-2">
-                                            <div class="d-flex gap-2 captions">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault">
-                                                </div>
-                                                <div>
-                                                    <img src="{{asset('')}}images/circle1.png" class="img-fluid"
-                                                         alt=""/>
-                                                </div>
-                                                <p class="caption-text mt-3">This is the caption </p>
-                                            </div>
-                                            <div class="likesAndShare d-flex align-center justify-content-end ">
-                                                <div class="d-flex align-center justify-content-end ">
-                                                    <div class="only-like me-1">
-                                                        <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
-                                                        <p class="like-para">likes</p>
+                                        <div class="col-4 social_cards">
+                                            <div>
+                                                <div class="oval-img-div d-flex ">
+                                                    <div class="cirle-img x-com">
+                                                        <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
+                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                            alt="" />
                                                     </div>
-                                                    <div class="only-share ms-1">
-                                                        <a href=""><i class="fa-solid fa-share-nodes"></i></a>
-                                                        <p class="like-para">share</p>
-                                                    </div>
+                                                    <h5 class="fb-text">x.com</h5>
                                                 </div>
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v fouteen_k_custom">14k</h4>
+                                                </div>
+
                                             </div>
                                         </div>
-
-
                                     </div>
+                                    <div class="caption-main d-flex align-center justify-space-between">
+                                        <div class="d-flex gap-2 captions">
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div>
+                                                <!-- <img src="/caption-image1.png" alt=""> -->
+                                                <img src="{{asset('')}}images/circle2.png" class="img-fluid" alt="" />
+                                            </div>
+                                            <p class="caption-text mt-3">This is the caption </p>
+                                        </div>
+                                        <div class="likesAndShare d-flex align-center justify-content-end ">
+                                            <div class="d-flex align-center justify-content-end ">
+                                                <div class="only-like me-1">
+                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <p class="like-para">likes</p>
+                                                </div>
+                                                <div class="only-share ms-1">
+                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <p class="like-para">share</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="caption-main d-flex align-center justify-space-between mt-2">
+                                        <div class="d-flex gap-2 captions">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div>
+                                                <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
+                                            </div>
+                                            <p class="caption-text mt-3">This is the caption </p>
+                                        </div>
+                                        <div class="likesAndShare d-flex align-center justify-content-end ">
+                                            <div class="d-flex align-center justify-content-end ">
+                                                <div class="only-like me-1">
+                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <p class="like-para">likes</p>
+                                                </div>
+                                                <div class="only-share ms-1">
+                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <p class="like-para">share</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -2049,8 +2032,21 @@
                                                         <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
                                                             alt="" />
                                                     </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v">1.12k</h4>
+                                                    <h5 class="fb-text">Facebook</h5>
+                                                </div>
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v">1.12k</h4>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 social_cards">
+                                            <div>
+                                                <div class=" oval-img-div d-flex ">
+                                                    <div class="cirle-img fb-image ">
+                                                        <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
+                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Instagram</h5>
                                                 </div>
@@ -2058,98 +2054,77 @@
                                                     <h4 class="text-center fb_card_v ">11.89k</h4>
                                                 </div>
 
-                                                </div>
-                                            </div>
-                                            <div class="col-4 social_cards">
-                                                <div>
-                                                    <div class=" oval-img-div d-flex ">
-                                                        <div class="cirle-img fb-image ">
-                                                            <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
-                                                            <img src="{{asset('')}}images/Oval (2).png"
-                                                                 class=" x-com-img"
-                                                                 alt=""/>
-                                                        </div>
-                                                        <h5 class="fb-text">Instagram</h5>
-                                                    </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v">11.89k</h4>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-4 social_cards">
-                                                <div>
-                                                    <div class="oval-img-div d-flex ">
-                                                        <div class="cirle-img x-com">
-                                                            <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
-                                                            <img src="{{asset('')}}images/Oval (3).png"
-                                                                 class="x-com-img"
-                                                                 alt=""/>
-                                                        </div>
-                                                        <h5 class="fb-text">x.com</h5>
-                                                    </div>
-                                                    <div class="like-counter">
-                                                        <h4 class="text-center fb_card_v fouteen_k_custom">14k</h4>
-                                                    </div>
-
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="caption-main d-flex align-center justify-space-between">
-                                            <div class="d-flex gap-2 captions">
+                                        <div class="col-4 social_cards">
+                                            <div>
+                                                <div class="oval-img-div d-flex ">
+                                                    <div class="cirle-img x-com">
+                                                        <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
+                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                            alt="" />
+                                                    </div>
+                                                    <h5 class="fb-text">x.com</h5>
+                                                </div>
+                                                <div class="like-counter">
+                                                    <h4 class="text-center fb_card_v fouteen_k_custom">14k</h4>
+                                                </div>
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault">
-                                                </div>
-                                                <div>
-                                                    <!-- <img src="/caption-image1.png" alt=""> -->
-                                                    <img src="{{asset('')}}images/circle2.png" class="img-fluid"
-                                                         alt=""/>
-                                                </div>
-                                                <p class="caption-text mt-3">This is the caption </p>
-                                            </div>
-                                            <div class="likesAndShare d-flex align-center justify-content-end ">
-                                                <div class="d-flex align-center justify-content-end ">
-                                                    <div class="only-like me-1">
-                                                        <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
-                                                        <p class="like-para">likes</p>
-                                                    </div>
-                                                    <div class="only-share ms-1">
-                                                        <a href=""><i class="fa-solid fa-share-nodes"></i></a>
-                                                        <p class="like-para">share</p>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="caption-main d-flex align-center justify-space-between mt-2">
-                                            <div class="d-flex gap-2 captions">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                           id="flexCheckDefault">
-                                                </div>
-                                                <div>
-                                                    <img src="{{asset('')}}images/circle1.png" class="img-fluid"
-                                                         alt=""/>
-                                                </div>
-                                                <p class="caption-text mt-3">This is the caption </p>
-                                            </div>
-                                            <div class="likesAndShare d-flex align-center justify-content-end ">
-                                                <div class="d-flex align-center justify-content-end ">
-                                                    <div class="only-like me-1">
-                                                        <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
-                                                        <p class="like-para">likes</p>
-                                                    </div>
-                                                    <div class="only-share ms-1">
-                                                        <a href=""><i class="fa-solid fa-share-nodes"></i></a>
-                                                        <p class="like-para">share</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
                                     </div>
+                                    <div class="caption-main d-flex align-center justify-space-between">
+                                        <div class="d-flex gap-2 captions">
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div>
+                                                <!-- <img src="/caption-image1.png" alt=""> -->
+                                                <img src="{{asset('')}}images/circle2.png" class="img-fluid" alt="" />
+                                            </div>
+                                            <p class="caption-text mt-3">This is the caption </p>
+                                        </div>
+                                        <div class="likesAndShare d-flex align-center justify-content-end ">
+                                            <div class="d-flex align-center justify-content-end ">
+                                                <div class="only-like me-1">
+                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <p class="like-para">likes</p>
+                                                </div>
+                                                <div class="only-share ms-1">
+                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <p class="like-para">share</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="caption-main d-flex align-center justify-space-between mt-2">
+                                        <div class="d-flex gap-2 captions">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div>
+                                                <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
+                                            </div>
+                                            <p class="caption-text mt-3">This is the caption </p>
+                                        </div>
+                                        <div class="likesAndShare d-flex align-center justify-content-end ">
+                                            <div class="d-flex align-center justify-content-end ">
+                                                <div class="only-like me-1">
+                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <p class="like-para">likes</p>
+                                                </div>
+                                                <div class="only-share ms-1">
+                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <p class="like-para">share</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>

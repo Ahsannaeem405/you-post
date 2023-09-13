@@ -2077,6 +2077,10 @@ width: 95%;
 .wizard-fieldset_edit{
     font-size: 17px;
 }
+.Edit{
+    width: 100%;
+    text-align: right;
+}
 .emoji_parent.emoji_parent2{
 position: relative;
 border: 1px solid #e4e2e2;
