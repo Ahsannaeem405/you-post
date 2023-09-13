@@ -40,6 +40,7 @@ class UserController extends Controller
     public function dashbaord()
     {
 
+        $platforms = session('platforms');
 
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
@@ -61,7 +62,7 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms'));
 
     }
 
@@ -227,7 +228,8 @@ class UserController extends Controller
             $post->group_id = $group_id;
             $post->save();
         }
-        return back()->with('success-post', 'Post Created Successfully');
+        
+        return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms]);
         //****************end posting code****************//
 
     }

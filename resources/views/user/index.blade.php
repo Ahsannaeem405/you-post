@@ -2154,12 +2154,31 @@
                 <div class="woohoo mt-5">
                     <h2>Woohoo!</h2>
                     <div class="success_social_icons">
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/FB_Color.png" class="img-fluid"
-                                    alt="" /></a></div>
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Twitter_Color.png"
-                                    class="img-fluid" alt="" /></a></div>
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Instagram_Color.png"
-                                    class="img-fluid" alt="" /></a></div>
+                    @if (isset($platforms))
+
+                            @if (in_array('Facebook', $platforms))
+                                <div class="success_fb"><a href=""><img src="{{asset('')}}images/FB_Color.png" class="img-fluid"
+                                            alt="" /></a>
+                                </div>
+                                @endif
+                            @if (in_array('Linkedin', $platforms))
+                                <div class="success_fb"><a href=""><img src="{{asset('')}}images/Linkedin_Color.png"
+                                            class="img-fluid" alt="" /></a>
+                                </div>
+                                @endif
+                           @if (in_array('Instagram', $platforms))
+                                <div class="success_fb"><a href=""><img src="{{asset('')}}images/Instagram_Color.png"
+                                            class="img-fluid" alt="" /></a>
+                                 </div>
+                            
+                          
+                            @endif
+                           @if (in_array('Twitter',$platforms))
+                            <div class="success_fb"><a href=""><img src="{{asset('')}}images/Twitter_Color.png"
+                                            class="img-fluid" alt="" /></a>
+                             </div>
+                            @endif
+                    @endif
                     </div>
                     <div class="success_modal_para mt-3">
                         <p class="mb-0">You just published your first post! Keep posting and let the world know what you’ve got to say.</p>

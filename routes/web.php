@@ -50,7 +50,7 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('dashboard', [UserController::class, 'dashbaord']);
+    Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
     Route::get('dashboard2', [UserController::class, 'dashbaord2']);
 
 

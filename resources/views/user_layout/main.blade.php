@@ -307,7 +307,7 @@
     $(document).ready(function () {
         setTimeout(function () {
             $('#postSuccessModal').modal('show')
-        },3000)
+        },1500)
 
     })
     @endif
