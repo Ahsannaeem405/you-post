@@ -113,7 +113,7 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-      
+
         $platforms = auth()->user()->account->platforms;
 
         if (count($platforms) == 0) {
@@ -267,7 +267,7 @@ class UserController extends Controller
             $post->group_id = $group_id;
             $post->save();
         }
-        return back()->with('success', 'Post Created Successfully');
+        return back()->with('success-post', 'Post Created Successfully');
         //****************end posting code****************//
 
     }

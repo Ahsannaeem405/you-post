@@ -13,14 +13,13 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script> -->
 
-   <!-- google_font_poppin -->
+    <!-- google_font_poppin -->
 
-   <!-- google_font_poppin -->
-
+    <!-- google_font_poppin -->
 
 
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
-     <!-- style.css -->
+    <!-- style.css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive2.css')}}">
     <link rel="icon" href="{{asset('')}}images/favicon.png"/>
@@ -49,8 +48,9 @@
     <script src="https://kit.fontawesome.com/4366d6f846.js" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <style>
@@ -67,13 +67,15 @@
         .dropdown a {
             display: block !important;
         }
+
         /* sidebar */
         .sidebar:hover {
-    z-index: 1;
-}
-       /* sidebar */
-        .select2-container{
-            width: 100%!important;
+            z-index: 1;
+        }
+
+        /* sidebar */
+        .select2-container {
+            width: 100% !important;
         }
     </style>
 </head>
@@ -83,16 +85,16 @@
 @include('user_layout.sidebar')
 
 <section class="home">
-    <section  class="create_preview_post_wrap">
-    <div class="container test_con  px-0">
-        <!--===== Markup For "Header" Starts Here =====-->
-        @include('user_layout.header')
-        <!--===== Markup For "Header" Ends Here =====-->
-        @yield('content')
-        @include('user_layout.footer')
-    </div>
+    <section class="create_preview_post_wrap">
+        <div class="container test_con  px-0">
+            <!--===== Markup For "Header" Starts Here =====-->
+            @include('user_layout.header')
+            <!--===== Markup For "Header" Ends Here =====-->
+            @yield('content')
+            @include('user_layout.footer')
+        </div>
     </section>
- </section>
+</section>
 
 @include('user.component.modals')
 <!--===== Markup For "Footer" Starts Here =====-->
@@ -159,12 +161,12 @@
     $(document).ready(function () {
         $('.selectmultiple').select2({
             tags: true,
-            placeholder:'Add Tags',
+            placeholder: 'Add Tags',
             tokenSeparators: [',', ' ']
         });
         $('.selectmultiple1').select2({
             tags: true,
-            placeholder:'Add Tags',
+            placeholder: 'Add Tags',
             tokenSeparators: [',', ' ']
         });
         setTimeout(function () {
@@ -175,111 +177,9 @@
         })
         var eventDates =@json(collect($allPosts)->pluck('event_date'));
 
-
-
-
-
-
-//         $(function() {
-
-// $('#postManagerCalendar').fullCalendar({
-//     eventSources: [
-//         {
-//             events: [
-//                 {
-//                     title: 'Event1',
-//                     start: '2018-07-13',
-//                     end: '2018-07-16',
-//                     allDay: true,
-//                     color: 'green',
-//                     backgroundColor: 'green'
-//                 },
-//                 {
-//                     title: 'Event2',
-//                     start: '2018-07-10',
-//                     color: '#ff7538',
-//                     backgroundColor: '#ff7538'
-//                 }
-
-
-
-//             ],
-//         }
-//     ],
-//     header: {
-//         right: 'month,agendaWeek,timelineCustom,agendaDay,prev,today,next',
-//         left: 'title',
-//     },
-//     fixedWeekCount: false,
-//     contentHeight: 800,
-//     views: {
-//         timelineCustom: {
-//             type: 'timeline',
-//             buttonText: 'Year',
-//             dateIncrement: { years: 1 },
-//             slotDuration: { months: 1 },
-//             visibleRange: function (currentDate) {
-//                 return {
-//                     start: currentDate.clone().startOf('year'),
-//                     end: currentDate.clone().endOf("year")
-//                 };
-
-//             }
-//         }
-//     }
-
-
-// });
-
-// });
-
-    //     var calendar = $('#postManagerCalendar').fullCalendar({
-
-    //         selectable: true,
-    //         businessHours: true,
-    //         dayMaxEvents: true, // allow "more" link when too many events
-    //         events: @json(collect($allPosts)),
-    //         views: {
-    //             month: {
-    //                 eventLimit: 2
-    //             }
-
-
-    //         },
-
-
-    //         eventSources: [
-    //     {
-    //         events: [
-    //             {
-    //                 title: 'Event1',
-    //                 start: '2018-07-13',
-    //                 end: '2018-07-16',
-    //                 allDay: true,
-    //                 color: 'green',
-    //                 backgroundColor: 'green'
-    //             },
-    //             {
-    //                 title: 'Event2',
-    //                 start: '2018-07-10',
-    //                 color: '#ff7538',
-    //                 backgroundColor: '#ff7538'
-    //             }
-
-    //         ],
-    //     }
-    // ],
-
-    // header: {
-    //     center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
-    // },
-    // fixedWeekCount: false,
-    // contentHeight: 850,
-
-//   salman new code calendar 7/9/23
-var calendar = $('#postManagerCalendar').fullCalendar({
+        var calendar = $('#postManagerCalendar').fullCalendar({
             defaultView: 'agendaWeek',
-          selectable: true,
+            selectable: true,
             businessHours: true,
             schedulerLicenseKey: 'YOUR_LICENSE_KEY',
             dayMaxEvents: true, // allow "more" link when too many events
@@ -291,46 +191,20 @@ var calendar = $('#postManagerCalendar').fullCalendar({
             },
             views: {
                 agendaWeek: {
-        columnFormat: 'ddd\nD',
-        slotLabelFormat: [
-        'h A',
-        'h A',
-    ],
-    }
-},
-    //         eventSources: [
-    //     {
-    //         events: [
-    //             {
-    //                 title: 'Event1',
-    //                 start: '2018-07-13',
-    //                 end: '2018-07-16',
-    //                 allDay: false,
-    //                 color: 'green',
-    //                 backgroundColor: 'green',
-    //             },
-    //             {
-    //                 title: 'Event2',
-    //                 start: '2018-07-10',
-    //                 color: '#FF7538',
-    //                 backgroundColor: '#FF7538',
-    //             }
-    //         ],
-    //     }
-    // ],
-    header: {
-        center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
-    },
-    fixedWeekCount: false,
-    contentHeight: 850,
-    // salman new code calendar 7/9/23
+                    columnFormat: 'ddd\nD',
+                    slotLabelFormat: [
+                        'h A',
+                        'h A',
+                    ],
+                }
+            },
 
-
-
-
-
-
-
+            header: {
+                center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
+            },
+            fixedWeekCount: false,
+            contentHeight: 850,
+            // salman new code calendar 7/9/23
 
 
             eventClick: function (event, jsEvent, view) {
@@ -379,45 +253,20 @@ var calendar = $('#postManagerCalendar').fullCalendar({
             },
 
             viewRender: function (view, element) {
-            // Get the active view name
-            var activeView = view.type;
+                // Get the active view name
+                var activeView = view.type;
 
-            // Remove active class from all tabs
-            $('.calendar-tab').removeClass('active');
+                // Remove active class from all tabs
+                $('.calendar-tab').removeClass('active');
 
-            // Add active class to the currently active tab
-            $('.calendar-tab[data-view="' + activeView + '"]').addClass('active');
+                // Add active class to the currently active tab
+                $('.calendar-tab[data-view="' + activeView + '"]').addClass('active');
 
-            $('#calendar').fullCalendar('changeView', 'agendaDay');
+                $('#calendar').fullCalendar('changeView', 'agendaDay');
 
-        }
+            }
         });
-// // Handle day view tab click
-// $(document).on('click', '.calendar-tab[data-view="day"]', function () {
-//     calendar.fullCalendar('changeView', 'agendaDay');
 
-//     // Toggle active class for tabs
-//     $('.calendar-tab').removeClass('active');
-//     $(this).addClass('active');
-// });
-
-
-// // Handle week view tab click
-// $(document).on('click', '.calendar-tab[data-view="week"]', function () {
-//     calendar.fullCalendar('changeView', 'agendaWeek');
-//     // Toggle active class for tabs
-//     $('.calendar-tab').removeClass('active');
-//     $(this).addClass('active');
-// });
-
-
-//     // Handle tab clicks
-//     $(document).on('click', '.calendar-tab', function () {
-//         var viewName = $(this).data('view');
-
-//         // Change the calendar view
-//         calendar.fullCalendar('changeView', viewName);
-//     });
     });
 
     function videoThumnail() {
@@ -447,16 +296,20 @@ var calendar = $('#postManagerCalendar').fullCalendar({
         });
     }
 
-    function getVideoThumbnail(videoPath, obj) {
-        // Replace the videoURL with the correct path to your video directory
 
-    }
 
 
     @if (Session::has('success'))
     toastr.success('{{ Session::get('success') }}');
     @elseif (Session::has('error'))
     toastr.error('{{ Session::get('error') }}');
+    @elseif (Session::has('success-post'))
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('#postSuccessModal').modal('show')
+        },3000)
+
+    })
     @endif
 
         @if ($errors->any())
@@ -488,7 +341,7 @@ var calendar = $('#postManagerCalendar').fullCalendar({
 
 
     $(document).on('click', '.plateform', function () {
-        var account_id=$(this).data('account');
+        var account_id = $(this).data('account');
         var all_plateform = $("input[name='plateform[]']:checked");
         var plateform_val = [];
         all_plateform.each(function () {
@@ -499,7 +352,7 @@ var calendar = $('#postManagerCalendar').fullCalendar({
             url: "{{ url('update_user_platforms') }}",
             data: {
                 'plateform_val': plateform_val,
-                'account_id':account_id
+                'account_id': account_id
             },
             success: function (response) {
                 window.location.reload();
@@ -598,7 +451,6 @@ var calendar = $('#postManagerCalendar').fullCalendar({
     });
 
 
-
 </script>
 
 
@@ -610,13 +462,13 @@ var calendar = $('#postManagerCalendar').fullCalendar({
 
     function Namechangefun($obj) {
         var inputText = $($obj).val();
-        document.getElementById("mynameresult").textContent =  inputText;
+        document.getElementById("mynameresult").textContent = inputText;
     }
 
     function suggested_text($obj) {
 
-$('.loader').removeClass('d-none');
-        var contentData=$($obj).val();
+        $('.loader').removeClass('d-none');
+        var contentData = $($obj).val();
 
         $.ajaxSetup({
             headers: {
@@ -629,10 +481,10 @@ $('.loader').removeClass('d-none');
             data: {'contentData': contentData},
             success: function (result) {
                 $('.loader').addClass('d-none');
-                $('#gpt_content').html(result['content'])  ;
+                $('#gpt_content').html(result['content']);
                 $('#gpt_tags').html(result['tags']);
                 $('.AIgeneratedCarousel').empty();
-                for(let i=0;i<result['images'].length;i++){
+                for (let i = 0; i < result['images'].length; i++) {
                     $('.AIgeneratedCarousel').append(`
 
                      <div class="item">
@@ -650,20 +502,20 @@ $('.loader').removeClass('d-none');
                 }
                 owl.trigger('destroy.owl.carousel');
                 $('.owl-carousel').owlCarousel({
-                    loop:true,
-                    margin:10,
-                    nav:true,
+                    loop: true,
+                    margin: 10,
+                    nav: true,
                     dots: false,
                     onTranslated: setActiveItem,
-                    responsive:{
-                        0:{
-                            items:1
+                    responsive: {
+                        0: {
+                            items: 1
                         },
-                        600:{
-                            items:2
+                        600: {
+                            items: 2
                         },
-                        1000:{
-                            items:2
+                        1000: {
+                            items: 2
                         }
                     }
                 });
@@ -674,39 +526,39 @@ $('.loader').removeClass('d-none');
     }
 
     $('.save_prompt').click(function () {
-       var obj=$('.edit_promotedtext');
-       suggested_text(obj);
-       $('#edit_prompt').modal('hide');
+        var obj = $('.edit_promotedtext');
+        suggested_text(obj);
+        $('#edit_prompt').modal('hide');
     });
 
 </script>
 <script>
- const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+    const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
 
 
-toggle.addEventListener("click" , () =>{
-    sidebar.classList.toggle("close");
-})
+    toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    })
 
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
+    searchBtn.addEventListener("click", () => {
+        sidebar.classList.remove("close");
+    })
 
-modeSwitch.addEventListener("click" , () =>{
-    body.classList.toggle("dark");
+    modeSwitch.addEventListener("click", () => {
+        body.classList.toggle("dark");
 
-    if(body.classList.contains("dark")){
-        modeText.innerText = "Light mode";
-    }else{
-        modeText.innerText = "Dark mode";
+        if (body.classList.contains("dark")) {
+            modeText.innerText = "Light mode";
+        } else {
+            modeText.innerText = "Dark mode";
 
-    }
-});
+        }
+    });
 </script>
 
 <!-- <script>
@@ -783,10 +635,6 @@ modeSwitch.addEventListener("click" , () =>{
   });
 
 </script> -->
-
-
-
-
 
 
 @yield('js')

@@ -2160,9 +2160,8 @@
 </section>
 
 <!-- modal test1 start -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-    data-bs-whatever="@mdo">Open modal for @mdo</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="postSuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-lg">
         <div class="modal-content success_modal_content">
             <div class="modal-header success_modal_header ">
@@ -2187,8 +2186,7 @@
 
             </div>
             <div class="modal-footer success_modal_footer pb-5">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <button type="button" class="btn btn-danger">GO BACK</button>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">GO BACK</button>
             </div>
         </div>
     </div>
@@ -2660,11 +2658,11 @@
                 calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
             }
         }
-    }
+
 
     // Initial calendar generation
-    generateCalendar();
-});
+    //generateCalendar();
+
 </script>
 
 
@@ -2679,28 +2677,5 @@ function openEventModal(year, month, day) {
     }
 }
 </script>
-<!-- <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-               
-                <div class="modal-header">
-                    <h5 class="modal-title">Simple Bootstrap Modal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                
-                
-                <div class="modal-body">
-                    This is a simple Bootstrap modal. You can add your content here.
-                </div>
-                
-              
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save Changes</button>
-                </div>
-                
-            </div>
-        </div>
-    </div> -->
+
 @endsection
