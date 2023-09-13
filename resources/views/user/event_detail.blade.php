@@ -126,11 +126,9 @@
                                 <span class="text text3">Share</span>
                             </div>
                             <div class="actions-buttons-button d-flex">
-                                <div><img src="{{asset('images/admn.png')}}" class="img-fluid" alt="" height="13"
-                                          style="height:25px;"/></div>
+                                <div><img src="{{asset('images/admn.png')}}" class="img-fluid" alt="" height="13" style="height:25px;"/></div>
                                 <div class="mt-1">
-                                    <img src="{{asset('images/drop.png')}}" class="img-fluid" alt="" height="13"
-                                         style="height:14px;"/>
+                                    <img src="{{asset('images/drop.png')}}" class="img-fluid" alt="" height="13" style="height:14px;"/>
                                 </div>
 
                             </div>
@@ -160,7 +158,7 @@
                     <div class="col-7">
                         <div class="d-flex">
                             <div>
-                                <img src="{{asset('')}}images/insta_elp.png" class="img-fluid" alt=""/>
+                                <img src="{{asset('images/insta_elp.png')}}" class="img-fluid" alt=""/>
                             </div>
 
                             <div class="Evano">
@@ -230,11 +228,9 @@
                         </div>
 
                         <div class="actions-buttons-button d-flex">
-                            <div><img src="{{asset('')}}images/admn.png" class="img-fluid" alt=""
-                                      height="13" style="height:25px;"/></div>
+                            <div><img src="{{asset('')}}images/admn.png" class="img-fluid" alt="" height="13" style="height:25px;"/></div>
                             <div class="mt-1">
-                                <img src="{{asset('')}}images/drop.png" class="img-fluid" alt="" height="13"
-                                     style="height:14px;"/>
+                                <img src="{{asset('')}}images/drop.png" class="img-fluid" alt="" height="13" style="height:14px;"/>
                             </div>
 
                         </div>
