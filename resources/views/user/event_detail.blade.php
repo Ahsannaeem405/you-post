@@ -32,6 +32,7 @@
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs nav_tabs post-detail-tab" id="myTab" role="tablist">
+
     @if(in_array('Facebook',$platformsName))
     <li class="nav-item" role="presentation">
         <a class="nav-link " id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab" aria-controls="tab1"
