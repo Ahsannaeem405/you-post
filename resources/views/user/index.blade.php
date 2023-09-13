@@ -554,7 +554,7 @@
                                                             </ul>
                                                         </div>
 
-                                                        <div class="tags_input_wrap grid_item">
+                                                        <div class="tags_input_wrap grid_item tags_hash">
                                                             <div class="tags_input">
                                                                 <select name="facebook_tag[]"
                                                                         class="form-control selectmultiple1" multiple
