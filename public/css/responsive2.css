@@ -260,6 +260,10 @@
     .Modal_suggession{
         margin-left: 10px;
     }
+    .tags_hash {
+        justify-content: end;
+        width: 100% !important;
+    }
 
     /* salman 9/8/23 */
 
