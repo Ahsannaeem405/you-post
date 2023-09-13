@@ -168,11 +168,10 @@
                         <div> @foreach(explode(',',$platforms['Instagram'][0]->media) as $image)
                         <img src="{{asset("content_media/$image")}}" class="img-fluid" alt="" />
                         @endforeach</div>
-                       
                         @elseif($platforms['Instagram'][0]->media_type=='video')
                       <div>
                         <video src="{{asset("content_media/{$platforms['Instagram'][0]->media}")}}" controls></video>
-                     </div>  
+                      </div>
                         @endif
 
                     </div>
