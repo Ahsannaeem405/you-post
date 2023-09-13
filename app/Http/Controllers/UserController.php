@@ -276,7 +276,8 @@ class UserController extends Controller
     {
         $post = Post::find($request->id);
         $platforms = Post::where('group_id', $post->group_id)->get();
-        return view('user.event_detail', compact('post', 'platforms'));
+        $platformsName=$platforms->pluck('plateform')->toArray();
+        return view('user.event_detail', compact('post', 'platforms','platformsName'));
     }
 
     public function get_events(Request $request)

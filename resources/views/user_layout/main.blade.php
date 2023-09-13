@@ -333,6 +333,8 @@
                 $('.event_detail_parent').empty().append(response);
                 $('.fc-popover').css('display', 'none');
                 $('#detail_modal').modal('show');
+                $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
+                $('.post-detail-tab-content div:first-child').addClass('show active');
             }
         });
     }
