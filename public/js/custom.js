@@ -392,16 +392,21 @@ $(document).ready(function () {
             imgwidh = this.width;
             imgheight = this.height;
 
-            var aspectRatio = (imgwidh / imgheight);
-            aspectRatio= (Math.floor(aspectRatio * 10) / 10).toFixed(1);
-           var fourByfive=  (4 / 5);
-           fourByfive= (Math.floor(fourByfive * 10) / 10).toFixed(1);
-           var sixteenBynine=  (16 / 9);
-           sixteenBynine= (Math.floor(sixteenBynine * 10) / 10).toFixed(1);
+            var aspectRatio = (imgwidh / imgheight).toFixed(2);
+           
+           var fourByfive=  (4 / 5).toFixed(2);
+          
+           var sixteenBynine=  (16 / 9).toFixed(2);
+    
 
            if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
-            toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
-                response = false;
+            newimgwidh =2848;
+            newimgheight = 1624;
+            this.width =newimgwidh;
+            this.height = newimgheight;
+            appendImage(file, socialicon);
+            // toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
+                // response = false;
             } else {
                 appendImage(file, socialicon);
             }
@@ -422,12 +427,11 @@ $(document).ready(function () {
 
                     var {videoWidth, videoHeight} = videoEl;
 
-                    var aspectRatio = (videoWidth / videoHeight);
-                     aspectRatio= (Math.floor(aspectRatio * 10) / 10).toFixed(1);
-                    var fourByfive=  (4 / 5);
-                    fourByfive= (Math.floor(fourByfive * 10) / 10).toFixed(1);
-                    var sixteenBynine=  (16 / 9);
-                    sixteenBynine= (Math.floor(sixteenBynine * 10) / 10).toFixed(1);
+                    var aspectRatio = (videoWidth / videoHeight).toFixed(2);
+           
+                    var fourByfive=  (4 / 5).toFixed(2);
+                   
+                    var sixteenBynine=  (16 / 9).toFixed(2);
 
                 
 
