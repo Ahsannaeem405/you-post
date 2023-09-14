@@ -539,7 +539,7 @@
                                                                         fordata="image_or_videofb"><label
                                                                                 for="image_or_videofb">
                                                                                 <img
-                                                                                    src="{{asset('')}}images/video_player.png"
+                                                                                    src="{{asset('')}}images/new_image.png"
                                                                                     class="img-fluid" alt=""/>
                                                                             </label>
                                                                         </a>
@@ -645,7 +645,7 @@
                                                                         fordata="image_or_video_insta"><label
                                                                                 for="image_or_video_insta">
                                                                                 <img
-                                                                                    src="{{asset('')}}images/video_player.png"
+                                                                                    src="{{asset('')}}images/new_image.png"
                                                                                     class="img-fluid" alt=""/>
                                                                             </label>
                                                                         </a>
@@ -791,7 +791,7 @@
                                                                         fordata="image_or_video_linkedin"><label
                                                                                 for="image_or_video_linkedin">
                                                                                 <img style="border-radius:50px"
-                                                                                    src="{{asset('')}}images/video_player.png"
+                                                                                    src="{{asset('')}}images/new_image.png"
                                                                                     class="img-fluid" alt=""/>
                                                                             </label>
                                                                         </a>
