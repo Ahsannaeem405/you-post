@@ -228,7 +228,7 @@ class UserController extends Controller
             $post->group_id = $group_id;
             $post->save();
         }
-        
+
         return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms]);
         //****************end posting code****************//
 
@@ -336,7 +336,7 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata'];
+        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata','pages_show_list'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
