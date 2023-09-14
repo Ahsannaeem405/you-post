@@ -30,7 +30,6 @@
     @endif
 </ul>
 <!-- Tab content -->
-
 <div class="tab-content post-detail-tab-content" id="myTabContent">
     @if(in_array('Facebook',$platformsName))
     <div class="tab-pane fade " id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
