@@ -391,9 +391,16 @@ $(document).ready(function () {
         img.onload = function () {
             imgwidh = this.width;
             imgheight = this.height;
-            var aspectRatio = (imgwidh / imgheight).toFixed(1);
-            if ((aspectRatio != ((4 / 5).toFixed(1)) && aspectRatio != ((16 / 9).toFixed(1)))) {
-                toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
+
+            var aspectRatio = (imgwidh / imgheight);
+            aspectRatio= (Math.floor(aspectRatio * 10) / 10).toFixed(1);
+           var fourByfive=  (4 / 5);
+           fourByfive= (Math.floor(fourByfive * 10) / 10).toFixed(1);
+           var sixteenBynine=  (16 / 9);
+           sixteenBynine= (Math.floor(sixteenBynine * 10) / 10).toFixed(1);
+
+           if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
+            toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
                 response = false;
             } else {
                 appendImage(file, socialicon);
@@ -415,8 +422,16 @@ $(document).ready(function () {
 
                     var {videoWidth, videoHeight} = videoEl;
 
-                    var aspectRatio = (videoWidth / videoHeight).toFixed(1);
-                    if ((aspectRatio != ((4 / 5).toFixed(1)) && aspectRatio != ((16 / 9).toFixed(1)))) {
+                    var aspectRatio = (videoWidth / videoHeight);
+                     aspectRatio= (Math.floor(aspectRatio * 10) / 10).toFixed(1);
+                    var fourByfive=  (4 / 5);
+                    fourByfive= (Math.floor(fourByfive * 10) / 10).toFixed(1);
+                    var sixteenBynine=  (16 / 9);
+                    sixteenBynine= (Math.floor(sixteenBynine * 10) / 10).toFixed(1);
+
+                
+
+                    if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
 
                         toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
                         return false;
@@ -456,7 +471,6 @@ $(document).ready(function () {
                 validateDimenstionImage(file, socialicon);
             }
         } else {
-
              var total_size= getMB(file_size);
              if (total_size > 4){
                 toastr.error('size should be less than 4MB.', 'Video', {timeOut: 5000})
