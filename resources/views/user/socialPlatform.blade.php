@@ -183,9 +183,9 @@
                     } else if (errorData.message == 'twiter_error') {
 
                         toastr.error(`Please Connect Your Twitter Account
-                     <div class="MDLsocial-icon p-2" style="background-color: #00acee !important;">
+                     <div class="MDLsocial-icon p-2" style="background-color: #343434 !important;">
                                 <a class="p-2" href="{{url('connect_twitter')}}/${account_id}">
-                                    <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a></div>
+                                <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14"/>Connect with X</a></div>
                         </div>
                     `);
                     } else if (errorData.message == 'insta_error') {

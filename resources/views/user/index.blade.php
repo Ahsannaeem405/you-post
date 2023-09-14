@@ -54,7 +54,7 @@
 
         .create_preview_post_index_item .preview_post,
         .create_preview_post_index_item .preview_post .preview_wrap {
-            width: 95% !important;
+            width: auto !important;
             margin: auto;
 
         }
