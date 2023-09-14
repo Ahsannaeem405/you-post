@@ -527,7 +527,7 @@
                                 <h4>Post Preview</h4>
                             </div>
 
-                            <div class="preview_wrap">
+                            <div class="preview_wrap ">
                                 <div class="col-md-12">
                                     <div class="Mobcompny-title">
                                         <div class="w-50">
@@ -843,7 +843,7 @@
                             <h4>Post Preview</h4>
                         </div>
 
-                        <div class="preview_wrap">
+                        <div class="preview_wrap ">
                             <div class="col-md-12">
                                 <div class="Mobcompny-title">
                                     <div class="w-50">
