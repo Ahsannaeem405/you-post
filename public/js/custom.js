@@ -335,15 +335,15 @@ $(document).ready(function () {
     $(document).on('click', '.image_or_video_div', function () {
 
         if ($(this).attr('social') == 'fb') {
-            $('#image_div').toggleClass('d-none');
+            // $('#image_div').toggleClass('d-none');
 
         } else if ($(this).attr('social') == 'insta') {
 
-            $('#image_div_ins').toggleClass('d-none');
+            // $('#image_div_ins').toggleClass('d-none');
 
         } else if ($(this).attr('social') == 'linkedin') {
 
-            $('#image_div_linked').toggleClass('d-none');
+            // $('#image_div_linked').toggleClass('d-none');
         }
 
 
@@ -353,8 +353,7 @@ $(document).ready(function () {
     $(document).on("click", ".cancel_mark", function () {
 
 
-        var id_of_div = $(this).closest(".sm_container").find('input[type=text]:first').attr('id');
-
+        var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
         var parent = $(this).closest('.sm_container');
         $(this).closest('.cross_img_con').remove();
         var img = parent.find('.cross_img_con').find("img");
@@ -383,13 +382,17 @@ $(document).ready(function () {
 
 // validation  ********************************** ********************************* validation//
     function validateDimenstionImage(file, socialicon) {
+
+        if (socialicon == 'image_or_videofb') {
+                    appendImage(file, socialicon);
+        }else{
         var response = true;
         img = new Image();
         img.onload = function () {
             imgwidh = this.width;
             imgheight = this.height;
-            var aspectRatio = (imgwidh / imgheight).toFixed(2);
-            if ((aspectRatio != ((4 / 5).toFixed(2)) && aspectRatio != ((16 / 9).toFixed(2)))) {
+            var aspectRatio = (imgwidh / imgheight).toFixed(1);
+            if ((aspectRatio != ((4 / 5).toFixed(1)) && aspectRatio != ((16 / 9).toFixed(1)))) {
                 toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
                 response = false;
             } else {
@@ -398,18 +401,22 @@ $(document).ready(function () {
         };
 
         img.src = _URL.createObjectURL(file);
-
+      }
     }
  function validateDimenstionVideo(file, socialicon) {
-       var videoEl = document.createElement("video");
+
+                    if (socialicon == 'image_or_videofb') {
+                        appendVideo(file, socialicon);
+                }else{
+                var videoEl = document.createElement("video");
                 videoEl.onloadedmetadata = event => {
                     window.URL.revokeObjectURL(videoEl.src);
                     var {name, type} = file;
 
                     var {videoWidth, videoHeight} = videoEl;
 
-                    var aspectRatio = (videoWidth / videoHeight).toFixed(2);
-                    if ((aspectRatio != ((4 / 5).toFixed(2)) && aspectRatio != ((16 / 9).toFixed(2)))) {
+                    var aspectRatio = (videoWidth / videoHeight).toFixed(1);
+                    if ((aspectRatio != ((4 / 5).toFixed(1)) && aspectRatio != ((16 / 9).toFixed(1)))) {
 
                         toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
                         return false;
@@ -423,7 +430,7 @@ $(document).ready(function () {
                 };
 
                 videoEl.src = window.URL.createObjectURL(file);
-
+            }
     }
 
     function validateFileImageVideo(file, socialicon) {
@@ -436,7 +443,7 @@ $(document).ready(function () {
         var mediaType = file.type.split('/')[0];
         var response = true;
         if (mediaType === 'image') {
-            if (file_size >= 4000000) {
+            if (file_size >= 8000000) {
                 toastr.error('size should be less than 4MB.', 'Image', {timeOut: 5000})
                 response = false;
             }
@@ -451,7 +458,7 @@ $(document).ready(function () {
         } else {
 
              var total_size= getMB(file_size);
-             if (total_size > 4) {
+             if (total_size > 4){
                 toastr.error('size should be less than 4MB.', 'Video', {timeOut: 5000})
                 response = false;
             }
@@ -562,7 +569,7 @@ $(document).ready(function () {
 
                  $('#fb_video').val(response.path);
                  $('#media_type_fb').val('video');
-                 $('#image_div').addClass('d-none');
+                //  $('#image_div').addClass('d-none');
                  $("#image_or_videofb").parent().find('.cross_img_con').remove();
 
 
@@ -570,7 +577,7 @@ $(document).ready(function () {
 
                  $('#inst_video').val(response.path);
                  $('#media_type_insta').val('video');
-                 $('#image_div_ins').addClass('d-none');
+                //  $('#image_div_ins').addClass('d-none');
                  $("#image_or_video_insta").parent().find('.cross_img_con').remove();
 
 
@@ -578,7 +585,7 @@ $(document).ready(function () {
 
                  $('#link_video').val(response.path);
                  $('#media_type_linkedin').val('video');
-                 $('#image_div_linked').addClass('d-none');
+                //  $('#image_div_linked').addClass('d-none');
                  
                  $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
 
@@ -599,12 +606,15 @@ $(document).ready(function () {
 
     function getMB(bytes) {
 
-        if (bytes == 0) return '0 Bytes';
-        var k = 1000,
-            // dm = decimalPoint || 2,
-            sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-            i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat(bytes / Math.pow(k, i));
+        var fileSizeInMB = bytes / (1024 * 1024);
+      
+        // if (bytes == 0) return '0 Bytes';
+        
+        // var k = 1000,
+        //     // dm = decimalPoint || 2,
+        //     sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+        //     i = Math.floor(Math.log(bytes) / Math.log(k));
+        // return parseFloat(bytes / Math.pow(k, i));
     }
 
     //*************************** calculate MB End ****************************
@@ -624,20 +634,9 @@ $(document).ready(function () {
         var reader = new FileReader();
         reader.onload = function (e) {
             var mediaType = file.type.split('/')[0];
-           
-            if (mediaType === 'image') {
-                
-                validateFileImageVideo(file, socialicon);
-            } else if (mediaType === 'video') {
-
-                validateFileImageVideo(file, socialicon);
-
-
-
-
-            }
-
-        };
+                 if (mediaType === 'image') { validateFileImageVideo(file, socialicon);}
+                else if (mediaType === 'video') { validateFileImageVideo(file, socialicon);}
+             };
         reader.readAsDataURL(file);
 
         // *********************  Validate Size and Memes End*********************
