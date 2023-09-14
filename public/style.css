@@ -636,10 +636,21 @@ body {
     background-position: top center;
     background-size: 100% 100%;
     position: relative;
-    /* padding: 65px 26px; */
+    padding: 44px 18px;
+}
+
+.instagram_bg {
+    width: 260px;
+    height: 531px;
+    margin: 0px auto;
+    background: url('images/instagram_bg2.png') no-repeat;
+    background-position: top center;
+    background-size: 100% 100%;
+    position: relative;
     /* padding: 47px 22px; */
     padding: 44px 18px;
 }
+
 
 /* .create_preview_post .preview_wrap .the_preview {
 	background: var(--lightColor);
@@ -1296,7 +1307,7 @@ body {
 	background-color: #0072b1 !important;
 }
 .MDLsocial-iconmain .MDLsocial-iconmainWrp:nth-child(4) a{
-	background-color: #00acee !important;
+	background-color: #343434 !important;
 }
 /* .Mobcompny-title {
 	display: flex;
@@ -2315,11 +2326,56 @@ height: 100%;
     color: #e4e2e2;
     padding-top: 5px;
 }
-.video_container {
-display: grid;
-grid-gap:10px;
-grid-template-columns: repeat(auto-fit,);
+/* salman_post start */
+.user_name {
+    color: #000 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 30px !important;
 }
+.user_name_insta {
+    color: #000 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    padding-left: 8px;
+    padding-top: 9px;
+    font-weight: 700 !important;
+    line-height: 30px !important;
+}
+.insta_likes{
+    padding: 10px 0px 0px 20px;
+}
+.insta_likes span{
+    font-size: 16px;
+    font-family: 'poppins',sans-serif;
+    font-weight: 600;
+}
+.insta_post1{
+    padding: 10px 0px 0px 20px;
+}
+.myinsta_icon,.myinsta_icon1,.myinsta_icon2 ,.myinsta_icon3{
+    font-size: 22px;
+    color: #5C5C5C;
+}
+.post_title {
+    margin: auto;
+    max-width: 359px !important;
+}
+.schedule_date {
+    padding-top: 20px;
+    text-align: end;
+}
+.card_4Evano {
+    margin-left: 5px;
+}
+.linkedin_schedule {
+    font-family: 'popins', sans-serif;
+}
+/* salman_post start */
+
 /* newpopup end*/
 
 
@@ -2395,6 +2451,7 @@ grid-template-columns: repeat(auto-fit,);
 .tags_hash .tags_input{
     width: 100% !important;
 }
+
 /* salman card css end */
 
 

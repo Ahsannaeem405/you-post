@@ -30,59 +30,56 @@
 {{-- event edit modal --}}
 
 {{-- myaccount modal --}}
-<div class="modal fade" id="myaccounts_modal" tabindex="-1" aria-labelledby="myaccounts_modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modal-cross-btn">
-                <h5 class="modal-title" id="myaccounts_modalLabel">Connect Accounts</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
 
-            <div class="modal-body modal-social-icon">
-
-
-                <div class="row MDLsocial-iconmain">
-
-                    <div class="col-md-6 MDLsocial-iconmainWrp">
-                        <div class="MDLsocial-icon">
-                            <a class="" href="{{url('connect_to_facebook')}}">
-                                <i class="fa fa-facebook-square me-2"></i>Connect with Facebook</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 MDLsocial-iconmainWrp">
-                        <div class="MDLsocial-icon">
-                            <a class="" href="{{url('connect_to_instagram')}}">
-                                <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 MDLsocial-iconmainWrp">
-                        <div class="MDLsocial-icon">
-                            <a class="" href="{{url('connect_to_linkedin')}}">
-                                <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 MDLsocial-iconmainWrp">
-                        <div class="MDLsocial-icon">
-                            <a class="" href="{{url('connect_twitter')}}">
-                                <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+<!-- Modal -->
+<div class="modal fade" id="myaccounts_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connect Accounts</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-social-icon">
 
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+<div class="row MDLsocial-iconmain">
+
+    <div class="col-md-6 MDLsocial-iconmainWrp">
+        <div class="MDLsocial-icon">
+            <a class="" href="{{url('connect_to_facebook')}}">
+                <i class="fa fa-facebook-square me-2"></i>Connect with Facebook</a>
         </div>
     </div>
+
+    <div class="col-md-6 MDLsocial-iconmainWrp">
+        <div class="MDLsocial-icon">
+            <a class="" href="{{url('connect_to_instagram')}}">
+                <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 MDLsocial-iconmainWrp">
+        <div class="MDLsocial-icon">
+            <a class="" href="{{url('connect_to_linkedin')}}">
+                <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 MDLsocial-iconmainWrp">
+        <div class="MDLsocial-icon">
+            <a class="" href="{{url('connect_twitter')}}">
+            <img src="http://127.0.0.1:8000/images/Twitter_Color.png" class="me-2" alt="" height="14">Connect with X</a>
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+    </div>
+  </div>
 </div>
 {{-- myaccount modal --}}
 

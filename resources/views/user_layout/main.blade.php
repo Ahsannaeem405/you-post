@@ -178,11 +178,12 @@
         var eventDates =@json(collect($allPosts)->pluck('event_date'));
 
         var calendar = $('#postManagerCalendar').fullCalendar({
-            defaultView: 'agendaWeek',
+            defaultView: 'month',
             selectable: true,
             businessHours: true,
+            eventLimit: true,
             schedulerLicenseKey: 'YOUR_LICENSE_KEY',
-            dayMaxEvents: true, // allow "more" link when too many events
+            dayMaxEvents: true, 
             events: @json(collect($allPosts)),
             views: {
                 month: {
@@ -376,11 +377,14 @@
 
                     $('#socialTwitter').prop('checked', false);
                     $('#socialTwitter').closest('.single_platform').removeClass('active_social');
-                    toastr.error(`Please Connect Your Twitter Account
-                     <div class="MDLsocial-icon" style="background-color: #00acee !important;">
-                                <a class="" href="{{url('connect_twitter')}}">
-                                    <i class="fa fa-twitter-square me-2"></i>Connect with Twitter</a></div>
-                        </div>
+                    toastr.error(`Please Connect Your X Account 
+                     <div class="MDLsocial-icon" style="background-color: #343434 !important;">
+                            <div class="twitter_error">
+
+                                        <a class="" href="{{url('connect_twitter')}}">
+                                        <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14"/>Connect with X</a>
+                            </div>
+                     </div>
                     `);
                 } else if (errorData.message == 'insta_error') {
                     $('#socialInstagram').prop('checked', false);

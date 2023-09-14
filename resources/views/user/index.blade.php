@@ -1,4 +1,4 @@
-    @extends('user_layout.main')
+@extends('user_layout.main')
     <style>
         #image_div {
             position: relative;
