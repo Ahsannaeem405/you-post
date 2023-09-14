@@ -137,8 +137,9 @@
                         <div class="Evano">
                             <h3 class="mb-0 user_name_insta">{{$platforms['Instagram'][0]->user->name}} <img
                                     src="{{asset('')}}images/offical.png" class="" alt="" height="14" /></h3>
-                            <span>
+
                         </div>
+
                     </div>
                 </div>
                 <div class="col-5">
