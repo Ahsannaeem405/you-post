@@ -33,6 +33,7 @@ class UserController extends Controller
 
     public function __construct(CreatePostService $createPostService)
     {
+       
         $this->createPostService = $createPostService;
         set_time_limit(8000000);
     }
@@ -61,7 +62,7 @@ class UserController extends Controller
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
-
+     
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms'));
 
     }
@@ -248,7 +249,7 @@ class UserController extends Controller
     public function get_events(Request $request)
     {
 
-        $date = Carbon::createFromFormat('d/m/Y', $request->date)->format('Y-m-d');
+        $date = Carbon::createFromFormat('m/d/Y', $request->date)->format('Y-m-d');
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', $date)->groupBy('group_id')->get();
         return view('user.component.ajax.todayEvents', compact('todayPost'));
     }
