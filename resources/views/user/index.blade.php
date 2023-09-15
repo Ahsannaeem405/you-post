@@ -55,9 +55,9 @@
         border-radius: 5px;
     }
 
-    /* .create_preview_post_index_itemRight .create_preview_post_index_itemRightInner {
+     .create_preview_post_index_itemRight .create_preview_post_index_itemRightInner {
         width: 40%;
-    } */
+    }
 
     .create_preview_post_index_itemRight .AIgeneratedContent.create_preview_post_index_itemRightInner {
         width: 60%;
@@ -929,160 +929,154 @@
                 <div
                     class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
-                    <div  class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
-
-                        <div   class="d-lg-flex justify-content-center post_preview_small_screen create_preview_post_index_itemRightInner">
-                           
+                    <div
+                        class="d-lg-flex justify-content-center post_preview_small_screen create_preview_post_index_itemRightInner">
+                        <!-- <div class="preview_post position-relative" style="width: 80%!important;"> -->
                         <div class="preview_post position-relative" style="width: 80%">
-                                <div class="loader d-none"></div>
-                                <div class="sub_heading">
-                                    <h4>Post Preview</h4>
-                                </div>
+                            <div class="loader d-none"></div>
+                            <div class="sub_heading">
+                                <h4>Post Preview</h4>
+                            </div>
 
-                                <div class="preview_wrap">
-                                    <div class="col-md-12">
-                                        <div class="Mobcompny-title">
-                                            <div class="w-50">
-                                                <h6 class="text-light">facebook</h6>
-                                            </div>
-                                            <div class="w-50 Mobsocial-icon Mobsocial_icon">
-                                                <div><i class="fa-solid fa-plus text-light i_one"></i></div>
-                                                <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
-                                                <div class="messenger"><i
-                                                        class="fab fa-facebook-messenger text-light i_one"></i>
-                                                    <div class="msg_2">
-                                                        <p>2</p>
-                                                    </div>
+                            <div class="preview_wrap">
+                                <div class="col-md-12">
+                                    <div class="Mobcompny-title">
+                                        <div class="w-50">
+                                            <h6 class="text-light">facebook</h6>
+                                        </div>
+                                        <div class="w-50 Mobsocial-icon Mobsocial_icon">
+                                            <div><i class="fa-solid fa-plus text-light i_one"></i></div>
+                                            <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
+                                            <div class="messenger"><i
+                                                    class="fab fa-facebook-messenger text-light i_one"></i>
+                                                <div class="msg_2">
+                                                    <p>2</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2">
-                                        <span><i class="fa-solid fa-house"></i></span>
-                                        <!-- <span><i class="fa fa-youtube-play"></i></span>  -->
-                                        <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
-                                        <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class=""
-                                                                            alt="">
-                                            <div class="msg_1">
-                                                <p>8</p>
-                                            </div>
+                                <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2">
+                                    <span><i class="fa-solid fa-house"></i></span>
+                                    <!-- <span><i class="fa fa-youtube-play"></i></span>  -->
+                                    <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
+                                    <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class=""
+                                                                        alt="">
+                                        <div class="msg_1">
+                                            <p>8</p>
                                         </div>
-                                        <div class="one_img messenger">
-                                            <img src="{{asset('images/reel.png')}}" class="" alt="">
-                                            <div class="msg_1">
-                                                <p>1</p>
-                                            </div>
+                                    </div>
+                                    <div class="one_img messenger">
+                                        <img src="{{asset('images/reel.png')}}" class="" alt="">
+                                        <div class="msg_1">
+                                            <p>1</p>
+                                        </div>
 
-
-                                        </div>
-                                        <div class="one_img mb-1"><img src="{{asset('images/bell.png')}}" class="" alt="">
-                                        </div>
-                                        <div class="one_img"><img src="{{asset('images/br.png')}}" class="" alt=""></div>
 
                                     </div>
-                                    <div class="line"></div>
+                                    <div class="one_img mb-1"><img src="{{asset('images/bell.png')}}" class="" alt="">
+                                    </div>
+                                    <div class="one_img"><img src="{{asset('images/br.png')}}" class="" alt=""></div>
 
-                                    <div class="the_preview">
-                                        <div class="col-md-12 the_preview_card" style="height: 100px">
-                                            <div class="MainMobileview MainMobileview2 d-flex justify-content-between">
-                                                <div class="post_img_name">
-                                                    <div class="post_img">
-                                                        <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
-                                                            height="40" alt="">
-                                                    </div>
-                                                    <div>
+                                </div>
+                                <div class="line"></div>
+
+                                <div class="the_preview">
+                                    <div class="col-md-12 the_preview_card" style="height: 100px">
+                                        <div class="MainMobileview MainMobileview2 d-flex justify-content-between">
+                                            <div class="post_img_name">
+                                                <div class="post_img">
+                                                    <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
+                                                         height="40" alt="">
+                                                </div>
+                                                <div>
                                                     <span id="" class="postname">{{auth()->user()->name}} <br>
                                                         <span class="sponsored">Public . <i
                                                                 class="fa-solid fa-earth-americas"></i></span>
                                                     </span>
-                                                    </div>
                                                 </div>
-
-                                                <div class="icons_d">
-                                                    <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
-                                                    <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
-                                                </div>
-
                                             </div>
-                                            <p class="m-0"></p>
-                                            <div class="Mobcart_title">
-                                                <span id="mypostresult" class="mypostresult">Write your post...</span>
-                                                <span class="icon icon-privacy text-primary" id="mynameresult"></span>
+
+                                            <div class="icons_d">
+                                                <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
+                                                <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
                                             </div>
-                                            <div id="selectedValues"></div>
+
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="MainMobileimg">
-                                                <div class="media-container media_container">
-                                                    <img src="" class="d-none preview_image" alt="">
-                                                    <div id="mediaContainervideo">
-                                                        <video class="d-none video_preview" controls>
-                                                            <source src="movie.mp4" type="video/*">
-                                                        </video>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <p class="m-0"></p>
+                                        <div class="Mobcart_title">
+                                            <span id="mypostresult" class="mypostresult">Write your post...</span>
+                                            <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div
-                                                class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom">
-                                                <!-- <div class="reactions reactions2">8❤️</div> -->
-                                                <div
-                                                    class="reactions reactions2 d-flex justify-content-center align-items-center">
-                                                    <img src="{{asset('')}}images/fb_thumb.png" class="" alt=""
-                                                        height="12"/>
-                                                    <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
-                                                        height="12"/>
+                                        <div id="selectedValues"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="MainMobileimg">
+                                            <div class="media-container media_container">
+                                                <img src="" class="d-none preview_image" alt="">
+                                                <div id="mediaContainervideo">
+                                                    <video class="d-none video_preview" controls>
+                                                        <source src="movie.mp4" type="video/*">
+                                                    </video>
                                                 </div>
-
-                                                <div class="total-comments total_comments u-margin-inline-start">
-                                                    <!-- <a>12 Comments</a>
-                                                    <a>2 Shares</a> -->
-                                                    <a>Muhammad Talha and 24k others 8.3k comments</a>
-
-                                                </div>
-                                            </div>
-                                            <div class="actions-buttons actions_buttons">
-                                                <ul class="actions-buttons-list d-flex p-0 justify-content-between">
-                                                    <li class="actions-buttons-item">
-                                                        <button class="actions-buttons-button">
-                                                            <!-- <i class="fa-solid fa-thumbs-up"></i> -->
-                                                            <img src="{{asset('')}}images/up.png" class="" alt=""
-                                                                height="20"/>
-                                                            <span class="text text2">Like</span>
-                                                        </button>
-                                                    </li>
-                                                    <li class="actions-buttons-item">
-                                                        <button class="actions-buttons-button">
-                                                            <!-- <i
-                                                                class="fa-solid fa-comment"></i> -->
-                                                            <img src="{{asset('')}}images/mes.png" class="" alt=""
-                                                                height="20"/>
-                                                            <span class="text text2">Comment</span>
-                                                        </button>
-                                                    </li>
-                                                    <li class="actions-buttons-item">
-                                                        <button class="actions-buttons-button">
-                                                            <img src="{{asset('')}}images/share.png" class="" alt=""
-                                                                height="18"/>
-                                                            <!-- <i
-                                                                class="fa-solid fa-share"></i> -->
-                                                            <span class="text text2">Share</span>
-                                                        </button>
-                                                    </li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <div
+                                            class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom">
+                                            <!-- <div class="reactions reactions2">8❤️</div> -->
+                                            <div
+                                                class="reactions reactions2 d-flex justify-content-center align-items-center">
+                                                <img src="{{asset('')}}images/fb_thumb.png" class="" alt=""
+                                                     height="12"/>
+                                                <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
+                                                     height="12"/>
+                                            </div>
 
+                                            <div class="total-comments total_comments u-margin-inline-start">
+                                                <!-- <a>12 Comments</a>
+                                                <a>2 Shares</a> -->
+                                                <a>Muhammad Talha and 24k others 8.3k comments</a>
+
+                                            </div>
+                                        </div>
+                                        <div class="actions-buttons actions_buttons">
+                                            <ul class="actions-buttons-list d-flex p-0 justify-content-between">
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button">
+                                                        <!-- <i class="fa-solid fa-thumbs-up"></i> -->
+                                                        <img src="{{asset('')}}images/up.png" class="" alt=""
+                                                             height="20"/>
+                                                        <span class="text text2">Like</span>
+                                                    </button>
+                                                </li>
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button">
+                                                        <!-- <i
+                                                            class="fa-solid fa-comment"></i> -->
+                                                        <img src="{{asset('')}}images/mes.png" class="" alt=""
+                                                             height="20"/>
+                                                        <span class="text text2">Comment</span>
+                                                    </button>
+                                                </li>
+                                                <li class="actions-buttons-item">
+                                                    <button class="actions-buttons-button">
+                                                        <img src="{{asset('')}}images/share.png" class="" alt=""
+                                                             height="18"/>
+                                                        <!-- <i
+                                                            class="fa-solid fa-share"></i> -->
+                                                        <span class="text text2">Share</span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-
                         </div>
-
-                    
 
                     </div>
 
@@ -2145,7 +2139,7 @@
                 </div>
             </div>
     </section>
-    
+
     <!-- modal test1 start -->
 
     <div class="modal fade" id="postSuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -2188,8 +2182,8 @@
                         </div>
                         <div class="success_modal_para mt-3">
 
-                        <p class="mb-0">You just published your   
-                            @if (!session()->has('check_first_post')) first @endif 
+                        <p class="mb-0">You just published your
+                            @if (!session()->has('check_first_post')) first @endif
                             post! Keep posting and let the world know what you’ve got to say.</p>
                         </div>
                         @php
