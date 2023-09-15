@@ -926,11 +926,9 @@
                     </form>
                 </div>
 
-                <div
-                    class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
+                <div class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
-                    <div
-                        class="d-lg-flex justify-content-center post_preview_small_screen create_preview_post_index_itemRightInner">
+                    <div class="d-lg-flex justify-content-center post_preview_small_screen create_preview_post_index_itemRightInner">
                         <!-- <div class="preview_post position-relative" style="width: 80%!important;"> -->
                         <div class="preview_post position-relative" style="width: 80%">
                             <div class="loader d-none"></div>
@@ -1101,11 +1099,8 @@
                                 <div>
                                     <label for="" class="add_cap_label add_cap_labal">Add Tags</label>
                                     <div class="add_caption">
-                                        <select id="slect_drop" class="js-example-basic-single form-control"
-                                                name="state"
-                                                multiple>
+                                        <select id="slect_drop" class="js-example-basic-single form-control" name="state" multiple>
                                             <option value="AL">Facebook +</option>
-                                            ...
                                             <option value="WY">Instagram +</option>
                                         </select>
                                     </div>
@@ -1182,32 +1177,7 @@
                                 </div>
 
 
-                                <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
-                                        <div class="AIgeneratedContentAdd">
-                                            <a id="addContent" href="#">Add +</a>
-                                        </div>
-                                        <div class="AIgeneratedContentText">
-                                            <p class="mb-0">AI Generated Content: <span id="gpt_content"></span></p>
-                                        </div>
-                                    </div> -->
-                                <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
-                                        <div class="AIgeneratedContentAdd">
-                                            <a id="addTags" href="#">Add +</a>
-                                        </div>
-                                        <div class="AIgeneratedContentText">
-                                            <p class="mb-0">AI Generated Tags: <span id="gpt_tags"></span></p>
-                                        </div>
-                                    </div> -->
-                                <div class="AIgeneratedCarouselWrp d-none">
 
-                                    <div class="owl-carousel owl-theme AIgeneratedCarousel">
-                                    </div>
-                                    <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"
-                                           class="btn btn-primary">Edit / Prompt</a>
-                                        <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -1223,260 +1193,7 @@
         </div>
     </section>
 
-    <!-------------------------------- razi show AI GENERATOR START ------------------------------>
-    <section class="new-section">
-        <div class="container" id="new-section1">
-            <div class="row">
-                <div class="col-12">
-                    <div
-                        class="AIgeneratedContent create_preview_post_index_itemRightInner position-relative show-this-section-992">
 
-                        <div class="sub_heading pt-3">
-                            <h4>AI Generated Content</h4>
-                        </div>
-
-                        <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade ">
-                            <div class="AIgeneratedContentData">
-                                <div>
-                                    <label for="" class="add_cap_label add_cap_label">Add Caption</label>
-                                    <div class="add_caption">
-                                        <a href="#">
-                                            <input type="text" placeholder="">
-                                            <img src="{{asset('images/add.png')}}" class="img-fluid add_icon" alt=""/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="" class="add_cap_label add_cap_label">Add Tags</label>
-                                    <div class="add_caption">
-                                        <select id="slect_drop" class="js-example-basic-single form-control"
-                                                name="state"
-                                                multiple>
-                                            <option value="AL">Facebook +</option>
-                                            ...
-                                            <option value="WY">Instagram +</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                                <h2 class="post_modal">Modal</h2>
-                                <div class="suggest_img">
-                                    <p class="mb-0 Modal_suggession">Suggested Images :</p>
-                                </div>
-
-
-                                <div class="owl-carousel owl_carousel">
-                                    <div class="opacity-cover">
-                                        <img src="{{asset('images/carousel1.png')}}" alt="">
-                                        <div class="opacity_sheet">
-                                            <div class="opacity_sheet_icons">
-                                                <div>
-
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-plus"></i></a>
-                                                </div>
-                                                <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-expand"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="opacity-cover">
-                                        <img src="{{asset('images/carousel2.png')}}" alt="">
-                                        <div class="opacity_sheet">
-                                            <div class="opacity_sheet_icons">
-                                                <div>
-
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i
-                                                            class="fa-solid fa-plus"></i></a>
-                                                </div>
-                                                <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i
-                                                            class="fa-solid fa-expand"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="opacity-cover">
-                                        <img src="{{asset('images/carousel1.png')}}" alt="">
-                                        <div class="opacity_sheet">
-                                            <div class="opacity_sheet_icons">
-                                                <div>
-
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-plus"></i></a>
-                                                </div>
-                                                <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-expand"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="opacity-cover">
-                                        <img src="{{asset('images/carousel2.png')}}" alt="">
-                                        <div class="opacity_sheet">
-                                            <div class="opacity_sheet_icons">
-                                                <div>
-
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i
-                                                            class="fa-solid fa-plus"></i></a>
-                                                </div>
-                                                <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i
-                                                            class="fa-solid fa-expand"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="opacity-cover">
-                                        <img src="{{asset('images/carousel1.png')}}" alt="">
-                                        <div class="opacity_sheet">
-                                            <div class="opacity_sheet_icons">
-                                                <div>
-
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-plus"></i></a>
-                                                </div>
-                                                <div>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-expand"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="opacity-cover">
-                                        <img src="{{asset('images/carousel2.png')}}" alt="">
-                                        <div class="opacity_sheet">
-                                            <div class="opacity_sheet_icons">
-                                                <div>
-
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i
-                                                            class="fa-solid fa-plus"></i></a>
-                                                </div>
-                                                <div>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal1"><i
-                                                            class="fa-solid fa-expand"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="opacity-cover">
-                                        <img src="{{asset('images/carousel1.png')}}" alt="">
-                                        <div class="opacity_sheet">
-                                            <div class="opacity_sheet_icons">
-                                                <div>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-plus"></i></a>
-                                                </div>
-                                                <div><a href="#" data-bs-toggle="modal" data-bs-target="#modal2"><i
-                                                            class="fa-solid fa-expand"></i></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content" id="image-modal-content">
-                                            <div class="modal-header" id="modal-header1">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body modal-image" data-lightbox="modals">
-                                                <img src="{{asset('images/carousel2.png')}}" alt="">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content" id="image-modal-content">
-                                            <div class="modal-header" id="modal-header1">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body modal-image" data-lightbox="modals">
-                                                <img src="{{asset('images/carousel1.png')}}" alt="">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="AIgeneratedCarouselWrp">
-
-                                    <div class="owl-carousel owl-theme AIgeneratedCarousel">
-
-                                    </div>
-                                    <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"
-                                           class="btn btn-primary">Edit / Prompt</a>
-                                        <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-------------------------------- razi show AI GENERATOR END------------------------------>
-
-
-
-
-    <!--===== Markup For "Create & Preview Post" Ends Here =====-->
-
-
-    <!--===== Markup For "Post Manager" Starts Here =====-->
-    <!-- <section class="post_manager">
-        <div class="title_bar_wrap d-none">
-            <div class="container container_2">
-                <div class="title_bar">
-                    <div class="tabs_type_heading">
-                        <h3>Post Manager</h3>
-                    </div>
-
-                    <div class="right_contents">
-                        <ul>
-                            <li class="filter_by">
-                                <span>Filter by:</span>
-                            </li>
-                            <li>
-                                <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
-                            </li>
-                            <li>
-                                <a class="filter_link" href="javascript:void(0)">VIDEO</a>
-                            </li>
-                            <li>
-                                <a class="filter_link" href="javascript:void(0)">IMAGE</a>
-                            </li>
-                            <li class="month_name">
-                                <span>December 2022</span>
-                                <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid"
-                                        alt="" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
-            <div class="container container_2">
-                <div class="the_post_manager">
-                    <div id='postManagerCalendar'></div>
-                </div>
-            </div>
-        </div>
-    </section>  -->
 
     <!-- =======Calender========= -->
     <section>
@@ -2138,6 +1855,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- modal test1 start -->
