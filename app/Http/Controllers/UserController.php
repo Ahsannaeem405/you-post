@@ -216,6 +216,10 @@ class UserController extends Controller
                 $media = implode(',', $mediaDataLinkedin);
 
             $post = new Post();
+            $firstPostOrNot = Post::where('user_id', auth()->user()->id)->count();
+            if($firstPostOrNot>0){
+                session(['check_first_post' =>$firstPostOrNot]);
+            }
             $post->account_id = auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
             $post->content = $req->$content;
@@ -228,9 +232,9 @@ class UserController extends Controller
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
             $post->save();
+          
         }
-
-        return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms]);
+        return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
         //****************end posting code****************//
 
     }

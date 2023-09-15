@@ -31,6 +31,15 @@ class AccountController extends Controller
         ]);
         return back()->with('success', 'Account Created Successfully.');
     }
+    public function delete($id)
+{
+         $acc=Account::find($id);
+         $acc->delete();
+    return back()->with('success', 'Account Deleted Successfully.');
+
+
+    // Redirect or return a response as needed
+}
     public function change_account($id)
     {
         auth()->user()->update([

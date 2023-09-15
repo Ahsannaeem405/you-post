@@ -59,9 +59,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //account page
-    Route::get('index', [AccountController::class,'index']);
+    Route::get('index', [AccountController::class,'index'])->name('index');
     Route::post('update-account-name', [AccountController::class,'update_account_name'])->name('update-account-name');
     Route::post('refresh-accounts', [AccountController::class,'refresh_accounts'])->name('refresh-accounts');
+    Route::post('/account/{id}', [AccountController::class,'delete'])->name('account-delete');
 
 
     //get instagram pages using ajax

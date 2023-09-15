@@ -586,7 +586,7 @@ body.dark .home .text {
                         </div>
                     </div>
                 </li>
-                <li><a href="javascript:void(0)"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
+                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
                             Account</span></a></li>
                 </li>
 
@@ -699,7 +699,7 @@ body.dark .home .text {
                     </div>
                 </li>
 
-                <li><a href="javascript:void(0)"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
+                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
                             Account</span></a></li>
                 </li>
 

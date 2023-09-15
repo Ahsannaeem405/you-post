@@ -130,7 +130,9 @@
         });
 
         //creating new account
-        $('#addAccount').click(function () {
+        $(document).on('click', '#addAccount', function () {
+     
+           
             $.ajax({
                 type: "post",
                 url: "{{ route('store-acount')}}",

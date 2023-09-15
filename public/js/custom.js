@@ -752,6 +752,68 @@ $(document).ready(function () {
         // }
     });
 
+    $('.preview_div').click(function (e) {
+      
+         if($(this).attr('data-value')=='fb'){
+            
+             var parent = $(".create_preview_post "); 
+
+             parent.find('#fb_preview').addClass("active");
+             parent.find('#ins_preview').addClass("d-none");
+             parent.find('#tw_preview').addClass("d-none");
+             parent.find('#link_preview').addClass("d-none");
+
+             parent.find('#fb_preview').removeClass("d-none");
+             parent.find('#ins_preview').removeClass("active");
+             parent.find('#tw_preview').removeClass("active");
+             parent.find('#link_preview').removeClass("active");
+
+
+         }else if($(this).attr('data-value')=='insta'){ 
+           
+            var parent = $(".create_preview_post "); 
+
+            parent.find('#fb_preview').addClass("d-none");
+            parent.find('#ins_preview').addClass("active");
+            parent.find('#tw_preview').addClass("d-none");
+            parent.find('#link_preview').addClass("d-none");
+
+            parent.find('#fb_preview').removeClass("active");
+            parent.find('#ins_preview').removeClass("d-none");
+            parent.find('#tw_preview').removeClass("active");
+            parent.find('#link_preview').removeClass("active");
+
+         }else if($(this).attr('data-value')=='twitter'){
+              
+                var parent = $(".create_preview_post "); 
+                parent.find('#fb_preview').addClass("d-none");
+                parent.find('#ins_preview').addClass("d-none");
+                parent.find('#tw_preview').addClass("active");
+                parent.find('#link_preview').addClass("d-none");
+
+                parent.find('#fb_preview').removeClass("active");
+                parent.find('#ins_preview').removeClass("active");
+                parent.find('#tw_preview').removeClass("d-none");
+                parent.find('#link_preview').removeClass("active");
+
+         }else if($(this).attr('data-value')=='linkedin'){
+               
+                var parent = $(".create_preview_post "); 
+                parent.find('#fb_preview').addClass("d-none");
+                parent.find('#ins_preview').addClass("d-none");
+                parent.find('#tw_preview').addClass("d-none");
+                parent.find('#link_preview').addClass("active");
+
+                parent.find('#fb_preview').removeClass("active");
+                parent.find('#ins_preview').removeClass("active");
+                parent.find('#tw_preview').removeClass("active");
+                parent.find('#link_preview').removeClass("d-none");
+
+         }
+
+
+
+    });
 
     var timezone_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
     $('.timezone').val(timezone_name);

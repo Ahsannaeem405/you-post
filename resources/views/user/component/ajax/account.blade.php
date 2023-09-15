@@ -1,9 +1,23 @@
+<style>
+    .index_delete{
+        text-align:right !important;
+    }
+</style>
 @foreach($accounts as $key=>$account)
     <div id="elementToEmbed">
         <h5 class="all_social_platformTitle">Account #{{$key+1}} : {{$account->name}}</h5>
         <div class="all_social_platformMain">
 
             <div class="all_social_platformCnt">
+        <form action="{{ route('account-delete',$account->id) }}" method="POST">
+            @csrf
+            @method('Post')
+           <div class="index_delete">
+               <button type="submit"> <i class="fa-solid fa-trash"></i></button>
+
+          </div>
+           </form>
+
                 <div class="all_social_platformCntInner">
                     <label for="">1.Name,Example:“Tito’sTacos”</label>
                     <br>
