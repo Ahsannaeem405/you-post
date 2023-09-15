@@ -248,7 +248,7 @@ class UserController extends Controller
 
         //****************posting code****************//
         $group_id = Str::random(40);
-        for ($i = 0; $i < count($platforms); $i++) {
+        foreach ($platforms as $i=>$platform) {
             $content = Str::lower($platforms[$i]) . '_content';
             $tag = Str::lower($platforms[$i]) . '_tag';
 

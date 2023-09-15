@@ -486,6 +486,7 @@ $(document).ready(function () {
 
     function appendImage(file, socialicon, dimention) {
 
+var dimention_error="Image resolution falls outside of Instagram’s preferred ration 4:5 and 16:9. The image may be scaled by Instagram."
 
         if (file) {
             var reader = new FileReader();
@@ -505,28 +506,40 @@ $(document).ready(function () {
                     success: function (response) {
 
                         if (socialicon == 'image_or_videofb') {
-                            var img_con = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= fb_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
+                            var img_con = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
                             $("#image_or_videofb").parent().append(img_con);
                             $('#media_type_fb').val('image');
+                            if (!dimention){
+                                $('#file_error_fb').removeClass('d-none').text(dimention_error)
+                            }
+                            else {
+                                $('#file_error_fb').addClass('d-none')
+                            }
 
                         } else if (socialicon == 'image_or_video_insta') {
-                            var img_con_ins = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= inst_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
-
+                            var img_con_ins = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
                             $("#image_or_video_insta").parent().append(img_con_ins);
                             $('#media_type_insta').val('image');
+                            if (!dimention){
+                                $('#file_error_insta').removeClass('d-none').text(dimention_error)
+                            }else {
+                                $('#file_error_insta').addClass('d-none')
+                            }
 
 
                         } else if (socialicon == 'image_or_video_linkedin') {
-                            var img_con_lin = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= lin_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
-
+                            var img_con_lin = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
                             $("#image_or_video_linkedin").parent().append(img_con_lin);
                             $('#media_type_linkedin').val('image');
-
-
+                            if (!dimention){
+                                $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
+                            }else {
+                                $('#file_error_linkedin').addClass('d-none')
+                            }
                         }
                     },
                     error: function () {
-                        alert('Error saving the image.');
+                        console.log('Error saving the image.');
                     }
                 });
 
