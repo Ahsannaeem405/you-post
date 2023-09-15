@@ -33,7 +33,7 @@ class UserController extends Controller
 
     public function __construct(CreatePostService $createPostService)
     {
-       
+
         $this->createPostService = $createPostService;
         set_time_limit(8000000);
     }
@@ -62,7 +62,7 @@ class UserController extends Controller
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
-     
+
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms'));
 
     }
@@ -124,11 +124,58 @@ class UserController extends Controller
             $videoPath = $filename;
             return response()->json(['path' => $videoPath]);
         } else {
-            $base64Data = $request->input('image');
-            $filename = uniqid() . '.png';
-            $imageData = base64_decode($base64Data);
-            file_put_contents(public_path('content_media/' . $filename), $imageData);
-            $imagePath = $filename;
+            if($request->dimention=="false"){
+
+                $base64Image = $request->input('image');
+
+                // Decode the base64 image data and create an Intervention Image instance
+                $img = Image::make(base64_decode($base64Image));
+
+
+                // Define the desired aspect ratio (4:5)
+                $desiredAspectRatio = 4 / 5;
+
+                // Get the original image dimensions
+                $originalWidth = $img->width();
+                $originalHeight = $img->height();
+
+
+                if ($originalWidth / $originalHeight > $desiredAspectRatio) {
+                    // Image is wider than 4:5, so we need to add padding to the top and bottom
+                    $newHeight = $originalWidth / $desiredAspectRatio;
+                    $topPadding = ($originalHeight - $newHeight) / 2;
+                    $bottomPadding = $topPadding;
+                    $newWidth = $originalWidth;
+                } else {
+                    // Image is taller than 4:5, so we need to add padding to the left and right
+                    $newWidth = $originalHeight * $desiredAspectRatio;
+                    $leftPadding = ($originalWidth - $newWidth) / 2;
+                    $rightPadding = $leftPadding;
+                    $newHeight = $originalHeight;
+                }
+
+                // Resize the image
+                $img->resize($newWidth, $newHeight);
+
+                // Generate a unique filename for the resized image
+                $filename = uniqid() . '.jpg';
+
+                // Define the path where you want to save the resized image
+                $path = 'path_to_save_resized_image/' . $filename;
+
+                // Save the resized image to the specified path
+                $img->save('content_media/'.$filename);
+               // \Storage::disk('public')->put($path, (string) $img->encode('jpg'));
+                $imagePath = $filename;
+            }
+            else{
+                $base64Data = $request->input('image');
+                $filename = uniqid() . '.png';
+                $imageData = base64_decode($base64Data);
+                file_put_contents(public_path('content_media/' . $filename), $imageData);
+                $imagePath = $filename;
+            }
+
             return response()->json(['path' => $imagePath]);
 
         }
@@ -201,7 +248,7 @@ class UserController extends Controller
 
         //****************posting code****************//
         $group_id = Str::random(40);
-        for ($i = 0; $i < count($platforms); $i++) {
+        foreach ($platforms as $i=>$platform) {
             $content = Str::lower($platforms[$i]) . '_content';
             $tag = Str::lower($platforms[$i]) . '_tag';
 

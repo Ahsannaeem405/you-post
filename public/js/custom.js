@@ -384,72 +384,66 @@ $(document).ready(function () {
     function validateDimenstionImage(file, socialicon) {
 
         if (socialicon == 'image_or_videofb') {
-                    appendImage(file, socialicon);
-        }else{
-        var response = true;
-        img = new Image();
-        img.onload = function () {
-            imgwidh = this.width;
-            imgheight = this.height;
+            appendImage(file, socialicon, true);
+        } else {
+            var response = true;
+            img = new Image();
+            img.onload = function () {
+                imgwidh = this.width;
+                imgheight = this.height;
 
-            var aspectRatio = (imgwidh / imgheight).toFixed(2);
-           
-           var fourByfive=  (4 / 5).toFixed(2);
-          
-           var sixteenBynine=  (16 / 9).toFixed(2);
-    
+                var aspectRatio = (imgwidh / imgheight).toFixed(2);
+                var fourByfive = (4 / 5).toFixed(2);
+                var sixteenBynine = (16 / 9).toFixed(2);
 
-           if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
-            newimgwidh =2848;
-            newimgheight = 1624;
-            this.width =newimgwidh;
-            this.height = newimgheight;
-            appendImage(file, socialicon);
-            // toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
-                // response = false;
-            } else {
-                appendImage(file, socialicon);
-            }
-        };
 
-        img.src = _URL.createObjectURL(file);
-      }
+                if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
+                    appendImage(file, socialicon, false);
+                    // toastr.error("Can't post image required 4:5 or 16:9 ratio image.", 'Sorry', {timeOut: 5000})
+                    // response = false;
+                } else {
+                    appendImage(file, socialicon, true);
+                }
+            };
+
+            img.src = _URL.createObjectURL(file);
+        }
     }
- function validateDimenstionVideo(file, socialicon) {
 
-                    if (socialicon == 'image_or_videofb') {
-                        appendVideo(file, socialicon);
-                }else{
-                var videoEl = document.createElement("video");
-                videoEl.onloadedmetadata = event => {
-                    window.URL.revokeObjectURL(videoEl.src);
-                    var {name, type} = file;
+    function validateDimenstionVideo(file, socialicon) {
 
-                    var {videoWidth, videoHeight} = videoEl;
+        if (socialicon == 'image_or_videofb') {
+            appendVideo(file, socialicon);
+        } else {
+            var videoEl = document.createElement("video");
+            videoEl.onloadedmetadata = event => {
+                window.URL.revokeObjectURL(videoEl.src);
+                var {name, type} = file;
 
-                    var aspectRatio = (videoWidth / videoHeight).toFixed(2);
-           
-                    var fourByfive=  (4 / 5).toFixed(2);
-                   
-                    var sixteenBynine=  (16 / 9).toFixed(2);
+                var {videoWidth, videoHeight} = videoEl;
 
-                
+                var aspectRatio = (videoWidth / videoHeight).toFixed(2);
 
-                    if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
 
-                        toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
-                        return false;
-                    }
-                    else{
+                var fourByfive = (4 / 5).toFixed(2);
 
-                       appendVideo(file, socialicon);
+                var sixteenBynine = (16 / 9).toFixed(2);
 
-                    }
 
-                };
+                if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
 
-                videoEl.src = window.URL.createObjectURL(file);
-            }
+                    toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
+                    return false;
+                } else {
+
+                    appendVideo(file, socialicon);
+
+                }
+
+            };
+
+            videoEl.src = window.URL.createObjectURL(file);
+        }
     }
 
     function validateFileImageVideo(file, socialicon) {
@@ -463,7 +457,7 @@ $(document).ready(function () {
         var response = true;
         if (mediaType === 'image') {
             if (file_size >= 8000000) {
-                toastr.error('size should be less than 4MB.', 'Image', {timeOut: 5000})
+                toastr.error('size should be less than 8MB.', 'Image', {timeOut: 5000})
                 response = false;
             }
             if ((ext != 'png') && (ext != 'jpeg') && (ext != 'gif') && (ext != 'jpg')) {
@@ -474,9 +468,9 @@ $(document).ready(function () {
             if (response) {
                 validateDimenstionImage(file, socialicon);
             }
-        } else {
-             var total_size= getMB(file_size);
-             if (total_size > 4){
+        } else if (mediaType === 'video') {
+            var total_size = getMB(file_size);
+            if (total_size > 4) {
                 toastr.error('size should be less than 4MB.', 'Video', {timeOut: 5000})
                 response = false;
             }
@@ -485,62 +479,89 @@ $(document).ready(function () {
             if (response) {
                 validateDimenstionVideo(file, socialicon);
             }
-
-
-
         }
         //************************** Video Validatoin End *********************************
     }
 
 
-    function appendImage(file, socialicon) {
+    function appendImage(file, socialicon, dimention) {
 
-             
+
+var dimention_error="Image resolution falls outside of Instagram’s preferred ration 4:5 and 16:9. The image may be scaled by Instagram."
+
         if (file) {
             var reader = new FileReader();
             reader.onload = function (e) {
 
-                  var base64Data = e.target.result.split(',')[1]; // Remove the "data:image/jpeg;base64," prefix
+                var base64Data = e.target.result.split(',')[1]; // Remove the "data:image/jpeg;base64," prefix
+                var getRandomClass=getRandomClassName();
+
+                if (socialicon == 'image_or_videofb') {
+                    var img_con = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
+  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+   <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+   <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
+   <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+   </div>`;
+                    $("#image_or_videofb").parent().append(img_con);
+                    $('#media_type_fb').val('image');
+                    if (!dimention){
+                        $('#file_error_fb').removeClass('d-none').text(dimention_error)
+                    }
+                    else {
+                        $('#file_error_fb').addClass('d-none')
+                    }
+
+                }
+                else if (socialicon == 'image_or_video_insta') {
+                    var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
+  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+  <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+  <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
+     <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+  </div>`;
+                    $("#image_or_video_insta").parent().append(img_con_ins);
+                    $('#media_type_insta').val('image');
+                    if (!dimention){
+                        $('#file_error_insta').removeClass('d-none').text(dimention_error)
+                    }else {
+                        $('#file_error_insta').addClass('d-none')
+                    }
+
+
+                }
+                else if (socialicon == 'image_or_video_linkedin') {
+                    var img_con_lin = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
+ <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+ <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+ <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
+      <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+ </div>`;
+                    $("#image_or_video_linkedin").parent().append(img_con_lin);
+                    $('#media_type_linkedin').val('image');
+                    if (!dimention){
+                        $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
+                    }else {
+                        $('#file_error_linkedin').addClass('d-none')
+                    }
+                }
+
 
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-                 $.ajax({
+                $.ajax({
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
                     type: 'POST',
-                    data: { image: base64Data },
-                    success: function(response) {
-                       
-                if (socialicon == 'image_or_videofb') {
-                    var img_con = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= fb_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
+                    data: {image: base64Data, 'dimention': dimention},
+                    success: function (response) {
 
-                    $("#image_or_videofb").parent().append(img_con);
-                    $('#media_type_fb').val('image');
-               
+                        $('.'+getRandomClass).find('textarea').val(response.path);
+                        $('.'+getRandomClass).find('.uplaod-gif').remove();
 
-
-                } else if (socialicon == 'image_or_video_insta') {
-                    var img_con_ins = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= inst_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
-
-                    $("#image_or_video_insta").parent().append(img_con_ins);
-                    $('#media_type_insta').val('image');
-                
-
-
-                } else if (socialicon == 'image_or_video_linkedin') {
-                    var img_con_lin = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= lin_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
-
-                    $("#image_or_video_linkedin").parent().append(img_con_lin);
-                    $('#media_type_linkedin').val('image');
-                   
-
-                }
-            },
-                    error: function() {
-                        alert('Error saving the image.');
-                    }
+                    },
                 });
 
                 var mediaType = file.type.split('/')[0];
@@ -557,59 +578,59 @@ $(document).ready(function () {
     function appendVideo(file, socialicon) {
 
         if (file) {
+            $('.uplaod-gif-video').removeClass('d-none');
             var reader = new FileReader();
             reader.onload = function (e) {
-                  var base64Data = e.target.result.split(',')[1];
-                  var type ="video"; 
+                var base64Data = e.target.result.split(',')[1];
+                var type = "video";
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-                 $.ajax({
+                $.ajax({
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
                     type: 'POST',
-                    data: { 
-                        video: base64Data ,
-                        type:type
+                    data: {
+                        video: base64Data,
+                        type: type
                     },
-                    success: function(response) {
-                       
-                var mediaType = file.type.split('/')[0];
-                $('.video_preview').removeClass('d-none');
-                $('.preview_image').addClass('d-none');
-                var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
-                $('#mediaContainervideo').html(video);
+                    success: function (response) {
+                        $('.uplaod-gif-video').addClass('d-none');
+                        var mediaType = file.type.split('/')[0];
+                        $('.video_preview').removeClass('d-none');
+                        $('.preview_image').addClass('d-none');
+                        var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
+                        $('#mediaContainervideo').html(video);
 
 
+                        if (socialicon == 'image_or_videofb') {
 
-                if (socialicon == 'image_or_videofb') {
-
-                 $('#fb_video').val(response.path);
-                 $('#media_type_fb').val('video');
-                //  $('#image_div').addClass('d-none');
-                 $("#image_or_videofb").parent().find('.cross_img_con').remove();
-
-
-                } else if (socialicon == 'image_or_video_insta') {
-
-                 $('#inst_video').val(response.path);
-                 $('#media_type_insta').val('video');
-                //  $('#image_div_ins').addClass('d-none');
-                 $("#image_or_video_insta").parent().find('.cross_img_con').remove();
+                            $('#fb_video').val(response.path);
+                            $('#media_type_fb').val('video');
+                            //  $('#image_div').addClass('d-none');
+                            $("#image_or_videofb").parent().find('.cross_img_con').remove();
 
 
-                } else if (socialicon == 'image_or_video_linkedin') {
+                        } else if (socialicon == 'image_or_video_insta') {
 
-                 $('#link_video').val(response.path);
-                 $('#media_type_linkedin').val('video');
-                //  $('#image_div_linked').addClass('d-none');
-                 
-                 $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
+                            $('#inst_video').val(response.path);
+                            $('#media_type_insta').val('video');
+                            //  $('#image_div_ins').addClass('d-none');
+                            $("#image_or_video_insta").parent().find('.cross_img_con').remove();
 
-                }
-            },
-                    error: function() {
+
+                        } else if (socialicon == 'image_or_video_linkedin') {
+
+                            $('#link_video').val(response.path);
+                            $('#media_type_linkedin').val('video');
+                            //  $('#image_div_linked').addClass('d-none');
+
+                            $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
+
+                        }
+                    },
+                    error: function () {
                         alert('Error saving the video.');
                     }
                 });
@@ -625,14 +646,17 @@ $(document).ready(function () {
     function getMB(bytes) {
 
         var fileSizeInMB = bytes / (1024 * 1024);
-      
-        // if (bytes == 0) return '0 Bytes';
-        
-        // var k = 1000,
-        //     // dm = decimalPoint || 2,
-        //     sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
-        //     i = Math.floor(Math.log(bytes) / Math.log(k));
-        // return parseFloat(bytes / Math.pow(k, i));
+        return fileSizeInMB;
+    }
+    function getRandomClassName() {
+        const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const length = 6; // You can adjust the length of the random class name
+        let className = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            className += characters.charAt(randomIndex);
+        }
+        return className;
     }
 
     //*************************** calculate MB End ****************************
@@ -643,7 +667,6 @@ $(document).ready(function () {
     $('.file_image_video').change(function (e) {
 
 
-
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
@@ -652,104 +675,12 @@ $(document).ready(function () {
         var reader = new FileReader();
         reader.onload = function (e) {
             var mediaType = file.type.split('/')[0];
-                 if (mediaType === 'image') { validateFileImageVideo(file, socialicon);}
-                else if (mediaType === 'video') { validateFileImageVideo(file, socialicon);}
-             };
+            validateFileImageVideo(file, socialicon);
+
+        };
         reader.readAsDataURL(file);
 
-        // *********************  Validate Size and Memes End*********************
 
-
-        // if ($(this).attr('id') == 'image_or_video_insta') {
-        //     $('.must_add_image').addClass('d-none');
-        // }
-        //
-        // var file = e.target.files[0];
-        //
-        // if (file) {
-        //     var reader = new FileReader();
-        //     reader.onload = function (e) {
-        //         var mediaType = file.type.split('/')[0];
-        //         if (mediaType === 'image') {
-        //
-        //             $('.preview_image').removeClass('d-none');
-        //             //  $('.preview_image_my').removeClass('d-none');
-        //             $('.video_preview').addClass('d-none');
-        //             $('.preview_image').attr('src', e.target.result);
-        //             // my code
-        //
-        //             // $('.preview_image_my').attr('src',e.target.result);
-        //
-        //
-        //             if (socialicon == 'image_or_videofb') {
-        //                 console.log('append');
-        //                 var img_con = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= fb_file[] class="removeit_file d-none"></textarea></div>`;
-        //
-        //                 $("#image_or_videofb").parent().append(img_con);
-        //                 $('#media_type_fb').val('image');
-        //                 $('.sm_container .cross_img_con:last-child').find('.removeit_file').val(e.target.result);
-        //
-        //
-        //             } else if (socialicon == 'image_or_video_insta') {
-        //                 var img_con_ins = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= inst_file[] class="removeit_file d-none"></textarea></div>`;
-        //
-        //                 $("#image_or_video_insta").parent().append(img_con_ins);
-        //                 $('#media_type_insta').val('image');
-        //                 $('.sm_container .cross_img_con:last-child').find('.removeit_file').val(e.target.result);
-        //
-        //
-        //             } else if (socialicon == 'image_or_video_linkedin') {
-        //                 var img_con_lin = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name= lin_file[] class="removeit_file d-none"></textarea></div>`;
-        //
-        //                 $("#image_or_video_linkedin").parent().append(img_con_lin);
-        //                 $('#media_type_linkedin').val('image');
-        //                 $('.sm_container .cross_img_con:last-child').find('.removeit_file').val(e.target.result);
-        //
-        //             }
-        //
-        //
-        //             // end my code
-        //
-        //         } else if (mediaType === 'video') {
-        //
-        //
-        //             if (socialicon == 'image_or_videofb') {
-        //                 $('#media_type_fb').val('video');
-        //                 $('#image_div').addClass('d-none');
-        //                 $("#image_or_videofb").parent().find('.cross_img_con').remove();
-        //                 $("#file_error_fb").html('')
-        //
-        //
-        //             } else if (socialicon == 'image_or_video_insta') {
-        //                 $('#media_type_insta').val('video');
-        //                 $('#image_div_ins').addClass('d-none');
-        //                 $("#image_or_video_insta").parent().find('.cross_img_con').remove();
-        //                 $("#file_error_fb").html('')
-        //
-        //
-        //             } else if (socialicon == 'image_or_video_linkedin') {
-        //                 $('#media_type_linkedin').val('video');
-        //                 $('#image_div_linked').addClass('d-none');
-        //                 $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
-        //                 $("#file_error_fb").html('')
-        //
-        //
-        //             }
-        //
-        //
-        //             // Create a video element and set its source
-        //             $('.video_preview').removeClass('d-none');
-        //             $('.preview_image').addClass('d-none');
-        //             // $('.preview_image_my').addClass('d-none');
-        //             // Append the video to the media container
-        //             var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
-        //             // Append the video to the media container
-        //             $('#mediaContainervideo').html(video);
-        //
-        //         }
-        //     };
-        //     reader.readAsDataURL(file);
-        // }
     });
 
     $('.preview_div').click(function (e) {
