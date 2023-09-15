@@ -487,7 +487,7 @@ $(document).ready(function () {
     function appendImage(file, socialicon, dimention) {
 
 
-var dimention_error="Image resolution falls outside of Instagram’s preferred ration 4:5 and 16:9. The image may be scaled by Instagram."
+var dimention_error="Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
 
         if (file) {
             var reader = new FileReader();
@@ -684,10 +684,10 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
     });
 
     $('.preview_div').click(function (e) {
-      
+
          if($(this).attr('data-value')=='fb'){
-            
-             var parent = $(".create_preview_post "); 
+
+             var parent = $(".create_preview_post ");
 
              parent.find('#fb_preview').addClass("active");
              parent.find('#ins_preview').addClass("d-none");
@@ -700,9 +700,9 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
              parent.find('#link_preview').removeClass("active");
 
 
-         }else if($(this).attr('data-value')=='insta'){ 
-           
-            var parent = $(".create_preview_post "); 
+         }else if($(this).attr('data-value')=='insta'){
+
+            var parent = $(".create_preview_post ");
 
             parent.find('#fb_preview').addClass("d-none");
             parent.find('#ins_preview').addClass("active");
@@ -715,8 +715,8 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
             parent.find('#link_preview').removeClass("active");
 
          }else if($(this).attr('data-value')=='twitter'){
-              
-                var parent = $(".create_preview_post "); 
+
+                var parent = $(".create_preview_post ");
                 parent.find('#fb_preview').addClass("d-none");
                 parent.find('#ins_preview').addClass("d-none");
                 parent.find('#tw_preview').addClass("active");
@@ -728,8 +728,8 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                 parent.find('#link_preview').removeClass("active");
 
          }else if($(this).attr('data-value')=='linkedin'){
-               
-                var parent = $(".create_preview_post "); 
+
+                var parent = $(".create_preview_post ");
                 parent.find('#fb_preview').addClass("d-none");
                 parent.find('#ins_preview').addClass("d-none");
                 parent.find('#tw_preview').addClass("d-none");

@@ -9,19 +9,25 @@
         <div class="all_social_platformMain">
 
             <div class="all_social_platformCnt">
-        <form action="{{ route('account-delete',$account->id) }}" method="POST">
-            @csrf
-            @method('Post')
-           <div class="index_delete">
-               <button type="button" class="btn btn-danger"> <i class="fa-solid fa-trash text-white"></i></button>
-          </div>
-           </form>
 
                 <div class="all_social_platformCntInner">
                     <label for="">1.Name,Example:“Tito’sTacos”</label>
                     <br>
-                    <input type="text" class="account_name" name="" id="" value="{{$account->name}}"
-                           placeholder="Organization Name" data-account="{{$account->id}}">
+                    <div class="d-flex justify-content-between">
+                        <input type="text" class="account_name" name="" id="" value="{{$account->name}}"
+                               placeholder="Organization Name" data-account="{{$account->id}}">
+                        <form action="{{ route('account-delete',$account->id) }}" method="POST">
+                            @csrf
+                            @method('Post')
+                            <div class="index_delete">
+                                <button type="button" class="btn btn-danger"> <i class="fa-solid fa-trash text-white"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+
                 </div>
 
                 <div class="all_social_platformCntInner">

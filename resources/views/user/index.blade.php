@@ -707,6 +707,30 @@
                                                     <div class="icon_buttons_tags mt-3">
                                                         <div class="icon_buttons grid_item">
                                                             <ul class="p-0">
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="image_or_video"
+                                                                   typpe="image" social="insta"
+                                                                   fordata="image_or_video_twitter"><label
+                                                                        for="image_or_video_twitter">
+                                                                        <img style="opacity: 0.3"
+                                                                            src="{{asset('')}}images/Camera_Icon.png"
+                                                                            class="img-fluid" alt=""/>
+                                                                    </label>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="image_or_video"
+                                                                   typpe="video" social="insta"
+                                                                   fordata="image_or_video_twitter"><label
+                                                                        for="image_or_video_twitter">
+                                                                        <img style="opacity: 0.3"
+                                                                            src="{{asset('')}}images/new_image.png"
+                                                                            class="img-fluid" alt=""/>
+                                                                    </label>
+                                                                </a>
+                                                            </li>
+
+
                                                                 <li>
                                                                     <a href="javascript:void(0)" class="open_emoji">
                                                                         <img src="{{asset('')}}images/Emoji_Icon.png"
@@ -825,7 +849,7 @@
                                                     Schedule Post
                                                 </button>
 
-                                                <button type="submit" class="btn post_later_now_btn w-100 position-relative">
+                                                <button type="submit" class="btn post_later_now_btn w-100 position-relative btn-danger">
                                                     <img class="uplaod-gif uplaod-gif-video d-none" src="{{asset("images/newimages/loader.gif")}}" alt=""> Post Now
                                                 </button>
 

@@ -14,8 +14,8 @@
                 </a>
             </div>
             <p>
-                Thanks forsigning up Doug, <br>
-                Let’s add your first account and connectit’s social platforms
+                Thanks for signing up, <br>
+                Let’s add your first account and connect it’s social platforms
             </p>
         </div>
 
