@@ -9,7 +9,7 @@
         "abraham/twitteroauth": "^5.0",
         "facebook/graph-sdk": "^5.1",
         "guzzlehttp/guzzle": "^7.6",
-        "intervention/image": "*",
+        "intervention/image": "^2.7",
         "james-heinrich/getid3": "^1.9",
         "jstolpe/instagram-graph-api-php-sdk": "^1.0",
         "laravel/framework": "^9.19",
