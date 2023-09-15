@@ -6,6 +6,17 @@
 
     .cancel_mark {
     }
+    .uplaod-gif{
+        width: 125px;
+        position: absolute;
+        left: -37px;
+        top: -14px;
+    }  .uplaod-gif-video{
+        width: 125px;
+        position: absolute;
+        left: -37px;
+        top: -22px;
+    }
 
     .create_preview_post_wrapInner {
         /* background: #fff;
@@ -809,10 +820,15 @@
                                                 </fieldset>
                                             @endif
                                             <div class="post_now_button schedule_post_button">
-                                                <input type="button" class="btn post_later_now_btn post_later_now_btn2"
-                                                       value="Schedule Post" data-bs-toggle="modal"
-                                                       data-bs-target="#TimetoUploadPost">
-                                                <input type="submit" class="btn post_later_now_btn" value="Post Now">
+
+                                                <button type="button" class="btn post_later_now_btn post_later_now_btn2 w-100"  data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
+                                                    Schedule Post
+                                                </button>
+
+                                                <button type="submit" class="btn post_later_now_btn w-100 position-relative">
+                                                    <img class="uplaod-gif uplaod-gif-video d-none" src="{{asset("images/newimages/loader.gif")}}" alt=""> Post Now
+                                                </button>
+
                                             </div>
                                             <div class="PostDateTimePicker PostDate_Time_Picker">
                                                 Posted Date & Time

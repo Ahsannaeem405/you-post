@@ -486,6 +486,7 @@ $(document).ready(function () {
 
     function appendImage(file, socialicon, dimention) {
 
+
 var dimention_error="Image resolution falls outside of Instagram’s preferred ration 4:5 and 16:9. The image may be scaled by Instagram."
 
         if (file) {
@@ -493,6 +494,58 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
             reader.onload = function (e) {
 
                 var base64Data = e.target.result.split(',')[1]; // Remove the "data:image/jpeg;base64," prefix
+                var getRandomClass=getRandomClassName();
+
+                if (socialicon == 'image_or_videofb') {
+                    var img_con = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
+  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+   <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+   <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
+   <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+   </div>`;
+                    $("#image_or_videofb").parent().append(img_con);
+                    $('#media_type_fb').val('image');
+                    if (!dimention){
+                        $('#file_error_fb').removeClass('d-none').text(dimention_error)
+                    }
+                    else {
+                        $('#file_error_fb').addClass('d-none')
+                    }
+
+                }
+                else if (socialicon == 'image_or_video_insta') {
+                    var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
+  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+  <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+  <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
+     <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+  </div>`;
+                    $("#image_or_video_insta").parent().append(img_con_ins);
+                    $('#media_type_insta').val('image');
+                    if (!dimention){
+                        $('#file_error_insta').removeClass('d-none').text(dimention_error)
+                    }else {
+                        $('#file_error_insta').addClass('d-none')
+                    }
+
+
+                }
+                else if (socialicon == 'image_or_video_linkedin') {
+                    var img_con_lin = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
+ <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+ <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+ <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
+      <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+ </div>`;
+                    $("#image_or_video_linkedin").parent().append(img_con_lin);
+                    $('#media_type_linkedin').val('image');
+                    if (!dimention){
+                        $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
+                    }else {
+                        $('#file_error_linkedin').addClass('d-none')
+                    }
+                }
+
 
                 $.ajaxSetup({
                     headers: {
@@ -505,42 +558,10 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                     data: {image: base64Data, 'dimention': dimention},
                     success: function (response) {
 
-                        if (socialicon == 'image_or_videofb') {
-                            var img_con = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
-                            $("#image_or_videofb").parent().append(img_con);
-                            $('#media_type_fb').val('image');
-                            if (!dimention){
-                                $('#file_error_fb').removeClass('d-none').text(dimention_error)
-                            }
-                            else {
-                                $('#file_error_fb').addClass('d-none')
-                            }
+                        $('.'+getRandomClass).find('textarea').val(response.path);
+                        $('.'+getRandomClass).find('.uplaod-gif').remove();
 
-                        } else if (socialicon == 'image_or_video_insta') {
-                            var img_con_ins = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
-                            $("#image_or_video_insta").parent().append(img_con_ins);
-                            $('#media_type_insta').val('image');
-                            if (!dimention){
-                                $('#file_error_insta').removeClass('d-none').text(dimention_error)
-                            }else {
-                                $('#file_error_insta').addClass('d-none')
-                            }
-
-
-                        } else if (socialicon == 'image_or_video_linkedin') {
-                            var img_con_lin = `<div class="cross_img_con" id="remove_id">  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/> <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a><textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">${response.path}</textarea></div>`;
-                            $("#image_or_video_linkedin").parent().append(img_con_lin);
-                            $('#media_type_linkedin').val('image');
-                            if (!dimention){
-                                $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
-                            }else {
-                                $('#file_error_linkedin').addClass('d-none')
-                            }
-                        }
                     },
-                    error: function () {
-                        console.log('Error saving the image.');
-                    }
                 });
 
                 var mediaType = file.type.split('/')[0];
@@ -557,6 +578,7 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
     function appendVideo(file, socialicon) {
 
         if (file) {
+            $('.uplaod-gif-video').removeClass('d-none');
             var reader = new FileReader();
             reader.onload = function (e) {
                 var base64Data = e.target.result.split(',')[1];
@@ -574,7 +596,7 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                         type: type
                     },
                     success: function (response) {
-
+                        $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
                         $('.video_preview').removeClass('d-none');
                         $('.preview_image').addClass('d-none');
@@ -625,6 +647,16 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
 
         var fileSizeInMB = bytes / (1024 * 1024);
         return fileSizeInMB;
+    }
+    function getRandomClassName() {
+        const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const length = 6; // You can adjust the length of the random class name
+        let className = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            className += characters.charAt(randomIndex);
+        }
+        return className;
     }
 
     //*************************** calculate MB End ****************************
