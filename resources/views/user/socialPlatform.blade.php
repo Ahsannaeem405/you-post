@@ -14,18 +14,18 @@
                 </a>
             </div>
             <p>
-                Thanks forsigning up Doug, <br>
-                Let’s add your first account and connectit’s social platforms
+                Thanks for signing up, <br>
+                Let’s add your first account and connect it’s social platforms
             </p>
         </div>
 
 
-         @if (Session::has('success'))
+        @if (Session::has('success'))
             <div id="elementToEmbed">
                 <div class="all_social_platformMain">
 
                     <div class="all_social_platformCnt successFullyAdded">
-                        <h4>{{Session::get('success')}}: <span>“{{auth()->user()->account->name}}” </span> </h4>
+                        <h4>{{Session::get('success')}}: <span>“{{auth()->user()->account->name}}” </span></h4>
                         <div>
                             <i class="fa-solid fa-check"></i>
                         </div>
@@ -57,6 +57,10 @@
 @endsection
 
 @section('js')
+    <!-- Include SweetAlert CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.all.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $.ajaxSetup({
@@ -130,7 +134,9 @@
         });
 
         //creating new account
-        $('#addAccount').click(function () {
+        $(document).on('click', '#addAccount', function () {
+
+
             $.ajax({
                 type: "post",
                 url: "{{ route('store-acount')}}",
@@ -152,8 +158,8 @@
         }
 
         $(document).on('click', '.plateform', function () {
-            var account_id=$(this).data('account');
-            var all_plateform = $("input[name='plateform["+account_id+"]']:checked");
+            var account_id = $(this).data('account');
+            var all_plateform = $("input[name='plateform[" + account_id + "]']:checked");
             var plateform_val = [];
             all_plateform.each(function () {
                 plateform_val.push($(this).val());
@@ -163,7 +169,7 @@
                 url: "{{ url('update_user_platforms') }}",
                 data: {
                     'plateform_val': plateform_val,
-                    'account_id':account_id
+                    'account_id': account_id
                 },
                 success: function (response) {
                     window.location.reload();
@@ -209,7 +215,22 @@
 
 
         });
-
+        $(document).on('click', '.index_delete', function () {
+            var $obj=$(this);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'This action cannot be undone!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  $obj.closest('form').submit();
+                }
+            });
+        })
 
     </script>
 @endsection

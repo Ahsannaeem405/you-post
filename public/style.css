@@ -246,14 +246,14 @@ body {
 /* ============================== */
 .header{
    border-radius: 9px;
-} 
+}
 .header .container{
     background-color: #fff !important;
     border-bottom:unset !important ;
     overflow: hidden;
     border-radius: 9px;
     box-shadow: 0 0 10px #00000026 ;
-}  
+}
 .header .bottom {
     display: -ms-grid;
     display: grid;
@@ -462,7 +462,7 @@ body {
 .create_preview_post .create_post .form-control:focus {
     /* box-shadow: none; */
     /* border: 1px solid var(--baseColor); */
-    
+
 }
 
 /* .create_preview_post .create_post .icon_buttons_tags {
@@ -508,7 +508,7 @@ body {
 .create_preview_post .create_post .post_now_button .btn {
     /* color: var(--lightColor);
     background: #63ABF5; */
-    background-color: transparent;
+    /*background-color: transparent;*/
     border: 1px solid #e4e2e2 !important;
     font-family: var(--baseFont);
     font-weight: 700;
@@ -1366,7 +1366,7 @@ body {
 }
 .i_one{
     padding: 5px;
-   
+
     color: #fff !important;
 }
 /* instagram Card css */
@@ -1678,7 +1678,7 @@ width: 30%;
     color: #ffffff; */
 background-color:#f6f6f6;
   box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.18);
- 
+
 }
 .form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
     /* background-color: #63ABF5;
@@ -1770,19 +1770,19 @@ body.dark .home .text{
 }
 
 .sidebar .text.text2 {
-    color: black !important;  
+    color: black !important;
 }
 .create_preview_post_index_itemLeft.section2_borderleft_card{
     box-shadow: 0 0 10px #00000026;
     border-radius: 13px;
     overflow: hidden;
-   
+
 }
 .create_preview_post_index_itemRight.section2_rightcard{
     box-shadow: 0 0 10px #00000026;
     border-radius: 13px;
     overflow: hidden;
-    
+
 }
 .post_manage_calendar.post_manage_calendar_card{
     box-shadow: 0 0 10px #00000026;
@@ -1834,7 +1834,7 @@ body.dark .home .text{
     border: none;
     outline: none;
     margin-top: 9px !important;
-  
+
 }
 .add_caption .selection .select2-selection .select2-selection__rendered .select2-selection__choice button{
     border-right: none !important;
@@ -1842,7 +1842,7 @@ body.dark .home .text{
     padding-top: 3px;
     color: #000 !important;
     height: 100%;
-  
+
 }
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     border: none !important;
@@ -1855,7 +1855,7 @@ body.dark .home .text{
 .owl-carousel.owl_carousel{
     position: relative;
     padding: 10px 12px;
-} 
+}
 .owl-nav .owl-prev{
     position: absolute;
     top: 40px;
@@ -1941,7 +1941,7 @@ body.dark .home .text{
     justify-content: space-between;
     align-items: center;
     /* padding-left: 25px; */
-} 
+}
 .clearfix.clearfix2{
     display: flex;
     flex-direction: column;
@@ -1954,13 +1954,13 @@ body.dark .home .text{
     color: #e6dbdb;
 }
 .mypostresult{
-    color: #e6dbdb; 
+    color: #e6dbdb;
 }
 .total_comments a{
-    color: #e6dbdb !important;    
+    color: #e6dbdb !important;
 }
 .reactions2{
-    color: #e6dbdb !important;   
+    color: #e6dbdb !important;
 }
 .one_img{
     height: 17px;
@@ -1997,9 +1997,9 @@ width: 100%;
     margin-left: 4px;
 }
 .MainMobileview.MainMobileview2{
-    background-color: #242424; 
+    background-color: #242424;
     width: 95%;
-} 
+}
 .post_img_name{
     display: flex ;
     gap: 0 5px;
@@ -2008,7 +2008,7 @@ width: 100%;
     padding-left: 5px;
 }
 .the_preview_card{
-    background-color: #242424; 
+    background-color: #242424;
     width: 92%;
     padding: 0 5px;
     margin-left: 4px;
@@ -2027,9 +2027,9 @@ width: 95%;
 
 .total-comments.total_comments a{
    font-size: 9px;
-} 
+}
 .actions-buttons.actions_buttons{
-    width: 92%; 
+    width: 92%;
     margin-left: 4px;
 }
 .text.text2{
@@ -2044,7 +2044,7 @@ width: 95%;
     top: 1px;
     left: 14px;
     z-index: 1;
-    
+
 }
 .msg_2 p{
     font-size: 10px;
@@ -2060,7 +2060,7 @@ width: 95%;
     border-radius: 50px !important;
     position: absolute;
     bottom: 8px;
-    left: 12px; 
+    left: 12px;
     z-index: 1;
 }
 
@@ -2191,7 +2191,7 @@ left: 15px;
     text-align: center;
     padding-top: 3rem;
     font-weight: 700;
- 
+
 }
 .success_social_icons{
     display: flex;
@@ -2211,7 +2211,7 @@ left: 15px;
     border-top:none ;
     display: flex;
     justify-content: center
-    
+
 }
 .modal-footer.success_modal_footer button{
     border-radius: 9px;
@@ -2378,14 +2378,14 @@ left: 15px;
     justify-content: center;
 }
 .mytabactive{
-  
+
     border: none !important;
 }
 
 .shadedcirclefb{
     /* background-color: #f6f6f6; */
     box-shadow: inset 0 0 6px 3px rgba(0, 0, 0, 0.18);
-    border-radius: 50%; 
+    border-radius: 50%;
     background-color: #F6F6F6;
     display: inline-block;
     height: 40px;
@@ -2401,7 +2401,7 @@ left: 15px;
     background-color:transparent !important;
     border: none !important;
     border-radius: 50px;
-  
+
 }
 .nav-tabs.nav_tabs{
     display: flex;
