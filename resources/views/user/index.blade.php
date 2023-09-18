@@ -359,7 +359,7 @@
 
     .Mobcart_titleCustom,
     .actions-buttons {
-        border-top: 1px solid #e6dbdb;
+        border-top: 1px solid #dddddd7a;
         padding: 5px 0;
     }
 
@@ -395,7 +395,32 @@
         display: inline-block;
     }
 
+    .x_bar_icons div img{
+        width: 1em;
+        height: 1em;
+    }
+    .LikeIcons .InnerIcon img:last-child{
+        margin: 0 0 0 -7px;
+    }
+    .ActionBtn_Linkedin ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 17px;
+        justify-content: space-around;
+    }
+    .ActionBtn_Linkedin ul li button {
+        background-color: transparent;
+        border: none;
+    }
+    .ActionBtn_Linkedin ul li button svg{
 
+    }
+    .ActionBtn_Linkedin ul li button span{
+        color: #fff;
+        font-size: 12px;
+    }
     @media screen and (max-width: 768px) {
         .create_preview_post_wrapInner {
             padding: 10px !important;
@@ -950,7 +975,7 @@
                     </form>
                 </div>
 
-              
+
                 <div
                 class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
@@ -982,7 +1007,7 @@
                                 </div>
                             </div>
 
-                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2">
+                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2 px-2 pb-1">
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
                                 <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">
@@ -995,8 +1020,6 @@
                                     <div class="msg_1">
                                         <p>1</p>
                                     </div>
-
-
                                 </div>
                                 <div class="one_img mb-1"><img src="{{asset('images/bell.png')}}" class="" alt="">
                                 </div>
@@ -1232,23 +1255,23 @@
                                     </div>
                                     <div class="x_bar_icons pt-1">
                                         <div>
-                                            <img src="{{asset('')}}images/x_message.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/Comment-titter.svg" class="" alt="" />
                                             <span>4</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/recycle.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/share-twitter.svg" class="" alt="" />
                                             <span>6</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/heart2.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/heart-twitter.svg" class="" alt="" />
                                             <span>12k</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/graph.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
                                             <span>61</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/share2.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/repost-twitter.svg" class="ShareIcon" alt="" />
 
                                         </div>
 
@@ -1334,6 +1357,48 @@
                                                     <source src="movie.mp4" type="video/*">
                                                 </video>
                                             </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="LikeIcons">
+                                        <div class="InnerIcon">
+                                            <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt="" height="12">
+                                            <img src="{{asset('images/icons/linkedin-thumb.svg')}}" alt="" height="12" style="margin: 0 0 0 -7px;">
+                                            <img src="{{asset('images/icons/linkedin-heart.svg')}}" alt="" height="12">
+                                        </div>
+                                        <div class="TotalCmnts">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="ActionBtn_Linkedin">
+                                        <ul class="LI_Like">
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/thum-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Like</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/comment-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Comment</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/share-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Repost</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/send-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Send</span>
+                                                </button>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -2319,8 +2384,11 @@
     </script>
     <script>
         $(document).ready(function () {
+
             
             if ($('.add_preview').length == 0) {
+
+
                 $('.preview_post').hide();
             } else {
                 $('.preview_post').show();
@@ -2476,10 +2544,12 @@
                 $('.wizard-fieldset').removeClass('show');
                 $('.' + section).addClass('show');
 
+
                 $(".preview_post").find(".add_preview").addClass("d-none");
                 $(".preview_post").find( $('.prv_' + section)).addClass("show");
                 $(".preview_post").find( $('.prv_' + section)).removeClass("d-none");
              })
+
         });
 
 
