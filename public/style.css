@@ -629,7 +629,8 @@ body {
 /* ============================== */
 
 .create_preview_post .preview_wrap {
-    width: 260px;
+    /* width: 260px; */
+    width: 280px;
     height: 531px;
     margin: 0px auto;
     background: url('images/ihpne14.png') no-repeat;
@@ -2114,7 +2115,7 @@ border-radius: 5px;
 .tags_input .select2-container--default.select2-container--focus .select2-selection--multiple {
     border: 1px solid #e4e2e2 !important;
     outline: 0;
-    margin-top: 9px;
+    /* margin-top: 9px; */
 }
 .plus_add_icon{
     position: relative;
@@ -2216,6 +2217,150 @@ left: 15px;
     border-radius: 9px;
     padding: 3px 15px;
 }
+.linkdin_bg{
+    width: 260px;
+    height: 531px;
+    margin: 0px auto;
+    background: url("images/linkdin_bg.png") no-repeat;
+    background-position: top center;
+    background-size: 100% 100%;
+    position: relative;
+    padding: 44px 18px;
+}
+.linkdin_add{
+    color: #fff;
+    font-size:13px;
+    font-weight: 700;
+}
+.insta_post_img_inner_con{
+    background-image: url("images/insta_i.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* salman linkdin_css */
+.preview_linkedin{
+    background: url("/images/linkedin_bg.png") no-repeat;
+    background-position: top center;
+    background-size: 100% 100%;
+    position: relative;
+    padding: 44px 18px;
+}
+.linked_add{
+    background: #24242424;
+}
+.container_linkedin{
+    width: 100%;
+    height: 100%;
+}
+.create_preview_post_index_item .preview_post .preview_linkedin {
+    width: 95% !important;
+    margin: auto;
+}
+.my_account{
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+.search_bar{
+    width: 100px;
+    background: #58585E;
+    padding-left: 10px;
+    height:27px;
+}
+.search_bar input{
+    outline-color: #71717A;
+    color: #fff !important;
+    opacity:0.7;
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: inherit;
+}
+.search_bar i{
+    color: #fff;
+    opacity:0.7;
+    font-size: 14px;
+    font-weight: 700;
+}
+.linked_logo img{
+    width: 45px;
+    height: 45px;
+}
+.linked_add{
+    padding: 10px 5px 10px 10px;
+}
+.linked_inaccount:first-child{
+    color: #fff;
+    font-size: 12px;
+    font-family: 'poppins', sans-serif;
+    font-weight: 600;
+}
+.linked_inaccount .follwers{
+    color: #fff;
+    font-size: 12px;
+    opacity: 0.7;
+    font-family: 'poppins', sans-serif;
+    font-weight: 200;
+}
+ .menu_icon img{
+    margin: 10px 10px 10px 10px;
+    width: 20px;
+    height: 20px;
+}
+.linkedin_post{
+    background: #24242424;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    color: #fff;
+    opacity: 0.7;
+    font-size: 12px;
+    font-family: 'poppins',sans-serif;
+}
+/* .linkedin_post_image img{
+    width: 100%;
+    margin: auto;
+} */
+.linkedin_post_image {
+    background: #24242424;
+    height: min-content;
+    padding-left: 5px;
+}
+.linkedin_icons{
+    background: #24242424;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0px 10px;
+    margin-top: 10px;
+    border-top: 1px solid #ACACAC;
+}
+.linkedin_icons .btm_icon{
+    padding-top: 10px;
+}
+.linkedin_icons .btm_icon img{
+   width: 20px;
+   height: 20px;
+}
+.linkedin_icons .btm_icon span{
+    text-align: center;
+  color: #fff;
+  font-family: 'poppins'sans-serif;
+  font-size: 10px;
+  opacity: 0.7;
+}
+.create_preview_post_index_item .preview_post, .create_preview_post_index_item .preview_post .preview_linkedin {
+    /* width: 95% !important; */
+    width: 260px!important;
+    margin: auto;
+}
+/* lindin salman end */
+
+
 /* newpopup start*/
 /* Pop up  */
 .post-detail{
@@ -2374,6 +2519,127 @@ height: 100%;
 .linkedin_schedule {
     font-family: 'popins', sans-serif;
 }
+.insta_likes_post span{
+    font-size: 11px;
+    font-weight: 700;
+}
+.insta_post_img_inner_con{
+    height: 250px;
+}
+.insta_post_img_inner_con img{
+    width: 100%;
+    height: 100%;
+}
+.insta_pos_comm p{
+    color: #a2a0a0;
+    font-size: 11px;
+}
+.insta_pos_acc_icons{
+    border-top: 1px solid #e4e2e2;
+}
+.insta_acc_bar{
+    height: 14px;
+}
+.insta_acc_bar_parent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+.insta_acc_bar_parent img{
+    cursor: pointer;
+}
+.inst_post_name h3{
+    font-size: 10px !important;
+    padding-top: 0px;
+}
+.twitter_post{
+    width: 260px;
+    height: 531px;
+    margin: 0px auto;
+    background: url("images/twitter_bg.png") no-repeat;
+    background-position: top center;
+    background-size: 100% 100%;
+    position: relative;
+    padding: 44px 18px;
+}
+.indrive_icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 3px;
+}
+.indrive_icon img{
+    width: 100%;
+    border-radius: 6px;
+}
+.indrive_icon2{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.indrive_icon2 img{
+    width: 100%;
+}
+.twitter_post_content{
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+}
+.twitter_post_content_tag{
+    color: #e4e2e2;
+    font-size: 13px;
+}
+.colum_nine{
+    padding-left: 0;
+}
+.twitter_header{
+    display: flex;
+    justify-content: space-between;
+}
+.elps i{
+    color: #fff;
+}
+.elps{
+    padding-right: 10px;
+}
+.twitter_text p{
+    color: #fff;
+    font-size: 12px;
+}
+.twitter_img_container{
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    
+}
+.twitter_img_container img{
+    height: 100%;
+    width: 100%;
+}
+.x_bar_icons span{
+    color: #8a96a3;
+    font-size:12px;
+}
+.x_bar_icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5px;
+}
+.x_bar_icons div{
+cursor: pointer;
+}
+.twitter_second_row{
+    border-top: 1px solid gray;
+}
+.twitter_second_row{
+    max-width: 90%;
+    margin: auto;
+}
+
 /* salman_post start */
 
 /* newpopup end*/
