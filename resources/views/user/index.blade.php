@@ -959,8 +959,8 @@
                             <div class="sub_heading">
                                 <h4>Post Preview</h4>
                             </div>
-
-                            <div class="preview_wrap">
+                            @if(in_array(('Facebook'),auth()->user()->account->platforms))
+                            <div class="preview_wrap d-none fb">
                                 <div class="col-md-12">
                                     <div class="Mobcompny-title">
                                         <div class="w-50">
@@ -1097,6 +1097,70 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(in_array(('Instagram'),auth()->user()->account->platforms))
+                            <div class="preview_wrap d-none"> 
+                                <div class="col-md-12">
+                                    <div class="Mobcompny-title">
+                                        <div class="w-50">
+                                            <h6 class="text-light">Instragram</h6>
+                                        </div>
+                                        <div class="w-50 Mobsocial-icon Mobsocial_icon">
+                                            <div><i class="fa-solid fa-plus text-light i_one"></i></div>
+                                            <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
+                                            <div class="messenger"><i
+                                                    class="fab fa-facebook-messenger text-light i_one"></i>
+                                                <div class="msg_2">
+                                                    <p>2</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                            @if(in_array(('Twitter'),auth()->user()->account->platforms))
+                            <div class="preview_wrap d-none " >
+                                <div class="col-md-12">
+                                    <div class="Mobcompny-title">
+                                        <div class="w-50">
+                                            <h6 class="text-light">Twitter</h6>
+                                        </div>
+                                        <div class="w-50 Mobsocial-icon Mobsocial_icon">
+                                            <div><i class="fa-solid fa-plus text-light i_one"></i></div>
+                                            <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
+                                            <div class="messenger"><i
+                                                    class="fab fa-facebook-messenger text-light i_one"></i>
+                                                <div class="msg_2">
+                                                    <p>2</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                            @if(in_array(('Linkedin'),auth()->user()->account->platforms))
+                            <div class="preview_wrap  d-none">  
+                                <div class="col-md-12">
+                                    <div class="Mobcompny-title">
+                                        <div class="w-50">
+                                            <h6 class="text-light">Linkedin</h6>
+                                        </div>
+                                        <div class="w-50 Mobsocial-icon Mobsocial_icon">
+                                            <div><i class="fa-solid fa-plus text-light i_one"></i></div>
+                                            <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
+                                            <div class="messenger"><i
+                                                    class="fab fa-facebook-messenger text-light i_one"></i>
+                                                <div class="msg_2">
+                                                    <p>2</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
 
                         </div>
 
@@ -2016,6 +2080,17 @@
     </script>
     <script>
         $(document).ready(function () {
+            
+            if ($('.preview_wrap').length == 0) {
+                $('.preview_post').hide();
+            } else {
+                $('.preview_post').show();
+                $('.preview_wrap:first').addClass('show');
+                $('.preview_wrap:first').removeClass('d-none');
+
+            }
+
+
             if ($('.wizard-fieldset').length == 0) {
                 $('.wizard-section').hide();
             } else {
@@ -2145,7 +2220,7 @@
                 var section = $(this).attr('section');
                 $('.wizard-fieldset').removeClass('show');
                 $('.' + section).addClass('show');
-
+               
             })
         });
 
