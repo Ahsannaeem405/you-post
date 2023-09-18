@@ -1971,7 +1971,7 @@ width: 100%;
 }
 .icons_d{
     margin-top: 8px;
-    margin-right: 22px;
+    /* margin-right: 22px; */
     margin-bottom: 14px;
     display: flex;
     gap: 0 12px;
@@ -1993,7 +1993,7 @@ width: 100%;
     background-color: #242424;
     border-radius: unset !important;
     width: 92%;
-    border-bottom: 0.1px solid#e6dbdb;
+    border-bottom: 1px solid #dddddd7a;
     margin-left: 4px;
 }
 .MainMobileview.MainMobileview2{
@@ -2009,7 +2009,7 @@ width: 100%;
 }
 .the_preview_card{
     background-color: #242424;
-    width: 92%;
+    width: 96%;
     padding: 0 5px;
     margin-left: 4px;
 }
@@ -2335,7 +2335,7 @@ left: 15px;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    padding: 0px 10px;
+    /* padding: 0px 10px; */
     margin-top: 10px;
     border-top: 1px solid #ACACAC;
 }
@@ -2613,7 +2613,7 @@ height: 100%;
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
-    
+
 }
 .twitter_img_container img{
     height: 100%;
