@@ -520,8 +520,8 @@
 
                                                     </div>
                                                     <div class="form-group emoji_parent emoji_parent2">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="facebook_content" id="" cols="30" rows="3"
+                                                       <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
+                                                              required name="facebook_content" id="facebook_content" cols="30" rows="3"
                                                               class="form-control wizard-required emojiarea mention"
                                                               placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                         <div class="expand_icon"><img
@@ -568,7 +568,7 @@
                                                             <div class="tags_input">
                                                                 <select name="facebook_tag[]"
                                                                         class="form-control selectmultiple1" multiple
-                                                                        id="">
+                                                                        id="facebook_tag">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -617,7 +617,7 @@
 
                                                     <div class="form-group emoji_parent emoji_parent2 ">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="instagram_content" id="" cols="30" rows="3"
+                                                              required name="instagram_content" id="instagram_content" cols="30" rows="3"
                                                               class="form-control wizard-required emojiarea "
                                                               placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                         <div id="dropdown" class="dropdown-content-search"></div>
@@ -659,7 +659,7 @@
                                                             <div class="tags_input">
                                                                 <select name="instagram_tag[]"
                                                                         class="form-control selectmultiple" multiple
-                                                                        id="">
+                                                                        id="instagram_tag">
 
                                                                 </select>
 
@@ -696,10 +696,10 @@
                                                 <fieldset class="wizard-fieldset twitter">
                                                     <h5>Edit Twitter</h5>
                                                     <div class="form-group emoji_parent  emoji_parent2">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="twitter_content" id="" cols="30" rows="3"
+                                                    <textarea datatype="fsdf" onkeyup="updateDiv(this)" onchange="suggested_text(this)"
+                                                              required name="twitter_content" id="twitter_content" cols="30" rows="3"
                                                               class="form-control wizard-required emojiarea mention"
-                                                              placeholder="Write your post...">{{old('twitter_content')}}</textarea>
+                                                              placeholder="Write your post..." plt-name="fb">{{old('twitter_content')}}</textarea>
 
                                                         <div id="dropdown" class="dropdown-content-search"></div>
 
@@ -745,7 +745,7 @@
                                                             <div class="tags_input">
                                                                 <select name="twitter_tag[]"
                                                                         class="form-control selectmultiple"
-                                                                        multiple id="">
+                                                                        multiple id="twitter_tag">
 
                                                                 </select>
 
@@ -768,7 +768,7 @@
 
                                                     <div class="form-group emoji_parent emoji_parent2">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="linkedin_content" id="" cols="30" rows="3"
+                                                              required name="linkedin_content" id="linkedin_content" cols="30" rows="3"
                                                               class="Customemojiarea form-control wizard-required emojiarea mention "
                                                               placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                         <div id="dropdown" class="dropdown-content-search"></div>
@@ -813,7 +813,7 @@
                                                             <div class="tags_input">
                                                                 <select name="linkedin_tag[]"
                                                                         class="form-control selectmultiple" multiple
-                                                                        id="">
+                                                                        id="linkedin_tag">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -962,8 +962,8 @@
                         <div class="sub_heading">
                             <h4>Post Preview</h4>
                         </div>
-
-                        <div class="preview_wrap">
+                        @if(in_array(('Facebook'),auth()->user()->account->platforms))
+                        <div class="preview_wrap add_preview d-none prv_fb">
                             <div class="col-md-12">
                                 <div class="Mobcompny-title">
                                     <div class="w-50">
@@ -1029,7 +1029,7 @@
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title">
-                                        <span id="mypostresult" class="mypostresult">Write your post...</span>
+                                        <span id="mypostresult_fb" class="mypostresult">Write your post...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1038,7 +1038,7 @@
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
                                             <img src="" class="d-none preview_image" alt="">
-                                            <div id="mediaContainervideo">
+                                            <div id="mediaContainervideo_fb">
                                                 <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
                                                 </video>
@@ -1091,9 +1091,11 @@
                             </div>
 
                         </div>
-
+                        @endif
                         <!-- moble_insta_post2 start-->
-                        <div class="instagram_bg">
+                        @if(in_array(('Instagram'),auth()->user()->account->platforms))
+
+                        <div class="instagram_bg add_preview d-none prv_insta">
                             <div class="the_preview">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex gap-4">
@@ -1125,7 +1127,12 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="insta_post_img_inner_con">
-                                        <!-- <img src="{{asset('images/insta_i.png')}}" alt="" class="w-100 img-fluid"> -->
+                                    <img src="" class="d-none preview_image_inst" alt="">
+                                            <div id="mediaContainervideo_inst">
+                                                <video class="d-none video_preview_inst" controls>
+                                                    <source src="movie.mp4" type="video/*">
+                                                </video>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="row px-2">
@@ -1157,7 +1164,7 @@
                                     </div>
                                     <div class="col-md-12" style="height:20px">
                                         <div class="Mobcart_title">
-                                            <span id="mypostresult" class="mypostresult" style="color:#000;">Write your
+                                            <span id="mypostresult_insta" class="mypostresult" style="color:#000;">Write your
                                                 post...</span>
                                             <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                         </div>
@@ -1189,8 +1196,12 @@
                             </div>
                         </div>
                         <!-- moble_insta_post2 end-->
+                        @endif
+
                         <!-- moble_twitter_post start-->
-                        <div class="twitter_post">
+                        @if(in_array(('Twitter'),auth()->user()->account->platforms))
+
+                        <div class="twitter_post add_preview d-none prv_twitter">
                             <div class="row">
                                 <div class="col-3">
                                     <div class="indrive_icon">
@@ -1213,7 +1224,7 @@
                                         </div>
                                     </div>
                                     <div class="twitter_text">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.consectetur
+                                        <p id="mypostresult_twitter">Lorem ipsum dolor sit amet consectetur adipisicing elit.consectetur
                                             adipisicing elit.</p>
                                     </div>
                                     <div class="twitter_img_container">
@@ -1274,8 +1285,12 @@
                             </div>
                         </div>
                         <!-- moble_twitter_post3 end-->
+                        @endif
+
                         <!-- moble_linkdin_post start-->
-                        <div class="preview_linkedin ">
+                        @if(in_array(('Linkedin'),auth()->user()->account->platforms))
+
+                        <div class="preview_linkedin  add_preview d-none prv_linkedin">
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
@@ -1306,14 +1321,19 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo, quibusdam.
+                                      <span id="mypostresult_linkedin"></span> 
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post_image">
-                                        <img class="img-fluid" src="{{asset('images/linkedinpost.jpg')}}" alt="">
+                                    <img src="" class="d-none preview_image_link" alt="">
+                                            <div id="mediaContainervideo_link">
+                                                <video class="d-none video_preview_link" controls>
+                                                    <source src="movie.mp4" type="video/*">
+                                                </video>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -1352,6 +1372,8 @@
                             </div>
                         </div>
                         <!-- moble_linkdin_post end-->
+                        @endif
+
                     </div>
 
                 </div>
@@ -2298,12 +2320,12 @@
     <script>
         $(document).ready(function () {
             
-            if ($('.preview_wrap').length == 0) {
+            if ($('.add_preview').length == 0) {
                 $('.preview_post').hide();
             } else {
                 $('.preview_post').show();
-                $('.preview_wrap:first').addClass('show');
-                $('.preview_wrap:first').removeClass('d-none');
+                $('.add_preview:first').addClass('show');
+                $('.add_preview:first').removeClass('d-none');
 
             }
 
@@ -2338,6 +2360,11 @@
                 if (nextWizardStep) {
 
                     var nextFieldset = next.parents('.wizard-fieldset').next('fieldset');
+                  
+                    var classAttribute = next.parents('.wizard-fieldset').next('fieldset').attr('class');
+                    var classNames = classAttribute.split(" ");
+                   
+                   
                     if (nextFieldset.length > 0) {
 
                         next.parents('.wizard-fieldset').removeClass("show", "400");
@@ -2364,6 +2391,9 @@
                                     });
                             }
                         });
+                        $(".preview_post").find(".add_preview").addClass("d-none");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).addClass("show");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).removeClass("d-none");
                     }
 
                 }
@@ -2376,6 +2406,10 @@
                 var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
                 prev.parents('.wizard-fieldset').removeClass("show", "400");
                 prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show", "400");
+
+                var classAttribute =  prev.parents('.wizard-fieldset').prev('.wizard-fieldset').attr('class');
+                var classNames = classAttribute.split(" ");
+
                 currentActiveStep.removeClass('active').prev().removeClass('activatedold').addClass('active',
                     "400");
                 $(document).find('.wizard-fieldset').each(function () {
@@ -2397,6 +2431,10 @@
                             });
                     }
                 });
+
+                $(".preview_post").find(".add_preview").addClass("d-none");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).addClass("show");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).removeClass("d-none");
             });
             //click on form submit button
             $(document).on("click", ".form-wizard .form-wizard-submit", function () {
@@ -2437,10 +2475,15 @@
                 var section = $(this).attr('section');
                 $('.wizard-fieldset').removeClass('show');
                 $('.' + section).addClass('show');
-               
-            })
+
+                $(".preview_post").find(".add_preview").addClass("d-none");
+                $(".preview_post").find( $('.prv_' + section)).addClass("show");
+                $(".preview_post").find( $('.prv_' + section)).removeClass("d-none");
+             })
         });
 
+
+       
 
         $('.owl-carousel').owlCarousel({
             loop: true,

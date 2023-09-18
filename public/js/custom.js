@@ -487,7 +487,7 @@ $(document).ready(function () {
     function appendImage(file, socialicon, dimention) {
 
 
-var dimention_error="Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
+  var dimention_error="Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
 
         if (file) {
             var reader = new FileReader();
@@ -565,9 +565,24 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                 });
 
                 var mediaType = file.type.split('/')[0];
-                $('.preview_image').removeClass('d-none');
-                $('.video_preview').addClass('d-none');
-                $('.preview_image').attr('src', e.target.result);
+
+                if (socialicon == 'image_or_videofb') {
+                    $('.preview_image').removeClass('d-none');
+                    $('.video_preview').addClass('d-none');
+                    $('.preview_image').attr('src', e.target.result);
+
+                   }else if(socialicon == 'image_or_video_insta'){
+                    $('.preview_image_inst').removeClass('d-none');
+                    $('.video_preview_inst').addClass('d-none');
+                    $('.preview_image_inst').attr('src', e.target.result);
+
+                   }else if(socialicon == 'image_or_video_linkedin'){
+                    $('.preview_image_link').removeClass('d-none');
+                    $('.video_preview_link').addClass('d-none');
+                    $('.preview_image_link').attr('src', e.target.result);
+                   }
+
+              
 
 
             };
@@ -598,10 +613,7 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                     success: function (response) {
                         $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
-                        $('.video_preview').removeClass('d-none');
-                        $('.preview_image').addClass('d-none');
-                        var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
-                        $('#mediaContainervideo').html(video);
+                     
 
 
                         if (socialicon == 'image_or_videofb') {
@@ -610,7 +622,11 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                             $('#media_type_fb').val('video');
                             //  $('#image_div').addClass('d-none');
                             $("#image_or_videofb").parent().find('.cross_img_con').remove();
-
+ 
+                            $('.video_preview').removeClass('d-none');
+                            $('.preview_image').addClass('d-none');
+                            var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
+                            $('#mediaContainervideo_fb').html(video);
 
                         } else if (socialicon == 'image_or_video_insta') {
 
@@ -619,14 +635,22 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                             //  $('#image_div_ins').addClass('d-none');
                             $("#image_or_video_insta").parent().find('.cross_img_con').remove();
 
+                            $('.video_preview_inst').removeClass('d-none');
+                            $('.preview_image_inst').addClass('d-none');
+                            var video = $('<video controls class="video_preview_inst w-100">').attr('src', e.target.result);
+                            $('#mediaContainervideo_inst').html(video);
+
 
                         } else if (socialicon == 'image_or_video_linkedin') {
 
                             $('#link_video').val(response.path);
                             $('#media_type_linkedin').val('video');
-                            //  $('#image_div_linked').addClass('d-none');
-
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
+
+                            $('.video_preview_link').removeClass('d-none');
+                            $('.preview_image_link').addClass('d-none');
+                            var video = $('<video controls class="video_preview_link w-100">').attr('src', e.target.result);
+                            $('#mediaContainervideo_link').html(video);
 
                         }
                     },
