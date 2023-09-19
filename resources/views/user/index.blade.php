@@ -1060,7 +1060,10 @@
                                 <div class="col-md-12">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <img src="" class="d-none preview_image" >
+                                            <div class= "prv_div">
+                                                <!-- <img src="" class="d-none preview_image" > -->
+                                            </div>
+                                          
                                             <div id="mediaContainervideo_fb">
                                                 <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1150,7 +1153,10 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="insta_post_img_inner_con">
-                                    <img src="" class="d-none preview_image_inst" alt="">
+                                        <div class="prv_div_isnt">
+                                            <!-- <img src="" class="d-none preview_image_inst" alt=""> -->
+                                        </div>
+                                
                                             <div id="mediaContainervideo_inst">
                                                 <video class="d-none video_preview_inst" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1350,7 +1356,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post_image">
-                                    <img src="" class="d-none preview_image_link" alt="">
+                                        <div class="prv_div_link">
+                                        <!-- <img src="" class="d-none preview_image_link" alt=""> -->
+                                        </div>
+                                  
                                             <div id="mediaContainervideo_link">
                                                 <video class="d-none video_preview_link" controls>
                                                     <source src="movie.mp4" type="video/*">
