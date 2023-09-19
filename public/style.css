@@ -2625,12 +2625,15 @@ height: 100%;
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
+    background-image:url("images/light.png") ;
+    background-size: cover;
+    background-repeat: no-repeat;
 
 }
-.twitter_img_container img{
+/* .twitter_img_container img{
     height: 100%;
     width: 100%;
-}
+} */
 .x_bar_icons span{
     color: #8a96a3;
     font-size:12px;

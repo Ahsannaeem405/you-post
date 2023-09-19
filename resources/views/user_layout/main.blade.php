@@ -491,28 +491,33 @@
           if (textareaAttr == 'fb') {
            
               var selectedValues = $('#facebook_tag').val(); 
-              var new_str= getString(selectedValues);
-              new_str = inputText + new_str;
-             
-              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+              var new_str= getString(selectedValues); 
 
+              $("#mypostresult_fb").empty().append(inputText) ;
+               $("#mynameresult").empty().append(new_str) ;
+               
           }else if(textareaAttr == 'insta'){
-            var selectedValues = $('#instagram_tag').val(); 
-            var new_str= getString(selectedValues);
-              new_str = inputText + new_str;
-              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+
+            var selectedValues = $('#instagram_tag').val();   
+            var new_str= getString(selectedValues); 
+             $("#mypostresult_insta").empty().append(inputText) ;
+               $("#mynameresult_insta").empty().append(new_str) ;
   
           }else if(textareaAttr == 'twitter'){
-            var selectedValues = $('#twitter_tag').val(); 
-            var new_str= getString(selectedValues);
-              new_str = inputText + new_str;
-              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+
+            var selectedValues = $('#twitter_tag').val();  
+            var new_str= getString(selectedValues); 
+          
+            $("#mypostresult_twitter").empty().append(inputText) ;
+               $("#mynameresult_twitter").empty().append(new_str) ;
   
           }else if(textareaAttr == 'linkedin'){
-            var selectedValues = $('#linkedin_tag').val(); 
-            var new_str= getString(selectedValues);
-              new_str = inputText + new_str;
-              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+
+            var selectedValues = $('#linkedin_tag').val();  
+            var new_str= getString(selectedValues); 
+         
+            $("#mypostresult_linkedin").empty().append(inputText) ;
+               $("#mynameresult_linkedin").empty().append(new_str) ;
           }
         }
 
@@ -597,12 +602,11 @@
 
                
                 var tex_cont= $('#facebook_content').val();
-                var new_cont= tex_cont +  selectedString;
-               $("#mypostresult_fb").empty().append(new_cont) ;
-
-                  } 
-                
-        }
+                // var new_cont= tex_cont +  selectedString;
+               $("#mypostresult_fb").empty().append(tex_cont) ;
+               $("#mynameresult").empty().append(selectedString) ;
+             } 
+         }
         
     });
     
@@ -622,21 +626,24 @@
           if (selectid == 'instagram_tag') {
 
             var tex_cont= $('#instagram_content').val();
-                var new_cont= tex_cont +  selectedString;
-               $("#mypostresult_insta").empty().append(new_cont) ;
+              
+                $("#mypostresult_insta").empty().append(tex_cont) ;
+               $("#mynameresult_insta").empty().append(selectedString) ;
 
             
 
           }else if (selectid == 'twitter_tag') {
 
             var tex_cont= $('#twitter_content').val();
-                var new_cont= tex_cont +  selectedString;
-               $("#mypostresult_twitter").empty().append(new_cont) ;
+             
+                $("#mypostresult_twitter").empty().append(tex_cont) ;
+               $("#mynameresult_twitter").empty().append(selectedString) ;
 
           }else  if (selectid == 'linkedin_tag') {
             var tex_cont= $('#linkedin_content').val();
-                var new_cont= tex_cont +  selectedString;
-               $("#mypostresult_linkedin").empty().append(new_cont) ;
+               
+                $("#mypostresult_linkedin").empty().append(tex_cont) ;
+               $("#mynameresult_linkedin").empty().append(selectedString) ;
           }
         
 }

@@ -1195,7 +1195,7 @@
                                         <div class="Mobcart_title">
                                             <span id="mypostresult_insta" class="mypostresult" style="color:#000;">Write your
                                                 post...</span>
-                                            <span class="icon icon-privacy text-primary" id="mynameresult"></span>
+                                            <span class="icon icon-privacy text-primary" id="mynameresult_insta"></span>
                                         </div>
                                         <div id="selectedValues"></div>
                                     </div>
@@ -1253,7 +1253,9 @@
                                         </div>
                                     </div>
                                     <div class="twitter_text">
-                                        <p id="mypostresult_twitter">Write your post...</p>
+                                        <span id="mypostresult_twitter" class="mypostresult">Write your post...</span>
+                                        <span id="mynameresult_twitter" class="icon icon-privacy text-primary" ></span>
+
                                     </div>
                                     <div class="twitter_img_container">
                                         <!-- <img src="{{asset('')}}images/light.png" class="" alt="" /> -->
@@ -1328,7 +1330,7 @@
                                         <div class="linked_inaccount">
                                             <div>
                                                 <span>
-                                                    Linkedin Ads
+                                                {{auth()->user()->name}}
                                                 </span>
                                             </div>
                                             <div class="follwers">
@@ -1349,7 +1351,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post">
-                                      <span id="mypostresult_linkedin">Write your post...</span> 
+                                      <span id="mypostresult_linkedin" class="mypostresult">Write your post...</span> 
+                                      <span id="mynameresult_linkedin" class="icon icon-privacy text-primary" ></span> 
+
                                     </div>
                                 </div>
                             </div>
