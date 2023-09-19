@@ -36,13 +36,13 @@ class Post extends Model
         $content = '';
         foreach ($groups as $group) {
             if ($group->plateform == 'Facebook')
-                $content .= '<div><img src="' . asset('images/FB_Color.png') . '" alt=""></div>';
+                $content .= '<div class="calender_socialfb" ><img src="' . asset('images/FB_Color.png') . '" alt=""></div>';
             elseif ($group->plateform == 'Instagram')
-                $content .= '<div><img src="' . asset('images/Instagram_Color.png') . '" alt=""></div>';
+                $content .= '<div class="calender_socialicon"><img src="' . asset('images/Instagram_Color.png') . '" alt=""></div>';
             elseif ($group->plateform == 'Twitter')
-                $content .= '<div><img src="' . asset('images/Twitter_Color.png') . '" alt=""></div>';
+                $content .= '<div class="calender_socialicon"><img src="' . asset('images/Twitter_Color.png') . '" alt=""></div>';
             elseif ($group->plateform == 'Linkedin')
-                $content .= '<div><img src="' . asset('images/Linkedin_Color.png') . '" alt=""></div>';
+                $content .= '<div class="calender_socialicon"><img src="' . asset('images/Linkedin_Color.png') . '" alt=""></div>';
         }
 
         return $content;

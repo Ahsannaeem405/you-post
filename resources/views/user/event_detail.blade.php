@@ -67,342 +67,442 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="video_container">
+                    <div class="image_main_container container">
                         @if($platforms['Facebook'][0]->media_type=='image')
-                        @foreach(explode(',',$platforms['Facebook'][0]->media) as $image)
-                        <img src="{{asset("content_media/$image")}}" class="img-fluid" alt="" />
-                               
-                        @endforeach
-                        @elseif($platforms['Facebook'][0]->media_type=='video')
-                        <video src="{{asset("content_media/{$platforms['Facebook'][0]->media}")}}" controls></video>
-                        @endif
+                        @php
+                        $Facebookimages = explode(',',$platforms['Facebook'][0]->media);
+                        @endphp
+                        @foreach($Facebookimages as $image)
+                        @if($loop->index <= 3) <div class="post_modal_con"
+                            style="background-image: url({{asset('content_media/' .$image)}})">
+                    </div>
+                    @elseif($loop->index == 4)
+                    <div class="post_modal_con post_modal_con5_img"
+                        style="background-image: url({{asset('content_media/' .$image)}})">
+                        <div class="fb_remain_img_counter">
+                            <span>
+                                <span><i class="fa-solid fa-plus"></i></span>
+                                <span class="counter_val">{{count($Facebookimages)-4}}</span>
+                            </span>
+                        </div>
+                        <div class="image_shade"> </div>
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+                @elseif($platforms['Facebook'][0]->media_type=='video')
+                <div class="video_container">
+                    <video src="{{asset("content_media/{$platforms['Facebook'][0]->media}")}}" controls></video>
+                </div>
+                @endif
+            </div>
 
+            <div class="col-12">
+                <div class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
+
+                    <div class="actions-buttons-button">
+
+                        <img src="{{asset('images/t1.png')}}" class="img-fluid" alt="" height="20" />
+                        <span class="text text3">Like</span>
+                    </div>
+                    <div class="actions-buttons-button">
+                        <i class="fa-regular fa-message" style="color:#9DA1A5; padding-top:4px;"></i>
+                        <span class="text text3">Comment</span>
+                    </div>
+                    <div class="actions-buttons-button">
+                        <img src="{{asset('images/tt3.png')}}" class="img-fluid" alt="" height="20" />
+                        <span class="text text3">Share</span>
+                    </div>
+                    <div class="actions-buttons-button d-flex">
+                        <div><img src="{{asset('images/admn.png')}}" class="img-fluid" alt="" height="13"
+                                style="height:25px;" /></div>
+                        <div class="mt-1">
+                            <img src="{{asset('images/drop.png')}}" class="img-fluid" alt="" height="13"
+                                style="height:14px;" />
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-12">
-                    <div class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
+        </div>
+    </div>
+    <div class="col-12 my-2 text-center delete2">
+        <a class="text-decoration-none btn btn-danger"
+            onclick="return confirm('Are you sure you want to delete this post?');"
+            href="{{url('post_delete/' .encrypt($platforms['Facebook'][0]->id))}}">
+            Delete
+        </a>
+    </div>
 
-                        <div class="actions-buttons-button">
+</div>
+@endif
 
-                            <img src="{{asset('images/t1.png')}}" class="img-fluid" alt="" height="20" />
-                            <span class="text text3">Like</span>
-                        </div>
-                        <div class="actions-buttons-button">
-                            <i class="fa-regular fa-message" style="color:#9DA1A5; padding-top:4px;"></i>
-                            <span class="text text3">Comment</span>
-                        </div>
-                        <div class="actions-buttons-button">
-                            <img src="{{asset('images/tt3.png')}}" class="img-fluid" alt="" height="20" />
-                            <span class="text text3">Share</span>
-                        </div>
-                        <div class="actions-buttons-button d-flex">
-                            <div><img src="{{asset('images/admn.png')}}" class="img-fluid" alt="" height="13"
-                                    style="height:25px;" /></div>
-                            <div class="mt-1">
-                                <img src="{{asset('images/drop.png')}}" class="img-fluid" alt="" height="13"
-                                    style="height:14px;" />
-                            </div>
+@if(in_array('Instagram',$platformsName))
+<div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+    <div class="nav_card1 mt-3">
+        <div class="row p-3">
+            <div class="col-7">
+                <div class="d-flex">
+                    <div>
+                        <img src="{{asset('images/insta_elp.png')}}" class="img-fluid" alt="" />
+                    </div>
 
-                        </div>
+                    <div class="Evano">
+                        <h3 class="mb-0 user_name_insta">{{$platforms['Instagram'][0]->user->name}} <img
+                                src="{{asset('')}}images/offical.png" class="" alt="" height="14" /></h3>
 
                     </div>
+
                 </div>
+            </div>
+            <div class="col-5">
+                <div>
+                    <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
+                        View post in live feed</a>
+                    <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
+                </div>
+            </div>
+            <div class="col-12 ">
+                <div class="image_main_container">
+                    @if($platforms['Instagram'][0]->media_type=='image')
+                    @php
+                    $InstagramImages = explode(',',$platforms['Instagram'][0]->media);
+                    @endphp
+                    @foreach($InstagramImages as $image)
+                    @if($loop->index <= 3) <div class="post_modal_con"
+                        style="background-image: url({{asset('content_media/' .$image)}})">
+                </div>
+                @elseif($loop->index == 4)
+                <div class="post_modal_con" style="background-image: url({{asset('content_media/' .$image)}})">
+
+                    <div class="fb_remain_img_counter">
+                        <span>
+                            <span><i class="fa-solid fa-plus"></i></span>
+                            <span class="counter_val">{{count($InstagramImages)-4}}</span>
+                        </span>
+                    </div>
+                    <div class="image_shade"> </div>
+
+                </div>
+                @endif
+                @endforeach
+                @elseif($platforms['Instagram'][0]->media_type=='video')
+                <div class="video_container">
+                    <video src="{{asset("content_media/{$platforms['Instagram'][0]->media}")}}" controls></video>
+                </div>
+                @endif
 
             </div>
         </div>
 
+        <div class="col-12">
+            <div class="d-flex justify-content-between ">
+                <div>
 
-        <div class="col-12 my-2 text-center">
-            <a class="text-decoration-none" onclick="return confirm('Are you sure you want to delete this post?');"
-                href="{{url('post_delete/' .encrypt($platforms['Facebook'][0]->id))}}">
-                <button class="btn btn-danger" type="button">Delete</button>
-            </a>
+                </div>
+            </div>
+            <div>
+            </div>
         </div>
+    </div>
+    <div class="col-12 px-3">
+        <div class="actions-buttons-list d-flex p-0 justify-content-between mt-3">
+
+
+            <div class="actions-buttons-button">
+                <div class="d-flex" style="gap: 0 18px;">
+                    <i class="fa-regular fa-heart myinsta_icon1"></i>
+                    <i class="fa-regular fa-comment fa-flip-horizontal myinsta_icon2"></i>
+                    <i class="fa-regular fa-paper-plane myinsta_icon3"></i>
+                </div>
+            </div>
+            <div class="actions-buttons-button">
+                <i class="fa-solid fa-ellipsis myinsta_icon"></i>
+            </div>
+
+
+            <div class="actions-buttons-button">
+            </div>
+
+            <div class="actions-buttons-button d-flex">
+                <i class="fa-regular fa-bookmark myinsta_icon"></i>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-12 insta_likes">
+        <span>
+            <span>
+                0 Likes
+            </span>
+        </span>
+    </div>
+    <div class="col-12 insta_post1">
+        <div class="post_text pb-2">
+            <p class="mb-0">{{$platforms['Instagram'][0]->content}}</p>
+            <a href="">{{$platforms['Instagram'][0]->tag}}</a>
+        </div>
+    </div>
+
+    <div class="col-12 schedule_date">
+        <span>
+            <span class="text-secondary">Scheduled at:</span>
+            <span
+                class="text-primary">{{\Carbon\Carbon::parse($platforms['Twitter'][0]->posted_at)->format('d M Y h:i A')}}</span>
+        </span>
 
     </div>
-    @endif
 
-    @if(in_array('Instagram',$platformsName))
-    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+</div>
+<div class="col-12 my-2 text-center">
+    <a class="text-decoration-none btn btn-danger"
+        onclick="return confirm('Are you sure you want to delete this post?');"
+        href="{{url('post_delete/' .encrypt($platforms['Instagram'][0]->id))}}">
+        Delete
+    </a>
+</div>
+</div>
+@endif
+@if(in_array('Twitter',$platformsName))
+<div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
 
-        <div class="nav_card1 mt-3">
-            <div class="row p-3">
-                <div class="col-7">
-                    <div class="d-flex">
-                        <div>
-                            <img src="{{asset('images/insta_elp.png')}}" class="img-fluid" alt="" />
-                        </div>
-
-                        <div class="Evano">
-                            <h3 class="mb-0 user_name_insta">{{$platforms['Instagram'][0]->user->name}} <img
-                                    src="{{asset('')}}images/offical.png" class="" alt="" height="14" /></h3>
-
-                        </div>
-
+    <div class="nav_card1 mt-3 navcard_3">
+        <div class="row p-3">
+            <div class="col-7 ">
+                <div class="d-flex">
+                    <div> <img src="{{asset('')}}images/elpx.png" class="navcard_3_img1" alt="" />
+                    </div>
+                    <div class="Evano">
+                        <h3 class="mb-0 user_name">{{$platforms['Twitter'][0]->user->name}} <img src="" class="" alt=""
+                                height="14" /></h3>
                     </div>
                 </div>
-                <div class="col-5">
-                    <div>
-                        <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
-                            View post in live feed</a>
-                        <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
-                    </div>
+            </div>
+            <div class="col-5">
+                <div>
+                    <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
+                        View post in live feed</a>
+                    <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
-                <div class="col-12 ">
-                    <div class="video_container">
-                        @if($platforms['Instagram'][0]->media_type=='image')
-                        <div> @foreach(explode(',',$platforms['Instagram'][0]->media) as $image)
-                            <img src="{{asset("content_media/$image")}}" class="img-fluid" alt="" />
-                               
-                            @endforeach
-                        </div>
-                        @elseif($platforms['Instagram'][0]->media_type=='video')
-                        <div>
-                            <video src="{{asset("content_media/{$platforms['Instagram'][0]->media}")}}"
-                                controls></video>
-                        </div>
-                        @endif
-
-                    </div>
-                </div>
-
+            </div>
+            <div class="post_title">
                 <div class="col-12">
-                    <div class="d-flex justify-content-between ">
-                        <div>
-
-                        </div>
-                    </div>
-                    <div>
+                    <div class="post_text pb-2">
+                        <p class="mb-0">{{$platforms['Twitter'][0]->content}}</p>
+                        <a href="">{{$platforms['Twitter'][0]->tag}}</a>
                     </div>
                 </div>
             </div>
-            <div class="col-12 px-3">
-                <div class="actions-buttons-list d-flex p-0 justify-content-between mt-3">
-
-
+            <div class="col-12 bottom-content">
+                <div class="actions-buttons-list d-flex p-0 justify-content-between border_top border-card3 mt-3">
                     <div class="actions-buttons-button">
-                        <div class="d-flex" style="gap: 0 18px;">
-                            <i class="fa-regular fa-heart myinsta_icon1"></i>
-                            <i class="fa-regular fa-comment fa-flip-horizontal myinsta_icon2"></i>
-                            <i class="fa-regular fa-paper-plane myinsta_icon3"></i>
-                        </div>
+
+                        <i class="fa-regular fa-comment myicon"></i>
+                        <span class="text text3"></span>
                     </div>
                     <div class="actions-buttons-button">
-                        <i class="fa-solid fa-ellipsis myinsta_icon"></i>
+
+                        <i class="fa-solid fa-retweet myicon"></i>
+                        <span class="text text3"></span>
                     </div>
-
-
                     <div class="actions-buttons-button">
+
+                        <i class="fa-regular fa-heart myicon"></i>
+                        <span class="text text3"></span>
                     </div>
+                    <div class="actions-buttons-button">
 
-                    <div class="actions-buttons-button d-flex">
-                        <i class="fa-regular fa-bookmark myinsta_icon"></i>
+                        <i class="fa-solid fa-chart-simple myicon"></i>
+                        <span class="text text3"></span>
                     </div>
+                    <div class="actions-buttons-button">
 
-
+                        <i class="fa-solid fa-arrow-up-from-bracket myicon"></i>
+                        <span class="text text3"></span>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 insta_likes">
-                <span>
-                    <span>
-                        0 Likes
-                    </span>
-                </span>
-            </div>
-            <div class="col-12 insta_post1">
-                <div class="post_text pb-2">
-                    <p class="mb-0">{{$platforms['Instagram'][0]->content}}</p>
-                    <a href="">{{$platforms['Instagram'][0]->tag}}</a>
-                </div>
-            </div>
-
             <div class="col-12 schedule_date">
                 <span>
                     <span class="text-secondary">Scheduled at:</span>
                     <span
-                        class="text-primary">{{\Carbon\Carbon::parse($platforms['Instagram '][0]->posted_at)->format('d M Y h:i A')}}</span>
+                        class="text-primary">{{\Carbon\Carbon::parse($platforms['Instagram'][0]->posted_at)->format('d M Y h:i A')}}</span>
                 </span>
 
             </div>
-
-        </div>
-        <div class="col-12 my-2 text-center">
-            <a class="text-decoration-none" onclick="return confirm('Are you sure you want to delete this post?');"
-                href="{{url('post_delete/' .encrypt($platforms['Instagram'][0]->id))}}">
-                <button class="btn btn-danger" type="button">Delete</button>
-            </a>
         </div>
     </div>
-    @endif
-
-    @if(in_array('Twitter',$platformsName))
-    <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-
-        <div class="nav_card1 mt-3 navcard_3">
-            <div class="row p-3">
-                <div class="col-7 ">
-                    <div class="d-flex">
-                        <div> <img src="{{asset('')}}images/elpx.png" class="navcard_3_img1" alt="" />
-                        </div>
-                        <div class="Evano">
-                            <h3 class="mb-0 user_name">{{$platforms['Twitter'][0]->user->name}} <img src="" class=""
-                                    alt="" height="14" /></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5">
-                    <div>
-                        <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
-                            View post in live feed</a>
-                        <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
-                    </div>
-                </div>
-
-                <div class="post_title">
-                    <div class="col-12">
-                        <div class="post_text pb-2">
-                            <p class="mb-0">{{$platforms['Twitter'][0]->content}}</p>
-                            <a href="">{{$platforms['Twitter'][0]->tag}}</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-12 bottom-content">
-                    <div class="actions-buttons-list d-flex p-0 justify-content-between border_top border-card3 mt-3">
-                        <div class="actions-buttons-button">
-
-                            <i class="fa-regular fa-comment myicon"></i>
-                            <span class="text text3"></span>
-                        </div>
-                        <div class="actions-buttons-button">
-
-                            <i class="fa-solid fa-retweet myicon"></i>
-                            <span class="text text3"></span>
-                        </div>
-                        <div class="actions-buttons-button">
-
-                            <i class="fa-regular fa-heart myicon"></i>
-                            <span class="text text3"></span>
-                        </div>
-                        <div class="actions-buttons-button">
-
-                            <i class="fa-solid fa-chart-simple myicon"></i>
-                            <span class="text text3"></span>
-                        </div>
-                        <div class="actions-buttons-button">
-
-                            <i class="fa-solid fa-arrow-up-from-bracket myicon"></i>
-                            <span class="text text3"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 schedule_date">
-                    <span>
-                        <span class="text-secondary">Scheduled at:</span>
-                        <span
-                            class="text-primary">{{\Carbon\Carbon::parse($platforms['Twitter'][0]->posted_at)->format('d M Y h:i A')}}</span>
-                    </span>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-12 my-2 text-center">
-            <a class="text-decoration-none" onclick="return confirm('Are you sure you want to delete this post?');"
-                href="{{url('post_delete/' .encrypt($platforms['Twitter'][0]->id))}}">
-                <button class="btn btn-danger" type="button">Delete</button>
-            </a>
-        </div>
+    <div class="col-12 my-2 text-center">
+        <a class="text-decoration-none btn btn-danger"
+            onclick="return confirm('Are you sure you want to delete this post?');"
+            href="{{url('post_delete/' .encrypt($platforms['Twitter'][0]->id))}}">
+            Delete
+        </a>
     </div>
-    @endif
-
-    @if(in_array('Linkedin',$platformsName))
-    <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
-
-        <div class="nav_card1 mt-3">
-            <div class="row p-3">
-                <div class="col-7 ">
-                    <div class="d-flex">
-                        <div> <img src="{{asset('')}}images/elplinkedin.png" class="" alt="" />
-                        </div>
-                        <div class="Evano card_4Evano">
-                            <h3 class="mb-0 user_name">{{$platforms['Linkedin'][0]->user->name}} <img src="" class=""
-                                    alt="" height="14" /></h3>
-                            <span class="linkedin_schedule">
-                                <span class="text-secondary">Scheduled at:</span>
-                                <span
-                                    class="text-primary">{{\Carbon\Carbon::parse($platforms['Linkedin'][0]->posted_at)->format('d M Y h:i A')}}</span>
-                            </span>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-5">
-                    <div>
-                        <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
-                            View post in live feed</a>
-                        <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="post_text pb-2">
-                        <p class="mb-0">{{$platforms['Linkedin'][0]->content}}</p>
-                        <a href="">{{$platforms['Linkedin'][0]->tag}}</a>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="video_container">
-                        @if($platforms['Linkedin'][0]->media_type=='image')
-                        @foreach(explode(',',$platforms['Linkedin'][0]->media) as $image)
-                        <img src="{{asset("content_media/$image")}}" class="img-fluid" alt="" />
-                              
-                        @endforeach
-                        @elseif($platforms['Linkedin'][0]->media_type=='video')
-                        <video src="{{asset("content_media/{$platforms['Linkedin'][0]->media}")}}" controls></video>
-                        @endif
-
-                    </div>
-                </div>
-
-
-                <div class="col-12">
-                    <div class="actions-buttons-list d-flex  justify-content-between border_top  mt-3 bottom_padd">
-                        <div class="dropimg">
-                            <img src="{{asset('')}}images/elp2.png" class="dropimg1" alt="" />
-
-
-                            <i class="fa-solid fa-caret-down myicon dropimg2"></i>
-                        </div>
-                        <div class="actions-buttons-button">
-                            <i class="fa-regular fa-thumbs-up fa-flip-horizontal myicon"></i>
-                            <span class="text text3">Like</span>
-                        </div>
-                        <div class="actions-buttons-button">
-
-                            <i class="fa-solid fa-comments myicon"></i>
-                            <span class="text text3">Comment</span>
-                        </div>
-                        <div class="actions-buttons-button">
-                            <i class="fa-solid fa-retweet myicon"></i>
-                            <span class="text text3">Repost</span>
-                        </div>
-                        <div class="actions-buttons-button">
-                            <i class="fa-solid fa-paper-plane myicon"></i>
-                            <span class="text text3">Send</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 my-2 text-center">
-            <a class="text-decoration-none" onclick="return confirm('Are you sure you want to delete this post?');"
-                href="{{url('post_delete/' .encrypt($platforms['Linkedin'][0]->id))}}">
-                <button class="btn btn-danger" type="button">Delete</button>
-            </a>
-        </div>
-    </div>
-    @endif
 </div>
+@endif
+
+@if(in_array('Linkedin',$platformsName))
+<div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+    <div class="nav_card1 mt-3">
+        <div class="row p-3">
+            <div class="col-7 ">
+                <div class="d-flex">
+                    <div> <img src="{{asset('')}}images/elplinkedin.png" class="" alt="" />
+                    </div>
+                    <div class="Evano card_4Evano">
+                        <h3 class="mb-0 user_name">{{$platforms['Linkedin'][0]->user->name}} <img src="" class="" alt=""
+                                height="14" /></h3>
+                        <span class="linkedin_schedule">
+                            <span class="text-secondary">Scheduled at:</span>
+                            <span
+                                class="text-primary">{{\Carbon\Carbon::parse($platforms['Linkedin'][0]->posted_at)->format('d M Y h:i A')}}</span>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div>
+                    <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
+                        View post in live feed</a>
+                    <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="post_text pb-2">
+                    <p class="mb-0">{{$platforms['Linkedin'][0]->content}}</p>
+                    <a href="">{{$platforms['Linkedin'][0]->tag}}</a>
+                </div>
+            </div>
+            <!-- <div class="col-12">
+                @if($platforms['Linkedin'][0]->media_type=='image')
+                <div class="image_main_container">
+                    @foreach(explode(',',$platforms['Linkedin'][0]->media) as $image)
+                    @if($image !== null)
+                    <div class="post_modal_con" style="background-image: url({{asset('content_media/' .$image)}})">
+                    </div>
+                    @endif
+                    @endforeach
+
+                </div>
+                @endif
+
+                @if($platforms['Linkedin'][0]->media_type=='video')
+                <div class="video_container">
+                    <video src="{{asset("content_media/{$platforms['Linkedin'][0]->media}")}}" controls></video>
+                    @endif
+                </div>
+            </div> -->
+            <!-- test -->
+            <div class="col-12 ">
+                <div class="image_main_container">
+                    @if($platforms['Linkedin'][0]->media_type=='image')
+                    @php
+                    $LinkedinImages = explode(',',$platforms['Linkedin'][0]->media);
+                    @endphp
+                    @foreach($LinkedinImages as $image)
+                    @if($loop->index <= 3) <div class="post_modal_con"
+                        style="background-image: url({{asset('content_media/' .$image)}})">
+                </div>
+                @elseif($loop->index == 4)
+                <div class="post_modal_con" style="background-image: url({{asset('content_media/' .$image)}})">
+
+                    <div class="fb_remain_img_counter">
+                        <span>
+                            <span><i class="fa-solid fa-plus"></i></span>
+                            <span class="counter_val">{{count($LinkedinImages)-4}}</span>
+                        </span>
+                    </div>
+                    <div class="image_shade"> </div>
+
+                </div>
+                @endif
+                @endforeach
+                @elseif($platforms['Linkedin'][0]->media_type=='video')
+                <div class="video_container">
+                    <video src="{{asset("content_media/{$platforms['Instagram'][0]->media}")}}" controls></video>
+                </div>
+                @endif
+
+            </div>
+            <!-- test -->
+
+
+
+
+            <div class="col-12">
+                <div class="actions-buttons-list d-flex  justify-content-between border_top  mt-3 bottom_padd">
+                    <div class="dropimg">
+                        <img src="{{asset('')}}images/elp2.png" class="dropimg1" alt="" />
+                        <i class="fa-solid fa-caret-down myicon dropimg2"></i>
+                    </div>
+                    <div class="actions-buttons-button">
+                        <i class="fa-regular fa-thumbs-up fa-flip-horizontal myicon"></i>
+                        <span class="text text3">Like</span>
+                    </div>
+                    <div class="actions-buttons-button">
+
+                        <i class="fa-solid fa-comments myicon"></i>
+                        <span class="text text3">Comment</span>
+                    </div>
+                    <div class="actions-buttons-button">
+                        <i class="fa-solid fa-retweet myicon"></i>
+                        <span class="text text3">Repost</span>
+                    </div>
+                    <div class="actions-buttons-button">
+                        <i class="fa-solid fa-paper-plane myicon"></i>
+                        <span class="text text3">Send</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 my-2 text-center">
+        <a class="text-decoration-none btn btn-danger"
+            onclick="return confirm('Are you sure you want to delete this post?');"
+            href="{{url('post_delete/' .encrypt($platforms['Linkedin'][0]->id))}}">
+            Delete
+        </a>
+    </div>
+</div>
+@endif
+<!-- <script>
+function post_cards(i) {
+    // var Elements = $('.image_main_container').find('.post_modal_con');
+    const secondContainer = $('.image_main_container:eq(' + i + ')'); //within the second container
+    const childElements = secondContainer.find('.post_modal_con');
+    // var allImages = Elements;
+    if (childElements.length === 1) {
+        $(".image_main_container").css({
+            "column-count": "1",
+
+        });
+
+    } else {
+        $(".image_main_container").css({
+            "column-count": "2",
+
+        });
+    }
+    return childElements.length;
+
+}
+$('#tab1-tab').click(function() {
+    alert(post_cards(1));
+});
+$('#tab2-tab').click(function() {
+    alert(post_cards(2));
+});
+$('#tab3-tab').click(function() {
+    alert(post_cards(3));
+});
+$('#tab4-tab').click(function() {
+    alert(post_cards(4));
+});
+post_cards(0);
+
+// alert(allImages); 
+</script> -->

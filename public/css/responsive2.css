@@ -137,6 +137,15 @@
     }
     
 }
+/*18,9,23 */
+@media (min-width:1377px) and (max-width:1399px) {
+
+    .social_icon_posts {
+        gap: 16px 15px;
+    }
+}
+
+/*18,9,23 */
 
 /* salman small break point only for calendar start*/
 @media (min-width:1200px) and (max-width:1376px) {
@@ -144,6 +153,12 @@
         width: 100%;
         left: 14rem;
     }
+     /*18,9,23 */
+     .social_icon_posts {
+        gap: 16px 13px;
+    }
+
+    /*18,9,23 */
 
     .table>:not(caption)>*>* {
         padding: 7px 8px !important;
@@ -381,6 +396,13 @@
         width: 100% !important;
     }
 
+  /* 18,9,23 */
+  .L-Calnd {
+    padding-left: 15px;
+}
+
+/* 18,9,23 */
+
     /* razi card_media query end */
 }
 
@@ -540,6 +562,13 @@
         margin-left: 10px;
     }
 
+  /* 18,9,23 */
+  .post_thumb {
+    padding-bottom: 15px;
+}
+
+/* 18,9,23 */
+
     /* salman */
 }
 
@@ -582,28 +611,12 @@
         border-radius: 13px 13px 13px 13px !important;
     }
 
-    /* .current-day {
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-    }
-
-    .current-day {
-        font-size: 6px;
-        padding: 7px 10.1px !important;
-    }
-
-    .other-month {
-        font-size: 6px;
-    } */
-
+  
     .calendarmain {
         width: 100%;
     }
 
-    /* .other-month {
-        padding-left: 0% !important;
-        padding-right: 0% !important;
-    } */
+   
 
     .div3 .Edit {
         text-align: end;
@@ -768,12 +781,6 @@
         display: none;
     }
 
-    /* .create_preview_post_index_item .preview_post,
-    .create_preview_post_index_item .preview_post .preview_wrap {
-        width: 90% !important;
-        margin: auto;
-    } */
-
     .the_preview_card {
         width: 91% !important;
         margin-left: 7px !important;
@@ -839,6 +846,23 @@
     .other-month {
         font-size: 10px;
         padding: 11px 7.1px !important;
+    }
+     /* 18,9,23 */
+     .social_icon_posts {
+        flex-wrap: nowrap;
+    }
+
+    .post_thumb {
+        padding-bottom: 15px;
+    }
+    /* 18,9,23 */
+    .post_modal_con:nth-child(3),
+    .post_modal_con:nth-child(4),
+    .post_modal_con:nth-child(5){
+        height: 71px !important;
+}
+    .post_modal_con {
+        height: 111px !important;
     }
 }
 

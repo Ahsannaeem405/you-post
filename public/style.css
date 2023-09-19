@@ -2463,21 +2463,30 @@ height: 100%;
 .post_text p,a{
     font-size: 12px;
 }
+.image_main_container {
+    /* max-width: 500px; */
+    column-count: 2;
+    column-gap: 10px;
+    margin: auto;
+}
+/* .image_main_container video{
+width: 100%;
+height: 100%;
+} */
 .video_container{
     max-width: 500px;
     margin: auto;
-    /* max-height: 400px; */
 }
 .video_container video{
-width: 100%;
-height: 100%;
+    width: 100%;
+    height: 100%;
 }
-.video_container img{
+/* .image_main_container img{
     width: 100%;
     height: auto;
     vertical-align: middle;
     display: inline-block;
-}
+} */
 
 .account_icon{
     color: #e4e2e2;
@@ -2654,7 +2663,61 @@ cursor: pointer;
     max-width: 90%;
     margin: auto;
 }
-
+.post_modal_con {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 160px;
+    position: relative;
+    /* margin: 15px 0px; */
+    margin-bottom: 10px;
+    break-inside: avoid-column;
+    width: 100%;
+    display: block;
+}
+.post_modal_con:nth-child(3),
+.post_modal_con:nth-child(4),
+.post_modal_con:nth-child(5){
+    height: 103px;
+}
+.post_modal_con img{
+    width: 100% !important;
+    height: 100% !important ;
+}
+.fb_remain_img_counter{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.fb_remain_img_counter span{
+    color: #fff;
+    cursor: pointer;
+}
+.counter{
+    font-size: 28px;
+}
+.post_modal_con5_img{
+position: relative;
+}
+.image_shade{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#000;
+    opacity: 50%;
+}
+.image_shade:hover{
+    background:#000;
+    opacity: 80%;
+/* transition: 1s; */
+}
+.counter_val{
+    font-size: 28px;
+}
 /* salman_post start */
 
 /* newpopup end*/

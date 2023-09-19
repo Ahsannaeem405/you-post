@@ -988,7 +988,7 @@
                             <h4>Post Preview</h4>
                         </div>
                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
-                        <div class="preview_wrap add_preview d-none prv_fb">
+                        <div class="preview_wrap add_preview  prv_fb">
                             <div class="col-md-12">
                                 <div class="Mobcompny-title">
                                     <div class="w-50">
@@ -1121,7 +1121,7 @@
                         <!-- moble_insta_post2 start-->
                         @if(in_array(('Instagram'),auth()->user()->account->platforms))
 
-                        <div class="instagram_bg add_preview d-none prv_insta">
+                        <div class="instagram_bg add_preview d-none  prv_insta">
                             <div class="the_preview">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex gap-4">
@@ -1230,7 +1230,7 @@
                         <!-- moble_twitter_post start-->
                         @if(in_array(('Twitter'),auth()->user()->account->platforms))
 
-                        <div class="twitter_post add_preview d-none prv_twitter">
+                        <div class="twitter_post add_preview  d-none  prv_twitter">
                             <div class="row">
                                 <div class="col-3">
                                     <div class="indrive_icon">
@@ -1320,7 +1320,7 @@
                         <!-- moble_linkdin_post start-->
                         @if(in_array(('Linkedin'),auth()->user()->account->platforms))
 
-                        <div class="preview_linkedin  add_preview d-none prv_linkedin">
+                        <div class="preview_linkedin  d-none  add_preview  prv_linkedin">
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
@@ -1602,7 +1602,7 @@
     <!-- =======Calender========= -->
     <section>
         <div class="row container section5">
-            <div class="col-sm-12 col-md-12 col-lg-3 calender">
+            <div class="col-sm-12 col-md-12 col-lg-3 calender calendar_overflo">
                 <div class="calendarmain">
                     <div class="l1">
                         <div class="navigation">
@@ -1616,7 +1616,7 @@
                         <div id="calendar-container">
                         </div>
                     </div>
-                    <div class="R1">
+                    <div class="R1 L-Calnd">
                         <div class="Thumbnail">
                             <h3>
                                 Thumbnail
@@ -1682,7 +1682,7 @@
     <section style="background-color:#e4e2e2;">
         <div>
             <div class="container">
-                <div class="row">
+                <div class="row pb-5">
                     <div class="col-12">
                         <div class="dropdown dropdown1 ">
                             <button style="background-color:#6CB0FF; border:none;"
