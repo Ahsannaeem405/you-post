@@ -465,29 +465,56 @@
 
 
 <script>
-    function updateDiv($obj) {
-        var textareaAttr = $($obj).attr("attr_of_text_area");
-        var inputText = $($obj).val();
+        function getString($val){
 
-        var selectedValues = $('#facebook_tag').val(); 
-      
+        const colors = ['blue'];
+        var ne_va ="";
         var selectedString = "";
-
-            if (selectedValues) {
-                $.each(selectedValues, function(index, value) {
+  
+            if ($val) {
+                $.each($val, function(index, value) {
                             selectedString += " #";
                             selectedString += value;
-                        });
+                           });
                                    
             }
+       
+            return ne_va =  selectedString;
+           
+  
+      }
+      function updateDiv($obj) {
+  
+          var textareaAttr = $($obj).attr("attr_of_text_area");
+          var inputText = $($obj).val();
+  
+          if (textareaAttr == 'fb') {
+           
+              var selectedValues = $('#facebook_tag').val(); 
+              var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+             
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
 
-            var ne_va = inputText + selectedString;
-
-       document.getElementById("mypostresult_" + textareaAttr).textContent = ne_va;
-
-
-
-    }
+          }else if(textareaAttr == 'insta'){
+            var selectedValues = $('#instagram_tag').val(); 
+            var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+  
+          }else if(textareaAttr == 'twitter'){
+            var selectedValues = $('#twitter_tag').val(); 
+            var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+  
+          }else if(textareaAttr == 'linkedin'){
+            var selectedValues = $('#linkedin_tag').val(); 
+            var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+          }
+        }
 
     function Namechangefun($obj) {
         var inputText = $($obj).val();

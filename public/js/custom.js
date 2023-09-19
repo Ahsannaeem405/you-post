@@ -366,12 +366,21 @@ $(document).ready(function () {
         } else {
 
             if (id_of_div == 'media_type_fb') {
+
+                const $img = $('.media-container').find('img');
+                $img.addClass('d-none');
                 $('#media_type_fb').val('');
 
             } else if (id_of_div == 'media_type_insta') {
+
+                const $img = $('.insta_post_img_inner_con').find('img');
+                $img.addClass('d-none');
                 $('#media_type_insta').val('');
 
             } else if (id_of_div == 'media_type_linkedin') {
+
+                const $img = $('.linkedin_post_image').find('img');
+                $img.addClass('d-none');
                 $('#media_type_linkedin').val('');
 
             }

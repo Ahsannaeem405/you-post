@@ -44,7 +44,9 @@ body {
     margin-bottom: 12px;
 
 }
-
+.colored-text {
+    color: red; /* Change this to the desired color */
+}
 /* ========== Custom CSS Starts ========== */
 
 /* ===== CSS For "Common Cases" Starts Here ===== */
@@ -2233,7 +2235,7 @@ left: 15px;
     font-weight: 700;
 }
 .insta_post_img_inner_con{
-    background-image: url("images/insta_i.png");
+    /* background-image: url("images/insta_i.png"); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -2331,7 +2333,7 @@ left: 15px;
     padding-left: 5px;
     height: 250px;
     width: 100%;
-    background-image: url("images/linkedinpost.jpg");
+    /* background-image: url("images/linkedinpost.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -2619,7 +2621,7 @@ height: 100%;
     font-size: 12px;
 }
 .twitter_img_container{
-    height: 250px;
+    height: 350px;
     width: 100%;
     overflow: hidden;
     border-radius: 10px;

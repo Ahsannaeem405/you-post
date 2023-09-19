@@ -1060,7 +1060,7 @@
                                 <div class="col-md-12">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <img src="" class="d-none preview_image" alt="">
+                                            <img src="" class="d-none preview_image" >
                                             <div id="mediaContainervideo_fb">
                                                 <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1247,11 +1247,10 @@
                                         </div>
                                     </div>
                                     <div class="twitter_text">
-                                        <p id="mypostresult_twitter">Lorem ipsum dolor sit amet consectetur adipisicing elit.consectetur
-                                            adipisicing elit.</p>
+                                        <p id="mypostresult_twitter">Write your post...</p>
                                     </div>
                                     <div class="twitter_img_container">
-                                        <img src="{{asset('')}}images/light.png" class="" alt="" />
+                                        <!-- <img src="{{asset('')}}images/light.png" class="" alt="" /> -->
                                     </div>
                                     <div class="x_bar_icons pt-1">
                                         <div>
@@ -1281,7 +1280,7 @@
                                 </div>
 
                             </div>
-                            <div class="row mt-3">
+                            <!-- <div class="row mt-3">
                                 <div class="col-12 twitter_second_row pt-2"></div>
                                 <div class="col-3">
                                     <div class="indrive_icon2">
@@ -1297,7 +1296,7 @@
                                         </div>
                                         <div class="elps">
                                             <i class="fa-solid fa-ellipsis-vertical mt-2 "></i>
-                                            <!-- <i class="fa-light fa-ellipsis-vertical"></i> -->
+                                             <i class="fa-light fa-ellipsis-vertical"></i>
                                         </div>
 
                                     </div>
@@ -1305,7 +1304,7 @@
                                         <img src="{{asset('')}}images/fa.png" class="" alt="" style="width:100%;" />
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- moble_twitter_post3 end-->
                         @endif
@@ -1344,7 +1343,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post">
-                                      <span id="mypostresult_linkedin"></span> 
+                                      <span id="mypostresult_linkedin">Write your post...</span> 
                                     </div>
                                 </div>
                             </div>
