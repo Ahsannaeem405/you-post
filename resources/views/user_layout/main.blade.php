@@ -453,6 +453,10 @@
             }
 
         }
+        $("#facebook_content").attr("attr_of_text_area", "fb");
+        $("#instagram_content").attr("attr_of_text_area", "insta");
+        $("#twitter_content").attr("attr_of_text_area", "twitter");
+        $("#linkedin_content").attr("attr_of_text_area", "linkedin");
 
     });
 
@@ -461,10 +465,56 @@
 
 
 <script>
-    function updateDiv($obj) {
-        var inputText = $($obj).val();
-        document.getElementById("mypostresult").textContent = inputText;
-    }
+        function getString($val){
+
+        const colors = ['blue'];
+        var ne_va ="";
+        var selectedString = "";
+  
+            if ($val) {
+                $.each($val, function(index, value) {
+                            selectedString += " #";
+                            selectedString += value;
+                           });
+                                   
+            }
+       
+            return ne_va =  selectedString;
+           
+  
+      }
+      function updateDiv($obj) {
+  
+          var textareaAttr = $($obj).attr("attr_of_text_area");
+          var inputText = $($obj).val();
+  
+          if (textareaAttr == 'fb') {
+           
+              var selectedValues = $('#facebook_tag').val(); 
+              var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+             
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+
+          }else if(textareaAttr == 'insta'){
+            var selectedValues = $('#instagram_tag').val(); 
+            var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+  
+          }else if(textareaAttr == 'twitter'){
+            var selectedValues = $('#twitter_tag').val(); 
+            var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+  
+          }else if(textareaAttr == 'linkedin'){
+            var selectedValues = $('#linkedin_tag').val(); 
+            var new_str= getString(selectedValues);
+              new_str = inputText + new_str;
+              document.getElementById("mypostresult_" + textareaAttr).textContent = new_str;
+          }
+        }
 
     function Namechangefun($obj) {
         var inputText = $($obj).val();
@@ -530,6 +580,68 @@
         });
 
     }
+    // for facebook
+
+    $('.selectmultiple1').change(function () {
+
+        var selectid = $(this).attr("id");
+        var selectedValues = $(this).val(); 
+        var selectedString = "";
+
+        if (selectedValues) {
+            $.each(selectedValues, function(index, value) {
+                        selectedString += " #";
+                        selectedString += value;
+                    });
+            if (selectid == 'facebook_tag') {
+
+               
+                var tex_cont= $('#facebook_content').val();
+                var new_cont= tex_cont +  selectedString;
+               $("#mypostresult_fb").empty().append(new_cont) ;
+
+                  } 
+                
+        }
+        
+    });
+    
+    $('.selectmultiple').change(function () {
+
+        var selectid = $(this).attr("id");
+        var selectedValues = $(this).val(); 
+        var selectedString = "";
+
+    if (selectedValues) {
+
+    $.each(selectedValues, function(index, value) {
+                selectedString += " #";
+                selectedString += value;
+            });
+
+          if (selectid == 'instagram_tag') {
+
+            var tex_cont= $('#instagram_content').val();
+                var new_cont= tex_cont +  selectedString;
+               $("#mypostresult_insta").empty().append(new_cont) ;
+
+            
+
+          }else if (selectid == 'twitter_tag') {
+
+            var tex_cont= $('#twitter_content').val();
+                var new_cont= tex_cont +  selectedString;
+               $("#mypostresult_twitter").empty().append(new_cont) ;
+
+          }else  if (selectid == 'linkedin_tag') {
+            var tex_cont= $('#linkedin_content').val();
+                var new_cont= tex_cont +  selectedString;
+               $("#mypostresult_linkedin").empty().append(new_cont) ;
+          }
+        
+}
+
+});
 
     $('.save_prompt').click(function () {
         var obj = $('.edit_promotedtext');

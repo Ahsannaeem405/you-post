@@ -359,7 +359,7 @@
 
     .Mobcart_titleCustom,
     .actions-buttons {
-        border-top: 1px solid #e6dbdb;
+        border-top: 1px solid #dddddd7a;
         padding: 5px 0;
     }
 
@@ -395,7 +395,32 @@
         display: inline-block;
     }
 
+    .x_bar_icons div img{
+        width: 1em;
+        height: 1em;
+    }
+    .LikeIcons .InnerIcon img:last-child{
+        margin: 0 0 0 -7px;
+    }
+    .ActionBtn_Linkedin ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 17px;
+        justify-content: space-around;
+    }
+    .ActionBtn_Linkedin ul li button {
+        background-color: transparent;
+        border: none;
+    }
+    .ActionBtn_Linkedin ul li button svg{
 
+    }
+    .ActionBtn_Linkedin ul li button span{
+        color: #fff;
+        font-size: 12px;
+    }
     @media screen and (max-width: 768px) {
         .create_preview_post_wrapInner {
             padding: 10px !important;
@@ -520,8 +545,8 @@
 
                                                     </div>
                                                     <div class="form-group emoji_parent emoji_parent2">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="facebook_content" id="" cols="30" rows="3"
+                                                       <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
+                                                              required name="facebook_content" id="facebook_content" cols="30" rows="3"
                                                               class="form-control wizard-required emojiarea mention"
                                                               placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                         <div class="expand_icon"><img
@@ -568,7 +593,7 @@
                                                             <div class="tags_input">
                                                                 <select name="facebook_tag[]"
                                                                         class="form-control selectmultiple1" multiple
-                                                                        id="">
+                                                                        id="facebook_tag">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -617,7 +642,7 @@
 
                                                     <div class="form-group emoji_parent emoji_parent2 ">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="instagram_content" id="" cols="30" rows="3"
+                                                              required name="instagram_content" id="instagram_content" cols="30" rows="3"
                                                               class="form-control wizard-required emojiarea "
                                                               placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                         <div id="dropdown" class="dropdown-content-search"></div>
@@ -659,7 +684,7 @@
                                                             <div class="tags_input">
                                                                 <select name="instagram_tag[]"
                                                                         class="form-control selectmultiple" multiple
-                                                                        id="">
+                                                                        id="instagram_tag">
 
                                                                 </select>
 
@@ -696,10 +721,10 @@
                                                 <fieldset class="wizard-fieldset twitter">
                                                     <h5>Edit Twitter</h5>
                                                     <div class="form-group emoji_parent  emoji_parent2">
-                                                    <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="twitter_content" id="" cols="30" rows="3"
+                                                    <textarea datatype="fsdf" onkeyup="updateDiv(this)" onchange="suggested_text(this)"
+                                                              required name="twitter_content" id="twitter_content" cols="30" rows="3"
                                                               class="form-control wizard-required emojiarea mention"
-                                                              placeholder="Write your post...">{{old('twitter_content')}}</textarea>
+                                                              placeholder="Write your post..." plt-name="fb">{{old('twitter_content')}}</textarea>
 
                                                         <div id="dropdown" class="dropdown-content-search"></div>
 
@@ -745,7 +770,7 @@
                                                             <div class="tags_input">
                                                                 <select name="twitter_tag[]"
                                                                         class="form-control selectmultiple"
-                                                                        multiple id="">
+                                                                        multiple id="twitter_tag">
 
                                                                 </select>
 
@@ -768,7 +793,7 @@
 
                                                     <div class="form-group emoji_parent emoji_parent2">
                                                     <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                              required name="linkedin_content" id="" cols="30" rows="3"
+                                                              required name="linkedin_content" id="linkedin_content" cols="30" rows="3"
                                                               class="Customemojiarea form-control wizard-required emojiarea mention "
                                                               placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                         <div id="dropdown" class="dropdown-content-search"></div>
@@ -813,7 +838,7 @@
                                                             <div class="tags_input">
                                                                 <select name="linkedin_tag[]"
                                                                         class="form-control selectmultiple" multiple
-                                                                        id="">
+                                                                        id="linkedin_tag">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -950,7 +975,7 @@
                     </form>
                 </div>
 
-              
+
                 <div
                 class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
@@ -962,8 +987,8 @@
                         <div class="sub_heading">
                             <h4>Post Preview</h4>
                         </div>
-
-                        <div class="preview_wrap">
+                        @if(in_array(('Facebook'),auth()->user()->account->platforms))
+                        <div class="preview_wrap add_preview d-none prv_fb">
                             <div class="col-md-12">
                                 <div class="Mobcompny-title">
                                     <div class="w-50">
@@ -982,7 +1007,7 @@
                                 </div>
                             </div>
 
-                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2">
+                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2 px-2 pb-1">
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
                                 <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">
@@ -995,8 +1020,6 @@
                                     <div class="msg_1">
                                         <p>1</p>
                                     </div>
-
-
                                 </div>
                                 <div class="one_img mb-1"><img src="{{asset('images/bell.png')}}" class="" alt="">
                                 </div>
@@ -1029,7 +1052,7 @@
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title">
-                                        <span id="mypostresult" class="mypostresult">Write your post...</span>
+                                        <span id="mypostresult_fb" class="mypostresult">Write your post...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1037,8 +1060,11 @@
                                 <div class="col-md-12">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <img src="" class="d-none preview_image" alt="">
-                                            <div id="mediaContainervideo">
+                                            <div class= "prv_div">
+                                                <!-- <img src="" class="d-none preview_image" > -->
+                                            </div>
+                                          
+                                            <div id="mediaContainervideo_fb">
                                                 <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
                                                 </video>
@@ -1091,9 +1117,11 @@
                             </div>
 
                         </div>
-
+                        @endif
                         <!-- moble_insta_post2 start-->
-                        <div class="instagram_bg">
+                        @if(in_array(('Instagram'),auth()->user()->account->platforms))
+
+                        <div class="instagram_bg add_preview d-none prv_insta">
                             <div class="the_preview">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex gap-4">
@@ -1125,7 +1153,15 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="insta_post_img_inner_con">
-                                        <!-- <img src="{{asset('images/insta_i.png')}}" alt="" class="w-100 img-fluid"> -->
+                                        <div class="prv_div_isnt">
+                                            <!-- <img src="" class="d-none preview_image_inst" alt=""> -->
+                                        </div>
+                                
+                                            <div id="mediaContainervideo_inst">
+                                                <video class="d-none video_preview_inst" controls>
+                                                    <source src="movie.mp4" type="video/*">
+                                                </video>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="row px-2">
@@ -1157,7 +1193,7 @@
                                     </div>
                                     <div class="col-md-12" style="height:20px">
                                         <div class="Mobcart_title">
-                                            <span id="mypostresult" class="mypostresult" style="color:#000;">Write your
+                                            <span id="mypostresult_insta" class="mypostresult" style="color:#000;">Write your
                                                 post...</span>
                                             <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                         </div>
@@ -1189,8 +1225,12 @@
                             </div>
                         </div>
                         <!-- moble_insta_post2 end-->
+                        @endif
+
                         <!-- moble_twitter_post start-->
-                        <div class="twitter_post">
+                        @if(in_array(('Twitter'),auth()->user()->account->platforms))
+
+                        <div class="twitter_post add_preview d-none prv_twitter">
                             <div class="row">
                                 <div class="col-3">
                                     <div class="indrive_icon">
@@ -1213,31 +1253,30 @@
                                         </div>
                                     </div>
                                     <div class="twitter_text">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.consectetur
-                                            adipisicing elit.</p>
+                                        <p id="mypostresult_twitter">Write your post...</p>
                                     </div>
                                     <div class="twitter_img_container">
-                                        <img src="{{asset('')}}images/light.png" class="" alt="" />
+                                        <!-- <img src="{{asset('')}}images/light.png" class="" alt="" /> -->
                                     </div>
                                     <div class="x_bar_icons pt-1">
                                         <div>
-                                            <img src="{{asset('')}}images/x_message.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/Comment-titter.svg" class="" alt="" />
                                             <span>4</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/recycle.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/share-twitter.svg" class="" alt="" />
                                             <span>6</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/heart2.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/heart-twitter.svg" class="" alt="" />
                                             <span>12k</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/graph.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
                                             <span>61</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/share2.png" class="" alt="" />
+                                            <img src="{{asset('')}}images/icons/repost-twitter.svg" class="ShareIcon" alt="" />
 
                                         </div>
 
@@ -1247,7 +1286,7 @@
                                 </div>
 
                             </div>
-                            <div class="row mt-3">
+                            <!-- <div class="row mt-3">
                                 <div class="col-12 twitter_second_row pt-2"></div>
                                 <div class="col-3">
                                     <div class="indrive_icon2">
@@ -1263,7 +1302,7 @@
                                         </div>
                                         <div class="elps">
                                             <i class="fa-solid fa-ellipsis-vertical mt-2 "></i>
-                                            <!-- <i class="fa-light fa-ellipsis-vertical"></i> -->
+                                             <i class="fa-light fa-ellipsis-vertical"></i>
                                         </div>
 
                                     </div>
@@ -1271,11 +1310,15 @@
                                         <img src="{{asset('')}}images/fa.png" class="" alt="" style="width:100%;" />
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- moble_twitter_post3 end-->
+                        @endif
+
                         <!-- moble_linkdin_post start-->
-                        <div class="preview_linkedin ">
+                        @if(in_array(('Linkedin'),auth()->user()->account->platforms))
+
+                        <div class="preview_linkedin  add_preview d-none prv_linkedin">
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
@@ -1306,14 +1349,64 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo, quibusdam.
+                                      <span id="mypostresult_linkedin">Write your post...</span> 
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post_image">
-                                        <img class="img-fluid" src="{{asset('images/linkedinpost.jpg')}}" alt="">
+                                        <div class="prv_div_link">
+                                        <!-- <img src="" class="d-none preview_image_link" alt=""> -->
+                                        </div>
+                                  
+                                            <div id="mediaContainervideo_link">
+                                                <video class="d-none video_preview_link" controls>
+                                                    <source src="movie.mp4" type="video/*">
+                                                </video>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="LikeIcons">
+                                        <div class="InnerIcon">
+                                            <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt="" height="12">
+                                            <img src="{{asset('images/icons/linkedin-thumb.svg')}}" alt="" height="12" style="margin: 0 0 0 -7px;">
+                                            <img src="{{asset('images/icons/linkedin-heart.svg')}}" alt="" height="12">
+                                        </div>
+                                        <div class="TotalCmnts">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="ActionBtn_Linkedin">
+                                        <ul class="LI_Like">
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/thum-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Like</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/comment-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Comment</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/share-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Repost</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button>
+                                                    <img src="{{asset('images/icons/send-linkedin.svg')}}" alt="" height="18">
+                                                    <span class="Innerxt">Send</span>
+                                                </button>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -1352,6 +1445,8 @@
                             </div>
                         </div>
                         <!-- moble_linkdin_post end-->
+                        @endif
+
                     </div>
 
                 </div>
@@ -2297,13 +2392,16 @@
     </script>
     <script>
         $(document).ready(function () {
+
             
-            if ($('.preview_wrap').length == 0) {
+            if ($('.add_preview').length == 0) {
+
+
                 $('.preview_post').hide();
             } else {
                 $('.preview_post').show();
-                $('.preview_wrap:first').addClass('show');
-                $('.preview_wrap:first').removeClass('d-none');
+                $('.add_preview:first').addClass('show');
+                $('.add_preview:first').removeClass('d-none');
 
             }
 
@@ -2338,6 +2436,11 @@
                 if (nextWizardStep) {
 
                     var nextFieldset = next.parents('.wizard-fieldset').next('fieldset');
+                  
+                    var classAttribute = next.parents('.wizard-fieldset').next('fieldset').attr('class');
+                    var classNames = classAttribute.split(" ");
+                   
+                   
                     if (nextFieldset.length > 0) {
 
                         next.parents('.wizard-fieldset').removeClass("show", "400");
@@ -2364,6 +2467,9 @@
                                     });
                             }
                         });
+                        $(".preview_post").find(".add_preview").addClass("d-none");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).addClass("show");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).removeClass("d-none");
                     }
 
                 }
@@ -2376,6 +2482,10 @@
                 var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
                 prev.parents('.wizard-fieldset').removeClass("show", "400");
                 prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show", "400");
+
+                var classAttribute =  prev.parents('.wizard-fieldset').prev('.wizard-fieldset').attr('class');
+                var classNames = classAttribute.split(" ");
+
                 currentActiveStep.removeClass('active').prev().removeClass('activatedold').addClass('active',
                     "400");
                 $(document).find('.wizard-fieldset').each(function () {
@@ -2397,6 +2507,10 @@
                             });
                     }
                 });
+
+                $(".preview_post").find(".add_preview").addClass("d-none");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).addClass("show");
+                        $(".preview_post").find( $('.prv_' + classNames[1])).removeClass("d-none");
             });
             //click on form submit button
             $(document).on("click", ".form-wizard .form-wizard-submit", function () {
@@ -2437,10 +2551,17 @@
                 var section = $(this).attr('section');
                 $('.wizard-fieldset').removeClass('show');
                 $('.' + section).addClass('show');
-               
-            })
+
+
+                $(".preview_post").find(".add_preview").addClass("d-none");
+                $(".preview_post").find( $('.prv_' + section)).addClass("show");
+                $(".preview_post").find( $('.prv_' + section)).removeClass("d-none");
+             })
+
         });
 
+
+       
 
         $('.owl-carousel').owlCarousel({
             loop: true,

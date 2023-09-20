@@ -352,6 +352,8 @@ $(document).ready(function () {
 
     $(document).on("click", ".cancel_mark", function () {
 
+        var id = $(this).attr('id');
+        $(this).closest(".create_preview_post").find('.'+ id).remove();
 
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
         var parent = $(this).closest('.sm_container');
@@ -360,11 +362,7 @@ $(document).ready(function () {
         var len = img.length;
 
 
-        if (len > 0) {
-            // do something
-
-        } else {
-
+        if (len <= 0) {
             if (id_of_div == 'media_type_fb') {
                 $('#media_type_fb').val('');
 
@@ -373,7 +371,6 @@ $(document).ready(function () {
 
             } else if (id_of_div == 'media_type_linkedin') {
                 $('#media_type_linkedin').val('');
-
             }
 
         }
@@ -487,7 +484,7 @@ $(document).ready(function () {
     function appendImage(file, socialicon, dimention) {
 
 
-var dimention_error="Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
+  var dimention_error="Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
 
         if (file) {
             var reader = new FileReader();
@@ -499,7 +496,7 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                 if (socialicon == 'image_or_videofb') {
                     var img_con = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
   <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
-   <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+   <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomClass}"></i></a>
    <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
    <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
    </div>`;
@@ -516,7 +513,7 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                 else if (socialicon == 'image_or_video_insta') {
                     var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
   <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
-  <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+  <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomClass}"></i></a>
   <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
      <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
   </div>`;
@@ -533,7 +530,7 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                 else if (socialicon == 'image_or_video_linkedin') {
                     var img_con_lin = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
- <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark'></i></a>
+ <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomClass}"></i></a>
  <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
       <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
  </div>`;
@@ -560,21 +557,94 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
 
                         $('.'+getRandomClass).find('textarea').val(response.path);
                         $('.'+getRandomClass).find('.uplaod-gif').remove();
-
+                            setPreview(response.path,socialicon,getRandomClass);
                     },
                 });
 
                 var mediaType = file.type.split('/')[0];
-                $('.preview_image').removeClass('d-none');
-                $('.video_preview').addClass('d-none');
-                $('.preview_image').attr('src', e.target.result);
+
+
+
 
 
             };
             reader.readAsDataURL(file);
         }
     }
+    function setPreview(path,socialicon,getRandomClass){
 
+            var prv_img_app = `<img class=" ${getRandomClass}" src="content_media/${path}" style = "widht:10px;height:10px" /><br/>`;
+
+            if (socialicon == 'image_or_videofb') {
+
+                     var imgOrVideo= $('#media_type_fb').val();
+
+                     if(imgOrVideo =='image'){
+                        $('.prv_div').append(prv_img_app);
+                        $('#mediaContainervideo_fb').html('');
+
+
+                     }else if(imgOrVideo =='video'){
+                        var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
+
+                        $('.prv_div').html('');
+                        $('#mediaContainervideo_fb').html(video);
+                        
+                     }else{
+                        // $('.mediaContainervideo_fb').append('Please select image or video');
+                        $('.prv_div').html('');
+                        $('#mediaContainervideo_fb').html('');
+
+                     }
+             }else if(socialicon == 'image_or_video_insta'){
+
+                var imgOrVideo= $('#media_type_insta').val();
+                if(imgOrVideo =='image'){
+                   $('.prv_div_isnt').append(prv_img_app);
+                   $('#mediaContainervideo_inst').html('');
+
+
+                }else if(imgOrVideo =='video'){
+                    var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/'+path);
+                            $('#mediaContainervideo_inst').html(video);
+                   $('.prv_div_isnt').html('');
+                   
+                }else{
+                   // $('.mediaContainervideo_fb').append('Please select image or video');
+                   $('.prv_div_isnt').html('');
+                   $('#mediaContainervideo_inst').html('');
+
+                }
+              
+            }else if(socialicon == 'image_or_video_linkedin'){
+
+                var imgOrVideo= $('#media_type_linkedin').val();
+
+                if(imgOrVideo =='image'){
+                   $('.prv_div_link').append(prv_img_app);
+                   $('#mediaContainervideo_link').html('');
+
+
+                }else if(imgOrVideo =='video'){
+                    var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/'+path);
+                    $('#mediaContainervideo_link').html(video);
+                   $('.prv_div_link').html('');
+                  
+                   
+                }else{
+                   // $('.mediaContainervideo_fb').append('Please select image or video');
+                   $('.prv_div_link').html('');
+                   $('#mediaContainervideo_link').html('');
+
+                }
+
+
+                // $('.preview_image_link').removeClass('d-none');
+                // $('.video_preview_link').addClass('d-none');
+                // $('.preview_image_link').attr('src', e.target.result);
+            }
+
+    }
     function appendVideo(file, socialicon) {
 
         if (file) {
@@ -598,10 +668,7 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                     success: function (response) {
                         $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
-                        $('.video_preview').removeClass('d-none');
-                        $('.preview_image').addClass('d-none');
-                        var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
-                        $('#mediaContainervideo').html(video);
+
 
 
                         if (socialicon == 'image_or_videofb') {
@@ -611,6 +678,10 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                             //  $('#image_div').addClass('d-none');
                             $("#image_or_videofb").parent().find('.cross_img_con').remove();
 
+                            $('.video_preview').removeClass('d-none');
+                            $('.preview_image').addClass('d-none');
+                            setPreview(response.path,socialicon);
+
 
                         } else if (socialicon == 'image_or_video_insta') {
 
@@ -619,14 +690,21 @@ var dimention_error="Image resolution falls outside of Instagram’s preferred r
                             //  $('#image_div_ins').addClass('d-none');
                             $("#image_or_video_insta").parent().find('.cross_img_con').remove();
 
+                            $('.video_preview_inst').removeClass('d-none');
+                            $('.preview_image_inst').addClass('d-none');
+                              setPreview(response.path,socialicon);
 
                         } else if (socialicon == 'image_or_video_linkedin') {
 
                             $('#link_video').val(response.path);
                             $('#media_type_linkedin').val('video');
-                            //  $('#image_div_linked').addClass('d-none');
-
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
+
+                            $('.video_preview_link').removeClass('d-none');
+                            $('.preview_image_link').addClass('d-none');
+                           
+                            setPreview(response.path,socialicon);
+
 
                         }
                     },

@@ -327,7 +327,7 @@
                 <span>
                     <span class="text-secondary">Scheduled at:</span>
                     <span
-                        class="text-primary">{{\Carbon\Carbon::parse($platforms['Twitter'][0]->posted_at)->format('d M Y h:i A')}}</span>
+                        class="text-primary">{{\Carbon\Carbon::parse($platforms['Instagram '][0]->posted_at)->format('d M Y h:i A')}}</span>
                 </span>
 
             </div>
