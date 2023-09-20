@@ -71,7 +71,7 @@
                         @if($platforms['Facebook'][0]->media_type=='image')
                         @foreach(explode(',',$platforms['Facebook'][0]->media) as $image)
                         <img src="{{asset("content_media/$image")}}" class="img-fluid" alt="" />
-                                @break
+                               
                         @endforeach
                         @elseif($platforms['Facebook'][0]->media_type=='video')
                         <video src="{{asset("content_media/{$platforms['Facebook'][0]->media}")}}" controls></video>
@@ -154,7 +154,7 @@
                         @if($platforms['Instagram'][0]->media_type=='image')
                         <div> @foreach(explode(',',$platforms['Instagram'][0]->media) as $image)
                             <img src="{{asset("content_media/$image")}}" class="img-fluid" alt="" />
-                                @break
+                               
                             @endforeach
                         </div>
                         @elseif($platforms['Instagram'][0]->media_type=='video')
@@ -358,7 +358,7 @@
                         @if($platforms['Linkedin'][0]->media_type=='image')
                         @foreach(explode(',',$platforms['Linkedin'][0]->media) as $image)
                         <img src="{{asset("content_media/$image")}}" class="img-fluid" alt="" />
-                                @break
+                              
                         @endforeach
                         @elseif($platforms['Linkedin'][0]->media_type=='video')
                         <video src="{{asset("content_media/{$platforms['Linkedin'][0]->media}")}}" controls></video>
