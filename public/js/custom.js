@@ -360,29 +360,15 @@ $(document).ready(function () {
         var len = img.length;
 
 
-        if (len > 0) {
-            // do something
-
-        } else {
-
+        if (len <= 0) {
             if (id_of_div == 'media_type_fb') {
-
-                const $img = $('.media-container').find('img');
-                $img.addClass('d-none');
                 $('#media_type_fb').val('');
 
             } else if (id_of_div == 'media_type_insta') {
-
-                const $img = $('.insta_post_img_inner_con').find('img');
-                $img.addClass('d-none');
                 $('#media_type_insta').val('');
 
             } else if (id_of_div == 'media_type_linkedin') {
-
-                const $img = $('.linkedin_post_image').find('img');
-                $img.addClass('d-none');
                 $('#media_type_linkedin').val('');
-
             }
 
         }
@@ -591,7 +577,7 @@ $(document).ready(function () {
                     $('.preview_image_link').attr('src', e.target.result);
                    }
 
-              
+
 
 
             };
@@ -622,7 +608,7 @@ $(document).ready(function () {
                     success: function (response) {
                         $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
-                     
+
 
 
                         if (socialicon == 'image_or_videofb') {
@@ -631,7 +617,7 @@ $(document).ready(function () {
                             $('#media_type_fb').val('video');
                             //  $('#image_div').addClass('d-none');
                             $("#image_or_videofb").parent().find('.cross_img_con').remove();
- 
+
                             $('.video_preview').removeClass('d-none');
                             $('.preview_image').addClass('d-none');
                             var video = $('<video controls class="video_preview w-100">').attr('src', e.target.result);
