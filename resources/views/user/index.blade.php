@@ -680,7 +680,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                        <div class="tags_input_wrap grid_item">
+                                                        <div class="tags_input_wrap grid_item tags_input_insta">
                                                             <div class="tags_input">
                                                                 <select name="instagram_tag[]"
                                                                         class="form-control selectmultiple" multiple
@@ -766,7 +766,7 @@
                                                         </div>
 
 
-                                                        <div class="tags_input_wrap grid_item">
+                                                        <div class="tags_input_wrap grid_item tags_input_insta">
                                                             <div class="tags_input">
                                                                 <select name="twitter_tag[]"
                                                                         class="form-control selectmultiple"
@@ -834,7 +834,7 @@
                                                         </div>
 
 
-                                                        <div class="tags_input_wrap grid_item">
+                                                        <div class="tags_input_wrap grid_item tags_input_insta">
                                                             <div class="tags_input">
                                                                 <select name="linkedin_tag[]"
                                                                         class="form-control selectmultiple" multiple
