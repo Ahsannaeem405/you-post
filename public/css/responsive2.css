@@ -137,6 +137,15 @@
     }
     
 }
+/*18,9,23 */
+@media (min-width:1377px) and (max-width:1399px) {
+
+    .social_icon_posts {
+        gap: 16px 15px;
+    }
+}
+
+/*18,9,23 */
 
 /* salman small break point only for calendar start*/
 @media (min-width:1200px) and (max-width:1376px) {
@@ -144,6 +153,12 @@
         width: 100%;
         left: 14rem;
     }
+     /*18,9,23 */
+     .social_icon_posts {
+        gap: 16px 13px;
+    }
+
+    /*18,9,23 */
 
     .table>:not(caption)>*>* {
         padding: 7px 8px !important;
@@ -381,6 +396,13 @@
         width: 100% !important;
     }
 
+  /* 18,9,23 */
+  .L-Calnd {
+    padding-left: 15px;
+}
+
+/* 18,9,23 */
+
     /* razi card_media query end */
 }
 
@@ -539,6 +561,13 @@
     .Modal_suggession{
         margin-left: 10px;
     }
+
+  /* 18,9,23 */
+  .post_thumb {
+    padding-bottom: 15px;
+}
+
+/* 18,9,23 */
 
     /* salman */
 }
@@ -840,6 +869,15 @@
         font-size: 10px;
         padding: 11px 7.1px !important;
     }
+     /* 18,9,23 */
+     .social_icon_posts {
+        flex-wrap: nowrap;
+    }
+
+    .post_thumb {
+        padding-bottom: 15px;
+    }
+    /* 18,9,23 */
 }
 
 /* media  query */
