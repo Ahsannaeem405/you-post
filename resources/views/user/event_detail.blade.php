@@ -460,14 +460,21 @@
             </div>
         </div>
     </div>
-    <div class="col-12 my-2 text-center">
+    <!-- <div class="col-12 my-2 text-center">
+        <a class="text-decoration-none btn btn-danger"
+            onclick="return confirm('Are you sure you want to delete this post?');"
+            href="{{url('post_delete/' .encrypt($platforms['Linkedin'][0]->id))}}">
+            Delete
+        </a>
+    </div> -->
+</div>
+<div class="col-12 my-2 text-center">
         <a class="text-decoration-none btn btn-danger"
             onclick="return confirm('Are you sure you want to delete this post?');"
             href="{{url('post_delete/' .encrypt($platforms['Linkedin'][0]->id))}}">
             Delete
         </a>
     </div>
-</div>
 @endif
 <!-- <script>
 function post_cards(i) {
