@@ -585,18 +585,40 @@ $(document).ready(function () {
                      var imgOrVideo= $('#media_type_fb').val();
 
                      if(imgOrVideo =='image'){
-                        
-                      
+                                                                      
+                            var imgCount = $(".prv_div img").length;
 
-                       
-                        var imgCount = $(".prv_div img").length;
+                             if(imgCount>4){
+                                
+                              
+                                
+                                    if ($("div.div_in_div").length === 0) {
+                                                                                                         
+                                                   var lastImg = $(".mobile_post_img img:last");
+                                                   var spanElement = $("<span id= 'my_value' style= color:white>"+1+"</span>");
+                                                    lastImg.after(spanElement);
 
-                        if(imgCount>=4){
-         
-                            var test = `<div class="mobile_post_img"><div display:none><img src="content_media/${path} style="display:none" /></div></div>`;
-                           console.log(test);
-                            $('.prv_div').append(test);
-                            $('#mediaContainervideo_fb').html('');
+                                                    lastImg.wrap("<div class='div_in_div'></div>");
+
+                                    
+                                    
+                                    
+                                    } else {
+                                        var spanElement = $('#my_value');
+                                            
+                                         // Get the current integer value from the span
+                                            var currentValue = parseInt(spanElement.text());
+
+                                            // Increment the value by one
+                                            var newValue = currentValue + 1;
+
+                                            // Set the incremented value back to the span
+                                            spanElement.text(newValue.toString());
+                                     
+                                       
+                                    }
+
+                                    $('#mediaContainervideo_fb').html('');
                             
                         }else{
                             $('.prv_div').append(prv_img_app);
