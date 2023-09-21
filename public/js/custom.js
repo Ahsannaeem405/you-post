@@ -599,6 +599,7 @@ $(document).ready(function () {
                                                     lastImg.after(spanElement);
 
                                                     lastImg.wrap("<div class='div_in_div'></div>");
+                                                  
 
                                     
                                     
