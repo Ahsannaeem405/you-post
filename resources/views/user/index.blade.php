@@ -1135,7 +1135,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="insta_post_img_inner_con">
+                                    <div class="insta_post_img_inner_con Insta_post_previnner">
                                         <div class="prv_div_isnt">
                                             <!-- <img src="" class="d-none preview_image_inst" alt=""> -->
                                         </div>

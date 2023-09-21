@@ -654,6 +654,13 @@ $(document).ready(function () {
              }else if(socialicon == 'image_or_video_insta'){
 
                 var imgOrVideo= $('#media_type_insta').val();
+                var imgCount = $(".prv_div_isnt img").length;
+                if(imgCount == 0)
+                {
+                    $('.prv_div_isnt').css('column-count', '1');
+                }else{
+                    $('.prv_div_isnt').css('column-count', '2');
+                }
                 if(imgOrVideo =='image'){
                         $('.prv_div_isnt').empty();                                          
                         var parentElement = $("#media_type_insta").closest(".sm_container");
@@ -667,7 +674,7 @@ $(document).ready(function () {
                                 if ($("div.div_in_div_inst").length === 0) {     
                                                                                                                                
                                     var lastImg = $(".prv_div_isnt").find($(".mobile_post_img img:last"));
-                                    var spanElement = $("<span id= 'my_value_inst' style= color:white>"+1+"</span>");
+                                    var spanElement = $("<span id= 'my_value_inst ' style= color:white>"+1+"</span>");
                                      lastImg.after(spanElement);
                                      lastImg.wrap("<div class='div_in_div_inst'></div>");
                                      var newDiv = $("<div></div>");
