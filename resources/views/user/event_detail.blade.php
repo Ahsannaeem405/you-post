@@ -67,11 +67,12 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="image_main_container container">
+                    @php
+                    $Facebookimages = explode(',',$platforms['Facebook'][0]->media);
+                    @endphp
+                    <div class="image_main_container container {{count($Facebookimages) == 1 ? 'single_image' : ''}}">
                         @if($platforms['Facebook'][0]->media_type=='image')
-                        @php
-                        $Facebookimages = explode(',',$platforms['Facebook'][0]->media);
-                        @endphp
+
                         @foreach($Facebookimages as $image)
                         @if($loop->index <= 3) <div class="post_modal_con"
                             style="background-image: url({{asset('content_media/' .$image)}})">
@@ -95,6 +96,7 @@
                     <video src="{{asset("content_media/{$platforms['Facebook'][0]->media}")}}" controls></video>
                 </div>
                 @endif
+                <!-- </div> -->
             </div>
 
             <div class="col-12">
@@ -163,11 +165,12 @@
                 </div>
             </div>
             <div class="col-12 ">
-                <div class="image_main_container">
+                @php
+                $InstagramImages = explode(',',$platforms['Instagram'][0]->media);
+                @endphp
+                <div class="image_main_container  {{count($InstagramImages) == 1 ? 'single_image' : ''}}">
                     @if($platforms['Instagram'][0]->media_type=='image')
-                    @php
-                    $InstagramImages = explode(',',$platforms['Instagram'][0]->media);
-                    @endphp
+
                     @foreach($InstagramImages as $image)
                     @if($loop->index <= 3) <div class="post_modal_con"
                         style="background-image: url({{asset('content_media/' .$image)}})">
@@ -398,14 +401,14 @@
             </div> -->
             <!-- test -->
             <div class="col-12 ">
-                <div class="image_main_container">
+                @php
+                $LinkedinImages = explode(',',$platforms['Linkedin'][0]->media);
+                @endphp
+                <div class="image_main_container  {{count($LinkedinImages) == 1 ? 'single_image' : ''}}">
                     @if($platforms['Linkedin'][0]->media_type=='image')
-                    @php
-                    $LinkedinImages = explode(',',$platforms['Linkedin'][0]->media);
-                    @endphp
-                    @foreach($LinkedinImages as $image)
-                    @if($loop->index <= 3) <div class="post_modal_con"
-                        style="background-image: url({{asset('content_media/' .$image)}})">
+                        @foreach($LinkedinImages as $image)
+                            @if($loop->index <= 3) <div class=" post_modal_con"
+                    style="background-image: url({{asset('content_media/' .$image)}})">
                 </div>
                 @elseif($loop->index == 4)
                 <div class="post_modal_con" style="background-image: url({{asset('content_media/' .$image)}})">
@@ -460,21 +463,14 @@
             </div>
         </div>
     </div>
-    <!-- <div class="col-12 my-2 text-center">
-        <a class="text-decoration-none btn btn-danger"
-            onclick="return confirm('Are you sure you want to delete this post?');"
-            href="{{url('post_delete/' .encrypt($platforms['Linkedin'][0]->id))}}">
-            Delete
-        </a>
-    </div> -->
 </div>
 <div class="col-12 my-2 text-center">
-        <a class="text-decoration-none btn btn-danger"
-            onclick="return confirm('Are you sure you want to delete this post?');"
-            href="{{url('post_delete/' .encrypt($platforms['Linkedin'][0]->id))}}">
-            Delete
-        </a>
-    </div>
+    <a class="text-decoration-none btn btn-danger"
+        onclick="return confirm('Are you sure you want to delete this post?');"
+        href="{{url('post_delete/' .encrypt($platforms['Linkedin'][0]->id))}}">
+        Delete
+    </a>
+</div>
 @endif
 <!-- <script>
 function post_cards(i) {

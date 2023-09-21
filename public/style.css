@@ -2826,15 +2826,38 @@ position: relative;
     column-gap: 10px;
      margin: auto;
 }
+.prv_div > :first-child {
+    column-count: 1; /* Specific column count for the first child */
+}
+.single_image {
+    column-count: 1 !important;
+    column-gap: 10px;
+     margin: auto;
+}
+.prv_div:nth-child(5){
+    position: relative;
+}
 
-
+.div_in_div_bg{
+position: absolute;
+background: #0a0909;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+opacity: 60%;
+}
+{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 
 /* salman card css end */
-
-
-
 
 /* raziullah card css */
 
@@ -2917,3 +2940,22 @@ position: relative;
 }
 
 /* raziullah card css */
+/* test ahmad faraz*/
+/* .prv_div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mobile_post_img {
+    flex: 1;
+    max-width: 100%;
+    text-align: center;
+} */
+
+/* img {
+    max-width: 100%;
+    height: auto;
+} */
+
+/* test ahmad faraz*/
