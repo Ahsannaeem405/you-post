@@ -354,13 +354,17 @@ $(document).ready(function () {
 
         var id = $(this).attr('id');
         $(this).closest(".create_preview_post").find('.'+ id).remove();
+        var gran_par=  $(this).closest(".create_preview_post");
 
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
+        var socialicon = $(this).closest(".sm_container").find('input[type=file]:first').attr('id');
+      
+
         var parent = $(this).closest('.sm_container');
         $(this).closest('.cross_img_con').remove();
         var img = parent.find('.cross_img_con').find("img");
         var len = img.length;
-
+        
 
         if (len <= 0) {
             if (id_of_div == 'media_type_fb') {
@@ -377,6 +381,7 @@ $(document).ready(function () {
             }
 
         }
+        setPreview(socialicon);
     });
 
 
@@ -562,7 +567,7 @@ $(document).ready(function () {
 
                         $('.'+getRandomClass).find('textarea').val(response.path);
                         $('.'+getRandomClass).find('.uplaod-gif').remove();
-                            setPreview(response.path,socialicon,getRandomID);
+                            setPreview(socialicon,response.path);
                     },
                 });
 
@@ -576,9 +581,11 @@ $(document).ready(function () {
             reader.readAsDataURL(file);
         }
     }
-    function setPreview(path,socialicon,getRandomID){
-
-            var prv_img_app = `<div class="mobile_post_img"><img class=" ${getRandomID}" src="content_media/${path}"/></div>`;
+    function setPreview(socialicon,path){
+      
+        path = path || "DefaultParam2";
+     
+       
 
             if (socialicon == 'image_or_videofb') {
 
@@ -595,43 +602,44 @@ $(document).ready(function () {
                      }
          
                      if(imgOrVideo =='image'){
-                                                                      
-                            var imgCount = $(".prv_div img").length;
 
-                             if(imgCount>4){
-                                    if ($("div.div_in_div").length === 0) {
-                                                                                                         
-                                                   var lastImg = $(".mobile_post_img img:last");
-                                                   var spanElement = $("<span id= 'my_value' style=color:white>" +1+"</span>");
-                                                    lastImg.after(spanElement);
-                                                    lastImg.wrap("<div class='div_in_div'></div>");
-                                                    lastImg.wrap("<div class='div_in_div_bg'></div>");
-                                    
-                                    } else {
-                                        var spanElement = $('#my_value');
-                                            
-                                        
-                                            var currentValue = parseInt(spanElement.text());
-
-                                          
-                                            var newValue = currentValue + 1;
-
-                                           
-                                            spanElement.text(newValue.toString());
-                                       
-                                       
+                        $('.prv_div').empty();                                          
+                        var parentElement = $("#media_type_fb").closest(".sm_container");
+                        var img = parentElement.find("img");
+                        var imgCount = 0; 
+                          $(img).each(function(index) {
+                             imgCount++;
+                             if (imgCount >= 6) {
+                              
+                                if ($("div.div_in_div").length === 0) {     
+                                    alert("first time");                                                                                                 
+                                    var lastImg = $(".mobile_post_img img:last");
+                                    var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
+                                     lastImg.after(spanElement);
+                                     lastImg.wrap("<div class='div_in_div'></div>");
+                                     var newDiv = $("<div class='div_in_div_bg'> </div>");
+                                       $(".div_in_div").after(newDiv);
+                                } else {
+                                   
+                                    var spanElement = $('#my_value');                                                                            
+                                        var currentValue = parseInt(spanElement.text());                                    
+                                        var newValue = currentValue + 1;                                        
+                                        spanElement.text(newValue.toString());                              
                                     }
+                            }else{
+                             var src=   $(this).attr("src");
+                             var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                             $('.prv_div').append(newImage);
+                            }
+                        });
 
-                                    $('#mediaContainervideo_fb').html('');
-                            
-                        }else{
-                            $('.prv_div').append(prv_img_app);
-                            $('#mediaContainervideo_fb').html('');
-                        }
-                        
+
+                           
+                         $('#mediaContainervideo_fb').html('');
 
 
                      }else if(imgOrVideo =='video'){
+                        alert("fjsldjfk");
                         var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
 
                         $('.prv_div').html('');
@@ -647,9 +655,17 @@ $(document).ready(function () {
 
                 var imgOrVideo= $('#media_type_insta').val();
                 if(imgOrVideo =='image'){
-                   $('.prv_div_isnt').append(prv_img_app);
-                   $('#mediaContainervideo_inst').html('');
+                  
+                        $('.prv_div_isnt').empty();                                          
+                        var parentElement = $("#media_type_insta").closest(".sm_container");
+                        var img = parentElement.find("img");
 
+                          $(img).each(function(index) {
+                             var src=   $(this).attr("src");
+                             var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                             $('.prv_div_isnt').append(newImage);
+                        });
+                        $('#mediaContainervideo_inst').html('');
 
                 }else if(imgOrVideo =='video'){
                     var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/'+path);
@@ -668,9 +684,19 @@ $(document).ready(function () {
                 var imgOrVideo= $('#media_type_linkedin').val();
 
                 if(imgOrVideo =='image'){
-                   $('.prv_div_link').append(prv_img_app);
-                   $('#mediaContainervideo_link').html('');
+                 
+                  
 
+                   $('.prv_div_link').empty();                                          
+                   var parentElement = $("#media_type_linkedin").closest(".sm_container");
+                   var img = parentElement.find("img");
+
+                     $(img).each(function(index) {
+                        var src=   $(this).attr("src");
+                        var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                        $('.prv_div_link').append(newImage);
+                   });
+                   $('#mediaContainervideo_link').html('');
 
                 }else if(imgOrVideo =='video'){
                     var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/'+path);
@@ -727,7 +753,7 @@ $(document).ready(function () {
 
                             $('.video_preview').removeClass('d-none');
                             $('.preview_image').addClass('d-none');
-                            setPreview(response.path,socialicon);
+                            setPreview(socialicon,response.path);
 
 
                         } else if (socialicon == 'image_or_video_insta') {
@@ -739,7 +765,7 @@ $(document).ready(function () {
 
                             $('.video_preview_inst').removeClass('d-none');
                             $('.preview_image_inst').addClass('d-none');
-                              setPreview(response.path,socialicon);
+                              setPreview(socialicon,response.path);
 
                         } else if (socialicon == 'image_or_video_linkedin') {
 
@@ -750,7 +776,7 @@ $(document).ready(function () {
                             $('.video_preview_link').removeClass('d-none');
                             $('.preview_image_link').addClass('d-none');
                            
-                            setPreview(response.path,socialicon);
+                            setPreview(socialicon,response.path);
 
 
                         }
