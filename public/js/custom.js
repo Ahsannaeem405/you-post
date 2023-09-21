@@ -365,12 +365,15 @@ $(document).ready(function () {
         if (len <= 0) {
             if (id_of_div == 'media_type_fb') {
                 $('#media_type_fb').val('');
+                $('.prv_div').html('');
 
             } else if (id_of_div == 'media_type_insta') {
                 $('#media_type_insta').val('');
+                $('.prv_div_isnt').html('');
 
             } else if (id_of_div == 'media_type_linkedin') {
                 $('#media_type_linkedin').val('');
+                $('.prv_div_link').html('');
             }
 
         }
@@ -588,10 +591,10 @@ $(document).ready(function () {
                        
                         var imgCount = $(".prv_div img").length;
 
-                        if(imgCount>4){
+                        if(imgCount>=4){
          
-                            var test = `<div class="mobile_post_img"><div display:none><img src="content_media/${path}" /></div></div>`;
-
+                            var test = `<div class="mobile_post_img"><div display:none><img src="content_media/${path} style="display:none" /></div></div>`;
+                           console.log(test);
                             $('.prv_div').append(test);
                             $('#mediaContainervideo_fb').html('');
                             
