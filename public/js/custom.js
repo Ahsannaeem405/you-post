@@ -595,6 +595,8 @@ $(document).ready(function () {
                      if(imgCount == 0)
                      {
                          $('.prv_div').css('column-count', '1');
+
+
                      }else{
                          $('.prv_div').css('column-count', '2');
                      }
@@ -615,7 +617,7 @@ $(document).ready(function () {
                                     var spanElement = $("<span id= 'my_value' style= color:white>"+1+"</span>");
                                      lastImg.after(spanElement);
                                      lastImg.wrap("<div class='div_in_div'></div>");
-                                     var newDiv = $("<div></div>");
+                                     var newDiv = $("<div class='div_in_div_bg'> </div>");
                                        $(".div_in_div").after(newDiv);
                                 } else {
                                    

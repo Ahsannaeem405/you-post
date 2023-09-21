@@ -1235,5 +1235,15 @@ button {
 }
 /* ------------------------------------------------ */
 
+/* Post_preview_Insta */
+/* .prv_div_isnt{
+    column-count: 2;
+    column-gap: 10px;
+    margin: auto;
+} */
 
-
+.Inst_Media{
+    padding: 3px;
+    font-weight: 300 !important;
+    color: #000;
+}

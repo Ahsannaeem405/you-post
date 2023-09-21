@@ -2824,17 +2824,17 @@ position: relative;
 .prv_div{
     column-count: 2;
     column-gap: 10px;
-     margin: auto;
+    margin: auto;
+    padding: 0 15px;
+
 }
-.prv_div > :first-child {
-    column-count: 1; /* Specific column count for the first child */
-}
+
 .single_image {
     column-count: 1 !important;
     column-gap: 10px;
      margin: auto;
 }
-.prv_div:nth-child(5){
+.prv_div:nth-child(6){
     position: relative;
 }
 
@@ -2847,13 +2847,33 @@ right: 0;
 bottom: 0;
 opacity: 60%;
 }
-{
+.div_in_div_bg:hover{
+    opacity: 30%;
+}
+.fb_counter{
+color: white;
+position: absolute;
+top: 14%;
+left: 36%;
+}
+.plus_fb_icon{
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* .media-container.media_container .prv_div .mobile_post_img:nth-child(1){
+    height: 100%;
+} */
+
+
+
+/* {
     color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */
 
 
 
@@ -2940,22 +2960,3 @@ opacity: 60%;
 }
 
 /* raziullah card css */
-/* test ahmad faraz*/
-/* .prv_div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.mobile_post_img {
-    flex: 1;
-    max-width: 100%;
-    text-align: center;
-} */
-
-/* img {
-    max-width: 100%;
-    height: auto;
-} */
-
-/* test ahmad faraz*/
