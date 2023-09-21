@@ -1221,3 +1221,9 @@ button {
 
 
 /* ----------------------------------------------------- */
+.tags_input_insta{
+    width: 60%;
+}
+.tags_input_insta .tags_input{
+    width: 100%;
+}
