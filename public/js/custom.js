@@ -40,116 +40,116 @@ var graphdata1 = {
     linecolor: "#000000",
     title: "TikTok",
     values: [
-        {X: "6:00", Y: 10.00},
-        {X: "7:00", Y: 20.00},
-        {X: "8:00", Y: 500.00},
-        {X: "9:00", Y: 34.00},
-        {X: "10:00", Y: 40.25},
-        {X: "11:00", Y: 28.56},
-        {X: "12:00", Y: 18.57},
-        {X: "13:00", Y: 34.00},
-        {X: "14:00", Y: 40.89},
-        {X: "15:00", Y: 12.57},
-        {X: "16:00", Y: 28.24},
-        {X: "17:00", Y: 18.00},
-        {X: "18:00", Y: 34.24},
-        {X: "19:00", Y: 40.58},
-        {X: "20:00", Y: 12.54},
-        {X: "21:00", Y: 28.00},
-        {X: "22:00", Y: 18.00},
-        {X: "23:00", Y: 34.89},
-        {X: "0:00", Y: 40.26},
-        {X: "1:00", Y: 28.89},
-        {X: "2:00", Y: 18.87},
-        {X: "3:00", Y: 34.00},
-        {X: "4:00", Y: 40.00}
+        { X: "6:00", Y: 10.00 },
+        { X: "7:00", Y: 20.00 },
+        { X: "8:00", Y: 500.00 },
+        { X: "9:00", Y: 34.00 },
+        { X: "10:00", Y: 40.25 },
+        { X: "11:00", Y: 28.56 },
+        { X: "12:00", Y: 18.57 },
+        { X: "13:00", Y: 34.00 },
+        { X: "14:00", Y: 40.89 },
+        { X: "15:00", Y: 12.57 },
+        { X: "16:00", Y: 28.24 },
+        { X: "17:00", Y: 18.00 },
+        { X: "18:00", Y: 34.24 },
+        { X: "19:00", Y: 40.58 },
+        { X: "20:00", Y: 12.54 },
+        { X: "21:00", Y: 28.00 },
+        { X: "22:00", Y: 18.00 },
+        { X: "23:00", Y: 34.89 },
+        { X: "0:00", Y: 40.26 },
+        { X: "1:00", Y: 28.89 },
+        { X: "2:00", Y: 18.87 },
+        { X: "3:00", Y: 34.00 },
+        { X: "4:00", Y: 40.00 }
     ]
 };
 var graphdata2 = {
     linecolor: "#CF2872",
     title: "Instagram",
     values: [
-        {X: "6:00", Y: 100.00},
-        {X: "7:00", Y: 120.00},
-        {X: "8:00", Y: 140.00},
-        {X: "9:00", Y: 134.00},
-        {X: "10:00", Y: 140.25},
-        {X: "11:00", Y: 128.56},
-        {X: "12:00", Y: 118.57},
-        {X: "13:00", Y: 134.00},
-        {X: "14:00", Y: 140.89},
-        {X: "15:00", Y: 112.57},
-        {X: "16:00", Y: 128.24},
-        {X: "17:00", Y: 118.00},
-        {X: "18:00", Y: 134.24},
-        {X: "19:00", Y: 140.58},
-        {X: "20:00", Y: 112.54},
-        {X: "21:00", Y: 128.00},
-        {X: "22:00", Y: 118.00},
-        {X: "23:00", Y: 134.89},
-        {X: "0:00", Y: 140.26},
-        {X: "1:00", Y: 128.89},
-        {X: "2:00", Y: 118.87},
-        {X: "3:00", Y: 134.00},
-        {X: "4:00", Y: 180.00}
+        { X: "6:00", Y: 100.00 },
+        { X: "7:00", Y: 120.00 },
+        { X: "8:00", Y: 140.00 },
+        { X: "9:00", Y: 134.00 },
+        { X: "10:00", Y: 140.25 },
+        { X: "11:00", Y: 128.56 },
+        { X: "12:00", Y: 118.57 },
+        { X: "13:00", Y: 134.00 },
+        { X: "14:00", Y: 140.89 },
+        { X: "15:00", Y: 112.57 },
+        { X: "16:00", Y: 128.24 },
+        { X: "17:00", Y: 118.00 },
+        { X: "18:00", Y: 134.24 },
+        { X: "19:00", Y: 140.58 },
+        { X: "20:00", Y: 112.54 },
+        { X: "21:00", Y: 128.00 },
+        { X: "22:00", Y: 118.00 },
+        { X: "23:00", Y: 134.89 },
+        { X: "0:00", Y: 140.26 },
+        { X: "1:00", Y: 128.89 },
+        { X: "2:00", Y: 118.87 },
+        { X: "3:00", Y: 134.00 },
+        { X: "4:00", Y: 180.00 }
     ]
 };
 var graphdata3 = {
     linecolor: "#26C6DA",
     title: "Twitter",
     values: [
-        {X: "5:00", Y: 230.00},
-        {X: "10:00", Y: 210.00},
-        {X: "15:00", Y: 214.00},
-        {X: "9:00", Y: 234.00},
-        {X: "10:00", Y: 247.25},
-        {X: "11:00", Y: 218.56},
-        {X: "12:00", Y: 268.57},
-        {X: "13:00", Y: 274.00},
-        {X: "14:00", Y: 280.89},
-        {X: "15:00", Y: 242.57},
-        {X: "16:00", Y: 298.24},
-        {X: "17:00", Y: 208.00},
-        {X: "18:00", Y: 214.24},
-        {X: "19:00", Y: 214.58},
-        {X: "20:00", Y: 211.54},
-        {X: "21:00", Y: 248.00},
-        {X: "22:00", Y: 258.00},
-        {X: "23:00", Y: 234.89},
-        {X: "0:00", Y: 210.26},
-        {X: "1:00", Y: 248.89},
-        {X: "2:00", Y: 238.87},
-        {X: "3:00", Y: 264.00},
-        {X: "4:00", Y: 270.00}
+        { X: "5:00", Y: 230.00 },
+        { X: "10:00", Y: 210.00 },
+        { X: "15:00", Y: 214.00 },
+        { X: "9:00", Y: 234.00 },
+        { X: "10:00", Y: 247.25 },
+        { X: "11:00", Y: 218.56 },
+        { X: "12:00", Y: 268.57 },
+        { X: "13:00", Y: 274.00 },
+        { X: "14:00", Y: 280.89 },
+        { X: "15:00", Y: 242.57 },
+        { X: "16:00", Y: 298.24 },
+        { X: "17:00", Y: 208.00 },
+        { X: "18:00", Y: 214.24 },
+        { X: "19:00", Y: 214.58 },
+        { X: "20:00", Y: 211.54 },
+        { X: "21:00", Y: 248.00 },
+        { X: "22:00", Y: 258.00 },
+        { X: "23:00", Y: 234.89 },
+        { X: "0:00", Y: 210.26 },
+        { X: "1:00", Y: 248.89 },
+        { X: "2:00", Y: 238.87 },
+        { X: "3:00", Y: 264.00 },
+        { X: "4:00", Y: 270.00 }
     ]
 };
 var graphdata4 = {
     linecolor: "#1976D2",
     title: "Facebook",
     values: [
-        {X: "6:00", Y: 300.00},
-        {X: "7:00", Y: 410.98},
-        {X: "8:00", Y: 310.00},
-        {X: "9:00", Y: 314.00},
-        {X: "10:00", Y: 310.25},
-        {X: "11:00", Y: 318.56},
-        {X: "12:00", Y: 318.57},
-        {X: "13:00", Y: 314.00},
-        {X: "14:00", Y: 310.89},
-        {X: "15:00", Y: 512.57},
-        {X: "16:00", Y: 318.24},
-        {X: "17:00", Y: 318.00},
-        {X: "18:00", Y: 314.24},
-        {X: "19:00", Y: 310.58},
-        {X: "20:00", Y: 312.54},
-        {X: "21:00", Y: 318.00},
-        {X: "22:00", Y: 318.00},
-        {X: "23:00", Y: 314.89},
-        {X: "0:00", Y: 310.26},
-        {X: "1:00", Y: 318.89},
-        {X: "2:00", Y: 518.87},
-        {X: "3:00", Y: 314.00},
-        {X: "4:00", Y: 310.00}
+        { X: "6:00", Y: 300.00 },
+        { X: "7:00", Y: 410.98 },
+        { X: "8:00", Y: 310.00 },
+        { X: "9:00", Y: 314.00 },
+        { X: "10:00", Y: 310.25 },
+        { X: "11:00", Y: 318.56 },
+        { X: "12:00", Y: 318.57 },
+        { X: "13:00", Y: 314.00 },
+        { X: "14:00", Y: 310.89 },
+        { X: "15:00", Y: 512.57 },
+        { X: "16:00", Y: 318.24 },
+        { X: "17:00", Y: 318.00 },
+        { X: "18:00", Y: 314.24 },
+        { X: "19:00", Y: 310.58 },
+        { X: "20:00", Y: 312.54 },
+        { X: "21:00", Y: 318.00 },
+        { X: "22:00", Y: 318.00 },
+        { X: "23:00", Y: 314.89 },
+        { X: "0:00", Y: 310.26 },
+        { X: "1:00", Y: 318.89 },
+        { X: "2:00", Y: 518.87 },
+        { X: "3:00", Y: 314.00 },
+        { X: "4:00", Y: 310.00 }
     ]
 };
 
@@ -331,7 +331,7 @@ $(document).ready(function () {
         }
 
     });
-// my code
+    // my code
     $(document).on('click', '.image_or_video_div', function () {
 
         if ($(this).attr('social') == 'fb') {
@@ -353,7 +353,7 @@ $(document).ready(function () {
     $(document).on("click", ".cancel_mark", function () {
 
         var id = $(this).attr('id');
-        $(this).closest(".create_preview_post").find('.'+ id).remove();
+        $(this).closest(".create_preview_post").find('.' + id).remove();
 
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
         var parent = $(this).closest('.sm_container');
@@ -380,7 +380,7 @@ $(document).ready(function () {
     });
 
 
-// validation  ********************************** ********************************* validation//
+    // validation  ********************************** ********************************* validation//
     function validateDimenstionImage(file, socialicon) {
 
         if (socialicon == 'image_or_videofb') {
@@ -418,9 +418,9 @@ $(document).ready(function () {
             var videoEl = document.createElement("video");
             videoEl.onloadedmetadata = event => {
                 window.URL.revokeObjectURL(videoEl.src);
-                var {name, type} = file;
+                var { name, type } = file;
 
-                var {videoWidth, videoHeight} = videoEl;
+                var { videoWidth, videoHeight } = videoEl;
 
                 var aspectRatio = (videoWidth / videoHeight).toFixed(2);
 
@@ -432,7 +432,7 @@ $(document).ready(function () {
 
                 if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
 
-                    toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
+                    toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
                     return false;
                 } else {
 
@@ -457,11 +457,11 @@ $(document).ready(function () {
         var response = true;
         if (mediaType === 'image') {
             if (file_size >= 8000000) {
-                toastr.error('size should be less than 8MB.', 'Image', {timeOut: 5000})
+                toastr.error('size should be less than 8MB.', 'Image', { timeOut: 5000 })
                 response = false;
             }
             if ((ext != 'png') && (ext != 'jpeg') && (ext != 'gif') && (ext != 'jpg')) {
-                toastr.error('type should be jpeg,jpg,png,gif.', 'Image', {timeOut: 5000})
+                toastr.error('type should be jpeg,jpg,png,gif.', 'Image', { timeOut: 5000 })
                 response = false;
             }
 
@@ -471,7 +471,7 @@ $(document).ready(function () {
         } else if (mediaType === 'video') {
             var total_size = getMB(file_size);
             if (total_size > 4) {
-                toastr.error('size should be less than 4MB.', 'Video', {timeOut: 5000})
+                toastr.error('size should be less than 4MB.', 'Video', { timeOut: 5000 })
                 response = false;
             }
 
@@ -487,15 +487,15 @@ $(document).ready(function () {
     function appendImage(file, socialicon, dimention) {
 
 
-  var dimention_error="Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
+        var dimention_error = "Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
 
         if (file) {
             var reader = new FileReader();
             reader.onload = function (e) {
 
                 var base64Data = e.target.result.split(',')[1]; // Remove the "data:image/jpeg;base64," prefix
-                var getRandomClass=getRandomClassName();
-                var getRandomID=getRandomClassName();
+                var getRandomClass = getRandomClassName();
+                var getRandomID = getRandomClassName();
 
 
                 if (socialicon == 'image_or_videofb') {
@@ -507,7 +507,7 @@ $(document).ready(function () {
    </div>`;
                     $("#image_or_videofb").parent().append(img_con);
                     $('#media_type_fb').val('image');
-                    if (!dimention){
+                    if (!dimention) {
                         $('#file_error_fb').removeClass('d-none').text(dimention_error)
                     }
                     else {
@@ -524,9 +524,9 @@ $(document).ready(function () {
   </div>`;
                     $("#image_or_video_insta").parent().append(img_con_ins);
                     $('#media_type_insta').val('image');
-                    if (!dimention){
+                    if (!dimention) {
                         $('#file_error_insta').removeClass('d-none').text(dimention_error)
-                    }else {
+                    } else {
                         $('#file_error_insta').addClass('d-none')
                     }
 
@@ -541,9 +541,9 @@ $(document).ready(function () {
  </div>`;
                     $("#image_or_video_linkedin").parent().append(img_con_lin);
                     $('#media_type_linkedin').val('image');
-                    if (!dimention){
+                    if (!dimention) {
                         $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
-                    }else {
+                    } else {
                         $('#file_error_linkedin').addClass('d-none')
                     }
                 }
@@ -557,12 +557,12 @@ $(document).ready(function () {
                 $.ajax({
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
                     type: 'POST',
-                    data: {image: base64Data, 'dimention': dimention},
+                    data: { image: base64Data, 'dimention': dimention },
                     success: function (response) {
 
-                        $('.'+getRandomClass).find('textarea').val(response.path);
-                        $('.'+getRandomClass).find('.uplaod-gif').remove();
-                            setPreview(response.path,socialicon,getRandomID);
+                        $('.' + getRandomClass).find('textarea').val(response.path);
+                        $('.' + getRandomClass).find('.uplaod-gif').remove();
+                        setPreview(response.path, socialicon, getRandomID);
                     },
                 });
 
@@ -576,94 +576,97 @@ $(document).ready(function () {
             reader.readAsDataURL(file);
         }
     }
-    function setPreview(path,socialicon,getRandomID){
+    function setPreview(path, socialicon, getRandomID) {
 
-            var prv_img_app = `<div class="mobile_post_img"><img class=" ${getRandomID}" src="content_media/${path}"/></div>`;
+        var prv_img_app = `<div class="mobile_post_img image-item"><img class=" ${getRandomID}" src="content_media/${path}"/></div>`;
 
-            if (socialicon == 'image_or_videofb') {
+        if (socialicon == 'image_or_videofb') {
 
-                     var imgOrVideo= $('#media_type_fb').val();
+            var imgOrVideo = $('#media_type_fb').val();
 
-                     if(imgOrVideo =='image'){
-                        
-                      
+            if (imgOrVideo == 'image') {
 
-                       
-                        var imgCount = $(".prv_div img").length;
-
-                        if(imgCount>=4){
-         
-                            var test = `<div class="mobile_post_img"><div display:none><img src="content_media/${path} style="display:none" /></div></div>`;
-                           console.log(test);
-                            $('.prv_div').append(test);
-                            $('#mediaContainervideo_fb').html('');
-                            
-                        }else{
-                            $('.prv_div').append(prv_img_app);
-                            $('#mediaContainervideo_fb').html('');
-                        }
-                        
-
-
-                     }else if(imgOrVideo =='video'){
-                        var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
-
-                        $('.prv_div').html('');
-                        $('#mediaContainervideo_fb').html(video);
-                        
-                     }else{
-                        // $('.mediaContainervideo_fb').append('Please select image or video');
-                        $('.prv_div').html('');
-                        $('#mediaContainervideo_fb').html('');
-
-                     }
-             }else if(socialicon == 'image_or_video_insta'){
-
-                var imgOrVideo= $('#media_type_insta').val();
-                if(imgOrVideo =='image'){
-                   $('.prv_div_isnt').append(prv_img_app);
-                   $('#mediaContainervideo_inst').html('');
-
-
-                }else if(imgOrVideo =='video'){
-                    var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/'+path);
-                            $('#mediaContainervideo_inst').html(video);
-                   $('.prv_div_isnt').html('');
-                   
+                var imgCount = $(".prv_div img").length;
+                if(imgCount == 0)
+                {
+                    $('.prv_div').css('column-count', '1');
                 }else{
-                   // $('.mediaContainervideo_fb').append('Please select image or video');
-                   $('.prv_div_isnt').html('');
-                   $('#mediaContainervideo_inst').html('');
-
-                }
-              
-            }else if(socialicon == 'image_or_video_linkedin'){
-
-                var imgOrVideo= $('#media_type_linkedin').val();
-
-                if(imgOrVideo =='image'){
-                   $('.prv_div_link').append(prv_img_app);
-                   $('#mediaContainervideo_link').html('');
-
-
-                }else if(imgOrVideo =='video'){
-                    var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/'+path);
-                    $('#mediaContainervideo_link').html(video);
-                   $('.prv_div_link').html('');
-                  
-                   
-                }else{
-                   // $('.mediaContainervideo_fb').append('Please select image or video');
-                   $('.prv_div_link').html('');
-                   $('#mediaContainervideo_link').html('');
-
+                    $('.prv_div').css('column-count', '2');
                 }
 
+                if (imgCount >= 4) {
 
-                // $('.preview_image_link').removeClass('d-none');
-                // $('.video_preview_link').addClass('d-none');
-                // $('.preview_image_link').attr('src', e.target.result);
+                    var test = `<div class="mobile_post_img"><div display:none><img src="content_media/${path} style="display:none" /></div></div>`;
+                    console.log(test);
+                    $('.prv_div').append(test);
+                    $('#mediaContainervideo_fb').html('');
+
+                } else {
+                    $('.prv_div').append(prv_img_app);
+                    $('#mediaContainervideo_fb').html('');
+                }
+
+                
+
+            } else if (imgOrVideo == 'video') {
+                var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/' + path);
+
+                $('.prv_div').html('');
+                $('#mediaContainervideo_fb').html(video);
+
+            } else {
+                // $('.mediaContainervideo_fb').append('Please select image or video');
+                $('.prv_div').html('');
+                $('#mediaContainervideo_fb').html('');
+
             }
+        } else if (socialicon == 'image_or_video_insta') {
+
+            var imgOrVideo = $('#media_type_insta').val();
+            if (imgOrVideo == 'image') {
+                $('.prv_div_isnt').append(prv_img_app);
+                $('#mediaContainervideo_inst').html('');
+
+
+            } else if (imgOrVideo == 'video') {
+                var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/' + path);
+                $('#mediaContainervideo_inst').html(video);
+                $('.prv_div_isnt').html('');
+
+            } else {
+                // $('.mediaContainervideo_fb').append('Please select image or video');
+                $('.prv_div_isnt').html('');
+                $('#mediaContainervideo_inst').html('');
+
+            }
+
+        } else if (socialicon == 'image_or_video_linkedin') {
+
+            var imgOrVideo = $('#media_type_linkedin').val();
+
+            if (imgOrVideo == 'image') {
+                $('.prv_div_link').append(prv_img_app);
+                $('#mediaContainervideo_link').html('');
+
+
+            } else if (imgOrVideo == 'video') {
+                var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/' + path);
+                $('#mediaContainervideo_link').html(video);
+                $('.prv_div_link').html('');
+
+
+            } else {
+                // $('.mediaContainervideo_fb').append('Please select image or video');
+                $('.prv_div_link').html('');
+                $('#mediaContainervideo_link').html('');
+
+            }
+
+
+            // $('.preview_image_link').removeClass('d-none');
+            // $('.video_preview_link').addClass('d-none');
+            // $('.preview_image_link').attr('src', e.target.result);
+        }
 
     }
     function appendVideo(file, socialicon) {
@@ -701,7 +704,7 @@ $(document).ready(function () {
 
                             $('.video_preview').removeClass('d-none');
                             $('.preview_image').addClass('d-none');
-                            setPreview(response.path,socialicon);
+                            setPreview(response.path, socialicon);
 
 
                         } else if (socialicon == 'image_or_video_insta') {
@@ -713,7 +716,7 @@ $(document).ready(function () {
 
                             $('.video_preview_inst').removeClass('d-none');
                             $('.preview_image_inst').addClass('d-none');
-                              setPreview(response.path,socialicon);
+                            setPreview(response.path, socialicon);
 
                         } else if (socialicon == 'image_or_video_linkedin') {
 
@@ -723,8 +726,8 @@ $(document).ready(function () {
 
                             $('.video_preview_link').removeClass('d-none');
                             $('.preview_image_link').addClass('d-none');
-                           
-                            setPreview(response.path,socialicon);
+
+                            setPreview(response.path, socialicon);
 
 
                         }
@@ -784,22 +787,22 @@ $(document).ready(function () {
 
     $('.preview_div').click(function (e) {
 
-         if($(this).attr('data-value')=='fb'){
+        if ($(this).attr('data-value') == 'fb') {
 
-             var parent = $(".create_preview_post ");
+            var parent = $(".create_preview_post ");
 
-             parent.find('#fb_preview').addClass("active");
-             parent.find('#ins_preview').addClass("d-none");
-             parent.find('#tw_preview').addClass("d-none");
-             parent.find('#link_preview').addClass("d-none");
+            parent.find('#fb_preview').addClass("active");
+            parent.find('#ins_preview').addClass("d-none");
+            parent.find('#tw_preview').addClass("d-none");
+            parent.find('#link_preview').addClass("d-none");
 
-             parent.find('#fb_preview').removeClass("d-none");
-             parent.find('#ins_preview').removeClass("active");
-             parent.find('#tw_preview').removeClass("active");
-             parent.find('#link_preview').removeClass("active");
+            parent.find('#fb_preview').removeClass("d-none");
+            parent.find('#ins_preview').removeClass("active");
+            parent.find('#tw_preview').removeClass("active");
+            parent.find('#link_preview').removeClass("active");
 
 
-         }else if($(this).attr('data-value')=='insta'){
+        } else if ($(this).attr('data-value') == 'insta') {
 
             var parent = $(".create_preview_post ");
 
@@ -813,33 +816,33 @@ $(document).ready(function () {
             parent.find('#tw_preview').removeClass("active");
             parent.find('#link_preview').removeClass("active");
 
-         }else if($(this).attr('data-value')=='twitter'){
+        } else if ($(this).attr('data-value') == 'twitter') {
 
-                var parent = $(".create_preview_post ");
-                parent.find('#fb_preview').addClass("d-none");
-                parent.find('#ins_preview').addClass("d-none");
-                parent.find('#tw_preview').addClass("active");
-                parent.find('#link_preview').addClass("d-none");
+            var parent = $(".create_preview_post ");
+            parent.find('#fb_preview').addClass("d-none");
+            parent.find('#ins_preview').addClass("d-none");
+            parent.find('#tw_preview').addClass("active");
+            parent.find('#link_preview').addClass("d-none");
 
-                parent.find('#fb_preview').removeClass("active");
-                parent.find('#ins_preview').removeClass("active");
-                parent.find('#tw_preview').removeClass("d-none");
-                parent.find('#link_preview').removeClass("active");
+            parent.find('#fb_preview').removeClass("active");
+            parent.find('#ins_preview').removeClass("active");
+            parent.find('#tw_preview').removeClass("d-none");
+            parent.find('#link_preview').removeClass("active");
 
-         }else if($(this).attr('data-value')=='linkedin'){
+        } else if ($(this).attr('data-value') == 'linkedin') {
 
-                var parent = $(".create_preview_post ");
-                parent.find('#fb_preview').addClass("d-none");
-                parent.find('#ins_preview').addClass("d-none");
-                parent.find('#tw_preview').addClass("d-none");
-                parent.find('#link_preview').addClass("active");
+            var parent = $(".create_preview_post ");
+            parent.find('#fb_preview').addClass("d-none");
+            parent.find('#ins_preview').addClass("d-none");
+            parent.find('#tw_preview').addClass("d-none");
+            parent.find('#link_preview').addClass("active");
 
-                parent.find('#fb_preview').removeClass("active");
-                parent.find('#ins_preview').removeClass("active");
-                parent.find('#tw_preview').removeClass("active");
-                parent.find('#link_preview').removeClass("d-none");
+            parent.find('#fb_preview').removeClass("active");
+            parent.find('#ins_preview').removeClass("active");
+            parent.find('#tw_preview').removeClass("active");
+            parent.find('#link_preview').removeClass("d-none");
 
-         }
+        }
 
 
 
@@ -850,4 +853,18 @@ $(document).ready(function () {
     return true;
 
 })
-;
+    ;
+
+// ahmad faraz test
+// window.addEventListener('load', function () {
+//     var images = document.querySelectorAll('.mobile_post_img img');
+//     if (images.length === 1) {
+//         images[0].style.width = '100%';
+//         images[0].style.height = 'auto';
+//     }
+// });
+
+
+
+
+// ahmad faraz test
