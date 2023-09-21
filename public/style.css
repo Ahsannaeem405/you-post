@@ -1212,8 +1212,8 @@ body {
    height: 170px /* 16:9 aspect ratio for videos */
 }
 
-.media-container video,
-.media-container img {
+
+.media-container video {
     position: absolute;
     top: 0;
     left: 0;
@@ -1221,6 +1221,14 @@ body {
     height: 100%;
     object-fit: contain;
 }
+/* .media-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+} */
 
 
 
@@ -2797,6 +2805,31 @@ position: relative;
 .tags_hash .tags_input{
     width: 100% !important;
 }
+.mobile_post_img{
+    height: 65px;
+    width: 70px;
+    position: relative;
+    margin-bottom: 10px;
+    break-inside: avoid-column;
+    width: 100%;
+    display: block;
+}
+.mobile_post_img:nth-child(3), .mobile_post_img:nth-child(4), .mobile_post_img:nth-child(5) {
+    height: 40px;
+}
+.mobile_post_img img{
+    width: 100%;
+    height: 100%; 
+}
+.prv_div{
+    column-count: 2;
+    column-gap: 10px;
+     margin: auto;
+}
+
+
+
+
 
 /* salman card css end */
 
