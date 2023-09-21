@@ -365,12 +365,15 @@ $(document).ready(function () {
         if (len <= 0) {
             if (id_of_div == 'media_type_fb') {
                 $('#media_type_fb').val('');
+                $('.prv_div').html('');
 
             } else if (id_of_div == 'media_type_insta') {
                 $('#media_type_insta').val('');
+                $('.prv_div_isnt').html('');
 
             } else if (id_of_div == 'media_type_linkedin') {
                 $('#media_type_linkedin').val('');
+                $('.prv_div_link').html('');
             }
 
         }
@@ -582,18 +585,40 @@ $(document).ready(function () {
                      var imgOrVideo= $('#media_type_fb').val();
 
                      if(imgOrVideo =='image'){
-                        
-                      
+                                                                      
+                            var imgCount = $(".prv_div img").length;
 
-                       
-                        var imgCount = $(".prv_div img").length;
+                             if(imgCount>4){
+                                
+                              
+                                
+                                    if ($("div.div_in_div").length === 0) {
+                                                                                                         
+                                                   var lastImg = $(".mobile_post_img img:last");
+                                                   var spanElement = $("<span id= 'my_value' style= color:white>"+1+"</span>");
+                                                    lastImg.after(spanElement);
 
-                        if(imgCount>4){
-         
-                            var test = `<div class="mobile_post_img"><div display:none><img src="content_media/${path}" /></div></div>`;
+                                                    lastImg.wrap("<div class='div_in_div'></div>");
 
-                            $('.prv_div').append(test);
-                            $('#mediaContainervideo_fb').html('');
+                                    
+                                    
+                                    
+                                    } else {
+                                        var spanElement = $('#my_value');
+                                            
+                                         // Get the current integer value from the span
+                                            var currentValue = parseInt(spanElement.text());
+
+                                            // Increment the value by one
+                                            var newValue = currentValue + 1;
+
+                                            // Set the incremented value back to the span
+                                            spanElement.text(newValue.toString());
+                                     
+                                       
+                                    }
+
+                                    $('#mediaContainervideo_fb').html('');
                             
                         }else{
                             $('.prv_div').append(prv_img_app);
