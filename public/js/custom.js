@@ -614,7 +614,7 @@ $(document).ready(function () {
                                 if ($("div.div_in_div").length === 0) {     
                                                                                                                               
                                     var lastImg = $(".prv_div").find($(".mobile_post_img img:last"));
-                                    var spanElement = $("<span id= 'my_value' style= color:white>"+1+"</span>");
+                                    var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
                                      lastImg.after(spanElement);
                                      lastImg.wrap("<div class='div_in_div'></div>");
                                      var newDiv = $("<div class='div_in_div_bg'> </div>");
