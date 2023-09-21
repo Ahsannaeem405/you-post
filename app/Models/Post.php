@@ -42,7 +42,7 @@ class Post extends Model
             elseif ($group->plateform == 'Twitter')
                 $content .= '<div class="calender_socialicon"><img src="' . asset('images/Twitter_Color.png') . '" alt=""></div>';
             elseif ($group->plateform == 'Linkedin')
-                $content .= '<div class="calender_socialicon"><img src="' . asset('images/Linkedin_Color.png') . '" alt=""></div>';
+                $content .= '<div class="calender_socialicon_in"><img src="' . asset('images/Linkedin_Color.png') . '" alt=""></div>';
         }
 
         return $content;
