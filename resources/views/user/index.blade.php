@@ -612,19 +612,20 @@
 
                                         @if(in_array(('Instagram'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset insta">
-                                            <h5>Edit Instagram</h5>
-                                            <div class="IG_social_main must_add_image ">
+                                        <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                    class="wizard-fieldset_facebook">Instagram</span>
+                                            <!-- <div class="IG_social_main must_add_image ">
                                                 <div class="IG_main_card">
                                                     <div class="d-flex align-items-center">
                                                         <div class="IG_card_title">
-                                                            <h5>Instagram is selected you must upload an
-                                                                media</h5>
+                                                            <p class="Inst_Media">Instagram is selected you must upload an
+                                                                media</p>
                                                         </div>
                                                     </div>
                                                 </div>
 
 
-                                            </div>
+                                            </div> -->
 
                                             <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
@@ -703,7 +704,8 @@
 
                                         @if(in_array(('Twitter'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset twitter">
-                                            <h5>Edit Twitter</h5>
+                                        <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                    class="wizard-fieldset_facebook">Twitter</span>
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
                                                     onchange="suggested_text(this)" required name="twitter_content"
@@ -774,7 +776,8 @@
 
                                         @if(in_array(('Linkedin'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset linkedin">
-                                            <h5>Edit Linkedin</h5>
+                                        <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                    class="wizard-fieldset_facebook">Linkedin</span>
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
