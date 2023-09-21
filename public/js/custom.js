@@ -610,8 +610,8 @@ $(document).ready(function () {
                              if (imgCount >= 6) {
                               
                                 if ($("div.div_in_div").length === 0) {     
-                                    alert("first time");                                                                                                 
-                                    var lastImg = $(".mobile_post_img img:last");
+                                                                                                                              
+                                    var lastImg = $(".prv_div").find($(".mobile_post_img img:last"));
                                     var spanElement = $("<span id= 'my_value' style= color:white>"+1+"</span>");
                                      lastImg.after(spanElement);
                                      lastImg.wrap("<div class='div_in_div'></div>");
@@ -637,7 +637,7 @@ $(document).ready(function () {
 
 
                      }else if(imgOrVideo =='video'){
-                        alert("fjsldjfk");
+                       
                         var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
 
                         $('.prv_div').html('');
@@ -653,15 +653,35 @@ $(document).ready(function () {
 
                 var imgOrVideo= $('#media_type_insta').val();
                 if(imgOrVideo =='image'){
-                  
                         $('.prv_div_isnt').empty();                                          
                         var parentElement = $("#media_type_insta").closest(".sm_container");
                         var img = parentElement.find("img");
+                        var imgCount = 0; 
 
                           $(img).each(function(index) {
+                             imgCount++; 
+                             if (imgCount >= 6) {
+                              
+                                if ($("div.div_in_div_inst").length === 0) {     
+                                                                                                                               
+                                    var lastImg = $(".prv_div_isnt").find($(".mobile_post_img img:last"));
+                                    var spanElement = $("<span id= 'my_value_inst' style= color:white>"+1+"</span>");
+                                     lastImg.after(spanElement);
+                                     lastImg.wrap("<div class='div_in_div_inst'></div>");
+                                     var newDiv = $("<div></div>");
+                                       $(".div_in_div_inst").after(newDiv);
+                                } else {
+                                   
+                                    var spanElement = $('#my_value_inst');                                                                            
+                                        var currentValue = parseInt(spanElement.text());                                    
+                                        var newValue = currentValue + 1;                                        
+                                        spanElement.text(newValue.toString());                              
+                                    }
+                            }else{
                              var src=   $(this).attr("src");
                              var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
                              $('.prv_div_isnt').append(newImage);
+                            }
                         });
                         $('#mediaContainervideo_inst').html('');
 
@@ -681,18 +701,36 @@ $(document).ready(function () {
 
                 var imgOrVideo= $('#media_type_linkedin').val();
 
-                if(imgOrVideo =='image'){
-                 
-                  
+                if(imgOrVideo =='image'){                                   
 
                    $('.prv_div_link').empty();                                          
                    var parentElement = $("#media_type_linkedin").closest(".sm_container");
                    var img = parentElement.find("img");
+                   var imgCount = 0; 
 
                      $(img).each(function(index) {
+                        imgCount++;  if (imgCount >= 6) {
+                              
+                            if ($("div.div_in_div_link").length === 0) {     
+                                                                                                                           
+                                var lastImg = $(".prv_div_link").find($(".mobile_post_img img:last"));
+                                var spanElement = $("<span id= 'my_value_link' style= color:white>"+1+"</span>");
+                                 lastImg.after(spanElement);
+                                 lastImg.wrap("<div class='div_in_div_link'></div>");
+                                 var newDiv = $("<div></div>");
+                                   $(".div_in_div_link").after(newDiv);
+                            } else {
+                               
+                                var spanElement = $('#my_value_link');                                                                            
+                                    var currentValue = parseInt(spanElement.text());                                    
+                                    var newValue = currentValue + 1;                                        
+                                    spanElement.text(newValue.toString());                              
+                                }
+                        }else{
                         var src=   $(this).attr("src");
                         var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
                         $('.prv_div_link').append(newImage);
+                        }
                    });
                    $('#mediaContainervideo_link').html('');
 
