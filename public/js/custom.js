@@ -575,15 +575,31 @@ $(document).ready(function () {
     }
     function setPreview(path,socialicon,getRandomID){
 
-            var prv_img_app = `<img class=" ${getRandomID}" src="content_media/${path}" style = "widht:10px;height:10px" /><br/>`;
+            var prv_img_app = `<div class="mobile_post_img"><img class=" ${getRandomID}" src="content_media/${path}"/></div>`;
 
             if (socialicon == 'image_or_videofb') {
 
                      var imgOrVideo= $('#media_type_fb').val();
 
                      if(imgOrVideo =='image'){
-                        $('.prv_div').append(prv_img_app);
-                        $('#mediaContainervideo_fb').html('');
+                        
+                      
+
+                       
+                        var imgCount = $(".prv_div img").length;
+
+                        if(imgCount>4){
+         
+                            var test = `<div class="mobile_post_img"><div display:none><img src="content_media/${path}" /></div></div>`;
+
+                            $('.prv_div').append(test);
+                            $('#mediaContainervideo_fb').html('');
+                            
+                        }else{
+                            $('.prv_div').append(prv_img_app);
+                            $('#mediaContainervideo_fb').html('');
+                        }
+                        
 
 
                      }else if(imgOrVideo =='video'){
