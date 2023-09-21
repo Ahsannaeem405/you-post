@@ -584,24 +584,26 @@ $(document).ready(function () {
 
                      var imgOrVideo= $('#media_type_fb').val();
 
+                     var imgCount = $(".prv_div img").length;
+                     if(imgCount == 0)
+                     {
+                         $('.prv_div').css('column-count', '1');
+                     }else{
+                         $('.prv_div').css('column-count', '2');
+                     }
+         
                      if(imgOrVideo =='image'){
                                                                       
                             var imgCount = $(".prv_div img").length;
 
                              if(imgCount>4){
-                                
-                              
-                                
                                     if ($("div.div_in_div").length === 0) {
                                                                                                          
                                                    var lastImg = $(".mobile_post_img img:last");
-                                                   var spanElement = $("<span id= 'my_value' style= color:white>"+1+"</span>");
+                                                   var spanElement = $("<span id= 'my_value' style=color:white>" +1+"</span>");
                                                     lastImg.after(spanElement);
-
                                                     lastImg.wrap("<div class='div_in_div'></div>");
-
-                                    
-                                    
+                                                    lastImg.wrap("<div class='div_in_div_bg'></div>");
                                     
                                     } else {
                                         var spanElement = $('#my_value');
