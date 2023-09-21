@@ -588,6 +588,8 @@ $(document).ready(function () {
                      if(imgCount == 0)
                      {
                          $('.prv_div').css('column-count', '1');
+
+
                      }else{
                          $('.prv_div').css('column-count', '2');
                      }
