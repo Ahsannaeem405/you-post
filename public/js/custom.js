@@ -591,6 +591,14 @@ $(document).ready(function () {
 
                      var imgOrVideo= $('#media_type_fb').val();
 
+                     var imgCount = $(".prv_div img").length;
+                     if(imgCount == 0)
+                     {
+                         $('.prv_div').css('column-count', '1');
+                     }else{
+                         $('.prv_div').css('column-count', '2');
+                     }
+         
                      if(imgOrVideo =='image'){
 
                         $('.prv_div').empty();                                          

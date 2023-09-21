@@ -34,7 +34,7 @@
                 <span class="sp1">{{$today->content}} </span>
                 <p class="sp2">{{$today->posted_at_moment=='now' ? 'Posted' : 'Scheduled'}}</p>
             </div>
-            <div class="Edit" onclick="get_detail({{$today->id}});">
+            <div class="Edit" onclick="get_detail({{$today->id}});" style="cursor:pointer;">
                 <i class='fas fa-edit'></i>
                 <a href="javascript:(void(0);"> <span>Edit</span></a>
             </div>

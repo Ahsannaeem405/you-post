@@ -1211,15 +1211,20 @@ button {
 
 }
 .calender_socialicon img{
-    width: 18px;
+    width: 19px;
+    height: 19px;
+}
+
+.calender_socialfb img{
+    width: 12px;
     height: 20px;
+  
 }
-.calender_socialfb{
+
+.calender_socialicon_in img{
     width: 15px;
-    height: 17px;
+    height: 15px;
 }
-
-
 /* ----------------------------------------------------- */
 /*Preview Tags width  adjust*/
 .tags_input_insta{
@@ -1229,3 +1234,6 @@ button {
     width: 100%;
 }
 /* ------------------------------------------------ */
+
+
+

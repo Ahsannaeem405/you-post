@@ -2834,8 +2834,26 @@ position: relative;
     column-gap: 10px;
      margin: auto;
 }
+.prv_div:nth-child(5){
+    position: relative;
+}
 
-
+.div_in_div_bg{
+position: absolute;
+background: #0a0909;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+opacity: 60%;
+}
+{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 
