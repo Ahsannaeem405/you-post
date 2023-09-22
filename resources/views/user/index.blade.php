@@ -2809,6 +2809,18 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
+
+</script>
+<script>
+    $(document).ready(function() {
+  var maxImages = 5;
+  var imageCount = $('#image_div  label .sm_container .cross_img_con').length;
+  if (imageCount > 5) {
+    alert(maxImages);
+    $('#image_div').css('overflow-x', 'scroll');
+  }
+});
+
 </script>
 
 @endsection
