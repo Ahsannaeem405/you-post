@@ -1344,7 +1344,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="linkedin_post_image">
+                                    <div class="linkedin_post_image linkedin_postinner">
                                         <div class="prv_div_link">
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>

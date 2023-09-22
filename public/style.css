@@ -2728,6 +2728,13 @@ position: relative;
 .counter_val{
     font-size: 28px;
 }
+.max_height{
+    height: 150px !important;
+}
+
+
+
+
 /* salman_post start */
 
 /* newpopup end*/
