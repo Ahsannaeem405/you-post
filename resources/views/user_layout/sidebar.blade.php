@@ -677,7 +677,11 @@ body.dark .home .text {
                         <div class="dropdown">
                             <button class="dropdown-toggle bg-transparent border-0" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if(isset($imageUrl))
+                                <img src="{{ $imageUrl}}" class="v_icon" alt="" width="45px" />
+                                @else
                                 <img src="{{asset('images/admin.png')}}" class="v_icon" alt="" width="45px" />
+                                @endif
                                 <span class="text nav-text text2"
                                     style="padding-left:12px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->

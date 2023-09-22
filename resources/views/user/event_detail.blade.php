@@ -352,7 +352,12 @@
         <div class="row p-3">
             <div class="col-7 ">
                 <div class="d-flex">
-                    <div> <img src="{{asset('')}}images/elplinkedin.png" class="" alt="" />
+                    <div> 
+                    @if(isset($imageUrl))
+                        <img src="{{$imageUrl}}" class="" alt="" />
+                    @else
+                        <img src="{{asset('')}}images/elplinkedin.png" class="" alt="" />
+                    @endif
                     </div>
                     <div class="Evano card_4Evano">
                         <h3 class="mb-0 user_name">{{$platforms['Linkedin'][0]->user->name}} <img src="" class="" alt=""
