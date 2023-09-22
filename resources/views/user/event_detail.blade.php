@@ -70,13 +70,14 @@
                     @php
                     $Facebookimages = explode(',',$platforms['Facebook'][0]->media);
                     @endphp
-                    <div class="image_main_container container {{count($Facebookimages) == 1 ? 'single_image' : ''}}">
+                    <div class="image_main_container container">
                         @if($platforms['Facebook'][0]->media_type=='image')
 
                         @foreach($Facebookimages as $image)
-                        @if($loop->index <= 3) <div class="post_modal_con"
+                        @if($loop->index <= 3) 
+                        <div class="post_modal_con"
                             style="background-image: url({{asset('content_media/' .$image)}})">
-                    </div>
+                        </div>
                     @elseif($loop->index == 4)
                     <div class="post_modal_con post_modal_con5_img"
                         style="background-image: url({{asset('content_media/' .$image)}})">
@@ -509,4 +510,47 @@ post_cards(0);
 
 // alert(allImages); 
 </script> -->
+
+<script>
+$(document).ready(function () {
+
+    function setImagePreview()
+    {
+        $('.image_main_container').each(function(){
+            var mainlength = $(this).find('.post_modal_con').length;
+            // alert(mainlength);
+            if(mainlength == 1)
+            {
+                $(this).css('column-count', '1');
+            }else{
+                $(this).css('column-count', '2');
+            }
+
+            if(mainlength == 1 || mainlength == 2){
+                $(this).find('.post_modal_con').addClass('max_height_popup');
+            }else{
+                $(this).find('.post_modal_con').removeClass('max_height_popup');
+
+            }
+            if(mainlength == 3){
+                $(this).find('.post_modal_con:nth-child(1)').addClass('post_modal_child_img1');
+                $(this).find('.post_modal_con:nth-child(2)').addClass('post_modal_child_img2');
+            }
+            else{
+                $(this).find('.post_modal_con:nth-child(1)').removeClass('post_modal_child_img1');
+            }
+        
+            if(mainlength == 4){
+                $(this).find('.post_modal_con:nth-child(3)').addClass('post_modal_child_img3');
+            }
+            else{
+                $(this).find('.post_modal_con:nth-child(3)').removeClass('post_modal_child_img3');
+            }
+            // alert('sddd');
+        });
+    }
+
+    setImagePreview();
+});
+</script>
 

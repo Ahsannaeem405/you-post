@@ -2744,6 +2744,10 @@ position: relative;
     height: 89px !important;
 }
 
+.max_height_popup {
+    height: 350px !important;
+}
+
 
 
 
@@ -2979,3 +2983,13 @@ left: 36%;
 }
 
 /* raziullah card css */
+.post_modal_child_img1{
+    height: 283px !important;
+}
+.post_modal_child_img2{
+    height: 168px;
+}
+.post_modal_child_img3{
+    height: 216px !important;
+
+}
