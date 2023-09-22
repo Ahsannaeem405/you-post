@@ -1236,14 +1236,116 @@ button {
 /* ------------------------------------------------ */
 
 /* Post_preview_Insta */
-/* .prv_div_isnt{
+.prv_div_isnt{
     column-count: 2;
     column-gap: 10px;
     margin: auto;
-} */
+}
 
 .Inst_Media{
     padding: 3px;
     font-weight: 300 !important;
     color: #000;
 }
+/* Insta preview */
+.Insta_post_previnner{
+    margin-top: 14px;
+}
+.prv_div_isnt .mobile_post_img{
+    height: 100px;
+    width: 70px;
+    position: relative;
+    margin-bottom: 10px;
+    break-inside: avoid-column;
+    width: 100%;
+    display: block;
+}
+.prv_div_isnt .mobile_post_img:nth-child(3){
+    height: 63px;
+}
+.prv_div_isnt .mobile_post_img:nth-child(4){
+    height: 63px;
+}
+.prv_div_isnt .mobile_post_img:nth-child(5){
+    height: 63px;
+}
+.div_in_div_inst_bg{
+    position: absolute;
+    background: #0a0909;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 60%;
+}
+.div_in_div_inst_bg:hover{
+   opacity: 30%;
+}
+.insta_counter{
+    color: white;
+    position: absolute;
+    top: 29%;
+    left: 39%;
+}
+.plus_insta_icon{
+    font-size: 12px;
+    cursor: pointer;
+}
+/* ------------------------------------- */
+
+
+/* Linkedin Post preview */
+
+.linkedin_postinner{
+    margin-top: 14px;
+}
+.prv_div_link{
+    column-count: 2;
+    column-gap: 10px;
+    margin: auto;
+}
+.prv_div_link .mobile_post_img{
+    height: 100px;
+    width: 70px;
+    position: relative;
+    margin-bottom: 10px;
+    break-inside: avoid-column;
+    width: 100%;
+    display: block;
+}
+
+.prv_div_link .mobile_post_img:nth-child(3){
+    height: 63px;
+}
+.prv_div_link .mobile_post_img:nth-child(4){
+    height: 63px;
+}
+.prv_div_link .mobile_post_img:nth-child(5){
+    height: 63px;
+}
+
+
+
+.div_in_div_linkedin_bg{
+    position: absolute;
+    background: #0a0909;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 60%;
+}
+.div_in_div_linkedin_bg:hover{
+    opacity: 30%;
+}
+.linkedin_counter{
+    color: white;
+    position: absolute;
+    top: 29%;
+    left: 39%;
+}
+.plus_linkedin_icon{
+    font-size: 12px;
+    cursor: pointer;
+}
+/* --------------------------------- */
