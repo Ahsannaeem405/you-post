@@ -1390,3 +1390,8 @@ button {
 #mediaContainervideo_link video{
     height: 100% !important;
 }
+/*  */
+
+.max_height_postdivs{
+    height: 300px !important;
+}
