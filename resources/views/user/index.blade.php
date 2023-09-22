@@ -1309,7 +1309,11 @@
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
-                                        <img src="{{asset('images/linkedinlogo.png')}}" alt="" class="">
+                                    @if(isset($imageUrl))
+                                        <img src="{{$imageUrl}}" alt="" class="">
+                                    @else
+                                    <img src="{{asset('images/linkedinlogo.png')}}" alt="" class="">
+                                    @endif
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">
@@ -1344,7 +1348,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="linkedin_post_image linkedin_postinner">
+                                    <div class="linkedin_post_image">
                                         <div class="prv_div_link">
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
@@ -2809,5 +2813,7 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
+
 </script>
+
 @endsection
