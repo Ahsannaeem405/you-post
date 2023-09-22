@@ -1356,3 +1356,42 @@ button {
 .max_height_linkedin{
     height: 233px !important;
 }
+/* Insta preview grid */
+.second_child_img1{
+    height: 245px !important;
+}
+.second_child_img2{
+    height: 171px !important;
+}
+.second_child_img3{
+    height: 137px !important;
+}
+/* -------- */
+/* linkedinpreview grid */
+.third_child_img1{
+    height: 235px !important;
+}
+.third_child_img2{
+    height: 163px !important;
+}
+.third_child_img3{
+    height: 135px !important;
+}
+/* ------- */
+ #mediaContainervideo_inst{
+    height: 245px !important;
+}
+ #mediaContainervideo_link{
+    height: 245px !important;
+}
+ #mediaContainervideo_inst video {
+    height:100% ;
+}
+#mediaContainervideo_link video{
+    height: 100% !important;
+}
+/*  */
+
+.max_height_postdivs{
+    height: 300px !important;
+}

@@ -2,31 +2,27 @@
 <style>
 #image_div {
     position: relative;
+    max-width: 270px;
+    margin: auto;
 }
-
-.cancel_mark {}
-
 .uplaod-gif {
     width: 125px;
     position: absolute;
     left: -37px;
     top: -14px;
 }
-
 .uplaod-gif-video {
     width: 125px;
     position: absolute;
     left: -37px;
     top: -22px;
 }
-
 .create_preview_post_wrapInner {
     /* background: #fff;
         padding: 20px;
         border-radius: 5px; */
     padding: unset !important;
 }
-
 .AIgeneratedContent .AIgeneratedContentInner {
     background: rgb(235 235 235);
     padding: 10px;
@@ -582,7 +578,7 @@
                                             </div>
                                             <!-- my code -->
                                             <!-- append div waleed start -->
-                                            <div id="image_div"><label for="file" style="margin-top: 20px;">
+                                            <div id="image_div" class="image_div_2"><label for="file" style="margin-top: 20px;">
 
                                                     <div class="sm_container">
                                                         <input type="file" name="" class="image d-none file_image_video"
@@ -2813,6 +2809,17 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
-</script>
 
+</script>
+<script>
+    $(document).ready(function() {
+  var maxImages = 5;
+  var imageCount = $('#image_div  label .sm_container .cross_img_con').length;
+  if (imageCount > 5) {
+    alert(maxImages);
+    $('#image_div').css('overflow-x', 'scroll');
+  }
+});
+
+</script>
 @endsection

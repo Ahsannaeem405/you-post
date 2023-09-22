@@ -2160,6 +2160,7 @@ color: #000 !important;
 .sm_container{
     display: flex;
     gap: 0 4px;
+    flex-wrap: wrap;
 }
 .cross_img_con{
     position: relative;
@@ -2731,6 +2732,22 @@ position: relative;
 .max_height{
     height: 150px !important;
 }
+.first_child_img1{
+    height: 120px !important; 
+}
+/* .first_child_on_2_img{
+    height: 70px !important; 
+} */
+.first_child_img_3{
+    height: 46px !important;
+}
+.first_child_img4 {
+    height: 89px !important;
+}
+
+.max_height_popup {
+    height: 350px !important;
+}
 
 
 
@@ -2868,22 +2885,6 @@ left: 36%;
     cursor: pointer;
 }
 
-/* .media-container.media_container .prv_div .mobile_post_img:nth-child(1){
-    height: 100%;
-} */
-
-
-
-/* {
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
-
-
-
 /* salman card css end */
 
 /* raziullah card css */
@@ -2967,3 +2968,15 @@ left: 36%;
 }
 
 /* raziullah card css */
+.post_modal_child_img1{
+    height: 283px !important;
+}
+.post_modal_child_img2{
+    height: 168px;
+}
+.post_modal_child_img3{
+    height: 216px !important;
+}
+.sm_container .cross_img_con {
+    padding: 3px 0px;
+}
