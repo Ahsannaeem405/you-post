@@ -354,6 +354,7 @@ $(document).ready(function () {
 
         var id = $(this).attr('id');
         $(this).closest(".create_preview_post").find('.'+ id).remove();
+        var length = $('.mobile_post_img').length;
         var gran_par=  $(this).closest(".create_preview_post");
 
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
@@ -591,18 +592,17 @@ $(document).ready(function () {
 
                      var imgOrVideo= $('#media_type_fb').val();
 
-                     var imgCount = $(".prv_div img").length;
-                     if(imgCount == 0)
+                     var imgCount = $(".prv_div img").length;  
+                     var add_imge = $('.cross_img_con ').length;
+                     if(imgCount == 0 || add_imge == 1)
                      {
                          $('.prv_div').css('column-count', '1');
-
-
                      }else{
                          $('.prv_div').css('column-count', '2');
                      }
+                  
          
                      if(imgOrVideo =='image'){
-
                         $('.prv_div').empty();                                          
                         var parentElement = $("#media_type_fb").closest(".sm_container");
                         var img = parentElement.find("img");
@@ -620,7 +620,7 @@ $(document).ready(function () {
                                      var newDiv = $("<div class='div_in_div_bg'> </div>");
                                        $(".div_in_div").after(newDiv);
                                 } else {
-                                   
+                                 
                                     var spanElement = $('#my_value');                                                                            
                                         var currentValue = parseInt(spanElement.text());                                    
                                         var newValue = currentValue + 1;                                        
@@ -631,6 +631,12 @@ $(document).ready(function () {
                              var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
                              $('.prv_div').append(newImage);
                             }
+                            if(add_imge == 1 || add_imge == 2){
+                                $('.prv_div .mobile_post_img').addClass('max_height');
+                             }else{
+                                $('.prv_div .mobile_post_img').removeClass('max_height');
+        
+                             }
                         });
 
 
