@@ -1349,3 +1349,10 @@ button {
     cursor: pointer;
 }
 /* --------------------------------- */
+/* MaxHeight post preview */
+.max_height_insta{
+    height: 245px !important;
+}
+.max_height_linkedin{
+    height: 233px !important;
+}
