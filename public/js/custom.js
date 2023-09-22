@@ -1010,10 +1010,16 @@ $(document).ready(function () {
 
 
     });
+// set each tab image preview on load
+    
+
+// set each tab image preview on load
+
+
 
     var timezone_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
     $('.timezone').val(timezone_name);
     return true;
 
-})
-;
+    
+});
