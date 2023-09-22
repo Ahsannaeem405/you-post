@@ -2731,6 +2731,18 @@ position: relative;
 .max_height{
     height: 150px !important;
 }
+.first_child_on_3_img{
+    height: 120px !important; 
+}
+/* .first_child_on_2_img{
+    height: 70px !important; 
+} */
+.first_child_on_3_child_img{
+    height: 46px !important;
+}
+.first_child_on_4_img {
+    height: 89px !important;
+}
 
 
 
