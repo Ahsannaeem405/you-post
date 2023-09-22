@@ -674,10 +674,10 @@ $(document).ready(function () {
                                 if ($("div.div_in_div_inst").length === 0) {     
                                                                                                                                
                                     var lastImg = $(".prv_div_isnt").find($(".mobile_post_img img:last"));
-                                    var spanElement = $("<span id= 'my_value_inst ' style= color:white>"+1+"</span>");
+                                    var spanElement = $("<span id= 'my_value' class='insta_counter'> <i class='fa-solid fa-plus plus_insta_icon'></i>"+1+"</span>");
                                      lastImg.after(spanElement);
                                      lastImg.wrap("<div class='div_in_div_inst'></div>");
-                                     var newDiv = $("<div></div>");
+                                     var newDiv = $("<div class='div_in_div_inst_bg'></div>");
                                        $(".div_in_div_inst").after(newDiv);
                                 } else {
                                    
@@ -709,7 +709,13 @@ $(document).ready(function () {
             }else if(socialicon == 'image_or_video_linkedin'){
 
                 var imgOrVideo= $('#media_type_linkedin').val();
-
+                var imgCount = $(".prv_div_link img").length;
+                if(imgCount == 0)
+                {
+                    $('.prv_div_link').css('column-count', '1');
+                }else{
+                    $('.prv_div_link').css('column-count', '2');
+                }
                 if(imgOrVideo =='image'){                                   
 
                    $('.prv_div_link').empty();                                          
@@ -723,10 +729,10 @@ $(document).ready(function () {
                             if ($("div.div_in_div_link").length === 0) {     
                                                                                                                            
                                 var lastImg = $(".prv_div_link").find($(".mobile_post_img img:last"));
-                                var spanElement = $("<span id= 'my_value_link' style= color:white>"+1+"</span>");
+                                var spanElement = $("<span id= 'my_value' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
                                  lastImg.after(spanElement);
                                  lastImg.wrap("<div class='div_in_div_link'></div>");
-                                 var newDiv = $("<div></div>");
+                                 var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
                                    $(".div_in_div_link").after(newDiv);
                             } else {
                                
