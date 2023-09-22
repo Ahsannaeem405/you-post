@@ -5,6 +5,10 @@
     max-width: 270px;
     margin: auto;
 }
+#image_div_ins , #image_div_linked{
+    max-width: 270px;
+    margin: auto;
+}
 .uplaod-gif {
     width: 125px;
     position: absolute;
