@@ -2731,16 +2731,16 @@ position: relative;
 .max_height{
     height: 150px !important;
 }
-.first_child_on_3_img{
+.first_child_img1{
     height: 120px !important; 
 }
 /* .first_child_on_2_img{
     height: 70px !important; 
 } */
-.first_child_on_3_child_img{
+.first_child_img_3{
     height: 46px !important;
 }
-.first_child_on_4_img {
+.first_child_img4 {
     height: 89px !important;
 }
 

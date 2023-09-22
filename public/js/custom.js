@@ -637,18 +637,18 @@ $(document).ready(function () {
                                 $('.prv_div .mobile_post_img').removeClass('max_height');
                              }
                              if(add_imge == 3){
-                                $('.prv_div .mobile_post_img:nth-child(1)').addClass('first_child_on_3_img');
-                                $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_on_3_child_img');
+                                $('.prv_div .mobile_post_img:nth-child(1)').addClass('first_child_img1');
+                                $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img_3');
                              }
                              else{
-                                $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_on_3_img');
+                                $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
                              }
                             
                              if(add_imge == 4){
-                                $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_on_4_img');
+                                $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img4');
                              }
                              else{
-                                $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_on_4_img');
+                                $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
                              }
                              
                         });
