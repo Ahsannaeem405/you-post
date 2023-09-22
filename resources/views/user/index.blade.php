@@ -5,6 +5,10 @@
     max-width: 270px;
     margin: auto;
 }
+#image_div_ins, #image_div_linked{
+    max-width: 270px;
+    margin: auto;
+}
 .uplaod-gif {
     width: 125px;
     position: absolute;
@@ -2807,15 +2811,5 @@ function openEventModal(year, month, day) {
 }
 
 </script>
-<script>
-    $(document).ready(function() {
-  var maxImages = 5;
-  var imageCount = $('#image_div  label .sm_container .cross_img_con').length;
-  if (imageCount > 5) {
-    alert(maxImages);
-    $('#image_div').css('overflow-x', 'scroll');
-  }
-});
 
-</script>
 @endsection
