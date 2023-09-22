@@ -507,7 +507,7 @@ $(document).ready(function () {
                 if (socialicon == 'image_or_videofb') {
                     var img_con = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
   <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
-   <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+   <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
    <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
    <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
    </div>`;
@@ -524,7 +524,7 @@ $(document).ready(function () {
                 else if (socialicon == 'image_or_video_insta') {
                     var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
   <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
-  <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+  <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
   <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
      <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
   </div>`;
@@ -541,7 +541,7 @@ $(document).ready(function () {
                 else if (socialicon == 'image_or_video_linkedin') {
                     var img_con_lin = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
- <a href="#" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+ <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
  <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
       <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
  </div>`;
