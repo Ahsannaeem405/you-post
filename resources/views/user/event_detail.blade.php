@@ -406,9 +406,9 @@
                 @endphp
                 <div class="image_main_container  {{count($LinkedinImages) == 1 ? 'single_image' : ''}}">
                     @if($platforms['Linkedin'][0]->media_type=='image')
-                        @foreach($LinkedinImages as $image)
-                            @if($loop->index <= 3) <div class=" post_modal_con"
-                    style="background-image: url({{asset('content_media/' .$image)}})">
+                    @foreach($LinkedinImages as $image)
+                    @if($loop->index <= 3) <div class=" post_modal_con"
+                        style="background-image: url({{asset('content_media/' .$image)}})">
                 </div>
                 @elseif($loop->index == 4)
                 <div class="post_modal_con" style="background-image: url({{asset('content_media/' .$image)}})">
