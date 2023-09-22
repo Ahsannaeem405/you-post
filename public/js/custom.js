@@ -683,7 +683,7 @@ $(document).ready(function () {
                     $('.prv_div_isnt').css('column-count', '1');
                 }else{
                     $('.prv_div_isnt').css('column-count', '2');
-                }
+                }                
                 if(imgOrVideo =='image'){
                         $('.prv_div_isnt').empty();                                          
                         var parentElement = $("#media_type_insta").closest(".sm_container");
@@ -720,6 +720,21 @@ $(document).ready(function () {
                                 $('.prv_div_isnt .mobile_post_img').removeClass('max_height_insta');
         
                              }
+                             if(add_imge2 == 3){
+                                $('.prv_div_isnt .mobile_post_img:nth-child(1)').addClass('second_child_img1');
+                                $('.prv_div_isnt .mobile_post_img:nth-child(2)').addClass('second_child_img2');
+                             }
+                             else{
+                                $('.prv_div_isnt .mobile_post_img:nth-child(1)').removeClass('second_child_img1');
+                             }
+                            
+                             if(add_imge2 == 4){
+                                $('.prv_div_isnt .mobile_post_img:nth-child(3)').addClass('second_child_img3');
+                             }
+                             else{
+                                $('.prv_div_isnt .mobile_post_img:nth-child(3)').removeClass('second_child_img3');
+                             }
+
                         });
                         $('#mediaContainervideo_inst').html('');
 
@@ -782,6 +797,24 @@ $(document).ready(function () {
                             $('.prv_div_link .mobile_post_img').removeClass('max_height_linkedin');
     
                          }
+
+                         if(add_imge3 == 3){
+                            $('.prv_div_link .mobile_post_img:nth-child(1)').addClass('third_child_img1');
+                            $('.prv_div_link .mobile_post_img:nth-child(2)').addClass('third_child_img2');
+                         }
+                         else{
+                            $('.prv_div_link .mobile_post_img:nth-child(1)').removeClass('third_child_img1');
+                         }
+                        
+                         if(add_imge3 == 4){
+                            $('.prv_div_link .mobile_post_img:nth-child(3)').addClass('third_child_img3');
+                         }
+                         else{
+                            $('.prv_div_link .mobile_post_img:nth-child(3)').removeClass('third_child_img3');
+                         }
+
+
+
                    });
                    $('#mediaContainervideo_link').html('');
 
