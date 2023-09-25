@@ -1251,7 +1251,8 @@ button {
 .Insta_post_previnner{
     margin-top: 14px;
 }
-.prv_div_isnt .mobile_post_img{
+
+.prv_div_isnt .mobile_post_img_inst{
     height: 100px;
     width: 70px;
     position: relative;
@@ -1260,13 +1261,13 @@ button {
     width: 100%;
     display: block;
 }
-.prv_div_isnt .mobile_post_img:nth-child(3){
+.prv_div_isnt .mobile_post_img_inst:nth-child(3){
     height: 63px;
 }
-.prv_div_isnt .mobile_post_img:nth-child(4){
+.prv_div_isnt .mobile_post_img_inst:nth-child(4){
     height: 63px;
 }
-.prv_div_isnt .mobile_post_img:nth-child(5){
+.prv_div_isnt .mobile_post_img_inst:nth-child(5){
     height: 63px;
 }
 .div_in_div_inst_bg{
@@ -1291,10 +1292,8 @@ button {
     font-size: 12px;
     cursor: pointer;
 }
+
 /* ------------------------------------- */
-
-
-/* Linkedin Post preview */
 
 .linkedin_postinner{
     margin-top: 14px;
@@ -1304,7 +1303,8 @@ button {
     column-gap: 10px;
     margin: auto;
 }
-.prv_div_link .mobile_post_img{
+.prv_div_link .mobile_post_img_link {
+    /* height: 100px; */
     height: 100px;
     width: 70px;
     position: relative;
@@ -1314,17 +1314,15 @@ button {
     display: block;
 }
 
-.prv_div_link .mobile_post_img:nth-child(3){
+.prv_div_link .mobile_post_img_link:nth-child(3){
     height: 63px;
 }
-.prv_div_link .mobile_post_img:nth-child(4){
+.prv_div_link .mobile_post_img_link:nth-child(4){
     height: 63px;
 }
-.prv_div_link .mobile_post_img:nth-child(5){
+.prv_div_link .mobile_post_img_link:nth-child(5){
     height: 63px;
 }
-
-
 
 .div_in_div_linkedin_bg{
     position: absolute;
@@ -1348,6 +1346,11 @@ button {
     font-size: 12px;
     cursor: pointer;
 }
+
+
+
+
+
 /* --------------------------------- */
 /* MaxHeight post preview */
 .max_height_insta{
