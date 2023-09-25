@@ -26,6 +26,8 @@ use getID3\getID3;
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 
+
+
 class UserController extends Controller
 {
 
@@ -201,7 +203,16 @@ class UserController extends Controller
 
 
     }
+    public function getTimeDifference($postTime){
 
+        $reqDateTime = new DateTime($postTime, new \DateTimeZone('Asia/Karachi'));
+        $currentDateTime = new DateTime('now', new \DateTimeZone('Asia/Karachi')); 
+        $reqDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
+        $currentDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
+        $timeDifference = abs($currentDateTime->getTimestamp() - $reqDateTime->getTimestamp());
+        return $timeDifference;
+
+    }
     public function create_post(Request $req)
     {
 
@@ -285,7 +296,7 @@ class UserController extends Controller
             $firstPostOrNot = Post::where('user_id', auth()->user()->id)->count();
             if($firstPostOrNot>0){
                 session(['check_first_post' =>$firstPostOrNot]);
-            }
+       
             $post->account_id = auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
             $post->content = $req->$content;
@@ -298,12 +309,65 @@ class UserController extends Controller
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
             $post->save();
-          
+        }
+
+      
+        $timeDifference=  $this->getTimeDifference($req->time);
+        if ($timeDifference <= 60) {
+
+            $arr = [
+                'post' => $post->id,
+                 ];
+
+            if($platforms[$i] == 'Facebook'){
+                $run=new Facebookservice();
+                $result=$run->create_post($arr);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }else if($platforms[$i] == 'Instagram'){
+                $run=new Instagramservice();
+                $result=$run->create_post($arr);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }elseif($platforms[$i] == 'Twitter'){
+                $run=new TwitterService();
+                $result=$run->create_post($arr);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }elseif($platforms[$i] == 'Linkedin'){
+                $run=new Linkedinservice();
+                $result=$run->create_post($arr);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }
+        } 
+                     
         }
         return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
         //****************end posting code****************//
 
     }
+  
 
 
     public function get_event_detail(Request $request)
