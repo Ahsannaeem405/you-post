@@ -42,7 +42,7 @@ class UserController extends Controller
     {
 
         $platforms = session('platforms');
-
+        $imageUrl='images/admin.png';
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
@@ -63,23 +63,26 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-
         // my code start
         // $accessToken = $accounts[0]->linkedin_accesstoken;// Implement a method to obtain the access token     
+        if($accounts[0]->linkedin_accesstoken){
+        $accessToken = $accounts[0]->linkedin_accesstoken;     
 
-        // $client = new Client();
-        // $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
-        //     'headers' => [
-        //         'Authorization' => 'Bearer ' . $accessToken,
-        //     ],
-        // ]);
+        $client = new Client();
+        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+            ],
+        ]);
 
-        // $responseData = json_decode($response->getBody(), true);
+        $responseData = json_decode($response->getBody(), true);
 
-        // $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
       
+        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+       }
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms' ,'imageUrl'));
 
     }
 

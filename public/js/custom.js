@@ -610,6 +610,7 @@ $(document).ready(function () {
                           $(img).each(function(index) {
                              imgCount++;
                              if (imgCount >= 6) {
+                               
                               
                                 if ($("div.div_in_div").length === 0) {     
                                                                                                                               
@@ -620,12 +621,15 @@ $(document).ready(function () {
                                      var newDiv = $("<div class='div_in_div_bg'> </div>");
                                        $(".div_in_div").after(newDiv);
                                 } else {
-                                 
-                                    var spanElement = $('#my_value');                                                                            
-                                        var currentValue = parseInt(spanElement.text());                                    
-                                        var newValue = currentValue + 1;                                        
-                                        spanElement.text(newValue.toString());                              
-                                    }
+                                     
+                                    const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
+                                    var spanElement = $('#my_value');    
+                                    var currentValue = parseInt(spanElement.text());                                    
+                                    newValue =  currentValue + 1;  
+                                    $('#my_value').empty();                                                                 
+                                    $('#my_value').append(iconElement, newValue);
+
+                                }
                             }
                             else{
                              var src=   $(this).attr("src");
@@ -696,43 +700,44 @@ $(document).ready(function () {
                               
                                 if ($("div.div_in_div_inst").length === 0) {     
                                                                                                                                
-                                    var lastImg = $(".prv_div_isnt").find($(".mobile_post_img img:last"));
-                                    var spanElement = $("<span id= 'my_value' class='insta_counter'> <i class='fa-solid fa-plus plus_insta_icon'></i>"+1+"</span>");
+                                    var lastImg = $(".prv_div_isnt").find($(".mobile_post_img_inst img:last"));
+                                    var spanElement = $("<span id= 'my_value_inst' class='insta_counter'> <i class='fa-solid fa-plus plus_insta_icon'></i>"+1+"</span>");
                                      lastImg.after(spanElement);
                                      lastImg.wrap("<div class='div_in_div_inst'></div>");
                                      var newDiv = $("<div class='div_in_div_inst_bg'></div>");
                                        $(".div_in_div_inst").after(newDiv);
                                 } else {
-                                   
-                                    var spanElement = $('#my_value_inst');                                                                            
+                                        const iconElement = $('<i>').addClass('fa-solid fa-plus plus_insta_icon');
+                                        var spanElement = $('#my_value_inst');    
                                         var currentValue = parseInt(spanElement.text());                                    
-                                        var newValue = currentValue + 1;                                        
-                                        spanElement.text(newValue.toString());                              
+                                        newValue =  currentValue + 1;  
+                                        $('#my_value_inst').empty();                                                                 
+                                        $('#my_value_inst').append(iconElement, newValue);
                                     }
                             }else{
                              var src=   $(this).attr("src");
-                             var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                             var newImage = `<div class="mobile_post_img_inst"><img  src="${src}"/></div>`;
                              $('.prv_div_isnt').append(newImage);
                             }
                             if(add_imge2 == 1 || add_imge2 == 2){
-                                $('.prv_div_isnt .mobile_post_img').addClass('max_height_insta');
+                                $('.prv_div_isnt .mobile_post_img_inst').addClass('max_height_insta');
                              }else{
-                                $('.prv_div_isnt .mobile_post_img').removeClass('max_height_insta');
+                                $('.prv_div_isnt .mobile_post_img_inst').removeClass('max_height_insta');
         
                              }
                              if(add_imge2 == 3){
-                                $('.prv_div_isnt .mobile_post_img:nth-child(1)').addClass('second_child_img1');
-                                $('.prv_div_isnt .mobile_post_img:nth-child(2)').addClass('second_child_img2');
+                                $('.prv_div_isnt .mobile_post_img_inst:nth-child(1)').addClass('second_child_img1');
+                                $('.prv_div_isnt .mobile_post_img_inst:nth-child(2)').addClass('second_child_img2');
                              }
                              else{
-                                $('.prv_div_isnt .mobile_post_img:nth-child(1)').removeClass('second_child_img1');
+                                $('.prv_div_isnt .mobile_post_img_inst:nth-child(1)').removeClass('second_child_img1');
                              }
                             
                              if(add_imge2 == 4){
-                                $('.prv_div_isnt .mobile_post_img:nth-child(3)').addClass('second_child_img3');
+                                $('.prv_div_isnt .mobile_post_img_inst:nth-child(3)').addClass('second_child_img3');
                              }
                              else{
-                                $('.prv_div_isnt .mobile_post_img:nth-child(3)').removeClass('second_child_img3');
+                                $('.prv_div_isnt .mobile_post_img_inst:nth-child(3)').removeClass('second_child_img3');
                              }
 
                         });
@@ -773,44 +778,45 @@ $(document).ready(function () {
                               
                             if ($("div.div_in_div_link").length === 0) {     
                                                                                                                            
-                                var lastImg = $(".prv_div_link").find($(".mobile_post_img img:last"));
-                                var spanElement = $("<span id= 'my_value' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
+                                var lastImg = $(".prv_div_link").find($(".mobile_post_img_link img:last"));
+                                var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
                                  lastImg.after(spanElement);
                                  lastImg.wrap("<div class='div_in_div_link'></div>");
                                  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
                                    $(".div_in_div_link").after(newDiv);
                             } else {
-                               
-                                var spanElement = $('#my_value_link');                                                                            
-                                    var currentValue = parseInt(spanElement.text());                                    
-                                    var newValue = currentValue + 1;                                        
-                                    spanElement.text(newValue.toString());                              
+                                        const iconElement = $('<i>').addClass('fa-solid fa-plus plus_linkedin_icon');
+                                        var spanElement = $('#my_value_link');    
+                                        var currentValue = parseInt(spanElement.text());                                    
+                                        newValue =  currentValue + 1;  
+                                        $('#my_value_link').empty();                                                                 
+                                        $('#my_value_link').append(iconElement, newValue);
                                 }
                         }else{
                         var src=   $(this).attr("src");
-                        var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                        var newImage = `<div class="mobile_post_img_link"><img  src="${src}"/></div>`;
                         $('.prv_div_link').append(newImage);
                         }
                         if(add_imge3 == 1 || add_imge3 == 2){
-                            $('.prv_div_link .mobile_post_img').addClass('max_height_linkedin');
+                            $('.prv_div_link .mobile_post_img_link').addClass('max_height_linkedin');
                          }else{
-                            $('.prv_div_link .mobile_post_img').removeClass('max_height_linkedin');
+                            $('.prv_div_link .mobile_post_img_link').removeClass('max_height_linkedin');
     
                          }
 
                          if(add_imge3 == 3){
-                            $('.prv_div_link .mobile_post_img:nth-child(1)').addClass('third_child_img1');
-                            $('.prv_div_link .mobile_post_img:nth-child(2)').addClass('third_child_img2');
+                            $('.prv_div_link .mobile_post_img_link:nth-child(1)').addClass('third_child_img1');
+                            $('.prv_div_link .mobile_post_img_link:nth-child(2)').addClass('third_child_img2');
                          }
                          else{
-                            $('.prv_div_link .mobile_post_img:nth-child(1)').removeClass('third_child_img1');
+                            $('.prv_div_link .mobile_post_img_link:nth-child(1)').removeClass('third_child_img1');
                          }
                         
                          if(add_imge3 == 4){
-                            $('.prv_div_link .mobile_post_img:nth-child(3)').addClass('third_child_img3');
+                            $('.prv_div_link .mobile_post_img_link:nth-child(3)').addClass('third_child_img3');
                          }
                          else{
-                            $('.prv_div_link .mobile_post_img:nth-child(3)').removeClass('third_child_img3');
+                            $('.prv_div_link .mobile_post_img_link:nth-child(3)').removeClass('third_child_img3');
                          }
 
 
