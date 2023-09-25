@@ -506,6 +506,11 @@ body {
 .create_preview_post .create_post .post_now_button {
     text-align: right;
 }
+/* -------------- */
+.post_now_button   .post_later_now_btn2 {
+   margin-right: 5px;
+}
+/* --------------- */
 
 .create_preview_post .create_post .post_now_button .btn {
     /* color: var(--lightColor);
@@ -1209,8 +1214,7 @@ body {
     position: relative;
     width: 100%;
     height: 0;
-   /* height: 170px; 16:9 aspect ratio for videos */
-   height: 209px;
+   height: 209px /* 16:9 aspect ratio for videos */
 }
 
 
@@ -1658,12 +1662,9 @@ width: 30%;
     position: relative;
 }
 .form-wizard .form-wizard-steps li::after {
-    /* background-color: #f3f3f3; */
-    /* content: ""; */
-    /* height: 5px; */
-    /* left: 0; */
+    
     position: absolute;
-    /* right: 0; */
+ 
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
@@ -2380,6 +2381,7 @@ height: 100%;
     width: 260px!important;
     margin: auto;
 }
+
 /* lindin salman end */
 
 
@@ -2732,20 +2734,23 @@ position: relative;
 }
 .max_height{
     /* height: 150px !important; */
-    height: 200px !important;
+    height: 190px !important;
+
 }
 .first_child_img1{
-    /* height: 120px !important;  */
-    height: 200px !important; 
+    height: 190px !important; 
 }
 /* .first_child_on_2_img{
     height: 70px !important; 
 } */
-.first_child_img_3{
+/* .first_child_img_3{
     height: 46px !important;
+} */
+.first_child_img_2{
+    height: 135px !important;
 }
 .first_child_img4 {
-    height: 89px !important;
+    height: 130px !important;
 }
 
 .max_height_popup {
@@ -2754,8 +2759,6 @@ position: relative;
 .share_fb{
     padding-top: 4px;
 }
-
-
 
 /* salman_post start */
 
@@ -2835,8 +2838,7 @@ position: relative;
     width: 100% !important;
 }
 .mobile_post_img{
-    height: 65px;
-    height: 144px;
+    height: 90px;
     width: 70px;
     position: relative;
     margin-bottom: 10px;
@@ -2845,43 +2847,9 @@ position: relative;
     display: block;
 }
 .mobile_post_img:nth-child(3), .mobile_post_img:nth-child(4), .mobile_post_img:nth-child(5) {
-    height: 40px;
+    height: 50px;
 }
 .mobile_post_img img{
-    width: 100%;
-    height: 100%; 
-}
-/* style for inst */
-.mobile_post_img_inst{
-    height: 65px;
-    width: 70px;
-    position: relative;
-    margin-bottom: 10px;
-    break-inside: avoid-column;
-    width: 100%;
-    display: block;
-}
-.mobile_post_img_inst:nth-child(3), .mobile_post_img_inst:nth-child(4), .mobile_post_img_inst:nth-child(5) {
-    height: 40px;
-}
-.mobile_post_img_inst img{
-    width: 100%;
-    height: 100%; 
-}
-/* forlinkedid */
-.mobile_post_img_link{
-    height: 65px;
-    width: 70px;
-    position: relative;
-    margin-bottom: 10px;
-    break-inside: avoid-column;
-    width: 100%;
-    display: block;
-}
-.mobile_post_img_link:nth-child(3), .mobile_post_img_link:nth-child(4), .mobile_post_img_link:nth-child(5) {
-    height: 40px;
-}
-.mobile_post_img_link img{
     width: 100%;
     height: 100%; 
 }
@@ -2890,7 +2858,6 @@ position: relative;
     column-gap: 10px;
     margin: auto;
     padding: 0 15px;
-
 }
 
 .single_image {
@@ -2923,6 +2890,9 @@ left: 36%;
 .plus_fb_icon{
     font-size: 12px;
     cursor: pointer;
+}
+.first_child_img5{
+    height: 69px !important;
 }
 
 /* salman card css end */
