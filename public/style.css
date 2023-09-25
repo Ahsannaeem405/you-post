@@ -640,7 +640,7 @@ body {
     width: 280px;
     height: 531px;
     margin: 0px auto;
-    background: url('images/ihpne14.png') no-repeat;
+    background: url('images/twitter_bg.png') no-repeat;
     background-position: top center;
     background-size: 100% 100%;
     position: relative;
@@ -1214,7 +1214,8 @@ body {
     position: relative;
     width: 100%;
     height: 0;
-   height: 170px /* 16:9 aspect ratio for videos */
+   /* height: 170px; 16:9 aspect ratio for videos */
+   height: 209px;
 }
 
 
@@ -1336,8 +1337,8 @@ body {
     display: flex;
     align-items: center;
     padding: 5px;
-    width: 92%;
-    background: #242424;
+    /* width: 92%; */
+    /* background: #242424; */
     margin-left: 4px;
 }
 .Mobcompny-title .Mobsocial-icon {
@@ -1354,13 +1355,13 @@ body {
 }
 .Mobcompny-smallicon {
 	display: flex;
-	margin-bottom: 5px;
-	justify-content: space-between
+	justify-content: space-between;
+    /* margin-bottom: 5px; */
 }
 .Mobcompny-smallicon , .Mobsocial-icon span {
 	cursor: pointer;
 	color: #878383;
-    margin-right: 8px;
+    /* margin-right: 8px; */
 }
 .Mobcompny-smallicon span:nth-child(1) i{
 	color: #63abf5;
@@ -1986,7 +1987,7 @@ width: 100%;
 }
 .icons_d{
     margin-top: 8px;
-    /* margin-right: 22px; */
+    margin-right: 12px;
     margin-bottom: 14px;
     display: flex;
     gap: 0 12px;
@@ -2004,16 +2005,16 @@ width: 100%;
     border-bottom: 0.1px solid#e6dbdb;
 } */
 .Mobcompny-smallicon.Mobcompny_smallicon {
-    margin-top: unset !important;
-    background-color: #242424;
+    margin-top: unset !important;    
     border-radius: unset !important;
-    width: 92%;
-    border-bottom: 1px solid #dddddd7a;
-    margin-left: 4px;
+    /* border-bottom: 1px solid #dddddd7a; */
+    /* background-color: #242424; */
+      /* margin-left: 4px; */
+        /* width: 92%; */ 
 }
 .MainMobileview.MainMobileview2{
-    background-color: #242424;
-    width: 95%;
+    /* background-color: #242424; */
+    /* width: 95%; */
 }
 .post_img_name{
     display: flex ;
@@ -2023,14 +2024,14 @@ width: 100%;
     padding-left: 5px;
 }
 .the_preview_card{
-    background-color: #242424;
-    width: 96%;
+    /* background-color: #242424; */
+    /* width: 96%; */
     padding: 0 5px;
     margin-left: 4px;
 }
 
 .media-container.media_container{
-width: 95%;
+/* width: 95%; */
 }
 .media-container.media_container img{
     object-fit: cover !important;
@@ -2044,8 +2045,8 @@ width: 95%;
    font-size: 9px;
 }
 .actions-buttons.actions_buttons{
-    width: 92%;
-    margin-left: 4px;
+    /* width: 92%; */
+    /* margin-left: 4px; */
 }
 .text.text2{
     color: #fff !important;
@@ -2736,10 +2737,12 @@ position: relative;
     font-size: 28px;
 }
 .max_height{
-    height: 150px !important;
+    /* height: 150px !important; */
+    height: 200px !important;
 }
 .first_child_img1{
-    height: 120px !important; 
+    /* height: 120px !important;  */
+    height: 200px !important; 
 }
 /* .first_child_on_2_img{
     height: 70px !important; 
@@ -2754,7 +2757,9 @@ position: relative;
 .max_height_popup {
     height: 350px !important;
 }
-
+.share_fb{
+    padding-top: 4px;
+}
 
 
 
@@ -2837,6 +2842,7 @@ position: relative;
 }
 .mobile_post_img{
     height: 65px;
+    height: 144px;
     width: 70px;
     position: relative;
     margin-bottom: 10px;
@@ -2848,6 +2854,40 @@ position: relative;
     height: 40px;
 }
 .mobile_post_img img{
+    width: 100%;
+    height: 100%; 
+}
+/* style for inst */
+.mobile_post_img_inst{
+    height: 65px;
+    width: 70px;
+    position: relative;
+    margin-bottom: 10px;
+    break-inside: avoid-column;
+    width: 100%;
+    display: block;
+}
+.mobile_post_img_inst:nth-child(3), .mobile_post_img_inst:nth-child(4), .mobile_post_img_inst:nth-child(5) {
+    height: 40px;
+}
+.mobile_post_img_inst img{
+    width: 100%;
+    height: 100%; 
+}
+/* forlinkedid */
+.mobile_post_img_link{
+    height: 65px;
+    width: 70px;
+    position: relative;
+    margin-bottom: 10px;
+    break-inside: avoid-column;
+    width: 100%;
+    display: block;
+}
+.mobile_post_img_link:nth-child(3), .mobile_post_img_link:nth-child(4), .mobile_post_img_link:nth-child(5) {
+    height: 40px;
+}
+.mobile_post_img_link img{
     width: 100%;
     height: 100%; 
 }
