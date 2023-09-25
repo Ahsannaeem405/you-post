@@ -5,28 +5,31 @@
     max-width: 270px;
     margin: auto;
 }
-#image_div_ins , #image_div_linked{
+
+#image_div_ins,
+#image_div_linked {
     max-width: 270px;
     margin: auto;
 }
+
 .uplaod-gif {
     width: 125px;
     position: absolute;
     left: -37px;
     top: -14px;
 }
+
 .uplaod-gif-video {
     width: 125px;
     position: absolute;
     left: -37px;
     top: -22px;
 }
+
 .create_preview_post_wrapInner {
-    /* background: #fff;
-        padding: 20px;
-        border-radius: 5px; */
     padding: unset !important;
 }
+
 .AIgeneratedContent .AIgeneratedContentInner {
     background: rgb(235 235 235);
     padding: 10px;
@@ -346,7 +349,7 @@
 
 .Mobcart_titleCustom,
 .actions-buttons {
-    border-top: 1px solid #dddddd7a;
+    /* border-top: 1px solid #dddddd7a; */
     padding: 5px 0;
 }
 
@@ -582,7 +585,8 @@
                                             </div>
                                             <!-- my code -->
                                             <!-- append div waleed start -->
-                                            <div id="image_div" class="image_div_2"><label for="file" style="margin-top: 20px;">
+                                            <div id="image_div" class="image_div_2"><label for="file"
+                                                    style="margin-top: 20px;">
 
                                                     <div class="sm_container">
                                                         <input type="file" name="" class="image d-none file_image_video"
@@ -612,8 +616,8 @@
 
                                         @if(in_array(('Instagram'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset insta">
-                                        <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_facebook">Instagram</span>
+                                            <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                class="wizard-fieldset_facebook">Instagram</span>
                                             <!-- <div class="IG_social_main must_add_image ">
                                                 <div class="IG_main_card">
                                                     <div class="d-flex align-items-center">
@@ -704,8 +708,8 @@
 
                                         @if(in_array(('Twitter'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset twitter">
-                                        <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_facebook">Twitter</span>
+                                            <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                class="wizard-fieldset_facebook">Twitter</span>
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
                                                     onchange="suggested_text(this)" required name="twitter_content"
@@ -776,8 +780,8 @@
 
                                         @if(in_array(('Linkedin'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset linkedin">
-                                        <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_facebook">Linkedin</span>
+                                            <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                class="wizard-fieldset_facebook">Linkedin</span>
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
@@ -1012,13 +1016,11 @@
                                 <div class="one_img mb-1"><img src="{{asset('images/bell.png')}}" class="" alt="">
                                 </div>
                                 <div class="one_img"><img src="{{asset('images/br.png')}}" class="" alt=""></div>
-
                             </div>
-                            <div class="line"></div>
-
+                            <hr style="color:gray;" class="m-0">
                             <div class="the_preview">
                                 <div class="col-md-12 the_preview_card" style="height: 100px">
-                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between">
+                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
                                                 <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
@@ -1054,6 +1056,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr style="color:gray;" class="m-0">
                                 </div>
                                 <div class="col-md-12">
                                     <div
@@ -1070,29 +1073,23 @@
                                             <a>Muhammad Talha and 24k others 8.3k comments</a>
                                         </div>
                                     </div>
-                                    <div class="actions-buttons actions_buttons">
+                                    <hr style="color:gray;" class="m-0">
+                                    <div class="actions-buttons actions_buttons px-1">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button">
-
-                                                    <img src="{{asset('')}}images/up.png" class="" alt="" height="20" />
-                                                    <span class="text text2">Like</span>
-                                                </button>
+                                            <li class="actions-buttons-item  d-flex align-item-center">
+                                                    <!-- <i class="fa-regular fa-thumbs-up"></i> -->
+                                                    <img src="{{asset('')}}images/thumbs_up.png" class="" alt="" height="20" />
+                                                    <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button">
-
-                                                    <img src="{{asset('')}}images/mes.png" class="" alt=""
-                                                        height="20" />
+                                            <li class="actions-buttons-item d-flex align-item-center pt-1">
+                                                    <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                        height="15" height="15" />
                                                     <span class="text text2">Comment</span>
-                                                </button>
                                             </li>
-                                            <li class="actions-buttons-item">
-                                                <button class="actions-buttons-button">
+                                            <li class="actions-buttons-item  d-flex align-item-center share_fb">
                                                     <img src="{{asset('')}}images/share.png" class="" alt=""
                                                         height="18" />
                                                     <span class="text text2">Share</span>
-                                                </button>
                                             </li>
                                         </ul>
                                     </div>
@@ -1309,11 +1306,11 @@
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
-                                    @if(isset($imageUrl))
+                                        @if(isset($imageUrl))
                                         <img src="{{$imageUrl}}" alt="" class="">
-                                    @else
-                                    <img src="{{asset('images/linkedinlogo.png')}}" alt="" class="">
-                                    @endif
+                                        @else
+                                        <img src="{{asset('images/linkedinlogo.png')}}" alt="" class="">
+                                        @endif
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">
@@ -2813,7 +2810,6 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
-
 </script>
 
 @endsection
