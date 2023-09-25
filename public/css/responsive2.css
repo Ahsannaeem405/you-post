@@ -137,11 +137,24 @@
     }
     
 }
+/* ------------------------- */
+@media (min-width:992px) and (max-width:1199px) {
+    .post_now_button.schedule_post_button button {
+          min-width: 114px !important;    
+          padding: 10px !important;    
+    }
+
+
+}
+/* ---------------------- */
 /*18,9,23 */
 @media (min-width:1377px) and (max-width:1399px) {
 
     .social_icon_posts {
         gap: 16px 15px;
+    }
+    .create_preview_post .create_post .post_now_button .btn{
+        padding: 6px 11px !important;
     }
 }
 
@@ -384,7 +397,15 @@
     .post_now_button.schedule_post_button {
         display: flex;
         flex-direction: column;
+        gap: 5px 0px;
+        
     }
+   /* -------------------- */
+.create_preview_post .create_post .post_now_button .btn {
+    font-size: 15px !important;
+}
+
+/* -------------------- */
 
     .post_later_now_btn.post_later_now_btn2 {
         width: calc(95% - 0px) !important;
@@ -565,6 +586,11 @@
   /* 18,9,23 */
   .post_thumb {
     padding-bottom: 15px;
+}
+.create_preview_post_index_item .preview_post .preview_wrap.prev_wrap_fb{
+    width: 100% !important;
+    margin: auto;
+
 }
 
 /* 18,9,23 */
@@ -864,6 +890,16 @@
     .post_modal_con {
         height: 111px !important;
     }
+
+
+    /* ------------ */
+    .post_now_button.schedule_post_button{   
+        display: flex;
+        flex-direction: column;
+        gap: 12px 0px  
+  }
+    /* ------------ */
+
 }
 
 /* media  query */

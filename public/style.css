@@ -506,6 +506,11 @@ body {
 .create_preview_post .create_post .post_now_button {
     text-align: right;
 }
+/* -------------- */
+.post_now_button   .post_later_now_btn2 {
+   margin-right: 5px;
+}
+/* --------------- */
 
 .create_preview_post .create_post .post_now_button .btn {
     /* color: var(--lightColor);
@@ -2376,6 +2381,7 @@ height: 100%;
     width: 260px!important;
     margin: auto;
 }
+
 /* lindin salman end */
 
 
