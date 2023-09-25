@@ -976,7 +976,7 @@
                             <h4>Post Preview</h4>
                         </div>
                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
-                        <div class="preview_wrap add_preview  prv_fb">
+                        <div class="preview_wrap add_preview  prv_fb prev_wrap_fb">
                             <div class="col-md-12">
                                 <div class="Mobcompny-title">
                                     <div class="w-50">
@@ -1106,14 +1106,14 @@
 
                         <div class="instagram_bg add_preview d-none  prv_insta">
                             <div class="the_preview">
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between  px-2"">
                                     <div class="d-flex gap-4">
                                         <div> <i class="fa-solid fa-arrow-left mt-1"></i> </div>
-                                        <div>
+                                        <div class="ins_post_p">
                                             <p>Posts</p>
                                         </div>
                                     </div>
-                                    <div><a href="">Follow</a></div>
+                                    <div class="ins_post_a"><a href="">Follow</a></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-10">
@@ -1153,9 +1153,9 @@
                                             class="actions-buttons-list d-flex justify-content-between  mt-3 show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
-                                                    <i class="fa-regular fa-heart"></i>
-                                                    <i class="fa-regular fa-comment fa-flip-horizontal"></i>
-                                                    <i class="fa-regular fa-paper-plane"></i>
+                                                    <img class="ins_icon" src="{{asset('images/icons8-heart-24.png')}}" alt="">
+                                                    <img class="ins_icon" src="{{asset('images/myiconcomment.png')}}" alt="">
+                                                   <img  class="ins_icon" src="{{asset('images/myiconshare.png')}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="actions-buttons-button">
@@ -1164,7 +1164,7 @@
                                             <div class="actions-buttons-button">
                                             </div>
                                             <div class="actions-buttons-button d-flex">
-                                                <i class="fa-regular fa-bookmark"></i>
+                                            <img class="ins_icon" src="{{asset('images/myiconsave.png')}}" alt="">
                                             </div>
                                         </div>
                                         <div class="pt-1 insta_likes_post">
@@ -1186,7 +1186,7 @@
                                     <div class="col-12">
                                         <div class="insta_pos_comm">
                                             <p class="mb-0">
-                                                view all 5000 comments
+                                                View all 5000 comments
                                             </p>
                                             <p class="mb-0">12 hour ago</p>
                                         </div>
@@ -1305,7 +1305,7 @@
                         <!-- moble_linkdin_post start-->
                         @if(in_array(('Linkedin'),auth()->user()->account->platforms))
 
-                        <div class="preview_linkedin  d-none  add_preview  prv_linkedin">
+                        <div class="preview_linkedin  d-none  add_preview  prv_linkedin preview_linkin">
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">

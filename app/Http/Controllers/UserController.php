@@ -65,21 +65,21 @@ class UserController extends Controller
 
 
         // my code start
-        $accessToken = $accounts[0]->linkedin_accesstoken;// Implement a method to obtain the access token     
+        // $accessToken = $accounts[0]->linkedin_accesstoken;// Implement a method to obtain the access token     
 
-        $client = new Client();
-        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-            ],
-        ]);
+        // $client = new Client();
+        // $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
+        //     'headers' => [
+        //         'Authorization' => 'Bearer ' . $accessToken,
+        //     ],
+        // ]);
 
-        $responseData = json_decode($response->getBody(), true);
+        // $responseData = json_decode($response->getBody(), true);
 
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+        // $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
       
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms','imageUrl'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms'));
 
     }
 
