@@ -650,7 +650,6 @@ $(document).ready(function () {
                              }
                             
                              if(add_imge == 4){
-                                alert("hey");
                                 $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img4');
                              }
                              else{
