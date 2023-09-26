@@ -2253,11 +2253,6 @@
                                     alt="" /></a>
                         </div>
                         @endif
-                        @if (in_array('Linkedin', $platforms))
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Linkedin_Color.png"
-                                    class="img-fluid" alt="" /></a>
-                        </div>
-                        @endif
                         @if (in_array('Instagram', $platforms))
                         <div class="success_fb"><a href=""><img src="{{asset('')}}images/Instagram_Color.png"
                                     class="img-fluid" alt="" /></a>
@@ -2269,16 +2264,23 @@
                                     class="img-fluid" alt="" /></a>
                         </div>
                         @endif
+                        @if (in_array('Linkedin', $platforms))
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Linkedin_Color.png"
+                                    class="img-fluid" alt="" /></a>
+                        </div>
+                        @endif
                         @endif
                     </div>
                     <div class="success_modal_para mt-3">
 
-                        <p class="mb-0">You just published your
+                        <p class="mb-0">You just  @if (!session()->has('IsScheduled')) published @else scheduled @endif  your
                             @if (!session()->has('check_first_post')) first @endif
                             post! Keep posting and let the world know what you’ve got to say.</p>
                     </div>
                     @php
                     session()->forget('check_first_post');
+                    session()->forget('IsScheduled');
+
                     @endphp
                 </div>
 

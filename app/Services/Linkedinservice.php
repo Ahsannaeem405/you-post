@@ -12,9 +12,16 @@ use Illuminate\Support\Facades\Http;
 
 class Linkedinservice
 {
-    public function create_post($data)
+    public function create_post($data= null, $id = null)
     {
-        $post = Post::find($data['post']->id);
+        if ($data !== null && isset($data['post']->id)) {
+            $post_id = $data['post']->id;
+        } else {
+           
+            $post_id = $id;
+        }
+      
+        $post = Post::find($post_id);
         $media_path = public_path("content_media/$post->media");
         $accesstoken = $post->account->linkedin_accesstoken;
         $linkedin_user_id = $post->account->linkedin_page_id;
@@ -215,7 +222,27 @@ class Linkedinservice
 
 
     }
+    public function get_linkedin_image($accounts)
+    {
+         $accessToken=  $accounts[0]->linkedin_accesstoken;
+         $linkedinPage = $accounts[0]->linkedin_page_id;
+         $parts = explode(":", $linkedinPage);
+         $numericPart = end($parts);
+         
+        if($accessToken){
+        $client = new Client();
+        $response = $client->get("https://api.linkedin.com/v2/organizations/{$numericPart}?projection=(id,logoV2(original~:playableStreams))", [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+            ],
+        ]);
 
+        $responseData = json_decode($response->getBody(), true);
+        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+      
+       }
+       return $imageUrl;
+    }
     public function delete_post($data)
     {
         try {
