@@ -2381,9 +2381,10 @@ height: 100%;
     width: 260px!important;
     margin: auto;
 }
-
+.btm_icon{
+    cursor: pointer;
+}
 /* lindin salman end */
-
 
 /* newpopup start*/
 /* Pop up  */
@@ -2747,10 +2748,10 @@ position: relative;
     height: 46px !important;
 } */
 .first_child_img_2{
-    height: 135px !important;
+    height: 122px !important;
 }
 .first_child_img4 {
-    height: 130px !important;
+    height: 122px !important;
 }
 
 .max_height_popup {
@@ -2759,7 +2760,26 @@ position: relative;
 .share_fb{
     padding-top: 4px;
 }
-
+.notification_circle{
+    width: 15px;
+    height:15px;
+    background-color: red;
+    border-radius: 50px;
+    position: absolute;
+    top: 5px;
+    left: 26px;
+}
+.btm_icon_notification{
+    position: relative;
+}
+.notification_circle p{
+    font-size: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2px;
+}
 /* salman_post start */
 
 /* newpopup end*/
@@ -2847,7 +2867,7 @@ position: relative;
     display: block;
 }
 .mobile_post_img:nth-child(3), .mobile_post_img:nth-child(4), .mobile_post_img:nth-child(5) {
-    height: 50px;
+    height: 57px;
 }
 .mobile_post_img img{
     width: 100%;
@@ -2884,7 +2904,7 @@ opacity: 60%;
 .fb_counter{
 color: white;
 position: absolute;
-top: 14%;
+top: 27%;
 left: 36%;
 }
 .plus_fb_icon{
@@ -2948,7 +2968,6 @@ left: 36%;
 .like-para {
     font-size: 10px;
     font-weight: 400;
-    /* line-height: 0px; */
     color: #575757;
 }
 

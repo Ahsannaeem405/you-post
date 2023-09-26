@@ -1233,7 +1233,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="twitter_text">
+                                    <div class="twitter_text pb-1">
                                         <span id="mypostresult_twitter" class="mypostresult">Write your post...</span>
                                         <span id="mynameresult_twitter" class="icon icon-privacy text-primary"></span>
 
@@ -1414,21 +1414,27 @@
                                             </div>
                                             <div> <span>Home</span></div>
                                         </div>
-                                        <div class="btm_icon">
+                                        <div class="btm_icon btm_icon_notification">
                                             <div style="text-align:center;">
                                                 <img src="{{asset('images/profile-01.png')}}" alt="">
                                             </div>
                                             <div> <span>My Network</span></div>
+                                            <div class="notification_circle">
+                                                <p style="padding-right:1px;">1</p>
+                                            </div>
                                         </div>
                                         <div class="btm_icon">
                                             <div style="text-align:center;"><img
                                                     src="{{asset('images/postlinked.png')}}" alt=""></div>
                                             <div><span>Post</span></div>
                                         </div>
-                                        <div class="btm_icon">
+                                        <div class="btm_icon btm_icon_notification">
                                             <div style="text-align:center;"><img
                                                     src="{{asset('images/notification1.png')}}" alt=""></div>
                                             <div> <span>Notifications</span></div>
+                                            <div class="notification_circle">
+                                                <p>14</p>
+                                            </div>
                                         </div>
                                         <div class="btm_icon">
                                             <div style="text-align:center;"> <img src="{{asset('images/jobs.png')}}"
