@@ -1448,4 +1448,12 @@ button {
 .linkedin_icons {
     opacity: 0.7;
 }
+.edit_posts p{
+    font-weight: 700;
+    opacity: 0.7;
+}
+.Edit_postins_icon{
+    width: 25px;
+    height: 25px;
+}
 /*  */
