@@ -1077,19 +1077,19 @@
                                     <div class="actions-buttons actions_buttons px-1">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
-                                                    <!-- <i class="fa-regular fa-thumbs-up"></i> -->
-                                                    <img src="{{asset('')}}images/thumbs_up.png" class="" alt="" height="20" />
-                                                    <span class="text text2  d-flex align-items-center">Like</span>
+                                                <!-- <i class="fa-regular fa-thumbs-up"></i> -->
+                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""
+                                                    height="20" />
+                                                <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                    <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
-                                                        height="15" height="15" />
-                                                    <span class="text text2">Comment</span>
+                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                    height="15" height="15" />
+                                                <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
-                                                    <img src="{{asset('')}}images/share.png" class="" alt=""
-                                                        height="18" />
-                                                    <span class="text text2">Share</span>
+                                                <img src="{{asset('')}}images/share.png" class="" alt="" height="18" />
+                                                <span class="text text2">Share</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -1126,7 +1126,7 @@
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <div class="" style="cursor:pointer;" >
+                                        <div class="" style="cursor:pointer;">
                                             <i class="fa-solid fa-ellipsis-vertical mt-2"></i>
                                         </div>
                                     </div>
@@ -1150,9 +1150,12 @@
                                             class="actions-buttons-list d-flex justify-content-between  mt-3 show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
-                                                    <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}" alt="" style="cursor:pointer;">
-                                                    <img class="ins_icon" src="{{asset('images/bubble-chat.png')}}" alt="" style="cursor:pointer;">
-                                                   <img  class="ins_icon" src="{{asset('images/send1.png')}}" alt="" style="cursor:pointer;">
+                                                    <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}"
+                                                        alt="" style="cursor:pointer;">
+                                                    <img class="ins_icon" src="{{asset('images/bubble-chat.png')}}"
+                                                        alt="" style="cursor:pointer;">
+                                                    <img class="ins_icon" src="{{asset('images/send1.png')}}" alt=""
+                                                        style="cursor:pointer;">
                                                 </div>
                                             </div>
                                             <div class="actions-buttons-button">
@@ -1161,7 +1164,8 @@
                                             <div class="actions-buttons-button">
                                             </div>
                                             <div class="actions-buttons-button d-flex">
-                                            <img class="ins_icon" src="{{asset('images/myiconsave.png')}}" alt="" style="cursor:pointer;">
+                                                <img class="ins_icon" src="{{asset('images/myiconsave.png')}}" alt=""
+                                                    style="cursor:pointer;">
                                             </div>
                                         </div>
                                         <div class="pt-1 insta_likes_post">
@@ -1259,8 +1263,7 @@
                                             <span>61</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/share2.png" class="ShareIcon"
-                                                alt="" />
+                                            <img src="{{asset('')}}images/share2.png" class="ShareIcon" alt="" />
 
                                         </div>
 
@@ -1361,11 +1364,20 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="LikeIcons">
-                                        <div class="InnerIcon">
-                                            <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt="" height="12">
-                                            <img src="{{asset('images/icons/linkedin-thumb.svg')}}" alt="" height="12"
-                                                style="margin: 0 0 0 -7px;">
-                                            <img src="{{asset('images/icons/linkedin-heart.svg')}}" alt="" height="12">
+                                        <div class="d-flex">
+                                            <div class="InnerIcon">
+                                                <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt=""
+                                                    height="12">
+                                                <img src="{{asset('images/icons/linkedin-thumb.svg')}}" alt=""
+                                                    height="12" style="margin: 0 0 0 -7px;">
+                                                <img src="{{asset('images/icons/linkedin-heart.svg')}}" alt=""
+                                                    height="12">
+                                            </div>
+                                            <span style="color:#888d91; font-size:10px; padding-top:7px;">345</span>
+                                        </div>
+                                        <div class="linkdin_likes_comm">
+                                            <span style="color:#888d91; font-size:10px; ">109comments.</span>
+                                            <span style="color:#888d91; font-size:10px;">59 reports</span>
                                         </div>
                                         <div class="TotalCmnts">
                                             <span></span>
@@ -2279,7 +2291,8 @@
                     </div>
                     <div class="success_modal_para mt-3">
 
-                        <p class="mb-0">You just  @if (!session()->has('IsScheduled')) published @else scheduled @endif  your
+                        <p class="mb-0">You just @if (!session()->has('IsScheduled')) published @else scheduled @endif
+                            your
                             @if (!session()->has('check_first_post')) first @endif
                             post! Keep posting and let the world know what you’ve got to say.</p>
                     </div>
