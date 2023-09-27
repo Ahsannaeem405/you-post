@@ -1003,13 +1003,13 @@
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
                                 <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">
-                                    <div class="msg_1">
+                                    <div class="msg_1 icon_opc">
                                         <p>8</p>
                                     </div>
                                 </div>
-                                <div class="one_img messenger">
-                                    <img src="{{asset('images/reel.png')}}" class="" alt="">
-                                    <div class="msg_1">
+                                <div class="one_img messenger marketicon">
+                                    <img src="{{asset('images/marketplace2.png')}}" class="" alt="">
+                                    <div class="msg_1 icon_opc">
                                         <p>1</p>
                                     </div>
                                 </div>
@@ -1103,9 +1103,9 @@
 
                         <div class="instagram_bg add_preview d-none  prv_insta">
                             <div class="the_preview">
-                                <div class="d-flex justify-content-between  px-2"">
+                                <div class="d-flex justify-content-between  px-2">
                                     <div class="d-flex gap-4">
-                                        <div> <i class="fa-solid fa-arrow-left mt-1"></i> </div>
+                                        <div style="cursor:pointer;"> <i class="fa-solid fa-arrow-left mt-1"></i> </div>
                                         <div class="ins_post_p">
                                             <p>Posts</p>
                                         </div>
@@ -1126,7 +1126,7 @@
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <div class="">
+                                        <div class="" style="cursor:pointer;" >
                                             <i class="fa-solid fa-ellipsis-vertical mt-2"></i>
                                         </div>
                                     </div>
@@ -1150,9 +1150,9 @@
                                             class="actions-buttons-list d-flex justify-content-between  mt-3 show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
-                                                    <img class="ins_icon" src="{{asset('images/icons8-heart-24.png')}}" alt="">
-                                                    <img class="ins_icon" src="{{asset('images/myiconcomment.png')}}" alt="">
-                                                   <img  class="ins_icon" src="{{asset('images/myiconshare.png')}}" alt="">
+                                                    <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}" alt="" style="cursor:pointer;">
+                                                    <img class="ins_icon" src="{{asset('images/bubble-chat.png')}}" alt="" style="cursor:pointer;">
+                                                   <img  class="ins_icon" src="{{asset('images/send1.png')}}" alt="" style="cursor:pointer;">
                                                 </div>
                                             </div>
                                             <div class="actions-buttons-button">
@@ -1161,7 +1161,7 @@
                                             <div class="actions-buttons-button">
                                             </div>
                                             <div class="actions-buttons-button d-flex">
-                                            <img class="ins_icon" src="{{asset('images/myiconsave.png')}}" alt="">
+                                            <img class="ins_icon" src="{{asset('images/myiconsave.png')}}" alt="" style="cursor:pointer;">
                                             </div>
                                         </div>
                                         <div class="pt-1 insta_likes_post">
@@ -1259,7 +1259,7 @@
                                             <span>61</span>
                                         </div>
                                         <div>
-                                            <img src="{{asset('')}}images/icons/repost-twitter.svg" class="ShareIcon"
+                                            <img src="{{asset('')}}images/share2.png" class="ShareIcon"
                                                 alt="" />
 
                                         </div>
