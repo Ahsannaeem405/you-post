@@ -14,16 +14,9 @@ use Illuminate\Support\Facades\Log;
 
 class  Facebookservice
 {
-    public function create_post($data= null, $id = null)
+    public function create_post($data)
     {
-        if ($data !== null && isset($data['post']->id)) {
-            $post_id = $data['post']->id;
-        } else {
-           
-            $post_id = $id;
-        }
-
-        $post = Post::find($post_id);
+        $post = Post::find($data['post']->id);
         $media_path = public_path("content_media/$post->media");
         $accessToken = $post->account->fb_page_token;
 

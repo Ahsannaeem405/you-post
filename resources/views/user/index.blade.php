@@ -575,12 +575,12 @@
                                                 </div>
 
                                                 <div class="tags_input_wrap grid_item tags_hash">
-                                                    <div class="tags_input">
+                                                    <!-- <div class="tags_input">
                                                         <select name="facebook_tag[]"
                                                             class="form-control selectmultiple1" multiple
                                                             id="facebook_tag">
                                                         </select>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <!-- my code -->
@@ -606,10 +606,10 @@
                                             <!-- end my coed -->
 
                                             <div class="form-group clearfix clearfix2">
-                                                <a href="javascript:;"
+                                                <!-- <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
                                                 <a href="javascript:;" class="form-wizard-next-btn float-right">Next
-                                                    Platform</a>
+                                                    Platform</a> -->
                                             </div>
                                         </fieldset>
                                         @endif
@@ -670,14 +670,14 @@
                                                     </ul>
                                                 </div>
                                                 <div class="tags_input_wrap grid_item tags_input_insta">
-                                                    <div class="tags_input">
+                                                    <!-- <div class="tags_input">
                                                         <select name="instagram_tag[]"
                                                             class="form-control selectmultiple" multiple
                                                             id="instagram_tag">
 
                                                         </select>
 
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div id="image_div_ins">
@@ -698,10 +698,10 @@
                                                 id="file_error_insta"></p>
 
                                             <div class="form-group clearfix clearfix2">
-                                                <a href="javascript:;"
+                                                <!-- <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
                                                 <a href="javascript:;" class="form-wizard-next-btn float-right">Next
-                                                    Platform</a>
+                                                    Platform</a> -->
                                             </div>
                                         </fieldset>
                                         @endif
@@ -759,20 +759,20 @@
 
 
                                                 <div class="tags_input_wrap grid_item tags_input_insta">
-                                                    <div class="tags_input">
+                                                    <!-- <div class="tags_input">
                                                         <select name="twitter_tag[]" class="form-control selectmultiple"
                                                             multiple id="twitter_tag">
 
                                                         </select>
 
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="form-group clearfix clearfix2">
-                                                <a href="javascript:;"
+                                                <!-- <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
                                                 <a href="javascript:;" class="form-wizard-next-btn float-right">Next
-                                                    Platform</a>
+                                                    Platform</a> -->
                                             </div>
                                         </fieldset>
                                         @endif
@@ -827,12 +827,12 @@
 
 
                                                 <div class="tags_input_wrap grid_item tags_input_insta">
-                                                    <div class="tags_input">
+                                                    <!-- <div class="tags_input">
                                                         <select name="linkedin_tag[]"
                                                             class="form-control selectmultiple" multiple
                                                             id="linkedin_tag">
                                                         </select>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div id="image_div_linked"><label for="file" style="margin-top: 20px;">
@@ -850,10 +850,10 @@
                                             <p class=" bg-warning text-white p-2  w-100 d-none mt-2"
                                                 id="file_error_linkedin"></p>
                                             <div class="form-group clearfix clearfix2">
-                                                <a href="javascript:;"
+                                                <!-- <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
                                                 <a href="javascript:;" class="form-wizard-next-btn float-right">Next
-                                                    Platform</a>
+                                                    Platform</a> -->
                                             </div>
                                         </fieldset>
                                         @endif

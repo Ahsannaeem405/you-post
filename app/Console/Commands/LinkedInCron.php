@@ -41,7 +41,7 @@ class LinkedInCron extends Command
             if($time>=$row->posted_at){
                 $run=new Linkedinservice();
                 $arr['post']=$row;
-                $result=$run->create_post($arr,null);
+                $result=$run->create_post($arr);
                 if($result['status']==true)
                 {
                     $up=Post::find($row->id);
