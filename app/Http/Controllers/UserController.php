@@ -67,7 +67,7 @@ class UserController extends Controller
 
         // start to get image
          $user_platforms = auth()->user()->account->platforms;
-         if (in_array('Facebook', $user_platforms )) {
+         if (in_array('Facebook', $user_platforms  )) {
             $run=new Facebookservice();
             $imageUrl=$run->get_fb_image( $accounts);
          

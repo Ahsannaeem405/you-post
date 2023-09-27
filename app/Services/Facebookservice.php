@@ -111,8 +111,13 @@ class  Facebookservice
 
     }
 
-    public function get_fb_image($accessToken)
+    public function get_fb_image($accounts)
     {
+        $accessToken=  $accounts[0]->fb_access_token;
+        $linkedinPage = $accounts[0]->fb_page_token;
+       
+
+
          if($accessToken){
         $client = new Client();
         $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
