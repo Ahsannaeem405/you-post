@@ -80,16 +80,6 @@
                     </label>
                 </div>
                 <div class="single_platform">
-                    <div class="social_icon">
-                        <img src="{{asset('images/Tiktok_Color.png')}}" class="color_icon" alt="" style="padding-bottom:2px"/>
-                        <img src="{{asset('images/Tiktok_Black.png')}}" class="black_icon" alt="" style="padding-bottom:2px"/>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" class="customCheckbox" disabled>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-                <div class="single_platform">
                     <div class="social_icon" style="padding-bottom: 9px;">
                         <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt=""/>
                         <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt=""/>
@@ -109,6 +99,18 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
+                <!-- <div class="single_platform">
+                    <div class="social_icon">
+                        <img src="{{asset('images/Tiktok_Color.png')}}" class="color_icon" alt="" style="padding-bottom:2px"/>
+                        <img src="{{asset('images/Tiktok_Black.png')}}" class="black_icon" alt="" style="padding-bottom:2px"/>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" class="customCheckbox" disabled>
+                        <span class="slider round"></span>
+                    </label>
+                </div> -->
+               
+                
                 <div class="single_platform">
                     <div class="social_icon" style="padding-bottom: 2px;">
                         <img src="{{asset('images/WhatsApp_Color.png')}}" class="color_icon" alt=""/>

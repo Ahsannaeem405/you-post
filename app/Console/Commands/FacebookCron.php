@@ -44,7 +44,7 @@ class FacebookCron extends Command
             if($time>=$row->posted_at){
                 $run=new Facebookservice();
                 $arr['post']=$row;
-                $result=$run->create_post($arr);
+                $result=$run->create_post($arr,null);
                 if($result['status']==true)
                 {
                     $up=Post::find($row->id);

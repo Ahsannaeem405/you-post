@@ -1252,7 +1252,7 @@ button {
     margin-top: 14px;
 }
 .prv_div_isnt .mobile_post_img_inst{
-    height: 100px;
+    height: 113px;
     width: 70px;
     position: relative;
     margin-bottom: 10px;
@@ -1260,14 +1260,16 @@ button {
     width: 100%;
     display: block;
 }
+/* ahmad farz */
 .prv_div_isnt .mobile_post_img_inst:nth-child(3){
-    height: 63px;
+    height: 72px;
 }
+/* ahmad farz */
 .prv_div_isnt .mobile_post_img_inst:nth-child(4){
-    height: 63px;
+    height: 72px;
 }
 .prv_div_isnt .mobile_post_img_inst:nth-child(5){
-    height: 63px;
+    height: 72px;
 }
 .div_in_div_inst_bg{
     position: absolute;
@@ -1284,13 +1286,14 @@ button {
 .insta_counter{
     color: white;
     position: absolute;
-    top: 29%;
+    top: 35%;
     left: 39%;
 }
 .plus_insta_icon{
     font-size: 12px;
     cursor: pointer;
 }
+
 /* ------------------------------------- */
 
 
@@ -1305,7 +1308,7 @@ button {
 }
 .prv_div_link .mobile_post_img_link {
     /* height: 100px; */
-    height: 100px;
+    height: 113px;
     width: 70px;
     position: relative;
     margin-bottom: 10px;
@@ -1314,13 +1317,13 @@ button {
     display: block;
 }
 .prv_div_link .mobile_post_img_link:nth-child(3){
-    height: 63px;
+    height: 72px;
 }
 .prv_div_link .mobile_post_img_link:nth-child(4){
-    height: 63px;
+    height: 72px;
 }
 .prv_div_link .mobile_post_img_link:nth-child(5){
-    height: 63px;
+    height: 72px;
 }
 .div_in_div_linkedin_bg{
     position: absolute;
@@ -1344,34 +1347,44 @@ button {
     font-size: 12px;
     cursor: pointer;
 }
+
 /* --------------------------------- */
 /* MaxHeight post preview */
+
+/* ahmad farz */
 .max_height_insta{
-    height: 245px !important;
+    height: 235px !important;
 }
+/* ahmad farz */
+
 .max_height_linkedin{
     height: 233px !important;
 }
 /* Insta preview grid */
+/* ahmad farz */
 .second_child_img1{
-    height: 245px !important;
+    height: 235px !important;
 }
+/* ahmad farz */
 .second_child_img2{
-    height: 171px !important;
+    height: 152px !important;
 }
+/* ahmad farz */
 .second_child_img3{
-    height: 137px !important;
+    height: 153px !important;
 }
 /* -------- */
 /* linkedinpreview grid */
 .third_child_img1{
-    height: 235px !important;
+    height: 233px !important;
 }
+/* ahmad faraz */
 .third_child_img2{
-    height: 163px !important;
+    height: 151px !important;
 }
+/* ahmad faraz */
 .third_child_img3{
-    height: 135px !important;
+    height: 151px !important;
 }
 /* ------- */
  #mediaContainervideo_inst{

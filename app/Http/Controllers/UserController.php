@@ -26,6 +26,8 @@ use getID3\getID3;
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 
+
+
 class UserController extends Controller
 {
 
@@ -63,26 +65,27 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-        // my code start
-        // $accessToken = $accounts[0]->linkedin_accesstoken;// Implement a method to obtain the access token     
-        if($accounts[0]->linkedin_accesstoken){
-        $accessToken = $accounts[0]->linkedin_accesstoken;     
+        // start to get image
+         $user_platforms = auth()->user()->account->platforms;
+         if (in_array('Facebook', $user_platforms )) {
+            $run=new Facebookservice();
+            $imageUrl=$run->get_fb_image( $accounts);
+         
+         }else if(in_array('Instagram', $user_platforms)){
+            $run=new Instagramservice();
+            $imageUrl=$run->get_inst_image( $accounts);
 
-        // $client = new Client();
-        // $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
-        //     'headers' => [
-        //         'Authorization' => 'Bearer ' . $accessToken,
-        //     ],
-        // ]);
+         }else if (in_array('Twitter', $user_platforms )){
+            $run=new TwitterService();
+            $imageUrl=$run->get_tw_image( $accounts);
 
-        // $responseData = json_decode($response->getBody(), true);
+         }else if(in_array('Linkedin', $user_platforms)){
+            $run=new Linkedinservice();
+            $imageUrl=$run->get_linkedin_image( $accounts);
+            
+         }
+       
 
-        // $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
-      
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
-       }
-
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms'));
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms' ,'imageUrl'));
 
     }
@@ -202,7 +205,17 @@ class UserController extends Controller
 
 
     }
+    public function getTimeDifference($postTime){
 
+        $reqDateTime = new DateTime($postTime, new \DateTimeZone('Asia/Karachi'));
+        $currentDateTime = new DateTime('now', new \DateTimeZone('Asia/Karachi')); 
+      
+        $reqDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
+        $currentDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
+        $timeDifference = abs($currentDateTime->getTimestamp() - $reqDateTime->getTimestamp());
+        return $timeDifference;
+
+    }
     public function create_post(Request $req)
     {
 
@@ -299,12 +312,66 @@ class UserController extends Controller
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
             $post->save();
+        }
+
+      
+        $timeDifference=  $this->getTimeDifference($req->time);
+       
+        if ($timeDifference <= 60) {
           
+            if($platforms[$i] == 'Facebook'){
+                $run=new Facebookservice();
+                $result=$run->create_post(null,$post->id);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }else if($platforms[$i] == 'Instagram'){
+                $run=new Instagramservice();
+                $result=$run->create_post(null,$post->id);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }else if($platforms[$i] == 'Twitter'){
+                $run=new TwitterService();
+                $result=$run->create_post(null,$post->id);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }else if($platforms[$i] == 'Linkedin'){
+              
+
+                $run=new Linkedinservice();
+                $result=$run->create_post(null,$post->id);
+                if($result['status']==true)
+                {
+                    $up=Post::find($post->id);
+                    $up->posted_at_moment='now';
+                    $up->update();
+                }
+
+            }
+         
+                     
+        }else{
+            session(['IsScheduled' =>"yes"]);
         }
         return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
         //****************end posting code****************//
 
     }
+  
 
 
     public function get_event_detail(Request $request)

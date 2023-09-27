@@ -16,10 +16,15 @@ class Instagramservice
 {
 
 
-    public function create_post($data)
+    public function create_post($data= null, $id = null)
     {
-
-        $post = Post::find($data['post']->id);
+        if ($data !== null && isset($data['post']->id)) {
+            $post_id = $data['post']->id;
+        } else {
+            $post_id = $id;
+        }
+        
+        $post = Post::find($post_id);
         $media_path = asset("content_media/$post->media");
         $accesstoken = $post->account->insta_access_token;
         $insta_user_id = $post->account->insta_user_id;
@@ -128,6 +133,22 @@ class Instagramservice
 
     }
 
+    public function get_inst_image($accessToken)
+    {
+         if($accessToken){
+        $client = new Client();
+        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+            ],
+        ]);
+
+        $responseData = json_decode($response->getBody(), true);
+        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+      
+       }
+       return $imageUrl;
+    }
     public function delete_post($data)
     {
         $accessToken = auth()->user()->account->insta_access_token;

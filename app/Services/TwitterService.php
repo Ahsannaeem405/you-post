@@ -46,11 +46,16 @@ class TwitterService
 
     }
 
-    public function create_post($data)
+    public function create_post($data= null, $id = null)
     {
+        if ($data !== null && isset($data['post']->id)) {
+            $post_id = $data['post']->id;
+        } else {
+           
+            $post_id = $id;
+        }
 
-
-        $post = Post::find($data['post']->id);
+        $post = Post::find($post_id);
         $this->twiter_refresh($post->account);
         $post = Post::find($data['post']->id);
         $tags = $post->tag ? " $post->tag" : '';
@@ -81,7 +86,22 @@ class TwitterService
         return $msg;
     }
 
+    public function get_tw_image($accessToken)
+    {
+         if($accessToken){
+        $client = new Client();
+        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+            ],
+        ]);
 
+        $responseData = json_decode($response->getBody(), true);
+        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+      
+       }
+       return $imageUrl;
+    }
     public function twiter_refresh($account)
     {
 
