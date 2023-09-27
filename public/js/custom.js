@@ -647,6 +647,7 @@ $(document).ready(function () {
                              }
                              else{
                                 $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
+                                $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
                              }
                             
                              if(add_imge == 4){
