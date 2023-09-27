@@ -41,7 +41,7 @@
                             <img src="{{asset('images/fb_p.png')}}" class="img-fluid" alt="" />
                         </div>
 
-                        <div class="Evano">
+                        <div class="Evano ms-2">
                             <h3 class="mb-0">{{$platforms['Facebook'][0]->user->name}}
                                 <img src="{{asset('images/offical2.png')}}" class="" alt="" height="" />
                             </h3>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="post_text pb-2">
+                    <div class="post_text pb-2  edit_posts">
                         <p class="mb-0">{{$platforms['Facebook'][0]->content}}</p>
                         <a href="">{{$platforms['Facebook'][0]->tag}}</a>
                     </div>
@@ -74,10 +74,9 @@
                         @if($platforms['Facebook'][0]->media_type=='image')
 
                         @foreach($Facebookimages as $image)
-                        @if($loop->index <= 3) 
-                        <div class="post_modal_con"
+                        @if($loop->index <= 3) <div class="post_modal_con"
                             style="background-image: url({{asset('content_media/' .$image)}})">
-                        </div>
+                    </div>
                     @elseif($loop->index == 4)
                     <div class="post_modal_con post_modal_con5_img"
                         style="background-image: url({{asset('content_media/' .$image)}})">
@@ -103,25 +102,27 @@
             <div class="col-12">
                 <div class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
 
-                    <div class="actions-buttons-button">
+                    <div class="actions-buttons-button small_viewicons d-flex" style="cursor:pointer; ">
 
-                        <img src="{{asset('images/t1.png')}}" class="img-fluid" alt="" height="20" />
-                        <span class="text text3">Like</span>
+                        <img src="{{asset('images/t1.png')}}" class="img-fluid" alt="" style="height: 20px; margin-right: 5px; padding-top: 5px;" />
+                        <p class="text text3">Like</p>
                     </div>
-                    <div class="actions-buttons-button">
-                        <i class="fa-regular fa-message" style="color:#9DA1A5; padding-top:4px;"></i>
-                        <span class="text text3">Comment</span>
+                    <div class="actions-buttons-button small_viewicons  d-flex" style="cursor:pointer; ">
+                        <i class="fa-regular fa-message" style="color:#9DA1A5;height: 20px; margin-right: 5px; padding-top: 6px;" ></i>
+                        <p class="text text3">Comment</p>
                     </div>
-                    <div class="actions-buttons-button">
-                        <img src="{{asset('images/tt3.png')}}" class="img-fluid" alt="" height="20" />
-                        <span class="text text3">Share</span>
+                    <div class="actions-buttons-button small_viewicons  d-flex" style="cursor:pointer;">
+                        <img src="{{asset('images/tt3.png')}}" class="img-fluid myshare_icon" alt=""  style="margin-right: 5px; height: 20px;"/>
+                        <p class="text text3">Share</p>
                     </div>
-                    <div class="actions-buttons-button d-flex">
-                        <div><img src="{{asset('images/admn.png')}}" class="img-fluid" alt="" height="13"
-                                style="height:25px;" /></div>
+                    <div class="actions-buttons-button small_viewicons d-flex" style="cursor:pointer;">
+                        <div>
+                            <img src="http://127.0.0.1:8000/images/Profile 1-01.png" alt="" class="insta_acc_bar" style="height:20px; padding-top:5px; opacity:0.5;
+                                ">
+                        </div>
                         <div class="mt-1">
-                            <img src="{{asset('images/drop.png')}}" class="img-fluid" alt="" height="13"
-                                style="height:14px;" />
+                            <img src="{{asset('images/drop.png')}}" class="img-fluid" alt=""
+                                style="height:14px; opacity:0.5" />
                         </div>
                     </div>
                 </div>
@@ -215,13 +216,15 @@
 
             <div class="actions-buttons-button">
                 <div class="d-flex" style="gap: 0 18px;">
-                    <i class="fa-regular fa-heart myinsta_icon1"></i>
-                    <i class="fa-regular fa-comment fa-flip-horizontal myinsta_icon2"></i>
-                    <i class="fa-regular fa-paper-plane myinsta_icon3"></i>
+                    <img class="Edit_postins_icon" src="{{asset('images/icons8-heart1.png')}}" alt=""
+                        style="cursor:pointer;">
+                    <img class="Edit_postins_icon" src="{{asset('images/bubble-chat.png')}}" alt=""
+                        style="cursor:pointer;">
+                    <img class="Edit_postins_icon" src="{{asset('images/send1.png')}}" alt="" style="cursor:pointer;">
                 </div>
             </div>
             <div class="actions-buttons-button">
-                <i class="fa-solid fa-ellipsis myinsta_icon"></i>
+                <i class="fa-solid fa-ellipsis myinsta_icon" style="cursor:pointer;"></i>
             </div>
 
 
@@ -229,7 +232,7 @@
             </div>
 
             <div class="actions-buttons-button d-flex">
-                <i class="fa-regular fa-bookmark myinsta_icon"></i>
+                <i class="fa-regular fa-bookmark myinsta_icon" style="cursor:pointer;"></i>
             </div>
 
 
@@ -243,7 +246,7 @@
         </span>
     </div>
     <div class="col-12 insta_post1">
-        <div class="post_text pb-2">
+        <div class="post_text pb-2 edit_posts">
             <p class="mb-0">{{$platforms['Instagram'][0]->content}}</p>
             <a href="">{{$platforms['Instagram'][0]->tag}}</a>
         </div>
@@ -294,7 +297,7 @@
             </div>
             <div class="post_title">
                 <div class="col-12">
-                    <div class="post_text pb-2">
+                    <div class="post_text pb-2 edit_posts">
                         <p class="mb-0">{{$platforms['Twitter'][0]->content}}</p>
                         <a href="">{{$platforms['Twitter'][0]->tag}}</a>
                     </div>
@@ -355,12 +358,12 @@
         <div class="row p-3">
             <div class="col-7 ">
                 <div class="d-flex">
-                    <div> 
-                    @if(isset($imageUrl))
+                    <div>
+                        @if(isset($imageUrl))
                         <img src="{{$imageUrl}}" class="" alt="" />
-                    @else
+                        @else
                         <img src="{{asset('')}}images/elplinkedin.png" class="" alt="" />
-                    @endif
+                        @endif
                     </div>
                     <div class="Evano card_4Evano">
                         <h3 class="mb-0 user_name">{{$platforms['Linkedin'][0]->user->name}} <img src="" class="" alt=""
@@ -389,7 +392,7 @@
             </div>
 
             <div class="col-12">
-                <div class="post_text pb-2">
+                <div class="post_text pb-2 edit_posts">
                     <p class="mb-0">{{$platforms['Linkedin'][0]->content}}</p>
                     <a href="">{{$platforms['Linkedin'][0]->tag}}</a>
                 </div>
@@ -452,26 +455,26 @@
 
             <div class="col-12">
                 <div class="actions-buttons-list d-flex  justify-content-between border_top  mt-3 bottom_padd">
-                    <div class="dropimg">
+                    <div class="dropimg d-flex">
                         <img src="{{asset('')}}images/elp2.png" class="dropimg1" alt="" />
-                        <i class="fa-solid fa-caret-down myicon dropimg2"></i>
+                        <i class="fa-solid fa-caret-down myicon dropimg2" style="padding-top:5px; margin-left: 5px;"></i>
                     </div>
-                    <div class="actions-buttons-button">
-                        <i class="fa-regular fa-thumbs-up fa-flip-horizontal myicon"></i>
-                        <span class="text text3">Like</span>
+                    <div class="actions-buttons-button d-flex small_viewicons2">
+                        <i class="fa-regular fa-thumbs-up fa-flip-horizontal myicon" style="padding-top:4px; margin-right: 5px;"></i>
+                        <p class="text text3">Like</p>
                     </div>
-                    <div class="actions-buttons-button">
+                    <div class="actions-buttons-button d-flex small_viewicons2">
 
-                        <i class="fa-solid fa-comments myicon"></i>
-                        <span class="text text3">Comment</span>
+                        <i class="fa-solid fa-comments myicon" style="padding-top:4px; margin-right: 5px;"></i>
+                        <p class="text text3">Comment</p>
                     </div>
-                    <div class="actions-buttons-button">
-                        <i class="fa-solid fa-retweet myicon"></i>
-                        <span class="text text3">Repost</span>
+                    <div class="actions-buttons-button d-flex small_viewicons2">
+                        <i class="fa-solid fa-retweet myicon" style="padding-top:4px; margin-right: 5px;"></i>
+                        <p class="text text3">Repost</p>
                     </div>
-                    <div class="actions-buttons-button">
-                        <i class="fa-solid fa-paper-plane myicon"></i>
-                        <span class="text text3">Send</span>
+                    <div class="actions-buttons-button d-flex small_viewicons2">
+                        <i class="fa-solid fa-paper-plane myicon" style="padding-top:4px; margin-right: 5px;"></i>
+                        <p class="text text3">Send</p>
                     </div>
                 </div>
             </div>
@@ -525,38 +528,34 @@ post_cards(0);
 </script> -->
 
 <script>
-$(document).ready(function () {
+$(document).ready(function() {
 
-    function setImagePreview()
-    {
-        $('.image_main_container').each(function(){
+    function setImagePreview() {
+        $('.image_main_container').each(function() {
             var mainlength = $(this).find('.post_modal_con').length;
             // alert(mainlength);
-            if(mainlength == 1)
-            {
+            if (mainlength == 1) {
                 $(this).css('column-count', '1');
-            }else{
+            } else {
                 $(this).css('column-count', '2');
             }
 
-            if(mainlength == 1 || mainlength == 2){
+            if (mainlength == 1 || mainlength == 2) {
                 $(this).find('.post_modal_con').addClass('max_height_popup');
-            }else{
+            } else {
                 $(this).find('.post_modal_con').removeClass('max_height_popup');
 
             }
-            if(mainlength == 3){
+            if (mainlength == 3) {
                 $(this).find('.post_modal_con:nth-child(1)').addClass('post_modal_child_img1');
                 $(this).find('.post_modal_con:nth-child(2)').addClass('post_modal_child_img2');
-            }
-            else{
+            } else {
                 $(this).find('.post_modal_con:nth-child(1)').removeClass('post_modal_child_img1');
             }
-        
-            if(mainlength == 4){
+
+            if (mainlength == 4) {
                 $(this).find('.post_modal_con:nth-child(3)').addClass('post_modal_child_img3');
-            }
-            else{
+            } else {
                 $(this).find('.post_modal_con:nth-child(3)').removeClass('post_modal_child_img3');
             }
             // alert('sddd');
@@ -566,8 +565,4 @@ $(document).ready(function () {
     setImagePreview();
 
 });
-
-
-
 </script>
-
