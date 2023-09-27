@@ -900,6 +900,17 @@
   }
     /* ------------ */
 
+.small_viewicons {
+    flex-direction: column;
+}
+.small_viewicons2{
+    flex-direction: column;
+  
+}
+.myshare_icon{
+    width: 20px;
+}
+
 }
 
 /* media  query */

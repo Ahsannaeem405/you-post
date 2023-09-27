@@ -1083,7 +1083,7 @@
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
                                                     <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
-                                                        height="15" height="15" />
+                                                        height="15" width="14" />
                                                     <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
