@@ -1942,7 +1942,7 @@ body.dark .home .text{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 5px;
+    padding-top: 7px;
     color: white;
 }
 .all_social_platform.all_social_platform2{
@@ -2639,6 +2639,7 @@ height: 100%;
 }
 .elps{
     padding-right: 10px;
+    cursor: pointer;
 }
 .twitter_text p{
     color: #fff;
