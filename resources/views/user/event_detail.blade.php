@@ -288,8 +288,10 @@
             </div>
             <div class="col-5">
                 <div>
-                    <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
+             
+                 <a href="{{ $feed_tw }}" target="_blank" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
                         View post in live feed</a>
+              
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>
@@ -334,7 +336,7 @@
                 <span>
                     <span class="text-secondary">Scheduled at:</span>
                     <span
-                        class="text-primary">{{\Carbon\Carbon::parse($platforms['Instagram'][0]->posted_at)->format('d M Y h:i A')}}</span>
+                        class="text-primary">@if(isset($platforms['Instagram'])){{\Carbon\Carbon::parse($platforms['Instagram'][0]->posted_at)->format('d M Y h:i A')}}@endif</span>
                 </span>
 
             </div>
@@ -377,8 +379,14 @@
             </div>
             <div class="col-5">
                 <div>
-                    <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
-                        View post in live feed</a>
+              
+                  @if($platforms['Linkedin'][0]->posted_at_moment== 'now')
+                    <a href="{{ $feed_linkedin }}" target="_blank" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
+                    View post in live feed
+                       </a>
+                  @else
+                      
+                  @endif
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>

@@ -67,19 +67,20 @@ class UserController extends Controller
 
         // start to get image
          $user_platforms = auth()->user()->account->platforms;
-         if (in_array('Facebook', $user_platforms  )) {
-            $run=new Facebookservice();
-            $imageUrl=$run->get_fb_image( $accounts);
+        //  if (in_array('Facebook', $user_platforms  )) {
+        //     $run=new Facebookservice();
+        //     $imageUrl=$run->get_fb_image( $accounts);
          
-         }else if(in_array('Instagram', $user_platforms)){
-            $run=new Instagramservice();
-            $imageUrl=$run->get_inst_image( $accounts);
+        //  }else if(in_array('Instagram', $user_platforms)){
+        //     $run=new Instagramservice();
+        //     $imageUrl=$run->get_inst_image( $accounts);
+        //  }
+        //  }else if (in_array('Twitter', $user_platforms )){
+        //     $run=new TwitterService();
+        //     $imageUrl=$run->get_tw_image( $accounts);
 
-         }else if (in_array('Twitter', $user_platforms )){
-            $run=new TwitterService();
-            $imageUrl=$run->get_tw_image( $accounts);
-
-         }else if(in_array('Linkedin', $user_platforms)){
+        //  }else
+          if(in_array('Linkedin', $user_platforms)){
             $run=new Linkedinservice();
             $imageUrl=$run->get_linkedin_image( $accounts);
             
@@ -312,61 +313,49 @@ class UserController extends Controller
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
             $post->save();
-        }
+        
 
       
-        $timeDifference=  $this->getTimeDifference($req->time);
+         $timeDifference=  $this->getTimeDifference($req->time);
        
-        if ($timeDifference <= 60) {
+         if ($timeDifference <= 60) {
           
             if($platforms[$i] == 'Facebook'){
                 $run=new Facebookservice();
-                $result=$run->create_post(null,$post->id);
-                if($result['status']==true)
-                {
-                    $up=Post::find($post->id);
-                    $up->posted_at_moment='now';
-                    $up->update();
-                }
+                $arr['post']=$post;
+                $result=$run->create_post($arr);
+           
 
             }else if($platforms[$i] == 'Instagram'){
                 $run=new Instagramservice();
-                $result=$run->create_post(null,$post->id);
-                if($result['status']==true)
-                {
-                    $up=Post::find($post->id);
-                    $up->posted_at_moment='now';
-                    $up->update();
-                }
+                $arr['post']=$post;
+                $result=$run->create_post($arr);
+            
 
             }else if($platforms[$i] == 'Twitter'){
                 $run=new TwitterService();
-                $result=$run->create_post(null,$post->id);
-                if($result['status']==true)
-                {
-                    $up=Post::find($post->id);
-                    $up->posted_at_moment='now';
-                    $up->update();
-                }
+                $arr['post']=$post;
+                $result=$run->create_post($arr);
+             
 
             }else if($platforms[$i] == 'Linkedin'){
-              
-
+        
                 $run=new Linkedinservice();
-                $result=$run->create_post(null,$post->id);
-                if($result['status']==true)
-                {
-                    $up=Post::find($post->id);
-                    $up->posted_at_moment='now';
-                    $up->update();
-                }
+                $arr['post']=$post;
+                $result=$run->create_post($arr);
+            
+            }
 
+            if($result['status']==true)
+            {
+                $up=Post::find($post->id);
+                $up->posted_at_moment='now';
+                $up->update();
             }
          
                      
-        }else{
-            session(['IsScheduled' =>"yes"]);
         }
+     }
         return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
         //****************end posting code****************//
 
@@ -380,8 +369,22 @@ class UserController extends Controller
         $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         $platformsName = $platforms->pluck('plateform')->toArray();
         $platforms = $platforms->groupBy('plateform');
+        $feed_tw='';
+        if(isset($platforms['Linkedin'])){
 
-        return view('user.event_detail', compact('post', 'platforms', 'platformsName'));
+            $feed_linkedin=new Linkedinservice();
+            $feed_linkedin=$feed_linkedin->feed_link_linkedin($post);
+            
+        }
+        
+        if(isset($platforms['Twitter'])){
+
+            $feed_tw=new TwitterService();
+            $feed_tw=$feed_tw->feed_tw($post);
+            
+        }
+
+        return view('user.event_detail', compact('post', 'platforms', 'platformsName','feed_linkedin','feed_tw'));
     }
 
     public function get_events(Request $request)
@@ -781,6 +784,7 @@ class UserController extends Controller
             $twitter = config('services.twitter');
 
             $client_id = $twitter['client_id'];
+           
             $client_secret = $twitter['client_secret'];
             $redirect_uri = $twitter['redirect'];
             // with curl
@@ -805,7 +809,7 @@ class UserController extends Controller
 
             curl_close($curl);
             $response2 = json_decode($response);
-            //dd($response2);
+          
             if (isset($response2->error)) {
                 return redirect('/index')->with('error', $response2->error_description);
             }

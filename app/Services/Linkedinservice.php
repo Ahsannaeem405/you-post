@@ -12,16 +12,9 @@ use Illuminate\Support\Facades\Http;
 
 class Linkedinservice
 {
-    public function create_post($data= null, $id = null)
+    public function create_post($data)
     {
-        if ($data !== null && isset($data['post']->id)) {
-            $post_id = $data['post']->id;
-        } else {
-           
-            $post_id = $id;
-        }
-      
-        $post = Post::find($post_id);
+        $post = Post::find( $data['post']->id);
         $media_path = public_path("content_media/$post->media");
         $accesstoken = $post->account->linkedin_accesstoken;
         $linkedin_user_id = $post->account->linkedin_page_id;
@@ -274,6 +267,35 @@ class Linkedinservice
         }
 
     }
+    
+    public function feed_link_linkedin($post){
+
+        
+        if($post->posted_at_moment== 'now'){
+
+            // getting post id
+            $live_post_id = $post->post_dt;
+            $live_post_id = $live_post_id->social_id;
+            $live_post_id = explode(":", $live_post_id);
+            $live_post_id = end($live_post_id);
+            // getting access token
+            $acces_token = $post->account;
+            $acces_token = $acces_token->linkedin_accesstoken;
+            // getting page id
+            $pg_id = $post->account;
+            $pg_id = $pg_id->linkedin_page_id;
+            $pg_id = explode(":", $pg_id);
+            $pg_id = end($pg_id);
+             // get link
+             return    $feed_linkedin = "https://www.linkedin.com/company/{$pg_id}/posts/{$live_post_id}/";
+           
+            }
+            else{
+                return;
+            }
+
+    }
+
 
 
 }

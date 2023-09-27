@@ -41,7 +41,7 @@ class TwitterCron extends Command
             if($time>=$row->posted_at){
                 $run=new TwitterService();
                 $arr['post']=$row;
-                $result=$run->create_post($arr,null);
+                $result=$run->create_post($arr);
                 if($result['status']==true)
                 {
                     $up=Post::find($row->id);

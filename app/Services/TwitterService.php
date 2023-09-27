@@ -86,8 +86,11 @@ class TwitterService
         return $msg;
     }
 
-    public function get_tw_image($accessToken)
+    public function get_tw_image($accounts)
     {
+        $accessToken=  $accounts[0]->twiter_access_token;
+      
+
          if($accessToken){
         $client = new Client();
         $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
@@ -137,6 +140,14 @@ class TwitterService
 
 
 
+    }
+    public function feed_tw($post){
+                if($post->posted_at_moment== 'now'){                  
+                    $live_post_id = $post->post_dt;
+                    $live_post_id = $live_post_id->social_id;
+                    return    $feed_linkedin = "https://twitter.com/{$live_post_id}/status/{$live_post_id}/";
+                    }
+                    else{return;}
     }
 
     function stats($post)

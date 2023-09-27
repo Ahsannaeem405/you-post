@@ -16,15 +16,9 @@ class Instagramservice
 {
 
 
-    public function create_post($data= null, $id = null)
+    public function create_post($data)
     {
-        if ($data !== null && isset($data['post']->id)) {
-            $post_id = $data['post']->id;
-        } else {
-            $post_id = $id;
-        }
-        
-        $post = Post::find($post_id);
+        $post = Post::find( $data['post']->id);
         $media_path = asset("content_media/$post->media");
         $accesstoken = $post->account->insta_access_token;
         $insta_user_id = $post->account->insta_user_id;

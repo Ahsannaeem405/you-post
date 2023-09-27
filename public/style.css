@@ -2781,6 +2781,13 @@ position: relative;
     align-items: center;
     padding-right: 2px;
 }
+.LikeIcons{
+    display: flex;
+    justify-content: space-between;
+}
+.linkdin_likes_comm{
+    padding-left: 55px;
+}
 /* salman_post start */
 
 /* newpopup end*/
