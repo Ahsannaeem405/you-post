@@ -1155,8 +1155,12 @@
                                                    <img  class="ins_icon" src="{{asset('images/send1.png')}}" alt="" style="cursor:pointer;">
                                                 </div>
                                             </div>
-                                            <div class="actions-buttons-button">
-                                                <i class="fa-solid fa-ellipsis text-primary"></i>
+                                            <div class="actions-buttons-button d-flex" style="padding-top:
+                                            5px">
+                                            <img  class="ins_icon" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:12px;width:12px">
+                                            <img  class="ins_icon" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:12px;width:12px">
+                                            <img  class="ins_icon" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:12px;width:12px">
+                                                
                                             </div>
                                             <div class="actions-buttons-button">
                                             </div>
@@ -1366,6 +1370,7 @@
                                             <img src="{{asset('images/icons/linkedin-thumb.svg')}}" alt="" height="12"
                                                 style="margin: 0 0 0 -7px;">
                                             <img src="{{asset('images/icons/linkedin-heart.svg')}}" alt="" height="12">
+                                            <!-- <span style="font-size:8px; color:grey;">200</span> -->
                                         </div>
                                         <div class="TotalCmnts">
                                             <span></span>
@@ -1430,7 +1435,7 @@
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
                                             <div style="text-align:center;"><img
-                                                    src="{{asset('images/notification1.png')}}" alt=""></div>
+                                                    src="{{asset('images/notify2.png')}}" alt=""></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle">
                                                 <p>14</p>

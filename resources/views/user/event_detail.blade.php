@@ -453,20 +453,20 @@
                     </div>
                     <div class="actions-buttons-button d-flex small_viewicons2">
                         <i class="fa-regular fa-thumbs-up fa-flip-horizontal myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3">Like</p>
+                        <p class="text text3 icon_text3">Like</p>
                     </div>
                     <div class="actions-buttons-button d-flex small_viewicons2">
 
                         <i class="fa-solid fa-comments myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3">Comment</p>
+                        <p class="text text3 icon_text3">Comment</p>
                     </div>
                     <div class="actions-buttons-button d-flex small_viewicons2">
                         <i class="fa-solid fa-retweet myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3">Repost</p>
+                        <p class="text text3 icon_text3">Repost</p>
                     </div>
                     <div class="actions-buttons-button d-flex small_viewicons2">
                         <i class="fa-solid fa-paper-plane myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3">Send</p>
+                        <p class="text text3 icon_text3">Send</p>
                     </div>
                 </div>
             </div>

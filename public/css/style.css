@@ -1445,9 +1445,9 @@ button {
 .ActionBtn_Linkedin{
     opacity: 0.7;
 }
-.linkedin_icons {
+/* .linkedin_icons {
     opacity: 0.7;
-}
+} */
 .edit_posts p{
     font-weight: 700;
     opacity: 0.7;
@@ -1455,5 +1455,10 @@ button {
 .Edit_postins_icon{
     width: 25px;
     height: 25px;
+}
+.ShareIcon{
+    width: 15px;
+    height: 15px;
+    padding-top: 2px;
 }
 /*  */

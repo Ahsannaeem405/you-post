@@ -905,12 +905,16 @@
 }
 .small_viewicons2{
     flex-direction: column;
+    margin-right: 10px;
   
 }
+
 .myshare_icon{
     width: 20px;
 }
-
+.icon_text3{
+    font-size: 12px;
+}
 }
 
 /* media  query */
