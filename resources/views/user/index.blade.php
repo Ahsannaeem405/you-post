@@ -332,11 +332,9 @@
 
 .MainMobileview span.sponsored {
     margin-left: 0 !important;
-    color: #ADAEB2;
-    font-weight: 700 !important;
+    color: #888888;
+    font-weight: 400 !important;
     font-size: 10px;
-    font-family: inherit;
-
 }
 
 .MainMobileview span.sponsored i {
@@ -346,8 +344,7 @@
 .Mobcart_title span {
     margin-left: unset !important;
     margin-top: 3px;
-    font-size: 11px;
-    /* font-weight: 600; */
+    font-weight: 600;
 }
 
 .Mobcart_titleCustom,
@@ -1026,7 +1023,7 @@
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{asset('images/insta_elp.png')}}" class="img-fluid" width="40"
+                                                <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
                                                     height="40" alt="">
                                             </div>
                                             <div>
@@ -1036,7 +1033,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="icons_d px-2">
+                                        <div class="icons_d">
                                             <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
                                             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
                                         </div>
@@ -1078,7 +1075,7 @@
                                     </div>
                                     <hr style="color:gray;" class="m-0">
                                     <div class="actions-buttons actions_buttons px-1">
-                                        <ul class="actions-buttons-list d-flex p-0 justify-content-between pt-2">
+                                        <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
                                                 <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""
@@ -1086,9 +1083,9 @@
                                                 <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
-                                                    height="15" width="14" />
-                                                <span class="text text2">Comment</span>
+                                                    <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                        height="15" width="14" />
+                                                    <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
                                                 <img src="{{asset('')}}images/share.png" class="" alt="" height="18" />
@@ -1106,7 +1103,7 @@
 
                         <div class="instagram_bg add_preview d-none  prv_insta">
                             <div class="the_preview">
-                                <div class="d-flex justify-content-between px-2">
+                                <div class="d-flex justify-content-between  px-2">
                                     <div class="d-flex gap-4">
                                         <div style="cursor:pointer;"> <i class="fa-solid fa-arrow-left mt-1"></i> </div>
                                         <div class="ins_post_p">
@@ -1117,17 +1114,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-10">
-                                        <div class="d-flex show active gap-1 px-2">
+                                        <div class="d-flex show active gap-1">
                                             <div class="show active">
                                                 <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
-                                                <h3 class="mb-0 user_name">   {{auth()->user()->name}}
+                                                <h3 class="mb-0 user_name">ahmad
                                                     <img src="{{asset('images/offical2.png')}}" alt="" height="" />
                                                 </h3>
-                                                <div style="padding-top:11px !important;">
-                                                    <img src="{{asset('images/offical2.png')}}" alt="" height="" />
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1153,7 +1147,7 @@
                                 <div class="row px-2">
                                     <div class="col-12">
                                         <div
-                                            class="actions-buttons-list d-flex justify-content-between show active">
+                                            class="actions-buttons-list d-flex justify-content-between  mt-3 show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
                                                     <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}"
@@ -1164,16 +1158,13 @@
                                                         style="cursor:pointer;">
                                                 </div>
                                             </div>
-                                            <!-- <div class="actions-buttons-button d-flex" style="padding-top:
+                                            <div class="actions-buttons-button d-flex" style="padding-top:
                                             5px">
-                                                <img class="" src="{{asset('images/dotb.png')}}" alt=""
-                                                    style="cursor:pointer; height:9px;width:9px">
-                                                <img class="" src="{{asset('images/dotg.png')}}" alt=""
-                                                    style="cursor:pointer; height:9px;width:9px">
-                                                <img class="" src="{{asset('images/dotg.png')}}" alt=""
-                                                    style="cursor:pointer; height:9px;width:9px">
-
-                                            </div> -->
+                                            <img  class="" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
+                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
+                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
+                                                
+                                            </div>
                                             <div class="actions-buttons-button">
                                             </div>
                                             <div class="actions-buttons-button d-flex">
@@ -1208,7 +1199,7 @@
                                 </div>
                                 <div class="row px-2">
                                     <div class="col-12 insta_pos_acc_icons ">
-                                        <div class="insta_acc_bar_parent pt-3">
+                                        <div class="insta_acc_bar_parent">
                                             <img src="{{asset('images/Home-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/search-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/Plus-01.png')}}" alt="" class="insta_acc_bar">
@@ -1230,16 +1221,16 @@
 
                         <div class="twitter_post add_preview  d-none  prv_twitter">
                             <div class="row">
-                                <div class="col-2  twitter_prev">
-                                <div class="indrive_icon2">
-                                        <img src="{{asset('')}}images/x_img.jpg" class="" alt="" />
+                                <div class="col-3">
+                                    <div class="indrive_icon">
+                                        <img src="{{asset('')}}images/indrivelogo.png" class="" alt="" />
                                     </div>
                                 </div>
-                                <div class="col-10 colum_nine">
+                                <div class="col-9 colum_nine">
                                     <div>
                                         <div class="twitter_header">
                                             <div>
-                                                <span class="twitter_post_content">   {{auth()->user()->name}}</span> <img
+                                                <span class="twitter_post_content">InDrive</span> <img
                                                     src="{{asset('')}}images/star.png" class="" alt="" />
                                                 <span class="twitter_post_content_tag ">@inDrive</span>
                                             </div>
@@ -1286,7 +1277,7 @@
                                 </div>
 
                             </div>
-                            <div class="row mt-3">
+                            <!-- <div class="row mt-3">
                                 <div class="col-12 twitter_second_row pt-2"></div>
                                 <div class="col-3">
                                     <div class="indrive_icon2">
@@ -1310,7 +1301,7 @@
                                         <img src="{{asset('')}}images/fa.png" class="" alt="" style="width:100%;" />
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- moble_twitter_post3 end-->
                         @endif
@@ -1322,11 +1313,11 @@
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
-                                        <!-- @if(isset($imageUrl))
+                                        @if(isset($imageUrl))
                                         <img src="{{$imageUrl}}" alt="" class="">
-                                        @else -->
-                                        <img src="{{asset('images/insta_elp.png')}}" alt="" class="">
-                                        <!-- @endif -->
+                                        @else
+                                        <img src="{{asset('images/linkedinlogo.png')}}" alt="" class="">
+                                        @endif
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">
@@ -1347,7 +1338,7 @@
                                     </div>
                                 </div>
                                 <div class="menu_icon">
-                                    <img src="{{asset('images/ellips.png')}}" alt="" style="cursor:pointer;">
+                                    <img src="{{asset('images/ellips.png')}}" alt="">
                                 </div>
                             </div>
                             <div class="row">
@@ -1401,28 +1392,28 @@
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/thum-linkedin.svg')}}" alt=""
-                                                        style="width:20px;height:17px">
+                                                        height="18">
                                                     <span class="Innerxt">Like</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/comment-linkedin.svg')}}" alt=""
-                                                        style="width:20px;height:17px">
+                                                        height="18">
                                                     <span class="Innerxt">Comment</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/share-linkedin.svg')}}" alt=""
-                                                        style="width:20px;height:17px">
+                                                        height="18">
                                                     <span class="Innerxt">Repost</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/send-linkedin.svg')}}" alt=""
-                                                        style="width:20px;height:17px">
+                                                        height="18">
                                                     <span class="Innerxt">Send</span>
                                                 </button>
                                             </li>
@@ -1454,8 +1445,8 @@
                                             <div><span>Post</span></div>
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
-                                            <div style="text-align:center;"><img src="{{asset('images/ln_bell.png')}}"
-                                                    alt="" class="ln_bell"></div>
+                                            <div style="text-align:center;"><img
+                                                    src="{{asset('images/notify2.png')}}" alt=""></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle">
                                                 <p>14</p>
