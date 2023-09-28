@@ -1019,12 +1019,12 @@
                             </div>
                             <hr style="color:gray;" class="m-0">
                             <div class="the_preview">
-                                <div class="col-md-12 the_preview_card" style="height: 100px">
+                                <div class="col-md-12 the_preview_card" style="height: 80px">
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
-                                                    height="40" alt="">
+                                                <img src="{{asset('images/insta_elp.png')}}" class="img-fluid"
+                                                    width="40" height="40" alt="">
                                             </div>
                                             <div>
                                                 <span id="" class="postname">{{auth()->user()->name}} <br>
@@ -1119,8 +1119,7 @@
                                                 <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
-                                                <h3 class="mb-0 user_name">ahmad
-                                                    <img src="{{asset('images/offical2.png')}}" alt="" height="" />
+                                                <h3 class="mb-0 user_name">   {{auth()->user()->name}}
                                                 </h3>
                                             </div>
                                         </div>
@@ -1146,8 +1145,7 @@
                                 </div>
                                 <div class="row px-2">
                                     <div class="col-12">
-                                        <div
-                                            class="actions-buttons-list d-flex justify-content-between  mt-3 show active">
+                                        <div class="actions-buttons-list d-flex justify-content-between show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
                                                     <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}"
@@ -1221,17 +1219,17 @@
 
                         <div class="twitter_post add_preview  d-none  prv_twitter">
                             <div class="row">
-                                <div class="col-3">
-                                    <div class="indrive_icon">
-                                        <img src="{{asset('')}}images/indrivelogo.png" class="" alt="" />
+                                <div class="col-2  twitter_prev">
+                                    <div class="indrive_icon2">
+                                    <img src="http://localhost:8000/images/insta_elp.png" alt="" class="">
                                     </div>
                                 </div>
                                 <div class="col-9 colum_nine">
                                     <div>
                                         <div class="twitter_header">
                                             <div>
-                                                <span class="twitter_post_content">InDrive</span> <img
-                                                    src="{{asset('')}}images/star.png" class="" alt="" />
+                                                <span class="twitter_post_content"> {{auth()->user()->name}}</span> <img
+                                                    src="http://localhost:8000/images/offical2.png" class="" alt="">
                                                 <span class="twitter_post_content_tag ">@inDrive</span>
                                             </div>
                                             <div class="elps">
@@ -1247,7 +1245,7 @@
 
                                     </div>
                                     <div class="twitter_img_container">
-                                        <!-- <img src="{{asset('')}}images/light.png" class="" alt="" /> -->
+                                        <img class="uploader_img" src="{{asset('')}}images/uploader2.png" class="" alt="" />
                                     </div>
                                     <div class="x_bar_icons pt-1">
                                         <div>
@@ -1262,14 +1260,14 @@
                                             <img src="{{asset('')}}images/icons/heart-twitter.svg" class="" alt="" />
                                             <span>12k</span>
                                         </div>
-                                        <div>
-                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
-                                            <span>61</span>
+                                        <div class="d-flex mt-1 gap-1" >
+                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />                  
+                                          <div style="color:#8a96a3; font-size:12px;">61</div>        
                                         </div>
-                                        <div>
+                                        <!-- <div>
                                             <img src="{{asset('')}}images/share2.png" class="ShareIcon" alt="" />
 
-                                        </div>
+                                        </div> -->
 
                                     </div>
 
@@ -1313,26 +1311,22 @@
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
-                                        @if(isset($imageUrl))
-                                        <img src="{{$imageUrl}}" alt="" class="">
-                                        @else
-                                        <img src="{{asset('images/linkedinlogo.png')}}" alt="" class="">
-                                        @endif
+                                       
+                                        <img src="{{asset('images/linkediniii.jpg')}}" alt="" class="">
+                                      
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">
-                                            <div>
+                                            <div class="linkdin_author">
                                                 <span>
                                                     {{auth()->user()->name}}
                                                 </span>
                                             </div>
                                             <div class="follwers">
                                                 <span>
-                                                    4,7779000 followers
+                                                   1,511 followers
                                                 </span><br>
-                                                <span>
-                                                    proceeded
-                                                </span>
+                                                <span class="">3d . <i class="fa-solid fa-earth-americas"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1367,7 +1361,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="LikeIcons">
+                                    <div class="LikeIcons px-2">
                                         <div class="d-flex">
                                             <div class="InnerIcon">
                                                 <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt=""
@@ -1423,7 +1417,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="linkedin_icons d-flex">
+                                    <div class="linkedin_icons d-flex px-1">
                                         <div class="btm_icon">
                                             <div style="text-align:center;">
                                                 <img src="{{asset('images/home-02.png')}}" alt="">

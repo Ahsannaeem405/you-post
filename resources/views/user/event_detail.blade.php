@@ -256,7 +256,7 @@
         <span>
             <span class="text-secondary">Scheduled at:</span>
             <span
-                class="text-primary">{{\Carbon\Carbon::parse($platforms['Twitter'][0]->posted_at)->format('d M Y h:i A')}}</span>
+                class="text-primary">{{\Carbon\Carbon::parse($platforms['Instagram'][0]->posted_at)->format('d M Y h:i A')}}</span>
         </span>
 
     </div>
@@ -290,7 +290,7 @@
                 <div>
                 <a href="" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
                                 alt="" />View post in live feed</a>
-              
+
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>
@@ -378,7 +378,7 @@
             </div>
             <div class="col-5">
                 <div>
-              
+
                 <a href="" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
                                 alt="" />View post in live feed</a>
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
@@ -518,7 +518,7 @@ $('#tab4-tab').click(function() {
 });
 post_cards(0);
 
-// alert(allImages); 
+// alert(allImages);
 </script> -->
 
 <script>
