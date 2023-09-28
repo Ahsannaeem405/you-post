@@ -64,7 +64,7 @@ class UserController extends Controller
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
-       
+
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms' ));
 
     }
@@ -187,8 +187,8 @@ class UserController extends Controller
     public function getTimeDifference($postTime){
 
         $reqDateTime = new DateTime($postTime, new \DateTimeZone('Asia/Karachi'));
-        $currentDateTime = new DateTime('now', new \DateTimeZone('Asia/Karachi')); 
-      
+        $currentDateTime = new DateTime('now', new \DateTimeZone('Asia/Karachi'));
+
         $reqDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
         $currentDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
         $timeDifference = abs($currentDateTime->getTimestamp() - $reqDateTime->getTimestamp());
@@ -291,54 +291,54 @@ class UserController extends Controller
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
             $post->save();
-        
 
-      
-         $timeDifference=  $this->getTimeDifference($req->time);
-       
-         if ($timeDifference <= 60) {
-          
-            if($platforms[$i] == 'Facebook'){
-                $run=new Facebookservice();
-                $arr['post']=$post;
-                $result=$run->create_post($arr);
-           
 
-            }else if($platforms[$i] == 'Instagram'){
-                $run=new Instagramservice();
-                $arr['post']=$post;
-                $result=$run->create_post($arr);
-            
 
-            }else if($platforms[$i] == 'Twitter'){
-                $run=new TwitterService();
-                $arr['post']=$post;
-                $result=$run->create_post($arr);
-             
-
-            }else if($platforms[$i] == 'Linkedin'){
-        
-                $run=new Linkedinservice();
-                $arr['post']=$post;
-                $result=$run->create_post($arr);
-            
-            }
-
-            if($result['status']==true)
-            {
-                $up=Post::find($post->id);
-                $up->posted_at_moment='now';
-                $up->update();
-            }
-         
-                     
-        }
+//         $timeDifference=  $this->getTimeDifference($req->time);
+//
+//         if ($timeDifference <= 60) {
+//
+//            if($platforms[$i] == 'Facebook'){
+//                $run=new Facebookservice();
+//                $arr['post']=$post;
+//                $result=$run->create_post($arr);
+//
+//
+//            }else if($platforms[$i] == 'Instagram'){
+//                $run=new Instagramservice();
+//                $arr['post']=$post;
+//                $result=$run->create_post($arr);
+//
+//
+//            }else if($platforms[$i] == 'Twitter'){
+//                $run=new TwitterService();
+//                $arr['post']=$post;
+//                $result=$run->create_post($arr);
+//
+//
+//            }else if($platforms[$i] == 'Linkedin'){
+//
+//                $run=new Linkedinservice();
+//                $arr['post']=$post;
+//                $result=$run->create_post($arr);
+//
+//            }
+//
+//            if($result['status']==true)
+//            {
+//                $up=Post::find($post->id);
+//                $up->posted_at_moment='now';
+//                $up->update();
+//            }
+//
+//
+//        }
      }
         return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
         //****************end posting code****************//
 
     }
-  
+
 
 
     public function get_event_detail(Request $request)
@@ -347,7 +347,7 @@ class UserController extends Controller
         $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         $platformsName = $platforms->pluck('plateform')->toArray();
         $platforms = $platforms->groupBy('plateform');
-    
+
         return view('user.event_detail', compact('post', 'platforms', 'platformsName'));
     }
 
@@ -748,7 +748,7 @@ class UserController extends Controller
             $twitter = config('services.twitter');
 
             $client_id = $twitter['client_id'];
-           
+
             $client_secret = $twitter['client_secret'];
             $redirect_uri = $twitter['redirect'];
             // with curl
@@ -773,7 +773,7 @@ class UserController extends Controller
 
             curl_close($curl);
             $response2 = json_decode($response);
-          
+
             if (isset($response2->error)) {
                 return redirect('/index')->with('error', $response2->error_description);
             }
