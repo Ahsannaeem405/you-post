@@ -1026,8 +1026,8 @@
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{asset('images/insta_elp.png')}}" class="img-fluid" width="40"
-                                                    height="40" alt="">
+                                                <img src="{{asset('images/insta_elp.png')}}" class="img-fluid"
+                                                    width="40" height="40" alt="">
                                             </div>
                                             <div>
                                                 <span id="" class="postname">{{auth()->user()->name}} <br>
@@ -1122,7 +1122,7 @@
                                                 <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
-                                                <h3 class="mb-0 user_name">   {{auth()->user()->name}}
+                                                <h3 class="mb-0 user_name"> {{auth()->user()->name}}
                                                     <img src="{{asset('images/offical2.png')}}" alt="" height="" />
                                                 </h3>
                                                 <div style="padding-top:11px !important;">
@@ -1152,8 +1152,7 @@
                                 </div>
                                 <div class="row px-2">
                                     <div class="col-12">
-                                        <div
-                                            class="actions-buttons-list d-flex justify-content-between show active">
+                                        <div class="actions-buttons-list d-flex justify-content-between show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
                                                     <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}"
@@ -1231,7 +1230,7 @@
                         <div class="twitter_post add_preview  d-none  prv_twitter">
                             <div class="row">
                                 <div class="col-2  twitter_prev">
-                                <div class="indrive_icon2">
+                                    <div class="indrive_icon2">
                                         <img src="{{asset('')}}images/x_img.jpg" class="" alt="" />
                                     </div>
                                 </div>
@@ -1239,8 +1238,8 @@
                                     <div>
                                         <div class="twitter_header">
                                             <div>
-                                                <span class="twitter_post_content">   {{auth()->user()->name}}</span> <img
-                                                    src="{{asset('')}}images/star.png" class="" alt="" />
+                                                <span class="twitter_post_content"> {{auth()->user()->name}}</span> <img
+                                                    src="http://localhost:8000/images/offical2.png" class="" alt="">
                                                 <span class="twitter_post_content_tag ">@inDrive</span>
                                             </div>
                                             <div class="elps">
@@ -1256,7 +1255,7 @@
 
                                     </div>
                                     <div class="twitter_img_container">
-                                        <!-- <img src="{{asset('')}}images/light.png" class="" alt="" /> -->
+                                        <img class="uploader_img" src="{{asset('')}}images/uploader2.png" class="" alt="" />
                                     </div>
                                     <div class="x_bar_icons pt-1">
                                         <div>
@@ -1271,14 +1270,14 @@
                                             <img src="{{asset('')}}images/icons/heart-twitter.svg" class="" alt="" />
                                             <span>12k</span>
                                         </div>
-                                        <div>
-                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
-                                            <span>61</span>
+                                        <div class="d-flex mt-1 gap-1" >
+                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />                  
+                                          <div style="color:#8a96a3; font-size:12px;">61</div>        
                                         </div>
-                                        <div>
+                                        <!-- <div>
                                             <img src="{{asset('')}}images/share2.png" class="ShareIcon" alt="" />
 
-                                        </div>
+                                        </div> -->
 
                                     </div>
 
@@ -1286,7 +1285,7 @@
                                 </div>
 
                             </div>
-                            <div class="row mt-3">
+                            <!-- <div class="row mt-3">
                                 <div class="col-12 twitter_second_row pt-2"></div>
                                 <div class="col-3">
                                     <div class="indrive_icon2">
@@ -1310,7 +1309,7 @@
                                         <img src="{{asset('')}}images/fa.png" class="" alt="" style="width:100%;" />
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- moble_twitter_post3 end-->
                         @endif

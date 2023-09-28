@@ -1484,6 +1484,11 @@ button {
     word-wrap: break-word;
 }
 #mypostresult_twitter{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e4e2e2;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
     display: block;
     display: -webkit-box;
     margin: 0 auto;
@@ -1504,5 +1509,15 @@ button {
     word-wrap: break-word;
 }
 .twitter_prev{
-    padding-left: 2px !important;
+    padding-left: 10px !important;
+}
+.uploader_img{
+    cursor:pointer;
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    transform: translate(-50%, 50%);
+    top: 39%;
+    left: 50%;
 }
