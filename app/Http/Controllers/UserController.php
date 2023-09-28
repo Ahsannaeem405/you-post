@@ -64,30 +64,8 @@ class UserController extends Controller
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
-
-        // start to get image
-         $user_platforms = auth()->user()->account->platforms;
-        //  if (in_array('Facebook', $user_platforms  )) {
-        //     $run=new Facebookservice();
-        //     $imageUrl=$run->get_fb_image( $accounts);
-         
-        //  }else if(in_array('Instagram', $user_platforms)){
-        //     $run=new Instagramservice();
-        //     $imageUrl=$run->get_inst_image( $accounts);
-        //  }
-        //  }else if (in_array('Twitter', $user_platforms )){
-        //     $run=new TwitterService();
-        //     $imageUrl=$run->get_tw_image( $accounts);
-
-        //  }else
-          if(in_array('Linkedin', $user_platforms)){
-            $run=new Linkedinservice();
-            $imageUrl=$run->get_linkedin_image( $accounts);
-            
-         }
        
-
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms' ,'imageUrl'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms' ));
 
     }
 
@@ -369,22 +347,8 @@ class UserController extends Controller
         $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         $platformsName = $platforms->pluck('plateform')->toArray();
         $platforms = $platforms->groupBy('plateform');
-        $feed_tw='';
-        if(isset($platforms['Linkedin'])){
-
-            $feed_linkedin=new Linkedinservice();
-            $feed_linkedin=$feed_linkedin->feed_link_linkedin($post);
-            
-        }
-        
-        if(isset($platforms['Twitter'])){
-
-            $feed_tw=new TwitterService();
-            $feed_tw=$feed_tw->feed_tw($post);
-            
-        }
-
-        return view('user.event_detail', compact('post', 'platforms', 'platformsName','feed_linkedin','feed_tw'));
+    
+        return view('user.event_detail', compact('post', 'platforms', 'platformsName'));
     }
 
     public function get_events(Request $request)

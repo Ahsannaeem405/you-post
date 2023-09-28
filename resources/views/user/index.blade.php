@@ -1023,7 +1023,7 @@
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{asset('images/ava.png')}}" class="img-fluid" width="40"
+                                                <img src="{{asset('images/insta_elp.png')}}" class="img-fluid" width="40"
                                                     height="40" alt="">
                                             </div>
                                             <div>
@@ -1119,7 +1119,7 @@
                                                 <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
-                                                <h3 class="mb-0 user_name">ahmad
+                                                <h3 class="mb-0 user_name">   {{auth()->user()->name}}
                                                     <img src="{{asset('images/offical2.png')}}" alt="" height="" />
                                                 </h3>
                                             </div>
@@ -1223,14 +1223,14 @@
                             <div class="row">
                                 <div class="col-3">
                                     <div class="indrive_icon">
-                                        <img src="{{asset('')}}images/indrivelogo.png" class="" alt="" />
+                                        <img src="{{asset('images/insta_elp.png')}}" class="" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-9 colum_nine">
                                     <div>
                                         <div class="twitter_header">
                                             <div>
-                                                <span class="twitter_post_content">InDrive</span> <img
+                                                <span class="twitter_post_content">   {{auth()->user()->name}}</span> <img
                                                     src="{{asset('')}}images/star.png" class="" alt="" />
                                                 <span class="twitter_post_content_tag ">@inDrive</span>
                                             </div>
@@ -1313,11 +1313,11 @@
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
-                                        @if(isset($imageUrl))
+                                        <!-- @if(isset($imageUrl))
                                         <img src="{{$imageUrl}}" alt="" class="">
-                                        @else
-                                        <img src="{{asset('images/linkedinlogo.png')}}" alt="" class="">
-                                        @endif
+                                        @else -->
+                                        <img src="{{asset('images/insta_elp.png')}}" alt="" class="">
+                                        <!-- @endif -->
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">

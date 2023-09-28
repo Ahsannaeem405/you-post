@@ -215,27 +215,7 @@ class Linkedinservice
 
 
     }
-    public function get_linkedin_image($accounts)
-    {
-         $accessToken=  $accounts[0]->linkedin_accesstoken;
-         $linkedinPage = $accounts[0]->linkedin_page_id;
-         $parts = explode(":", $linkedinPage);
-         $numericPart = end($parts);
-         $imageUrl='';
-        if($accessToken){
-        $client = new Client();
-        $response = $client->get("https://api.linkedin.com/v2/organizations/{$numericPart}?projection=(id,logoV2(original~:playableStreams))", [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-            ],
-        ]);
-
-        $responseData = json_decode($response->getBody(), true);
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
-      
-       }
-       return $imageUrl;
-    }
+ 
     public function delete_post($data)
     {
         try {
@@ -268,33 +248,7 @@ class Linkedinservice
 
     }
     
-    public function feed_link_linkedin($post){
-
-        
-        if($post->posted_at_moment== 'now'){
-
-            // getting post id
-            $live_post_id = $post->post_dt;
-            $live_post_id = $live_post_id->social_id;
-            $live_post_id = explode(":", $live_post_id);
-            $live_post_id = end($live_post_id);
-            // getting access token
-            $acces_token = $post->account;
-            $acces_token = $acces_token->linkedin_accesstoken;
-            // getting page id
-            $pg_id = $post->account;
-            $pg_id = $pg_id->linkedin_page_id;
-            $pg_id = explode(":", $pg_id);
-            $pg_id = end($pg_id);
-             // get link
-             return    $feed_linkedin = "https://www.linkedin.com/company/{$pg_id}/posts/{$live_post_id}/";
-           
-            }
-            else{
-                return;
-            }
-
-    }
+    
 
 
 
