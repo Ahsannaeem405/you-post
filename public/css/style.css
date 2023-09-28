@@ -223,13 +223,10 @@ tr {
     margin: 0%;
     color: #8DB8FF;
     font-family: 'Inter', sans-serif;
-
     font-size: 14px;
-
     font-style: normal;
     font-weight: 700;
     line-height: 17.289px;
-
     text-transform: uppercase;
 
 }
@@ -1236,22 +1233,32 @@ button {
 /* ------------------------------------------------ */
 
 /* Post_preview_Insta */
-.prv_div_isnt{
+/* .prv_div_isnt{
     column-count: 2;
     column-gap: 10px;
     margin: auto;
+} */
+.prv_div_isnt{
+    height: 240px;
 }
-
 .Inst_Media{
     padding: 3px;
     font-weight: 300 !important;
     color: #000;
 }
+.prv_div_isnt .mobile_post_img_inst{
+    width: 100%;
+    height: 100%;
+}
+.prv_div_isnt .mobile_post_img_inst img{
+    width: 100%;
+    height: 100%;
+}
 /* Insta preview */
 .Insta_post_previnner{
     margin-top: 8px;
 }
-.prv_div_isnt .mobile_post_img_inst{
+/* .prv_div_isnt .mobile_post_img_inst{
     height: 113px;
     width: 70px;
     position: relative;
@@ -1259,7 +1266,7 @@ button {
     break-inside: avoid-column;
     width: 100%;
     display: block;
-}
+} */
 /* ahmad farz */
 .prv_div_isnt .mobile_post_img_inst:nth-child(3){
     height: 72px;

@@ -1123,7 +1123,6 @@
                                             </div>
                                             <div class="inst_post_name">
                                                 <h3 class="mb-0 user_name">   {{auth()->user()->name}}
-                                                    <img src="{{asset('images/offical2.png')}}" alt="" height="" />
                                                 </h3>
                                                 <div style="padding-top:11px !important;">
                                                     <img src="{{asset('images/offical2.png')}}" alt="" height="" />
@@ -1376,7 +1375,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="LikeIcons">
+                                    <div class="LikeIcons px-2">
                                         <div class="d-flex">
                                             <div class="InnerIcon">
                                                 <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt=""
@@ -1432,7 +1431,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="linkedin_icons d-flex">
+                                    <div class="linkedin_icons d-flex px-1">
                                         <div class="btm_icon">
                                             <div style="text-align:center;">
                                                 <img src="{{asset('images/home-02.png')}}" alt="">
