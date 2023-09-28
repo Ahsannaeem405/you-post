@@ -644,8 +644,8 @@ body {
     background-position: top center;
     background-size: 100% 100%;
     position: relative;
-    padding: 44px 18px;
-    /* padding: 44px 15px; */
+    /* padding: 44px 18px; */
+    padding: 44px 15px;
 }
 
 .instagram_bg {
@@ -657,7 +657,7 @@ body {
     background-size: 100% 100%;
     position: relative;
     /* padding: 47px 22px; */
-    padding: 44px 18px;
+    padding: 44px 14px;
 }
 
 
@@ -1248,6 +1248,7 @@ body {
 .MainMobileview span{
 	font-weight: 500;
 	margin-left: 8px;
+    text-transform: capitalize;
 }
 .MainMobileimg {
 	/* padding: 15px 0px; */
@@ -2041,8 +2042,11 @@ width: 100%;
 }
 
 .total-comments.total_comments a{
-   font-size: 9px;
+    font-size: 9px;
+    font-family: 'Inter';
+    font-weight: 300;
 }
+
 .actions-buttons.actions_buttons{
     /* width: 92%; */
     /* margin-left: 4px; */
@@ -2513,11 +2517,12 @@ height: 100%;
 /* salman_post start */
 .user_name {
     color: #000 !important;
-    font-family: 'Poppins', sans-serif !important;
+    /* font-family: 'Poppins', sans-serif !important; */
     font-size: 14px !important;
     font-style: normal !important;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
     line-height: 30px !important;
+    font-family: 'Arial', sans-serif;
 }
 .user_name_insta {
     color: #000 !important;
@@ -2575,6 +2580,8 @@ height: 100%;
 }
 .insta_pos_acc_icons{
     border-top: 1px solid #e4e2e2;
+    max-width: 230px;
+    margin: auto;
 }
 .insta_acc_bar{
     height: 14px;
@@ -2589,8 +2596,12 @@ height: 100%;
     cursor: pointer;
 }
 .inst_post_name h3{
-    font-size: 12px !important;
+    font-size: 11px !important;
     padding-top: 0px;
+}
+.inst_post_name{
+    display: flex;
+    gap: 4px;
 }
 .twitter_post{
     width: 260px;

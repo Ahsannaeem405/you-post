@@ -325,7 +325,7 @@
 }
 
 .MainMobileview span {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600 !important;
     margin-left: 4px !important;
 }
@@ -334,8 +334,8 @@
     margin-left: 0 !important;
     color: #ADAEB2;
     font-weight: 700 !important;
-    font-size: 11px;
-    font-family:inherit;
+    font-size: 10px;
+    font-family: inherit;
 
 }
 
@@ -346,7 +346,7 @@
 .Mobcart_title span {
     margin-left: unset !important;
     margin-top: 3px;
-    font-size:13px;
+    font-size: 11px;
     /* font-weight: 600; */
 }
 
@@ -1078,7 +1078,7 @@
                                     </div>
                                     <hr style="color:gray;" class="m-0">
                                     <div class="actions-buttons actions_buttons px-1">
-                                        <ul class="actions-buttons-list d-flex p-0 justify-content-between">
+                                        <ul class="actions-buttons-list d-flex p-0 justify-content-between pt-2">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
                                                 <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""
@@ -1086,9 +1086,9 @@
                                                 <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                    <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
-                                                        height="15" width="14" />
-                                                    <span class="text text2">Comment</span>
+                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                    height="15" width="14" />
+                                                <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
                                                 <img src="{{asset('')}}images/share.png" class="" alt="" height="18" />
@@ -1106,7 +1106,7 @@
 
                         <div class="instagram_bg add_preview d-none  prv_insta">
                             <div class="the_preview">
-                                <div class="d-flex justify-content-between  px-2">
+                                <div class="d-flex justify-content-between px-2">
                                     <div class="d-flex gap-4">
                                         <div style="cursor:pointer;"> <i class="fa-solid fa-arrow-left mt-1"></i> </div>
                                         <div class="ins_post_p">
@@ -1117,14 +1117,17 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-10">
-                                        <div class="d-flex show active gap-1">
+                                        <div class="d-flex show active gap-1 px-2">
                                             <div class="show active">
                                                 <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
                                                 <h3 class="mb-0 user_name">ahmad
-                                                    <img src="{{asset('images/offical2.png')}}" alt="" height="" />
+
                                                 </h3>
+                                                <div style="padding-top:11px !important;">
+                                                    <img src="{{asset('images/offical2.png')}}" alt="" height="" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1150,7 +1153,7 @@
                                 <div class="row px-2">
                                     <div class="col-12">
                                         <div
-                                            class="actions-buttons-list d-flex justify-content-between  mt-3 show active">
+                                            class="actions-buttons-list d-flex justify-content-between show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
                                                     <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}"
@@ -1161,13 +1164,16 @@
                                                         style="cursor:pointer;">
                                                 </div>
                                             </div>
-                                            <div class="actions-buttons-button d-flex" style="padding-top:
+                                            <!-- <div class="actions-buttons-button d-flex" style="padding-top:
                                             5px">
-                                            <img  class="" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
-                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
-                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
-                                                
-                                            </div>
+                                                <img class="" src="{{asset('images/dotb.png')}}" alt=""
+                                                    style="cursor:pointer; height:9px;width:9px">
+                                                <img class="" src="{{asset('images/dotg.png')}}" alt=""
+                                                    style="cursor:pointer; height:9px;width:9px">
+                                                <img class="" src="{{asset('images/dotg.png')}}" alt=""
+                                                    style="cursor:pointer; height:9px;width:9px">
+
+                                            </div> -->
                                             <div class="actions-buttons-button">
                                             </div>
                                             <div class="actions-buttons-button d-flex">
@@ -1202,7 +1208,7 @@
                                 </div>
                                 <div class="row px-2">
                                     <div class="col-12 insta_pos_acc_icons ">
-                                        <div class="insta_acc_bar_parent">
+                                        <div class="insta_acc_bar_parent pt-3">
                                             <img src="{{asset('images/Home-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/search-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/Plus-01.png')}}" alt="" class="insta_acc_bar">
@@ -1448,8 +1454,8 @@
                                             <div><span>Post</span></div>
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
-                                            <div style="text-align:center;"><img
-                                                    src="{{asset('images/ln_bell.png')}}" alt="" class="ln_bell"></div>
+                                            <div style="text-align:center;"><img src="{{asset('images/ln_bell.png')}}"
+                                                    alt="" class="ln_bell"></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle">
                                                 <p>14</p>
@@ -2838,7 +2844,6 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
-
 </script>
 
 @endsection
