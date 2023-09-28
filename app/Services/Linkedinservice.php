@@ -221,7 +221,7 @@ class Linkedinservice
          $linkedinPage = $accounts[0]->linkedin_page_id;
          $parts = explode(":", $linkedinPage);
          $numericPart = end($parts);
-         
+         $imageUrl='';
         if($accessToken){
         $client = new Client();
         $response = $client->get("https://api.linkedin.com/v2/organizations/{$numericPart}?projection=(id,logoV2(original~:playableStreams))", [
