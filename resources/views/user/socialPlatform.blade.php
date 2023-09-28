@@ -4,7 +4,37 @@
 @section('content')
 
     @include('user.component.modals')
+    <style>
+    .empty-input {
+            border: 1px solid red !important;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
 
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+</style>
     <section class="all_social_platformWrp">
 
         <div class="all_social_platformLogo">
@@ -49,7 +79,7 @@
             </div>
         </div>
         <div class="platformBtn">
-            <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+            <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus">Dashboard</a>
         </div>
 
 
@@ -63,6 +93,31 @@
 
     <script>
         $(document).ready(function () {
+            $(document).on('click', '.checkAndFocus', function () {
+   
+                event.preventDefault();                         
+                var inputs = $(".all_social_platformCnt input");             
+                var isEmpty = false;              
+                inputs.each(function() {
+                    var tooltip = this.nextElementSibling; // Get the tooltip span
+                    if ($(this).val().trim() === "") {
+                        isEmpty = true;
+                        $(this).addClass("empty-input"); 
+                       } else {
+                        $(this).removeClass("empty-input"); 
+                        }
+                });
+                if (isEmpty) {
+                    inputs.each(function() {
+                        if ($(this).val().trim() === "") {
+                            $(this).focus();
+                            return false; // Stop after focusing on the first empty input
+                        }
+                    });
+                }else{
+                    window.location.href = "{{ url('/dashboard') }}";
+                }
+             });
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

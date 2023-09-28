@@ -46,16 +46,11 @@ class TwitterService
 
     }
 
-    public function create_post($data= null, $id = null)
+    public function create_post($data= null)
     {
-        if ($data !== null && isset($data['post']->id)) {
-            $post_id = $data['post']->id;
-        } else {
-           
-            $post_id = $id;
-        }
+       
 
-        $post = Post::find($post_id);
+        $post = Post::find($data['post']->id);
         $this->twiter_refresh($post->account);
         $post = Post::find($data['post']->id);
         $tags = $post->tag ? " $post->tag" : '';
@@ -86,25 +81,7 @@ class TwitterService
         return $msg;
     }
 
-    public function get_tw_image($accounts)
-    {
-        $accessToken=  $accounts[0]->twiter_access_token;
-      
 
-         if($accessToken){
-        $client = new Client();
-        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-            ],
-        ]);
-
-        $responseData = json_decode($response->getBody(), true);
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
-      
-       }
-       return $imageUrl;
-    }
     public function twiter_refresh($account)
     {
 
@@ -141,14 +118,7 @@ class TwitterService
 
 
     }
-    public function feed_tw($post){
-                if($post->posted_at_moment== 'now'){                  
-                    $live_post_id = $post->post_dt;
-                    $live_post_id = $live_post_id->social_id;
-                    return    $feed_linkedin = "https://twitter.com/{$live_post_id}/status/{$live_post_id}/";
-                    }
-                    else{return;}
-    }
+ 
 
     function stats($post)
     {
