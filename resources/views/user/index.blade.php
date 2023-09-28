@@ -1230,7 +1230,7 @@
                             <div class="row">
                                 <div class="col-2  twitter_prev">
                                     <div class="indrive_icon2">
-                                        <img src="{{asset('')}}images/x_img.jpg" class="" alt="" />
+                                    <img src="http://localhost:8000/images/insta_elp.png" alt="" class="">
                                     </div>
                                 </div>
                                 <div class="col-10 colum_nine">
