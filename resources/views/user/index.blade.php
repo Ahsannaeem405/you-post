@@ -1022,7 +1022,7 @@
                             </div>
                             <hr style="color:gray;" class="m-0">
                             <div class="the_preview">
-                                <div class="col-md-12 the_preview_card" style="height: 100px">
+                                <div class="col-md-12 the_preview_card" style="height: 80px">
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
@@ -1324,23 +1324,21 @@
                                         <!-- @if(isset($imageUrl))
                                         <img src="{{$imageUrl}}" alt="" class="">
                                         @else -->
-                                        <img src="{{asset('images/insta_elp.png')}}" alt="" class="">
+                                        <img src="{{asset('images/linkediniii.jpg')}}" alt="" class="">
                                         <!-- @endif -->
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">
-                                            <div>
+                                            <div class="linkdin_author">
                                                 <span>
                                                     {{auth()->user()->name}}
                                                 </span>
                                             </div>
                                             <div class="follwers">
                                                 <span>
-                                                    4,7779000 followers
+                                                   1,511 followers
                                                 </span><br>
-                                                <span>
-                                                    proceeded
-                                                </span>
+                                                <span class="">3d . <i class="fa-solid fa-earth-americas"></i></span>
                                             </div>
                                         </div>
                                     </div>

@@ -1509,6 +1509,8 @@ button {
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 11px;
 }
 .twitter_prev{
     padding-left: 2px !important;
