@@ -231,10 +231,10 @@ class Linkedinservice
         ]);
 
         $responseData = json_decode($response->getBody(), true);
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+        // $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
       
        }
-       return $imageUrl;
+    //    return $imageUrl;
     }
     public function delete_post($data)
     {

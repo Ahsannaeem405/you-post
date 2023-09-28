@@ -325,16 +325,18 @@
 }
 
 .MainMobileview span {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600 !important;
     margin-left: 4px !important;
 }
 
 .MainMobileview span.sponsored {
     margin-left: 0 !important;
-    color: #888888;
-    font-weight: 400 !important;
-    font-size: 10px;
+    color: #ADAEB2;
+    font-weight: 700 !important;
+    font-size: 11px;
+    font-family:inherit;
+
 }
 
 .MainMobileview span.sponsored i {
@@ -344,7 +346,8 @@
 .Mobcart_title span {
     margin-left: unset !important;
     margin-top: 3px;
-    font-weight: 600;
+    font-size:13px;
+    /* font-weight: 600; */
 }
 
 .Mobcart_titleCustom,
@@ -1033,7 +1036,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="icons_d">
+                                        <div class="icons_d px-2">
                                             <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
                                             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
                                         </div>
@@ -1446,7 +1449,7 @@
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
                                             <div style="text-align:center;"><img
-                                                    src="{{asset('images/notify2.png')}}" alt=""></div>
+                                                    src="{{asset('images/ln_bell.png')}}" alt="" class="ln_bell"></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle">
                                                 <p>14</p>
@@ -2835,6 +2838,7 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
+
 </script>
 
 @endsection

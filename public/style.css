@@ -645,6 +645,7 @@ body {
     background-size: 100% 100%;
     position: relative;
     padding: 44px 18px;
+    /* padding: 44px 15px; */
 }
 
 .instagram_bg {
@@ -1963,10 +1964,12 @@ body.dark .home .text{
     margin-top: 7rem;
 }
 .postname{
-    color: #e6dbdb;
+    color:  #E5E6EA;
+    font-family: inherit;
 }
 .mypostresult{
-    color: #e6dbdb;
+    color: #E7E8EC;
+    font-family: inherit;
 }
 .total_comments a{
     color: #e6dbdb !important;
@@ -2788,6 +2791,10 @@ position: relative;
 .linkdin_likes_comm{
     padding-left: 55px;
 }
+.ln_bell{
+    height: 22px;
+    width: 24px;
+}
 /* salman_post start */
 
 /* newpopup end*/
@@ -2885,7 +2892,6 @@ position: relative;
     column-count: 2;
     column-gap: 10px;
     margin: auto;
-    padding: 0 15px;
 }
 
 .single_image {
@@ -3017,3 +3023,11 @@ left: 36%;
 .sm_container .cross_img_con {
     padding: 3px 0px;
 }
+/* #mypostresult_fb{
+    width: 300px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  } */
+ 
