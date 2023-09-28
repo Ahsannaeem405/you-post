@@ -335,7 +335,7 @@
     color: #ADAEB2;
     font-weight: 700 !important;
     font-size: 11px;
-    font-family:inherit;
+    font-family: inherit;
 
 }
 
@@ -346,7 +346,7 @@
 .Mobcart_title span {
     margin-left: unset !important;
     margin-top: 3px;
-    font-size:13px;
+    font-size: 13px;
     /* font-weight: 600; */
 }
 
@@ -1086,9 +1086,9 @@
                                                 <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                    <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
-                                                        height="15" width="14" />
-                                                    <span class="text text2">Comment</span>
+                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                    height="15" width="14" />
+                                                <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
                                                 <img src="{{asset('')}}images/share.png" class="" alt="" height="18" />
@@ -1163,10 +1163,13 @@
                                             </div>
                                             <div class="actions-buttons-button d-flex" style="padding-top:
                                             5px">
-                                            <img  class="" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
-                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
-                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
-                                                
+                                                <img class="" src="{{asset('images/dotb.png')}}" alt=""
+                                                    style="cursor:pointer; height:9px;width:9px">
+                                                <img class="" src="{{asset('images/dotg.png')}}" alt=""
+                                                    style="cursor:pointer; height:9px;width:9px">
+                                                <img class="" src="{{asset('images/dotg.png')}}" alt=""
+                                                    style="cursor:pointer; height:9px;width:9px">
+
                                             </div>
                                             <div class="actions-buttons-button">
                                             </div>
@@ -1224,12 +1227,12 @@
 
                         <div class="twitter_post add_preview  d-none  prv_twitter">
                             <div class="row">
-                                <div class="col-3">
-                                    <div class="indrive_icon">
-                                        <img src="{{asset('')}}images/indrivelogo.png" class="" alt="" />
+                                <div class="col-2  twitter_prev">
+                                <div class="indrive_icon2">
+                                        <img src="{{asset('')}}images/x_img.jpg" class="" alt="" />
                                     </div>
                                 </div>
-                                <div class="col-9 colum_nine">
+                                <div class="col-10 colum_nine">
                                     <div>
                                         <div class="twitter_header">
                                             <div>
@@ -1280,7 +1283,7 @@
                                 </div>
 
                             </div>
-                            <!-- <div class="row mt-3">
+                            <div class="row mt-3">
                                 <div class="col-12 twitter_second_row pt-2"></div>
                                 <div class="col-3">
                                     <div class="indrive_icon2">
@@ -1304,7 +1307,7 @@
                                         <img src="{{asset('')}}images/fa.png" class="" alt="" style="width:100%;" />
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <!-- moble_twitter_post3 end-->
                         @endif
@@ -1341,7 +1344,7 @@
                                     </div>
                                 </div>
                                 <div class="menu_icon">
-                                    <img src="{{asset('images/ellips.png')}}" alt="">
+                                    <img src="{{asset('images/ellips.png')}}" alt="" style="cursor:pointer;">
                                 </div>
                             </div>
                             <div class="row">
@@ -1395,28 +1398,28 @@
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/thum-linkedin.svg')}}" alt=""
-                                                        height="18">
+                                                        style="width:20px;height:17px">
                                                     <span class="Innerxt">Like</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/comment-linkedin.svg')}}" alt=""
-                                                        height="18">
+                                                        style="width:20px;height:17px">
                                                     <span class="Innerxt">Comment</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/share-linkedin.svg')}}" alt=""
-                                                        height="18">
+                                                        style="width:20px;height:17px">
                                                     <span class="Innerxt">Repost</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
                                                     <img src="{{asset('images/icons/send-linkedin.svg')}}" alt=""
-                                                        height="18">
+                                                        style="width:20px;height:17px">
                                                     <span class="Innerxt">Send</span>
                                                 </button>
                                             </li>
@@ -1448,8 +1451,8 @@
                                             <div><span>Post</span></div>
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
-                                            <div style="text-align:center;"><img
-                                                    src="{{asset('images/ln_bell.png')}}" alt="" class="ln_bell"></div>
+                                            <div style="text-align:center;"><img src="{{asset('images/ln_bell.png')}}"
+                                                    alt="" class="ln_bell"></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle">
                                                 <p>14</p>
@@ -2838,7 +2841,6 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
-
 </script>
 
 @endsection
