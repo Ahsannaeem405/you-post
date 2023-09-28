@@ -1160,9 +1160,9 @@
                                             </div>
                                             <div class="actions-buttons-button d-flex" style="padding-top:
                                             5px">
-                                            <img  class="ins_icon" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:12px;width:12px">
-                                            <img  class="ins_icon" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:12px;width:12px">
-                                            <img  class="ins_icon" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:12px;width:12px">
+                                            <img  class="" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
+                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
+                                            <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
                                                 
                                             </div>
                                             <div class="actions-buttons-button">
