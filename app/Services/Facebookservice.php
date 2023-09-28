@@ -104,27 +104,7 @@ class  Facebookservice
 
     }
 
-    public function get_fb_image($accounts)
-    {
-        $accessToken=  $accounts[0]->fb_access_token;
-        $linkedinPage = $accounts[0]->fb_page_token;
-       
-
-
-         if($accessToken){
-        $client = new Client();
-        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-            ],
-        ]);
-
-        $responseData = json_decode($response->getBody(), true);
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
-      
-       }
-       return null;
-    }
+    
     function delete_post($id)
     {
         $accessToken = auth()->user()->account->fb_page_token;

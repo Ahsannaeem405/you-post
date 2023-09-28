@@ -288,9 +288,8 @@
             </div>
             <div class="col-5">
                 <div>
-             
-                 <a href="{{ $feed_tw }}" target="_blank" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
-                        View post in live feed</a>
+                <a href="" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
+                                alt="" />View post in live feed</a>
               
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
@@ -380,13 +379,8 @@
             <div class="col-5">
                 <div>
               
-                  @if($platforms['Linkedin'][0]->posted_at_moment== 'now')
-                    <a href="{{ $feed_linkedin }}" target="_blank" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
-                    View post in live feed
-                       </a>
-                  @else
-                      
-                  @endif
+                <a href="" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
+                                alt="" />View post in live feed</a>
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>

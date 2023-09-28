@@ -2,6 +2,7 @@
     .index_delete{
         text-align:right !important;
     }
+      
 </style>
 @foreach($accounts as $key=>$account)
     <div id="elementToEmbed">
@@ -16,6 +17,8 @@
                     <div class="d-flex justify-content-between">
                         <input type="text" class="account_name" name="" id="" value="{{$account->name}}"
                                placeholder="Organization Name" data-account="{{$account->id}}">
+                               <!-- <span class="tooltiptext" style="visibility:hidden">This field is empty</span> -->
+
                         <form action="{{ route('account-delete',$account->id) }}" method="POST">
                             @csrf
                             @method('Post')
