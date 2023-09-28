@@ -1227,16 +1227,6 @@ body {
     height: 100%;
     object-fit: cover;
 }
-/* .media-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-} */
-
-
 
 .MainMobileview {
 	align-items: center;
@@ -2263,7 +2253,7 @@ left: 15px;
     background-position: top center;
     background-size: 100% 100%;
     position: relative;
-    padding: 44px 18px;
+    padding: 44px 14px;
 }
 .linked_add{
     background: #24242424;
@@ -2341,17 +2331,11 @@ left: 15px;
     font-size: 12px;
     font-family: 'poppins',sans-serif;
 }
-/* .linkedin_post_image img{
-    width: 100%;
-    margin: auto;
-} */
 .linkedin_post_image {
     background: #24242424;
     height: min-content;
-    padding-left: 5px;
     height: 250px;
     width: 100%;
-    /* background-image: url("images/linkedinpost.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -2359,15 +2343,14 @@ left: 15px;
 width: 100%;
 height: 100%;
 }
-
 .linkedin_icons{
     background: #24242424;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    /* padding: 0px 10px; */
     margin-top: 10px;
     border-top: 1px solid #ACACAC;
+    padding: 0 6px;
 }
 .linkedin_icons .btm_icon{
     padding-top: 10px;
@@ -2517,7 +2500,7 @@ height: 100%;
 /* salman_post start */
 .user_name {
     color: #000 !important;
-    /* font-family: 'Poppins', sans-serif !important; */
+   
     font-size: 14px !important;
     font-style: normal !important;
     font-weight: 500 !important;
