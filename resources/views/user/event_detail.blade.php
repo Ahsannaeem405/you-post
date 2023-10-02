@@ -172,30 +172,15 @@
                 @endphp
                 <div class="image_main_container  {{count($InstagramImages) == 1 ? 'single_image' : ''}}">
                     @if($platforms['Instagram'][0]->media_type=='image')
-
-                    @foreach($InstagramImages as $image)
-                    @if($loop->index <= 3) <div class="post_modal_con"
-                        style="background-image: url({{asset('content_media/' .$image)}})">
-                </div>
-                @elseif($loop->index == 4)
-                <div class="post_modal_con" style="background-image: url({{asset('content_media/' .$image)}})">
-
-                    <div class="fb_remain_img_counter">
-                        <span>
-                            <span><i class="fa-solid fa-plus"></i></span>
-                            <span class="counter_val">{{count($InstagramImages)-4}}</span>
-                        </span>
+                        <div class="post_modal_con"
+                                style="background-image: url({{asset('content_media/' .end($InstagramImages))}})">
+                        </div>
+                               
+                    @elseif($platforms['Instagram'][0]->media_type=='video')
+                    <div class="video_container">
+                        <video src="{{asset("content_media/{$platforms['Instagram'][0]->media}")}}" controls></video>
                     </div>
-                    <div class="image_shade"> </div>
-
-                </div>
-                @endif
-                @endforeach
-                @elseif($platforms['Instagram'][0]->media_type=='video')
-                <div class="video_container">
-                    <video src="{{asset("content_media/{$platforms['Instagram'][0]->media}")}}" controls></video>
-                </div>
-                @endif
+                    @endif
 
             </div>
         </div>
