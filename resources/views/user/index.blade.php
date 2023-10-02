@@ -1114,7 +1114,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-10">
-                                        <div class="d-flex show active gap-1">
+                                        <div class="d-flex show active gap-1 px-1">
                                             <div class="show active">
                                                 <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
                                             </div>
@@ -1156,13 +1156,13 @@
                                                         style="cursor:pointer;">
                                                 </div>
                                             </div>
-                                            <div class="actions-buttons-button d-flex" style="padding-top:
+                                            <!-- <div class="actions-buttons-button d-flex" style="padding-top:
                                             5px">
                                             <img  class="" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
                                             <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
                                             <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
                                                 
-                                            </div>
+                                            </div> -->
                                             <div class="actions-buttons-button">
                                             </div>
                                             <div class="actions-buttons-button d-flex">

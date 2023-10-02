@@ -1313,11 +1313,16 @@ button {
     column-gap: 10px;
     margin: auto;
 }
+.mobile_post_img_link{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .prv_div_link .mobile_post_img_link {
     /* height: 100px; */
     height: 113px;
     width: 70px;
-    position: relative;
+    /* position: relative; */
     margin-bottom: 10px;
     break-inside: avoid-column;
     width: 100%;
@@ -1349,6 +1354,7 @@ button {
     position: absolute;
     top: 29%;
     left: 39%;
+    z-index: 1;
 }
 .plus_linkedin_icon{
     font-size: 12px;
