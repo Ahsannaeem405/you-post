@@ -594,7 +594,9 @@ $(document).ready(function () {
 
                      var imgOrVideo= $('#media_type_fb').val();
 
-                     var imgCount = $(".prv_div img").length;  
+                    //  var imgCount = $(".prv_div img").length;  
+                     var imgCount = $(".prv_div .mobile_post_img").length;  
+
                      var add_imge = $('#image_div .cross_img_con ').length;
                      if(imgCount == 0 || add_imge == 1)
                      {
@@ -635,28 +637,38 @@ $(document).ready(function () {
                             }
                             else{
                              var src=   $(this).attr("src");
-                             var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                            //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                             var newImage = `<div class="mobile_post_img"></div>`;
+    
                              $('.prv_div').append(newImage);
+                             $('.prv_div .mobile_post_img').last().css('background-image', 'url(' + src + ')');
+
                             }
                             if(add_imge == 1 || add_imge == 2){
                                 $('.prv_div .mobile_post_img').addClass('max_height');
+
                              }else{
                                 $('.prv_div .mobile_post_img').removeClass('max_height');
                              }
                              if(add_imge == 3){
                                 $('.prv_div .mobile_post_img:nth-child(1)').addClass('first_child_img1');
                                 $('.prv_div .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
+                              
                              }
                              else{
                                 $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
                                 $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
+                               
                              }
                             
                              if(add_imge == 4){
                                 $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img4');
+                              
+
                              }
                              else{
                                 $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
+            
                              }
                         });
 
@@ -731,6 +743,7 @@ $(document).ready(function () {
                             if ($("div.div_in_div_link").length === 0) {     
                                                                                                                            
                                 var lastImg = $(".prv_div_link").find($(".mobile_post_img_link img:last"));
+                                // var lastImg = $(".prv_div_link").find($(".mobile_post_img_link:last"));
                                 var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
                                  lastImg.after(spanElement);
                                  lastImg.wrap("<div class='div_in_div_link'></div>");

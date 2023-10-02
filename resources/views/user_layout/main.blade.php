@@ -185,6 +185,7 @@
             eventLimit: true,
             schedulerLicenseKey: 'YOUR_LICENSE_KEY',
             dayMaxEvents: true, 
+            // slotDuration: '01:00',
             events: @json(collect($allPosts)),
             views: {
                 month: {
@@ -193,7 +194,7 @@
             },
             views: {
                 agendaWeek: {
-                    columnFormat: 'ddd\nD',
+                    columnFormat: 'ddd\nD' ,
                     slotLabelFormat: [
                         'h A',
                         'h A',
@@ -201,6 +202,7 @@
                 }
                 
             },
+            
 
             header: {
                 center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
