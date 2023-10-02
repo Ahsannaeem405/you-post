@@ -46,7 +46,7 @@ class TwitterService
 
     }
 
-    public function create_post($data= null)
+    public function create_post($data)
     {
        
 
@@ -64,6 +64,7 @@ class TwitterService
 
             ]);
         $get = json_decode($response->body());
+       
         if ($response->status() == 201) {
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
@@ -84,7 +85,6 @@ class TwitterService
 
     public function twiter_refresh($account)
     {
-
         $refresh_token = $account->twiter_refresh_token;
         $twitter = config('services.twitter');
         $client_id = $twitter['client_id'];

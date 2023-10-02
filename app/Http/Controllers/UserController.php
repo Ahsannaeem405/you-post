@@ -184,14 +184,13 @@ class UserController extends Controller
 
 
     }
-    public function getTimeDifference($postTime){
+    public function getTimeDifference($post){
 
-        $reqDateTime = new DateTime($postTime, new \DateTimeZone('Asia/Karachi'));
-        $currentDateTime = new DateTime('now', new \DateTimeZone('Asia/Karachi'));
 
-        $reqDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
-        $currentDateTime->setTimezone(new \DateTimeZone('Asia/Karachi'));
-        $timeDifference = abs($currentDateTime->getTimestamp() - $reqDateTime->getTimestamp());
+        $timeNow = now()->timezone($post->timezone);
+        $postedTime = Carbon::parse($post->posted_at, $post->timezone);
+        $timeNowFormatted = $timeNow->format('Y-m-d H:i');         
+        $timeDifference = abs($timeNow->getTimestamp() - $postedTime->getTimestamp());
         return $timeDifference;
 
     }
@@ -293,46 +292,37 @@ class UserController extends Controller
             $post->save();
 
 
+ //****************get time difference in seconds ****************//
 
-//         $timeDifference=  $this->getTimeDifference($req->time);
-//
-//         if ($timeDifference <= 60) {
-//
-//            if($platforms[$i] == 'Facebook'){
-//                $run=new Facebookservice();
-//                $arr['post']=$post;
-//                $result=$run->create_post($arr);
-//
-//
-//            }else if($platforms[$i] == 'Instagram'){
-//                $run=new Instagramservice();
-//                $arr['post']=$post;
-//                $result=$run->create_post($arr);
-//
-//
-//            }else if($platforms[$i] == 'Twitter'){
-//                $run=new TwitterService();
-//                $arr['post']=$post;
-//                $result=$run->create_post($arr);
-//
-//
-//            }else if($platforms[$i] == 'Linkedin'){
-//
-//                $run=new Linkedinservice();
-//                $arr['post']=$post;
-//                $result=$run->create_post($arr);
-//
-//            }
-//
-//            if($result['status']==true)
-//            {
-//                $up=Post::find($post->id);
-//                $up->posted_at_moment='now';
-//                $up->update();
-//            }
-//
-//
-//        }
+        $timeDifference=  $this->getTimeDifference($post);
+
+        if ($timeDifference <= 60) {
+           
+           
+        $platformServiceMap = [
+            'Facebook' => '\App\Services\Facebookservice',
+            'Instagram' => '\App\Services\Instagramservice',
+            'Twitter' => '\App\Services\TwitterService',
+            'Linkedin' => '\App\Services\Linkedinservice',
+        ];
+    
+        $platform = $platforms[$i];
+       
+    
+        if (array_key_exists($platform, $platformServiceMap)) {
+            $serviceClassName = $platformServiceMap[$platform];
+            $run = new $serviceClassName();
+            $arr['post'] = $post;
+            $result = $run->create_post($arr);
+         
+    
+            if ($result['status'] == true) {
+                $up = Post::find($post->id);
+                $up->posted_at_moment = 'now';
+                $up->update();
+            }
+        }
+      }
      }
         return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
         //****************end posting code****************//

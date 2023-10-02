@@ -43,7 +43,6 @@ class Linkedinservice
                     "isReshareDisabledByAuthor" => false
                 ]);
 
-
                 $postdetail = new PostDetail();
                 $postdetail->post_id = $post->id;
                 $postdetail->plateform = 'Linkedin';
