@@ -593,8 +593,8 @@ $(document).ready(function () {
             if (socialicon == 'image_or_videofb') {
 
                      var imgOrVideo= $('#media_type_fb').val();
-
-                     var imgCount = $(".prv_div img").length;  
+                    //  var imgCount = $(".prv_div img").length;  
+                     var imgCount = $(".prv_div .mobile_post_img").length;  
                      var add_imge = $('#image_div .cross_img_con ').length;
                      if(imgCount == 0 || add_imge == 1)
                      {
@@ -602,8 +602,6 @@ $(document).ready(function () {
                      }else{
                          $('.prv_div').css('column-count', '2');
                      }
-                  
-         
                      if(imgOrVideo =='image'){
                         $('.prv_div').empty();                                          
                         var parentElement = $("#media_type_fb").closest(".sm_container");
@@ -612,16 +610,14 @@ $(document).ready(function () {
                           $(img).each(function(index) {
                              imgCount++;
                              if (imgCount >= 6) {
-                               
-                              
-                                if ($("div.div_in_div").length === 0) {     
-                                                                                                                              
-                                    var lastImg = $(".prv_div").find($(".mobile_post_img img:last"));
-                                    var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
-                                     lastImg.after(spanElement);
+                                if ($("div.div_in_div").length === 0) {                                                        
+                                    var lastImg = $(".prv_div").find($(".mobile_post_img:last"));
+                                    // var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
+                                    //  lastImg.after(spanElement);
                                      lastImg.wrap("<div class='div_in_div'></div>");
-                                     var newDiv = $("<div class='div_in_div_bg'> </div>");
-                                       $(".div_in_div").after(newDiv);
+                                    //  var newDiv = $("<div class='div_in_div_bg'> </div>");
+                                    //    $(".div_in_div").after(newDiv);
+                                       $(".div_in_div").append(`<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_bg'> </div>`);
                                 } else {
                                      
                                     const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
@@ -634,9 +630,15 @@ $(document).ready(function () {
                                 }
                             }
                             else{
-                             var src=   $(this).attr("src");
-                             var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                            //  var src=   $(this).attr("src");
+                            //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                            //  $('.prv_div').append(newImage);
+                            
+                            var src=   $(this).attr("src");
+                            //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                             var newImage = `<div class="mobile_post_img"></div>`;
                              $('.prv_div').append(newImage);
+                             $('.prv_div .mobile_post_img').last().css('background-image', 'url(' + src + ')');
                             }
                             if(add_imge == 1 || add_imge == 2){
                                 $('.prv_div .mobile_post_img').addClass('max_height');
@@ -682,18 +684,19 @@ $(document).ready(function () {
 
                 var imgOrVideo= $('#media_type_insta').val();
               
-                var imgCount = $(".prv_div_isnt img").length;  
+                // var imgCount = $(".prv_div_isnt img").length; 
+                var imgCount = $(".prv_div_isnt .mobile_post_img_inst").length;   
                 var add_imge2 = $('#image_div_ins .cross_img_con ').length;
                               
                 if(imgOrVideo =='image'){
                         $('.prv_div_isnt').empty();  
-
                         var parentElement = $("#media_type_insta").closest(".sm_container");
                         var img = parentElement.find("img:last");
-                             var src=   $(img).attr("src");
-                             var newImage = `<div class="mobile_post_img_inst"><img  src="${src}"/></div>`;
+                             var src= $(img).attr("src");
+                             var newImage = `<div class="mobile_post_img_inst"></div>`;
                              $('.prv_div_isnt').append(newImage);
                             $('#mediaContainervideo_inst').html('');
+                            $('.prv_div_isnt .mobile_post_img_inst').last().css('background-image', 'url(' + src + ')');
 
                 }else if(imgOrVideo =='video'){
                     var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/'+path);
@@ -710,7 +713,8 @@ $(document).ready(function () {
             }else if(socialicon == 'image_or_video_linkedin'){
 
                 var imgOrVideo= $('#media_type_linkedin').val();
-                var imgCount = $(".prv_div_link img").length;  
+                // var imgCount = $(".prv_div_link img").length; 
+                var imgCount = $(".prv_div_link .mobile_post_img_link").length;   
                 var add_imge3 = $('#image_div_linked .cross_img_con ').length;
                 if(imgCount == 0 || add_imge3 == 1)
                 {
@@ -728,14 +732,14 @@ $(document).ready(function () {
                      $(img).each(function(index) {
                         imgCount++;  if (imgCount >= 6) {
                               
-                            if ($("div.div_in_div_link").length === 0) {     
-                                                                                                                           
-                                var lastImg = $(".prv_div_link").find($(".mobile_post_img_link img:last"));
-                                var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
-                                 lastImg.after(spanElement);
-                                 lastImg.wrap("<div class='div_in_div_link'></div>");
-                                 var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
-                                   $(".div_in_div_link").after(newDiv);
+                            if ($("div.div_in_div_link").length === 0) {                                                   
+                                var lastImg = $(".prv_div_link").find($(".mobile_post_img_link:last"));
+                                // var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
+                                //  lastImg.after(spanElement);
+                                 lastImg.wrap("<div class='div_in_div_link'> </div>");
+                                //  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
+                                //    $(".div_in_div_link").after(newDiv);
+                                $(".div_in_div_link").append(`<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>${imgCount-5}</span> <div class='div_in_div_linkedin_bg'> </div>`);
                             } else {
                                         const iconElement = $('<i>').addClass('fa-solid fa-plus plus_linkedin_icon');
                                         var spanElement = $('#my_value_link');    
@@ -746,8 +750,9 @@ $(document).ready(function () {
                                 }
                         }else{
                         var src=   $(this).attr("src");
-                        var newImage = `<div class="mobile_post_img_link"><img  src="${src}"/></div>`;
+                        var newImage = `<div class="mobile_post_img_link"></div>`;
                         $('.prv_div_link').append(newImage);
+                        $('.prv_div_link .mobile_post_img_link').last().css('background-image', 'url(' + src + ')');
                         }
                         if(add_imge3 == 1 || add_imge3 == 2){
                             $('.prv_div_link .mobile_post_img_link').addClass('max_height_linkedin');
@@ -770,8 +775,6 @@ $(document).ready(function () {
                          else{
                             $('.prv_div_link .mobile_post_img_link:nth-child(3)').removeClass('third_child_img3');
                          }
-
-
 
                    });
                    $('#mediaContainervideo_link').html('');

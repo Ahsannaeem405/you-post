@@ -2753,6 +2753,21 @@ position: relative;
     height: 22px;
     width: 24px;
 }
+.mobile_post_img_inst{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.div_in_div_link{
+position: relative;
+}
+.div_in_div_link .mobile_post_img_link{
+    height: 73px;
+}
+
+/* .div_in_div_link .mobile_post_img_link{
+    height: 67px;
+} */
 /* salman_post start */
 
 /* newpopup end*/
@@ -2833,11 +2848,14 @@ position: relative;
 .mobile_post_img{
     height: 90px;
     width: 70px;
-    position: relative;
+    /* position: relative; */
     margin-bottom: 10px;
     break-inside: avoid-column;
     width: 100%;
     display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .mobile_post_img:nth-child(3), .mobile_post_img:nth-child(4), .mobile_post_img:nth-child(5) {
     height: 57px;
@@ -2860,7 +2878,13 @@ position: relative;
 .prv_div:nth-child(6){
     position: relative;
 }
+.div_in_div .mobile_post_img{
+    height: 57px;
+}
+.div_in_div{
+    position:relative;
 
+}
 .div_in_div_bg{
 position: absolute;
 background: #0a0909;
@@ -2878,6 +2902,7 @@ color: white;
 position: absolute;
 top: 27%;
 left: 36%;
+z-index: 1;
 }
 .plus_fb_icon{
     font-size: 12px;
