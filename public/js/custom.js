@@ -507,8 +507,8 @@ $(document).ready(function () {
 
 
                 if (socialicon == 'image_or_videofb') {
-                    var img_con = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
-  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+                    var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id">
+  <img name='image/*' id="teting" src="${e.target.result}"/>
    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
    <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
    <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
@@ -523,9 +523,31 @@ $(document).ready(function () {
                     }
 
                 }
+// if (socialicon == 'image_or_videofb') {
+//     var img_con = `
+//         <div class="cross_img_con ${getRandomClass}" id="remove_id" style="background-image: url('${e.target.result}'); width:50px; height:50px">
+           
+//             <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+//             <textarea id="removeit_file_id" name="fb_image[]" class="removeit_file d-none"></textarea>
+//             <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+//         </div>`;
+
+//     // Append the img_con to the parent of #image_or_videofb
+//     $("#image_or_videofb").parent().append(img_con);
+
+//     // Set the media type
+//     $('#media_type_fb').val('image');
+
+//     // Handle error display
+//     if (!dimention) {
+//         $('#file_error_fb').removeClass('d-none').text(dimention_error);
+//     } else {
+//         $('#file_error_fb').addClass('d-none');
+//     }
+// }
                 else if (socialicon == 'image_or_video_insta') {
                     var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
-  <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+  <img name='image/*' id="teting" src="${e.target.result}"/>
   <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
   <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
      <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
@@ -541,8 +563,8 @@ $(document).ready(function () {
 
                 }
                 else if (socialicon == 'image_or_video_linkedin') {
-                    var img_con_lin = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
- <img name='image/*' id="teting" src="${e.target.result}" width="50" height="50"/>
+                    var img_con_lin = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id">
+ <img name='image/*' id="teting" src="${e.target.result}"/>
  <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
  <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
       <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
@@ -606,6 +628,7 @@ $(document).ready(function () {
                         $('.prv_div').empty();                                          
                         var parentElement = $("#media_type_fb").closest(".sm_container");
                         var img = parentElement.find("img");
+                        // var img = parentElement.find("div");
                         var imgCount = 0; 
                           $(img).each(function(index) {
                              imgCount++;

@@ -1074,7 +1074,7 @@
                                         </div>
                                     </div>
                                     <hr style="color:gray;" class="m-0">
-                                    <div class="actions-buttons actions_buttons px-1">
+                                    <div class="actions-buttons actions_buttons px-1 mt-3">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
@@ -1196,7 +1196,7 @@
                                     </div>
                                 </div>
                                 <div class="row px-2">
-                                    <div class="col-12 insta_pos_acc_icons ">
+                                    <div class="col-12 insta_pos_acc_icons py-2">
                                         <div class="insta_acc_bar_parent">
                                             <img src="{{asset('images/Home-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/search-01.png')}}" alt="" class="insta_acc_bar">
