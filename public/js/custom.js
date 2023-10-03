@@ -564,7 +564,7 @@ $(document).ready(function () {
                 });
                 $.ajax({
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
-                    type: 'POST',
+                    type: 'GET',
                     data: {image: base64Data, 'dimention': dimention},
                     success: function (response) {
 
@@ -814,7 +814,7 @@ $(document).ready(function () {
                 });
                 $.ajax({
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
-                    type: 'POST',
+                    type: 'GET',
                     data: {
                         video: base64Data,
                         type: type
