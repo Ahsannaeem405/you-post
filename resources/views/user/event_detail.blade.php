@@ -29,9 +29,6 @@
     </li>
     @endif
 </ul>
-@php
-$newvar = $post->getPostLiveLink($post);
-@endphp
 <!-- Tab content -->
 <div class="tab-content post-detail-tab-content" id="myTabContent">
     @if(in_array('Facebook',$platformsName))
@@ -58,8 +55,8 @@ $newvar = $post->getPostLiveLink($post);
                 </div>
                 <div class="col-5 d-flex align-items-center">
                     <div>
-                        <a href="{{ $newvar['fb_feed'] }}" target="_blank" style="font-size:12px;">@if(($platforms['Facebook'][0]->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
-                                alt="" /> View post in live feed @endif</a>
+                        <a href="" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
+                                alt="" />View post in live feed</a>
                         <p class="text-warning text-center" style="font-size:10px; padding-right:26px;"></p>
                     </div>
                 </div>
@@ -163,8 +160,8 @@ $newvar = $post->getPostLiveLink($post);
             </div>
             <div class="col-5">
                 <div>
-                    <a href="{{ $newvar['inst_feed'] }}" target="_blank"style="font-size:12px;">
-                    @if(($platforms['Instagram'][0]->posted_at_moment)=='now')<img src="{{asset('')}}images/copy.png" class="" alt="" />  View post in live feed @endif</a>
+                    <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
+                        View post in live feed</a>
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>
@@ -251,7 +248,9 @@ $newvar = $post->getPostLiveLink($post);
 </div>
 </div>
 @endif
-
+@php
+$newvar = $post->getPostLiveLink($post);
+@endphp
 @if(in_array('Twitter',$platformsName))
 <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
 
@@ -269,8 +268,8 @@ $newvar = $post->getPostLiveLink($post);
             </div>
             <div class="col-5">
                 <div>
-                <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"> @if(($platforms['Twitter'][0]->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
-                                alt="" /> View post in live feed @endif</a>
+                <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
+                                alt="" /> @if(($platforms['Twitter'][0]->posted_at_moment)=='now') View post in live feed @endif</a>
 
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
@@ -358,11 +357,8 @@ $newvar = $post->getPostLiveLink($post);
             </div>
             <div class="col-5">
                 <div>
-
-                <a href= "{{$newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;">
-                   @if(($platforms['Linkedin'][0]->posted_at_moment)=='now')
-                <img src="{{asset('images/copy.png')}}" class=""
-                                alt="" /> View post in live feed @endif </a>
+                <a href= "{{$newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
+                                alt="" />   @if(($platforms['Linkedin'][0]->posted_at_moment)=='now') View post in live feed @endif </a>
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>

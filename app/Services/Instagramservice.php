@@ -18,30 +18,28 @@ class Instagramservice
 
     public function create_post($data)
     {
-      
         $post = Post::find( $data['post']->id);
         $media_path = asset("content_media/$post->media");
         $accesstoken = $post->account->insta_access_token;
         $insta_user_id = $post->account->insta_user_id;
 
+
         $tags = $post->tag ? " $post->tag" : '';
         if ($post->media_type == 'image') {
             $child_id = [];
             try {
-                
 
                 $images = explode(',', $post->media);
-             
                 foreach ($images as $image) {
-                   $path = 'https://youpost.social/content_media/651bf1f798866.png';
-                    // $path = asset("content_media/$image");
+                   // $path = 'https://youpost.social/content_media/16892543581029.jpg';
+                    $path = asset("content_media/$image");
                     $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
                         'caption' => $post->content . $tags,
                         'image_url' => $path,
                         'is_carousel_item' => count($images)>1,
                         'access_token' => $accesstoken
                     ])->json();
-               
+
                     if (count($images)>1){
                         $child_id[] = $response['id'];
                     }
@@ -113,7 +111,6 @@ class Instagramservice
                 $msg = ['status' => true];
 
             } catch (\Throwable $e) {
-               
                 $msg = ['status' => false];
                 $post->delete();
             }
