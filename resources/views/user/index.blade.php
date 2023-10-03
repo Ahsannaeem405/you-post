@@ -1196,7 +1196,7 @@
                                     </div>
                                 </div>
                                 <div class="row px-2">
-                                    <div class="col-12 insta_pos_acc_icons ">
+                                    <div class="col-12 insta_pos_acc_icons py-2">
                                         <div class="insta_acc_bar_parent">
                                             <img src="{{asset('images/Home-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/search-01.png')}}" alt="" class="insta_acc_bar">
