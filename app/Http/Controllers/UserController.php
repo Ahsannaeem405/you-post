@@ -186,12 +186,23 @@ class UserController extends Controller
     }
     public function getTimeDifference($post){
 
+        $currentTime = Carbon::now()->timezone($post->timezone);
+        $timeAfter60Seconds = $currentTime->copy()->addSeconds(60);
+        $postTime = Carbon::parse($post->posted_at, $post->timezone);
+        $isWithin60Seconds = $postTime->lte($timeAfter60Seconds);
+       
+        return  $isWithin60Seconds;
 
-        $timeNow = now()->timezone($post->timezone);
-        $postedTime = Carbon::parse($post->posted_at, $post->timezone);
-        $timeNowFormatted = $timeNow->format('Y-m-d H:i');         
-        $timeDifference = abs($timeNow->getTimestamp() - $postedTime->getTimestamp());
-        return $timeDifference;
+        // $timeNow = now()->timezone($post->timezone);
+        // $postedTime = Carbon::parse($post->posted_at, $post->timezone);
+        // $timeNowFormatted = $timeNow->format('Y-m-d H:i');         
+        // $timeDifference = abs($timeNow->getTimestamp() - $postedTime->getTimestamp());
+        // return $timeDifference;
+        // $timeNow = now()->timezone($post->timezone);
+        // $postedTime = Carbon::parse($post->posted_at, $post->timezone);
+        // $timeNowFormatted = $timeNow->format('Y-m-d H:i');         
+        // $timeDifference = abs($timeNow->getTimestamp() - $postedTime->getTimestamp());
+        // return $timeDifference;
 
     }
     public function create_post(Request $req)
@@ -294,9 +305,11 @@ class UserController extends Controller
 
  //****************get time difference in seconds ****************//
 
-        $timeDifference=  $this->getTimeDifference($post);
+          $timeDiffLessTennOneMnt=  $this->getTimeDifference($post);
+        
+         if ($timeDiffLessTennOneMnt) {
+    
 
-        if ($timeDifference <= 60) {
            
            
         $platformServiceMap = [
