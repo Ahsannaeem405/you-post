@@ -79,7 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
 //post routes
     Route::post('create_post', [UserController::class, 'create_post']);
 
-    Route::get('/save-image-video', [UserController::class, 'saveImageAndVideo']);
+    Route::post('/save-image-video', [UserController::class, 'saveImageAndVideo']);
 
     Route::get('post_delete/{id}', [UserController::class, 'post_delete']);
     Route::post('update_post', [UserController::class, 'update_post']);
