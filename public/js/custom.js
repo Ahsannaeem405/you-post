@@ -642,23 +642,29 @@ $(document).ready(function () {
                             }
                             if(add_imge == 1 || add_imge == 2){
                                 $('.prv_div .mobile_post_img').addClass('max_height');
+
                              }else{
                                 $('.prv_div .mobile_post_img').removeClass('max_height');
                              }
                              if(add_imge == 3){
                                 $('.prv_div .mobile_post_img:nth-child(1)').addClass('first_child_img1');
                                 $('.prv_div .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
+                              
                              }
                              else{
                                 $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
                                 $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
+                               
                              }
                             
                              if(add_imge == 4){
                                 $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img4');
+                              
+
                              }
                              else{
                                 $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
+            
                              }
                         });
 

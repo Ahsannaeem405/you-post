@@ -5,6 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
+use App\Services\TwitterService;
+
+
+
 
 class Post extends Model
 {
@@ -47,6 +53,67 @@ class Post extends Model
 
         return $content;
     }
+   
 
+    public function getPostLiveLink($post)
+    {
+       
+       $groups = Post::where('group_id', $post->group_id)->get();
+
+        $fb_feed = '';
+        $inst_feed = '';
+        $tw_feed = '';
+        $linki_feed = '';
+
+        foreach ($groups as $group) {
+            if ($group->plateform == 'Facebook'){
+               }
+            if ($group->plateform == 'Instagram'){
+             }
+
+             // for twitter
+            if ($group->plateform == 'Twitter'){
+                if($group->posted_at_moment=='now'){
+                $live_post_id = $group->post_dt;
+                $live_post_id = $live_post_id->social_id;
+
+                $tw_feed = "https://twitter.com/{$live_post_id}/status/{$live_post_id}";
+
+                } 
+          
+            }
+          // for linkedin
+            if ($group->plateform == 'Linkedin'){
+                if($group->posted_at_moment=='now'){
+                $live_post_id = $group->post_dt;
+                $live_post_id = $live_post_id->social_id;
+                $live_post_id = explode(":", $live_post_id);
+                $live_post_id = end($live_post_id);
+                // getting access token
+                $acces_token = $post->account;
+                $acces_token = $acces_token->linkedin_accesstoken;
+                // getting page id
+                $pg_id = $post->account;
+                $pg_id = $pg_id->linkedin_page_id;
+                $pg_id = explode(":", $pg_id);
+                $pg_id = end($pg_id);
+                
+                $linki_feed = "https://www.linkedin.com/company/{$pg_id}/posts/{$live_post_id}/";}
+            }
+        }
+
+        return [
+            'fb_feed' => $fb_feed,
+            'inst_feed' => $inst_feed,
+            'tw_feed' => $tw_feed,
+            'linkedin_feed' => $linki_feed,
+        ];
+
+
+
+       
+
+      
+    }
 
 }
