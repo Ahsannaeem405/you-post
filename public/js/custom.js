@@ -507,6 +507,7 @@ $(document).ready(function () {
 
 
                 if (socialicon == 'image_or_videofb') {
+                 
                     var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id">
   <img name='image/*' id="teting" src="${e.target.result}"/>
    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
@@ -516,35 +517,16 @@ $(document).ready(function () {
                     $("#image_or_videofb").parent().append(img_con);
                     $('#media_type_fb').val('image');
                     if (!dimention){
+                       
                         $('#file_error_fb').removeClass('d-none').text(dimention_error)
                     }
                     else {
+                  
                         $('#file_error_fb').addClass('d-none')
                     }
 
                 }
-// if (socialicon == 'image_or_videofb') {
-//     var img_con = `
-//         <div class="cross_img_con ${getRandomClass}" id="remove_id" style="background-image: url('${e.target.result}'); width:50px; height:50px">
-           
-//             <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
-//             <textarea id="removeit_file_id" name="fb_image[]" class="removeit_file d-none"></textarea>
-//             <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
-//         </div>`;
 
-//     // Append the img_con to the parent of #image_or_videofb
-//     $("#image_or_videofb").parent().append(img_con);
-
-//     // Set the media type
-//     $('#media_type_fb').val('image');
-
-//     // Handle error display
-//     if (!dimention) {
-//         $('#file_error_fb').removeClass('d-none').text(dimention_error);
-//     } else {
-//         $('#file_error_fb').addClass('d-none');
-//     }
-// }
                 else if (socialicon == 'image_or_video_insta') {
                     var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
   <img name='image/*' id="teting" src="${e.target.result}"/>
@@ -585,11 +567,13 @@ $(document).ready(function () {
                     }
                 });
                 $.ajax({
+                    
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
                     type: 'POST',
                     data: {image: base64Data, 'dimention': dimention},
+                   
                     success: function (response) {
-
+                      
                         $('.'+getRandomClass).find('textarea').val(response.path);
                         $('.'+getRandomClass).find('.uplaod-gif').remove();
                             setPreview(socialicon,response.path);
