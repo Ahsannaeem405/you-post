@@ -185,7 +185,7 @@
             eventLimit: true,
             schedulerLicenseKey: 'YOUR_LICENSE_KEY',
             dayMaxEvents: true, 
-            // slotDuration: '01:00',
+            slotDuration: '01:00',
             events: @json(collect($allPosts)),
             views: {
                 month: {

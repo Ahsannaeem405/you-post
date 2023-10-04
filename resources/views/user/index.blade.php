@@ -1061,20 +1061,18 @@
                                 <div class="col-md-12">
                                     <div
                                         class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom">
-
                                         <div
                                             class="reactions reactions2 d-flex justify-content-center align-items-center">
                                             <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />
                                             <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
                                                 height="12" />
                                         </div>
-
                                         <div class="total-comments total_comments u-margin-inline-start">
                                             <a>Muhammad Talha and 24k others 8.3k comments</a>
                                         </div>
                                     </div>
                                     <hr style="color:gray;" class="m-0">
-                                    <div class="actions-buttons actions_buttons px-1">
+                                    <div class="actions-buttons actions_buttons px-1 mt-3">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
@@ -1083,9 +1081,9 @@
                                                 <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                    <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
-                                                        height="15" width="14" />
-                                                    <span class="text text2">Comment</span>
+                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                    height="15" width="14" />
+                                                <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
                                                 <img src="{{asset('')}}images/share.png" class="" alt="" height="18" />
@@ -1119,7 +1117,7 @@
                                                 <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
-                                                <h3 class="mb-0 user_name">   {{auth()->user()->name}}
+                                                <h3 class="mb-0 user_name"> {{auth()->user()->name}}
                                                 </h3>
                                             </div>
                                         </div>
@@ -1221,7 +1219,7 @@
                             <div class="row">
                                 <div class="col-2  twitter_prev">
                                     <div class="indrive_icon2">
-                                    <img src="http://localhost:8000/images/insta_elp.png" alt="" class="">
+                                        <img src="http://localhost:8000/images/insta_elp.png" alt="" class="">
                                     </div>
                                 </div>
                                 <div class="col-9 colum_nine">
@@ -1245,7 +1243,8 @@
 
                                     </div>
                                     <div class="twitter_img_container">
-                                        <img class="uploader_img" src="{{asset('')}}images/uploader2.png" class="" alt="" />
+                                        <img class="uploader_img" src="{{asset('')}}images/upload22.png" class=""
+                                            alt="" />
                                     </div>
                                     <div class="x_bar_icons pt-1">
                                         <div>
@@ -1260,9 +1259,9 @@
                                             <img src="{{asset('')}}images/icons/heart-twitter.svg" class="" alt="" />
                                             <span>12k</span>
                                         </div>
-                                        <div class="d-flex mt-1 gap-1" >
-                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />                  
-                                          <div style="color:#8a96a3; font-size:12px;">61</div>        
+                                        <div class="d-flex mt-1 gap-1">
+                                            <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
+                                            <div style="color:#8a96a3; font-size:12px;">61</div>
                                         </div>
                                         <!-- <div>
                                             <img src="{{asset('')}}images/share2.png" class="ShareIcon" alt="" />
@@ -1311,9 +1310,9 @@
                             <div class="linked_add d-flex justify-content-between">
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
-                                       
+
                                         <img src="{{asset('images/linkediniii.jpg')}}" alt="" class="">
-                                      
+
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">
@@ -1324,7 +1323,7 @@
                                             </div>
                                             <div class="follwers">
                                                 <span>
-                                                   1,511 followers
+                                                    1,511 followers
                                                 </span><br>
                                                 <span class="">3d . <i class="fa-solid fa-earth-americas"></i></span>
                                             </div>
@@ -1439,8 +1438,8 @@
                                             <div><span>Post</span></div>
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
-                                            <div style="text-align:center;"><img
-                                                    src="{{asset('images/notify2.png')}}" alt=""></div>
+                                            <div style="text-align:center;"><img src="{{asset('images/notify2.png')}}"
+                                                    alt=""></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle">
                                                 <p>14</p>

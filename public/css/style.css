@@ -1533,7 +1533,7 @@ button {
     width: 50px;
     position: absolute;
     transform: translate(-50%, 50%);
-    top: 39%;
+    top: 37%;
     left: 50%;
 }
 /*  */
@@ -1543,3 +1543,8 @@ button {
 } */
 
 /*  */
+/* .MainMobileview .post_img_name .postname.fb-user{   
+     display: flex;
+    flex-wrap: wrap;
+    padding-top: 3px;
+} */
