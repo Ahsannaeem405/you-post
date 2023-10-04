@@ -306,37 +306,7 @@ class UserController extends Controller
 
  //****************get time difference in seconds ****************//
 
-          $timeDiffLessTennOneMnt=  $this->getTimeDifference($post);
         
-         if ($timeDiffLessTennOneMnt) {
-    
-
-           
-           
-        $platformServiceMap = [
-            'Facebook' => '\App\Services\Facebookservice',
-            'Instagram' => '\App\Services\Instagramservice',
-            'Twitter' => '\App\Services\TwitterService',
-            'Linkedin' => '\App\Services\Linkedinservice',
-        ];
-    
-        $platform = $platforms[$i];
-       
-    
-        if (array_key_exists($platform, $platformServiceMap)) {
-            $serviceClassName = $platformServiceMap[$platform];
-            $run = new $serviceClassName();
-            $arr['post'] = $post;
-            $result = $run->create_post($arr);
-         
-    
-            if ($result['status'] == true) {
-                $up = Post::find($post->id);
-                $up->posted_at_moment = 'now';
-                $up->update();
-            }
-        }
-      }
      }
         return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
         //****************end posting code****************//
