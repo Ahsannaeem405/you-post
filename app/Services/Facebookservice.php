@@ -86,7 +86,6 @@ class  Facebookservice
                 $responseData = json_decode($response->getBody(), true);
             }
 
-
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
             $postdetail->plateform = 'Facebook';

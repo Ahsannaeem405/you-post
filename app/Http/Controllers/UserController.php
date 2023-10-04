@@ -116,6 +116,7 @@ class UserController extends Controller
 
     public function saveImageAndVideo(Request $request)
     {
+      
 
         if ($request->type == "video") {
 
