@@ -67,8 +67,52 @@ class Post extends Model
 
         foreach ($groups as $group) {
             if ($group->plateform == 'Facebook'){
+
+                if($group->posted_at_moment=='now'){
+                    
+                    $postId = $group->post_dt;
+                    $postId = $postId->social_id;
+                    $pageAccessToken = $post->account;
+                    $pageAccessToken = $pageAccessToken->fb_page_token;                                      
+                    $url = "https://graph.facebook.com/{$postId}?fields=permalink_url&access_token={$pageAccessToken}";                  
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);                    
+                    $response = curl_exec($ch);                    
+                    if (curl_errno($ch)) {
+                        echo 'Error: ' . curl_error($ch);
+                    }                    
+                    curl_close($ch);                    
+                    $data = json_decode($response, true);                    
+                    if (isset($data['permalink_url'])) {
+                        $fb_feed = $data['permalink_url'];
+                     
+                    } 
+
+                  } 
+
                }
             if ($group->plateform == 'Instagram'){
+                if($group->posted_at_moment=='now'){
+
+                    $instagramPostId = $group->post_dt;
+                    $instagramPostId = $instagramPostId->social_id;
+                    $userAccessToken = $post->account;
+                    $userAccessToken = $userAccessToken->insta_access_token;  
+                    $url = "https://graph.facebook.com/v12.0/{$instagramPostId}?fields=permalink&access_token={$userAccessToken}";                  
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                    $response = curl_exec($ch);
+                    if (curl_errno($ch)) {
+                        echo 'Error: ' . curl_error($ch);
+                    }
+                    curl_close($ch);                        
+                    $data = json_decode($response, true);                 
+                    if (isset($data['permalink'])) {                    
+                        $inst_feed = $data['permalink'];                   
+                     } 
+                 }
              }
 
              // for twitter

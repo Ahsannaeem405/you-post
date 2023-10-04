@@ -29,12 +29,15 @@
     </li>
     @endif
 </ul>
+@php
+$newvar = $post->getPostLiveLink($post);
+@endphp
 <!-- Tab content -->
 <div class="tab-content post-detail-tab-content" id="myTabContent">
     @if(in_array('Facebook',$platformsName))
     <div class="tab-pane fade " id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
         <div class="nav_card1 mt-3">
-            <div class="row p-3">
+            <div class="row"  style="padding:12px;">
                 <div class="col-7 d-flex align-items-center">
                     <div class="d-flex">
                         <div>
@@ -55,26 +58,26 @@
                 </div>
                 <div class="col-5 d-flex align-items-center">
                     <div>
-                        <a href="" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
-                                alt="" />View post in live feed</a>
+                    <a href="{{ $newvar['fb_feed'] }}" target="_blank" style="font-size:12px;">@if(($platforms['Facebook'][0]->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
+                                alt="" /> View post in live feed @endif</a>
                         <p class="text-warning text-center" style="font-size:10px; padding-right:26px;"></p>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="post_text pb-2  edit_posts">
-                        <p class="mb-0">{{$platforms['Facebook'][0]->content}}</p>
+                        <!-- <p class="mb-0">{{$platforms['Facebook'][0]->content}}</p> -->
                         <a href="">{{$platforms['Facebook'][0]->tag}}</a>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 px-0 mb-3">
                     @php
                     $Facebookimages = explode(',',$platforms['Facebook'][0]->media);
                     @endphp
-                    <div class="image_main_container container">
+                    <div class="image_main_container px-0 container">
                         @if($platforms['Facebook'][0]->media_type=='image')
-
                         @foreach($Facebookimages as $image)
-                        @if($loop->index <= 3) <div class="post_modal_con"
+                        @if($loop->index <= 3) 
+                    <div class="post_modal_con"
                             style="background-image: url({{asset('content_media/' .$image)}})">
                     </div>
                     @elseif($loop->index == 4)
@@ -100,20 +103,19 @@
             </div>
 
             <div class="col-12">
-                <div class="actions-buttons-list d-flex p-0 justify-content-between border_top mt-3">
+                <div class="actions-buttons-list d-flex p-0 justify-content-between border_top pt-3">
 
-                    <div class="actions-buttons-button small_viewicons d-flex" style="cursor:pointer; ">
-
-                        <img src="{{asset('images/t1.png')}}" class="img-fluid" alt="" style="height: 20px; margin-right: 5px; padding-top: 5px;" />
-                        <p class="text text3">Like</p>
+                    <div class="actions-buttons-button small_viewicons d-flex align-items-center" style="cursor:pointer; ">
+                        <img src="{{asset('images/t1.png')}}" class="img-fluid" alt="" style="height: 20px; margin-right: 5px;" />
+                        <p class="text text3 mb-0">Like</p>
                     </div>
-                    <div class="actions-buttons-button small_viewicons  d-flex" style="cursor:pointer; ">
-                        <i class="fa-regular fa-message" style="color:#9DA1A5;height: 20px; margin-right: 5px; padding-top: 6px;" ></i>
-                        <p class="text text3">Comment</p>
+                    <div class="actions-buttons-button small_viewicons d-flex align-items-center" style="cursor:pointer; ">
+                        <i class="fa-regular fa-message" style="color:#9DA1A5;height: 20px; margin-right: 5px;  margin-top:3px;" ></i>
+                        <p class="text text3 mb-0">Comment</p>
                     </div>
-                    <div class="actions-buttons-button small_viewicons  d-flex" style="cursor:pointer;">
+                    <div class="actions-buttons-button small_viewicons  d-flex align-items-center" style="cursor:pointer;">
                         <img src="{{asset('images/tt3.png')}}" class="img-fluid myshare_icon" alt=""  style="margin-right: 5px; height: 20px;"/>
-                        <p class="text text3">Share</p>
+                        <p class="text text3 mb-0">Share</p>
                     </div>
                     <div class="actions-buttons-button small_viewicons d-flex" style="cursor:pointer;">
                         <div>
@@ -144,7 +146,7 @@
 @if(in_array('Instagram',$platformsName))
 <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
     <div class="nav_card1 mt-3">
-        <div class="row p-3">
+        <div class="row" style="padding:12px;">
             <div class="col-7">
                 <div class="d-flex">
                     <div>
@@ -161,16 +163,16 @@
             </div>
             <div class="col-5">
                 <div>
-                    <a href="" style="font-size:12px;"><img src="{{asset('')}}images/copy.png" class="" alt="" />
-                        View post in live feed</a>
+                <a href="{{ $newvar['inst_feed'] }}" target="_blank"style="font-size:12px;">
+                    @if(($platforms['Instagram'][0]->posted_at_moment)=='now')<img src="{{asset('')}}images/copy.png" class="" alt="" />  View post in live feed @endif</a>
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>
-            <div class="col-12 ">
+            <div class="col-12 px-0">
                 @php
                 $InstagramImages = explode(',',$platforms['Instagram'][0]->media);
                 @endphp
-                <div class="image_main_container  {{count($InstagramImages) == 1 ? 'single_image' : ''}}">
+                <div class="image_main_container pt-3 {{count($InstagramImages) == 1 ? 'single_image' : ''}}">
                     @if($platforms['Instagram'][0]->media_type=='image')
                         <div class="post_modal_con"
                                 style="background-image: url({{asset('content_media/' .end($InstagramImages))}})">
@@ -196,9 +198,7 @@
         </div>
     </div>
     <div class="col-12 px-3">
-        <div class="actions-buttons-list d-flex p-0 justify-content-between mt-3">
-
-
+        <div class="actions-buttons-list d-flex p-0 justify-content-between">
             <div class="actions-buttons-button">
                 <div class="d-flex" style="gap: 0 18px;">
                     <img class="Edit_postins_icon" src="{{asset('images/icons8-heart1.png')}}" alt=""
@@ -209,15 +209,10 @@
                 </div>
             </div>
             <div class="actions-buttons-button">
-                <i class="fa-solid fa-ellipsis myinsta_icon" style="cursor:pointer;"></i>
-            </div>
-
-
-            <div class="actions-buttons-button">
             </div>
 
             <div class="actions-buttons-button d-flex">
-                <i class="fa-regular fa-bookmark myinsta_icon" style="cursor:pointer;"></i>
+                <i class="fa-regular fa-bookmark myinsta_icon" style="cursor:pointer; color:#000;"></i>
             </div>
 
 
@@ -232,7 +227,7 @@
     </div>
     <div class="col-12 insta_post1">
         <div class="post_text pb-2 edit_posts">
-            <p class="mb-0">{{$platforms['Instagram'][0]->content}}</p>
+            <!-- <p class="mb-0">{{$platforms['Instagram'][0]->content}}</p> -->
             <a href="">{{$platforms['Instagram'][0]->tag}}</a>
         </div>
     </div>
@@ -256,14 +251,12 @@
 </div>
 </div>
 @endif
-@php
-$newvar = $post->getPostLiveLink($post);
-@endphp
+
 @if(in_array('Twitter',$platformsName))
 <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
 
     <div class="nav_card1 mt-3 navcard_3">
-        <div class="row p-3">
+        <div class="row" style="padding:12px;">
             <div class="col-7 ">
                 <div class="d-flex">
                     <div> <img src="{{asset('')}}images/elpx.png" class="navcard_3_img1" alt="" />
@@ -276,8 +269,8 @@ $newvar = $post->getPostLiveLink($post);
             </div>
             <div class="col-5">
                 <div>
-                <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
-                                alt="" /> @if(($platforms['Twitter'][0]->posted_at_moment)=='now') View post in live feed @endif</a>
+                <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"> @if(($platforms['Twitter'][0]->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
+                                alt="" /> View post in live feed @endif</a>
 
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
@@ -285,7 +278,7 @@ $newvar = $post->getPostLiveLink($post);
             <div class="post_title">
                 <div class="col-12">
                     <div class="post_text pb-2 edit_posts">
-                        <p class="mb-0">{{$platforms['Twitter'][0]->content}}</p>
+                        <!-- <p class="mb-0">{{$platforms['Twitter'][0]->content}}</p> -->
                         <a href="">{{$platforms['Twitter'][0]->tag}}</a>
                     </div>
                 </div>
@@ -342,8 +335,8 @@ $newvar = $post->getPostLiveLink($post);
 @if(in_array('Linkedin',$platformsName))
 <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
     <div class="nav_card1 mt-3">
-        <div class="row p-3">
-            <div class="col-7 ">
+        <div class="row" style="padding:12px;">
+            <div class="col-7">
                 <div class="d-flex">
                     <div>
                         @if(isset($imageUrl))
@@ -360,46 +353,25 @@ $newvar = $post->getPostLiveLink($post);
                             <span
                                 class="text-primary">{{\Carbon\Carbon::parse($platforms['Linkedin'][0]->posted_at)->format('d M Y h:i A')}}</span>
                         </span>
-
                     </div>
                 </div>
             </div>
             <div class="col-5">
                 <div>
-
-                <a href= "{{$newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"><img src="{{asset('images/copy.png')}}" class=""
-                                alt="" />   @if(($platforms['Linkedin'][0]->posted_at_moment)=='now') View post in live feed @endif </a>
+                <a href= "{{$newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;">   @if(($platforms['Linkedin'][0]->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
+                                alt="" /> View post in live feed @endif </a>
                     <p class="text-warning text-center" style="font-size:12px; padding-right:26px;"></p>
                 </div>
             </div>
-
             <div class="col-12">
                 <div class="post_text pb-2 edit_posts">
-                    <p class="mb-0">{{$platforms['Linkedin'][0]->content}}</p>
+                    <!-- <p class="mb-0">{{$platforms['Linkedin'][0]->content}}</p> -->
                     <a href="">{{$platforms['Linkedin'][0]->tag}}</a>
                 </div>
             </div>
-            <!-- <div class="col-12">
-                @if($platforms['Linkedin'][0]->media_type=='image')
-                <div class="image_main_container">
-                    @foreach(explode(',',$platforms['Linkedin'][0]->media) as $image)
-                    @if($image !== null)
-                    <div class="post_modal_con" style="background-image: url({{asset('content_media/' .$image)}})">
-                    </div>
-                    @endif
-                    @endforeach
-
-                </div>
-                @endif
-
-                @if($platforms['Linkedin'][0]->media_type=='video')
-                <div class="video_container">
-                    <video src="{{asset("content_media/{$platforms['Linkedin'][0]->media}")}}" controls></video>
-                    @endif
-                </div>
-            </div> -->
+           
             <!-- test -->
-            <div class="col-12 ">
+            <div class="col-12 px-0">
                 @php
                 $LinkedinImages = explode(',',$platforms['Linkedin'][0]->media);
                 @endphp
@@ -441,22 +413,22 @@ $newvar = $post->getPostLiveLink($post);
                         <img src="{{asset('')}}images/elp2.png" class="dropimg1" alt="" />
                         <i class="fa-solid fa-caret-down myicon dropimg2" style="padding-top:5px; margin-left: 5px;"></i>
                     </div>
-                    <div class="actions-buttons-button d-flex small_viewicons2">
+                    <div class="actions-buttons-button d-flex align-items-center small_viewicons2">
                         <i class="fa-regular fa-thumbs-up fa-flip-horizontal myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3 icon_text3">Like</p>
+                        <p class="text text3 icon_text3 mb-0">Like</p>
                     </div>
-                    <div class="actions-buttons-button d-flex small_viewicons2">
+                    <div class="actions-buttons-button d-flex align-items-center small_viewicons2">
 
                         <i class="fa-solid fa-comments myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3 icon_text3">Comment</p>
+                        <p class="text text3 icon_text3 mb-0">Comment</p>
                     </div>
-                    <div class="actions-buttons-button d-flex small_viewicons2">
+                    <div class="actions-buttons-button d-flex align-items-center small_viewicons2">
                         <i class="fa-solid fa-retweet myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3 icon_text3">Repost</p>
+                        <p class="text text3 icon_text3 mb-0">Repost</p>
                     </div>
-                    <div class="actions-buttons-button d-flex small_viewicons2">
+                    <div class="actions-buttons-button d-flex align-items-center small_viewicons2">
                         <i class="fa-solid fa-paper-plane myicon" style="padding-top:4px; margin-right: 5px;"></i>
-                        <p class="text text3 icon_text3">Send</p>
+                        <p class="text text3 icon_text3 mb-0">Send</p>
                     </div>
                 </div>
             </div>
@@ -471,51 +443,13 @@ $newvar = $post->getPostLiveLink($post);
     </a>
 </div>
 @endif
-<!-- <script>
-function post_cards(i) {
-    // var Elements = $('.image_main_container').find('.post_modal_con');
-    const secondContainer = $('.image_main_container:eq(' + i + ')'); //within the second container
-    const childElements = secondContainer.find('.post_modal_con');
-    // var allImages = Elements;
-    if (childElements.length === 1) {
-        $(".image_main_container").css({
-            "column-count": "1",
-
-        });
-
-    } else {
-        $(".image_main_container").css({
-            "column-count": "2",
-
-        });
-    }
-    return childElements.length;
-
-}
-$('#tab1-tab').click(function() {
-    alert(post_cards(1));
-});
-$('#tab2-tab').click(function() {
-    alert(post_cards(2));
-});
-$('#tab3-tab').click(function() {
-    alert(post_cards(3));
-});
-$('#tab4-tab').click(function() {
-    alert(post_cards(4));
-});
-post_cards(0);
-
-// alert(allImages);
-</script> -->
-
 <script>
 $(document).ready(function() {
 
     function setImagePreview() {
         $('.image_main_container').each(function() {
             var mainlength = $(this).find('.post_modal_con').length;
-            // alert(mainlength);
+           
             if (mainlength == 1) {
                 $(this).css('column-count', '1');
             } else {

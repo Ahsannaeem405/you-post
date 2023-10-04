@@ -2511,7 +2511,7 @@ height: 100%;
     max-width: 359px !important;
 }
 .schedule_date {
-    padding-top: 20px;
+    padding: 15px 10px;
     text-align: end;
 }
 .card_4Evano {
@@ -3015,5 +3015,13 @@ z-index: 1;
 .sm_container .cross_img_con {
     /* padding: 3px 0px; */
     margin: 3px 2px;
+}
+#remove_id{
+    position: relative;
+}
+.uplaod-gif{
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
