@@ -678,7 +678,7 @@ button {
     position: absolute !important;
     background: #F4F4F5 !important;
     font-family: 'poppins', sans-serif !important;
-    color: #18181B !important;
+    /* color: #18181B !important; */
     border: none !important;
     border-radius: 0px !important;
     padding: 6px 14px !important;
@@ -873,7 +873,7 @@ button {
 }
 
 
-.fc-today-button {
+.fc-today-button{
     color: #18181B !important;
     background: #F4F4F5 !important;
 
@@ -1548,3 +1548,9 @@ button {
     flex-wrap: wrap;
     padding-top: 3px;
 } */
+.fc-event-container .fc-time-grid-event{
+ 
+    margin: 0% !important;
+  
+    
+}

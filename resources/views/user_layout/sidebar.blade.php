@@ -644,7 +644,7 @@ body.dark .home .text {
 <nav class="sidebar side_bar close">
     <header>
         <div class="image-text image_text">
-            <a href="index.html"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid" alt="" /></a>
+            <a href="javascript:void(0)"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid" alt="" /></a>
 
             <!-- <div class="text logo-text">
                 <span class="name">Codinglab</span>

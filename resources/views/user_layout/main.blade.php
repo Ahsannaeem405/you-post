@@ -182,16 +182,22 @@
             defaultView: 'month',
             selectable: true,
             businessHours: true,
+            displayEventTime: true,
             eventLimit: true,
             schedulerLicenseKey: 'YOUR_LICENSE_KEY',
             dayMaxEvents: true, 
+            selectOverlap: false,
+            allDay:true,
             slotDuration: '01:00',
             events: @json(collect($allPosts)),
+    
             views: {
                 month: {
                     eventLimit: 2,
                 }
+     
             },
+    
             views: {
                 agendaWeek: {
                     columnFormat: 'ddd\nD' ,
@@ -210,8 +216,7 @@
             fixedWeekCount: false,
             contentHeight: 850,
             // salman new code calendar 7/9/23
-
-
+            
             eventClick: function (event, jsEvent, view) {
                 var id = event.id;
                 get_detail(id);
@@ -220,7 +225,6 @@
             dayRender: function (date, cell) {
                 var today = moment().startOf('day');
                 var currentDay = moment(date).startOf('day');
-
                 if (currentDay.isSameOrAfter(today)) {
                     if ($.inArray(moment(currentDay).format('YYYY-MM-DD'), eventDates) === -1) {
                         var plusIcon = $('<span class="plus-icon-calender">+</span>');
