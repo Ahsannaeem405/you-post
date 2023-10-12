@@ -1,0 +1,66 @@
+/* NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+
+
+.request-form-s {
+    width: 50%;
+    margin: auto;
+}
+.add-new-data-sidebar .dropzone {
+    /* min-height : 180px !important; */
+    border : 2px dashed #7367F0;
+    background : #F8F8F8;
+    margin-top: 15px;
+  }
+  .add-new-data-sidebar .data-field-col{
+    margin-top: 15px;
+  }
+  .btn-s{
+    margin-left: 10px;
+  }
+  .request-page .actions.action-btns{
+    display: none !important;
+  }
+  .add-user-btn{
+    margin-top: 20px;
+  }
+  .product-action span{
+    cursor: pointer;
+  }
+  .modal-dialog {
+    max-width: 50% !important;
+    margin: auto;
+}
+/* .modal-dialog .dataTables_length,
+.modal-dialog .dataTables_filter,
+.modal-dialog .dataTables_info,
+.modal-dialog .dataTables_paginate.paging_simple_numbers{
+    display: none ;
+} */
+.modal-dialog .content-wrapper{
+    margin-top: 0px !important;
+}
+.modal-dialog .request-form-s {
+    width: 90%;
+    margin: auto;
+}
+.modal-dialog .data-fields{
+    margin-top: 0px !important;
+}
+.chip-text{
+    cursor: pointer;
+}
+.modal-dialog {
+  margin-top: 15px;
+}
+
+
+@media only screen and (max-width: 767.98) {
+  .modal-dialog {
+    max-width: 85% !important;
+    margin: auto;
+}
+}

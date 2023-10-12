@@ -11,6 +11,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -33,7 +34,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = 'dashboard';
-
     /**
      * Create a new controller instance.
      *
@@ -41,8 +41,32 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+       
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request){
+      
+           
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required',
+ 
+        ]);
+        if (auth()->attempt(array('email'=>$request->input('email'),'password'=>$request->input('password')))) 
+        {
+            if (auth()->user()->role=='admin') {
+               
+                return redirect()->route('admin.dashboard')->with('message','Login Successful');  
+            } else{                   
+                return redirect()->route('index')->with('message','Login Successful'); 
+            }
+        }
+        else
+        {
+             return redirect()->route('login')->with('error','Enter valid credentials');
+        }
+ }
 
     public function redirectToGoogle()
     {

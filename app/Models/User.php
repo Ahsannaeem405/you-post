@@ -41,6 +41,10 @@ class User extends Authenticatable
 
     ];
 
+    public function isRole($role)
+    {
+        return $this->role === $role;
+    }
     public function posts()
     {
         return $this->hasMany(Post::class, 'user_id', 'id');

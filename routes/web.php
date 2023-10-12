@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\GptController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\AdminControoler;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,20 @@ Route::get('auth/facebook', [LoginController::class, 'redirectToFacebook']);
 Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('facebook.callback');
 
 // ///////////////////////social login/////////////////////////
+
+
+Route::group(['middleware' => ['auth','role']], function () {     
+
+    Route::get('admin/dashbaord', [AdminControoler::class, 'dashbaord'])->name('admin.dashboard');
+    Route::post('admin/adduser', [AdminControoler::class, 'addUser'])->name('admin.user');
+    Route::get('admin/deleteuser/{user}', [AdminControoler::class, 'deleteUser'])->name('admin.delete');
+    Route::get('admin/get-user/{id}', [AdminControoler::class, 'getUserdData'])->name('admin.get-user');
+    Route:: get('admin/update-user/', [AdminControoler::class, 'updateUser']);
+
+});
+
+
+
 
 Route::group(['middleware' => ['auth']], function () {
 
