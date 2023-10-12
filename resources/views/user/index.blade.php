@@ -2663,7 +2663,7 @@ function getEvents() {
 
     const dateString = dateSelect;
     // Split the date string into day, month, and year components
-    const [day, month, year] = dateString.split('/').map(Number);
+    const [month,day, year] = dateString.split('/').map(Number);
     // Create a JavaScript Date object
     const date = new Date(year, month - 1, day); // Note: month is zero-based (0 for January)
     // Get the weekday index (0 for Sunday, 1 for Monday, and so on)
