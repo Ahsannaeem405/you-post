@@ -26,8 +26,6 @@ use getID3\getID3;
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 
-
-
 class UserController extends Controller
 {
 
@@ -44,11 +42,11 @@ class UserController extends Controller
     {
 
         $platforms = session('platforms');
-        $imageUrl='images/admin.png';
+        $imageUrl = 'images/admin.png';
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
-         $allPosts = [];
+        $allPosts = [];
         foreach ($posts as $post) {
             $allPosts[] = [
                 'id' => $post->id,
@@ -65,12 +63,15 @@ class UserController extends Controller
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost','platforms' ));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
 
     }
 
     public function dashbaord2()
     {
+
+
+
 //        $accesstoken = auth()->user()->account->linkedin_accesstoken;
 //        $linkedin = Http::withHeaders([
 //            'Authorization' => 'Bearer ' . $accesstoken,
@@ -80,43 +81,41 @@ class UserController extends Controller
 //         $bearerToken = auth()->user()->account->twiter_access_token;
 //        $api= Http::withToken($bearerToken)->get('https://api.twitter.com/2/users/by?usernames=reh');
 //        dd($api->body(),$api->status());
+
+
+//        $connection = new TwitterOAuth(
+//            'aSQRkFaVlvQDPRjDXgMlYVVmD',
+//            'WD4j6rY3azsxlTQPI1kuAXiCmHw2vDbAzY3oYClzziAmvSd5VL',
+//        );
+//        $token = $connection->oauth('oauth/request_token', ['oauth_callback' => url('/connect_to_twitter/calback')]);
+//        dd($token);
+
         $connection = new TwitterOAuth(
-            'JxLliRfEO3ts7mivk6ZQfgPrX',
-            'DAAtIK4sE7YGJLT870HTlAyN5QbukYqfLaCnDIamQCeR7opSgu',
-            '26968990-Y5SIkP6EiBJBPNzBDh8NPd7grtnBzLAtxqiH23Hd7',
-            'V9X1ktJhqYIJUygMS3NulZX8utKGbpbF8We3MFmqcwEGv'
+            'aSQRkFaVlvQDPRjDXgMlYVVmD',
+            'WD4j6rY3azsxlTQPI1kuAXiCmHw2vDbAzY3oYClzziAmvSd5VL',
+            '869138965298806785-ur34Qxmt5fkkb3JViwX4U7XN9I9Eb45',
+            'X28xPqd42dfxeyKwlvczV84qlgPFvTfmO6oiRuj1xsmEO'
         );
 
-        $status = $connection->get("statuses/show", ["screen_name" => 'Rehman211']);
-        dd($status, $connection->getLastHttpCode());
 
+        $connection->setApiVersion('1.1');
+        $status = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a2c97a42.png')]);
+        $status2 = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a28f2252.png')]);
+        $connection->setApiVersion('2');
+        $post = $connection->post("tweets", [
+            'text' => "test 1",
+            'media' => array(
+                'media_ids' => [$status->media_id_string,$status2->media_id_string]
+            )
+        ], true);
+        dd($post);
 
-        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('content')->get();
-        $accounts = Account::where('user_id', auth()->id())->get();
-        $allPosts = [];
-        foreach ($posts as $post) {
-            $allPosts[] = [
-                'id' => $post->id,
-                'title' => $post->content,
-                'start' => $post->posted_at,
-                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
-                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
-                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
-            ];
-        }
-        $response = $this->createPostService->InitilizeData();
-        $stattistics = $this->createPostService->Statisics();
-        $instapages = $response['linkedin'];
-        $all_pages = $response['facebook'];
-        $all_pages_for_insta = [];
-
-        return view('user.index2', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages'));
 
     }
 
     public function saveImageAndVideo(Request $request)
     {
-      
+
 
         if ($request->type == "video") {
 
@@ -127,7 +126,7 @@ class UserController extends Controller
             $videoPath = $filename;
             return response()->json(['path' => $videoPath]);
         } else {
-            if($request->dimention=="false"){
+            if ($request->dimention == "false") {
 
                 $base64Image = $request->input('image');
 
@@ -167,11 +166,10 @@ class UserController extends Controller
                 $path = 'path_to_save_resized_image/' . $filename;
 
                 // Save the resized image to the specified path
-                $img->save('content_media/'.$filename);
-               // \Storage::disk('public')->put($path, (string) $img->encode('jpg'));
+                $img->save('content_media/' . $filename);
+                // \Storage::disk('public')->put($path, (string) $img->encode('jpg'));
                 $imagePath = $filename;
-            }
-            else{
+            } else {
                 $base64Data = $request->input('image');
                 $filename = uniqid() . '.png';
                 $imageData = base64_decode($base64Data);
@@ -185,27 +183,30 @@ class UserController extends Controller
 
 
     }
-    public function getTimeDifference($post){
+
+    public function getTimeDifference($post)
+    {
 
         $currentTime = Carbon::now()->timezone($post->timezone);
         $timeAfter60Seconds = $currentTime->copy()->addSeconds(60);
         $postTime = Carbon::parse($post->posted_at, $post->timezone);
         $isWithin60Seconds = $postTime->lte($timeAfter60Seconds);
-       
-        return  $isWithin60Seconds;
+
+        return $isWithin60Seconds;
 
         // $timeNow = now()->timezone($post->timezone);
         // $postedTime = Carbon::parse($post->posted_at, $post->timezone);
-        // $timeNowFormatted = $timeNow->format('Y-m-d H:i');         
+        // $timeNowFormatted = $timeNow->format('Y-m-d H:i');
         // $timeDifference = abs($timeNow->getTimestamp() - $postedTime->getTimestamp());
         // return $timeDifference;
         // $timeNow = now()->timezone($post->timezone);
         // $postedTime = Carbon::parse($post->posted_at, $post->timezone);
-        // $timeNowFormatted = $timeNow->format('Y-m-d H:i');         
+        // $timeNowFormatted = $timeNow->format('Y-m-d H:i');
         // $timeDifference = abs($timeNow->getTimestamp() - $postedTime->getTimestamp());
         // return $timeDifference;
 
     }
+
     public function create_post(Request $req)
     {
 
@@ -271,7 +272,7 @@ class UserController extends Controller
 
         //****************posting code****************//
         $group_id = Str::random(40);
-        foreach ($platforms as $i=>$platform) {
+        foreach ($platforms as $i => $platform) {
             $content = Str::lower($platforms[$i]) . '_content';
             $tag = Str::lower($platforms[$i]) . '_tag';
 
@@ -287,8 +288,8 @@ class UserController extends Controller
 
             $post = new Post();
             $firstPostOrNot = Post::where('user_id', auth()->user()->id)->count();
-            if($firstPostOrNot>0){
-                session(['check_first_post' =>$firstPostOrNot]);
+            if ($firstPostOrNot > 0) {
+                session(['check_first_post' => $firstPostOrNot]);
             }
             $post->account_id = auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
@@ -304,47 +305,44 @@ class UserController extends Controller
             $post->save();
 
 
- //****************get time difference in seconds ****************//
+            //****************get time difference in seconds ****************//
 
 
- $timeDiffLessTennOneMnt=  $this->getTimeDifference($post);
-        
-         if ($timeDiffLessTennOneMnt) {
-    
+            $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
 
-           
-           
-        $platformServiceMap = [
-            'Facebook' => '\App\Services\Facebookservice',
-            'Instagram' => '\App\Services\Instagramservice',
-            'Twitter' => '\App\Services\TwitterService',
-            'Linkedin' => '\App\Services\Linkedinservice',
-        ];
-    
-        $platform = $platforms[$i];
-       
-    
-        if (array_key_exists($platform, $platformServiceMap)) {
-            $serviceClassName = $platformServiceMap[$platform];
-            $run = new $serviceClassName();
-            $arr['post'] = $post;
-            $result = $run->create_post($arr);
-         
-    
-            if ($result['status'] == true) {
-                $up = Post::find($post->id);
-                $up->posted_at_moment = 'now';
-                $up->update();
+            if ($timeDiffLessTennOneMnt) {
+
+
+                $platformServiceMap = [
+                    'Facebook' => '\App\Services\Facebookservice',
+                    'Instagram' => '\App\Services\Instagramservice',
+                    'Twitter' => '\App\Services\TwitterService',
+                    'Linkedin' => '\App\Services\Linkedinservice',
+                ];
+
+                $platform = $platforms[$i];
+
+
+                if (array_key_exists($platform, $platformServiceMap)) {
+                    $serviceClassName = $platformServiceMap[$platform];
+                    $run = new $serviceClassName();
+                    $arr['post'] = $post;
+                    $result = $run->create_post($arr);
+
+
+                    if ($result['status'] == true) {
+                        $up = Post::find($post->id);
+                        $up->posted_at_moment = 'now';
+                        $up->update();
+                    }
+                }
             }
+
         }
-      }
-        
-     }
-        return back()->with(['success-post'=> 'Post Created Successfully','platforms'=>$platforms,'firstPostOrNot'=> $firstPostOrNot]);
+        return back()->with(['success-post' => 'Post Created Successfully', 'platforms' => $platforms, 'firstPostOrNot' => $firstPostOrNot]);
         //****************end posting code****************//
 
     }
-
 
 
     public function get_event_detail(Request $request)
@@ -448,7 +446,7 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata','pages_show_list'];
+        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata', 'pages_show_list'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
@@ -708,7 +706,7 @@ class UserController extends Controller
         $user->linkedin_page_id = $req->page;
         $user->platforms = $platforms;
         $user->update();
-        return back()->with('success','Linkedin  Connected Successfully!');
+        return back()->with('success', 'Linkedin  Connected Successfully!');
 
 
     }
@@ -750,14 +748,24 @@ class UserController extends Controller
 
     public function connect_twitter_calback(Request $request)
     {
+
+
+//        $connection = new TwitterOAuth(
+//            'aSQRkFaVlvQDPRjDXgMlYVVmD',
+//            'WD4j6rY3azsxlTQPI1kuAXiCmHw2vDbAzY3oYClzziAmvSd5VL',
+//            'C_HWMwAAAAABpjg-AAABi0ac51s',
+//            'CNcvKEg763DtInbKHSLynHQsRsxjbd3n'
+//
+//        );
+//        $accessToken = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->input("oauth_verifier")]);
+//        dd($accessToken);
+
         try {
             $twitter = config('services.twitter');
-
             $client_id = $twitter['client_id'];
-
             $client_secret = $twitter['client_secret'];
             $redirect_uri = $twitter['redirect'];
-            // with curl
+            //with curl
             $basee = base64_encode($client_id . ':' . $client_secret);
             $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -779,6 +787,7 @@ class UserController extends Controller
 
             curl_close($curl);
             $response2 = json_decode($response);
+
 
             if (isset($response2->error)) {
                 return redirect('/index')->with('error', $response2->error_description);
