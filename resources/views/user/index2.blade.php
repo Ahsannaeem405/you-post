@@ -503,7 +503,7 @@
                                                 <div class="calendar"></div>
                                             </div>
                                             <label for="">Select Time:</label>
-                                            <input type="time" name="" id="" class="form-control select_time" value="00:00">
+                                            <input type="time" name="" id="" class="form-control select_time" value="00:00">   
                                         </div>
                                     </div>
                                     <div class="modal-footer">

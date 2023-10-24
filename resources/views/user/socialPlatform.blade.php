@@ -43,15 +43,16 @@
                     <img src="{{asset('images/YouPost_Logo.png')}}" class="" alt=""/>
                 </a>
             </div>
-            <p>
+            <p style="color: #2F2F2F; text-align: center;font-size: 18px;font-style: normal;font-weight: 400;line-height: normal; ">
                 Thanks for signing up, <br>
                 Let’s add your first account and connect it’s social platforms
             </p>
+          
         </div>
 
 
         @if (Session::has('success'))
-            <div id="elementToEmbed">
+            <div id="elementToEmbed ">
                 <div class="all_social_platformMain">
 
                     <div class="all_social_platformCnt successFullyAdded">
