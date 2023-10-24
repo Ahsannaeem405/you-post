@@ -678,7 +678,7 @@ button {
     position: absolute !important;
     background: #F4F4F5 !important;
     font-family: 'poppins', sans-serif !important;
-    /* color: #18181B !important; */
+    color: #18181B !important;
     border: none !important;
     border-radius: 0px !important;
     padding: 6px 14px !important;
@@ -831,7 +831,7 @@ button {
 
 /* V3 */
 
-.fc-state-default {
+.fc-state-default{
     outline: none !important;
     box-shadow: none !important;
     padding: 4px 14px !important;
@@ -843,6 +843,7 @@ button {
     border-radius: 6px !important;
     color: #71717A !important;
 }
+
 
 .fc-state-active {
     background-color: #DC2626 !important;
@@ -876,6 +877,7 @@ button {
 .fc-today-button{
     color: #18181B !important;
     background: #F4F4F5 !important;
+   
 
 }
 

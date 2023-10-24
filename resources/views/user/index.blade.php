@@ -475,6 +475,13 @@
 #selectedValues span {
     color: #fff;
 }
+.time-picker_cls{
+    padding:10px 10px 10px 14px;
+}
+.fc-content-skeleton table thead{
+    height:40px !important;
+}
+
 </style>
 @section('content')
 
@@ -934,9 +941,21 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="Timeselect">
+                                <div class="Timeselect d-flex justify-content-between">
                                     <label for="">Select Time:</label>
-                                    <input type="time" name="" id="" class="form-control select_time" value="00:00">
+                                    <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
+                                    <!--  -->
+                                    <div class="time-picker time-picker_cls">
+                                        <select id="hour"></select>
+                                        :
+                                        <select id="minute"></select>
+                                        :
+                                        <select id="ampm">
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
+                                        </select>
+                                            </div>
+                                            <!--  -->
                                 </div>
                                 <div class="modal-body">
                                     <div class="post_later">
@@ -2829,6 +2848,23 @@ function openEventModal(year, month, day) {
         calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
 }
+</script>
+<script>
+    function populateOptions(selectId, start, end, step) {
+  const select = document.getElementById(selectId);
+  for (let i = start; i <= end; i += step) {
+    const option = document.createElement("option");
+    option.value = String(i).padStart(2, "0");
+    option.text = String(i).padStart(2, "0");
+    select.appendChild(option);
+  }
+}
+
+// Populate hour options (01 to 12)
+populateOptions("hour", 1, 12, 1);
+
+// Populate minute options (00 to 59)
+populateOptions("minute", 0,59,1);
 </script>
 
 @endsection

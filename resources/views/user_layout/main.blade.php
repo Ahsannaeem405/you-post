@@ -179,6 +179,7 @@
         var eventDates =@json(collect($allPosts)->pluck('event_date'));
 
         var calendar = $('#postManagerCalendar').fullCalendar({
+            
             defaultView: 'month',
             selectable: true,
             businessHours: true,
@@ -196,8 +197,7 @@
                     eventLimit: 2,
                 }
      
-            },
-    
+            }, 
             views: {
                 agendaWeek: {
                     columnFormat: 'ddd\nD' ,

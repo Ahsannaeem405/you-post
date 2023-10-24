@@ -65,7 +65,7 @@ $newvar = $post->getPostLiveLink($post);
                 </div>
                 <div class="col-12">
                     <div class="post_text pb-2  edit_posts">
-                        <!-- <p class="mb-0">{{$platforms['Facebook'][0]->content}}</p> -->
+                        <p class="mb-0">{{$platforms['Facebook'][0]->content}}</p>
                         <a href="">{{$platforms['Facebook'][0]->tag}}</a>
                     </div>
                 </div>
@@ -227,7 +227,7 @@ $newvar = $post->getPostLiveLink($post);
     </div>
     <div class="col-12 insta_post1">
         <div class="post_text pb-2 edit_posts">
-            <!-- <p class="mb-0">{{$platforms['Instagram'][0]->content}}</p> -->
+            <p class="mb-0">{{$platforms['Instagram'][0]->content}}</p>
             <a href="">{{$platforms['Instagram'][0]->tag}}</a>
         </div>
     </div>
@@ -278,7 +278,7 @@ $newvar = $post->getPostLiveLink($post);
             <div class="post_title">
                 <div class="col-12">
                     <div class="post_text pb-2 edit_posts">
-                        <!-- <p class="mb-0">{{$platforms['Twitter'][0]->content}}</p> -->
+                        <p class="mb-0">{{$platforms['Twitter'][0]->content}}</p>
                         <a href="">{{$platforms['Twitter'][0]->tag}}</a>
                     </div>
                 </div>
@@ -365,7 +365,7 @@ $newvar = $post->getPostLiveLink($post);
             </div>
             <div class="col-12">
                 <div class="post_text pb-2 edit_posts">
-                    <!-- <p class="mb-0">{{$platforms['Linkedin'][0]->content}}</p> -->
+                    <p class="mb-0">{{$platforms['Linkedin'][0]->content}}</p>
                     <a href="">{{$platforms['Linkedin'][0]->tag}}</a>
                 </div>
             </div>
