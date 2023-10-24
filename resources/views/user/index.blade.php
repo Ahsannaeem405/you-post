@@ -475,6 +475,14 @@
 #selectedValues span {
     color: #fff;
 }
+.erro_background{
+    background: #c3bb5c99 !important;
+    color: #976262ad !important;
+}
+.color_info{
+    padding-bottom: 22px;
+    color: #605858;
+}
 </style>
 @section('content')
 
@@ -485,7 +493,7 @@
 
             <div
                 class="create_post create_preview_post_index_item create_preview_post_index_itemLeft section2_borderleft_card mx-2 my-2">
-                <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data">
+                <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data" id="post_form">
                     @csrf
                     <section class="wizard-section" style="display: none">
                         <div class="row no-gutters">
@@ -534,8 +542,8 @@
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    required name="facebook_content" id="facebook_content" cols="30"
-                                                    rows="3" class="form-control wizard-required emojiarea mention"
+                                                     name="facebook_content" id="facebook_content" cols="30"
+                                                    rows="10" class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -600,7 +608,7 @@
                                                 </label>
 
                                             </div>
-                                            <p class=" bg-warning text-white p-2  w-100 d-none mt-2" id="file_error_fb">
+                                            <p  id="file_error_fb">
                                             </p>
                                             <!-- append div waleed start -->
                                             <!-- end my coed -->
@@ -634,8 +642,8 @@
 
                                             <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    required name="instagram_content" id="instagram_content" cols="30"
-                                                    rows="3" class="form-control wizard-required emojiarea "
+                                                     name="instagram_content" id="instagram_content" cols="30"
+                                                    rows="10" class="form-control wizard-required emojiarea "
                                                     placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
@@ -685,7 +693,7 @@
                                                 <label for="file" style="margin-top: 20px;">
                                                     <div class="sm_container">
 
-                                                        <input type="file" name="" required
+                                                        <input type="file" name="" 
                                                             class="image d-none file_image_video wizard-required"
                                                             id="image_or_video_insta" accept="image/*,video/*"
                                                             div_to_open="instagram">
@@ -695,7 +703,7 @@
                                                     </div>
                                                 </label>
                                             </div>
-                                            <p class=" bg-warning text-white p-2  w-100 d-none mt-2"
+                                            <p class=" p-2  w-100 d-none mt-2 erro_background"
                                                 id="file_error_insta"></p>
 
                                             <div class="form-group clearfix clearfix2">
@@ -713,8 +721,8 @@
                                                 class="wizard-fieldset_facebook">Twitter</span>
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
-                                                    onchange="suggested_text(this)" required name="twitter_content"
-                                                    id="twitter_content" cols="30" rows="3"
+                                                    onchange="suggested_text(this)"  name="twitter_content"
+                                                    id="twitter_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
                                                     plt-name="fb">{{old('twitter_content')}}</textarea>
@@ -786,8 +794,8 @@
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    required name="linkedin_content" id="linkedin_content" cols="30"
-                                                    rows="3"
+                                                     name="linkedin_content" id="linkedin_content" cols="30"
+                                                    rows="10"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
                                                     placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -848,7 +856,7 @@
                                                     </div>
                                                 </label>
                                             </div>
-                                            <p class=" bg-warning text-white p-2  w-100 d-none mt-2"
+                                            <p class=" p-2  w-100 d-none mt-2 erro_background"
                                                 id="file_error_linkedin"></p>
                                             <div class="form-group clearfix clearfix2">
                                                 <!-- <a href="javascript:;"
@@ -858,6 +866,8 @@
                                             </div>
                                         </fieldset>
                                         @endif
+                                        <p class="  p-2  w-100 d-none mt-2 erro_background"
+                                                id="file_error_all"></p>
                                         <div class="post_now_button schedule_post_button">
 
                                             <button type="button"
@@ -873,11 +883,11 @@
                                             </button>
 
                                         </div>
-                                        <div class="PostDateTimePicker PostDate_Time_Picker">
+                                        <!-- <div class="PostDateTimePicker PostDate_Time_Picker">
                                             Posted Date & Time
                                             <span data-bs-toggle="modal" data-bs-target="#TimetoUploadPost"
                                                 id="browsertime2"></span>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -980,6 +990,7 @@
                         <div class="sub_heading">
                             <h4>Post Preview</h4>
                         </div>
+                        <div class="color_info">Social networks frequently introduce enhancements to their formatting, your post may appear different when published.</div>
                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                         <div class="preview_wrap add_preview  prv_fb prev_wrap_fb">
                             <div class="col-md-12">
@@ -1466,8 +1477,11 @@
                     class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner position-relative ">
 
                     <div class="sub_heading">
-                        <h4>AI Generated Content</h4>
+                        <div><h4>AI Generated Content</h4></div>
+                        <div class="comming_soon"> <p class="mb-0">Coming Soon</p></div>
+                       
                     </div>
+                    
 
                     <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade">
                         <div class="AIgeneratedContentData">
@@ -1483,12 +1497,16 @@
                             <div>
                                 <label for="" class="add_cap_label add_cap_labal">Add Tags</label>
                                 <div class="add_caption">
-                                    <select id="slect_drop" class="js-example-basic-single form-control" name="state"
+                                    <!-- <select id="slect_drop" class="js-example-basic-single form-control" name="state"
                                         multiple>
                                         <option value="AL">Facebook +</option>
                                         ...
                                         <option value="WY">Instagram +</option>
-                                    </select>
+                                    </select> -->
+                                    <p id="slect_drop" class="js-example-basic-single form-control" name="state">
+                                    Facebook + <br>
+                                    Instagram +
+                                    </p>
                                 </div>
                             </div>
                             <div class="suggest_img">
@@ -1708,7 +1726,11 @@
                     <div class="card-main">
                         <div class="card custom_card mt-3" id="like-card">
                             <div class="card-body">
+                                <div class="likes_card">
                                 <h3 class="card-title">Likes</h3>
+                                <p class="">Coming Soon</p>
+                                </div>
+                                
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
                                         <div id="morris-donut-example" dir="ltr" style="height: 245px;"
@@ -1888,7 +1910,12 @@
                     <div class="card-main">
                         <div class="card custom_card mt-3" id="like-card">
                             <div class="card-body">
+                                <!-- <h3 class="card-title">Share</h3> -->
+                                <div class="likes_card">
                                 <h3 class="card-title">Share</h3>
+                                <p class="">Coming Soon</p>
+                                </div>
+                                
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
                                         <div id="morris-donut-example" dir="ltr" style="height: 245px;"
@@ -2068,7 +2095,11 @@
                     <div class="card-main">
                         <div class="card custom_card mt-3" id="like-card">
                             <div class="card-body">
+                                <!-- <h3 class="card-title">Engagement</h3> -->
+                                <div class="likes_card">
                                 <h3 class="card-title">Engagement</h3>
+                                <p class="">Coming Soon</p>
+                                </div>
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
                                         <div id="morris-donut-example" dir="ltr" style="height: 245px;"
@@ -2292,7 +2323,7 @@
                         <p class="mb-0">You just @if (!session()->has('IsScheduled')) published @else scheduled @endif
                             your
                             @if (!session()->has('check_first_post')) first @endif
-                            post! Keep posting and let the world know what you’ve got to say.</p>
+                            post! Keep  @if (!session()->has('IsScheduled')) posting @else scheduling @endif  and let the world know what you’ve got to say.</p>
                     </div>
                     @php
                     session()->forget('check_first_post');
@@ -2370,6 +2401,7 @@ $(document).ready(function() {
 
     // Handle dropdown suggestion click
     $('.dropdown-content-search').on('click', '.suggestion', function() {
+      
         const suggestionText = $(this).text();
         const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
         const currentText = textarea.val();
@@ -2689,6 +2721,9 @@ function getEvents() {
     });
 
 }
+
+
+setInterval(getEvents, 10000);
 
 function prevMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);

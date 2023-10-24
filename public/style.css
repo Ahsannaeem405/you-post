@@ -64,7 +64,14 @@ body {
 .cta_btn_wrap {
     margin-top: 20px;
 }
-
+.likes_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.likes_card p{
+    margin-bottom: 30px;
+}
 .cta_btn {
     color: var(--lightColor);
     background: var(--baseColor);
@@ -105,6 +112,12 @@ body {
 
 .sub_heading {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sub_heading .comming_soon{
+    font-size: 18px;
 }
 
 .sub_heading h4 {
@@ -1434,6 +1447,10 @@ width: 30%;
 	    padding-bottom: unset;
 
 	}
+    .sub_heading{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 

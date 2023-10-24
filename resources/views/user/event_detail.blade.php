@@ -46,7 +46,7 @@ $newvar = $post->getPostLiveLink($post);
 
                         <div class="Evano ms-2">
                             <h3 class="mb-0">{{$platforms['Facebook'][0]->user->name}}
-                                <img src="{{asset('images/offical2.png')}}" class="" alt="" height="" />
+                                <img src="{{asset('images/offical2.png')}}" class="d-none" alt="" height="" />
                             </h3>
                             <span>
                                 <span class="text-secondary">Scheduled at:</span>
@@ -155,7 +155,7 @@ $newvar = $post->getPostLiveLink($post);
 
                     <div class="Evano">
                         <h3 class="mb-0 user_name_insta">{{$platforms['Instagram'][0]->user->name}} <img
-                                src="{{asset('')}}images/offical.png" class="" alt="" height="14" /></h3>
+                                src="{{asset('')}}images/offical.png" class="d-none" alt="" height="14" /></h3>
 
                     </div>
 
@@ -262,7 +262,7 @@ $newvar = $post->getPostLiveLink($post);
                     <div> <img src="{{asset('')}}images/elpx.png" class="navcard_3_img1" alt="" />
                     </div>
                     <div class="Evano">
-                        <h3 class="mb-0 user_name">{{$platforms['Twitter'][0]->user->name}} <img src="" class="" alt=""
+                        <h3 class="mb-0 user_name">{{$platforms['Twitter'][0]->user->name}} <img src="" class="d-none" alt=""
                                 height="14" /></h3>
                     </div>
                 </div>
@@ -346,7 +346,7 @@ $newvar = $post->getPostLiveLink($post);
                         @endif
                     </div>
                     <div class="Evano card_4Evano">
-                        <h3 class="mb-0 user_name">{{$platforms['Linkedin'][0]->user->name}} <img src="" class="" alt=""
+                        <h3 class="mb-0 user_name">{{$platforms['Linkedin'][0]->user->name}} <img src="" class="d-none" alt=""
                                 height="14" /></h3>
                         <span class="linkedin_schedule">
                             <span class="text-secondary">Scheduled at:</span>

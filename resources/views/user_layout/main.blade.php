@@ -491,9 +491,13 @@
            
   
       }
+
+
+      
       function updateDiv($obj) {
   
           var textareaAttr = $($obj).attr("attr_of_text_area");
+        
           var inputText = $($obj).val();
   
           if (textareaAttr == 'fb') {

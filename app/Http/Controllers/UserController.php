@@ -287,7 +287,9 @@ class UserController extends Controller
                 $media = implode(',', $mediaDataLinkedin);
 
             $post = new Post();
+          
             $firstPostOrNot = Post::where('user_id', auth()->user()->id)->count();
+            $scheduled ='no';
             if ($firstPostOrNot > 0) {
                 session(['check_first_post' => $firstPostOrNot]);
             }
@@ -336,10 +338,14 @@ class UserController extends Controller
                         $up->update();
                     }
                 }
+            }else{
+                $scheduled ='yes';
+                session(['IsScheduled' => $scheduled]);
+
             }
 
         }
-        return back()->with(['success-post' => 'Post Created Successfully', 'platforms' => $platforms, 'firstPostOrNot' => $firstPostOrNot]);
+        return back()->with(['success-post' => 'Post Created Successfully', 'platforms' => $platforms, 'firstPostOrNot' => $firstPostOrNot,'scheduled' => $scheduled]);
         //****************end posting code****************//
 
     }
