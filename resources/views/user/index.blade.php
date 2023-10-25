@@ -475,21 +475,68 @@
 #selectedValues span {
     color: #fff;
 }
-.erro_background{
-    background: #c3bb5c99 !important;
-    color: #976262ad !important;
-}
-.color_info{
-    padding-bottom: 22px;
-    color: #605858;
-}
-.time-picker_cls{
-    padding:10px 10px 10px 14px;
-}
-.fc-content-skeleton table thead{
-    height:40px !important;
+
+.erro_background {
+    background-color: rgba(255, 222, 144, 255) !important;
+    color: rgba(125, 108, 71, 255) !important;
 }
 
+.color_info {
+    text-align: center; 
+    margin-top: 43px;
+    padding-bottom: 22px;
+    color: #605858;
+    font-size:14px;
+}
+
+.fc-content-skeleton table thead {
+    height: 40px !important;
+}
+.fc-content-skeleton table thead tr .fc-day-top .fc-day-number{
+    padding:12px;
+}
+/* timepicker style */
+.time-picker_cls {
+        margin-right:10px;
+        display: flex;
+        align-items: center;
+        background-color: #f4f4f4;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Style the select elements (hour, minute, am/pm) */
+    .time-picker_cls select {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 5px;
+        margin: 0 5px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    /* Add some hover and focus styles for better user interaction */
+    .time-picker_cls select:hover,
+    .time-picker_cls select:focus {
+        border-color: #3498db;
+    }
+
+    /* Style the AM/PM select element */
+    .time-picker_cls #ampm {
+        margin-right: 0;
+    }
+
+    /* Customize the appearance of the selected option */
+    .time-picker_cls select option:checked {
+        background-color: #3498db;
+        color: #fff;
+    }
+   
+/* timepicker style */
 </style>
 @section('content')
 
@@ -500,7 +547,8 @@
 
             <div
                 class="create_post create_preview_post_index_item create_preview_post_index_itemLeft section2_borderleft_card mx-2 my-2">
-                <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data" id="post_form">
+                <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data"
+                    id="post_form">
                     @csrf
                     <section class="wizard-section" style="display: none">
                         <div class="row no-gutters">
@@ -549,8 +597,8 @@
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                     name="facebook_content" id="facebook_content" cols="30"
-                                                    rows="10" class="form-control wizard-required emojiarea mention"
+                                                    name="facebook_content" id="facebook_content" cols="30" rows="10"
+                                                    class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -615,11 +663,11 @@
                                                 </label>
 
                                             </div>
-                                            <p  id="file_error_fb">
+                                            <p id="file_error_fb">
                                             </p>
                                             <!-- append div waleed start -->
                                             <!-- end my coed -->
-                                            
+
 
                                             <div class="form-group clearfix clearfix2">
                                                 <!-- <a href="javascript:;"
@@ -649,8 +697,8 @@
 
                                             <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                     name="instagram_content" id="instagram_content" cols="30"
-                                                    rows="10" class="form-control wizard-required emojiarea "
+                                                    name="instagram_content" id="instagram_content" cols="30" rows="10"
+                                                    class="form-control wizard-required emojiarea "
                                                     placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
@@ -700,7 +748,7 @@
                                                 <label for="file" style="margin-top: 20px;">
                                                     <div class="sm_container">
 
-                                                        <input type="file" name="" 
+                                                        <input type="file" name=""
                                                             class="image d-none file_image_video wizard-required"
                                                             id="image_or_video_insta" accept="image/*,video/*"
                                                             div_to_open="instagram">
@@ -710,8 +758,8 @@
                                                     </div>
                                                 </label>
                                             </div>
-                                            <p class=" p-2  w-100 d-none mt-2 erro_background"
-                                                id="file_error_insta"></p>
+                                            <p class=" p-2  w-100 d-none mt-2 erro_background" id="file_error_insta">
+                                            </p>
 
                                             <div class="form-group clearfix clearfix2">
                                                 <!-- <a href="javascript:;"
@@ -728,7 +776,7 @@
                                                 class="wizard-fieldset_facebook">Twitter</span>
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
-                                                    onchange="suggested_text(this)"  name="twitter_content"
+                                                    onchange="suggested_text(this)" name="twitter_content"
                                                     id="twitter_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
@@ -801,8 +849,7 @@
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                     name="linkedin_content" id="linkedin_content" cols="30"
-                                                    rows="10"
+                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
                                                     placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -863,8 +910,8 @@
                                                     </div>
                                                 </label>
                                             </div>
-                                            <p class=" p-2  w-100 d-none mt-2 erro_background"
-                                                id="file_error_linkedin"></p>
+                                            <p class=" p-2  w-100 d-none mt-2 erro_background" id="file_error_linkedin">
+                                            </p>
                                             <div class="form-group clearfix clearfix2">
                                                 <!-- <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
@@ -873,8 +920,7 @@
                                             </div>
                                         </fieldset>
                                         @endif
-                                        <p class="  p-2  w-100 d-none mt-2 erro_background"
-                                                id="file_error_all"></p>
+                                        <p class="  p-2  w-100 d-none mt-2 erro_background" id="file_error_all"></p>
                                         <div class="post_now_button schedule_post_button">
 
                                             <button type="button"
@@ -897,6 +943,9 @@
                                         </div> -->
                                     </div>
                                 </div>
+                                <div class="color_info">Social networks
+                                    frequently introduce enhancements to their formatting, your post may appear
+                                    different when published.</div>
                             </div>
                         </div>
                     </section>
@@ -956,16 +1005,14 @@
                                     <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
                                     <!--  -->
                                     <div class="time-picker time-picker_cls">
-                                        <select id="hour"></select>
-                                        :
-                                        <select id="minute"></select>
-                                        :
-                                        <select id="ampm">
+                                        <select id="hour" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="minute" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="ampm" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
                                             <option value="AM">AM</option>
                                             <option value="PM">PM</option>
                                         </select>
-                                            </div>
-                                            <!--  -->
+                                    </div>
+                                    <!--  -->
                                 </div>
                                 <div class="modal-body">
                                     <div class="post_later">
@@ -1009,7 +1056,7 @@
                         <div class="sub_heading">
                             <h4>Post Preview</h4>
                         </div>
-                        <div class="color_info">Social networks frequently introduce enhancements to their formatting, your post may appear different when published.</div>
+                        <!-- <div class="color_info">Social networks frequently introduce enhancements to their formatting, your post may appear different when published.</div> -->
                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                         <div class="preview_wrap add_preview  prv_fb prev_wrap_fb">
                             <div class="col-md-12">
@@ -1231,7 +1278,7 @@
                                             <img src="{{asset('images/search-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/Plus-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/Movie-01.png')}}" alt="" class="insta_acc_bar">
-                                            <img src="{{asset('images/Profile 1-01.png')}}" alt=""
+                                            <img src="{{asset('images/accountfbicon.png')}}" alt=""
                                                 class="insta_acc_bar">
 
 
@@ -1250,7 +1297,9 @@
                             <div class="row">
                                 <div class="col-2  twitter_prev">
                                     <div class="indrive_icon2">
-                                        <img src="http://localhost:8000/images/insta_elp.png" alt="" class="">
+                                        <!-- <img src="http://localhost:8000/images/insta_elp.png" alt="" class=""> -->
+                                        <img src="{{asset('images/insta_elp.png')}}" alt=""  >
+                                             
                                     </div>
                                 </div>
                                 <div class="col-9 colum_nine">
@@ -1496,19 +1545,23 @@
                     class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner position-relative ">
 
                     <div class="sub_heading">
-                        <div><h4>AI Generated Content</h4></div>
-                        <div class="comming_soon"> <p class="mb-0">Coming Soon</p></div>
-                       
+                        <div>
+                            <h4>AI Generated Content</h4>
+                        </div>
+                        <div class="comming_soon">
+                            <p class="mb-0">Coming Soon</p>
+                        </div>
+
                     </div>
-                    
+
 
                     <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade">
                         <div class="AIgeneratedContentData">
                             <div>
                                 <label for="" class="add_cap_label add_cap_labal">Add Caption</label>
                                 <div class="add_caption">
-                                    <a href="#">
-                                        <input type="text" placeholder="">
+                                    <a href="javascript:void(0)">
+                                        <input type="text" placeholder="" readonly>
                                         <img src="{{asset('images/add.png')}}" class="img-fluid add_icon" alt="" />
                                     </a>
                                 </div>
@@ -1523,8 +1576,8 @@
                                         <option value="WY">Instagram +</option>
                                     </select> -->
                                     <p id="slect_drop" class="js-example-basic-single form-control" name="state">
-                                    Facebook + <br>
-                                    Instagram +
+                                        Facebook + <br>
+                                        Instagram +
                                     </p>
                                 </div>
                             </div>
@@ -1536,8 +1589,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1546,8 +1599,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1556,8 +1609,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1565,8 +1618,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1574,8 +1627,8 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1583,8 +1636,8 @@
                                     <img src="{{asset('images/carousel2.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1592,12 +1645,26 @@
                                     <img src="{{asset('images/carousel1.png')}}" alt="">
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
-                                            <div><a href="#"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="#"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                                <div class="d-flex justify-content-center">
+                                    <div style="width:16px">
+                                        <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
+                                    </div>
+                                    <div style="width:16px">
+                                        <img src="{{asset('images/dot1.png')}}" alt="" class="w-100">
+                                    </div>
+                                    <div style="width:16px">
+                                        <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
+                                    </div>
+                                </div>
+                          
+
 
 
                             <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
@@ -1734,7 +1801,7 @@
                             Last 7 days <img src="{{asset('images/vector.png')}}" class="img-fluid" alt="" />
 
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu d-none" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -1746,10 +1813,10 @@
                         <div class="card custom_card mt-3" id="like-card">
                             <div class="card-body">
                                 <div class="likes_card">
-                                <h3 class="card-title">Likes</h3>
-                                <p class="">Coming Soon</p>
+                                    <h3 class="card-title">Likes</h3>
+                                    <p class="">Coming Soon</p>
                                 </div>
-                                
+
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
                                         <div id="morris-donut-example" dir="ltr" style="height: 245px;"
@@ -1873,7 +1940,7 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <!-- <img src="/caption-image1.png" alt=""> -->
@@ -1884,11 +1951,11 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -1898,7 +1965,7 @@
                                         <div class="d-flex gap-2 captions">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
@@ -1908,11 +1975,11 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -1931,10 +1998,10 @@
                             <div class="card-body">
                                 <!-- <h3 class="card-title">Share</h3> -->
                                 <div class="likes_card">
-                                <h3 class="card-title">Share</h3>
-                                <p class="">Coming Soon</p>
+                                    <h3 class="card-title">Share</h3>
+                                    <p class="">Coming Soon</p>
                                 </div>
-                                
+
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
                                         <div id="morris-donut-example" dir="ltr" style="height: 245px;"
@@ -2058,7 +2125,7 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <!-- <img src="/caption-image1.png" alt=""> -->
@@ -2069,11 +2136,11 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2083,7 +2150,7 @@
                                         <div class="d-flex gap-2 captions">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
@@ -2093,11 +2160,11 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2116,8 +2183,8 @@
                             <div class="card-body">
                                 <!-- <h3 class="card-title">Engagement</h3> -->
                                 <div class="likes_card">
-                                <h3 class="card-title">Engagement</h3>
-                                <p class="">Coming Soon</p>
+                                    <h3 class="card-title">Engagement</h3>
+                                    <p class="">Coming Soon</p>
                                 </div>
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
@@ -2242,7 +2309,7 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <!-- <img src="/caption-image1.png" alt=""> -->
@@ -2253,11 +2320,11 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2267,7 +2334,7 @@
                                         <div class="d-flex gap-2 captions">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
@@ -2277,11 +2344,11 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href=""><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href=""><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2342,7 +2409,8 @@
                         <p class="mb-0">You just @if (!session()->has('IsScheduled')) published @else scheduled @endif
                             your
                             @if (!session()->has('check_first_post')) first @endif
-                            post! Keep  @if (!session()->has('IsScheduled')) posting @else scheduling @endif  and let the world know what you’ve got to say.</p>
+                            post! Keep @if (!session()->has('IsScheduled')) posting @else scheduling @endif and let the
+                            world know what you’ve got to say.</p>
                     </div>
                     @php
                     session()->forget('check_first_post');
@@ -2420,7 +2488,7 @@ $(document).ready(function() {
 
     // Handle dropdown suggestion click
     $('.dropdown-content-search').on('click', '.suggestion', function() {
-      
+
         const suggestionText = $(this).text();
         const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
         const currentText = textarea.val();
@@ -2607,10 +2675,13 @@ $(document).ready(function() {
 
 $('.owl-carousel').owlCarousel({
     loop: true,
-    autoplay: true,
+    autoplay: false,
     margin: 10,
-    nav: true,
+    touchDrag: false,
+    mouseDrag: false,
+    nav: false,
     pages: true,
+    dots: false,
     pagination: false,
     navigation: true,
     responsive: {
@@ -2714,7 +2785,7 @@ function getEvents() {
 
     const dateString = dateSelect;
     // Split the date string into day, month, and year components
-    const [month,day, year] = dateString.split('/').map(Number);
+    const [month, day, year] = dateString.split('/').map(Number);
     // Create a JavaScript Date object
     const date = new Date(year, month - 1, day); // Note: month is zero-based (0 for January)
     // Get the weekday index (0 for Sunday, 1 for Monday, and so on)
@@ -2885,21 +2956,21 @@ function openEventModal(year, month, day) {
 }
 </script>
 <script>
-    function populateOptions(selectId, start, end, step) {
-  const select = document.getElementById(selectId);
-  for (let i = start; i <= end; i += step) {
-    const option = document.createElement("option");
-    option.value = String(i).padStart(2, "0");
-    option.text = String(i).padStart(2, "0");
-    select.appendChild(option);
-  }
+function populateOptions(selectId, start, end, step) {
+    const select = document.getElementById(selectId);
+    for (let i = start; i <= end; i += step) {
+        const option = document.createElement("option");
+        option.value = String(i).padStart(2, "0");
+        option.text = String(i).padStart(2, "0");
+        select.appendChild(option);
+    }
 }
 
 // Populate hour options (01 to 12)
 populateOptions("hour", 1, 12, 1);
 
 // Populate minute options (00 to 59)
-populateOptions("minute", 0,59,1);
+populateOptions("minute", 0, 59, 1);
 </script>
 
 @endsection

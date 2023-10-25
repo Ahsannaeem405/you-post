@@ -315,80 +315,131 @@ $(document).ready(function () {
         //apend_current_time();
     });
 
-    $("#post_form").submit(function(event) {
-        event.preventDefault();           
-        var facebook_content = '';
-        var instagram_content= '';
-        var twitter_content= '';
-        var linkedin_content = '';
-        var image_or_video_insta_file= '';
-        var error_input ='';
-            if ($("li[section='fb']").length > 0) {
-                facebook_content = $("#facebook_content").val();
+    // $("#post_form").submit(function(event) {
+    //     event.preventDefault();           
+    //     var facebook_content = '';
+    //     var instagram_content= '';
+    //     var twitter_content= '';
+    //     var linkedin_content = '';
+    //     var image_or_video_insta_file= '';
+    //     var error_input ='';
+    //         if ($("li[section='fb']").length > 0) {
+    //             facebook_content = $("#facebook_content").val();
               
-                if (facebook_content === "") {
+    //             if (facebook_content === "") {
                  
 
-                     error_input ="Facebook content can not be empty";
-                    $('#file_error_all').removeClass('d-none').text(error_input);
-                    return;
+    //                  error_input ="Facebook content can not be empty";
+    //                 $('#file_error_all').removeClass('d-none').text(error_input);
+    //                 return;
                   
-                } else{
-                    $('#file_error_all').addClass('d-none')
-                }
-            }
-             if ($("li[section='insta']").length > 0) {
-                instagram_content = $("#instagram_content").val();
-                image_or_video_insta_file = $("#image_or_video_insta")[0];
+    //             } else{
+    //                 $('#file_error_all').addClass('d-none')
+    //             }
+    //         }
+    //          if ($("li[section='insta']").length > 0) {
+    //             instagram_content = $("#instagram_content").val();
+    //             image_or_video_insta_file = $("#image_or_video_insta")[0];
 
               
-                    if (instagram_content === ""  || image_or_video_insta_file.files.length === 0 ) {
+    //                 if (instagram_content === ""  || image_or_video_insta_file.files.length === 0 ) {
                        
 
-                         error_input ="Insta content and image can not be empty";
-                            $('#file_error_all').removeClass('d-none').text(error_input);
-                            return;
-                    }else{
-                        $('#file_error_all').addClass('d-none')
-                    } 
-            }
-             if ($("li[section='twitter']").length > 0) {
-                twitter_content = $("#twitter_content").val();
-                    if (twitter_content === "") {
+    //                      error_input ="Insta content and image can not be empty";
+    //                         $('#file_error_all').removeClass('d-none').text(error_input);
+    //                         return;
+    //                 }else{
+    //                     $('#file_error_all').addClass('d-none')
+    //                 } 
+    //         }
+    //          if ($("li[section='twitter']").length > 0) {
+    //             twitter_content = $("#twitter_content").val();
+    //                 if (twitter_content === "") {
                      
-                         error_input ="Twitter content can not be empty";
-                        $('#file_error_all').removeClass('d-none').text(error_input);
-                        return;
-                    } else{
-                        $('#file_error_all').addClass('d-none');
-                    } 
-            }
-             if ($("li[section='linkedin']").length > 0) {
-                linkedin_content = $("#linkedin_content").val();
+    //                      error_input ="Twitter content can not be empty";
+    //                     $('#file_error_all').removeClass('d-none').text(error_input);
+    //                     return;
+    //                 } else{
+    //                     $('#file_error_all').addClass('d-none');
+    //                 } 
+    //         }
+    //          if ($("li[section='linkedin']").length > 0) {
+    //             linkedin_content = $("#linkedin_content").val();
               
-                    if (linkedin_content === "") {
+    //                 if (linkedin_content === "") {
                     
-                         error_input ="Linkedin content can not be empty";
-                        $('#file_error_all').removeClass('d-none').text(error_input);
-                        return;
-                    } 
-                    else{
-                        $('#file_error_all').addClass('d-none')
-                    } 
-            }
+    //                      error_input ="Linkedin content can not be empty";
+    //                     $('#file_error_all').removeClass('d-none').text(error_input);
+    //                     return;
+    //                 } 
+    //                 else{
+    //                     $('#file_error_all').addClass('d-none')
+    //                 } 
+    //         }
             
            
-            if (error_input == "") {
-                $('#file_error_all').addClass('d-none');
+    //         if (error_input == "") {
+    //             $('#file_error_all').addClass('d-none');
               
-                  $(this).unbind('submit').submit();
-            } 
+    //               $(this).unbind('submit').submit();
+    //         } 
              
       
 
 
         
+    // });
+    // 
+    $(document).ready(function() {
+        // Add input event listeners to input fields
+        $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").on('input', function() {
+            var error_input = $('#file_error_all');
+            if ($(this).val().trim() !== '') {
+                error_input.addClass('d-none');
+            }
+        });
+    
+        // Add input event listener to image input field
+        $("#image_or_video_insta").on('input', function() {
+            var error_input = $('#file_error_all');
+            // Check if a file is selected, and if so, hide the error message
+            if (this.files.length > 0) {
+                error_input.addClass('d-none');
+            }
+        });
+    
+        $("#post_form").submit(function(event) {
+            event.preventDefault();
+    
+            var facebook_content = $("#facebook_content").val();
+            var instagram_content = $("#instagram_content").val();
+            var twitter_content = $("#twitter_content").val();
+            var linkedin_content = $("#linkedin_content").val();
+            var image_or_video_insta_file = $("#image_or_video_insta")[0].files;
+    
+            var error_input = '';
+    
+            if ($("li[section='fb']").length > 0 && facebook_content === "") {
+                error_input = "Facebook content can not be empty";
+            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" || image_or_video_insta_file.length === 0)) {
+                error_input = "Insta content and image can not be empty";
+            } else if ($("li[section='twitter']").length > 0 && twitter_content === "") {
+                error_input = "Twitter content can not be empty";
+            } else if ($("li[section='linkedin']").length > 0 && linkedin_content === "") {
+                error_input = "Linkedin content can not be empty";
+            }
+    
+            if (error_input !== "") {
+                $('#file_error_all').removeClass('d-none').text(error_input);
+            } else {
+                $('#file_error_all').addClass('d-none');
+                $(this).unbind('submit').submit();
+            }
+        });
     });
+    
+    
+    // 
 
     $(document).on('click', '.open_emoji', function () {
         $('.emoji_parent > span').click();      
