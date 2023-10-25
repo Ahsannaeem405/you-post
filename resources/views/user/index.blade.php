@@ -598,7 +598,7 @@
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     name="facebook_content" id="facebook_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention"
+                                                    class="form-control wizard-required emojiarea mention" data-id="facebok_error"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -698,7 +698,7 @@
                                             <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     name="instagram_content" id="instagram_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea "
+                                                    class="form-control wizard-required emojiarea" data-id="insta_error"
                                                     placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
@@ -777,7 +777,7 @@
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
                                                     onchange="suggested_text(this)" name="twitter_content"
-                                                    id="twitter_content" cols="30" rows="10"
+                                                    id="twitter_content" cols="30" rows="10"  data-id="twitter_error"
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
                                                     plt-name="fb">{{old('twitter_content')}}</textarea>
@@ -849,7 +849,7 @@
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10"
+                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10" data-id="link_error"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
                                                     placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
