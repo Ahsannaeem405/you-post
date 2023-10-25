@@ -82,7 +82,29 @@ class TwitterService
         return $msg;
     }
 
+    public function get_tw_image()
+    {
+      
+        $this->twiter_refresh( auth()->user()->account);
+        $bearerToken = auth()->user()->account->twiter_access_token;
 
+
+
+        $client = new Client();    
+        $response = $client->get("https://api.twitter.com/2/users/by", [
+            'headers' => [
+                'Authorization' =>  $bearerToken,
+            ],
+           
+        ]);
+    
+        $data = json_decode($response->getBody(), true);
+        
+       
+        $user = $data['data'];
+       dd($user);
+        return $user;
+    }
     public function twiter_refresh($account)
     {
         $refresh_token = $account->twiter_refresh_token;

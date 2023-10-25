@@ -683,7 +683,7 @@ body.dark .home .text {
                                 <img src="{{asset('images/admin.png')}}" class="v_icon" alt="" width="45px" />
                                 @endif
                                 <span class="text nav-text text2"
-                                    style="padding-left:12px;">{{auth()->user()->name}}</span>
+                                    style="padding-left:12px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
                                 <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
                                     style="padding-left:8rem" />

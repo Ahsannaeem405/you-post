@@ -127,7 +127,22 @@ class Instagramservice
 
     }
 
- 
+    public function get_inst_image($accessToken)
+    {
+         if($accessToken){
+        $client = new Client();
+        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+            ],
+        ]);
+
+        $responseData = json_decode($response->getBody(), true);
+        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+      
+       }
+       return $imageUrl;
+    }
     public function delete_post($data)
     {
         $accessToken = auth()->user()->account->insta_access_token;

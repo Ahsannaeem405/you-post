@@ -4,7 +4,7 @@
 }
 </style>
 @foreach($accounts as $key=>$account)
-<div id="elementToEmbed" class="d-none">
+<div id="elementToEmbed" class="">
     <h5 class="all_social_platformTitle">Account #{{$key+1}} : {{$account->name}}</h5>
     <div class="all_social_platformMain">
 
@@ -137,7 +137,7 @@
     </div>
 </div>
 <!--24,,10,23,  -->
-<div style="text-align:center;">
+<!-- <div style="text-align:center;">
     <div>
         <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3" style="width: 150px;"
             alt="Avatar" />
@@ -156,6 +156,6 @@ text-decoration-line: underline">
         </div>
 
     </div>
-</div>
+</div> -->
 <!--  -->
 @endforeach

@@ -46,6 +46,31 @@ class UserController extends Controller
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
+      
+        $user_platforms = auth()->user()->account->platforms;
+
+         if (in_array('Facebook', $user_platforms  )) {
+            // $run=new Facebookservice();
+            // $imageUrl=$run->get_fb_image();
+         
+         }else if(in_array('Instagram', $user_platforms)){
+            $run=new Instagramservice();
+            $imageUrl=$run->get_inst_image();
+         }
+         else if (in_array('Twitter', $user_platforms )){
+            // $run=new TwitterService();
+            // $imageUrl=$run->get_tw_image();
+
+         }else if(in_array('Linkedin', $user_platforms)){
+            $run=new Linkedinservice();            
+            $imageUrl=$run->get_linkedin_image();          
+            $user = auth()->user();          
+            $user->account->link_image =  $imageUrl ;                  
+            $user->account->save();
+        
+        }else{
+            // dd("no plateform");
+        }
         $allPosts = [];
         foreach ($posts as $post) {
             $allPosts[] = [
@@ -62,6 +87,7 @@ class UserController extends Controller
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
+      
 
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
 
@@ -467,6 +493,7 @@ class UserController extends Controller
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
         $token = $accessToken->getValue();
+     
         $account = Account::find(auth()->user()->account_id);
         $account->fb_access_token = $token;
         $account->update();

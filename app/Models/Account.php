@@ -13,4 +13,9 @@ class Account extends Model
     protected $casts=[
         'platforms' => 'array'
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'account_id', 'id');
+    }
 }

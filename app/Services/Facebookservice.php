@@ -103,7 +103,25 @@ class  Facebookservice
 
     }
 
-    
+    public function get_fb_image()
+    {
+        $accessToken = auth()->user()->account->fb_page_token;
+
+            try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $accessToken,
+            ])->get("https://graph.facebook.com/v12.0/{$pageId}/picture?type=large");
+
+            // Get the image URL from the response
+            $imageUrl = $response->json();
+        //    dd($imageUrl);
+            return $imageUrl;
+        } catch (\Exception $e) {
+            // Handle the exception, log the error, or return an error response.
+            // dd( $e->getMessage());
+            return $e->getMessage();
+        }
+    }
     function delete_post($id)
     {
         $accessToken = auth()->user()->account->fb_page_token;
