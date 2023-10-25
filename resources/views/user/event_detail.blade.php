@@ -103,7 +103,7 @@ $newvar = $post->getPostLiveLink($post);
             </div>
 
             <div class="col-12">
-                <div class="actions-buttons-list d-flex p-0 justify-content-between border_top pt-3">
+                <div class="actions-buttons-list d-flex p-0 justify-content-between border_top pt-3 px-2">
 
                     <div class="actions-buttons-button small_viewicons d-flex align-items-center" style="cursor:pointer; ">
                         <img src="{{asset('images/t1.png')}}" class="img-fluid" alt="" style="height: 20px; margin-right: 5px;" />
@@ -119,8 +119,9 @@ $newvar = $post->getPostLiveLink($post);
                     </div>
                     <div class="actions-buttons-button small_viewicons d-flex" style="cursor:pointer;">
                         <div>
-                            <img src="http://127.0.0.1:8000/images/Profile 1-01.png" alt="" class="insta_acc_bar" style="height:20px; padding-top:5px; opacity:0.5;
-                                ">
+                            <!-- <img src="http://127.0.0.1:8000/images/Profile 1-01.png" alt="" class="insta_acc_bar" style="height:20px; padding-top:5px; opacity:0.5;
+                                "> -->
+                                <img src="{{asset('images/accountfbicon.png')}}" alt="" class="insta_acc_bar" style="height:20px; padding-top:5px; opacity:0.5;"/> 
                         </div>
                         <div class="mt-1">
                             <img src="{{asset('images/drop.png')}}" class="img-fluid" alt=""
@@ -132,7 +133,7 @@ $newvar = $post->getPostLiveLink($post);
 
         </div>
     </div>
-    <div class="col-12 my-2 text-center delete2">
+    <div class="col-12 my-2 text-center delete2 pt-3 pb-2">
         <a class="text-decoration-none btn btn-danger"
             onclick="return confirm('Are you sure you want to delete this post?');"
             href="{{url('post_delete/' .encrypt($platforms['Facebook'][0]->id))}}">

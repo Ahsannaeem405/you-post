@@ -403,7 +403,8 @@ body {
 
 .all_social_platform .single_platform input[type="checkbox"]:checked + label:after {
     /* border: 2px solid #81DE69; */
-    background-color: #6D48FF;
+    /* background-color: #6D48FF; */
+    background-color: #81DE69;
     -webkit-transform: translateX(15px);
     -ms-transform: translateX(15px);
     transform: translateX(15px);
