@@ -49,7 +49,7 @@ $newvar = $post->getPostLiveLink($post);
                                 <img src="{{asset('images/offical2.png')}}" class="d-none" alt="" height="" />
                             </h3>
                             <span>
-                                <span class="text-secondary">Scheduled at:</span>
+                                <span class="text-secondary">Scheduled for:</span>
                                 <span
                                     class="text-primary">{{\Carbon\Carbon::parse($platforms['Facebook'][0]->posted_at)->format('d M Y h:i A')}}</span>
                             </span>
@@ -235,7 +235,7 @@ $newvar = $post->getPostLiveLink($post);
 
     <div class="col-12 schedule_date">
         <span>
-            <span class="text-secondary">Scheduled at:</span>
+            <span class="text-secondary">Scheduled for:</span>
             <span
                 class="text-primary">{{\Carbon\Carbon::parse($platforms['Instagram'][0]->posted_at)->format('d M Y h:i A')}}</span>
         </span>
@@ -315,7 +315,7 @@ $newvar = $post->getPostLiveLink($post);
             </div>
             <div class="col-12 schedule_date">
                 <span>
-                    <span class="text-secondary">Scheduled at:</span>
+                    <span class="text-secondary">Scheduled for:</span>
                     <span
                         class="text-primary">@if(isset($platforms['Instagram'])){{\Carbon\Carbon::parse($platforms['Instagram'][0]->posted_at)->format('d M Y h:i A')}}@endif</span>
                 </span>
@@ -350,7 +350,7 @@ $newvar = $post->getPostLiveLink($post);
                         <h3 class="mb-0 user_name">{{$platforms['Linkedin'][0]->user->name}} <img src="" class="d-none" alt=""
                                 height="14" /></h3>
                         <span class="linkedin_schedule">
-                            <span class="text-secondary">Scheduled at:</span>
+                            <span class="text-secondary">Scheduled for:</span>
                             <span
                                 class="text-primary">{{\Carbon\Carbon::parse($platforms['Linkedin'][0]->posted_at)->format('d M Y h:i A')}}</span>
                         </span>

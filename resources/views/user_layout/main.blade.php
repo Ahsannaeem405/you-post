@@ -85,7 +85,7 @@
 
 @include('user_layout.sidebar')
 
-<section class="home">
+<section class="home" style="background: var(--grayColor);">
     <section class="create_preview_post_wrap">
         <div class="container test_con  px-0">
             <!--===== Markup For "Header" Starts Here =====-->
@@ -341,6 +341,13 @@
             success: function (response) {
                 $('.event_detail_parent').empty().append(response);
                 $('.fc-popover').css('display', 'none');
+                // for sidebar show calendar
+                $('.home').css('padding-right', '300px');
+                $('.calendar_overflo').css({
+                'display': 'block'});
+
+                // for sidebar show calendar
+            
                 $('#detail_modal').modal('show');
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');

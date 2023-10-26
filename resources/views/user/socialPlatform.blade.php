@@ -73,7 +73,7 @@
 
         </div>
 
-        <div class="addOtherAccountMain">
+        <div class="addOtherAccountMain d-none">
             <h5>Add Another Account</h5>
             <div>
                 <i class="fa-solid fa-plus" style="cursor: pointer" id="addAccount"></i>

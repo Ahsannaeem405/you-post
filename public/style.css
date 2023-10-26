@@ -7,6 +7,7 @@
 body {
     /* background: #FFFFFF; */
     overflow-x: hidden;
+    background: var(--grayColor);
 }
 
 @font-face {

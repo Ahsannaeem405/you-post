@@ -54,8 +54,8 @@ class UserController extends Controller
             // $imageUrl=$run->get_fb_image();
          
          }else if(in_array('Instagram', $user_platforms)){
-            $run=new Instagramservice();
-            $imageUrl=$run->get_inst_image();
+            // $run=new Instagramservice();
+            // $imageUrl=$run->get_inst_image();
          }
          else if (in_array('Twitter', $user_platforms )){
             // $run=new TwitterService();
