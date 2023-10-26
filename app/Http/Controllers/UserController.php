@@ -45,32 +45,7 @@ class UserController extends Controller
         $imageUrl = 'images/admin.png';
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
-        $accounts = Account::where('user_id', auth()->id())->get();
-      
-        $user_platforms = auth()->user()->account->platforms;
-
-         if (in_array('Facebook', $user_platforms  )) {
-            // $run=new Facebookservice();
-            // $imageUrl=$run->get_fb_image();
-         
-         }else if(in_array('Instagram', $user_platforms)){
-            $run=new Instagramservice();
-            $imageUrl=$run->get_inst_image();
-         }
-         else if (in_array('Twitter', $user_platforms )){
-            // $run=new TwitterService();
-            // $imageUrl=$run->get_tw_image();
-
-         }else if(in_array('Linkedin', $user_platforms)){
-            $run=new Linkedinservice();            
-            $imageUrl=$run->get_linkedin_image();          
-            $user = auth()->user();          
-            $user->account->link_image =  $imageUrl ;                  
-            $user->account->save();
-        
-        }else{
-            // dd("no plateform");
-        }
+        $accounts = Account::where('user_id', auth()->id())->get();    
         $allPosts = [];
         foreach ($posts as $post) {
             $allPosts[] = [
@@ -515,6 +490,16 @@ class UserController extends Controller
         $user->fb_page_token = $req->page;
         $user->platforms = $platforms;
         $user->update();
+
+        $run=new Facebookservice();
+        $imageUrl=$run->get_fb_image();            
+        $pageName=$run->get_fb_page_name();
+        $user = auth()->user();      
+        $user->account->fb_image =  $imageUrl ;    
+        $user->account->fb_page_name =  $pageName ;              
+        $user->account->save();
+
+
         return back()->with('success', 'Facebook, Successfully Added');
     }
 
@@ -632,9 +617,21 @@ class UserController extends Controller
             $platforms = $user->platforms;
             array_push($platforms, 'Instagram');
 
+          
+
+
             $user->insta_user_id = $instagram_business_account_id;
             $user->platforms = $platforms;
             $user->update();
+
+
+            $run=new Instagramservice();         
+            $instData=$run->get_inst_data();
+            $user = auth()->user();      
+            $user->account->inst_name =  $instData['name'] ;    
+            $user->account->inst_page_name =  $instData['username'] ; 
+            $user->account->inst_image =  $instData['profile_picture_url'] ;          
+            $user->account->save();
             return back()->with('success', 'instagram Connected Successfully!');
         } else {
             return back()->with('error', 'Sorry! no instagram account is connected with this page');
@@ -735,10 +732,20 @@ class UserController extends Controller
 
         $platforms = $user->platforms;
         array_push($platforms, 'Linkedin');
+        
 
         $user->linkedin_page_id = $req->page;
         $user->platforms = $platforms;
         $user->update();
+
+        $run=new Linkedinservice();            
+        $imageUrl=$run->get_linkedin_image(); 
+        $pageName=$run->get_linkedin_pageName();              
+        $user = auth()->user();          
+        $user->account->link_image =  $imageUrl ; 
+        $user->account->link_page_name =  $pageName ;                
+        $user->account->save();
+
         return back()->with('success', 'Linkedin  Connected Successfully!');
 
 
@@ -817,11 +824,13 @@ class UserController extends Controller
                 ),
             ));
             $response = curl_exec($curl);
-
             curl_close($curl);
             $response2 = json_decode($response);
 
-
+            $twitterUserData = $this->getTwitterUserData( $response2->access_token); 
+            $twittername = $twitterUserData['data']['name'];                
+            $twitterUsername = $twitterUserData['data']['username'];      
+            $profileImageURL = "https://twitter.com/$twitterUsername/photo?size=original";       
             if (isset($response2->error)) {
                 return redirect('/index')->with('error', $response2->error_description);
             }
@@ -836,6 +845,10 @@ class UserController extends Controller
                 'twiter_access_token' => $access_token,
                 'twiter_refresh_token' => $refresh_token,
                 'platforms' => $platforms,
+                'tw_name' => $twittername,
+                'tw_user_name' => $twitterUsername,
+                'twt_image' => $profileImageURL,
+
             ]);
             return redirect('/index')->with('success', 'Twitter, Successfully Added');
         } catch (\Throwable $e) {
@@ -846,6 +859,32 @@ class UserController extends Controller
 
     }
 
+
+
+    private function getTwitterUserData($access_token)
+    {      
+            try {             
+                  $curl = curl_init();             
+                    curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://api.twitter.com/2/users/me",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_HTTPHEADER => array(
+                        "Authorization: Bearer " . $access_token,
+                    ),
+                ));             
+                $response = curl_exec($curl);            
+                if(curl_errno($curl)) {
+                    throw new \Exception("cURL Error: " . curl_error($curl));
+                }              
+                curl_close($curl);           
+                $userData = json_decode($response, true); 
+                return $userData;
+            } catch (\Exception $e) {
+                dd($e); // Handle the exception as needed
+            }
+
+    }
+    
 
     public function get_facebook_likes(Facebookservice $facebookservice, Instagramservice $instagramservice, TwitterService $twitterService)
     {

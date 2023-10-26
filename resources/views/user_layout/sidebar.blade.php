@@ -673,15 +673,30 @@ body.dark .home .text {
                                 </div>
                             </div>
                         </a>
-
+                        @php
+                            $platforms =auth()->user()->account->platforms;
+                           
+                        @endphp
                         <div class="dropdown">
                             <button class="dropdown-toggle bg-transparent border-0" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                @if(isset($imageUrl))
-                                <img src="{{ $imageUrl}}" class="v_icon" alt="" width="45px" />
-                                @else
+                              
+
+
+
+                                @if(in_array("Facebook", $platforms))
+                                <img src="{{auth()->user()->account->fb_image}}" class="v_icon" alt="" width="45px" />
+                                @elseif(in_array("Instagram", $platforms))
+                                <img src="{{ auth()->user()->account->inst_image}}" class="v_icon" alt="" width="45px" />
+                                
+                                @elseif(in_array("Twitter", $platforms))
+                                <img src="{{auth()->user()->account->twt_image}}" class="v_icon" alt="" width="45px" />
+                                @elseif(in_array("Linkedin", $platforms))
+                                <img src="{{ auth()->user()->account->link_image}}" class="v_icon" alt="" width="45px" />
+                                @else                             
                                 <img src="{{asset('images/admin.png')}}" class="v_icon" alt="" width="45px" />
                                 @endif
+                               
                                 <span class="text nav-text text2"
                                     style="padding-left:12px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->

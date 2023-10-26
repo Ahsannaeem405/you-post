@@ -1101,11 +1101,11 @@
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{asset('images/insta_elp.png')}}" class="img-fluid"
+                                                <img src="{{auth()->user()->account->fb_image}}" class="img-fluid"
                                                     width="40" height="40" alt="">
                                             </div>
                                             <div>
-                                                <span id="" class="postname">{{auth()->user()->name}} <br>
+                                                <span id="" class="postname">{{auth()->user()->account->fb_page_name}} <br>
                                                     <span class="sponsored">Public . <i
                                                             class="fa-solid fa-earth-americas"></i></span>
                                                 </span>
@@ -1192,10 +1192,10 @@
                                     <div class="col-10">
                                         <div class="d-flex show active gap-1 px-1">
                                             <div class="show active">
-                                                <img src="{{asset('images/insta_elp.png')}}" alt="" height="28" />
+                                                <img src="{{auth()->user()->account->inst_image}} " alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
-                                                <h3 class="mb-0 user_name"> {{auth()->user()->name}}
+                                                <h3 class="mb-0 user_name">{{auth()->user()->account->inst_name}} 
                                                 </h3>
                                             </div>
                                         </div>
@@ -1298,7 +1298,7 @@
                                 <div class="col-2  twitter_prev">
                                     <div class="indrive_icon2">
                                         <!-- <img src="http://localhost:8000/images/insta_elp.png" alt="" class=""> -->
-                                        <img src="{{asset('images/insta_elp.png')}}" alt=""  >
+                                        <img src="http://localhost:8000/images/insta_elp.png" alt=""  >
                                              
                                     </div>
                                 </div>
@@ -1306,9 +1306,9 @@
                                     <div>
                                         <div class="twitter_header">
                                             <div>
-                                                <span class="twitter_post_content"> {{auth()->user()->name}}</span> <img
+                                                <span class="twitter_post_content"> {{auth()->user()->account->tw_name}}</span> <img
                                                     src="http://localhost:8000/images/offical2.png" class="" alt="">
-                                                <span class="twitter_post_content_tag ">@inDrive</span>
+                                                <span class="twitter_post_content_tag ">@ {{auth()->user()->account->tw_user_name}}</span>
                                             </div>
                                             <div class="elps">
                                                 <i class="fa-solid fa-ellipsis-vertical mt-2 "></i>
@@ -1391,14 +1391,14 @@
                                 <div class="d-flex gap-2">
                                     <div class="linked_logo">
 
-                                        <img src="{{asset('images/linkediniii.jpg')}}" alt="" class="">
+                                        <img src=" {{auth()->user()->account->link_image}}" alt="" class="">
 
                                     </div>
                                     <div class="">
                                         <div class="linked_inaccount">
                                             <div class="linkdin_author">
                                                 <span>
-                                                    {{auth()->user()->name}}
+                                                {{auth()->user()->account->link_page_name}}
                                                 </span>
                                             </div>
                                             <div class="follwers">

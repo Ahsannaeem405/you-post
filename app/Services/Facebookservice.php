@@ -107,21 +107,44 @@ class  Facebookservice
     {
         $accessToken = auth()->user()->account->fb_page_token;
 
-            try {
+        try {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $accessToken,
-            ])->get("https://graph.facebook.com/v12.0/{$pageId}/picture?type=large");
-
-            // Get the image URL from the response
-            $imageUrl = $response->json();
-        //    dd($imageUrl);
-            return $imageUrl;
+            ])->get("https://graph.facebook.com/me");
+            
+            $profileImageData = $response->json();
+          
+        
+            $pageId = $profileImageData['id'];
+            $profileImageUrl = "https://graph.facebook.com/{$pageId}/picture?type=large";     
+            return $profileImageUrl;
         } catch (\Exception $e) {
             // Handle the exception, log the error, or return an error response.
-            // dd( $e->getMessage());
             return $e->getMessage();
         }
     }
+
+
+    public function get_fb_page_name()
+    {
+        $accessToken = auth()->user()->account->fb_page_token;
+
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $accessToken,
+            ])->get("https://graph.facebook.com/me?fields=name");
+        
+            $pageData = $response->json();
+            $pageName = $pageData['name'];     
+            return $pageName;
+        } catch (\Exception $e) {
+            // Handle the exception, log the error, or return an error response.
+            return $e->getMessage();
+        }
+    }
+
+
+
     function delete_post($id)
     {
         $accessToken = auth()->user()->account->fb_page_token;

@@ -10,7 +10,7 @@ use App\Models\PostDetail;
 use getID3;
 use App\Models\Post;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Http;
 
 class Instagramservice
 {
@@ -127,22 +127,40 @@ class Instagramservice
 
     }
 
-    public function get_inst_image($accessToken)
-    {
-         if($accessToken){
-        $client = new Client();
-        $response = $client->get('https://api.linkedin.com/v2/organizations/88426328?projection=(id,logoV2(original~:playableStreams))', [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken,
-            ],
-        ]);
+  
 
-        $responseData = json_decode($response->getBody(), true);
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
-      
-       }
-       return $imageUrl;
+
+
+    public function get_inst_data()
+    {
+        
+        $instaUserId = auth()->user()->account->insta_user_id;
+        $instaAccessToken = auth()->user()->account->insta_access_token;
+    
+        try {
+            $response = Http::withToken($instaAccessToken)
+                            ->get("https://graph.facebook.com/{$instaUserId}?fields=id,username,name,profile_picture_url");
+    
+            $pageData = $response->json();             
+            if(isset($pageData['id'])) {
+                $username = $pageData['username'];
+                $name = $pageData['name']; 
+                $profile_picture_url = $pageData['profile_picture_url'];               
+    
+                return [
+                    'username' => $username,
+                    'name' => $name,
+                    'profile_picture_url' => $profile_picture_url                     
+                ];
+            } else {
+                return null; // Handle the case where the page is not found or other errors.
+            }
+        } catch (\Exception $e) {
+            // Handle the exception, log the error, or return an error response.
+            return $e->getMessage();
+        }
     }
+
     public function delete_post($data)
     {
         $accessToken = auth()->user()->account->insta_access_token;

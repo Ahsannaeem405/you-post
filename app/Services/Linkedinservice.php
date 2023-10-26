@@ -237,6 +237,37 @@ class Linkedinservice
        }
        return $imageUrl;
     }
+
+    public function get_linkedin_pageName()
+    {
+        $accessToken= auth()->user()->account->linkedin_accesstoken;
+        $linkedinPage =auth()->user()->account->linkedin_page_id;
+        $parts = explode(":", $linkedinPage);
+        $numericPart = end($parts);
+
+        $client = new Client();
+        
+        try {
+            $response = $client->get("https://api.linkedin.com/rest/organizationsLookup?ids={$numericPart}", [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $accessToken, // Add your access token here
+                    'LinkedIn-Version' => '202306', // Specify the LinkedIn API version
+                ],
+            ]);
+   
+            if ($response->getStatusCode() == 200) {
+                $responseData = json_decode($response->getBody(), true);              
+                $pageName = $responseData['results'][$numericPart]['vanityName'];
+                return $pageName;
+            } else {              
+                $errorMessage = "Error: Unable to fetch LinkedIn page data. Status Code: " . $response->getStatusCode();               
+                return $errorMessage;
+            }
+        } catch (\Exception $e) {          
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
     public function delete_post($data)
     {
         try {
