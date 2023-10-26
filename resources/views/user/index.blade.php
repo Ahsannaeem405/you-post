@@ -1,5 +1,6 @@
 @extends('user_layout.main')
 <style>
+   
 #image_div {
     position: relative;
     max-width: 270px;
@@ -535,7 +536,21 @@
         background-color: #3498db;
         color: #fff;
     }
-   
+   /* close btn sidebar */
+   .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        
+        .croissant-icon:before {
+            content: "\f190"; 
+        }
+   /* close btn sidebar */
 /* timepicker style */
 </style>
 @section('content')
@@ -1549,7 +1564,7 @@
                             <h4>AI Generated Content</h4>
                         </div>
                         <div class="comming_soon">
-                            <p class="mb-0">Coming Soon</p>
+                            <p class="mb-0" style="font-weight:600;">Coming Soon</p>
                         </div>
 
                     </div>
@@ -1653,13 +1668,13 @@
                             </div>
                             
                                 <div class="d-flex justify-content-center">
-                                    <div style="width:16px">
+                                    <div style="width:16px; cursor:pointer;">
                                         <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
                                     </div>
-                                    <div style="width:16px">
+                                    <div style="width:16px; cursor:pointer;">
                                         <img src="{{asset('images/dot1.png')}}" alt="" class="w-100">
                                     </div>
-                                    <div style="width:16px">
+                                    <div style="width:16px; cursor:pointer;">
                                         <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
                                     </div>
                                 </div>
@@ -1713,12 +1728,14 @@
 <!-- =======Calender========= -->
 <section>
     <div class="row container section5">
-        <div class="col-sm-12 col-md-12 col-lg-3 calender calendar_overflo">
+        <div class="calender calendar_overflo" style="right: 0px; width: 300px; position: absolute;z-index: 2; display:none;" id="mySidebar">
+        <span class="close-btn" onclick="closeSidebar()">&times;</span>
+            <span class="croissant-icon"></span>
             <div class="calendarmain">
-                <div class="l1">
+                <div class="l1 d-none">
                     <div class="navigation">
                         <h2 id="month-year"></h2>
-                        <!-- <h2 id="current-day"></h2> -->
+                       
                         <div class="leftrightbtn">
                             <button onclick="prevMonth()" class="prev">&#10094;</button>
                             <button onclick="nextMonth()" class="next"> &#10095;</button>
@@ -1749,7 +1766,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-9 calendar2">
+        <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
             <div class="title_bar_wrap d-none">
                 <div class="container container_2">
                     <div class="title_bar">
@@ -1814,7 +1831,7 @@
                             <div class="card-body">
                                 <div class="likes_card">
                                     <h3 class="card-title">Likes</h3>
-                                    <p class="">Coming Soon</p>
+                                    <p class="" style="font-weight:600;">Coming Soon</p>
                                 </div>
 
                                 <div class="card-content">
@@ -1999,7 +2016,7 @@
                                 <!-- <h3 class="card-title">Share</h3> -->
                                 <div class="likes_card">
                                     <h3 class="card-title">Share</h3>
-                                    <p class="">Coming Soon</p>
+                                    <p class="" style="font-weight:600;">Coming Soon</p>
                                 </div>
 
                                 <div class="card-content">
@@ -2184,7 +2201,7 @@
                                 <!-- <h3 class="card-title">Engagement</h3> -->
                                 <div class="likes_card">
                                     <h3 class="card-title">Engagement</h3>
-                                    <p class="">Coming Soon</p>
+                                    <p class="" style="font-weight:600;">Coming Soon</p>
                                 </div>
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
@@ -2432,11 +2449,17 @@
 
 
 </div>
-
 @endsection
 
 @section('js')
-
+<!-- sidebar close btn -->
+<script>
+    function closeSidebar() {
+        document.getElementById("mySidebar").style.display = "none";
+        $('.home').css('padding-right', '0px');
+    }
+</script>
+<!-- sidebar close btn -->
 <script>
 $(document).ready(function() {
     $('.mention').each(function() {
@@ -2971,6 +2994,6 @@ populateOptions("hour", 1, 12, 1);
 
 // Populate minute options (00 to 59)
 populateOptions("minute", 0, 59, 1);
-</script>
 
+</script>
 @endsection
