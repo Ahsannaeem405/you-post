@@ -539,8 +539,8 @@
    /* close btn sidebar */
    .close-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: -5px;
+            right: 12px;
             font-size: 24px;
             cursor: pointer;
             color: #fff;
@@ -549,6 +549,23 @@
         
         .croissant-icon:before {
             content: "\f190"; 
+        }
+        .bx-chevron-right.toggle2{
+            position: absolute;
+            top: 4%;
+            right: 94%;
+            transform: translateY(-50%) rotate(180deg);
+            height: 25px;
+            width: 25px;
+            background-color: var(--primary-color);
+            color: var(--sidebar-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: var(--tran-05);
         }
    /* close btn sidebar */
 /* timepicker style */
@@ -1728,8 +1745,12 @@
 <!-- =======Calender========= -->
 <section>
     <div class="row container section5">
-        <div class="calender calendar_overflo" style="right: 0px; width: 300px; position: absolute;z-index: 2; display:none;" id="mySidebar">
+    
+        <div class="calender calendar_overflo" style="right: 0px; width: 300px; position: absolute;z-index: 2; display:none; transition: var(--tran-05);" id="mySidebar">
+        <div clas="" style="padding-top:30px">
+        <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}"alt=""></span>
         <span class="close-btn" onclick="closeSidebar()">&times;</span>
+        </div>
             <span class="croissant-icon"></span>
             <div class="calendarmain">
                 <div class="l1 d-none">
@@ -1758,10 +1779,12 @@
                         <h3 class="date-date">{{\Carbon\Carbon::now()->format('m/d/Y')}}</h3>
                     </div>
 
-                    <div class="todayEbents-list">
+                    <div class="todayEbents-list" style="cursor:pointer; display:none;">
                         @include('user.component.ajax.todayEvents')
                     </div>
+                     <div class="Today-post-detail" style="margin-top:30px; display:none; ">
 
+                     </div>
 
                 </div>
             </div>
@@ -2994,6 +3017,69 @@ populateOptions("hour", 1, 12, 1);
 
 // Populate minute options (00 to 59)
 populateOptions("minute", 0, 59, 1);
+// append post in calender sidebar
+// $(document).ready(function() {
+//     // Add a one-time click event handler to the todayEbents-list div
+//     $(".todayEbents-list").one("click", function() {
+//         // Clone the content inside todayEbents-list
+//         var contentToAppend = $(".the_preview").html();
+        
+//         // Append the cloned content to the Today-post-detail div
+//         $(".Today-post-detail").append(contentToAppend);
+//     });
+// });
+$(document).ready(function() {
+    var isDetailVisible = false; // Initialize a flag to track visibility
+    
+    // Add a click event handler to the todayEbents-list div
+    $(".todayEbents-list").click(function() {
+        if (!isDetailVisible) {
+            // If the detail is not visible, show it and set the flag
+            var contentToAppend = $(".the_preview").html();
+            $(".Today-post-detail").html(contentToAppend).show();
+            isDetailVisible = true;
+        } else {
+            // If the detail is visible, hide it and reset the flag
+            $(".Today-post-detail").hide();
+            isDetailVisible = false;
+        }
+    });
+});
+
+var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
+
+$(document).on('mouseleave', '.calendar_overflo', function() {
+    if (mouseLeaveEnabled) {
+        $(this).addClass('close');
+        $(this).css('width', '88px');
+        $(this).css('z-index', '1');
+        $(".text").css('opacity', '1');
+        $(".todayEbents-list").css('display', 'none');
+        $(".Today-post-detail").css('display', 'none');
+        $('.home').css('padding-right', '0px');
+        
+    }
+});
+$(document).on('mouseenter', '.calendar_overflo', function() {
+    $('.home').css('padding-right', '300px');
+    $(this).css('width', '300px');
+    $(".text").css('opacity', '1');
+    $(".todayEbents-list").css('display', 'block');
+    $(".Today-post-detail").css('display', 'block');
+    $(this).css('z-index', '9999');
+   
+});
+
+$(".toggle").click(function() {
+    $(".calendar_overflo").toggleClass('sideWidth');
+    $(".test_con").toggleClass('test_con1');
+
+    // Toggle the mouseLeaveEnabled flag
+    mouseLeaveEnabled = !mouseLeaveEnabled;
+});
+
+
+// append post in calender sidebar
 
 </script>
 @endsection
