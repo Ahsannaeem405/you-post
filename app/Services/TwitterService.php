@@ -82,28 +82,12 @@ class TwitterService
         return $msg;
     }
 
-    public function get_tw_image()
+    public function get_tw_data($access_token)
     {
       
-        $this->twiter_refresh( auth()->user()->account);
-        $bearerToken = auth()->user()->account->twiter_access_token;
-
-
-
-        $client = new Client();    
-        $response = $client->get("https://api.twitter.com/2/users/by", [
-            'headers' => [
-                'Authorization' =>  $bearerToken,
-            ],
-           
-        ]);
-    
-        $data = json_decode($response->getBody(), true);
-        
-       
-        $user = $data['data'];
-       dd($user);
-        return $user;
+        $getProfile = \Http::withToken($access_token)
+        ->get("https://api.twitter.com/2/users/me?user.fields=profile_image_url")->json();     
+           return $getProfile;
     }
     public function twiter_refresh($account)
     {

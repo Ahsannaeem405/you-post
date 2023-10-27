@@ -1313,7 +1313,7 @@
                                 <div class="col-2  twitter_prev">
                                     <div class="indrive_icon2">
                                         <!-- <img src="http://localhost:8000/images/insta_elp.png" alt="" class=""> -->
-                                        <img src="http://localhost:8000/images/insta_elp.png" alt=""  >
+                                        <img src="{{auth()->user()->account->twt_image}}" alt=""  >
                                              
                                     </div>
                                 </div>
@@ -1323,7 +1323,7 @@
                                             <div>
                                                 <span class="twitter_post_content"> {{auth()->user()->account->tw_name}}</span> <img
                                                     src="http://localhost:8000/images/offical2.png" class="" alt="">
-                                                <span class="twitter_post_content_tag ">@ {{auth()->user()->account->tw_user_name}}</span>
+                                                <span class="twitter_post_content_tag "> {{auth()->user()->account->tw_user_name}}</span>
                                             </div>
                                             <div class="elps">
                                                 <i class="fa-solid fa-ellipsis-vertical mt-2 "></i>

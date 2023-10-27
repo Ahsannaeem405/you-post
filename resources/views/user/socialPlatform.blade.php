@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="platformBtn">
-            <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus">Dashboard</a>
+            <a href="{{ url('/dashboard') }}" id="" class="">Dashboard</a>
         </div>
 
 

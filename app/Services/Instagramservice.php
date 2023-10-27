@@ -131,10 +131,10 @@ class Instagramservice
 
 
 
-    public function get_inst_data()
+    public function get_inst_data($ins_user_id)
     {
         
-        $instaUserId = auth()->user()->account->insta_user_id;
+        $instaUserId = $ins_user_id;
         $instaAccessToken = auth()->user()->account->insta_access_token;
     
         try {
