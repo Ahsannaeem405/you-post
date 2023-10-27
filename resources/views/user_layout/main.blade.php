@@ -179,7 +179,7 @@
         var eventDates =@json(collect($allPosts)->pluck('event_date'));
 
         var calendar = $('#postManagerCalendar').fullCalendar({
-            
+     
             defaultView: 'month',
             selectable: true,
             businessHours: true,
@@ -191,12 +191,14 @@
             allDay:true,
             slotDuration: '01:00',
             events: @json(collect($allPosts)),
-    
+            
+ 
             views: {
                 month: {
                     eventLimit: 2,
+                    
                 }
-     
+               
             }, 
             views: {
                 agendaWeek: {
@@ -208,7 +210,7 @@
                 }
                 
             },
-            
+         
 
             header: {
                 center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
@@ -246,6 +248,7 @@
                 });
                 $('#TimetoUploadPost').modal('show');
                 settime();
+                
 
             },
 
@@ -342,9 +345,10 @@
                 $('.event_detail_parent').empty().append(response);
                 $('.fc-popover').css('display', 'none');
                 // for sidebar show calendar
-                $('.home').css('padding-right', '300px');
-                $('.calendar_overflo').css({
-                'display': 'block'});
+                // $('.home').css('padding-right', '300px');
+                $(".calendar_overflo").css('width', '88px');
+                // $('.calendar_overflo').css({
+                // 'display': 'block'});
 
                 // for sidebar show calendar
             
