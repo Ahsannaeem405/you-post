@@ -158,7 +158,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{-- toaster cdn --}}
 <script>
-
     $(document).ready(function () {
         $('.selectmultiple').select2({
             tags: true,
@@ -346,18 +345,36 @@
                 $('.fc-popover').css('display', 'none');
                 // for sidebar show calendar
                 // $('.home').css('padding-right', '300px');
-                $(".calendar_overflo").css('width', '88px');
-                // $('.calendar_overflo').css({
-                // 'display': 'block'});
+                $(".calendar_overflo").css('width', '70px');
+               
+                // $(".sidebar-button").show();
+                $('.calendar_overflo').css({
+                'display': 'block'});
 
                 // for sidebar show calendar
             
                 $('#detail_modal').modal('show');
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');
+                checkScreenSize();
+                // alert()
             }
         });
     }
+    var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
+    
+    // Check the screen size and show/hide the sidebar button
+    function checkScreenSize() {
+        if ($("body").innerWidth() < 1550) {
+            $(".sidebar-button").show();
+            $(".calendar_overflo").css('display', 'none');
+        } else {
+            $(".sidebar-button").hide();
+            
+          
+        }
+    }
+   
 
     // Initialize Full Calendar
 
