@@ -715,6 +715,7 @@ button {
  } */
 
 .fc-day-header {
+    box-shadow: none !important;
     color: #71717A !important;
     font-size: 20px !important;
     font-family: 'poppins', sans-serif !important;
@@ -790,14 +791,13 @@ button {
     border-radius: 18px;
 }
 
-
 .fc-nonbusiness {
     background: #fff !important;
 }
 
 .post_manage_calendar.post_manage_calendar_card {
     /* border-radius: 0px 13px 13px 0px !important; */
-    height: 999px !important;
+    height: 1015px !important;
 }
 
 .post_manage_calendar.post_manage_calendar_card {
@@ -897,7 +897,7 @@ button {
 .fc-today-button{
     color: #18181B !important;
     background: #F4F4F5 !important;
-   
+   opacity: 1 !important;
 
 }
 
@@ -1017,7 +1017,12 @@ button {
     background: #fff;
 }
 
-
+.fc-view-container .fc-view table tbody tr .fc-widget-content .fc-day-grid-container{
+    margin: 40px 20px 20px 20px !important; 
+}
+.fc-agendaWeek-view.fc-agenda-view table .fc-body tr td.fc-widget-content .fc-time-grid-container{
+    margin: 30px; 
+}
 .pignose-calendar .pignose-calendar-unit a {
     font-family: 'Poppins', sans-serif;
     color: #18181B !important;
@@ -1576,3 +1581,5 @@ button {
   
     
 }
+
+

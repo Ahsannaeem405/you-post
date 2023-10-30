@@ -1,10 +1,4 @@
-@media (max-width:2000px) {
-    .show-this-section-992 {
-        display: none;
-    }
-}
-
-
+/* spear query */
 @media (min-width:992px) and (max-width:1376px) {
 
     /* Post calendar */
@@ -41,10 +35,6 @@
         font-size: 16px;
 
     }
-
-    /* .leftrightbtn {
-        left: 8rem;
-    } */
 
     .prev,
     .next {
@@ -132,28 +122,32 @@
     .table>:not(caption)>*>* {
         padding: 6px 4px !important;
     }
+
     .create_preview_post .create_post .post_now_button .btn {
         font-size: 12px !important;
     }
-    
+
 }
-/* ------------------------- */
-@media (min-width:992px) and (max-width:1199px) {
-    .post_now_button.schedule_post_button button {
-          min-width: 114px !important;    
-          padding: 10px !important;    
+
+/* spear query */
+
+@media (min-width:1500px) and (max-width:2000px) {
+    .show-this-section-992 {
+        display: none;
     }
-
-
+    .section5 i {
+        display: none;
+    }
 }
-/* ---------------------- */
+
 /*18,9,23 */
 @media (min-width:1377px) and (max-width:1399px) {
 
     .social_icon_posts {
         gap: 16px 15px;
     }
-    .create_preview_post .create_post .post_now_button .btn{
+
+    .create_preview_post .create_post .post_now_button .btn {
         padding: 6px 11px !important;
     }
 }
@@ -166,8 +160,9 @@
         width: 100%;
         left: 14rem;
     }
-     /*18,9,23 */
-     .social_icon_posts {
+
+    /*18,9,23 */
+    .social_icon_posts {
         gap: 16px 13px;
     }
 
@@ -176,9 +171,19 @@
     .table>:not(caption)>*>* {
         padding: 7px 8px !important;
     }
-}
 
+   
+}
 /* salman small break point only for calendar end */
+
+@media (min-width:992px) and (max-width:1199px) {
+    .post_now_button.schedule_post_button button {
+        min-width: 114px !important;
+        padding: 10px !important;
+    }
+
+
+}
 
 @media (min-width:768px) and (max-width:991px) {
     .calendarmain {
@@ -187,7 +192,11 @@
     }
 
     .fc-left {
-        margin-top: 7px;
+        position: absolute;
+        top: 7%;
+        left: 37%;
+        width: 232px !important;
+        margin-top: 7px;       
     }
 
     .fc-left h2 {
@@ -214,10 +223,6 @@
     .current-day {
         padding: 10px 10.1px !important;
     }
-
-    /* .leftrightbtn {
-        left: 13rem;
-    } */
 
     #month-year {
         font-size: 18px;
@@ -261,6 +266,7 @@
         top: 47px !important;
         left: 4px !important;
     }
+
     .post_now_button input {
         width: calc(95% - 0px) !important;
         /* margin: 5px ; */
@@ -275,30 +281,30 @@
     .next {
         margin-right: 11px !important;
     }
-    .add_cap_labal{
+
+    .add_cap_labal {
         padding: 10px 10px 6px 23px !important;
     }
-    .Sub_head h4{
+
+    .Sub_head h4 {
         padding-left: 29px;
     }
-    .post_modal{
+
+    .post_modal {
         margin-top: 7px;
         padding-left: 20px;
     }
-    .Modal_suggession{
+
+    .Modal_suggession {
         margin-left: 10px;
     }
+
     .tags_hash {
         justify-content: end;
         width: 100% !important;
     }
 
     /* salman 9/8/23 */
-
-
-
-
-    /* razi card_media query start */
     .fb-text {
         font-size: 10px;
     }
@@ -380,10 +386,6 @@
         right: 0;
     }
 
-    /* .table>:not(caption)>*>* {
-        padding: 9px 4px !important;
-    } */
-
     .icon_buttons_tags {
         display: flex;
         flex-direction: column;
@@ -398,31 +400,31 @@
         display: flex;
         flex-direction: column;
         gap: 5px 0px;
-        
-    }
-   /* -------------------- */
-.create_preview_post .create_post .post_now_button .btn {
-    font-size: 15px !important;
-}
 
-/* -------------------- */
+    }
+
+    /* -------------------- */
+    .create_preview_post .create_post .post_now_button .btn {
+        font-size: 15px !important;
+    }
+
+    /* -------------------- */
 
     .post_later_now_btn.post_later_now_btn2 {
         width: calc(95% - 0px) !important;
         margin: auto;
-
     }
 
     .post_later_now_btn {
         width: 100% !important;
     }
 
-  /* 18,9,23 */
-  .L-Calnd {
-    padding-left: 15px;
-}
+    /* 18,9,23 */
+    .L-Calnd {
+        padding-left: 15px;
+    }
 
-/* 18,9,23 */
+   
 
     /* razi card_media query end */
 }
@@ -479,9 +481,6 @@
         text-align: end;
     }
 
-    /* .leftrightbtn {
-        left: 83%;
-    } */
     .leftrightbtn {
         left: 87%;
     }
@@ -553,7 +552,7 @@
         font-size: 20px;
     }
 
-   
+
     /* salman 7/9/23*/
     .fc-content-skeleton,
     .fc-content-skeleton table,
@@ -569,33 +568,44 @@
         height: max-content !important;
     }
 
-    .add_cap_labal{
+    .add_cap_labal {
         padding: 10px 10px 6px 23px !important;
     }
-    .Sub_head h4{
+
+    .Sub_head h4 {
         padding-left: 29px;
     }
-    .post_modal{
+
+    .post_modal {
         margin-top: 7px;
         padding-left: 20px;
     }
-    .Modal_suggession{
+
+    .Modal_suggession {
         margin-left: 10px;
     }
 
-  /* 18,9,23 */
-  .post_thumb {
-    padding-bottom: 15px;
-}
-.create_preview_post_index_item .preview_post .preview_wrap.prev_wrap_fb{
-    width: 100% !important;
-    margin: auto;
+    /* 18,9,23 */
+    .post_thumb {
+        padding-bottom: 15px;
+    }
 
-}
+    .create_preview_post_index_item .preview_post .preview_wrap.prev_wrap_fb {
+        width: 100% !important;
+        margin: auto;
 
-/* 18,9,23 */
+    }
+    .fc-left {
+        position: absolute;
+        top: 7%;
+        left: 30%;
+        width: 232px !important;
+        
+    }
+    .fc-center{
+        margin-top: 11px;
+    }
 
-    /* salman */
 }
 
 
@@ -637,12 +647,12 @@
         border-radius: 13px 13px 13px 13px !important;
     }
 
-  
+
     .calendarmain {
         width: 100%;
     }
 
-   
+
 
     .div3 .Edit {
         text-align: end;
@@ -860,61 +870,80 @@
     .fc-row.fc-widget-header table thead tr .fc-axis.fc-widget-header {
         display: none !important;
     }
+
     .fc-ltr .fc-axis {
         font-size: 10px;
     }
+
     .current-day {
         padding-left: 0px !important;
         padding-right: 0px !important;
         font-size: 11px;
         padding: 11px 7.1px !important;
     }
+
     .other-month {
         font-size: 10px;
         padding: 11px 7.1px !important;
     }
-     /* 18,9,23 */
-     .social_icon_posts {
+
+    /* 18,9,23 */
+    .social_icon_posts {
         flex-wrap: nowrap;
     }
 
     .post_thumb {
         padding-bottom: 15px;
     }
+
     /* 18,9,23 */
     .post_modal_con:nth-child(3),
     .post_modal_con:nth-child(4),
-    .post_modal_con:nth-child(5){
+    .post_modal_con:nth-child(5) {
         height: 71px !important;
-}
+    }
+
     .post_modal_con {
         height: 111px !important;
     }
 
 
     /* ------------ */
-    .post_now_button.schedule_post_button{   
+    .post_now_button.schedule_post_button {
         display: flex;
         flex-direction: column;
-        gap: 12px 0px  
-  }
+        gap: 12px 0px
+    }
+
     /* ------------ */
 
-.small_viewicons {
-    flex-direction: column;
-}
-.small_viewicons2{
-    flex-direction: column;
-    margin-right: 10px;
-  
-}
+    .small_viewicons {
+        flex-direction: column;
+    }
 
-.myshare_icon{
-    width: 20px;
-}
-.icon_text3{
-    font-size: 12px;
-}
+    .small_viewicons2 {
+        flex-direction: column;
+        margin-right: 10px;
+
+    }
+
+    .myshare_icon {
+        width: 20px;
+    }
+
+    .icon_text3 {
+        font-size: 12px;
+    }
+    .fc-left {
+        position: absolute;
+        top: 7%;
+        left: 16%;
+        width: 232px !important;
+        /* float: right !important; */
+    }
+    .fc-center{
+        margin-top:11px;
+    }
 }
 
 /* media  query */

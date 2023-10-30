@@ -1,4 +1,6 @@
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@200;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .index_delete {
     text-align: right !important;
 }
@@ -23,10 +25,7 @@
 </style>
 @foreach($accounts as $key=>$account)
 <!--24,,10,23,  -->
-<div style="text-align:center; border-radius: 10px;
-border: 0.5px solid #E0E0E0;
-background: #FFF;
-box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);">
+<div class="account_main">
     <div>
                               @if(in_array("Facebook",  $account->platforms))
                                 <img src="{{auth()->user()->account->fb_image}}" class="v_icon" alt="" width="45px" />

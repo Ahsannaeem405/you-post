@@ -1,6 +1,5 @@
 @extends('user_layout.main')
 <style>
-   
 #image_div {
     position: relative;
     max-width: 270px;
@@ -483,91 +482,95 @@
 }
 
 .color_info {
-    text-align: center; 
+    text-align: center;
     margin-top: 43px;
     padding-bottom: 22px;
     color: #605858;
-    font-size:14px;
+    font-size: 14px;
 }
 
 .fc-content-skeleton table thead {
     height: 40px !important;
 }
-.fc-content-skeleton table thead tr .fc-day-top .fc-day-number{
-    padding:12px;
+
+.fc-content-skeleton table thead tr .fc-day-top .fc-day-number {
+    padding: 12px;
 }
+
 /* timepicker style */
 .time-picker_cls {
-        margin-right:10px;
-        display: flex;
-        align-items: center;
-        background-color: #f4f4f4;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        padding: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-family: 'Arial', sans-serif;
-    }
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
 
-    /* Style the select elements (hour, minute, am/pm) */
-    .time-picker_cls select {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        padding: 5px;
-        margin: 0 5px;
-        font-size: 16px;
-        color: #333;
-    }
+/* Style the select elements (hour, minute, am/pm) */
+.time-picker_cls select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 16px;
+    color: #333;
+}
 
-    /* Add some hover and focus styles for better user interaction */
-    .time-picker_cls select:hover,
-    .time-picker_cls select:focus {
-        border-color: #3498db;
-    }
+/* Add some hover and focus styles for better user interaction */
+.time-picker_cls select:hover,
+.time-picker_cls select:focus {
+    border-color: #3498db;
+}
 
-    /* Style the AM/PM select element */
-    .time-picker_cls #ampm {
-        margin-right: 0;
-    }
+/* Style the AM/PM select element */
+.time-picker_cls #ampm {
+    margin-right: 0;
+}
 
-    /* Customize the appearance of the selected option */
-    .time-picker_cls select option:checked {
-        background-color: #3498db;
-        color: #fff;
-    }
-   /* close btn sidebar */
-   .close-btn {
-            position: absolute;
-            top: -5px;
-            right: 12px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-        }
+/* Customize the appearance of the selected option */
+.time-picker_cls select option:checked {
+    background-color: #3498db;
+    color: #fff;
+}
 
-        
-        .croissant-icon:before {
-            content: "\f190"; 
-        }
-        .bx-chevron-right.toggle2{
-            position: absolute;
-            top: 4%;
-            right: 94%;
-            transform: translateY(-50%) rotate(180deg);
-            height: 25px;
-            width: 25px;
-            background-color: var(--primary-color);
-            color: var(--sidebar-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            cursor: pointer;
-            transition: var(--tran-05);
-        }
-   /* close btn sidebar */
+/* close btn sidebar */
+.close-btn {
+    position: absolute;
+    top: -5px;
+    right: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+.croissant-icon:before {
+    content: "\f190";
+}
+
+.bx-chevron-right.toggle2 {
+    position: absolute;
+    top: 4%;
+    right: 94%;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+/* close btn sidebar */
 /* timepicker style */
 </style>
 @section('content')
@@ -724,7 +727,8 @@
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     name="facebook_content" id="facebook_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention" data-id="facebok_error"
+                                                    class="form-control wizard-required emojiarea mention"
+                                                    data-id="facebok_error"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -903,7 +907,7 @@
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
                                                     onchange="suggested_text(this)" name="twitter_content"
-                                                    id="twitter_content" cols="30" rows="10"  data-id="twitter_error"
+                                                    id="twitter_content" cols="30" rows="10" data-id="twitter_error"
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
                                                     plt-name="fb">{{old('twitter_content')}}</textarea>
@@ -975,7 +979,8 @@
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10" data-id="link_error"
+                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10"
+                                                    data-id="link_error"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
                                                     placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -1131,9 +1136,12 @@
                                     <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
                                     <!--  -->
                                     <div class="time-picker time-picker_cls">
-                                        <select id="hour" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="minute" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="ampm" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
+                                        <select id="hour"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="minute"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="ampm"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
                                             <option value="AM">AM</option>
                                             <option value="PM">PM</option>
                                         </select>
@@ -1349,7 +1357,8 @@
                                                     width="40" height="40" alt="">
                                             </div>
                                             <div>
-                                                <span id="" class="postname">{{auth()->user()->account->fb_page_name}} <br>
+                                                <span id="" class="postname">{{auth()->user()->account->fb_page_name}}
+                                                    <br>
                                                     <span class="sponsored">Public . <i
                                                             class="fa-solid fa-earth-americas"></i></span>
                                                 </span>
@@ -1436,10 +1445,11 @@
                                     <div class="col-10">
                                         <div class="d-flex show active gap-1 px-1">
                                             <div class="show active">
-                                                <img src="{{auth()->user()->account->inst_image}} " alt="" height="28" />
+                                                <img src="{{auth()->user()->account->inst_image}} " alt=""
+                                                    height="28" />
                                             </div>
                                             <div class="inst_post_name">
-                                                <h3 class="mb-0 user_name">{{auth()->user()->account->inst_name}} 
+                                                <h3 class="mb-0 user_name">{{auth()->user()->account->inst_name}}
                                                 </h3>
                                             </div>
                                         </div>
@@ -1550,7 +1560,8 @@
                                     <div>
                                         <div class="twitter_header">
                                             <div>
-                                                <span class="twitter_post_content"> {{auth()->user()->account->tw_name}}</span> <img
+                                                <span class="twitter_post_content">
+                                                    {{auth()->user()->account->tw_name}}</span> <img
                                                     src="http://localhost:8000/images/offical2.png" class="" alt="">
                                                 <span class="twitter_post_content_tag "> {{auth()->user()->account->tw_user_name}}</span>
                                             </div>
@@ -1642,7 +1653,7 @@
                                         <div class="linked_inaccount">
                                             <div class="linkdin_author">
                                                 <span>
-                                                {{auth()->user()->account->link_page_name}}
+                                                    {{auth()->user()->account->link_page_name}}
                                                 </span>
                                             </div>
                                             <div class="follwers">
@@ -1834,7 +1845,8 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                             <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1844,7 +1856,8 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                             <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1854,7 +1867,8 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                             <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1863,7 +1877,8 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                             <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1872,7 +1887,8 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                             <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1881,7 +1897,8 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                             <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1890,24 +1907,25 @@
                                     <div class="opacity_sheet">
                                         <div class="opacity_sheet_icons">
                                             <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a></div>
+                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                                <div class="d-flex justify-content-center">
-                                    <div style="width:16px; cursor:pointer;">
-                                        <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
-                                    </div>
-                                    <div style="width:16px; cursor:pointer;">
-                                        <img src="{{asset('images/dot1.png')}}" alt="" class="w-100">
-                                    </div>
-                                    <div style="width:16px; cursor:pointer;">
-                                        <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
-                                    </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div style="width:16px; cursor:pointer;">
+                                    <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
                                 </div>
-                          
+                                <div style="width:16px; cursor:pointer;">
+                                    <img src="{{asset('images/dot1.png')}}" alt="" class="w-100">
+                                </div>
+                                <div style="width:16px; cursor:pointer;">
+                                    <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
+                                </div>
+                            </div>
+
 
 
 
@@ -1957,18 +1975,76 @@
 <!-- =======Calender========= -->
 <section>
     <div class="row container section5">
-    
-        <div class="calender calendar_overflo" style="right: 0px; width: 300px; position: absolute;z-index: 2; display:none; transition: var(--tran-05);" id="mySidebar">
-        <div clas="" style="padding-top:30px">
-        <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}"alt=""></span>
-        <span class="close-btn" onclick="closeSidebar()">&times;</span>
-        </div>
+        <i class="sidebar-button fa-solid fa-bars"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"></i>
+
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            <div class="calender side-resp"
+            style="right: 0px; width: 100%; height:100%; position: absolute;z-index: 2;  transition: var(--tran-05);"
+           >
+            <div clas="" style="padding-top:30px">
+                <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
+            </div>
             <span class="croissant-icon"></span>
             <div class="calendarmain">
                 <div class="l1 d-none">
                     <div class="navigation">
                         <h2 id="month-year"></h2>
-                       
+
+                        <div class="leftrightbtn">
+                            <button onclick="prevMonth()" class="prev">&#10094;</button>
+                            <button onclick="nextMonth()" class="next"> &#10095;</button>
+                        </div>
+                    </div>
+                    <div id="calendar-container">
+                    </div>
+                </div>
+                <div class="R1 L-Calnd">
+                    <div class="Thumbnail">
+                        <h3>
+                            Thumbnail
+                        </h3>
+                        <a href=""><i class='fa fa-info red-color'></i></a>
+                    </div>
+                    <div class="div2">
+                        <h1 class="date-day">
+                            {{\Carbon\Carbon::now()->format('l')}}
+                        </h1>
+                        <h3 class="date-date">{{\Carbon\Carbon::now()->format('m/d/Y')}}</h3>
+                    </div>
+
+                    <div class="todayEbents-list" style="cursor:pointer; display:block;">
+                        @include('user.component.ajax.todayEvents')
+                    </div>
+                    <div class="Today-post-detail" style="margin-top:30px; display:none;">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        
+        <div class="calender calendar_overflo"
+            style="right: 0px; width: 300px; position: absolute;z-index: 2; display:none;  transition: var(--tran-05);"
+            id="mySidebar">
+            <div clas="" style="padding-top:30px">
+                <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
+                <span class="close-btn" onclick="closeSidebar()">&times;</span>
+            </div>
+            <span class="croissant-icon"></span>
+            <div class="calendarmain">
+                <div class="l1 d-none">
+                    <div class="navigation">
+                        <h2 id="month-year"></h2>
+
                         <div class="leftrightbtn">
                             <button onclick="prevMonth()" class="prev">&#10094;</button>
                             <button onclick="nextMonth()" class="next"> &#10095;</button>
@@ -1994,9 +2070,9 @@
                     <div class="todayEbents-list" style="cursor:pointer; display:none;">
                         @include('user.component.ajax.todayEvents')
                     </div>
-                     <div class="Today-post-detail" style="margin-top:30px; display:none; ">
+                    <div class="Today-post-detail" style="margin-top:30px; display:none;">
 
-                     </div>
+                    </div>
 
                 </div>
             </div>
@@ -2203,11 +2279,13 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2227,11 +2305,13 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2388,11 +2468,13 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2412,11 +2494,13 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2572,11 +2656,13 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2596,11 +2682,13 @@
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2689,10 +2777,10 @@
 @section('js')
 <!-- sidebar close btn -->
 <script>
-    function closeSidebar() {
-        document.getElementById("mySidebar").style.display = "none";
-        $('.home').css('padding-right', '0px');
-    }
+function closeSidebar() {
+    document.getElementById("mySidebar").style.display = "none";
+    $('.home').css('padding-right', '0px');
+}
 </script>
 <!-- sidebar close btn -->
 <script>
@@ -3230,19 +3318,10 @@ populateOptions("hour", 1, 12, 1);
 // Populate minute options (00 to 59)
 populateOptions("minute", 0, 59, 1);
 // append post in calender sidebar
-// $(document).ready(function() {
-//     // Add a one-time click event handler to the todayEbents-list div
-//     $(".todayEbents-list").one("click", function() {
-//         // Clone the content inside todayEbents-list
-//         var contentToAppend = $(".the_preview").html();
-        
-//         // Append the cloned content to the Today-post-detail div
-//         $(".Today-post-detail").append(contentToAppend);
-//     });
-// });
+
 $(document).ready(function() {
     var isDetailVisible = false; // Initialize a flag to track visibility
-    
+
     // Add a click event handler to the todayEbents-list div
     $(".todayEbents-list").click(function() {
         if (!isDetailVisible) {
@@ -3268,8 +3347,8 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
         $(".text").css('opacity', '1');
         $(".todayEbents-list").css('display', 'none');
         $(".Today-post-detail").css('display', 'none');
-        $('.home').css('padding-right', '0px');
-        
+        $('.home').css('padding-right', '30px');
+
     }
 });
 $(document).on('mouseenter', '.calendar_overflo', function() {
@@ -3279,19 +3358,35 @@ $(document).on('mouseenter', '.calendar_overflo', function() {
     $(".todayEbents-list").css('display', 'block');
     $(".Today-post-detail").css('display', 'block');
     $(this).css('z-index', '9999');
-   
+
 });
 
-$(".toggle").click(function() {
-    $(".calendar_overflo").toggleClass('sideWidth');
-    $(".test_con").toggleClass('test_con1');
 
-    // Toggle the mouseLeaveEnabled flag
-    mouseLeaveEnabled = !mouseLeaveEnabled;
-});
+// for responsive
+// $(document).ready(function() {
+    var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
+    
+    // Check the screen size and show/hide the sidebar button
+    function checkScreenSize() {
+        if ($(window).width() < 1550) {
+            $(".sidebar-button").show();
+            $(".calendar_overflo").css('display', 'none');
+        } else {
+            $(".sidebar-button").hide();
+            
+          
+        }
+    }
 
+
+    // $(window).resize(function() {
+    //     checkScreenSize();
+    // });
+// });
+
+
+// for responsive
 
 // append post in calender sidebar
-
 </script>
 @endsection
