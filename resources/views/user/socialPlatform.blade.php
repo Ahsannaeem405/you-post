@@ -79,8 +79,19 @@
                 <i class="fa-solid fa-plus" style="cursor: pointer" id="addAccount"></i>
             </div>
         </div>
+
+        <div style="text-align:center; margin-top:
+           30px"  class ="class="addOtherAccountMain">
+            <button class="btn btn-primary"><img src="{{asset('images/sum-icon.svg')}}" style="    padding-right: 5px; width: 17px;
+            height: 13px;;"  id="addAccount">Add New
+                Account</button>
+
+         </div>
+
+
+
         <div class="platformBtn">
-            <a href="{{ url('/dashboard') }}" id="" class="">Dashboard</a>
+            <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus">Dashboard</a>
         </div>
 
 
@@ -95,7 +106,6 @@
     <script>
         $(document).ready(function () {
             $(document).on('click', '.checkAndFocus', function () {
-   
                 event.preventDefault();                         
                 var inputs = $(".all_social_platformCnt input");             
                 var isEmpty = false;              
