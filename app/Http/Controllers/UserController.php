@@ -622,16 +622,15 @@ class UserController extends Controller
 
             $user->insta_user_id = $instagram_business_account_id;
             $user->platforms = $platforms;
-            $user->update();
+            $user->save();
 
-
-            $run=new Instagramservice();         
-            $instData=$run->get_inst_data();
-            $user = auth()->user();      
-            $user->account->inst_name =  $instData['name'] ;    
-            $user->account->inst_page_name =  $instData['username'] ; 
-            $user->account->inst_image =  $instData['profile_picture_url'] ;          
-            $user->account->save();
+            $run=new Instagramservice();        
+            $instData=$run->get_inst_data($instagram_business_account_id);
+            $user = Account::find(auth()->user()->account_id);                
+            $user->inst_name =  $instData['name'] ;    
+            $user->inst_page_name =  $instData['username'] ; 
+            $user->inst_image =  $instData['profile_picture_url'] ;          
+            $user->save();
             return back()->with('success', 'instagram Connected Successfully!');
         } else {
             return back()->with('error', 'Sorry! no instagram account is connected with this page');
@@ -827,13 +826,8 @@ class UserController extends Controller
             curl_close($curl);
             $response2 = json_decode($response);
 
-            $twitterUserData = $this->getTwitterUserData( $response2->access_token); 
-            $twittername = $twitterUserData['data']['name'];                
-            $twitterUsername = $twitterUserData['data']['username'];      
-            $profileImageURL = "https://twitter.com/$twitterUsername/photo?size=original";       
-            if (isset($response2->error)) {
-                return redirect('/index')->with('error', $response2->error_description);
-            }
+            $run=new TwitterService();            
+            $userData=$run->get_tw_data($response2->access_token); 
             $access_token = $response2->access_token;
             $refresh_token = $response2->refresh_token;
             $accountUser = User::find(auth()->user()->id);
@@ -845,9 +839,9 @@ class UserController extends Controller
                 'twiter_access_token' => $access_token,
                 'twiter_refresh_token' => $refresh_token,
                 'platforms' => $platforms,
-                'tw_name' => $twittername,
-                'tw_user_name' => $twitterUsername,
-                'twt_image' => $profileImageURL,
+                'tw_name' =>  $userData['data']['name'] ?? '',
+                'tw_user_name' => $userData['data']['username'] ?? '',
+                'twt_image' =>$userData['data']['profile_image_url'] ?? '',
 
             ]);
             return redirect('/index')->with('success', 'Twitter, Successfully Added');
@@ -858,34 +852,7 @@ class UserController extends Controller
 
 
     }
-
-
-
-    private function getTwitterUserData($access_token)
-    {      
-            try {             
-                  $curl = curl_init();             
-                    curl_setopt_array($curl, array(
-                    CURLOPT_URL => "https://api.twitter.com/2/users/me",
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_HTTPHEADER => array(
-                        "Authorization: Bearer " . $access_token,
-                    ),
-                ));             
-                $response = curl_exec($curl);            
-                if(curl_errno($curl)) {
-                    throw new \Exception("cURL Error: " . curl_error($curl));
-                }              
-                curl_close($curl);           
-                $userData = json_decode($response, true); 
-                return $userData;
-            } catch (\Exception $e) {
-                dd($e); // Handle the exception as needed
-            }
-
-    }
     
-
     public function get_facebook_likes(Facebookservice $facebookservice, Instagramservice $instagramservice, TwitterService $twitterService)
     {
 
