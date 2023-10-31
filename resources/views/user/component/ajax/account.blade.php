@@ -12,33 +12,33 @@ background: #FFF;
 box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
 }
 .rounded-circle{
-    width: 150px; 
+    width: 150px;
     margin-top:30px
 }
 .input_lb{
-    position:relative; 
+    position:relative;
     margin-top:40px
 }
 .user_detail{
-    color: #959595; 
-    font-size: 12px; 
+    color: #959595;
+    font-size: 12px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 300; 
-    letter-spacing: 1.2px; 
+    font-weight: 300;
+    letter-spacing: 1.2px;
     left: 25%;;
     position: absolute;
-    top: -8px; 
-    background:#fff; 
+    top: -8px;
+    background:#fff;
     padding-left: 5px;
     padding-right: 5px;
 
 }
 .account-detail{
-    width: 50%; 
-    padding: 10px 15px; 
-    outline:none; 
-    border-color:#D6D6D6; 
-    font-weight:400;  
+    width: 50%;
+    padding: 10px 15px;
+    outline:none;
+    border-color:#D6D6D6;
+    font-weight:400;
     border: 1px solid#D6D6D6;
     border-radius:9px;
 }
@@ -48,7 +48,7 @@ box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
 }
 .delete_account{
     margin-bottom: 3px;
-    width:20px; 
+    width:20px;
     height:20px
 }
 .switch_account{
@@ -58,8 +58,8 @@ box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
     color: #2F2F2F;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;font-style: 
-    normal;font-weight: 400; 
+    font-size: 16px;font-style:
+    normal;font-weight: 400;
     text-align:center;
     line-height: normal;
 }
@@ -90,15 +90,15 @@ box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
                                 <img src="{{auth()->user()->account->fb_image}}" class="v_icon" alt="" width="45px" />
                                 @elseif(in_array("Instagram",  $account->platforms))
                                 <img src="{{ auth()->user()->account->inst_image}}" class="v_icon" alt="" width="45px" />
-                                
+
                                 @elseif(in_array("Twitter", $account->platforms))
                                 <img src="{{auth()->user()->account->twt_image}}" class="v_icon" alt="" width="45px" />
                                 @elseif(in_array("Linkedin", $account->platforms))
                                 <img src="{{ auth()->user()->account->link_image}}" class="v_icon" alt="" width="45px" />
-                                @else                      
+                                @else
                                 <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3" style="width: 150px; margin-top:
                                 30px" alt="Avatar" />
-                                @endif                
+                                @endif
          <div style="position:relative; margin-top:40px" class="input_lb all_social_platformCnt">
             <label for="" style="color: #959595; font-size: 12px; font-family: Poppins; font-weight: 300; letter-spacing: 1.2px; left: left: 25%;;
             position: absolute;top: -8px; background:#fff; padding-left: 5px;
@@ -123,8 +123,8 @@ box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
             <div class="all_social_platform" style="gap: 0 23px; background:none;">
                 <div class="single_platform  {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_fb">
-                        <img src="http://127.0.0.1:8000/images/social-iconfb-clr.png" class="color_icon " alt="">
-                        <img src="http://127.0.0.1:8000/images/social_iconfbblack.png" class="black_icon " alt="">
+                        <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt="">
+                        <img src="{{asset('images/social_iconfbblack.png')}}" class="black_icon " alt="">
                     </div>
                     <label class="switch">
                         <input type="checkbox" class="customCheckbox plateform" value="Facebook"

@@ -141,10 +141,11 @@ class Instagramservice
             $response = Http::withToken($instaAccessToken)
                             ->get("https://graph.facebook.com/{$instaUserId}?fields=id,username,name,profile_picture_url");
             $pageData = $response->json();
+
             if(isset($pageData['id'])) {
                 $username = $pageData['username'];
                 $name = $pageData['name'];
-                $profile_picture_url = $pageData['profile_picture_url'];
+                $profile_picture_url = $pageData['profile_picture_url'] ?? asset('assets/images/insta-default-image.png');
                 return [
                     'username' => $username,
                     'name' => $name,

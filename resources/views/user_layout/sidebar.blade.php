@@ -576,16 +576,16 @@ body.dark .home .text {
                             <button class="dropdown-toggle bg-transparent border-0" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if(in_array("Facebook", $platforms))
-                                <img src="{{auth()->user()->account->fb_image}}" class="v_icon" alt="" width="45px" />
+                                <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle" alt="" width="45px" />
                                 @elseif(in_array("Instagram", $platforms))
-                                <img src="{{ auth()->user()->account->inst_image}}" class="v_icon" alt="" width="45px" />
+                                <img src="{{ auth()->user()->account->inst_image}}" class="v_icon rounded-circle" alt="" width="45px" />
 
                                 @elseif(in_array("Twitter", $platforms))
-                                <img src="{{auth()->user()->account->twt_image}}" class="v_icon" alt="" width="45px" />
+                                <img src="{{auth()->user()->account->twt_image}}" class="v_icon rounded-circle" alt="" width="45px" />
                                 @elseif(in_array("Linkedin", $platforms))
-                                <img src="{{ auth()->user()->account->link_image}}" class="v_icon" alt="" width="45px" />
+                                <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle" alt="" width="45px" />
                                 @else
-                                <img src="{{asset('images/admin.png')}}" class="v_icon" alt="" width="45px" />
+                                <img src="{{asset('images/admin.png')}}" class="v_icon rounded-circle" alt="" width="45px" />
                                 @endif
 
                                 <span class="text nav-text text2"
@@ -609,8 +609,7 @@ body.dark .home .text {
                     </div>
                 </li>
 
-                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
-                            Account</span></a></li>
+                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My Accounts</span></a></li>
                 </li>
 
                 <!-- <li class="nav-link">
@@ -620,7 +619,7 @@ body.dark .home .text {
                     </a>
                 </li> -->
                 <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
-                            class="text nav-text">Add Social Account</span></a></li>
+                            class="text nav-text">Connect Social</span></a></li>
 
                 <!-- <li class="nav-link">
                     <a href="#">
