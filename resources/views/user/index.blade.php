@@ -1204,7 +1204,7 @@
                                         <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
                                         <div class="messenger"><i
                                                 class="fab fa-facebook-messenger text-light i_one"></i>
-                                            <div class="msg_2">
+                                            <div class="msg_2 d-none">
                                                 <p>2</p>
                                             </div>
                                         </div>
@@ -1216,13 +1216,13 @@
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
                                 <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">
-                                    <div class="msg_1 icon_opc">
+                                    <div class="msg_1 icon_opc d-none">
                                         <p>8</p>
                                     </div>
                                 </div>
                                 <div class="one_img messenger marketicon">
                                     <img src="{{asset('images/marketplace2.png')}}" class="" alt="">
-                                    <div class="msg_1 icon_opc">
+                                    <div class="msg_1 icon_opc d-none">
                                         <p>1</p>
                                     </div>
                                 </div>
@@ -1269,18 +1269,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr style="color:gray;" class="m-0">
+                                    <hr style="color:gray; margin-top:41px !important;" class="m-0">
                                 </div>
                                 <div class="col-md-12">
                                     <div
-                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom">
+                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
                                         <div
-                                            class="reactions reactions2 d-flex justify-content-center align-items-center">
+                                            class="reactions reactions2 d-flex justify-content-center align-items-center d-none">
                                             <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />
                                             <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
                                                 height="12" />
                                         </div>
-                                        <div class="total-comments total_comments u-margin-inline-start">
+                                        <div class="total-comments total_comments u-margin-inline-start d-none">
                                             <a>Muhammad Talha and 24k others 8.3k comments</a>
                                         </div>
                                     </div>
@@ -1321,7 +1321,7 @@
                                         <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
                                         <div class="messenger"><i
                                                 class="fab fa-facebook-messenger text-light i_one"></i>
-                                            <div class="msg_2">
+                                            <div class="msg_2 d-none">
                                                 <p>2</p>
                                             </div>
                                         </div>
@@ -1333,13 +1333,13 @@
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
                                 <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">
-                                    <div class="msg_1 icon_opc">
+                                    <div class="msg_1 icon_opc d-none">
                                         <p>8</p>
                                     </div>
                                 </div>
                                 <div class="one_img messenger marketicon">
                                     <img src="{{asset('images/marketplace2.png')}}" class="" alt="">
-                                    <div class="msg_1 icon_opc">
+                                    <div class="msg_1 icon_opc d-none">
                                         <p>1</p>
                                     </div>
                                 </div>
@@ -1387,11 +1387,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr style="color:gray;" class="m-0">
+                                    <hr style="color:gray; margin-top:41px !important;" class="m-0">
                                 </div>
                                 <div class="col-md-12">
                                     <div
-                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom">
+                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
                                         <div
                                             class="reactions reactions2 d-flex justify-content-center align-items-center">
                                             <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />
@@ -1502,7 +1502,7 @@
                                         </div>
                                         <div class="pt-1 insta_likes_post">
                                             <span>
-                                                58995 Likes
+                                                0 Likes
                                             </span>
                                         </div>
 
@@ -1519,9 +1519,9 @@
                                     <div class="col-12">
                                         <div class="insta_pos_comm">
                                             <p class="mb-0">
-                                                View all 5000 comments
+                                                0 comments
                                             </p>
-                                            <p class="mb-0">12 hour ago</p>
+                                            <p class="mb-0">Just Now</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1584,19 +1584,19 @@
                                     <div class="x_bar_icons pt-1">
                                         <div>
                                             <img src="{{asset('')}}images/icons/Comment-titter.svg" class="" alt="" />
-                                            <span>4</span>
+                                            <span>0</span>
                                         </div>
                                         <div>
                                             <img src="{{asset('')}}images/icons/share-twitter.svg" class="" alt="" />
-                                            <span>6</span>
+                                            <span>0</span>
                                         </div>
                                         <div>
                                             <img src="{{asset('')}}images/icons/heart-twitter.svg" class="" alt="" />
-                                            <span>12k</span>
+                                            <span>0k</span>
                                         </div>
                                         <div class="d-flex mt-1 gap-1">
                                             <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
-                                            <div style="color:#8a96a3; font-size:12px;">61</div>
+                                            <div style="color:#8a96a3; font-size:12px;">0</div>
                                         </div>
                                         <!-- <div>
                                             <img src="{{asset('')}}images/share2.png" class="ShareIcon" alt="" />
@@ -1695,7 +1695,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="LikeIcons px-2">
+                                    <div class="LikeIcons px-2 d-none">
                                         <div class="d-flex">
                                             <div class="InnerIcon">
                                                 <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt=""
@@ -1763,7 +1763,7 @@
                                                 <img src="{{asset('images/profile-01.png')}}" alt="">
                                             </div>
                                             <div> <span>My Network</span></div>
-                                            <div class="notification_circle">
+                                            <div class="notification_circle d-none">
                                                 <p style="padding-right:1px;">1</p>
                                             </div>
                                         </div>
@@ -1773,10 +1773,10 @@
                                             <div><span>Post</span></div>
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
-                                            <div style="text-align:center;"><img src="{{asset('images/notify2.png')}}"
+                                            <div style="text-align:center;"><img src="{{asset('images/updatebellicon.png')}}"
                                                     alt=""></div>
                                             <div> <span>Notifications</span></div>
-                                            <div class="notification_circle">
+                                            <div class="notification_circle d-none">
                                                 <p>14</p>
                                             </div>
                                         </div>

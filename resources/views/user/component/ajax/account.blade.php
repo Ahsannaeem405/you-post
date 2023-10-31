@@ -4,7 +4,66 @@
 .index_delete {
     text-align: right !important;
 }
+/* main account file styling */
+.account_main{
+text-align:center; border-radius: 10px;
+border: 0.5px solid #E0E0E0;
+background: #FFF;
+box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
+}
+.rounded-circle{
+    width: 150px; 
+    margin-top:30px
+}
+.input_lb{
+    position:relative; 
+    margin-top:40px
+}
+.user_detail{
+    color: #959595; 
+    font-size: 12px; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; 
+    letter-spacing: 1.2px; 
+    left: 25%;;
+    position: absolute;
+    top: -8px; 
+    background:#fff; 
+    padding-left: 5px;
+    padding-right: 5px;
 
+}
+.account-detail{
+    width: 50%; 
+    padding: 10px 15px; 
+    outline:none; 
+    border-color:#D6D6D6; 
+    font-weight:400;  
+    border: 1px solid#D6D6D6;
+    border-radius:9px;
+}
+.btn-danger{
+    background:#FF3044 !important;
+    margin-left:15px;
+}
+.delete_account{
+    margin-bottom: 3px;
+    width:20px; 
+    height:20px
+}
+.switch_account{
+    margin-top:50px;
+}
+.Platforms{
+    color: #2F2F2F;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;font-style: 
+    normal;font-weight: 400; 
+    text-align:center;
+    line-height: normal;
+}
+/* main account file styling */
 @media (max-width:992px) {
     .all_social_platformWrp {
         width: 62%;
