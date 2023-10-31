@@ -492,6 +492,8 @@
         $("#instagram_content").attr("attr_of_text_area", "insta");
         $("#twitter_content").attr("attr_of_text_area", "twitter");
         $("#linkedin_content").attr("attr_of_text_area", "linkedin");
+        $("#youpost_content").attr("attr_of_text_area", "youpost");
+
 
     });
 
@@ -519,21 +521,53 @@
   
       }
 
+      function updatePreview_And_textArea(inputText,textareaAttr, existingTextFB) {                                  
+                      
+                     
+                     
+                                        
+                if (textareaAttr === 'youpost') {
+              
+                var updatedText_fb =  existingTextFB +inputText ;
 
-      
-      function updateDiv($obj) {
-  
-          var textareaAttr = $($obj).attr("attr_of_text_area");
-        
-          var inputText = $($obj).val();
-  
-          if (textareaAttr == 'fb') {
+             
+
+             
+                $("#facebook_content").val(updatedText_fb);
+            }
+                        
+
+                      
+                   
+                       
+             
+            }
+
+            function updateDiv($obj) {
+                var textareaAttr = $($obj).attr("attr_of_text_area");
+
+                
+
+                var inputText = $($obj).val();
+                var lart= inputText.slice(-1);
+                if(lart.trim() == ''){
+                       return;
+                }
+                
+
+                if (textareaAttr == 'youpost') {   
+                                  
+                    $("#mypostresult_youpost").empty().append(inputText);                 
+                    // var existingTextFB = $("#facebook_content").val();  
+                    // $("#facebook_content").val('');
+                    // updatePreview_And_textArea(inputText,textareaAttr,existingTextFB);
+                    
+                }else if (textareaAttr == 'fb') {
            
-              var selectedValues = $('#facebook_tag').val(); 
-              var new_str= getString(selectedValues); 
-
-              $("#mypostresult_fb").empty().append(inputText) ;
-               $("#mynameresult").empty().append(new_str) ;
+                var selectedValues = $('#facebook_tag').val(); 
+                var new_str= getString(selectedValues); 
+                $("#mypostresult_fb").empty().append(inputText) ;
+                $("#mynameresult").empty().append(new_str) ;
                
           }else if(textareaAttr == 'insta'){
 
