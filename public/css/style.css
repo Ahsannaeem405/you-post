@@ -1619,11 +1619,11 @@ button {
     width: 100%;
     border-radius: 15px;
     height: 500px;
-    opacity: 1;
+    /* opacity: 1; */
   }
 
 
-.mybgcontainer2{
+.mybgcontainer2,.mybgcontainer3,.mybgcontainer4{
     position: relative;
 
   }
