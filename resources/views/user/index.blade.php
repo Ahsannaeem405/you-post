@@ -1795,7 +1795,7 @@
                 </div>
                 <div class="mybgcontainer">
                     <div>
-               <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg"></div>
+               <img src="{{asset('images/overlayimgwithbg.png')}}" alt="" class="overlayimg"></div>
                 <div
                     class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner  overlay">
                     <div class="sub_heading">
