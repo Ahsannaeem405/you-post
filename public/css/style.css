@@ -1023,6 +1023,9 @@ button {
 .fc-agendaWeek-view.fc-agenda-view table .fc-body tr td.fc-widget-content .fc-time-grid-container{
     margin: 30px; 
 }
+.fc-agendaDay-view.fc-agenda-view table .fc-body tr td.fc-widget-content .fc-time-grid-container{
+    margin: 30px; 
+}
 .pignose-calendar .pignose-calendar-unit a {
     font-family: 'Poppins', sans-serif;
     color: #18181B !important;

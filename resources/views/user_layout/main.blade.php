@@ -357,7 +357,6 @@
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');
                 checkScreenSize();
-                // alert()
             }
         });
     }

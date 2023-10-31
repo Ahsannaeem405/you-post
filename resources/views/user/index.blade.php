@@ -3152,19 +3152,19 @@ $(document).on('mouseenter', '.calendar_overflo', function() {
 
 // for responsive
 // $(document).ready(function() {
-    var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
+    // var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
     
     // Check the screen size and show/hide the sidebar button
-    function checkScreenSize() {
-        if ($(window).width() < 1550) {
-            $(".sidebar-button").show();
-            $(".calendar_overflo").css('display', 'none');
-        } else {
-            $(".sidebar-button").hide();
+    // function checkScreenSize() {
+    //     if ($(window).width() < 1550) {
+    //         $(".sidebar-button").show();
+    //         $(".calendar_overflo").css('display', 'none');
+    //     } else {
+    //         $(".sidebar-button").hide();
             
           
-        }
-    }
+    //     }
+    // }
 
 
     // $(window).resize(function() {

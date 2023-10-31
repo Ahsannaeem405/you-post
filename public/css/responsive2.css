@@ -131,7 +131,7 @@
 
 /* spear query */
 
-@media (min-width:1500px) and (max-width:2000px) {
+@media (min-width:1400px) and (max-width:2000px) {
     .show-this-section-992 {
         display: none;
     }
@@ -149,6 +149,9 @@
 
     .create_preview_post .create_post .post_now_button .btn {
         padding: 6px 11px !important;
+    }
+    .section5 i {
+        display: none;
     }
 }
 
@@ -171,6 +174,9 @@
     .table>:not(caption)>*>* {
         padding: 7px 8px !important;
     }
+    .section5 i {
+        display: none;
+    }
 
    
 }
@@ -181,7 +187,9 @@
         min-width: 114px !important;
         padding: 10px !important;
     }
-
+    .section5 i {
+        display: none;
+    }
 
 }
 
@@ -424,7 +432,9 @@
         padding-left: 15px;
     }
 
-   
+    .section5 i {
+        display: none;
+    }
 
     /* razi card_media query end */
 }
@@ -604,6 +614,9 @@
     }
     .fc-center{
         margin-top: 11px;
+    }
+    .section5 i {
+        display: none;
     }
 
 }
@@ -943,6 +956,9 @@
     }
     .fc-center{
         margin-top:11px;
+    }
+    .section5 i {
+        display: none;
     }
 }
 
