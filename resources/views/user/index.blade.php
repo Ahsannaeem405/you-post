@@ -1193,7 +1193,7 @@
                         <!-- <div class="color_info">Social networks frequently introduce enhancements to their formatting, your post may appear different when published.</div> -->
 
                         <!-- you post preview -->
-                        <div class="preview_wrap add_preview  prv_youpost prev_wrap_youpost">
+                        <!-- <div class="preview_wrap add_preview  prv_youpost prev_wrap_youpost">
                             <div class="col-md-12">
                                 <div class="Mobcompny-title">
                                     <div class="w-50">
@@ -1288,7 +1288,7 @@
                                     <div class="actions-buttons actions_buttons px-1 mt-3">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
-                                                <!-- <i class="fa-regular fa-thumbs-up"></i> -->
+                                                
                                                 <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""
                                                     height="20" />
                                                 <span class="text text2  d-flex align-items-center">Like</span>
@@ -1307,7 +1307,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
                         <!-- you post preview end -->
                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                         <div class="preview_wrap d-none add_preview  prv_fb prev_wrap_fb">
@@ -1795,10 +1795,11 @@
                     </div>
 
                 </div>
-
+                <div class="mybgcontainer">
+                    <div>
+               <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg"></div>
                 <div
-                    class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner position-relative ">
-
+                    class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner  overlay">
                     <div class="sub_heading">
                         <div>
                             <h4>AI Generated Content</h4>
@@ -1808,7 +1809,7 @@
                         </div>
 
                     </div>
-
+                
 
                     <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade">
                         <div class="AIgeneratedContentData">
@@ -1959,7 +1960,7 @@
                     </div>
 
                 </div>
-
+                </div>
             </div>
 
 
@@ -2137,9 +2138,10 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
-                    <div class="card-main">
-                        <div class="card custom_card mt-3" id="like-card">
-                            <div class="card-body">
+                    <div class="card-main ">
+                        <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
+                        <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
+                            <div class="card-body overlay">
                                 <div class="likes_card">
                                     <h3 class="card-title">Likes</h3>
                                     <p class="" style="font-weight:600;">Coming Soon</p>
@@ -2324,11 +2326,12 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
-                        <div class="card custom_card mt-3" id="like-card">
-                            <div class="card-body">
-                                <!-- <h3 class="card-title">Share</h3> -->
+                        <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
+                        <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
+                            <div class="card-body overlay">
                                 <div class="likes_card">
                                     <h3 class="card-title">Share</h3>
                                     <p class="" style="font-weight:600;">Coming Soon</p>
@@ -2515,8 +2518,9 @@
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
-                        <div class="card custom_card mt-3" id="like-card">
-                            <div class="card-body">
+                        <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
+                        <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
+                            <div class="card-body overlay">
                                 <!-- <h3 class="card-title">Engagement</h3> -->
                                 <div class="likes_card">
                                     <h3 class="card-title">Engagement</h3>
@@ -2776,6 +2780,45 @@
 
 @section('js')
 <!-- sidebar close btn -->
+<!--  -->
+<script>
+    var abc=0;
+    
+$('.mybgcontainer2').click(function () {
+    abc++;
+    if(abc=== 1){
+    $('.overlay', this).css('opacity', 1);
+    $('.overlayimg2', this).css('opacity', 0);
+    }
+    else if(abc=== 2){
+
+    $('.overlay', this).css('opacity', 0);
+    $('.overlayimg2', this).css('opacity', 1);
+    abc=0;
+}
+});
+var hij=0;
+$('.mybgcontainer').click(function () {
+    hij++;
+    if( hij=== 1){
+    $('.overlay', this).css('opacity', 1);
+    $('.overlayimg', this).css('opacity', 0);
+    }
+    else if( hij=== 2){
+
+    $('.overlay', this).css('opacity', 0);
+    $('.overlayimg', this).css('opacity', 1);
+    hij=0;
+}
+});
+ 
+
+
+</script>
+
+
+
+<!--  -->
 <script>
 function closeSidebar() {
     document.getElementById("mySidebar").style.display = "none";
