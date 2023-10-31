@@ -1807,7 +1807,7 @@
                         </div>
 
                     </div>
-                
+
 
                     <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade">
                         <div class="AIgeneratedContentData">
@@ -2324,7 +2324,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
@@ -2781,35 +2781,18 @@
 <!--  -->
 <script>
     var abc=0;
-    
+
 $('.mybgcontainer2').click(function () {
-    abc++;
-    if(abc=== 1){
     $('.overlay', this).css('opacity', 1);
     $('.overlayimg2', this).css('opacity', 0);
-    }
-    else if(abc=== 2){
-
-    $('.overlay', this).css('opacity', 0);
-    $('.overlayimg2', this).css('opacity', 1);
-    abc=0;
-}
 });
-var hij=0;
+
 $('.mybgcontainer').click(function () {
-    hij++;
-    if( hij=== 1){
     $('.overlay', this).css('opacity', 1);
     $('.overlayimg', this).css('opacity', 0);
-    }
-    else if( hij=== 2){
 
-    $('.overlay', this).css('opacity', 0);
-    $('.overlayimg', this).css('opacity', 1);
-    hij=0;
-}
 });
- 
+
 
 
 </script>
