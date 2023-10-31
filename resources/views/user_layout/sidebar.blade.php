@@ -541,102 +541,7 @@ body.dark .home .text {
 <!-- ------------------------------------------- offcanvas sidebar ----------------------------------------- -->
 <i class="fa-solid fa-bars d-lg-none d-sm-block" id="offcanvas-btn" type="button" data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></i>
-<div class="offcanvas offcanvas-start d-lg-none d-sm-block" tabindex="-1" id="offcanvasExample"
-    aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <div class="image-text image_text">
-            <a href="index.html"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid" alt="" /></a>
 
-        </div>
-        <!-- <i class='bx bx-chevron-right toggle '></i> -->
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-
-    <div class="menu-bar">
-        <div class="menu">
-            <ul class="menu-links menu_links">
-                <li class="nav-link nav_link2" style="background-color:#E8E8E8; border-radius:7px;">
-                    <div class="user_info pl-1">
-                        <a href="javascript:void(0)">
-                            <div class="user_name grid_item">
-                                <div class="the_name">
-                                    <span><span class="color">{{auth()->user()->name}}</span></span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown">
-                            <button class="dropdown-toggle bg-transparent border-0" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{asset('')}}images/admin.png" class="v_icon" alt="" width="45px" />
-                                <span class="text nav-text text2" style="padding-left:12px;">My Company</span>
-                                <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
-                                <img src="{{asset('')}}images/drop_arrow.png" class="v_icon" alt=""
-                                    style="padding-left:30px; " />
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                @foreach($accounts as $account)
-                                <li><a class="dropdown-item {{auth()->user()->account_id==$account->id ? 'active' : null}}"
-                                        href="{{url("change_acount/".encrypt($account->id))}}"> <i
-                                            class="fa-solid fa-user"></i> {{$account->name}}</a></li>
-                                @endforeach
-                                <li><a class="dropdown-item" style="cursor: pointer" data-bs-toggle="modal"
-                                        data-bs-target="#addAccount">Add Account <i
-                                            class="fa-solid fa-plus text-success"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My
-                            Account</span></a></li>
-                </li>
-
-                </li>
-                <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
-                            class="text nav-text">Add Social Account</span></a></li>
-
-                <li><a href="javascript:void(0)"><i class="fa-regular fa-file icon"></i><span
-                            class="text nav-text">Privacy
-                            Policy</span></a></li>
-
-                <li><a href="javascript:void(0)"><i class='bx bx-pie-chart-alt icon'></i><span
-                            class="text nav-text">Support</span></a></li>
-
-                <li><a href="javascript:void(0)"><i class='bx bx-heart icon'></i> <span class="text nav-text">Public
-                            Profile</span></a></li>
-
-                <li class="logout-li">
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
-                        <i class='bx bx-log-out icon'></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-            </ul>
-        </div>
-        <div class="bottom-content">
-            <li class="">
-                <a href="#">
-                    <i class='bx bx-log-out icon'></i>
-                    <span class="text nav-text">sample</span>
-                </a>
-            </li>
-            <!-- <li class="mode">
-                <div class="sun-moon">
-                    <i class='bx bx-moon icon moon'></i>
-                    <i class='bx bx-sun icon sun'></i>
-                </div>
-                <span class="mode-text text">Dark mode</span>
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-            </li> -->
-        </div>
-    </div>
-    <!-- </div> -->
-</div>
 <!-- ------------------------------------------- offcanvas sidebar end ----------------------------------------- -->
 
 
@@ -644,12 +549,7 @@ body.dark .home .text {
 <nav class="sidebar side_bar close">
     <header>
         <div class="image-text image_text">
-            <a href="javascript:void(0)"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid" alt="" /></a>
-
-            <!-- <div class="text logo-text">
-                <span class="name">Codinglab</span>
-                <span class="profession">Web developer</span>
-            </div> -->
+            <a href="javascript:void(0)"><img src="{{asset('images/YouPost_Logo.png')}}" class="img-fluid" alt="" /></a>
         </div>
 
         <i class='bx bx-chevron-right toggle'></i>
@@ -657,11 +557,7 @@ body.dark .home .text {
 
     <div class="menu-bar">
         <div class="menu">
-            <!--
-            <li class="search-box">
-                <i class='bx bx-search icon'></i>
-                <input type="text" placeholder="Search...">
-            </li> -->
+
 
             <ul class="menu-links menu_links">
                 <li class="nav-link nav_link2" style="background-color:#E8E8E8; border-radius:7px;">
@@ -675,28 +571,23 @@ body.dark .home .text {
                         </a>
                         @php
                             $platforms =auth()->user()->account->platforms;
-                           
-                        @endphp
+                            @endphp
                         <div class="dropdown">
                             <button class="dropdown-toggle bg-transparent border-0" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                              
-
-
-
                                 @if(in_array("Facebook", $platforms))
                                 <img src="{{auth()->user()->account->fb_image}}" class="v_icon" alt="" width="45px" />
                                 @elseif(in_array("Instagram", $platforms))
                                 <img src="{{ auth()->user()->account->inst_image}}" class="v_icon" alt="" width="45px" />
-                                
+
                                 @elseif(in_array("Twitter", $platforms))
                                 <img src="{{auth()->user()->account->twt_image}}" class="v_icon" alt="" width="45px" />
                                 @elseif(in_array("Linkedin", $platforms))
                                 <img src="{{ auth()->user()->account->link_image}}" class="v_icon" alt="" width="45px" />
-                                @else                             
+                                @else
                                 <img src="{{asset('images/admin.png')}}" class="v_icon" alt="" width="45px" />
                                 @endif
-                               
+
                                 <span class="text nav-text text2"
                                     style="padding-left:12px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->

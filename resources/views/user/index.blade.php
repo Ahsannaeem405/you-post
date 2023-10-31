@@ -596,10 +596,10 @@
 
 
                                             <ul class="list-unstyled form-wizard-steps form_wizard_steps clearfix">
-                                               <li section="youpost"><span
-                                                        class="d-flex justify-content-center align-items-center"><img
-                                                            src="{{asset('images/you-post.png')}}" width="12px"
-                                                            height="20" alt=""></span></li>
+{{--                                               <li section="youpost"><span--}}
+{{--                                                        class="d-flex justify-content-center align-items-center"><img--}}
+{{--                                                            src="{{asset('images/you-post.png')}}" width="12px"--}}
+{{--                                                            height="20" alt=""></span></li>--}}
                                                 @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                                 <li section="fb"><span
                                                         class="d-flex justify-content-center align-items-center"><img
@@ -628,93 +628,93 @@
                                         </div>
 
                                     <!-- you post content -->
-                                        <fieldset class="wizard-fieldset youpost">
-                                            <div class="ml-2">
-                                                <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_youpost">You Post</span>
+{{--                                        <fieldset class="wizard-fieldset youpost ">--}}
+{{--                                            <div class="ml-2">--}}
+{{--                                                <span class="wizard-fieldset_edit">Edit</span> : <span--}}
+{{--                                                    class="wizard-fieldset_youpost">You Post</span>--}}
 
-                                            </div>
-                                            <div class="form-group emoji_parent emoji_parent2">
-                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="youpost_content" id="youpost_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"
-                                                    placeholder="Write your post...">{{old('youpost_content')}}</textarea>
-                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
-                                                        class="img-fluid" alt="" /></div>
+{{--                                            </div>--}}
+{{--                                            <div class="form-group emoji_parent emoji_parent2">--}}
+{{--                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"--}}
+{{--                                                    name="youpost_content" id="youpost_content" cols="30" rows="10"--}}
+{{--                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"--}}
+{{--                                                    placeholder="Write your post...">{{old('youpost_content')}}</textarea>--}}
+{{--                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"--}}
+{{--                                                        class="img-fluid" alt="" /></div>--}}
 
-                                                <div id="dropdown" class="dropdown-content-search"></div>
-                                            </div>
-                                            <div class="icon_buttons_tags mt-3">
-                                                <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                                typpe="image" social="youpost"
-                                                                fordata="image_or_video_youpost"><label
-                                                                    for="image_or_video_youpost">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
-                                                                        class="img-fluid" alt="" />
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="image_or_video"
-                                                                typpe="video" social="youpost"
-                                                                fordata="image_or_video_youpost"><label
-                                                                    for="image_or_video_youpost">
-                                                                    <img src="{{asset('')}}images/new_image.png"
-                                                                        class="img-fluid" alt="" />
-                                                                </label>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+{{--                                                <div id="dropdown" class="dropdown-content-search"></div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="icon_buttons_tags mt-3">--}}
+{{--                                                <div class="icon_buttons grid_item">--}}
+{{--                                                    <ul class="p-0">--}}
+{{--                                                        <li>--}}
+{{--                                                            <a href="javascript:void(0)" class="image_or_video"--}}
+{{--                                                                typpe="image" social="youpost"--}}
+{{--                                                                fordata="image_or_video_youpost"><label--}}
+{{--                                                                    for="image_or_video_youpost">--}}
+{{--                                                                    <img src="{{asset('')}}images/Camera_Icon.png"--}}
+{{--                                                                        class="img-fluid" alt="" />--}}
+{{--                                                                </label>--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li>--}}
+{{--                                                            <a href="javascript:void(0)" class="image_or_video"--}}
+{{--                                                                typpe="video" social="youpost"--}}
+{{--                                                                fordata="image_or_video_youpost"><label--}}
+{{--                                                                    for="image_or_video_youpost">--}}
+{{--                                                                    <img src="{{asset('')}}images/new_image.png"--}}
+{{--                                                                        class="img-fluid" alt="" />--}}
+{{--                                                                </label>--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li>--}}
+{{--                                                            <a href="javascript:void(0)" class="open_emoji">--}}
+{{--                                                                <img src="{{asset('')}}images/Emoji_Icon.png"--}}
+{{--                                                                    class="img-fluid" alt="" />--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </div>--}}
 
-                                                <div class="tags_input_wrap grid_item tags_hash">
-                                                    <!-- <div class="tags_input">
-                                                        <select name="facebook_tag[]"
-                                                            class="form-control selectmultiple1" multiple
-                                                            id="facebook_tag">
-                                                        </select>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                            <!-- my code -->
-                                            <!-- append div waleed start -->
-                                            <div id="image_div" class="image_div_2"><label for="file"
-                                                    style="margin-top: 20px;">
+{{--                                                <div class="tags_input_wrap grid_item tags_hash">--}}
+{{--                                                    <!-- <div class="tags_input">--}}
+{{--                                                        <select name="facebook_tag[]"--}}
+{{--                                                            class="form-control selectmultiple1" multiple--}}
+{{--                                                            id="facebook_tag">--}}
+{{--                                                        </select>--}}
+{{--                                                    </div> -->--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <!-- my code -->--}}
+{{--                                            <!-- append div waleed start -->--}}
+{{--                                            <div id="image_div" class="image_div_2"><label for="file"--}}
+{{--                                                    style="margin-top: 20px;">--}}
 
-                                                    <div class="sm_container">
-                                                        <input type="file" name="" class="image d-none file_image_video"
-                                                            id="image_or_video_youpost" accept="image/*,video/*"
-                                                            div_to_open="youpost">
-                                                        <input type="hidden" name="media_type_youpost"
-                                                            id="media_type_youpost">
-                                                        <input type="hidden" name="youpost_video" id="youpost_video">
+{{--                                                    <div class="sm_container">--}}
+{{--                                                        <input type="file" name="" class="image d-none file_image_video"--}}
+{{--                                                            id="image_or_video_youpost" accept="image/*,video/*"--}}
+{{--                                                            div_to_open="youpost">--}}
+{{--                                                        <input type="hidden" name="media_type_youpost"--}}
+{{--                                                            id="media_type_youpost">--}}
+{{--                                                        <input type="hidden" name="youpost_video" id="youpost_video">--}}
 
-                                                    </div>
-                                                </label>
+{{--                                                    </div>--}}
+{{--                                                </label>--}}
 
-                                            </div>
-                                            <p id="file_error_youpost">
-                                            </p>
-                                            <!-- append div waleed start -->
-                                            <!-- end my coed -->
+{{--                                            </div>--}}
+{{--                                            <p id="file_error_youpost">--}}
+{{--                                            </p>--}}
+{{--                                            <!-- append div waleed start -->--}}
+{{--                                            <!-- end my coed -->--}}
 
 
-                                            <div class="form-group clearfix clearfix2">
-                                                <!-- <a href="javascript:;"
-                                                    class="form-wizard-previous-btn float-left">Back</a>
-                                                <a href="javascript:;" class="form-wizard-next-btn float-right">Next
-                                                    Platform</a> -->
-                                            </div>
-                                        </fieldset>
+{{--                                            <div class="form-group clearfix clearfix2">--}}
+{{--                                                <!-- <a href="javascript:;"--}}
+{{--                                                    class="form-wizard-previous-btn float-left">Back</a>--}}
+{{--                                                <a href="javascript:;" class="form-wizard-next-btn float-right">Next--}}
+{{--                                                    Platform</a> -->--}}
+{{--                                            </div>--}}
+{{--                                        </fieldset>--}}
                                           <!-- you post content end -->
 
                                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
@@ -1191,7 +1191,7 @@
                             <h4>Post Preview</h4>
                         </div>
                         <!-- <div class="color_info">Social networks frequently introduce enhancements to their formatting, your post may appear different when published.</div> -->
-                       
+
                         <!-- you post preview -->
                         <div class="preview_wrap add_preview  prv_youpost prev_wrap_youpost">
                             <div class="col-md-12">
@@ -1491,7 +1491,7 @@
                                             <img  class="" src="{{asset('images/dotb.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
                                             <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
                                             <img  class="" src="{{asset('images/dotg.png')}}" alt="" style="cursor:pointer; height:9px;width:9px">
-                                                
+
                                             </div> -->
                                             <div class="actions-buttons-button">
                                             </div>
@@ -1553,7 +1553,7 @@
                                     <div class="indrive_icon2">
                                         <!-- <img src="http://localhost:8000/images/insta_elp.png" alt="" class=""> -->
                                         <img src="{{auth()->user()->account->twt_image}}" alt=""  >
-                                             
+
                                     </div>
                                 </div>
                                 <div class="col-9 colum_nine">
@@ -2031,7 +2031,7 @@
         </div>
             </div>
         </div>
-        
+
         <div class="calender calendar_overflo"
             style="right: 0px; width: 300px; position: absolute;z-index: 2; display:none;  transition: var(--tran-05);"
             id="mySidebar">
@@ -3365,7 +3365,7 @@ $(document).on('mouseenter', '.calendar_overflo', function() {
 // for responsive
 // $(document).ready(function() {
     // var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
-    
+
     // Check the screen size and show/hide the sidebar button
     // function checkScreenSize() {
     //     if ($(window).width() < 1550) {
@@ -3373,8 +3373,8 @@ $(document).on('mouseenter', '.calendar_overflo', function() {
     //         $(".calendar_overflo").css('display', 'none');
     //     } else {
     //         $(".sidebar-button").hide();
-            
-          
+
+
     //     }
     // }
 
