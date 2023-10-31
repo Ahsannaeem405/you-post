@@ -1126,8 +1126,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Date & Time To Upload Post
-                                    </h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Date & Time To Upload Post</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -1136,26 +1135,28 @@
                                     <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
                                     <!--  -->
                                     <div class="time-picker time-picker_cls">
-                                        <select id="hour"
-                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="minute"
-                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="ampm"
-                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
-                                            <option value="AM">AM</option>
-                                            <option value="PM">PM</option>
-                                        </select>
+                                        <input type="time" name="" id="" class="form-control select_time" value="00:00">
+
+                                        {{--                                        <select id="hour"--}}
+{{--                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>--}}
+{{--                                        <select id="minute"--}}
+{{--                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>--}}
+{{--                                        <select id="ampm"--}}
+{{--                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">--}}
+{{--                                            <option value="AM">AM</option>--}}
+{{--                                            <option value="PM">PM</option>--}}
+{{--                                        </select>--}}
                                     </div>
                                     <!--  -->
                                 </div>
                                 <div class="modal-body">
                                     <div class="post_later">
                                         <div class="tabs_type_heading_sm">
-                                            <span id="browsertime"></span>
+                                            <span id="browsertime d-none"></span>
                                             <input type="hidden" class="browsertimeinput" name="time">
                                             <input type="hidden" class="posttime" value="now" name="posttime">
                                             <input type="hidden" name="timezone" class="timezone">
-                                            <h4>Post Later</h4>
+
                                         </div>
                                         <div class="pick_date_from_calendar">
                                             <div class="calendar"></div>
@@ -1165,7 +1166,8 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel
                                     </button>
-                                    <button type="button" class="btn btn-primary d-none">Save changes</button>
+                                    <button type="submit" class="btn post_later_now_btn btn-success">Schedule Post
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1193,121 +1195,121 @@
                         <!-- <div class="color_info">Social networks frequently introduce enhancements to their formatting, your post may appear different when published.</div> -->
 
                         <!-- you post preview -->
-                        <!-- <div class="preview_wrap add_preview  prv_youpost prev_wrap_youpost">
-                            <div class="col-md-12">
-                                <div class="Mobcompny-title">
-                                    <div class="w-50">
-                                        <h6 class="text-light">You Post</h6>
-                                    </div>
-                                    <div class="w-50 Mobsocial-icon Mobsocial_icon">
-                                        <div><i class="fa-solid fa-plus text-light i_one"></i></div>
-                                        <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
-                                        <div class="messenger"><i
-                                                class="fab fa-facebook-messenger text-light i_one"></i>
-                                            <div class="msg_2 d-none">
-                                                <p>2</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{{--                        <div class="preview_wrap add_preview  prv_youpost prev_wrap_youpost">--}}
+{{--                            <div class="col-md-12">--}}
+{{--                                <div class="Mobcompny-title">--}}
+{{--                                    <div class="w-50">--}}
+{{--                                        <h6 class="text-light">You Post</h6>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="w-50 Mobsocial-icon Mobsocial_icon">--}}
+{{--                                        <div><i class="fa-solid fa-plus text-light i_one"></i></div>--}}
+{{--                                        <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>--}}
+{{--                                        <div class="messenger"><i--}}
+{{--                                                class="fab fa-facebook-messenger text-light i_one"></i>--}}
+{{--                                            <div class="msg_2 d-none">--}}
+{{--                                                <p>2</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2 px-2 pb-1">
-                                <span><i class="fa-solid fa-house"></i></span>
-                                <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
-                                <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">
-                                    <div class="msg_1 icon_opc d-none">
-                                        <p>8</p>
-                                    </div>
-                                </div>
-                                <div class="one_img messenger marketicon">
-                                    <img src="{{asset('images/marketplace2.png')}}" class="" alt="">
-                                    <div class="msg_1 icon_opc d-none">
-                                        <p>1</p>
-                                    </div>
-                                </div>
-                                <div class="one_img mb-1"><img src="{{asset('images/bell.png')}}" class="" alt="">
-                                </div>
-                                <div class="one_img"><img src="{{asset('images/br.png')}}" class="" alt=""></div>
-                            </div>
-                            <hr style="color:gray;" class="m-0">
-                            <div class="the_preview">
-                                <div class="col-md-12 the_preview_card" style="height: 80px">
-                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
-                                        <div class="post_img_name">
-                                            <div class="post_img">
-                                                <img src="{{asset('images/you-post.png')}}" class="img-fluid"
-                                                    width="40" height="40" alt="">
-                                            </div>
-                                            <div>
-                                                <span id="" class="postname">{{auth()->user()->name}} <br>
-                                                    <span class="sponsored">Public . <i
-                                                            class="fa-solid fa-earth-americas"></i></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="icons_d">
-                                            <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
-                                            <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
-                                        </div>
-                                    </div>
-                                    <p class="m-0"></p>
-                                    <div class="Mobcart_title">
-                                        <span id="mypostresult_youpost" class="mypostresult">Write your post...</span>
-                                        <span class="icon icon-privacy text-primary" id="mynameresult"></span>
-                                    </div>
-                                    <div id="selectedValues"></div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="MainMobileimg">
-                                        <div class="media-container media_container">
-                                            <div class="prv_div_youpost"> </div>
-                                            <div id="mediaContainervideo_youpost">
-                                                <video class="d-none video_preview_youpost" controls>
-                                                    <source src="movie.mp4" type="video/*">
-                                                </video>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr style="color:gray; margin-top:41px !important;" class="m-0">
-                                </div>
-                                <div class="col-md-12">
-                                    <div
-                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
-                                        <div
-                                            class="reactions reactions2 d-flex justify-content-center align-items-center d-none">
-                                            <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />
-                                            <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
-                                                height="12" />
-                                        </div>
-                                        <div class="total-comments total_comments u-margin-inline-start d-none">
-                                            <a>Muhammad Talha and 24k others 8.3k comments</a>
-                                        </div>
-                                    </div>
-                                    <hr style="color:gray;" class="m-0">
-                                    <div class="actions-buttons actions_buttons px-1 mt-3">
-                                        <ul class="actions-buttons-list d-flex p-0 justify-content-between">
-                                            <li class="actions-buttons-item  d-flex align-item-center">
-                                                
-                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""
-                                                    height="20" />
-                                                <span class="text text2  d-flex align-items-center">Like</span>
-                                            </li>
-                                            <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
-                                                    height="15" width="14" />
-                                                <span class="text text2">Comment</span>
-                                            </li>
-                                            <li class="actions-buttons-item  d-flex align-item-center share_fb">
-                                                <img src="{{asset('')}}images/share.png" class="" alt="" height="18" />
-                                                <span class="text text2">Share</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2 px-2 pb-1">--}}
+{{--                                <span><i class="fa-solid fa-house"></i></span>--}}
+{{--                                <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>--}}
+{{--                                <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">--}}
+{{--                                    <div class="msg_1 icon_opc d-none">--}}
+{{--                                        <p>8</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="one_img messenger marketicon">--}}
+{{--                                    <img src="{{asset('images/marketplace2.png')}}" class="" alt="">--}}
+{{--                                    <div class="msg_1 icon_opc d-none">--}}
+{{--                                        <p>1</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="one_img mb-1"><img src="{{asset('images/bell.png')}}" class="" alt="">--}}
+{{--                                </div>--}}
+{{--                                <div class="one_img"><img src="{{asset('images/br.png')}}" class="" alt=""></div>--}}
+{{--                            </div>--}}
+{{--                            <hr style="color:gray;" class="m-0">--}}
+{{--                            <div class="the_preview">--}}
+{{--                                <div class="col-md-12 the_preview_card" style="height: 80px">--}}
+{{--                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">--}}
+{{--                                        <div class="post_img_name">--}}
+{{--                                            <div class="post_img">--}}
+{{--                                                <img src="{{asset('images/you-post.png')}}" class="img-fluid"--}}
+{{--                                                    width="40" height="40" alt="">--}}
+{{--                                            </div>--}}
+{{--                                            <div>--}}
+{{--                                                <span id="" class="postname">{{auth()->user()->name}} <br>--}}
+{{--                                                    <span class="sponsored">Public . <i--}}
+{{--                                                            class="fa-solid fa-earth-americas"></i></span>--}}
+{{--                                                </span>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="icons_d">--}}
+{{--                                            <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>--}}
+{{--                                            <span class="xmark"><i class="fa-solid fa-xmark"></i></span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <p class="m-0"></p>--}}
+{{--                                    <div class="Mobcart_title">--}}
+{{--                                        <span id="mypostresult_youpost" class="mypostresult">Write your post...</span>--}}
+{{--                                        <span class="icon icon-privacy text-primary" id="mynameresult"></span>--}}
+{{--                                    </div>--}}
+{{--                                    <div id="selectedValues"></div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-12">--}}
+{{--                                    <div class="MainMobileimg">--}}
+{{--                                        <div class="media-container media_container">--}}
+{{--                                            <div class="prv_div_youpost"> </div>--}}
+{{--                                            <div id="mediaContainervideo_youpost">--}}
+{{--                                                <video class="d-none video_preview_youpost" controls>--}}
+{{--                                                    <source src="movie.mp4" type="video/*">--}}
+{{--                                                </video>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <hr style="color:gray; margin-top:41px !important;" class="m-0">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-12">--}}
+{{--                                    <div--}}
+{{--                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">--}}
+{{--                                        <div--}}
+{{--                                            class="reactions reactions2 d-flex justify-content-center align-items-center d-none">--}}
+{{--                                            <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />--}}
+{{--                                            <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""--}}
+{{--                                                height="12" />--}}
+{{--                                        </div>--}}
+{{--                                        <div class="total-comments total_comments u-margin-inline-start d-none">--}}
+{{--                                            <a>Muhammad Talha and 24k others 8.3k comments</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <hr style="color:gray;" class="m-0">--}}
+{{--                                    <div class="actions-buttons actions_buttons px-1 mt-3">--}}
+{{--                                        <ul class="actions-buttons-list d-flex p-0 justify-content-between">--}}
+{{--                                            <li class="actions-buttons-item  d-flex align-item-center">--}}
+{{--                                                <!-- <i class="fa-regular fa-thumbs-up"></i> -->--}}
+{{--                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""--}}
+{{--                                                    height="20" />--}}
+{{--                                                <span class="text text2  d-flex align-items-center">Like</span>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="actions-buttons-item d-flex align-item-center pt-1">--}}
+{{--                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""--}}
+{{--                                                    height="15" width="14" />--}}
+{{--                                                <span class="text text2">Comment</span>--}}
+{{--                                            </li>--}}
+{{--                                            <li class="actions-buttons-item  d-flex align-item-center share_fb">--}}
+{{--                                                <img src="{{asset('')}}images/share.png" class="" alt="" height="18" />--}}
+{{--                                                <span class="text text2">Share</span>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                        </div> -->
+{{--                        </div>--}}
                         <!-- you post preview end -->
                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                         <div class="preview_wrap d-none add_preview  prv_fb prev_wrap_fb">
@@ -1359,8 +1361,7 @@
                                             <div>
                                                 <span id="" class="postname">{{auth()->user()->account->fb_page_name}}
                                                     <br>
-                                                    <span class="sponsored">Public . <i
-                                                            class="fa-solid fa-earth-americas"></i></span>
+                                                    <span class="sponsored">Public . <i class="fa-solid fa-earth-americas"></i></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -1445,7 +1446,7 @@
                                     <div class="col-10">
                                         <div class="d-flex show active gap-1 px-1">
                                             <div class="show active">
-                                                <img src="{{auth()->user()->account->inst_image}} " alt=""
+                                                <img src="{{auth()->user()->account->inst_image}} " class="rounded-circle" alt=""
                                                     height="28" />
                                             </div>
                                             <div class="inst_post_name">
@@ -1551,9 +1552,7 @@
                             <div class="row">
                                 <div class="col-2  twitter_prev">
                                     <div class="indrive_icon2">
-                                        <!-- <img src="http://localhost:8000/images/insta_elp.png" alt="" class=""> -->
                                         <img src="{{auth()->user()->account->twt_image}}" alt=""  >
-
                                     </div>
                                 </div>
                                 <div class="col-9 colum_nine">
@@ -1562,12 +1561,11 @@
                                             <div>
                                                 <span class="twitter_post_content">
                                                     {{auth()->user()->account->tw_name}}</span> <img
-                                                    src="http://localhost:8000/images/offical2.png" class="" alt="">
-                                                <span class="twitter_post_content_tag "> {{auth()->user()->account->tw_user_name}}</span>
+                                                    src="{{asset('images/offical2.png')}}" class="" alt="">
+                                                <span class="twitter_post_content_tag ">  {{'@'.auth()->user()->account->tw_user_name}}</span>
                                             </div>
                                             <div class="elps">
                                                 <i class="fa-solid fa-ellipsis-vertical mt-2 "></i>
-                                                <!-- <i class="fa-light fa-ellipsis-vertical"></i> -->
                                             </div>
 
                                         </div>

@@ -312,8 +312,6 @@ class UserController extends Controller
             $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
 
             if ($timeDiffLessTennOneMnt) {
-
-
                 $platformServiceMap = [
                     'Facebook' => '\App\Services\Facebookservice',
                     'Instagram' => '\App\Services\Instagramservice',
@@ -329,8 +327,6 @@ class UserController extends Controller
                     $run = new $serviceClassName();
                     $arr['post'] = $post;
                     $result = $run->create_post($arr);
-
-
                     if ($result['status'] == true) {
                         $up = Post::find($post->id);
                         $up->posted_at_moment = 'now';
@@ -344,6 +340,7 @@ class UserController extends Controller
             }
 
         }
+
         return back()->with(['success-post' => 'Post Created Successfully', 'platforms' => $platforms, 'firstPostOrNot' => $firstPostOrNot,'scheduled' => $scheduled]);
         //****************end posting code****************//
 

@@ -178,27 +178,27 @@
         var eventDates =@json(collect($allPosts)->pluck('event_date'));
 
         var calendar = $('#postManagerCalendar').fullCalendar({
-     
+
             defaultView: 'month',
             selectable: true,
             businessHours: true,
             displayEventTime: true,
             eventLimit: true,
             schedulerLicenseKey: 'YOUR_LICENSE_KEY',
-            dayMaxEvents: true, 
+            dayMaxEvents: true,
             selectOverlap: false,
             allDay:true,
             slotDuration: '01:00',
             events: @json(collect($allPosts)),
-            
- 
+
+
             views: {
                 month: {
                     eventLimit: 2,
-                    
+
                 }
-               
-            }, 
+
+            },
             views: {
                 agendaWeek: {
                     columnFormat: 'ddd\nD' ,
@@ -207,9 +207,9 @@
                         'h A',
                     ],
                 }
-                
+
             },
-         
+
 
             header: {
                 center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
@@ -217,7 +217,7 @@
             fixedWeekCount: false,
             contentHeight: 850,
             // salman new code calendar 7/9/23
-            
+
             eventClick: function (event, jsEvent, view) {
                 var id = event.id;
                 get_detail(id);
@@ -247,7 +247,7 @@
                 });
                 $('#TimetoUploadPost').modal('show');
                 settime();
-                
+
 
             },
 
@@ -310,11 +310,14 @@
 
 
 
+
     @if (Session::has('success'))
     toastr.success('{{ Session::get('success') }}');
-    @elseif (Session::has('error'))
+    @endif
+    @if (Session::has('error'))
     toastr.error('{{ Session::get('error') }}');
-    @elseif (Session::has('success-post'))
+    @endif
+    @if(Session::has('success-post'))
     $(document).ready(function () {
         setTimeout(function () {
             $('#postSuccessModal').modal('show')
@@ -346,13 +349,13 @@
                 // for sidebar show calendar
                 // $('.home').css('padding-right', '300px');
                 $(".calendar_overflo").css('width', '70px');
-               
+
                 // $(".sidebar-button").show();
                 $('.calendar_overflo').css({
                 'display': 'block'});
 
                 // for sidebar show calendar
-            
+
                 $('#detail_modal').modal('show');
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');
@@ -361,7 +364,7 @@
         });
     }
     var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
-    
+
     // Check the screen size and show/hide the sidebar button
     function checkScreenSize() {
         if ($("body").innerWidth() < 1550) {
@@ -369,11 +372,11 @@
             $(".calendar_overflo").css('display', 'none');
         } else {
             $(".sidebar-button").hide();
-            
-          
+
+
         }
     }
-   
+
 
     // Initialize Full Calendar
 
@@ -412,7 +415,7 @@
 
                     $('#socialTwitter').prop('checked', false);
                     $('#socialTwitter').closest('.single_platform').removeClass('active_social');
-                    toastr.error(`Please Connect Your X Account 
+                    toastr.error(`Please Connect Your X Account
                      <div class="MDLsocial-icon" style="background-color: #343434 !important;">
                             <div class="twitter_error">
 
@@ -507,88 +510,88 @@
         const colors = ['blue'];
         var ne_va ="";
         var selectedString = "";
-  
+
             if ($val) {
                 $.each($val, function(index, value) {
                             selectedString += " #";
                             selectedString += value;
                            });
-                                   
+
             }
-       
+
             return ne_va =  selectedString;
-           
-  
+
+
       }
 
-      function updatePreview_And_textArea(inputText,textareaAttr, existingTextFB) {                                  
-                      
-                     
-                     
-                                        
+      function updatePreview_And_textArea(inputText,textareaAttr, existingTextFB) {
+
+
+
+
                 if (textareaAttr === 'youpost') {
-              
+
                 var updatedText_fb =  existingTextFB +inputText ;
 
-             
 
-             
+
+
                 $("#facebook_content").val(updatedText_fb);
             }
-                        
 
-                      
-                   
-                       
-             
+
+
+
+
+
             }
 
             function updateDiv($obj) {
                 var textareaAttr = $($obj).attr("attr_of_text_area");
 
-                
+
 
                 var inputText = $($obj).val();
                 var lart= inputText.slice(-1);
                 if(lart.trim() == ''){
                        return;
                 }
-                
 
-                if (textareaAttr == 'youpost') {   
-                                  
-                    $("#mypostresult_youpost").empty().append(inputText);                 
-                    // var existingTextFB = $("#facebook_content").val();  
+
+                if (textareaAttr == 'youpost') {
+
+                    $("#mypostresult_youpost").empty().append(inputText);
+                    // var existingTextFB = $("#facebook_content").val();
                     // $("#facebook_content").val('');
                     // updatePreview_And_textArea(inputText,textareaAttr,existingTextFB);
-                    
+
                 }else if (textareaAttr == 'fb') {
-           
-                var selectedValues = $('#facebook_tag').val(); 
-                var new_str= getString(selectedValues); 
+
+                var selectedValues = $('#facebook_tag').val();
+                var new_str= getString(selectedValues);
                 $("#mypostresult_fb").empty().append(inputText) ;
                 $("#mynameresult").empty().append(new_str) ;
-               
+
           }else if(textareaAttr == 'insta'){
 
-            var selectedValues = $('#instagram_tag').val();   
-            var new_str= getString(selectedValues); 
+            var selectedValues = $('#instagram_tag').val();
+            var new_str= getString(selectedValues);
              $("#mypostresult_insta").empty().append(inputText) ;
                $("#mynameresult_insta").empty().append(new_str) ;
-  
+
           }else if(textareaAttr == 'twitter'){
 
-            var selectedValues = $('#twitter_tag').val();  
-            var new_str= getString(selectedValues); 
-          
+            var selectedValues = $('#twitter_tag').val();
+            var new_str= getString(selectedValues);
+
             $("#mypostresult_twitter").empty().append(inputText) ;
                $("#mynameresult_twitter").empty().append(new_str) ;
-  
+
           }else if(textareaAttr == 'linkedin'){
 
-            var selectedValues = $('#linkedin_tag').val();  
-            var new_str= getString(selectedValues); 
-         
+            var selectedValues = $('#linkedin_tag').val();
+            var new_str= getString(selectedValues);
+
             $("#mypostresult_linkedin").empty().append(inputText) ;
                $("#mynameresult_linkedin").empty().append(new_str) ;
           }
@@ -663,7 +666,7 @@
     $('.selectmultiple1').change(function () {
 
         var selectid = $(this).attr("id");
-        var selectedValues = $(this).val(); 
+        var selectedValues = $(this).val();
         var selectedString = "";
 
         if (selectedValues) {
@@ -673,20 +676,20 @@
                     });
             if (selectid == 'facebook_tag') {
 
-               
+
                 var tex_cont= $('#facebook_content').val();
                 // var new_cont= tex_cont +  selectedString;
                $("#mypostresult_fb").empty().append(tex_cont) ;
                $("#mynameresult").empty().append(selectedString) ;
-             } 
+             }
          }
-        
+
     });
-    
+
     $('.selectmultiple').change(function () {
 
         var selectid = $(this).attr("id");
-        var selectedValues = $(this).val(); 
+        var selectedValues = $(this).val();
         var selectedString = "";
 
     if (selectedValues) {
@@ -699,26 +702,26 @@
           if (selectid == 'instagram_tag') {
 
             var tex_cont= $('#instagram_content').val();
-              
+
                 $("#mypostresult_insta").empty().append(tex_cont) ;
                $("#mynameresult_insta").empty().append(selectedString) ;
 
-            
+
 
           }else if (selectid == 'twitter_tag') {
 
             var tex_cont= $('#twitter_content').val();
-             
+
                 $("#mypostresult_twitter").empty().append(tex_cont) ;
                $("#mynameresult_twitter").empty().append(selectedString) ;
 
           }else  if (selectid == 'linkedin_tag') {
             var tex_cont= $('#linkedin_content').val();
-               
+
                 $("#mypostresult_linkedin").empty().append(tex_cont) ;
                $("#mynameresult_linkedin").empty().append(selectedString) ;
           }
-        
+
 }
 
 });
