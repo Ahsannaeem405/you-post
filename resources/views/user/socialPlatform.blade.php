@@ -47,7 +47,7 @@
                 Thanks for signing up, <br>
                 Let’s add your first account and connect it’s social platforms
             </p>
-          
+
         </div>
 
 
@@ -73,15 +73,10 @@
 
         </div>
 
-        <div class="addOtherAccountMain d-none">
-            <h5>Add Another Account</h5>
-            <div>
-                <i class="fa-solid fa-plus" style="cursor: pointer" id="addAccount"></i>
-            </div>
-        </div>
+
 
         <div style="text-align:center; margin-top:
-           30px"  class ="class="addOtherAccountMain">
+           30px"  class="addOtherAccountMain" id="addAccount">
             <button class="btn btn-primary"><img src="{{asset('images/sum-icon.svg')}}" style="    padding-right: 5px; width: 17px;
             height: 13px;;"  id="addAccount">Add New
                 Account</button>
@@ -106,16 +101,16 @@
     <script>
         $(document).ready(function () {
             $(document).on('click', '.checkAndFocus', function () {
-                event.preventDefault();                         
-                var inputs = $(".all_social_platformCnt input");             
-                var isEmpty = false;              
+                event.preventDefault();
+                var inputs = $(".all_social_platformCnt input");
+                var isEmpty = false;
                 inputs.each(function() {
                     var tooltip = this.nextElementSibling; // Get the tooltip span
                     if ($(this).val().trim() === "") {
                         isEmpty = true;
-                        $(this).addClass("empty-input"); 
+                        $(this).addClass("empty-input");
                        } else {
-                        $(this).removeClass("empty-input"); 
+                        $(this).removeClass("empty-input");
                         }
                 });
                 if (isEmpty) {

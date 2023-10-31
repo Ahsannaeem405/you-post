@@ -127,30 +127,28 @@ class Instagramservice
 
     }
 
-  
+
 
 
 
     public function get_inst_data($ins_user_id)
     {
-        
+
         $instaUserId = $ins_user_id;
         $instaAccessToken = auth()->user()->account->insta_access_token;
-    
+
         try {
             $response = Http::withToken($instaAccessToken)
                             ->get("https://graph.facebook.com/{$instaUserId}?fields=id,username,name,profile_picture_url");
-    
-            $pageData = $response->json();             
+            $pageData = $response->json();
             if(isset($pageData['id'])) {
                 $username = $pageData['username'];
-                $name = $pageData['name']; 
-                $profile_picture_url = $pageData['profile_picture_url'];               
-    
+                $name = $pageData['name'];
+                $profile_picture_url = $pageData['profile_picture_url'];
                 return [
                     'username' => $username,
                     'name' => $name,
-                    'profile_picture_url' => $profile_picture_url                     
+                    'profile_picture_url' => $profile_picture_url
                 ];
             } else {
                 return null; // Handle the case where the page is not found or other errors.

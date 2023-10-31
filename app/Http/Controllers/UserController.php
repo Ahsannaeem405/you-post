@@ -45,15 +45,13 @@ class UserController extends Controller
         $imageUrl = 'images/admin.png';
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
-        $accounts = Account::where('user_id', auth()->id())->get();    
+        $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
         foreach ($posts as $post) {
             $allPosts[] = [
                 'id' => $post->id,
                 'title' => $post->content,
                 'start' => $post->posted_at,
-//                'imageUrl' => $post->media_type == 'image' ? asset('content_media/' . $post->media) : null,
-//                'videoURL' => $post->media_type == 'video' ? asset('content_media/' . $post->media) : null,
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
             ];
         }
@@ -62,7 +60,7 @@ class UserController extends Controller
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
-      
+
 
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
 
@@ -288,7 +286,7 @@ class UserController extends Controller
                 $media = implode(',', $mediaDataLinkedin);
 
             $post = new Post();
-          
+
             $firstPostOrNot = Post::where('user_id', auth()->user()->id)->count();
             $scheduled ='no';
             if ($firstPostOrNot > 0) {
@@ -468,7 +466,7 @@ class UserController extends Controller
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
         $token = $accessToken->getValue();
-     
+
         $account = Account::find(auth()->user()->account_id);
         $account->fb_access_token = $token;
         $account->update();
@@ -492,11 +490,11 @@ class UserController extends Controller
         $user->update();
 
         $run=new Facebookservice();
-        $imageUrl=$run->get_fb_image();            
+        $imageUrl=$run->get_fb_image();
         $pageName=$run->get_fb_page_name();
-        $user = auth()->user();      
-        $user->account->fb_image =  $imageUrl ;    
-        $user->account->fb_page_name =  $pageName ;              
+        $user = auth()->user();
+        $user->account->fb_image =  $imageUrl ;
+        $user->account->fb_page_name =  $pageName ;
         $user->account->save();
 
 
@@ -617,19 +615,19 @@ class UserController extends Controller
             $platforms = $user->platforms;
             array_push($platforms, 'Instagram');
 
-          
+
 
 
             $user->insta_user_id = $instagram_business_account_id;
             $user->platforms = $platforms;
             $user->save();
 
-            $run=new Instagramservice();        
+            $run=new Instagramservice();
             $instData=$run->get_inst_data($instagram_business_account_id);
-            $user = Account::find(auth()->user()->account_id);                
-            $user->inst_name =  $instData['name'] ;    
-            $user->inst_page_name =  $instData['username'] ; 
-            $user->inst_image =  $instData['profile_picture_url'] ;          
+            $user = Account::find(auth()->user()->account_id);
+            $user->inst_name =  $instData['name'] ;
+            $user->inst_page_name =  $instData['username'] ;
+            $user->inst_image =  $instData['profile_picture_url'] ;
             $user->save();
             return back()->with('success', 'instagram Connected Successfully!');
         } else {
@@ -731,18 +729,18 @@ class UserController extends Controller
 
         $platforms = $user->platforms;
         array_push($platforms, 'Linkedin');
-        
+
 
         $user->linkedin_page_id = $req->page;
         $user->platforms = $platforms;
         $user->update();
 
-        $run=new Linkedinservice();            
-        $imageUrl=$run->get_linkedin_image(); 
-        $pageName=$run->get_linkedin_pageName();              
-        $user = auth()->user();          
-        $user->account->link_image =  $imageUrl ; 
-        $user->account->link_page_name =  $pageName ;                
+        $run=new Linkedinservice();
+        $imageUrl=$run->get_linkedin_image();
+        $pageName=$run->get_linkedin_pageName();
+        $user = auth()->user();
+        $user->account->link_image =  $imageUrl ;
+        $user->account->link_page_name =  $pageName ;
         $user->account->save();
 
         return back()->with('success', 'Linkedin  Connected Successfully!');
@@ -826,8 +824,8 @@ class UserController extends Controller
             curl_close($curl);
             $response2 = json_decode($response);
 
-            $run=new TwitterService();            
-            $userData=$run->get_tw_data($response2->access_token); 
+            $run=new TwitterService();
+            $userData=$run->get_tw_data($response2->access_token);
             $access_token = $response2->access_token;
             $refresh_token = $response2->refresh_token;
             $accountUser = User::find(auth()->user()->id);
@@ -852,7 +850,7 @@ class UserController extends Controller
 
 
     }
-    
+
     public function get_facebook_likes(Facebookservice $facebookservice, Instagramservice $instagramservice, TwitterService $twitterService)
     {
 
