@@ -2327,7 +2327,7 @@
                 
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
-                        <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
+                        <div class="card custom_card mt-3 mybgcontainer3" id="like-card">
                         <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
                             <div class="card-body overlay">
                                 <div class="likes_card">
@@ -2516,7 +2516,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
-                        <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
+                        <div class="card custom_card mt-3 mybgcontainer4" id="like-card">
                         <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
                             <div class="card-body overlay">
                                 <!-- <h3 class="card-title">Engagement</h3> -->
@@ -2783,6 +2783,19 @@
     var abc=0;
     
 $('.mybgcontainer2').click(function () {
+    abc++;
+    if(abc=== 1){
+    $('.overlay', this).css('opacity', 1);
+    $('.overlayimg2', this).css('opacity', 0);
+    }
+    else if(abc=== 2){
+
+    $('.overlay', this).css('opacity', 0);
+    $('.overlayimg2', this).css('opacity', 1);
+    abc=0;
+}
+});
+$('.mybgcontainer3').click(function () {
     abc++;
     if(abc=== 1){
     $('.overlay', this).css('opacity', 1);
