@@ -1055,13 +1055,13 @@
                                         <div class="post_now_button schedule_post_button">
 
                                             <button type="button"
-                                                class="btn post_later_now_btn post_later_now_btn2 w-100"
+                                                class="btn post_later_now_btn  post_later_now_btn2 w-100"
                                                 data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
                                                 Schedule Post
                                             </button>
 
                                             <button type="submit"
-                                                class="btn post_later_now_btn w-100 position-relative btn-danger">
+                                                class="btn post_later_now_btn w-100 post_now_btn position-relative btn-danger">
                                                 <img class="uplaod-gif uplaod-gif-video d-none"
                                                     src="{{asset("images/newimages/loader.gif")}}" alt=""> Post Now
                                             </button>
@@ -1135,17 +1135,17 @@
                                     <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
                                     <!--  -->
                                     <div class="time-picker time-picker_cls">
-                                        <input type="time" name="" id="" class="form-control select_time" value="00:00">
+                                        <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
 
-                                        {{--                                        <select id="hour"--}}
-{{--                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>--}}
-{{--                                        <select id="minute"--}}
-{{--                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>--}}
-{{--                                        <select id="ampm"--}}
-{{--                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">--}}
-{{--                                            <option value="AM">AM</option>--}}
-{{--                                            <option value="PM">PM</option>--}}
-{{--                                        </select>--}}
+                                         <select id="hour" class="select_time"
+                                          style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                            <select id="minute" class="select_time"
+                                           style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                          <select id="ampm" name="ampm" class="select_time"
+                                           style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
+                                          <option value="AM">AM</option>
+                                          <option value="PM">PM</option>
+                                       </select>
                                     </div>
                                     <!--  -->
                                 </div>
@@ -1164,7 +1164,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelButton">Cancel
                                     </button>
                                     <button type="submit" class="btn post_later_now_btn btn-success">Schedule Post
                                     </button>
