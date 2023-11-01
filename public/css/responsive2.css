@@ -618,7 +618,10 @@
     .section5 i {
         display: none;
     }
-
+    .mybgcontainer {
+       
+        width:100%;;
+      }
 }
 
 
@@ -960,6 +963,9 @@
     .section5 i {
         display: none;
     }
+    .mybgcontainer { 
+        width:100%;;
+      }
 }
 
 /* media  query */

@@ -2966,7 +2966,7 @@ z-index: 1;
     border: none;
     border-radius: 18px;
     width: 325px;
-    height: auto;
+    height: 500px;
     filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 0.20));
     background: linear-gradient(180deg, rgba(181, 181, 181, 0.20) 0%, rgba(255, 58, 58, 0.20) 100%), linear-gradient(145deg, #61E3FF 4.51%, rgba(216, 216, 216, 0.84) 61.4%, rgba(154, 255, 158, 0.69) 104.07%);
 }

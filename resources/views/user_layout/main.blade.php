@@ -347,8 +347,9 @@
                 $('.event_detail_parent').empty().append(response);
                 $('.fc-popover').css('display', 'none');
                 // for sidebar show calendar
-                // $('.home').css('padding-right', '300px');
-                $(".calendar_overflo").css('width', '70px');
+                // $('.home').css('padding-left', '300px');
+                $('.calendar2').css('padding-left', '240px');
+                $(".calendar_overflo").css('width', '300px');
 
                 // $(".sidebar-button").show();
                 $('.calendar_overflo').css({
@@ -356,7 +357,7 @@
 
                 // for sidebar show calendar
 
-                $('#detail_modal').modal('show');
+                // $('#detail_modal').modal('show');
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');
                 checkScreenSize();
@@ -370,6 +371,7 @@
         if ($("body").innerWidth() < 1550) {
             $(".sidebar-button").show();
             $(".calendar_overflo").css('display', 'none');
+            $('.calendar2').css('padding-left', '0px');
         } else {
             $(".sidebar-button").hide();
 

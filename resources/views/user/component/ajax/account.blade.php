@@ -76,6 +76,18 @@
     line-height: normal;
 }
 
+.single_platform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.fb-conect_btn, .fb-recont_btn,.l-conect_btn,.l_recont_btn,.T-conect_btn,.T-recont_btn,.instrecont_btn,.instrecont_btn{
+    margin-top:10px;
+    border-radius: 30px;
+    border:none;
+}
+
 /* main account file styling */
 @media (max-width:992px) {
     .all_social_platformWrp {
@@ -100,17 +112,16 @@
 <div class="account_main">
     <div>
         @if(in_array("Facebook", $account->platforms))
-        <img src="{{auth()->user()->account->fb_image}}" class="v_icon" alt="" width="45px" />
+        <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle mb-3" alt=""/>
         @elseif(in_array("Instagram", $account->platforms))
-        <img src="{{ auth()->user()->account->inst_image}}" class="v_icon" alt="" width="45px" />
+        <img src="{{ auth()->user()->account->inst_image}}" class="v_icon rounded-circle mb-3" alt=""/>
 
         @elseif(in_array("Twitter", $account->platforms))
-        <img src="{{auth()->user()->account->twt_image}}" class="v_icon" alt="" width="45px" />
+        <img src="{{auth()->user()->account->twt_image}}" class="v_icon rounded-circle mb-3" alt=""/>
         @elseif(in_array("Linkedin", $account->platforms))
-        <img src="{{ auth()->user()->account->link_image}}" class="v_icon" alt="" width="45px" />
+        <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle mb-3" alt=""/>
         @else
-        <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3" style="width: 150px; margin-top:
-                                30px" alt="Avatar" />
+        <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3"  alt="Avatar" />
         @endif
         <div  class="input_lb all_social_platformCnt" style=" background:none;">
             <label for="" class="user_detail">Account Name</label>
@@ -131,74 +142,100 @@
 
         </div>
         <div style="margin-top:40px; padding-bottom:20px">
-            <div class="all_social_platform" style="gap: 0 23px; background:none;">
+            <div class="all_social_platform justify-content-evenly" style="gap: 0 23px; background:none;">
                 <div class="single_platform  {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_fb">
-                        <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt="">
-                        <img src="{{asset('images/social_iconfbblack.png')}}" class="black_icon " alt="">
+                        <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt="" style="height:32px;">
+                        <img src="{{asset('images/social_iconfbblack.png')}}" class="black_icon " alt="" style="height:32px;">
                     </div>
-                    <label class="switch">
-                        <input type="checkbox" class="customCheckbox plateform" value="Facebook"
+                    <div></div>
+                    <label class="switch" style="margin-top: 19px;">
+                        <input type="checkbox" class="customCheckbox plateform fbCheckbox" value="Facebook"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]" id="checkboxId"
                             {{ in_array('Facebook', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
+                    <button type="button" class="btn btn-primary fb-recont_btn">Reconnect</button>
+                    <button type="button" class="fb-conect_btn">Connect</button>
                 </div>
+                
+                   
+                    
                 <div class="single_platform {{ in_array('Instagram', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_insta pb-1">
-                        <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt="" />
-                        <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt="" />
+                        <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt="" style="  height: 28px;"/>
+                        <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt="" style="height:28;"/>
                     </div>
-                    <label class="switch">
-                        <input type="checkbox" class="customCheckbox plateform" value="Instagram"
+                    <label class="switch" style="margin-top: 19px;">
+                        <input type="checkbox" class="customCheckbox plateform instCheckbox" value="Instagram"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
-                            {{ in_array('Instagram', $account->platforms) ? 'checked' : '' }}>
+                            {{ in_array('Instagram', $account->platforms) ? 'checked' : '' }} >
                         <span class="slider round"></span>
                     </label>
+                    
+                    <button type="button" class="btn btn-primary instrecont_btn">Reconnect</button>
+                    
+                    <button type="button" class="instconect_btn">Connect</button>
+                    
                 </div>
                 <div class="single_platform {{ in_array('Twitter', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon" style="padding-bottom:2px;">
                         <img src="{{asset('images/Twitter_Color.png')}}" class="color_icon" alt="" />
                         <img src="{{asset('images/Twitter_Black.png')}}" class="black_icon" alt="" />
                     </div>
-                    <label class="switch">
-                        <input type="checkbox" class="customCheckbox plateform" value="Twitter"
+                    <label class="switch" style="margin-top: 19px;">
+                        <input type="checkbox" class="customCheckbox plateform TwtCheckbox" value="Twitter"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
-                            {{ in_array('Twitter', $account->platforms) ? 'checked' : '' }}>
+                            {{ in_array('Twitter', $account->platforms) ? 'checked' : '' }} >
                         <span class="slider round"></span>
                     </label>
+                  
+                    <button type="button" class="btn btn-primary T-recont_btn">Reconnect</button>
+                    
+                    
+                    <button type="button"class="T-conect_btn" >Connect</button>
+                    
                 </div>
                 <div class="single_platform {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon pb-1" style="padding-bottom: 2px;">
-                        <img src="{{asset('images/Linkedin_Color.png')}}" class="color_icon" alt="" />
-                        <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt="" />
+                        <img src="{{asset('images/Linkedin_Color.png')}}" class="color_icon" alt="" style="height:27px"/>
+                        <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt="" style="height:27px"/>
                     </div>
-                    <label class="switch">
-                        <input type="checkbox" class="customCheckbox plateform" value="Linkedin"
+                    <label class="switch" style="margin-top: 19px;">
+                        <input type="checkbox" class="customCheckbox plateform LinkCheckbox" value="Linkedin"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
-                            {{ in_array('Linkedin', $account->platforms) ? 'checked' : '' }}>
+                            {{ in_array('Linkedin', $account->platforms) ? 'checked' : '' }} >
                         <span class="slider round"></span>
                     </label>
+                    
+                    <button type="button" class="btn btn-primary l_recont_btn">Reconnect</button>
+                    
+                    <button type="button" class="l-conect_btn">Connect</button>
+                    
                 </div>
-                <div class="single_platform">
+                <div class="single_platform" style="margin-bottom: 42px;">
                     <div class="social_icon" style="padding-bottom: 9px;">
-                        <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt="" />
-                        <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt="" />
+                        <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt="" style="    height: 21px;"/>
+                        <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt="" style="    height: 21px;"/>
                     </div>
-                    <label class="switch">
+                    <label class="switch" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
+                    <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button>
+                 
                 </div>
-                <div class="single_platform">
+                <div class="single_platform" style="margin-bottom: 42px;">
                     <div class="social_icon" style="padding-bottom: 6px;">
-                        <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt="" />
-                        <img src="{{asset('images/Telegram_Black.png')}}" class="black_icon" alt="" />
+                        <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt="" style="height: 23px;"/>
+                        <img src="{{asset('images/Telegram_Black.png')}}" class="black_icon" alt="" style="height: 23px;"/>
                     </div>
-                    <label class="switch">
+                    <label class="switch" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
+                    <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button>
+              
                 </div>
             </div>
         </div>
@@ -207,3 +244,54 @@
 
 <!--  -->
 @endforeach
+<script>
+$(document).ready(function() {
+    var fbCheckbox = $(".fbCheckbox");
+    var instCheckbox = $(".instCheckbox");
+    var TwtCheckbox = $(".TwtCheckbox");
+    var LinkCheckbox = $(".LinkCheckbox");
+    var reconnectButtonfb = $(".fb-recont_btn");
+    var reconnectButtoninst = $(".instrecont_btn");
+    var reconnectButtontwt = $(".T-recont_btn");
+    var reconnectButtonLink = $(".l_recont_btn");
+    var connectButtonfb = $(".fb-conect_btn");
+    var connectButtoninst = $(".instconect_btn");
+    var connectButtontwt = $(".T-conect_btn");
+    var connectButtonLink = $(".l-conect_btn");
+
+    // Function to toggle the visibility of the buttons based on the checkbox state
+    function toggleButtonVisibility(checkbox, reconnectButton, connectButton) {
+        if (checkbox.prop("checked")) {
+            reconnectButton.show();
+            connectButton.hide();
+        } 
+        else {
+            reconnectButton.hide();
+            connectButton.show();
+        }
+    }
+
+    // Initially set the visibility of buttons for each checkbox
+    toggleButtonVisibility(fbCheckbox, reconnectButtonfb, connectButtonfb);
+    toggleButtonVisibility(instCheckbox, reconnectButtoninst, connectButtoninst);
+    toggleButtonVisibility(TwtCheckbox, reconnectButtontwt, connectButtontwt);
+    toggleButtonVisibility(LinkCheckbox, reconnectButtonLink, connectButtonLink);
+
+    // Add event listeners to each checkbox to toggle the button visibility
+    fbCheckbox.change(function() {
+        toggleButtonVisibility(fbCheckbox, reconnectButtonfb, connectButtonfb);
+    });
+
+    instCheckbox.change(function() {
+        toggleButtonVisibility(instCheckbox, reconnectButtoninst, connectButtoninst);
+    });
+
+    TwtCheckbox.change(function() {
+        toggleButtonVisibility(TwtCheckbox, reconnectButtontwt, connectButtontwt);
+    });
+
+    LinkCheckbox.change(function() {
+        toggleButtonVisibility(LinkCheckbox, reconnectButtonLink, connectButtonLink);
+    });
+});
+</script>
