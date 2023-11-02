@@ -569,9 +569,9 @@ button {
     margin-top: 70px;
 }
 
-.calendar2 {
-    padding: 0% !important;
-}
+/* .calendar2 {
+    padding-left: 0% !important;
+} */
 
 .calendar-days {
     gap: 0px;
@@ -1588,12 +1588,13 @@ button {
 .mybgcontainer {
     position: relative;
     height: 600px;
+    width:56%;;
   }
   
   .overlayimg {
     display: block;
     width: 100%;
-    height: 500px;
+    height:100%;
     opacity: 1;
   }
   
@@ -1618,7 +1619,7 @@ button {
     display: block;
     width: 100%;
     border-radius: 15px;
-    height: 500px;
+    height: 100%;
     /* opacity: 1; */
   }
 

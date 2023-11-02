@@ -1979,17 +1979,17 @@
 
 <!-- =======Calender========= -->
 <section>
-    <div class="row container section5">
-        <i class="sidebar-button fa-solid fa-bars"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight"></i>
+    <div class=" container section5">
+        <i class="sidebar-button fa-solid fa-bars"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
+            aria-controls="offcanvasLeft"></i>
 
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
             <div class="offcanvas-header">
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                <button type="button" class="btn-close text-reset clr" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div class="offcanvas-body" >
             <div class="calender side-resp"
             style="right: 0px; width: 100%; height:100%; position: absolute;z-index: 2;  transition: var(--tran-05);"
            >
@@ -2024,7 +2024,7 @@
                         <h3 class="date-date">{{\Carbon\Carbon::now()->format('m/d/Y')}}</h3>
                     </div>
 
-                    <div class="todayEbents-list" style="cursor:pointer; display:block;">
+                    <div class="todayEbents-list" style="cursor:pointer;">
                         @include('user.component.ajax.todayEvents')
                     </div>
                     <div class="Today-post-detail" style="margin-top:30px; display:none;">
@@ -2038,7 +2038,7 @@
         </div>
 
         <div class="calender calendar_overflo"
-            style="right: 0px; width: 300px; position: absolute;z-index: 2; display:none;  transition: var(--tran-05);"
+            style="left: 0px; width: 300px; position: absolute;z-index: 2; display:none;  transition: var(--tran-05);"
             id="mySidebar">
             <div clas="" style="padding-top:30px">
                 <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
@@ -2072,7 +2072,7 @@
                         <h3 class="date-date">{{\Carbon\Carbon::now()->format('m/d/Y')}}</h3>
                     </div>
 
-                    <div class="todayEbents-list" style="cursor:pointer; display:none;">
+                    <div class="todayEbents-list2" style="cursor:pointer; display:none;">
                         @include('user.component.ajax.todayEvents')
                     </div>
                     <div class="Today-post-detail" style="margin-top:30px; display:none;">
@@ -2808,8 +2808,60 @@ $('.mybgcontainer').click(function () {
 <script>
 function closeSidebar() {
     document.getElementById("mySidebar").style.display = "none";
-    $('.home').css('padding-right', '0px');
+    $('.calendar2').css('padding-left', '0px');
 }
+$(document).ready(function() {
+    var isDetailVisible = false; // Initialize a flag to track visibility
+
+    // Add a click event handler to the todayEbents-list div
+    $(".todayEbents-list").click(function() {
+        if (!isDetailVisible) {
+            // If the detail is not visible, show it and set the flag
+            var contentToAppend = $(".the_preview").html();
+            $(".Today-post-detail").html(contentToAppend).show();
+            isDetailVisible = true;
+        } else {
+            // If the detail is visible, hide it and reset the flag
+            $(".Today-post-detail").hide();
+            isDetailVisible = false;
+        }
+    });
+    $(".todayEbents-list2").click(function() {
+        if (!isDetailVisible) {
+            // If the detail is not visible, show it and set the flag
+            var contentToAppend = $(".the_preview").html();
+            $(".Today-post-detail").html(contentToAppend).show();
+            isDetailVisible = true;
+        } else {
+            // If the detail is visible, hide it and reset the flag
+            $(".Today-post-detail").hide();
+            isDetailVisible = false;
+        }
+            
+        
+    });
+});
+    var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
+
+$(document).on('mouseleave', '.calendar_overflo', function() {
+    if (mouseLeaveEnabled) {
+        $(this).addClass('close');
+        $(this).css('z-index', '2222');
+        $(".text").css('opacity', '1');
+        $(".todayEbents-list2").css('display', 'none');
+        // $(".Today-post-detail").css('display', 'none');
+
+        
+    }
+});
+$(document).on('mouseenter', '.calendar_overflo', function() {
+    $(".text").css('opacity', '1');
+    $(".todayEbents-list2").css('display', 'block');
+    // $(".Today-post-detail").css('display', 'block');
+    $(this).css('z-index', '9999');
+   
+});
+
 </script>
 <!-- sidebar close btn -->
 <script>
@@ -3339,83 +3391,15 @@ function populateOptions(selectId, start, end, step) {
         option.text = String(i).padStart(2, "0");
         select.appendChild(option);
     }
+    
 }
-
 // Populate hour options (01 to 12)
 populateOptions("hour", 1, 12, 1);
 
+
 // Populate minute options (00 to 59)
 populateOptions("minute", 0, 59, 1);
-// append post in calender sidebar
-
-$(document).ready(function() {
-    var isDetailVisible = false; // Initialize a flag to track visibility
-
-    // Add a click event handler to the todayEbents-list div
-    $(".todayEbents-list").click(function() {
-        if (!isDetailVisible) {
-            // If the detail is not visible, show it and set the flag
-            var contentToAppend = $(".the_preview").html();
-            $(".Today-post-detail").html(contentToAppend).show();
-            isDetailVisible = true;
-        } else {
-            // If the detail is visible, hide it and reset the flag
-            $(".Today-post-detail").hide();
-            isDetailVisible = false;
-        }
-    });
-});
-
-var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
-
-$(document).on('mouseleave', '.calendar_overflo', function() {
-    if (mouseLeaveEnabled) {
-        $(this).addClass('close');
-        $(this).css('width', '88px');
-        $(this).css('z-index', '1');
-        $(".text").css('opacity', '1');
-        $(".todayEbents-list").css('display', 'none');
-        $(".Today-post-detail").css('display', 'none');
-        $('.home').css('padding-right', '30px');
-
-    }
-});
-$(document).on('mouseenter', '.calendar_overflo', function() {
-    $('.home').css('padding-right', '300px');
-    $(this).css('width', '300px');
-    $(".text").css('opacity', '1');
-    $(".todayEbents-list").css('display', 'block');
-    $(".Today-post-detail").css('display', 'block');
-    $(this).css('z-index', '9999');
-
-});
 
 
-// for responsive
-// $(document).ready(function() {
-    // var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
-
-    // Check the screen size and show/hide the sidebar button
-    // function checkScreenSize() {
-    //     if ($(window).width() < 1550) {
-    //         $(".sidebar-button").show();
-    //         $(".calendar_overflo").css('display', 'none');
-    //     } else {
-    //         $(".sidebar-button").hide();
-
-
-    //     }
-    // }
-
-
-    // $(window).resize(function() {
-    //     checkScreenSize();
-    // });
-// });
-
-
-// for responsive
-
-// append post in calender sidebar
 </script>
 @endsection
