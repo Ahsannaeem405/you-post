@@ -546,11 +546,23 @@
 
             }
 
+
+            function updateDiv_other($obj) {
+
+                   var inputText = $($obj).val();
+                    $("#mypostresult_fb").empty().append(inputText);
+                    $("#mypostresult_insta").empty().append(inputText);
+                    $("#mypostresult_twitter").empty().append(inputText);
+                    $("#mypostresult_linkedin").empty().append(inputText);     
+
+                  
+                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
+                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);
+
+                }
+
             function updateDiv($obj) {
                 var textareaAttr = $($obj).attr("attr_of_text_area");
-
-
-
                 var inputText = $($obj).val();
                 var lart= inputText.slice(-1);
                 if(lart.trim() == ''){
@@ -559,12 +571,8 @@
 
 
                 if (textareaAttr == 'youpost') {
-
-                    $("#mypostresult_youpost").empty().append(inputText);
-                    // var existingTextFB = $("#facebook_content").val();
-                    // $("#facebook_content").val('');
-                    // updatePreview_And_textArea(inputText,textareaAttr,existingTextFB);
-
+                    $("#mypostresult_youpost").empty().append(inputText);        
+                                   
                 }else if (textareaAttr == 'fb') {
 
                 var selectedValues = $('#facebook_tag').val();
