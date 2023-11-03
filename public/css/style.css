@@ -16,9 +16,9 @@
     padding-left: 10px;
     padding-bottom: 10px;
     width: 645px;
-    height: 1000px;
+    height: 1017px;
     border-radius: 8px;
-    border: 0.5px solid rgba(255, 255, 255, 0.50);
+    /* border: 0.5px solid rgba(255, 255, 255, 0.50); */
     background: #2C2C2C;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(14.5px);
@@ -1593,7 +1593,8 @@ button {
   
   .overlayimg {
     display: block;
-    width: 100%;
+    width: 70%;
+    margin: auto;
     height:100%;
     opacity: 1;
   }
@@ -1617,9 +1618,10 @@ button {
 /*  */
  .overlayimg2 {
     display: block;
-    width: 100%;
+    width: 70%;
     border-radius: 15px;
     height: 100%;
+    margin: auto;
     /* opacity: 1; */
   }
 
@@ -1636,4 +1638,126 @@ button {
   .mybgcontainer2:hover .overlayimg2 {
     opacity: 0.2;
   } */
+ /* .btn-close{
+        background-image:url("../assets/images/crossbtnpost.png") !important;
+  
+ } */
+/*calendar posts structure */
+.fb-post{
+    padding:10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 0.5px solid #BFBFBF;
+    cursor: pointer;
+}
+.publishedpost{
+    border-radius: 5px;
+    width: 60%;
+   background: rgba(137, 197, 127, 0.62);
+}
+.approved{
+color: #007B40;
+font-family: 'Poppins', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.post_quiz{
+color: #6BBF00;
+font-family: 'Poppins', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.content_post{
+color: #393939;
+font-family: 'Poppins', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.post_username{
+color: #222;
+font-family: 'Poppins', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.post-time{
+    float: right;
+    color: #222;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    }
+    .post-detail{
+        width: 100%;
+        padding-top: 5px;
+    }
+    .visit_account a{
+        margin-top: 40px;
+        color: #6B9CFA;
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration-line: underline;
+        
+    }
+    .deletepost_btn {
+        text-align: center;
+        
+    }
+    .visit_account{
+        padding-top: 30px;
+        text-align: center;
+        
+    }
+    .deletepost_btn button{
+        margin-top: 55px;
+        padding: 3px 10px;
+        background: #FF3D3D;
+        color: #FFF;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 8px;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+.post-img{
+    height: 137px;
+}
+.post-img img{
+    height: 100%;
+}
+.account-detail{
+    display: flex;
+    gap: 8px;
+}
+
+.side-resp::-webkit-scrollbar {
+    display: none;
+}
+.side-resp {
+    overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.sidebar-button{
+    color: #fff;
+    font-weight: 900;
+
+   
+}
+
+/*calendar posts structure */
+
  

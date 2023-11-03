@@ -197,6 +197,7 @@
     .calendarmain {
         display: flex;
         justify-content: space-between;
+        flex-direction: column;
     }
 
     .fc-left {
@@ -435,7 +436,12 @@
     .section5 i {
         display: none;
     }
-
+    /* .overlayimg{
+        display: none;
+    } */
+    .mybgcontainer{
+        display: none;
+    }
     /* razi card_media query end */
 }
 

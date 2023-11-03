@@ -15,8 +15,11 @@
 }
 
 .rounded-circle {
-    width: 150px;
-    margin-top: 30px
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top:40px;
 }
 
 .input_lb {
@@ -82,7 +85,7 @@
     justify-content: center;
     align-items: center;
 }
-.fb-conect_btn, .fb-recont_btn,.l-conect_btn,.l_recont_btn,.T-conect_btn,.T-recont_btn,.instrecont_btn,.instrecont_btn{
+.fb-conect_btn, .fb-recont_btn,.l-conect_btn,.l_recont_btn,.T-conect_btn,.T-recont_btn,.instconect_btn,.instrecont_btn{
     margin-top:10px;
     border-radius: 30px;
     border:none;
@@ -121,7 +124,7 @@
         @elseif(in_array("Linkedin", $account->platforms))
         <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle mb-3" alt=""/>
         @else
-        <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3"  alt="Avatar" />
+        <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3 rounded-circle mb-3"  alt="Avatar" />
         @endif
         <div  class="input_lb all_social_platformCnt" style=" background:none;">
             <label for="" class="user_detail">Account Name</label>
@@ -213,7 +216,7 @@
                     <button type="button" class="l-conect_btn">Connect</button>
                     
                 </div>
-                <div class="single_platform" style="margin-bottom: 42px;">
+                <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 9px;">
                         <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt="" style="    height: 21px;"/>
                         <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt="" style="    height: 21px;"/>
@@ -225,7 +228,7 @@
                     <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button>
                  
                 </div>
-                <div class="single_platform" style="margin-bottom: 42px;">
+                <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 6px;">
                         <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt="" style="height: 23px;"/>
                         <img src="{{asset('images/Telegram_Black.png')}}" class="black_icon" alt="" style="height: 23px;"/>

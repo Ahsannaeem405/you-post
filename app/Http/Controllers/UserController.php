@@ -107,7 +107,7 @@ class UserController extends Controller
                 'media_ids' => [$status->media_id_string,$status2->media_id_string]
             )
         ], true);
-        dd($post);
+        // dd($post);
 
 
     }
@@ -208,7 +208,7 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-         
+        
         $platforms = auth()->user()->account->platforms;
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
@@ -303,6 +303,7 @@ class UserController extends Controller
             $post->media = $media;
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
+            // dd( $post->content);
             $post->save();
 
 

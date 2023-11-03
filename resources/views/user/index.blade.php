@@ -444,6 +444,12 @@
         margin-top: 20px;
         text-align: center;
     }
+    /*  */
+    .offcanvas-start {
+    width: 350px !important;
+}
+    /*  */
+
 }
 
 @media screen and (max-width: 575px) {
@@ -542,7 +548,7 @@
 .close-btn {
     position: absolute;
     top: -5px;
-    right: 12px;
+    left: 6px;
     font-size: 24px;
     cursor: pointer;
     color: #fff;
@@ -570,6 +576,18 @@
     cursor: pointer;
     transition: var(--tran-05);
 }
+
+.container.section5 .calendar_overflo {
+    transition: all 1s ease;
+}
+ .with-transition {
+    transition: all 1s ease-out !important; 
+}
+.btn-close{
+    background-image:url("");
+}
+
+
 /* close btn sidebar */
 /* timepicker style */
 </style>
@@ -596,10 +614,11 @@
 
 
                                             <ul class="list-unstyled form-wizard-steps form_wizard_steps clearfix">
-{{--                                               <li section="youpost"><span--}}
-{{--                                                        class="d-flex justify-content-center align-items-center"><img--}}
-{{--                                                            src="{{asset('images/you-post.png')}}" width="12px"--}}
-{{--                                                            height="20" alt=""></span></li>--}}
+                                                {{--                                               <li section="youpost"><span--}}
+                                                {{--                                                        class="d-flex justify-content-center align-items-center"><img--}}
+                                                {{--                                                            src="{{asset('images/you-post.png')}}"
+                                                width="12px"--}}
+                                                {{--                                                            height="20" alt=""></span></li>--}}
                                                 @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                                 <li section="fb"><span
                                                         class="d-flex justify-content-center align-items-center"><img
@@ -627,95 +646,95 @@
                                             </ul>
                                         </div>
 
-                                    <!-- you post content -->
-{{--                                        <fieldset class="wizard-fieldset youpost ">--}}
-{{--                                            <div class="ml-2">--}}
-{{--                                                <span class="wizard-fieldset_edit">Edit</span> : <span--}}
-{{--                                                    class="wizard-fieldset_youpost">You Post</span>--}}
+                                        <!-- you post content -->
+                                        {{--                                        <fieldset class="wizard-fieldset youpost ">--}}
+                                        {{--                                            <div class="ml-2">--}}
+                                        {{--                                                <span class="wizard-fieldset_edit">Edit</span> : <span--}}
+                                        {{--                                                    class="wizard-fieldset_youpost">You Post</span>--}}
 
-{{--                                            </div>--}}
-{{--                                            <div class="form-group emoji_parent emoji_parent2">--}}
-{{--                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"--}}
-{{--                                                    name="youpost_content" id="youpost_content" cols="30" rows="10"--}}
-{{--                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"--}}
-{{--                                                    placeholder="Write your post...">{{old('youpost_content')}}</textarea>--}}
-{{--                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"--}}
-{{--                                                        class="img-fluid" alt="" /></div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                            <div class="form-group emoji_parent emoji_parent2">--}}
+                                        {{--                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"--}}
+                                        {{--                                                    name="youpost_content" id="youpost_content" cols="30" rows="10"--}}
+                                        {{--                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"--}}
+                                        {{--                                                    placeholder="Write your post...">{{old('youpost_content')}}</textarea>--}}
+                                        {{--                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"--}}
+                                        {{--                                                        class="img-fluid" alt="" /></div>--}}
 
-{{--                                                <div id="dropdown" class="dropdown-content-search"></div>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="icon_buttons_tags mt-3">--}}
-{{--                                                <div class="icon_buttons grid_item">--}}
-{{--                                                    <ul class="p-0">--}}
-{{--                                                        <li>--}}
-{{--                                                            <a href="javascript:void(0)" class="image_or_video"--}}
-{{--                                                                typpe="image" social="youpost"--}}
-{{--                                                                fordata="image_or_video_youpost"><label--}}
-{{--                                                                    for="image_or_video_youpost">--}}
-{{--                                                                    <img src="{{asset('')}}images/Camera_Icon.png"--}}
-{{--                                                                        class="img-fluid" alt="" />--}}
-{{--                                                                </label>--}}
-{{--                                                            </a>--}}
-{{--                                                        </li>--}}
-{{--                                                        <li>--}}
-{{--                                                            <a href="javascript:void(0)" class="image_or_video"--}}
-{{--                                                                typpe="video" social="youpost"--}}
-{{--                                                                fordata="image_or_video_youpost"><label--}}
-{{--                                                                    for="image_or_video_youpost">--}}
-{{--                                                                    <img src="{{asset('')}}images/new_image.png"--}}
-{{--                                                                        class="img-fluid" alt="" />--}}
-{{--                                                                </label>--}}
-{{--                                                            </a>--}}
-{{--                                                        </li>--}}
-{{--                                                        <li>--}}
-{{--                                                            <a href="javascript:void(0)" class="open_emoji">--}}
-{{--                                                                <img src="{{asset('')}}images/Emoji_Icon.png"--}}
-{{--                                                                    class="img-fluid" alt="" />--}}
-{{--                                                            </a>--}}
-{{--                                                        </li>--}}
-{{--                                                    </ul>--}}
-{{--                                                </div>--}}
+                                        {{--                                                <div id="dropdown" class="dropdown-content-search"></div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                            <div class="icon_buttons_tags mt-3">--}}
+                                        {{--                                                <div class="icon_buttons grid_item">--}}
+                                        {{--                                                    <ul class="p-0">--}}
+                                        {{--                                                        <li>--}}
+                                        {{--                                                            <a href="javascript:void(0)" class="image_or_video"--}}
+                                        {{--                                                                typpe="image" social="youpost"--}}
+                                        {{--                                                                fordata="image_or_video_youpost"><label--}}
+                                        {{--                                                                    for="image_or_video_youpost">--}}
+                                        {{--                                                                    <img src="{{asset('')}}images/Camera_Icon.png"--}}
+                                        {{--                                                                        class="img-fluid" alt="" />--}}
+                                        {{--                                                                </label>--}}
+                                        {{--                                                            </a>--}}
+                                        {{--                                                        </li>--}}
+                                        {{--                                                        <li>--}}
+                                        {{--                                                            <a href="javascript:void(0)" class="image_or_video"--}}
+                                        {{--                                                                typpe="video" social="youpost"--}}
+                                        {{--                                                                fordata="image_or_video_youpost"><label--}}
+                                        {{--                                                                    for="image_or_video_youpost">--}}
+                                        {{--                                                                    <img src="{{asset('')}}images/new_image.png"--}}
+                                        {{--                                                                        class="img-fluid" alt="" />--}}
+                                        {{--                                                                </label>--}}
+                                        {{--                                                            </a>--}}
+                                        {{--                                                        </li>--}}
+                                        {{--                                                        <li>--}}
+                                        {{--                                                            <a href="javascript:void(0)" class="open_emoji">--}}
+                                        {{--                                                                <img src="{{asset('')}}images/Emoji_Icon.png"--}}
+                                        {{--                                                                    class="img-fluid" alt="" />--}}
+                                        {{--                                                            </a>--}}
+                                        {{--                                                        </li>--}}
+                                        {{--                                                    </ul>--}}
+                                        {{--                                                </div>--}}
 
-{{--                                                <div class="tags_input_wrap grid_item tags_hash">--}}
-{{--                                                    <!-- <div class="tags_input">--}}
-{{--                                                        <select name="facebook_tag[]"--}}
-{{--                                                            class="form-control selectmultiple1" multiple--}}
-{{--                                                            id="facebook_tag">--}}
-{{--                                                        </select>--}}
-{{--                                                    </div> -->--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <!-- my code -->--}}
-{{--                                            <!-- append div waleed start -->--}}
-{{--                                            <div id="image_div" class="image_div_2"><label for="file"--}}
-{{--                                                    style="margin-top: 20px;">--}}
+                                        {{--                                                <div class="tags_input_wrap grid_item tags_hash">--}}
+                                        {{--                                                    <!-- <div class="tags_input">--}}
+                                        {{--                                                        <select name="facebook_tag[]"--}}
+                                        {{--                                                            class="form-control selectmultiple1" multiple--}}
+                                        {{--                                                            id="facebook_tag">--}}
+                                        {{--                                                        </select>--}}
+                                        {{--                                                    </div> -->--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                            <!-- my code -->--}}
+                                        {{--                                            <!-- append div waleed start -->--}}
+                                        {{--                                            <div id="image_div" class="image_div_2"><label for="file"--}}
+                                        {{--                                                    style="margin-top: 20px;">--}}
 
-{{--                                                    <div class="sm_container">--}}
-{{--                                                        <input type="file" name="" class="image d-none file_image_video"--}}
-{{--                                                            id="image_or_video_youpost" accept="image/*,video/*"--}}
-{{--                                                            div_to_open="youpost">--}}
-{{--                                                        <input type="hidden" name="media_type_youpost"--}}
-{{--                                                            id="media_type_youpost">--}}
-{{--                                                        <input type="hidden" name="youpost_video" id="youpost_video">--}}
+                                        {{--                                                    <div class="sm_container">--}}
+                                        {{--                                                        <input type="file" name="" class="image d-none file_image_video"--}}
+                                        {{--                                                            id="image_or_video_youpost" accept="image/*,video/*"--}}
+                                        {{--                                                            div_to_open="youpost">--}}
+                                        {{--                                                        <input type="hidden" name="media_type_youpost"--}}
+                                        {{--                                                            id="media_type_youpost">--}}
+                                        {{--                                                        <input type="hidden" name="youpost_video" id="youpost_video">--}}
 
-{{--                                                    </div>--}}
-{{--                                                </label>--}}
+                                        {{--                                                    </div>--}}
+                                        {{--                                                </label>--}}
 
-{{--                                            </div>--}}
-{{--                                            <p id="file_error_youpost">--}}
-{{--                                            </p>--}}
-{{--                                            <!-- append div waleed start -->--}}
-{{--                                            <!-- end my coed -->--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                            <p id="file_error_youpost">--}}
+                                        {{--                                            </p>--}}
+                                        {{--                                            <!-- append div waleed start -->--}}
+                                        {{--                                            <!-- end my coed -->--}}
 
 
-{{--                                            <div class="form-group clearfix clearfix2">--}}
-{{--                                                <!-- <a href="javascript:;"--}}
-{{--                                                    class="form-wizard-previous-btn float-left">Back</a>--}}
-{{--                                                <a href="javascript:;" class="form-wizard-next-btn float-right">Next--}}
-{{--                                                    Platform</a> -->--}}
-{{--                                            </div>--}}
-{{--                                        </fieldset>--}}
-                                          <!-- you post content end -->
+                                        {{--                                            <div class="form-group clearfix clearfix2">--}}
+                                        {{--                                                <!-- <a href="javascript:;"--}}
+                                        {{--                                                    class="form-wizard-previous-btn float-left">Back</a>--}}
+                                        {{--                                                <a href="javascript:;" class="form-wizard-next-btn float-right">Next--}}
+                                        {{--                                                    Platform</a> -->--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </fieldset>--}}
+                                        <!-- you post content end -->
 
                                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset fb">
@@ -1137,15 +1156,15 @@
                                     <div class="time-picker time-picker_cls">
                                         <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
 
-                                         <select id="hour" class="select_time"
-                                          style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                            <select id="minute" class="select_time"
-                                           style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                          <select id="ampm" name="ampm" class="select_time"
-                                           style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
-                                          <option value="AM">AM</option>
-                                          <option value="PM">PM</option>
-                                       </select>
+                                        <select id="hour" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="minute" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="ampm" name="ampm" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
+                                        </select>
                                     </div>
                                     <!--  -->
                                 </div>
@@ -1164,7 +1183,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelButton">Cancel
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                        id="cancelButton">Cancel
                                     </button>
                                     <button type="submit" class="btn post_later_now_btn btn-success">Schedule Post
                                     </button>
@@ -1195,7 +1215,7 @@
                         <!-- <div class="color_info">Social networks frequently introduce enhancements to their formatting, your post may appear different when published.</div> -->
 
                         <!-- you post preview -->
-{{--                        <div class="preview_wrap add_preview  prv_youpost prev_wrap_youpost">--}}
+                        <!-- <!-- {{--                        <div class="preview_wrap add_preview  prv_youpost prev_wrap_youpost">--}}
 {{--                            <div class="col-md-12">--}}
 {{--                                <div class="Mobcompny-title">--}}
 {{--                                    <div class="w-50">--}}
@@ -1290,7 +1310,7 @@
 {{--                                    <div class="actions-buttons actions_buttons px-1 mt-3">--}}
 {{--                                        <ul class="actions-buttons-list d-flex p-0 justify-content-between">--}}
 {{--                                            <li class="actions-buttons-item  d-flex align-item-center">--}}
-{{--                                                <!-- <i class="fa-regular fa-thumbs-up"></i> -->--}}
+{{--                                               
 {{--                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""--}}
 {{--                                                    height="20" />--}}
 {{--                                                <span class="text text2  d-flex align-items-center">Like</span>--}}
@@ -1309,7 +1329,7 @@
 {{--                                </div>--}}
 {{--                            </div>--}}
 
-{{--                        </div>--}}
+{{--                        </div>--}} -->
                         <!-- you post preview end -->
                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                         <div class="preview_wrap d-none add_preview  prv_fb prev_wrap_fb">
@@ -1361,7 +1381,8 @@
                                             <div>
                                                 <span id="" class="postname">{{auth()->user()->account->fb_page_name}}
                                                     <br>
-                                                    <span class="sponsored">Public . <i class="fa-solid fa-earth-americas"></i></span>
+                                                    <span class="sponsored">Public . <i
+                                                            class="fa-solid fa-earth-americas"></i></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -1446,8 +1467,8 @@
                                     <div class="col-10">
                                         <div class="d-flex show active gap-1 px-1">
                                             <div class="show active">
-                                                <img src="{{auth()->user()->account->inst_image}} " class="rounded-circle" alt=""
-                                                    height="28" />
+                                                <img src="{{auth()->user()->account->inst_image}} "
+                                                    class="rounded-circle" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
                                                 <h3 class="mb-0 user_name">{{auth()->user()->account->inst_name}}
@@ -1552,7 +1573,7 @@
                             <div class="row">
                                 <div class="col-2  twitter_prev">
                                     <div class="indrive_icon2">
-                                        <img src="{{auth()->user()->account->twt_image}}" alt=""  >
+                                        <img src="{{auth()->user()->account->twt_image}}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-9 colum_nine">
@@ -1562,7 +1583,8 @@
                                                 <span class="twitter_post_content">
                                                     {{auth()->user()->account->tw_name}}</span> <img
                                                     src="{{asset('images/offical2.png')}}" class="" alt="">
-                                                <span class="twitter_post_content_tag ">  {{'@'.auth()->user()->account->tw_user_name}}</span>
+                                                <span class="twitter_post_content_tag ">
+                                                    {{'@'.auth()->user()->account->tw_user_name}}</span>
                                             </div>
                                             <div class="elps">
                                                 <i class="fa-solid fa-ellipsis-vertical mt-2 "></i>
@@ -1771,8 +1793,8 @@
                                             <div><span>Post</span></div>
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
-                                            <div style="text-align:center;"><img src="{{asset('images/updatebellicon.png')}}"
-                                                    alt=""></div>
+                                            <div style="text-align:center;"><img
+                                                    src="{{asset('images/updatebellicon.png')}}" alt=""></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle d-none">
                                                 <p>14</p>
@@ -1795,140 +1817,149 @@
                 </div>
                 <div class="mybgcontainer">
                     <div>
-               <img src="{{asset('images/overlayimgwithbg.png')}}" alt="" class="overlayimg"></div>
-                <div
-                    class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner  overlay">
-                    <div class="sub_heading">
-                        <div>
-                            <h4>AI Generated Content</h4>
-                        </div>
-                        <div class="comming_soon">
-                            <p class="mb-0" style="font-weight:600;">Coming Soon</p>
-                        </div>
-
+                        <img src="{{asset('images/overlayimgwithbg.png')}}" alt="" class="overlayimg"
+                            style="object-fit:contain;">
                     </div>
-
-
-                    <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade">
-                        <div class="AIgeneratedContentData">
+                    <div
+                        class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner  overlay">
+                        <div class="sub_heading">
                             <div>
-                                <label for="" class="add_cap_label add_cap_labal">Add Caption</label>
-                                <div class="add_caption">
-                                    <a href="javascript:void(0)">
-                                        <input type="text" placeholder="" readonly>
-                                        <img src="{{asset('images/add.png')}}" class="img-fluid add_icon" alt="" />
-                                    </a>
-                                </div>
+                                <h4>AI Generated Content</h4>
                             </div>
-                            <div>
-                                <label for="" class="add_cap_label add_cap_labal">Add Tags</label>
-                                <div class="add_caption">
-                                    <!-- <select id="slect_drop" class="js-example-basic-single form-control" name="state"
+                            <div class="comming_soon">
+                                <p class="mb-0" style="font-weight:600;">Coming Soon</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="AIgeneratedContentInner AIgeneratedContentInner_card_shade">
+                            <div class="AIgeneratedContentData">
+                                <div>
+                                    <label for="" class="add_cap_label add_cap_labal">Add Caption</label>
+                                    <div class="add_caption">
+                                        <a href="javascript:void(0)">
+                                            <input type="text" placeholder="" readonly>
+                                            <img src="{{asset('images/add.png')}}" class="img-fluid add_icon" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="" class="add_cap_label add_cap_labal">Add Tags</label>
+                                    <div class="add_caption">
+                                        <!-- <select id="slect_drop" class="js-example-basic-single form-control" name="state"
                                         multiple>
                                         <option value="AL">Facebook +</option>
                                         ...
                                         <option value="WY">Instagram +</option>
                                     </select> -->
-                                    <p id="slect_drop" class="js-example-basic-single form-control" name="state">
-                                        Facebook + <br>
-                                        Instagram +
-                                    </p>
+                                        <p id="slect_drop" class="js-example-basic-single form-control" name="state">
+                                            Facebook + <br>
+                                            Instagram +
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="suggest_img">
-                                <p class="mb-0">Suggested Images :</p>
-                            </div>
-                            <div class="owl-carousel owl_carousel">
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                <div class="suggest_img">
+                                    <p class="mb-0">Suggested Images :</p>
+                                </div>
+                                <div class="owl-carousel owl_carousel">
+                                    <div class="opacity-cover">
+                                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                                        <div class="opacity_sheet">
+                                            <div class="opacity_sheet_icons">
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a>
+                                                </div>
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="opacity-cover">
+                                        <img src="{{asset('images/carousel2.png')}}" alt="">
+                                        <div class="opacity_sheet">
+                                            <div class="opacity_sheet_icons">
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a>
+                                                </div>
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="opacity-cover">
+                                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                                        <div class="opacity_sheet">
+                                            <div class="opacity_sheet_icons">
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a>
+                                                </div>
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="opacity-cover">
+                                        <img src="{{asset('images/carousel2.png')}}" alt="">
+                                        <div class="opacity_sheet">
+                                            <div class="opacity_sheet_icons">
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a>
+                                                </div>
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="opacity-cover">
+                                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                                        <div class="opacity_sheet">
+                                            <div class="opacity_sheet_icons">
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a>
+                                                </div>
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="opacity-cover">
+                                        <img src="{{asset('images/carousel2.png')}}" alt="">
+                                        <div class="opacity_sheet">
+                                            <div class="opacity_sheet_icons">
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a>
+                                                </div>
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="opacity-cover">
+                                        <img src="{{asset('images/carousel1.png')}}" alt="">
+                                        <div class="opacity_sheet">
+                                            <div class="opacity_sheet_icons">
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a>
+                                                </div>
+                                                <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel2.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
-                                            </div>
-                                        </div>
+                                <div class="d-flex justify-content-center">
+                                    <div style="width:16px; cursor:pointer;">
+                                        <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
+                                    </div>
+                                    <div style="width:16px; cursor:pointer;">
+                                        <img src="{{asset('images/dot1.png')}}" alt="" class="w-100">
+                                    </div>
+                                    <div style="width:16px; cursor:pointer;">
+                                        <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
                                     </div>
                                 </div>
-
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel2.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel2.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="opacity-cover">
-                                    <img src="{{asset('images/carousel1.png')}}" alt="">
-                                    <div class="opacity_sheet">
-                                        <div class="opacity_sheet_icons">
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-plus"></i></a></div>
-                                            <div><a href="javascript:void(0)"><i class="fa-solid fa-expand"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-center">
-                                <div style="width:16px; cursor:pointer;">
-                                    <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
-                                </div>
-                                <div style="width:16px; cursor:pointer;">
-                                    <img src="{{asset('images/dot1.png')}}" alt="" class="w-100">
-                                </div>
-                                <div style="width:16px; cursor:pointer;">
-                                    <img src="{{asset('images/dot3.png')}}" alt="" class="w-100">
-                                </div>
-                            </div>
 
 
 
 
-                            <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
+                                <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                             <div class="AIgeneratedContentAdd">
                                                 <a id="addContent" href="#">Add +</a>
                                             </div>
@@ -1936,7 +1967,7 @@
                                                 <p class="mb-0">AI Generated Content: <span id="gpt_content"></span></p>
                                             </div>
                                         </div> -->
-                            <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
+                                <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                             <div class="AIgeneratedContentAdd">
                                                 <a id="addTags" href="#">Add +</a>
                                             </div>
@@ -1944,20 +1975,20 @@
                                                 <p class="mb-0">AI Generated Tags: <span id="gpt_tags"></span></p>
                                             </div>
                                         </div> -->
-                            <div class="AIgeneratedCarouselWrp d-none">
+                                <div class="AIgeneratedCarouselWrp d-none">
 
-                                <div class="owl-carousel owl-theme AIgeneratedCarousel">
-                                </div>
-                                <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"
-                                        class="btn btn-primary">Edit / Prompt</a>
-                                    <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
+                                    <div class="owl-carousel owl-theme AIgeneratedCarousel">
+                                    </div>
+                                    <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"
+                                            class="btn btn-primary">Edit / Prompt</a>
+                                        <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
                 </div>
             </div>
 
@@ -1974,7 +2005,7 @@
 <!-- =======Calender========= -->
 <section>
     <div class=" container section5">
-        <i class="sidebar-button fa-solid fa-bars"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
+        <i class="sidebar-button fa-solid fa-bars" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
             aria-controls="offcanvasLeft"></i>
 
 
@@ -1983,137 +2014,419 @@
                 <button type="button" class="btn-close text-reset clr" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body" >
-            <div class="calender side-resp"
-            style="right: 0px; width: 100%; height:100%; position: absolute;z-index: 2;  transition: var(--tran-05);"
-           >
-            <div clas="" style="padding-top:30px">
-                <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
-            </div>
-            <span class="croissant-icon"></span>
-            <div class="calendarmain">
-                <div class="l1 d-none">
-                    <div class="navigation">
-                        <h2 id="month-year"></h2>
+            <div class="offcanvas-body">
+                <div class="calender side-resp container"
+                    style="right: 0px; width: 100%; height:100%; position: absolute;z-index: 2;">
+                    <div clas="" style="padding-top:30px">
+                        <span><img class="img-fluid d-none" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
+                    </div>
+                    <span class="croissant-icon"></span>
+                    <div class="calendarmain">
+                        <div class="l1">
+                            <div class="navigation">
+                            <h1 class="date-day mt-0 mb-5">
+                            {{\Carbon\Carbon::now()->format('l')}}
+                        </h1>       
+                            </div>
+                        </div>
+                        <div class="fb-post">
+                            <div class="post-time" >
+                                <span>7:30 PM</span>
 
-                        <div class="leftrightbtn">
-                            <button onclick="prevMonth()" class="prev">&#10094;</button>
-                            <button onclick="nextMonth()" class="next"> &#10095;</button>
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class=" ">
+                                    <img src="{{asset('images/fbposticon.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fb-post mt-2">
+                <div class="post-time" >
+                                <span>7:30 PM</span>
+
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class="">
+                                    <img src="{{asset('images/instapost.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="fb-post mt-2">
+                <div class="post-time" >
+                                <span>7:30 PM</span>
+
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class=" ">
+                                    <img src="{{asset('images/twitterpost.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="fb-post mt-2">
+                <div class="post-time" >
+                                <span>7:30 PM</span>
+
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class="">
+                                    <img src="{{asset('images/linkpost.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="Today-post-detail" style="margin-top:30px; display:none;">
+
+                       <div class="deletepost_btn">
+                        <button type="button" class="btn btn-danger">Delete Post</button>
+                        </div>
+                       <div class="visit_account">
+                        <a href="javascript:void(0);">Delete Post</a>
+                        </div>
+                        
+                            </div>
+                          
+               
+                        <div class="R1 L-Calnd d-none">
+                            <div class="Thumbnail">
+                                <h3>
+                                    Thumbnail
+                                </h3>
+                                <a href=""><i class='fa fa-info red-color'></i></a>
+                            </div>
+                            <div class="div2">
+                                <h1 class="date-day">
+                                    {{\Carbon\Carbon::now()->format('l')}}
+                                </h1>
+                                <h3 class="date-date">{{\Carbon\Carbon::now()->format('m/d/Y')}}</h3>
+                            </div>
+
+                            <div class="todayEbents-list" style="cursor:pointer;">
+                                @include('user.component.ajax.todayEvents')
+                            </div>
+                            <div class="Today-post-detail" style="margin-top:30px; display:none;">
+
+                            </div>
+
                         </div>
                     </div>
-                    <div id="calendar-container">
-                    </div>
-                </div>
-                <div class="R1 L-Calnd">
-                    <div class="Thumbnail">
-                        <h3>
-                            Thumbnail
-                        </h3>
-                        <a href=""><i class='fa fa-info red-color'></i></a>
-                    </div>
-                    <div class="div2">
-                        <h1 class="date-day">
-                            {{\Carbon\Carbon::now()->format('l')}}
-                        </h1>
-                        <h3 class="date-date">{{\Carbon\Carbon::now()->format('m/d/Y')}}</h3>
-                    </div>
-
-                    <div class="todayEbents-list" style="cursor:pointer;">
-                        @include('user.component.ajax.todayEvents')
-                    </div>
-                    <div class="Today-post-detail" style="margin-top:30px; display:none;">
-
-                    </div>
-
                 </div>
             </div>
         </div>
-            </div>
-        </div>
 
-        <div class="calender calendar_overflo"
-            style="left: 0px; width: 300px; position: absolute;z-index: 2; display:none;  transition: var(--tran-05);"
+        <div class="calender calendar_overflo container col-lg-12"
+            style="left: -300px; width: 300px; position: absolute;z-index: 2; display:none;"
             id="mySidebar">
             <div clas="" style="padding-top:30px">
-                <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
                 <span class="close-btn" onclick="closeSidebar()">&times;</span>
             </div>
             <span class="croissant-icon"></span>
             <div class="calendarmain">
-                <div class="l1 d-none">
+                <div class="l1">
                     <div class="navigation">
-                        <h2 id="month-year"></h2>
-
-                        <div class="leftrightbtn">
-                            <button onclick="prevMonth()" class="prev">&#10094;</button>
-                            <button onclick="nextMonth()" class="next"> &#10095;</button>
-                        </div>
-                    </div>
-                    <div id="calendar-container">
-                    </div>
-                </div>
-                <div class="R1 L-Calnd">
-                    <div class="Thumbnail">
-                        <h3>
-                            Thumbnail
-                        </h3>
-                        <a href=""><i class='fa fa-info red-color'></i></a>
-                    </div>
-                    <div class="div2">
-                        <h1 class="date-day">
+                        <h1 class="date-day mt-0 mb-5">
                             {{\Carbon\Carbon::now()->format('l')}}
                         </h1>
-                        <h3 class="date-date">{{\Carbon\Carbon::now()->format('m/d/Y')}}</h3>
-                    </div>
 
-                    <div class="todayEbents-list2" style="cursor:pointer; display:none;">
-                        @include('user.component.ajax.todayEvents')
-                    </div>
-                    <div class="Today-post-detail" style="margin-top:30px; display:none;">
 
                     </div>
+                </div>
+                <div class="fb-post">
+                <div class="post-time" >
+                                <span>7:30 PM</span>
 
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class=" ">
+                                    <img src="{{asset('images/fbposticon.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fb-post mt-2">
+                <div class="post-time" >
+                                <span>7:30 PM</span>
+
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class="">
+                                    <img src="{{asset('images/instapost.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="fb-post mt-2">
+                <div class="post-time" >
+                                <span>7:30 PM</span>
+
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class=" ">
+                                    <img src="{{asset('images/twitterpost.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="fb-post mt-2">
+                <div class="post-time" >
+                                <span>7:30 PM</span>
+
+                            </div>
+                    <div class="d-flex post-detail">
+                        <div class="post-img">
+                            <img src="{{asset('images/publishedpost.png')}}" alt="">
+                        </div>
+                        <div class="pt-2 ">
+                            <div class="pb-2 account-detail">
+                                <span class="">
+                                    <img src="{{asset('images/linkpost.png')}}" alt="">
+                                </span>
+                                <span class="post_username">
+                                    Waleed Ahmed
+                                </span>
+                            </div>
+                            <div class="pt-2">
+                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
+                                    next......... In this week going to party?</span>
+                                <div class="publishedpost mt-2">
+                                    <span>
+                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
+                                    </span>
+                                    <span class="approved">
+                                        Published
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="Today-post-detail" style="margin-top:30px; display:none;">
+
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
+        <div class="title_bar_wrap d-none">
+            <div class="container container_2">
+                <div class="title_bar">
+                    <div class="tabs_type_heading">
+                        <h3>Post Manager</h3>
+                    </div>
+                    <div class="right_contents">
+                        <ul>
+                            <li class="filter_by">
+                                <span>Filter by:</span>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">VIDEO</a>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">IMAGE</a>
+                            <li class="month_name">
+                                <span>December 2022</span>
+                                <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid"
+                                        alt="" /></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
-            <div class="title_bar_wrap d-none">
-                <div class="container container_2">
-                    <div class="title_bar">
-                        <div class="tabs_type_heading">
-                            <h3>Post Manager</h3>
-                        </div>
-                        <div class="right_contents">
-                            <ul>
-                                <li class="filter_by">
-                                    <span>Filter by:</span>
-                                </li>
-                                <li>
-                                    <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
-                                </li>
-                                <li>
-                                    <a class="filter_link" href="javascript:void(0)">VIDEO</a>
-                                </li>
-                                <li>
-                                    <a class="filter_link" href="javascript:void(0)">IMAGE</a>
-                                <li class="month_name">
-                                    <span>December 2022</span>
-                                    <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}"
-                                            class="img-fluid" alt="" /></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
-                <div class="container container_2">
-                    <div class="the_post_manager">
-                        <div id='postManagerCalendar'></div>
-                    </div>
+        <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
+            <div class="container container_2">
+                <div class="the_post_manager">
+                    <div id='postManagerCalendar'></div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
 </section>
@@ -2138,7 +2451,8 @@
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main ">
                         <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
-                        <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
+                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2"
+                                style="object-fit: contain;">
                             <div class="card-body overlay">
                                 <div class="likes_card">
                                     <h3 class="card-title">Likes</h3>
@@ -2328,7 +2642,8 @@
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
-                        <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
+                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2"
+                                style="object-fit: contain;">
                             <div class="card-body overlay">
                                 <div class="likes_card">
                                     <h3 class="card-title">Share</h3>
@@ -2517,7 +2832,8 @@
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
-                        <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2">
+                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2"
+                                style="object-fit: contain;">
                             <div class="card-body overlay">
                                 <!-- <h3 class="card-title">Engagement</h3> -->
                                 <div class="likes_card">
@@ -2780,20 +3096,17 @@
 <!-- sidebar close btn -->
 <!--  -->
 <script>
-    var abc=0;
+var abc = 0;
 
-$('.mybgcontainer2').click(function () {
+$('.mybgcontainer2').click(function() {
     $('.overlay', this).css('opacity', 1);
     $('.overlayimg2', this).css('opacity', 0);
 });
-$('.mybgcontainer').click(function () {
+$('.mybgcontainer').click(function() {
     $('.overlay', this).css('opacity', 1);
     $('.overlayimg', this).css('opacity', 0);
 
 });
-
-
-
 </script>
 
 
@@ -2803,39 +3116,51 @@ $('.mybgcontainer').click(function () {
 function closeSidebar() {
     document.getElementById("mySidebar").style.display = "none";
     $('.calendar2').css('padding-left', '0px');
+    $('.calender.calendar_overflo').addClass('with-transition');
+    $(".fb-post").css('display', 'block');
+    $(".Today-post-detail").hide();
+
+
 }
 $(document).ready(function() {
     var isDetailVisible = false; // Initialize a flag to track visibility
 
     // Add a click event handler to the todayEbents-list div
-    $(".todayEbents-list").click(function() {
-        if (!isDetailVisible) {
-            // If the detail is not visible, show it and set the flag
-            var contentToAppend = $(".the_preview").html();
-            $(".Today-post-detail").html(contentToAppend).show();
-            isDetailVisible = true;
-        } else {
-            // If the detail is visible, hide it and reset the flag
-            $(".Today-post-detail").hide();
-            isDetailVisible = false;
-        }
-    });
-    $(".todayEbents-list2").click(function() {
-        if (!isDetailVisible) {
-            // If the detail is not visible, show it and set the flag
-            var contentToAppend = $(".the_preview").html();
-            $(".Today-post-detail").html(contentToAppend).show();
-            isDetailVisible = true;
-        } else {
-            // If the detail is visible, hide it and reset the flag
-            $(".Today-post-detail").hide();
-            isDetailVisible = false;
-        }
-            
-        
-    });
+    $(".fb-post").click(function() {
+    if (!isDetailVisible) {
+        // If the detail is not visible, show it and set the flag
+        var contentToAppend = $(".the_preview").html();
+        $(".Today-post-detail").html(contentToAppend);
+        $(".Today-post-detail").append(
+            '<div class="deletepost_btn"><button type="button" class="">Delete Post</button></div>' +
+            '<div class="visit_account"><a href="javascript:void(0);">View post on Twitter</a></div>'
+        );
+        $(".Today-post-detail").show();
+        isDetailVisible = true;
+        $(".fb-post").css('display', 'none');
+    } else {
+        // If the detail is visible, hide it and reset the flag
+        $(".Today-post-detail").hide();
+        $(".fb-post").css('display', 'block');
+        isDetailVisible = false;
+    }
 });
-    var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
+    // $(".fb-post").click(function() {
+    //     if (!isDetailVisible) {
+    //         // If the detail is not visible, show it and set the flag
+    //         var contentToAppend = $(".the_preview").html();
+    //         $(".Today-post-detail").html(contentToAppend).show();
+    //         isDetailVisible = true;
+    //     } else {
+    //         // If the detail is visible, hide it and reset the flag
+    //         $(".Today-post-detail").hide();
+    //         isDetailVisible = false;
+    //     }
+
+
+    // });
+});
+var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
 
 $(document).on('mouseleave', '.calendar_overflo', function() {
     if (mouseLeaveEnabled) {
@@ -2845,7 +3170,7 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
         $(".todayEbents-list2").css('display', 'none');
         // $(".Today-post-detail").css('display', 'none');
 
-        
+
     }
 });
 $(document).on('mouseenter', '.calendar_overflo', function() {
@@ -2853,9 +3178,8 @@ $(document).on('mouseenter', '.calendar_overflo', function() {
     $(".todayEbents-list2").css('display', 'block');
     // $(".Today-post-detail").css('display', 'block');
     $(this).css('z-index', '9999');
-   
-});
 
+});
 </script>
 <!-- sidebar close btn -->
 <script>
@@ -3385,7 +3709,7 @@ function populateOptions(selectId, start, end, step) {
         option.text = String(i).padStart(2, "0");
         select.appendChild(option);
     }
-    
+
 }
 // Populate hour options (01 to 12)
 populateOptions("hour", 1, 12, 1);
@@ -3393,7 +3717,5 @@ populateOptions("hour", 1, 12, 1);
 
 // Populate minute options (00 to 59)
 populateOptions("minute", 0, 59, 1);
-
-
 </script>
 @endsection
