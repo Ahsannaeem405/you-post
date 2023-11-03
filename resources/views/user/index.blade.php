@@ -621,9 +621,8 @@
 
                                             <ul class="list-unstyled form-wizard-steps form_wizard_steps clearfix">
                                                <li section="youpost"><span
-                                                        class="d-flex justify-content-center align-items-center"><img-
-                                                            src="{{asset('images/you-post.png')}}" width="12px"-
-                                                            height="20" alt=""></span></li>
+                                                        class="d-flex justify-content-center align-items-center"><img
+                                                            src="{{asset('images/you-post.png')}}" alt=""></span></li>
                                                 @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                                 <li section="fb"><span
                                                         class="d-flex justify-content-center align-items-center"><img
@@ -1290,9 +1289,9 @@
                                         <div class="media-container media_container">
                                             <div class="prv_div_youpost"> </div>
                                             <div id="mediaContainervideo_youpost">
-                                                <video class="d-none video_preview_youpost" controls>
+                                                <!-- <video class="d-none video_preview_youpost" controls>
                                                     <source src="movie.mp4" type="video/*">
-                                                </video>
+                                                </video> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1408,9 +1407,9 @@
                                         <div class="media-container media_container">
                                             <div class="prv_div"> </div>
                                             <div id="mediaContainervideo_fb">
-                                                <video class="d-none video_preview" controls>
+                                                <!-- <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
-                                                </video>
+                                                </video> -->
                                             </div>
                                         </div>
                                     </div>
@@ -1494,9 +1493,9 @@
                                         </div>
 
                                         <div id="mediaContainervideo_inst">
-                                            <video class="d-none video_preview_inst" controls>
+                                            <!-- <video class="d-none video_preview_inst" controls>
                                                 <source src="movie.mp4" type="video/*">
-                                            </video>
+                                            </video> -->
                                         </div>
                                     </div>
                                 </div>
@@ -1711,9 +1710,9 @@
                                         </div>
 
                                         <div id="mediaContainervideo_link">
-                                            <video class="d-none video_preview_link" controls>
+                                            <!-- <video class="d-none video_preview_link" controls>
                                                 <source src="movie.mp4" type="video/*">
-                                            </video>
+                                            </video> -->
                                         </div>
                                     </div>
                                 </div>
