@@ -526,9 +526,38 @@ $(document).ready(function () {
 
     $(document).ready(function() {
         $('.emoji_parent div span').on('click', function() {
-            var emoji = $(this).text();
+
             var parentDiv = $(this).closest('.emoji_parent').find('textarea').attr('id');
-            $('#' + parentDiv).trigger('keyup');
+            var emoji = $(this).text();   
+
+            if(parentDiv = 'youpost_content'){
+
+              $('#' + parentDiv).trigger('keyup');
+              
+              $("#mypostresult_fb").append(emoji);
+              $("#mypostresult_insta").append(emoji);
+              $("#mypostresult_twitter").append(emoji);
+              $("#mypostresult_linkedin").append(emoji);          
+
+              var textareaIds = ['#facebook_content', '#instagram_content', '#twitter_content', '#linkedin_content'];
+
+              // Loop through the textarea IDs and append the emoji to their content
+              textareaIds.forEach(function(textareaId) {
+                  var currentContent = $(textareaId).val();
+                  var updatedContent = currentContent + emoji;
+                  $(textareaId).val(updatedContent);
+              });
+
+         
+
+
+            
+
+            }else{
+                  $('#' + parentDiv).trigger('keyup');
+            }
+
+          
         });
     });
 
@@ -536,8 +565,30 @@ $(document).ready(function () {
         $('#myaccounts_modal').modal('show');
     });
 
+    $(document).on('click', '.image_or_video_youpost_all', function () {
+      
+
+        if ($(this).attr('typpe') == 'image') {
+            $('#image_or_videofb').attr('accept', 'image/*');
+            $('#image_or_video_insta').attr('accept', 'image/*');
+            $('#image_or_video_linkedin').attr('accept', 'image/*');
+            $('#' + $(this).attr('fordata')).attr('accept', 'image/*');
+        } else {
+                $('#image_or_videofb').attr('accept', 'video/*');
+                $('#image_or_video_insta').attr('accept', 'video/*');
+                $('#image_or_video_linkedin').attr('accept', 'video/*');
+                $('#' + $(this).attr('fordata')).attr('accept', 'video/*');
+        }
+
+    });
+
+
+
+
+
 
     $(document).on('click', '.image_or_video', function () {
+       
 
         if ($(this).attr('typpe') == 'image') {
             $('#' + $(this).attr('fordata')).attr('accept', 'image/*');
@@ -574,13 +625,20 @@ $(document).ready(function () {
 
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
         var socialicon = $(this).closest(".sm_container").find('input[type=file]:first').attr('id');
-      
 
-        var parent = $(this).closest('.sm_container');
-        $(this).closest('.cross_img_con').remove();
-        var img = parent.find('.cross_img_con').find("img");
+        if(socialicon == 'image_or_video_youpost'){          
+            var remove= $(this).closest('.cross_img_con').data('remove');
+            $('.' + remove).remove();       
+        }else{
+              $(this).closest('.cross_img_con').remove();
+         
+        }
+       
+       
+        var parent = $(this).parent().parent();  
+        var img = parent.find("img");
         var len = img.length;
-        
+      
 
         if (len <= 0) {
             if (id_of_div == 'media_type_fb') {
@@ -597,7 +655,20 @@ $(document).ready(function () {
             }
 
         }
-        setPreview(socialicon);
+
+        if(socialicon == 'image_or_video_youpost'){
+
+            var ids = ['image_or_video_youpost','image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin'];
+            ids.forEach(function(socialicon) {
+                setPreview(socialicon);
+            });
+
+        }else{
+                     
+            setPreview(socialicon);
+        }
+
+       
     });
 
 
@@ -702,9 +773,80 @@ $(document).ready(function () {
             }
         }
         //************************** Video Validatoin End *********************************
+         //**************************Appedn to all using youpot div ***********************
     }
+    function appendtoall(file,dimention,dimention_error,getRandomClass) {
 
+            
+        var getRandomID=getRandomClassName();
+        
 
+       
+
+        var img_con = `<div class="cross_img_con  ${getRandomClass}" id="remove_id" data-remove="${getRandomClass}" >
+        <img name='image/*' id="teting" src="${file}"/>
+         <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+         <textarea id="removeit_file_id" name=youpost_image[] class="removeit_file d-none"></textarea>
+         <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+         </div>`;
+                          $("#image_or_video_youpost").parent().append(img_con);
+                          $('#media_type_youpost').val('image');
+                          if (!dimention){
+                             
+                              $('#file_error_youpost').removeClass('d-none').text(dimention_error)
+                          }
+                          else {
+                        
+                              $('#file_error_youpost').addClass('d-none')
+                          }
+       
+
+        var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
+        <img name='image/*' id="teting" src="${file}"/>
+         <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+         <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
+         <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+         </div>`;
+                          $("#image_or_videofb").parent().append(img_con);
+                          $('#media_type_fb').val('image');
+                          if (!dimention){
+                             
+                              $('#file_error_fb').removeClass('d-none').text(dimention_error)
+                          }
+                          else {
+                        
+                              $('#file_error_fb').addClass('d-none')
+                          }
+
+                          var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
+                          <img name='image/*' id="teting" src="${file}"/>
+                          <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+                          <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
+                             <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+                          </div>`;
+                                            $("#image_or_video_insta").parent().append(img_con_ins);
+                                            $('#media_type_insta').val('image');
+                                            if (!dimention){
+                                                $('#file_error_insta').removeClass('d-none').text(dimention_error)
+                                            }else {
+                                                $('#file_error_insta').addClass('d-none')
+                                            }
+                      var img_con_lin = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
+                      <img name='image/*' id="teting" src="${file}"/>
+                         <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+                           <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
+                             <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+                                </div>`;
+                                       $("#image_or_video_linkedin").parent().append(img_con_lin);
+                                          $('#media_type_linkedin').val('image');
+                                             if (!dimention){
+                                              $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
+                                                 }else {
+                                                       $('#file_error_linkedin').addClass('d-none')
+                                                        }
+
+    }
+  //**************************Appedn to all using youpot div end **************************
     function appendImage(file, socialicon, dimention) {
 
 
@@ -729,6 +871,7 @@ $(document).ready(function () {
    </div>`;
                     $("#image_or_videofb").parent().append(img_con);
                     $('#media_type_fb').val('image');
+                  
                     if (!dimention){
                        
                         $('#file_error_fb').removeClass('d-none').text(dimention_error)
@@ -771,6 +914,9 @@ $(document).ready(function () {
                     }else {
                         $('#file_error_linkedin').addClass('d-none')
                     }
+                }else if(socialicon == 'image_or_video_youpost'){
+
+                     appendtoall(e.target.result,dimention,dimention_error,getRandomClass);
                 }
 
 
@@ -789,7 +935,19 @@ $(document).ready(function () {
                       
                         $('.'+getRandomClass).find('textarea').val(response.path);
                         $('.'+getRandomClass).find('.uplaod-gif').remove();
-                            setPreview(socialicon,response.path);
+
+                             if(socialicon == 'image_or_video_youpost'){
+                                var ids = ['image_or_video_youpost','image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin'];
+
+                                ids.forEach(function(socialicon) {
+                                    setPreview(socialicon, response.path);
+                                });
+                                
+
+                             }else{
+                                setPreview(socialicon,response.path);
+                             }
+                           
                     },
                 });
 
@@ -807,9 +965,105 @@ $(document).ready(function () {
       
         path = path || "DefaultParam2";
      
-       
+        if (socialicon == 'image_or_video_youpost') {
 
-            if (socialicon == 'image_or_videofb') {
+            var imgOrVideo= $('#media_type_youpost').val();
+           //  var imgCount = $(".prv_div img").length;  
+            var imgCount = $(".prv_div_youpost .mobile_post_img").length;  
+            var add_imge = $('#image_div_youpost .cross_img_con ').length;
+            if(imgCount == 0 || add_imge == 1)
+            {
+                $('.prv_div_youpost').css('column-count', '1');
+            }else{
+                $('.prv_div_youpost').css('column-count', '2');
+            }
+            if(imgOrVideo =='image'){
+               $('.prv_div_youpost').empty();                                          
+               var parentElement = $("#media_type_youpost").closest(".sm_container");
+               var img = parentElement.find("img");
+               // var img = parentElement.find("div");
+               var imgCount = 0; 
+                 $(img).each(function(index) {
+                    imgCount++;
+                    if (imgCount >= 6) {
+                       if ($("div.div_in_div_youpost").length === 0) {                                                        
+                           var lastImg = $(".prv_div_youpost").find($(".mobile_post_img:last"));
+                           // var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
+                           //  lastImg.after(spanElement);
+                            lastImg.wrap("<div class='div_in_div_youpost'></div>");
+                           //  var newDiv = $("<div class='div_in_div_bg'> </div>");
+                           //    $(".div_in_div").after(newDiv);
+                              $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_bg'> </div>`);
+                       } else {
+                            
+                           const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
+                           var spanElement = $('#my_value_youpost');    
+                           var currentValue = parseInt(spanElement.text());                                    
+                           newValue =  currentValue + 1;  
+                           $('#my_value_youpost').empty();                                                                 
+                           $('#my_value_youpost').append(iconElement, newValue);
+
+                       }
+                   }
+                   else{
+                   //  var src=   $(this).attr("src");
+                   //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                   //  $('.prv_div').append(newImage);
+                   
+                   var src=   $(this).attr("src");
+                   //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                    var newImage = `<div class="mobile_post_img"></div>`;
+                    $('.prv_div_youpost').append(newImage);
+                    $('.prv_div_youpost .mobile_post_img').last().css('background-image', 'url(' + src + ')');
+                   }
+                   if(add_imge == 1 || add_imge == 2){
+                       $('.prv_div_youpost .mobile_post_img').addClass('max_height');
+
+                    }else{
+                       $('.prv_div_youpost .mobile_post_img').removeClass('max_height');
+                    }
+                    if(add_imge == 3){
+                       $('.prv_div_youpost .mobile_post_img:nth-child(1)').addClass('first_child_img1');
+                       $('.prv_div_youpost .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
+                     
+                    }
+                    else{
+                       $('.prv_div_youpost .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
+                       $('.prv_div_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
+                      
+                    }
+                   
+                    if(add_imge == 4){
+                       $('.prv_div_youpost .mobile_post_img:nth-child(3)').addClass('first_child_img4');
+                     
+
+                    }
+                    else{
+                       $('.my_value_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
+   
+                    }
+               });
+
+
+                  
+                $('#mediaContainervideo_youpost').html('');
+
+
+            }else if(imgOrVideo =='video'){
+              
+               var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
+
+               $('.prv_div_youpost').html('');
+               $('#mediaContainervideo_youpost').html(video);
+               
+            }else{
+           
+               $('.prv_div_youpost').html('');
+               $('#mediaContainervideo_youpost').html('');
+
+            }
+          }
+            else if (socialicon == 'image_or_videofb') {
 
                      var imgOrVideo= $('#media_type_fb').val();
                     //  var imgCount = $(".prv_div img").length;  
@@ -1075,12 +1329,41 @@ $(document).ready(function () {
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
 
                             $('.video_preview_link').removeClass('d-none');
-                            $('.preview_image_link').addClass('d-none');
-                           
+                            $('.preview_image_link').addClass('d-none');                           
                             setPreview(socialicon,response.path);
 
-
                         }
+                        // else if (socialicon == 'image_or_video_youpost') {
+                              
+                            // $('#youpost_video').val(response.path);
+                            // $('#media_type_youpost').val('video');
+                            // $("#image_or_video_youpost").parent().find('.cross_img_con').remove();
+                            // $('.video_preview_youpost').removeClass('d-none');
+                           
+
+                            // $('#link_video').val(response.path);
+                            // $('#media_type_linkedin').val('video');
+                            // $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
+                            // $('.video_preview_link').removeClass('d-none');
+                            // $('.preview_image_link').addClass('d-none');  
+
+                            // $('#inst_video').val(response.path);
+                            // $('#media_type_insta').val('video');                         
+                            // $("#image_or_video_insta").parent().find('.cross_img_con').remove();
+                            // $('.video_preview_inst').removeClass('d-none');
+                            // $('.preview_image_inst').addClass('d-none');
+
+                            
+                            // $('#fb_video').val(response.path);
+                            // $('#media_type_fb').val('video');
+                            // $("#image_or_videofb").parent().find('.cross_img_con').remove();
+                            // $('.video_preview').removeClass('d-none');
+                            // $('.preview_image').addClass('d-none');
+
+                           
+                           
+
+                        // }
                     },
                     error: function () {
                         alert('Error saving the video.');
@@ -1118,8 +1401,8 @@ $(document).ready(function () {
 
     $('.file_image_video').change(function (e) {
 
-
-        var socialicon = $(this).attr('id');
+            
+        var socialicon = $(this).attr('id');           
         var file = e.target.files[0];
 
 
@@ -1134,6 +1417,26 @@ $(document).ready(function () {
 
 
     });
+
+
+    $('.file_image_video_youpost').change(function (e) {
+     
+                    
+                var socialicon = $(this).attr('id');           
+                var file = e.target.files[0];
+        
+        
+                // *********************  Validate Size and Memes ************************
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var mediaType = file.type.split('/')[0];
+                    validateFileImageVideo(file, socialicon);
+        
+                };
+                reader.readAsDataURL(file);
+        
+        
+            });
 
     $('.preview_div').click(function (e) {
 

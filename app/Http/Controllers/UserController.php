@@ -208,7 +208,7 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-        
+       
         $platforms = auth()->user()->account->platforms;
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
