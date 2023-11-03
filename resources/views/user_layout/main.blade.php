@@ -347,13 +347,14 @@
                 $('.event_detail_parent').empty().append(response);
                 $('.fc-popover').css('display', 'none');
                 // for sidebar show calendar
-                // $('.home').css('padding-left', '300px');
-                $('.calendar2').css('padding-left', '240px');
-                $(".calendar_overflo").css('width', '300px');
+                // $('.calendar2').css('padding-left', '240px');
+                $('.calendar2').css('padding-left', '29%');
+                // $(".calendar_overflo").css('left', '300px');
+                $(".calendar_overflo").css('left', '6%');
 
                 // $(".sidebar-button").show();
                 $('.calendar_overflo').css({
-                'display': 'block'});
+                'display': 'block','width':'380px'});
 
                 // for sidebar show calendar
 

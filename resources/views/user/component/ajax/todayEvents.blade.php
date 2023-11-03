@@ -34,8 +34,9 @@
                 <span class="sp1">{{$today->content}} </span>
                 <p class="sp2">{{$today->posted_at_moment=='now' ? 'Posted' : 'Scheduled'}}</p>
             </div>
-            <div class="Edit" onclick="get_detail({{$today->id}});" style="cursor:pointer;">
-                <i class='fas fa-edit'></i>
+            <div class="Edit" onclick="get_detail({{$today->id}});" style="cursor:pointer; text-align: center; opacity:0.5">
+                <!-- <i class='fas fa-edit'></i> -->
+                <img src="{{asset('images/editupd.png')}}" alt="">
                 <a href="javascript:(void(0);"> <span>Edit</span></a>
             </div>
         </div>

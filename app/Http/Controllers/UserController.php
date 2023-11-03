@@ -107,7 +107,7 @@ class UserController extends Controller
                 'media_ids' => [$status->media_id_string,$status2->media_id_string]
             )
         ], true);
-        dd($post);
+        // dd($post);
 
 
     }
@@ -303,6 +303,7 @@ class UserController extends Controller
             $post->media = $media;
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
+            // dd( $post->content);
             $post->save();
 
 

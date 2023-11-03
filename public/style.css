@@ -1809,7 +1809,7 @@ body.dark .home .text{
 }
 .post_manage_calendar.post_manage_calendar_card{
     box-shadow: 0 0 10px #00000026;
-    border-radius: 13px;
+    border-radius: 0px 13px 13px 0px;
     overflow: hidden;
 }
 .add_caption{
