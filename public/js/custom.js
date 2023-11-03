@@ -962,7 +962,7 @@ $(document).ready(function () {
         }
     }
     function setPreview(socialicon,path){
-      
+     alert("onetime");
         path = path || "DefaultParam2";
      
         if (socialicon == 'image_or_video_youpost') {
@@ -1049,13 +1049,17 @@ $(document).ready(function () {
                 $('#mediaContainervideo_youpost').html('');
 
 
-            }else if(imgOrVideo =='video'){
-              
-               var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
-
-               $('.prv_div_youpost').html('');
-               $('#mediaContainervideo_youpost').html(video);
-               
+            }else if(imgOrVideo =='video'){    
+                   
+          
+                        var video_youpost = $('<video controls class="w-100" loading="lazy">').attr('src', 'content_media/'+path);
+                        var video_fb = $('<video controls class="video_preview w-100" loading="lazy">').attr('src', 'content_media/'+path); 
+                        // var video_ins = $('<video controls class=" video_preview_inst w-100" loading="lazy">').attr('src', 'content_media/'+path);                             
+                        $('#mediaContainervideo_youpost').html(video_youpost);   
+                        $('#mediaContainervideo_fb').html(video_fb);                     
+                       // $('#mediaContainervideo_inst').html(video_ins);                                            
+                                               
+                               
             }else{
            
                $('.prv_div_youpost').html('');
@@ -1150,12 +1154,13 @@ $(document).ready(function () {
                      }else if(imgOrVideo =='video'){
                        
                         var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
+                      
 
                         $('.prv_div').html('');
                         $('#mediaContainervideo_fb').html(video);
                         
                      }else{
-                    
+                   
                         $('.prv_div').html('');
                         $('#mediaContainervideo_fb').html('');
 
@@ -1168,7 +1173,7 @@ $(document).ready(function () {
                 var imgCount = $(".prv_div_isnt .mobile_post_img_inst").length;   
                 var add_imge2 = $('#image_div_ins .cross_img_con ').length;
                               
-                if(imgOrVideo =='image'){
+             if(imgOrVideo =='image'){
                         $('.prv_div_isnt').empty();  
                         var parentElement = $("#media_type_insta").closest(".sm_container");
                         var img = parentElement.find("img:last");
@@ -1180,8 +1185,9 @@ $(document).ready(function () {
 
                 }else if(imgOrVideo =='video'){
                     var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/'+path);
+                            $('.prv_div_isnt').html('');
                             $('#mediaContainervideo_inst').html(video);
-                   $('.prv_div_isnt').html('');
+                
                    
                 }else{
                   
@@ -1261,8 +1267,9 @@ $(document).ready(function () {
 
                 }else if(imgOrVideo =='video'){
                     var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/'+path);
+                      $('.prv_div_link').html('');
                     $('#mediaContainervideo_link').html(video);
-                   $('.prv_div_link').html('');
+                 
                   
                    
                 }else{
@@ -1333,37 +1340,46 @@ $(document).ready(function () {
                             setPreview(socialicon,response.path);
 
                         }
-                        // else if (socialicon == 'image_or_video_youpost') {
+                        else if (socialicon == 'image_or_video_youpost') {
                               
-                            // $('#youpost_video').val(response.path);
-                            // $('#media_type_youpost').val('video');
-                            // $("#image_or_video_youpost").parent().find('.cross_img_con').remove();
-                            // $('.video_preview_youpost').removeClass('d-none');
-                           
+                            $('#youpost_video').val(response.path);
+                            $('#media_type_youpost').val('video');
+                            $("#image_or_video_youpost").parent().find('.cross_img_con').remove();
+                            $('.video_preview_youpost').removeClass('d-none');
+                            $('.prv_div_youpost').html('');
 
-                            // $('#link_video').val(response.path);
-                            // $('#media_type_linkedin').val('video');
-                            // $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
-                            // $('.video_preview_link').removeClass('d-none');
-                            // $('.preview_image_link').addClass('d-none');  
-
-                            // $('#inst_video').val(response.path);
-                            // $('#media_type_insta').val('video');                         
-                            // $("#image_or_video_insta").parent().find('.cross_img_con').remove();
-                            // $('.video_preview_inst').removeClass('d-none');
-                            // $('.preview_image_inst').addClass('d-none');
-
+                            $('#fb_video').val(response.path);
+                            $('#media_type_fb').val('video');                           
+                            $("#image_or_videofb").parent().find('.cross_img_con').remove();
+                            $('.video_preview').removeClass('d-none');
+                            $('.preview_image').addClass('d-none'); 
+                            $('.prv_div').html('');
                             
-                            // $('#fb_video').val(response.path);
-                            // $('#media_type_fb').val('video');
-                            // $("#image_or_videofb").parent().find('.cross_img_con').remove();
-                            // $('.video_preview').removeClass('d-none');
-                            // $('.preview_image').addClass('d-none');
+                            $('#inst_video').val(response.path);
+                            $('#media_type_insta').val('video');                          
+                            $("#image_or_video_insta").parent().find('.cross_img_con').remove();
+                            $('.video_preview_inst').removeClass('d-none');
+                            $('.preview_image_inst').addClass('d-none');
+                            $('.prv_div_isnt').html('');
+                            
+                            
+                            $('#link_video').val(response.path);
+                            $('#media_type_linkedin').val('video');
+                            $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
+                            $('.video_preview_link').removeClass('d-none');
+                            $('.preview_image_link').addClass('d-none');
+                            $('.prv_div_link').html('');                       
 
+                                                                                                   
                            
+                                setPreview(socialicon,response.path);  
+                        
+                
+                            
+                                              
+                                                
                            
-
-                        // }
+                        }
                     },
                     error: function () {
                         alert('Error saving the video.');
@@ -1373,6 +1389,7 @@ $(document).ready(function () {
 
             };
             reader.readAsDataURL(file);
+           
         }
     }
 
