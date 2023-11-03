@@ -529,8 +529,8 @@ $(document).ready(function () {
 
             var parentDiv = $(this).closest('.emoji_parent').find('textarea').attr('id');
             var emoji = $(this).text();   
-
-            if(parentDiv = 'youpost_content'){
+       
+            if(parentDiv == 'youpost_content'){
 
               $('#' + parentDiv).trigger('keyup');
               
@@ -546,14 +546,10 @@ $(document).ready(function () {
                   var currentContent = $(textareaId).val();
                   var updatedContent = currentContent + emoji;
                   $(textareaId).val(updatedContent);
-              });
-
-         
-
-
-            
+              });                    
 
             }else{
+              
                   $('#' + parentDiv).trigger('keyup');
             }
 
@@ -962,7 +958,7 @@ $(document).ready(function () {
         }
     }
     function setPreview(socialicon,path){
-     alert("onetime");
+    //  alert("onetime");
         path = path || "DefaultParam2";
      
         if (socialicon == 'image_or_video_youpost') {
@@ -1057,7 +1053,8 @@ $(document).ready(function () {
                         // var video_ins = $('<video controls class=" video_preview_inst w-100" loading="lazy">').attr('src', 'content_media/'+path);                             
                         $('#mediaContainervideo_youpost').html(video_youpost);   
                         $('#mediaContainervideo_fb').html(video_fb);                     
-                       // $('#mediaContainervideo_inst').html(video_ins);                                            
+                       // $('#mediaContainervideo_inst').html(video_ins); 
+                                                                  
                                                
                                
             }else{
@@ -1372,6 +1369,7 @@ $(document).ready(function () {
 
                                                                                                    
                            
+
                                 setPreview(socialicon,response.path);  
                         
                 
