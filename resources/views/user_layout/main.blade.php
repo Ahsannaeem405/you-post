@@ -348,13 +348,13 @@
                 $('.fc-popover').css('display', 'none');
                 // for sidebar show calendar
                 // $('.calendar2').css('padding-left', '240px');
-                $('.calendar2').css('padding-left', '29%');
+                $('.calendar2').css('padding-left', '32%');
                 // $(".calendar_overflo").css('left', '300px');
-                $(".calendar_overflo").css('left', '6%');
+                $(".calendar_overflo").css('left', '0');
 
                 // $(".sidebar-button").show();
                 $('.calendar_overflo').css({
-                'display': 'block','width':'380px'});
+                'display': 'block','width':'32.8%'});
 
                 // for sidebar show calendar
 
@@ -556,9 +556,9 @@
                     $("#mypostresult_fb").empty().append(inputText);
                     $("#mypostresult_insta").empty().append(inputText);
                     $("#mypostresult_twitter").empty().append(inputText);
-                    $("#mypostresult_linkedin").empty().append(inputText);     
+                    $("#mypostresult_linkedin").empty().append(inputText);
 
-                  
+
                     $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
                     $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);
 
@@ -574,8 +574,8 @@
 
 
                 if (textareaAttr == 'youpost') {
-                    $("#mypostresult_youpost").empty().append(inputText);        
-                                   
+                    $("#mypostresult_youpost").empty().append(inputText);
+
                 }else if (textareaAttr == 'fb') {
 
                 var selectedValues = $('#facebook_tag').val();
