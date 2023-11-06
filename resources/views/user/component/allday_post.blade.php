@@ -12,7 +12,7 @@
                             </div>
                     <div class="d-flex post-detail">
                         <div class="post-img">
-                        <img src="{{asset('images/fbposticon.png')}}" alt="">
+                       
                         @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
                             <img src="{{auth()->user()->account->fb_image}}" alt="">
                         @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)                            

@@ -374,7 +374,7 @@
         if ($("body").innerWidth() < 1550) {
             $(".sidebar-button").show();
             // $(".calendar_overflo").css('display', 'none');
-            $('.calendar2').css('padding-left', '0px');
+            // $('.calendar2').css('padding-left', '0px');
         } else {
             $(".sidebar-button").hide();
             // $(".calendar_overflo").css('display', 'block');

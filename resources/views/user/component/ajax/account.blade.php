@@ -111,24 +111,6 @@
         width: 100% !important;
         margin-bottom: 20px;
     }
-    .account-info{
-        flex-direction: column;
-      }
-      .delete_accountbtn{
-        margin-left:0px;
-        text-align:center;
-        width:100%;
-      }
-      .all_social_platformCnt {
-    padding: 40px 7px 15px;
-}
-.user_detail {
-   
-    font-size: 9px;
-    left: 17%;
-    top: 34px;
-   
-}
 }
 </style>
 @foreach($accounts as $key=>$account)
