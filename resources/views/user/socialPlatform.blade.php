@@ -221,6 +221,7 @@
         }
 
         $(document).on('click', '.plateform', function () {
+          
             var account_id = $(this).data('account');
             var all_plateform = $("input[name='plateform[" + account_id + "]']:checked");
             var plateform_val = [];
@@ -242,6 +243,8 @@
                     RefresehAccounts();
                     if (errorData.message == 'fb_error') {
 
+                             
+                        $('.fb-conect_btn').removeClass('d-none').show();
                         toastr.error(`Please Connect Your Facebook Account.
                     <div class="MDLsocial-icon p-2">
                                 <a class="p-2" href="{{url('connect_to_facebook')}}/${account_id}" style="background:#3b5998 !important">
@@ -249,15 +252,24 @@
                             </div>
 
                     `);
+
+                                     
+                 
+
                     } else if (errorData.message == 'twiter_error') {
 
+                        $('.T-conect_btn').removeClass('d-none').show();
                         toastr.error(`Please Connect Your Twitter Account
                      <div class="MDLsocial-icon p-2" style="background-color: #343434 !important;">
                                 <a class="p-2" href="{{url('connect_twitter')}}/${account_id}">
                                 <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14"/>Connect with X</a></div>
                         </div>
                     `);
+
+                    
                     } else if (errorData.message == 'insta_error') {
+
+                        $('.instconect_btn').removeClass('d-none').show();
                         toastr.error(`Please Connect Your instagram Account
                      <div class="MDLsocial-icon p-2" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;">
                                 <a class="p-2" href="{{url('connect_to_instagram')}}/${account_id}">
@@ -265,13 +277,16 @@
                             </div>
 
                     `);
+                   
                     } else if (errorData.message == 'linkedin_error') {
+                        $('.l-conect_btn').removeClass('d-none').show();
                         toastr.error(`Please Connect Your Linkedin Account
                      <div class="MDLsocial-icon p-2" style="background-color: #0072b1 !important;">
                                 <a class="p-2" href="{{url('connect_to_linkedin')}}/${account_id}">
                                     <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
                             </div>
                     `);
+                  
                     }
                 }
             });

@@ -161,8 +161,8 @@
                             {{ in_array('Facebook', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" class="btn btn-primary fb-recont_btn">Reconnect</button>
-                    <button type="button" class="fb-conect_btn">Connect</button>
+                    <button type="button" class="btn btn-primary fb-recont_btn {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }}">Reconnect</button>
+                    <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button>
                 </div>
                 
                    
@@ -179,9 +179,9 @@
                         <span class="slider round"></span>
                     </label>
                     
-                    <button type="button" class="btn btn-primary instrecont_btn">Reconnect</button>
+                    <button type="button" class="btn btn-primary instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Reconnect</button>
                     
-                    <button type="button" class="instconect_btn">Connect</button>
+                    <button type="button" class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Connect</button>
                     
                 </div>
                 <div class="single_platform {{ in_array('Twitter', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -196,10 +196,10 @@
                         <span class="slider round"></span>
                     </label>
                   
-                    <button type="button" class="btn btn-primary T-recont_btn">Reconnect</button>
+                    <button type="button" class="btn btn-primary T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}">Reconnect</button>
                     
                     
-                    <button type="button"class="T-conect_btn" >Connect</button>
+                    <button type="button"class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" >Connect</button>
                     
                 </div>
                 <div class="single_platform {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -214,9 +214,8 @@
                         <span class="slider round"></span>
                     </label>
                     
-                    <button type="button" class="btn btn-primary l_recont_btn">Reconnect</button>
-                    
-                    <button type="button" class="l-conect_btn">Connect</button>
+                    <button type="button" class="btn btn-primary l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Reconnect</button>
+                    <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button>
                     
                 </div>
                 <div class="single_platform" style="">
@@ -228,7 +227,7 @@
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button>
+                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
                  
                 </div>
                 <div class="single_platform" style="">
@@ -240,7 +239,7 @@
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button>
+                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
               
                 </div>
             </div>

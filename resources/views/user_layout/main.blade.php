@@ -349,13 +349,12 @@
                 $('.calendarmain').empty().append(response);
 
                 $('.fc-popover').css('display', 'none');
-                // for sidebar show calendar
-                // $('.calendar2').css('padding-left', '240px');
+              
                 $('.calendar2').css('padding-left', '29.8%');
-                // $(".calendar_overflo").css('left', '300px');
+               
                 $(".calendar_overflo").css('left', '0');
-
-                // $(".sidebar-button").show();
+                $(".Today-post-detail").hide();
+            
                 $('.calendar_overflo').css({
                 'display': 'block','width':'29.8%'});
 
@@ -388,6 +387,8 @@
 
 
     $(document).on('click', '.plateform', function () {
+      
+
         var account_id = $(this).data('account');
         var all_plateform = $("input[name='plateform[]']:checked");
         var plateform_val = [];
