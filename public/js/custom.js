@@ -982,14 +982,16 @@ $(document).ready(function () {
                  $(img).each(function(index) {
                     imgCount++;
                     if (imgCount >= 6) {
-                       if ($("div.div_in_div_youpost").length === 0) {                                                        
+                     
+                       if ($("div.div_in_div").length === 0) {                                                        
                            var lastImg = $(".prv_div_youpost").find($(".mobile_post_img:last"));
+                           alert(lastImg);
                            // var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
                            //  lastImg.after(spanElement);
-                            lastImg.wrap("<div class='div_in_div_youpost'></div>");
+                            lastImg.wrap("<div class='div_in_div'></div>");
                            //  var newDiv = $("<div class='div_in_div_bg'> </div>");
                            //    $(".div_in_div").after(newDiv);
-                              $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_bg'> </div>`);
+                              $(".div_in_div").append(`<span id= 'my_value_youpost' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_bg'> </div>`);
                        } else {
                             
                            const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');

@@ -55,6 +55,7 @@ class UserController extends Controller
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
             ];
         }
+       
         $response = $this->createPostService->InitilizeData();
         $stattistics = $this->createPostService->Statisics();
         $instapages = $response['linkedin'];
