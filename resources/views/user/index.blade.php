@@ -2009,7 +2009,6 @@
 <!-- =======Calender========= -->
 <section class="position-relative">
     <div class=" container section5">
-
         <div class="calender calendar_overflo container col-lg-12"
             style="width: 0; position: absolute;z-index: 2; display:none;"
             id="mySidebar">
@@ -2023,163 +2022,19 @@
                         <h1 class="date-day mt-0 mb-5">
                             {{\Carbon\Carbon::now()->format('l')}}
                         </h1>
-
-
                     </div>
                 </div>
-                <div class="fb-post">
-                <div class="post-time" >
-                                <span>7:30 PM</span>
-
-                            </div>
-                    <div class="d-flex post-detail">
-                        <div class="post-img">
-                            <img src="{{asset('images/publishedpost.png')}}" alt="">
-                        </div>
-                        <div class="pt-2 ">
-                            <div class="pb-2 account-detail">
-                                <span class=" ">
-                                    <img src="{{asset('images/fbposticon.png')}}" alt="">
-                                </span>
-                                <span class="post_username">
-                                    Waleed Ahmed
-                                </span>
-                            </div>
-                            <div class="pt-2">
-                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                    next......... In this week going to party?</span>
-                                <div class="publishedpost mt-2">
-                                    <span>
-                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                    </span>
-                                    <span class="approved">
-                                        Published
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="fb-post mt-2">
-                <div class="post-time" >
-                                <span>7:30 PM</span>
-
-                            </div>
-                    <div class="d-flex post-detail">
-                        <div class="post-img">
-                            <img src="{{asset('images/publishedpost.png')}}" alt="">
-                        </div>
-                        <div class="pt-2 ">
-                            <div class="pb-2 account-detail">
-                                <span class="">
-                                    <img src="{{asset('images/instapost.png')}}" alt="">
-                                </span>
-                                <span class="post_username">
-                                    Waleed Ahmed
-                                </span>
-                            </div>
-                            <div class="pt-2">
-                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                    next......... In this week going to party?</span>
-                                <div class="publishedpost mt-2">
-                                    <span>
-                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                    </span>
-                                    <span class="approved">
-                                        Published
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
 
 
 
-                </div>
-                <div class="fb-post mt-2">
-                <div class="post-time" >
-                                <span>7:30 PM</span>
-
-                            </div>
-                    <div class="d-flex post-detail">
-                        <div class="post-img">
-                            <img src="{{asset('images/publishedpost.png')}}" alt="">
-                        </div>
-                        <div class="pt-2 ">
-                            <div class="pb-2 account-detail">
-                                <span class=" ">
-                                    <img src="{{asset('images/twitterpost.png')}}" alt="">
-                                </span>
-                                <span class="post_username">
-                                    Waleed Ahmed
-                                </span>
-                            </div>
-                            <div class="pt-2">
-                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                    next......... In this week going to party?</span>
-                                <div class="publishedpost mt-2">
-                                    <span>
-                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                    </span>
-                                    <span class="approved">
-                                        Published
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-                <div class="fb-post mt-2">
-                <div class="post-time" >
-                                <span>7:30 PM</span>
-
-                            </div>
-                    <div class="d-flex post-detail">
-                        <div class="post-img">
-                            <img src="{{asset('images/publishedpost.png')}}" alt="">
-                        </div>
-                        <div class="pt-2 ">
-                            <div class="pb-2 account-detail">
-                                <span class="">
-                                    <img src="{{asset('images/linkpost.png')}}" alt="">
-                                </span>
-                                <span class="post_username">
-                                    Waleed Ahmed
-                                </span>
-                            </div>
-                            <div class="pt-2">
-                                <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                    next......... In this week going to party?</span>
-                                <div class="publishedpost mt-2">
-                                    <span>
-                                        <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                    </span>
-                                    <span class="approved">
-                                        Published
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-                <div class="Today-post-detail" style="margin-top:30px; display:none;">
+                           
+                
+               
+               
+            </div>
+            <div class="Today-post-detail" style="margin-top:30px; display:none;">
 
 </div>
-            </div>
         </div>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
@@ -2919,24 +2774,37 @@ $(document).ready(function() {
     var isDetailVisible = false; // Initialize a flag to track visibility
 
     // Add a click event handler to the todayEbents-list div
-    $(".fb-post").click(function() {
-    if (!isDetailVisible) {
-        // If the detail is not visible, show it and set the flag
-        var contentToAppend = $(".the_preview").html();
-        $(".Today-post-detail").html(contentToAppend);
-        $(".Today-post-detail").append(
-            '<div class="deletepost_btn"><button type="button" class="">Delete Post</button></div>' +
-            '<div class="visit_account"><a href="javascript:void(0);">View post on Twitter</a></div>'
-        );
-        $(".Today-post-detail").show();
-        isDetailVisible = true;
-        $(".fb-post").css('display', 'none');
-    } else {
-        // If the detail is visible, hide it and reset the flag
-        $(".Today-post-detail").hide();
-        $(".fb-post").css('display', 'block');
-        isDetailVisible = false;
-    }
+    $(document).on('click', '.fb-post', function() {
+        var id = $(this).data('id');
+        
+        $.ajax({
+            type: "get",
+            url: "{{ url('get_single_detail') }}",
+            data: {
+                'id': id
+            },
+            success: function (response) {
+                if (!isDetailVisible) {
+                        // If the detail is not visible, show it and set the flag
+                        // var contentToAppend = $(".the_preview").html();
+                        $(".Today-post-detail").html('');
+                        $(".Today-post-detail").append(response);
+                        $(".Today-post-detail").show();
+                        isDetailVisible = true;
+                        $(".fb-post").css('display', 'none');
+                    } else {
+                        // If the detail is visible, hide it and reset the flag
+                        $(".Today-post-detail").hide();
+                        $(".fb-post").css('display', 'block');
+                        isDetailVisible = false;
+                    }
+            }
+        });
+
+
+
+       
+    
 });
     // $(".fb-post").click(function() {
     //     if (!isDetailVisible) {
