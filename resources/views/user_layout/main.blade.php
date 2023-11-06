@@ -354,6 +354,7 @@
                 $('.calendar2').css('padding-left', '29.8%');
                 // $(".calendar_overflo").css('left', '300px');
                 $(".calendar_overflo").css('left', '0');
+                $(".Today-post-detail").css('display','none');
 
                 // $(".sidebar-button").show();
                 $('.calendar_overflo').css({

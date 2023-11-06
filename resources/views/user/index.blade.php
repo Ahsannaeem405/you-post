@@ -611,6 +611,23 @@
     font-weight: 500;
     font-size: 17px;
 }
+    .mydeltpostbtn{
+    border-radius: 10px;
+    margin-top:150px;
+}
+.visit_postsite{
+    color: #6B9CFA;
+    font-family: 'Poppins', sans-serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-decoration-line: underline;
+}
+.postlink{
+    margin-top:40px;
+    text-align:center;
+}
 
 /* close btn sidebar */
 /* timepicker style */
@@ -2032,183 +2049,6 @@
         <!--  -->
         <i class="sidebar-button fa-solid fa-bars" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
             aria-controls="offcanvasLeft"></i>
-        <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
-            <div class="offcanvas-header">
-                <button type="button" class="btn-close text-reset clr" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="calender side-resp"
-                    style="right: 0px; width: 100%; height:100%; position: absolute;z-index: 2;  transition: var(--tran-05);">
-                    <div clas="" style="padding-top:30px">
-                        <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
-                    </div>
-                    <span class="croissant-icon"></span>
-                    <div class="calendarmain">
-                        <div class="l1">
-                            <div class="navigation">
-                                <h1 class="date-day mt-0 mb-5">
-                                    {{\Carbon\Carbon::now()->format('l')}}
-                                </h1>
-
-
-                            </div>
-                        </div>
-                        <div class="fb-post">
-                            <div class="post-time">
-                                <span>7:30 PM</span>
-
-                            </div>
-                            <div class="d-flex post-detail">
-                                <div class="post-img">
-                                    <img src="{{asset('images/publishedpost.png')}}" alt="">
-                                </div>
-                                <div class="pt-2 ">
-                                    <div class="pb-2 account-detail">
-                                        <span class=" ">
-                                            <img src="{{asset('images/fbposticon.png')}}" alt="">
-                                        </span>
-                                        <span class="post_username">
-                                            Waleed Ahmed
-                                        </span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                            next......... In this week going to party?</span>
-                                        <div class="publishedpost mt-2">
-                                            <span>
-                                                <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                            </span>
-                                            <span class="approved">
-                                                Published
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="fb-post mt-2">
-                            <div class="post-time">
-                                <span>7:30 PM</span>
-
-                            </div>
-                            <div class="d-flex post-detail">
-                                <div class="post-img">
-                                    <img src="{{asset('images/publishedpost.png')}}" alt="">
-                                </div>
-                                <div class="pt-2 ">
-                                    <div class="pb-2 account-detail">
-                                        <span class="">
-                                            <img src="{{asset('images/instapost.png')}}" alt="">
-                                        </span>
-                                        <span class="post_username">
-                                            Waleed Ahmed
-                                        </span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                            next......... In this week going to party?</span>
-                                        <div class="publishedpost mt-2">
-                                            <span>
-                                                <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                            </span>
-                                            <span class="approved">
-                                                Published
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
-                        <div class="fb-post mt-2">
-                            <div class="post-time">
-                                <span>7:30 PM</span>
-
-                            </div>
-                            <div class="d-flex post-detail">
-                                <div class="post-img">
-                                    <img src="{{asset('images/publishedpost.png')}}" alt="">
-                                </div>
-                                <div class="pt-2 ">
-                                    <div class="pb-2 account-detail">
-                                        <span class=" ">
-                                            <img src="{{asset('images/twitterpost.png')}}" alt="">
-                                        </span>
-                                        <span class="post_username">
-                                            Waleed Ahmed
-                                        </span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                            next......... In this week going to party?</span>
-                                        <div class="publishedpost mt-2">
-                                            <span>
-                                                <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                            </span>
-                                            <span class="approved">
-                                                Published
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
-                        <div class="fb-post mt-2">
-                            <div class="post-time">
-                                <span>7:30 PM</span>
-
-                            </div>
-                            <div class="d-flex post-detail">
-                                <div class="post-img">
-                                    <img src="{{asset('images/publishedpost.png')}}" alt="">
-                                </div>
-                                <div class="pt-2 ">
-                                    <div class="pb-2 account-detail">
-                                        <span class="">
-                                            <img src="{{asset('images/linkpost.png')}}" alt="">
-                                        </span>
-                                        <span class="post_username">
-                                            Waleed Ahmed
-                                        </span>
-                                    </div>
-                                    <div class="pt-2">
-                                        <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                            next......... In this week going to party?</span>
-                                        <div class="publishedpost mt-2">
-                                            <span>
-                                                <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                            </span>
-                                            <span class="approved">
-                                                Published
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
-                        <div class="Today-post-detail" style="margin-top:30px; display:none;">
-
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <!--  -->
           
             <div class="calender calendar_overflo container col-lg-12"
@@ -2227,159 +2067,12 @@
 
                         </div>
                     </div>
-                    <div class="fb-post">
-                        <div class="post-time">
-                            <span>7:30 PM</span>
-
-                        </div>
-                        <div class="d-flex post-detail">
-                            <div class="post-img">
-                                <img src="{{asset('images/publishedpost.png')}}" alt="">
-                            </div>
-                            <div class="pt-2 ">
-                                <div class="pb-2 account-detail">
-                                    <span class=" ">
-                                        <img src="{{asset('images/fbposticon.png')}}" alt="">
-                                    </span>
-                                    <span class="post_username">
-                                        Waleed Ahmed
-                                    </span>
-                                </div>
-                                <div class="pt-2">
-                                    <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                        next......... In this week going to party?</span>
-                                    <div class="publishedpost mt-2">
-                                        <span>
-                                            <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                        </span>
-                                        <span class="approved">
-                                            Published
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="fb-post mt-2">
-                        <div class="post-time">
-                            <span>7:30 PM</span>
-
-                        </div>
-                        <div class="d-flex post-detail">
-                            <div class="post-img">
-                                <img src="{{asset('images/publishedpost.png')}}" alt="">
-                            </div>
-                            <div class="pt-2 ">
-                                <div class="pb-2 account-detail">
-                                    <span class="">
-                                        <img src="{{asset('images/instapost.png')}}" alt="">
-                                    </span>
-                                    <span class="post_username">
-                                        Waleed Ahmed
-                                    </span>
-                                </div>
-                                <div class="pt-2">
-                                    <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                        next......... In this week going to party?</span>
-                                    <div class="publishedpost mt-2">
-                                        <span>
-                                            <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                        </span>
-                                        <span class="approved">
-                                            Published
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                    <div class="fb-post mt-2">
-                        <div class="post-time">
-                            <span>7:30 PM</span>
-
-                        </div>
-                        <div class="d-flex post-detail">
-                            <div class="post-img">
-                                <img src="{{asset('images/publishedpost.png')}}" alt="">
-                            </div>
-                            <div class="pt-2 ">
-                                <div class="pb-2 account-detail">
-                                    <span class=" ">
-                                        <img src="{{asset('images/twitterpost.png')}}" alt="">
-                                    </span>
-                                    <span class="post_username">
-                                        Waleed Ahmed
-                                    </span>
-                                </div>
-                                <div class="pt-2">
-                                    <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                        next......... In this week going to party?</span>
-                                    <div class="publishedpost mt-2">
-                                        <span>
-                                            <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                        </span>
-                                        <span class="approved">
-                                            Published
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                    <div class="fb-post mt-2">
-                        <div class="post-time">
-                            <span>7:30 PM</span>
-
-                        </div>
-                        <div class="d-flex post-detail">
-                            <div class="post-img">
-                                <img src="{{asset('images/publishedpost.png')}}" alt="">
-                            </div>
-                            <div class="pt-2 ">
-                                <div class="pb-2 account-detail">
-                                    <span class="">
-                                        <img src="{{asset('images/linkpost.png')}}" alt="">
-                                    </span>
-                                    <span class="post_username">
-                                        Waleed Ahmed
-                                    </span>
-                                </div>
-                                <div class="pt-2">
-                                    <span class="content_post">Pop <span class="post_quiz">Quiz</span>!! What’s
-                                        next......... In this week going to party?</span>
-                                    <div class="publishedpost mt-2">
-                                        <span>
-                                            <img src="{{asset('images/approvodpost2.png')}}" alt="">
-                                        </span>
-                                        <span class="approved">
-                                            Published
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                    <div class="Today-post-detail" style="margin-top:30px; display:none;">
-
-                    </div>
+                 
+                   
                 </div>
+                <div class="Today-post-detail" style="margin-top:30px;">
+
+</div>
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
@@ -3135,13 +2828,13 @@ $(document).ready(function() {
                         $(".Today-post-detail").html('');
                         $(".Today-post-detail").append(response);
                         $(".Today-post-detail").show();
-                        isDetailVisible = true;
+                        // isDetailVisible = true;
                         $(".fb-post").css('display', 'none');
                     } else {
                         // If the detail is visible, hide it and reset the flag
                         $(".Today-post-detail").hide();
                         $(".fb-post").css('display', 'block');
-                        isDetailVisible = false;
+                        // isDetailVisible = false;
                     }
             }
         });
