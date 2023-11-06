@@ -5,14 +5,14 @@
         
         $publishedAt = \Carbon\Carbon::parse($post->posted_at);
     @endphp
-    <div class="fb-post" data-id="{{$post->id}}">
+    <div class="fb-post mb-2" data-id="{{$post->id}}">
                      <div class="post-time"   >
                          <span>{{ $publishedAt->format('H:i') }}</span>
 
                             </div>
                     <div class="d-flex post-detail">
                         <div class="post-img">
-
+                        <img src="{{asset('images/fbposticon.png')}}" alt="">
                         @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
                             <img src="{{auth()->user()->account->fb_image}}" alt="">
                         @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)                            
@@ -23,7 +23,7 @@
                             <img src="{{auth()->user()->account->link_image}}" alt="">
                         @endif
                         </div>
-                        <div class="pt-2 ">
+                        <div class="pt-2 ps-2" style="width:100%;">
                             <div class="pb-2 account-detail">
                                 <span class=" ">
                                     <img src="{{asset('images/fbposticon.png')}}" alt="">

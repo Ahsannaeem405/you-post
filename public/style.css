@@ -2385,7 +2385,7 @@ height: 100%;
 .post-detail{
     padding-bottom: 20px;
     text-align: center;
-    border-bottom: 0.7px solid #e4e2e2;
+    /* border-bottom: 0.7px solid #e4e2e2; */
 }
 .mymodalheader{
     background: none !important;

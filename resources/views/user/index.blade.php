@@ -593,6 +593,41 @@
     background-image:url("");
 }
 
+.btn-close {
+    background-image: url("");
+}
+#mypostresult_youpost{
+    display: block;
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+.wizard-fieldset_youpost{
+    color: #171717;
+    font-weight: 500;
+    font-size: 17px;
+}
+    .mydeltpostbtn{
+    border-radius: 10px;
+    margin-top:150px;
+}
+.visit_postsite{
+    color: #6B9CFA;
+    font-family: 'Poppins', sans-serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-decoration-line: underline;
+}
+.postlink{
+    margin-top:40px;
+    text-align:center;
+}
 
 /* close btn sidebar */
 /* timepicker style */
@@ -2065,6 +2100,9 @@
                         </ul>
                     </div>
                 </div>
+                <div class="Today-post-detail" style="margin-top:30px;">
+
+</div>
             </div>
         </div>
         <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
