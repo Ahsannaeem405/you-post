@@ -3119,25 +3119,38 @@ $(document).ready(function() {
     var isDetailVisible = false; // Initialize a flag to track visibility
 
     // Add a click event handler to the todayEbents-list div
-    $(".fb-post").click(function() {
-        if (!isDetailVisible) {
-            // If the detail is not visible, show it and set the flag
-            var contentToAppend = $(".the_preview").html();
-            $(".Today-post-detail").html(contentToAppend);
-            $(".Today-post-detail").append(
-                '<div class="deletepost_btn"><button type="button" class="">Delete Post</button></div>' +
-                '<div class="visit_account"><a href="javascript:void(0);">View post on Twitter</a></div>'
-            );
-            $(".Today-post-detail").show();
-            isDetailVisible = true;
-            $(".fb-post").css('display', 'none');
-        } else {
-            // If the detail is visible, hide it and reset the flag
-            $(".Today-post-detail").hide();
-            $(".fb-post").css('display', 'block');
-            isDetailVisible = false;
-        }
-    });
+    $(document).on('click', '.fb-post', function() {
+        var id = $(this).data('id');
+        
+        $.ajax({
+            type: "get",
+            url: "{{ url('get_single_detail') }}",
+            data: {
+                'id': id
+            },
+            success: function (response) {
+                if (!isDetailVisible) {
+                        // If the detail is not visible, show it and set the flag
+                        // var contentToAppend = $(".the_preview").html();
+                        $(".Today-post-detail").html('');
+                        $(".Today-post-detail").append(response);
+                        $(".Today-post-detail").show();
+                        isDetailVisible = true;
+                        $(".fb-post").css('display', 'none');
+                    } else {
+                        // If the detail is visible, hide it and reset the flag
+                        $(".Today-post-detail").hide();
+                        $(".fb-post").css('display', 'block');
+                        isDetailVisible = false;
+                    }
+            }
+        });
+
+
+
+       
+    
+});
     // $(".fb-post").click(function() {
     //     if (!isDetailVisible) {
     //         // If the detail is not visible, show it and set the flag

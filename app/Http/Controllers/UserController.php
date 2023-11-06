@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function dashbaord()
     {
-
+        
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
@@ -55,6 +55,7 @@ class UserController extends Controller
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
             ];
         }
+        // dd($allPosts);
         $response = $this->createPostService->InitilizeData();
         $stattistics = $this->createPostService->Statisics();
         $instapages = $response['linkedin'];
@@ -350,12 +351,29 @@ class UserController extends Controller
 
     public function get_event_detail(Request $request)
     {
-        $post = Post::find($request->id);
-        $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
-        $platformsName = $platforms->pluck('plateform')->toArray();
-        $platforms = $platforms->groupBy('plateform');
+        // $post = Post::find($request->id);
+        // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
+        // $platformsName = $platforms->pluck('plateform')->toArray();
+        // $platforms = $platforms->groupBy('plateform');
 
-        return view('user.event_detail', compact('post', 'platforms', 'platformsName'));
+
+        $parsedDate = Carbon::parse($request->date);   
+     
+        $posts = Post::with('user')->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
+
+
+        return view('user.component.allday_post', compact('posts'));
+    }
+
+
+    public function get_single_detail(Request $request)
+    {
+         $post = Post::find($request->id);
+        // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
+        // $platformsName = $platforms->pluck('plateform')->toArray();
+        // $platforms = $platforms->groupBy('plateform');     
+
+        return view('user.component.single_postdetail', compact('post'));
     }
 
     public function get_events(Request $request)

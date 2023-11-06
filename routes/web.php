@@ -101,6 +101,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('edit_post/{id}', [UserController::class, 'edit_post']);
 
     Route::get('get_event_detail', [UserController::class, 'get_event_detail']);
+    Route::get('get_single_detail', [UserController::class, 'get_single_detail']);
+
+
     Route::get('get-events', [UserController::class, 'get_events']);
     //update account platforms
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);

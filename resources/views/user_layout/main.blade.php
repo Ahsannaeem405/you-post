@@ -219,8 +219,9 @@
             // salman new code calendar 7/9/23
 
             eventClick: function (event, jsEvent, view) {
-                var id = event.id;
-                get_detail(id);
+                // var id = event.id;
+                var date = event.event_date;
+                get_detail(date);
 
             },
             dayRender: function (date, cell) {
@@ -336,15 +337,17 @@
     @endforeach
     @endif
 
-    function get_detail(id) {
+    function get_detail(date) {
         $.ajax({
             type: "get",
             url: "{{ url('get_event_detail') }}",
             data: {
-                'id': id
+                'date': date
             },
             success: function (response) {
                 $('.event_detail_parent').empty().append(response);
+                $('.calendarmain').empty().append(response);
+
                 $('.fc-popover').css('display', 'none');
                 // for sidebar show calendar
                 // $('.calendar2').css('padding-left', '240px');
@@ -371,7 +374,7 @@
     function checkScreenSize() {
         if ($("body").innerWidth() < 1550) {
             $(".sidebar-button").show();
-            $(".calendar_overflo").css('display', 'none');
+            // $(".calendar_overflo").css('display', 'none');
             $('.calendar2').css('padding-left', '0px');
         } else {
             $(".sidebar-button").hide();
