@@ -111,12 +111,12 @@
               margin: 4px;
           }
           .addOtherAccountMain {
-              background: rgb(194 226 253);
+              /* background: rgb(194 226 253); */
               padding: 10px;
               margin-top: 10px;
               text-align: center;
-              border: 1.5px solid rgb(199 199 199);
-              border-radius: 5px;
+              /* border: 1.5px solid rgb(199 199 199); */
+              /* border-radius: 5px; */
           }
           .addOtherAccountMain h5 {
               margin: unset;
@@ -216,11 +216,20 @@
           .platformBtn a {
               text-decoration: none;
               display: inline-block;
-              background: rgb(15 116 206);
-              color: #fff;
+              /* background: rgb(15 116 206); */
+              color: #000;
               padding: 8px 15px;
-              margin: 10px 0;
-              border-radius: 5px;
+              font-weight:400;
+              font-size:20px;
+              font-family: 'Poppins', sans-serif;
+              margin: 10px 20px 0px 0px;
+              /* border-radius: 5px; */
+          }
+          .platformBtn a::after {
+             content:"\2192";
+             font-size:20px;
+             font-weight:600;
+             margin-left:10px;
           }
           @media screen and (max-width: 575px) {
               .all_social_platformWrp{

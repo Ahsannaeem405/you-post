@@ -589,10 +589,10 @@ body.dark .home .text {
                                 @endif
 
                                 <span class="text nav-text text2"
-                                    style="padding-left:0px;">{{auth()->user()->account->name}}</span>
+                                    style="padding-left:7px;">{{auth()->user()->account->name}}</span>
                                 <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
                                 <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
-                                    style="padding-left:8rem" />
+                                    style="padding-left: 4rem;" />
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($accounts as $account)

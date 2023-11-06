@@ -962,11 +962,11 @@ $(document).ready(function () {
         path = path || "DefaultParam2";
      
         if (socialicon == 'image_or_video_youpost') {
-
+         
             var imgOrVideo= $('#media_type_youpost').val();
            //  var imgCount = $(".prv_div img").length;  
             var imgCount = $(".prv_div_youpost .mobile_post_img").length;  
-            var add_imge = $('#image_div_youpost .cross_img_con ').length;
+            var add_imge = $('#image_div_youpost .cross_img_con').length;
             if(imgCount == 0 || add_imge == 1)
             {
                 $('.prv_div_youpost').css('column-count', '1');
@@ -981,16 +981,27 @@ $(document).ready(function () {
                var imgCount = 0; 
                  $(img).each(function(index) {
                     imgCount++;
+                    
+                    // if (imgCount >= 6) {
+                    //    if ($("div.div_in_div_youpost").length === 0) {                                                        
+                    //        var lastImg = $(".prv_div_youpost").find($(".mobile_post_img:last"));
+                    //         lastImg.wrap("<div class='div_in_div_youpost'></div>");
+                         
+                    //     //    $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_you_bg'> </div>`);
+                    //     $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_you_bg'> </div>`);
+                        
+                        
+                    //    } 
                     if (imgCount >= 6) {
-                       if ($("div.div_in_div_youpost").length === 0) {                                                        
-                           var lastImg = $(".prv_div_youpost").find($(".mobile_post_img:last"));
-                           // var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
-                           //  lastImg.after(spanElement);
+                        if ($("div.div_in_div_youpost").length === 0) {
+                            var lastImg = $(".prv_div_youpost").find(".mobile_post_img:last");
                             lastImg.wrap("<div class='div_in_div_youpost'></div>");
-                           //  var newDiv = $("<div class='div_in_div_bg'> </div>");
-                           //    $(".div_in_div").after(newDiv);
-                              $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_bg'> </div>`);
-                       } else {
+                    
+                            // Add the new span element with the class 'fb_counter_youpost'
+                            $(".div_in_div_youpost").append(`<span id='my_value_youpost' class='fb_counter_youpost'><i class='fa-solid fa-plus plus_fb_icon'></i> ${imgCount - 5}</span><div class='div_in_div_you_bg'></div>`);
+                        
+                    }
+                       else {
                             
                            const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
                            var spanElement = $('#my_value_youpost');    
@@ -1038,6 +1049,16 @@ $(document).ready(function () {
                        $('.my_value_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
    
                     }
+                    if(add_imge == 6){
+                       $('.prv_div_youpost .mobile_post_img:nth-child(5)').addClass('first_child_img5');
+                     
+
+                    }
+                    else{
+                        $('.prv_div_youpost .mobile_post_img:nth-child(5)').addClass('first_child_img5');
+                    }
+                   
+                    
                });
 
 

@@ -348,13 +348,13 @@
                 $('.fc-popover').css('display', 'none');
                 // for sidebar show calendar
                 // $('.calendar2').css('padding-left', '240px');
-                $('.calendar2').css('padding-left', '32%');
+                $('.calendar2').css('padding-left', '29.8%');
                 // $(".calendar_overflo").css('left', '300px');
                 $(".calendar_overflo").css('left', '0');
 
                 // $(".sidebar-button").show();
                 $('.calendar_overflo').css({
-                'display': 'block','width':'32.8%'});
+                'display': 'block','width':'29.8%'});
 
                 // for sidebar show calendar
 
@@ -375,7 +375,7 @@
             $('.calendar2').css('padding-left', '0px');
         } else {
             $(".sidebar-button").hide();
-
+            // $(".calendar_overflo").css('display', 'block');
 
         }
     }

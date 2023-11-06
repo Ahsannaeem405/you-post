@@ -90,6 +90,9 @@
     border-radius: 30px;
     border:none;
 }
+.delete_accountbtn{
+    height: 45px;
+}
 
 /* main account file styling */
 @media (max-width:992px) {
@@ -112,7 +115,7 @@
 </style>
 @foreach($accounts as $key=>$account)
 <!--24,,10,23,  -->
-<div class="account_main">
+<div class="account_main mt-5">
     <div>
         @if(in_array("Facebook", $account->platforms))
         <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle mb-3" alt=""/>
@@ -128,13 +131,13 @@
         @endif
         <div  class="input_lb all_social_platformCnt" style=" background:none;">
             <label for="" class="user_detail">Account Name</label>
-            <div style="display:flex; justify-content:center;">
+            <div class="account-info" style="display:flex; justify-content:center;">
             <input type="text" value="{{$account->name}}" data-account="{{$account->id}}" placeholder="Account Name"
                 class="account-detail account_name">
             <form action="{{ route('account-delete',$account->id) }}" method="POST">
                 @csrf
                 @method('Post')
-                <div class="index_delete"><button type="button" class="btn btn-danger" ><img
+                <div class="index_delete"><button type="button" class="btn btn-danger delete_accountbtn"><img
                             src="{{asset('images/deletebuckit.png')}}"  class="delete_account"/></button>
                 </div>
             </form>
@@ -145,7 +148,7 @@
 
         </div>
         <div style="margin-top:40px; padding-bottom:20px">
-            <div class="all_social_platform justify-content-evenly" style="gap: 0 23px; background:none;">
+            <div class="all_social_platform justify-content-evenly flex-fill" style="gap: 0 23px; background:none;">
                 <div class="single_platform  {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_fb">
                         <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt="" style="height:32px;">

@@ -35,15 +35,17 @@
             opacity: 1;
         }
 </style>
+<div class="platformBtn">
+            <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus">Dashboard</a>
+        </div>
     <section class="all_social_platformWrp">
-
         <div class="all_social_platformLogo">
-            <div class="all_social_platformLogoImg">
+            <div class="all_social_platformLogoImg mt-4">
                 <a href="{{ url('/') }}">
                     <img src="{{asset('images/YouPost_Logo.png')}}" class="" alt=""/>
                 </a>
             </div>
-            <p style="color: #2F2F2F; text-align: center;font-size: 18px;font-style: normal;font-weight: 400;line-height: normal; ">
+            <p style="color: #2F2F2F; text-align: center;font-size: 18px;font-style: normal;font-weight: 300;line-height: normal; margin-top:20px;">
                 Thanks for signing up, <br>
                 Let’s add your first account and connect it’s social platforms
             </p>
@@ -85,9 +87,9 @@
 
 
 
-        <div class="platformBtn">
+        <!-- <div class="platformBtn">
             <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus">Dashboard</a>
-        </div>
+        </div> -->
 
 
     </section>

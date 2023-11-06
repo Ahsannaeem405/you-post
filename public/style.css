@@ -2941,12 +2941,19 @@ top: 27%;
 left: 36%;
 z-index: 1;
 }
+.fb_counter_youpost{
+color: white;
+position: absolute;
+top: 27%;
+left: 36%;
+z-index: 1;
+}
 .plus_fb_icon{
     font-size: 12px;
     cursor: pointer;
 }
 .first_child_img5{
-    height: 69px !important;
+    height: 71px;
 }
 
 /* salman card css end */
@@ -3051,6 +3058,9 @@ z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
+}
+.div_in_div_youpost{
+    position: relative;
 }
 
 

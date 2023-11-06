@@ -1320,6 +1320,18 @@ button {
 .div_in_div_inst_bg:hover{
    opacity: 30%;
 }
+.div_in_div_you_bg{
+    position: absolute;
+    background: #0A0909;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 60%;
+}
+.div_in_div_you_bg:hover{
+   opacity: 30%;
+}
 .insta_counter{
     color: white;
     position: absolute;
