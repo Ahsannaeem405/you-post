@@ -137,7 +137,7 @@ $newvar = $post->getPostLiveLink($post);
                                 alt="" /> View post in live feed @endif</a>
                         @endif
         </div>
-      
+           
                                
        
         
