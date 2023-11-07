@@ -24,7 +24,7 @@ use League\OAuth2\Client\Provider\Twitter;
 use Intervention\Image\Facades\Image;
 use getID3\getID3;
 use Abraham\TwitterOAuth\TwitterOAuth;
-
+use DB;
 
 class UserController extends Controller
 {
@@ -43,7 +43,12 @@ class UserController extends Controller
         
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
-        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
+        // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
+        $posts = Post::select('*')
+        ->where('user_id', auth()->id())
+        ->where('account_id', auth()->user()->account_id)
+        ->groupBy(DB::raw('DATE(posted_at)')) 
+        ->get(); 
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
