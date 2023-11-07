@@ -103,6 +103,17 @@ $newvar = $post->getPostLiveLink($post);
             @endif
         </div>
     </div>
+    <div class="">
+                <div class="">
+                    <div class="deletepost_btn mydeltpostbtn">
+                        <a class="text-decoration-none btn btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this post?');"
+                            href="{{url('post_delete/' .encrypt($post->id))}}">
+                            Delete Post
+                        </a>
+                    </div>
+                </div>
+            </div>
     <!-- <hr style="color:gray; margin-top:41px !important;" class="m-0"> -->
 </div>
 <div class="col-md-12 d-none">
