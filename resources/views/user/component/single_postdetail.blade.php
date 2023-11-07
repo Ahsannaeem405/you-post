@@ -84,6 +84,13 @@ $newvar = $post->getPostLiveLink($post);
                     </div>
                 </div> -->
             </div>
+           
+
+            @elseif($mediatype=='video')
+            <div class="video_container">
+                <video src="{{asset("content_media/$post->media")}}" controls preload="auto"></video>
+            </div>
+            @endif
             <div class="">
                 <div class="">
                     <div class="deletepost_btn mydeltpostbtn">
@@ -96,15 +103,37 @@ $newvar = $post->getPostLiveLink($post);
                 </div>
             </div>
 
-            @elseif($mediatype=='video')
-            <div class="video_container">
-                <video src="{{asset("content_media/$post->media}")}}" controls></video>
-            </div>
-            @endif
+            
+<div class="postlink">
+    <!-- <a href="javascript:void(0);" class="visit_postsite">View post on Twitter </a> -->
+    @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account &&
+    auth()->user()->account->fb_image)
+    <a href="{{ $newvar['fb_feed'] }}" target="_blank" style="font-size:12px;"
+        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
+            alt="" /> View post in live feed @endif</a>
+    @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account &&
+    auth()->user()->account->fb_image)
+    <a href="{{ $newvar['inst_feed'] }}" target="_blank" style="font-size:12px;"
+        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
+            alt="" /> View post in live feed @endif</a>
+    @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account &&
+    auth()->user()->account->fb_image)
+    <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"
+        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
+            alt="" /> View post in live feed @endif</a>
+    @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account &&
+    auth()->user()->account->fb_image)
+    <a href="{{ $newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"
+        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
+            alt="" /> View post in live feed @endif</a>
+    @endif
+</div>
         </div>
     </div>
-    <!-- <hr style="color:gray; margin-top:41px !important;" class="m-0"> -->
+  
+    
 </div>
+
 <div class="col-md-12 d-none">
     <div class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
         <div class="reactions reactions2 d-flex justify-content-center align-items-center d-none">
@@ -136,27 +165,3 @@ $newvar = $post->getPostLiveLink($post);
 </div>
 
 
-<div class="postlink">
-    <!-- <a href="javascript:void(0);" class="visit_postsite">View post on Twitter </a> -->
-    @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account &&
-    auth()->user()->account->fb_image)
-    <a href="{{ $newvar['fb_feed'] }}" target="_blank" style="font-size:12px;"
-        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
-            alt="" /> View post in live feed @endif</a>
-    @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account &&
-    auth()->user()->account->fb_image)
-    <a href="{{ $newvar['inst_feed'] }}" target="_blank" style="font-size:12px;"
-        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
-            alt="" /> View post in live feed @endif</a>
-    @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account &&
-    auth()->user()->account->fb_image)
-    <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"
-        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
-            alt="" /> View post in live feed @endif</a>
-    @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account &&
-    auth()->user()->account->fb_image)
-    <a href="{{ $newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"
-        class="visit_postsite">@if(($post->posted_at_moment)=='now')<img src="{{asset('images/copy.png')}}" class=""
-            alt="" /> View post in live feed @endif</a>
-    @endif
-</div>

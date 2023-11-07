@@ -31,9 +31,9 @@
             </div> -->
         <!--  -->
         <div class="d-flex post-detail">
-            <div class="post-img" style="background-image: url('{{ asset('images/bg-div.jpg') }}');">
+            <!-- <div class="post-img" style="background-image: url('{{ asset('images/bg-div.jpg') }}');">
 
-            </div>
+            </div> -->
 
 
             @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account &&
