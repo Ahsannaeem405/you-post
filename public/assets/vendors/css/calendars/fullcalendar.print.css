@@ -114,7 +114,7 @@
   height: 4em; }
 
 /* kill the horizontal spacing made by the event container. event margins will be done below */
-.fc-time-grid .fc-event-container {
+.fc-time-grid . {
   margin: 0 !important; }
 
 /* TimeGrid *Event* Restyling

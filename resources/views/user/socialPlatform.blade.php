@@ -68,6 +68,15 @@
 
                 </div>
             </div>
+            <script>
+             
+  
+        setTimeout(function() {
+            
+            $('.all_social_platformMain').fadeOut(200); 
+        }, 1000); 
+
+        </script>
         @endif
 
 
@@ -451,6 +460,7 @@
         })
 
     </script>
+
 @endsection
 
 

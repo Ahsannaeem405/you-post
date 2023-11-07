@@ -596,7 +596,8 @@
 .btn-close {
     background-image: url("");
 }
-#mypostresult_youpost{
+
+#mypostresult_youpost {
     display: block;
     display: -webkit-box;
     margin: 0 auto;
@@ -606,29 +607,35 @@
     text-overflow: ellipsis;
     word-wrap: break-word;
 }
-.wizard-fieldset_youpost{
+
+.wizard-fieldset_youpost {
     color: #171717;
     font-weight: 500;
     font-size: 17px;
 }
-    .mydeltpostbtn{
+
+.mydeltpostbtn {
     border-radius: 10px;
-    margin-top:150px;
-}
-.visit_postsite{
-    color: #6B9CFA;
-    font-family: 'Poppins', sans-serif;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-text-decoration-line: underline;
-}
-.postlink{
-    margin-top:40px;
-    text-align:center;
+    /* margin-top: 150px; */
 }
 
+.visit_postsite {
+    color: #6B9CFA;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.postlink {
+    margin-top: 40px;
+    text-align: center;
+}
+.content_main{
+    text-align:left;
+}
 /* close btn sidebar */
 /* timepicker style */
 </style>
@@ -1621,7 +1628,7 @@ text-decoration-line: underline;
                                             <div>
                                                 <span class="twitter_post_content">
                                                     {{auth()->user()->account->tw_name}}</span> <img
-                                                    src="{{asset('images/offical2.png')}}" class="" alt="">
+                                                    src="{{asset('images/offical2.png')}}" class="d-none" alt="">
                                                 <span class="twitter_post_content_tag ">
                                                     {{'@'.auth()->user()->account->tw_user_name}}</span>
                                             </div>
@@ -1717,9 +1724,9 @@ text-decoration-line: underline;
                                             </div>
                                             <div class="follwers">
                                                 <span>
-                                                    1,511 followers
+                                                    0 followers
                                                 </span><br>
-                                                <span class="">3d . <i class="fa-solid fa-earth-americas"></i></span>
+                                                <span class="">0d . <i class="fa-solid fa-earth-americas"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -2113,6 +2120,71 @@ text-decoration-line: underline;
                 </div>
             </div>
         </div>
+        <!--  -->
+
+        <div class="calender calendar_overflo container col-lg-12"
+            style="width: 0; position: absolute;z-index: 2; display:none;" id="mySidebar">
+            <div clas="" style="padding-top:30px">
+                <span class="close-btn" onclick="closeSidebar()">&times;</span>
+            </div>
+            <span class="croissant-icon"></span>
+            <div class="l1">
+                <div class="navigation">
+                    <h1 class="date-day mt-3 mb-3">
+                        {{\Carbon\Carbon::now()->format('l')}}
+                    </h1>
+
+
+                </div>
+            </div>
+            <div class="calendarmain">
+
+
+
+            </div>
+            <div class="Today-post-detail" style="margin-top:30px;">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
+        <div class="title_bar_wrap d-none">
+            <div class="container container_2">
+                <div class="title_bar">
+                    <div class="tabs_type_heading">
+                        <h3>Post Manager</h3>
+                    </div>
+                    <div class="right_contents">
+                        <ul>
+                            <li class="filter_by">
+                                <span>Filter by:</span>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">VIDEO</a>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">IMAGE</a>
+                            <li class="month_name">
+                                <span>December 2022</span>
+                                <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid"
+                                        alt="" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
+            <div class="container container_2">
+                <div class="the_post_manager">
+                    <div id='postManagerCalendar'></div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     </div>
     </div>
@@ -2815,36 +2887,36 @@ $(document).ready(function() {
     // Add a click event handler to the todayEbents-list div
     $(document).on('click', '.fb-post', function() {
         var id = $(this).data('id');
-        
+
         $.ajax({
             type: "get",
             url: "{{ url('get_single_detail') }}",
             data: {
                 'id': id
             },
-            success: function (response) {
+            success: function(response) {
                 if (!isDetailVisible) {
-                        // If the detail is not visible, show it and set the flag
-                        // var contentToAppend = $(".the_preview").html();
-                        $(".Today-post-detail").html('');
-                        $(".Today-post-detail").append(response);
-                        $(".Today-post-detail").show();
-                        // isDetailVisible = true;
-                        $(".fb-post").css('display', 'none');
-                    } else {
-                        // If the detail is visible, hide it and reset the flag
-                        $(".Today-post-detail").hide();
-                        $(".fb-post").css('display', 'block');
-                        // isDetailVisible = false;
-                    }
+                    // If the detail is not visible, show it and set the flag
+                    // var contentToAppend = $(".the_preview").html();
+                    $(".Today-post-detail").html('');
+                    $(".Today-post-detail").append(response);
+                    $(".Today-post-detail").show();
+                    // isDetailVisible = true;
+                    $(".fb-post").css('display', 'none');
+                } else {
+                    // If the detail is visible, hide it and reset the flag
+                    $(".Today-post-detail").hide();
+                    $(".fb-post").css('display', 'block');
+                    // isDetailVisible = false;
+                }
             }
         });
 
 
 
-       
-    
-});
+
+
+    });
     // $(".fb-post").click(function() {
     //     if (!isDetailVisible) {
     //         // If the detail is not visible, show it and set the flag

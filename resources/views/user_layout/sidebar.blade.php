@@ -98,6 +98,7 @@
 }
 
 .sidebar .text {
+    font-family: 'Poppins', sans-serif;
     font-size: 17px;
     font-weight: 500;
     white-space: nowrap;
@@ -452,6 +453,7 @@ body.dark .home .text {
     transition: var(--tran-05);
 }
 
+
 /* ----------------------------------------end of .offcanvas-start ------------------------------------- */
 
 
@@ -536,6 +538,7 @@ body.dark .home .text {
         justify-content: center;
         align-items: center;
     }
+    
 }
 </style>
 <!-- ------------------------------------------- offcanvas sidebar ----------------------------------------- -->
@@ -594,7 +597,7 @@ body.dark .home .text {
                                 <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
                                     style="padding-left: 4rem;" />
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <ul class="dropdown-menu mydropdown_menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($accounts as $account)
                                 <li><a class="dropdown-item {{auth()->user()->account_id==$account->id ? 'active' : null}}"
                                         href="{{url("change_acount/".encrypt($account->id))}}"><i
@@ -609,7 +612,7 @@ body.dark .home .text {
                     </div>
                 </li>
 
-                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">My Accounts</span></a></li>
+                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">Add Accounts</span></a></li>
                 </li>
 
                 <!-- <li class="nav-link">
