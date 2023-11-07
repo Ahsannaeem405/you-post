@@ -184,7 +184,7 @@
                         {{ in_array('Facebook', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}"
                         href="">
-                         <span class="linkedbtnabc"> Connect with Facebook</span>
+                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
@@ -210,7 +210,7 @@
                         class=" plateform_btn btn instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}"
                         id="Instagrambtn">{{ in_array('Instagram', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
                     <a class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
-                         <span class="linkedbtnabc"> Connect with Instagram</span>
+                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                     <!-- <button type="button" class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
 
@@ -234,7 +234,7 @@
 
                     <a class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
                          <span class="linkedbtnabc">
-                            Connect with Twitter</span>
+                            Connect</span>
                     </a>
                     <!-- <button type="button"class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" >Connect</button> -->
 
@@ -259,7 +259,7 @@
                         id="Linkedinbtn">{{ in_array('Linkedin', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
                     <!-- <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
                     <a class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
-                        <span class="linkedbtnabc"> Connect with Linkedin</span>
+                        <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
                 <div class="single_platform" style="">

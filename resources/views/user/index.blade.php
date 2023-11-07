@@ -628,6 +628,9 @@ text-decoration-line: underline;
     margin-top:40px;
     text-align:center;
 }
+.content_main{
+    text-align:left;
+}
 
 /* close btn sidebar */
 /* timepicker style */

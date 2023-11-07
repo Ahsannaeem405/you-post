@@ -25,7 +25,7 @@ $newvar = $post->getPostLiveLink($post);
             @endphp
 
             <div>
-                <span id="" class="postname">{{$post->content}} <br>
+                <span id="" class="postname"> {{auth()->user()->account->fb_page_name}}<br>
                     <span class="sponsored">Public . <i class="fa-solid fa-earth-americas"></i></span>
                 </span>
             </div>
