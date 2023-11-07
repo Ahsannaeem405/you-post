@@ -107,6 +107,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('get-events', [UserController::class, 'get_events']);
     //update account platforms
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
+    Route::get('update_user_platforms_accounts', [UserController::class, 'update_user_platforms_accounts']);
+    Route::get('reconnect_user__accounts', [UserController::class, 'reconnect_user__accounts']);
 
     //connect to facebook
     Route::get('connect_to_facebook/{account?}', [UserController::class, 'connect_to_facebook']);

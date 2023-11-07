@@ -414,6 +414,109 @@ class UserController extends Controller
 
     }
 
+
+
+
+    public function reconnect_user__accounts(Request $req)
+    {
+        $account = Account::find($req->account_id);
+      
+        if ($req->plateform_val != null) {
+            $platformsArray = $account->platforms; 
+            $valueToRemove = $req->plateform_val;             
+               if (in_array($valueToRemove, $platformsArray)) {       
+                $platformsArray = array_diff($platformsArray, [$valueToRemove]);
+                $indexedArray = array_values($platformsArray);
+                $account->platforms = $indexedArray;            
+                $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'conet_or_not' => 'yes'
+
+                ];
+                return response()->json($response, 200);
+            }else{
+                $newValue = $req->plateform_val;           
+                $platformsArray[] = $newValue; 
+                $account->platforms = $platformsArray;              
+                $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'conet_or_not' => 'no'
+                ];
+                return response()->json($response, 200);
+            }                    
+
+        }
+
+        
+       
+
+       
+    }
+
+
+
+    public function update_user_platforms_accounts(Request $req)
+    {
+        $account = Account::find($req->account_id);
+
+        if ($req->plateform_val != null) {
+            if (($req->plateform_val =='Facebook') && ($account->fb_access_token == null || $account->fb_page_token == null)) {
+                $error = ['message' => 'fb_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            } if (($req->plateform_val =='Twitter') && ($account->twiter_access_token == null || $account->twiter_refresh_token == null)) {
+                $error = ['message' => 'twiter_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            } if (($req->plateform_val =='Instagram') && ($account->insta_access_token == null || $account->insta_user_id == null)) {
+                $error = ['message' => 'insta_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            } if (($req->plateform_val =='Linkedin') && ($account->linkedin_accesstoken == null || $account->linkedin_user_id == null || $account->linkedin_page_id == null)) {
+                $error = ['message' => 'linkedin_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            }
+        }
+        if ($req->plateform_val != null) {
+            $platformsArray = $account->platforms; 
+            $valueToRemove = $req->plateform_val;             
+            //    if (in_array($valueToRemove, $platformsArray)) {        
+                if (($req->isChecked == 'false')) {               
+       
+                // $platformsArray = array_diff($platformsArray, [$valueToRemove]);
+                // $indexedArray = array_values($platformsArray);
+                // $account->platforms = $indexedArray;            
+                // $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'status' => 'off'
+                ];
+                return response()->json($response, 200);
+            }else{
+                // $newValue = $req->plateform_val;           
+                // $platformsArray[] = $newValue; 
+                // $account->platforms = $platformsArray;              
+                // $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'status' => 'on'
+                ];
+                return response()->json($response, 200);
+            }                    
+
+        }
+
+        
+       
+
+       
+    }
+
+
+
     public function update_user_platforms(Request $req)
     {
         $account = Account::find($req->account_id);

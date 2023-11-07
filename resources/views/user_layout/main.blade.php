@@ -350,14 +350,12 @@
                 $('.calendarmain').empty().append(response);
 
                 $('.fc-popover').css('display', 'none');
-                // for sidebar show calendar
-                // $('.calendar2').css('padding-left', '240px');
+              
                 $('.calendar2').css('padding-left', '29.8%');
-                // $(".calendar_overflo").css('left', '300px');
+               
                 $(".calendar_overflo").css('left', '0');
-                $(".Today-post-detail").css('display','none');
-
-                // $(".sidebar-button").show();
+                $(".Today-post-detail").hide();
+            
                 $('.calendar_overflo').css({
                 'display': 'block','width':'29.8%'});
 
@@ -376,8 +374,8 @@
     function checkScreenSize() {
         if ($("body").innerWidth() < 1550) {
             $(".sidebar-button").show();
-            $(".calendar_overflo").css('display', 'none');
-            $('.calendar2').css('padding-left', '0px');
+            // $(".calendar_overflo").css('display', 'none');
+            // $('.calendar2').css('padding-left', '0px');
         } else {
             $(".sidebar-button").hide();
             // $(".calendar_overflo").css('display', 'block');
@@ -390,6 +388,8 @@
 
 
     $(document).on('click', '.plateform', function () {
+      
+
         var account_id = $(this).data('account');
         var all_plateform = $("input[name='plateform[]']:checked");
         var plateform_val = [];

@@ -62,7 +62,9 @@ class AccountController extends Controller
 
     public function refresh_accounts(Request $request)
     {
+       
         $accounts = \Auth::user()->accountList;
+       
         return view('user.component.ajax.account', compact('accounts'));
     }
 }

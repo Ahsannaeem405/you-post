@@ -111,24 +111,6 @@
         width: 100% !important;
         margin-bottom: 20px;
     }
-    .account-info{
-        flex-direction: column;
-      }
-      .delete_accountbtn{
-        margin-left:0px;
-        text-align:center;
-        width:100%;
-      }
-      .all_social_platformCnt {
-    padding: 40px 7px 15px;
-}
-.user_detail {
-   
-    font-size: 9px;
-    left: 17%;
-    top: 34px;
-   
-}
 }
 </style>
 @foreach($accounts as $key=>$account)
@@ -179,8 +161,12 @@
                             {{ in_array('Facebook', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" class="btn btn-primary fb-recont_btn">Reconnect</button>
-                    <button type="button" class="fb-conect_btn">Connect</button>
+                    <button type="button" id = "Facebookbtn" class="fb-recont_btn plateform_btn btn btn-primary {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }}" value="Facebook"
+                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" > {{ in_array('Facebook', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+                  <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}" href="">
+                           <i class="fa fa-facebook-square me-2"></i> <span> Connect with Facebook</span>
+                        </a>
+                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
                 
                    
@@ -197,9 +183,12 @@
                         <span class="slider round"></span>
                     </label>
                     
-                    <button type="button" class="btn btn-primary instrecont_btn">Reconnect</button>
-                    
-                    <button type="button" class="instconect_btn">Connect</button>
+                    <button type="button"  value="Instagram"
+                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" class=" plateform_btn btn btn-primary instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" id="Instagrambtn">{{ in_array('Instagram', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+                    <a class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
+                           <i class="fa fa-instagram me-2"></i> <span> Connect with Instagram</span>
+                        </a>
+                    <!-- <button type="button" class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
                     
                 </div>
                 <div class="single_platform {{ in_array('Twitter', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -214,10 +203,13 @@
                         <span class="slider round"></span>
                     </label>
                   
-                    <button type="button" class="btn btn-primary T-recont_btn">Reconnect</button>
+                    <button type="button" value="Twitter"
+                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" class=" plateform_btn btn btn-primary T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" id="Twitterbtn">{{ in_array('Twitter', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
                     
-                    
-                    <button type="button"class="T-conect_btn" >Connect</button>
+                     <a class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
+                     <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14"/> <span> Connect with Twitter</span>
+                        </a>
+                    <!-- <button type="button"class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" >Connect</button> -->
                     
                 </div>
                 <div class="single_platform {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -232,10 +224,12 @@
                         <span class="slider round"></span>
                     </label>
                     
-                    <button type="button" class="btn btn-primary l_recont_btn">Reconnect</button>
-                    
-                    <button type="button" class="l-conect_btn">Connect</button>
-                    
+                    <button type="button" value="Linkedin"
+                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" class="plateform_btn btn btn-primary l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" id="Linkedinbtn">{{ in_array('Linkedin', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+                    <!-- <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
+                    <a class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
+                    <i class="fa fa-linkedin-square me-2"></i><span> Connect with Linkedin</span>
+                        </a>
                 </div>
                 <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 9px;">
@@ -246,7 +240,7 @@
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button>
+                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
                  
                 </div>
                 <div class="single_platform" style="">
@@ -258,7 +252,7 @@
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button>
+                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
               
                 </div>
             </div>

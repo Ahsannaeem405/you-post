@@ -229,58 +229,213 @@
             });
         }
 
-        $(document).on('click', '.plateform', function () {
+
+        $(document).on('click', '.plateform_btn', function () {           
+           
             var account_id = $(this).data('account');
-            var all_plateform = $("input[name='plateform[" + account_id + "]']:checked");
-            var plateform_val = [];
-            all_plateform.each(function () {
-                plateform_val.push($(this).val());
-            });
+            var plateform_val= $(this).val();    
+           
             $.ajax({
                 type: "get",
-                url: "{{ url('update_user_platforms') }}",
+                url: "{{ url('reconnect_user__accounts') }}",
                 data: {
                     'plateform_val': plateform_val,
                     'account_id': account_id
                 },
-                success: function (response) {
-                    window.location.reload();
+                success: function (response) {    
+
+                 
+                    if(response.conet_or_not=='no' ){
+                        $('#' +response.message + 'btn' ).text('Disconnect'); 
+                        toastr.success(`${response.message} connected successfully!                   
+                    `);
+                    }
+                    else{
+                        toastr.success(`${response.message} dis connected successfully!                   
+                    `);
+                    $('#' +response.message + 'btn' ).text('Reconncet'); 
+                    } 
+
+               
+
                 },
                 error: function (xhr, status, error) {
+                   
+                   
+                }
+            });
+
+
+        });
+      
+
+        $(document).on('click', '.plateform', function () {
+            var isChecked = $(this).prop('checked');
+           var currentclick= $(this);
+            var account_id = $(this).data('account');
+            var plateform_val= $(this).val();
+        //    alert(plateform_val);
+            // var all_plateform = $("input[name='plateform[" + account_id + "]']:checked");         
+
+            // var plateform_val = [];
+            // plateform_val.push($(this).val());
+            // all_plateform.each(function () {
+            //     plateform_val.push($(this).val());
+            // });
+
+            $.ajax({
+                type: "get",
+                url: "{{ url('update_user_platforms_accounts') }}",
+                data: {
+                    'plateform_val': plateform_val,
+                    'account_id': account_id,
+                    'isChecked':isChecked
+                },
+                success: function (response) {
+                    var message = response.message;
+                     var status = response.status;  
+
+
+
+                     if (message == 'Facebook') { 
+
+                                if(status =='on'){
+                                        $('.fb-recont_btn').removeClass('d-none').show();
+                                        $('.fb-conect_btn').removeClass('show').hide();
+                                }  else{
+                                        $('.fb-recont_btn').removeClass('show').hide();
+                                        $('.fb-conect_btn').removeClass('show').hide();
+                                }             
+                          
+                        } else if (message == 'Twitter') {
+
+                                if(status =='on'){
+                                        $('.T-recont_btn').removeClass('d-none').show();
+                                        $('.T-conect_btn').removeClass('show').hide();
+                                }  else{
+                                        $('.T-recont_btn').removeClass('show').hide();
+                                        $('.T-conect_btn').removeClass('show').hide();
+                                }  
+
+
+                        } else if (message == 'Instagram') {
+
+                                if(status =='on'){
+                                        $('.instrecont_btn').removeClass('d-none').show();
+                                        $('.instconect_btn').removeClass('show').hide();
+                                }  else{
+                                        $('.instrecont_btn').removeClass('show').hide();
+                                        $('.instconect_btn').removeClass('show').hide();
+                                }  
+
+                        } else if (message == 'Linkedin') {
+
+                                if(status =='on'){
+                                        $('.l_recont_btn').removeClass('d-none').show();
+                                        $('.l-conect_btn').removeClass('show').hide();
+                                }  else{
+                                        $('.l_recont_btn').removeClass('show').hide();
+                                        $('.l-conect_btn').removeClass('show').hide();
+                                }  
+
+                        }                              
+                 
+                },
+                error: function (xhr, status, error) {
+                   
                     var errorData = JSON.parse(xhr.responseText);
-                    RefresehAccounts();
+                    // RefresehAccounts();
+                   
+
                     if (errorData.message == 'fb_error') {
 
-                        toastr.error(`Please Connect Your Facebook Account.
-                    <div class="MDLsocial-icon p-2">
-                                <a class="p-2" href="{{url('connect_to_facebook')}}/${account_id}" style="background:#3b5998 !important">
-                                    <i class="fa fa-facebook-square me-2"></i> <span> Connect with Facebook</span> </a>
-                            </div>
+                        if(errorData.status == 'false'){                           
+                                $('.fb-recont_btn').removeClass('show').hide(); 
+                                $('.fb-conect_btn').removeClass('d-none').hide();        
+                        }else{
+                                $('.fb-recont_btn').removeClass('show').hide(); 
+                                $('.fb-conect_btn').removeClass('d-none').show();
+                        }                     
+                   
+                    var closestLabel = currentclick.closest('label'); 
+                    closestLabel= closestLabel.parent().find('a');               
+                    var newHref = "{{ url('connect_to_facebook') }}" + '/' + account_id;                    
+                    closestLabel.attr('href', newHref);                 
 
-                    `);
                     } else if (errorData.message == 'twiter_error') {
 
-                        toastr.error(`Please Connect Your Twitter Account
-                     <div class="MDLsocial-icon p-2" style="background-color: #343434 !important;">
-                                <a class="p-2" href="{{url('connect_twitter')}}/${account_id}">
-                                <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14"/>Connect with X</a></div>
-                        </div>
-                    `);
-                    } else if (errorData.message == 'insta_error') {
-                        toastr.error(`Please Connect Your instagram Account
-                     <div class="MDLsocial-icon p-2" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;">
-                                <a class="p-2" href="{{url('connect_to_instagram')}}/${account_id}">
-                                    <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
-                            </div>
 
-                    `);
+                        if(errorData.status == 'false'){                           
+                            $('.T-conect_btn').removeClass('d-none').hide();
+                        $('.T-recont_btn').removeClass('show').hide(); 
+        
+                        }else{
+                            $('.T-conect_btn').removeClass('d-none').show();
+                        $('.T-recont_btn').removeClass('show').hide(); 
+
+                        }
+
+                    var closestLabel = currentclick.closest('label'); 
+                    closestLabel= closestLabel.parent().find('a');               
+                    var newHref = "{{ url('connect_twitter') }}" + '/' + account_id;                    
+                    closestLabel.attr('href', newHref);    
+
+                        
+                    //     toastr.error(`Please Connect Your Twitter Account
+                    //  <div class="MDLsocial-icon p-2" style="background-color: #343434 !important;">
+                    //             <a class="p-2" href="{{url('connect_twitter')}}/${account_id}">
+                    //             <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14"/>Connect with X</a></div>
+                    //     </div>
+                    // `);
+
+                    
+                    } else if (errorData.message == 'insta_error') {
+
+                        if(errorData.status == 'false'){                           
+                            $('.instconect_btn').removeClass('d-none').hide();
+                        $('.instrecont_btn').removeClass('show').hide(); 
+        
+                        }else{
+                            $('.instconect_btn').removeClass('d-none').show();
+                        $('.instrecont_btn').removeClass('show').hide(); 
+
+                        }
+                       
+                        var closestLabel = currentclick.closest('label'); 
+                    closestLabel= closestLabel.parent().find('a');               
+                    var newHref = "{{ url('connect_to_instagram') }}" + '/' + account_id;                    
+                    closestLabel.attr('href', newHref);    
+                    //     toastr.error(`Please Connect Your instagram Account
+                    //  <div class="MDLsocial-icon p-2" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;">
+                    //             <a class="p-2" href="{{url('connect_to_instagram')}}/${account_id}">
+                    //                 <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
+                    //         </div>
+
+                    // `);
+                   
                     } else if (errorData.message == 'linkedin_error') {
-                        toastr.error(`Please Connect Your Linkedin Account
-                     <div class="MDLsocial-icon p-2" style="background-color: #0072b1 !important;">
-                                <a class="p-2" href="{{url('connect_to_linkedin')}}/${account_id}">
-                                    <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
-                            </div>
-                    `);
+                        
+                        if(errorData.status == 'false'){                           
+                            $('.l-conect_btn').removeClass('d-none').hide();
+                        $('.l_recont_btn').removeClass('show').hide(); 
+        
+                        }else{
+                            $('.l-conect_btn').removeClass('d-none').show();
+                        $('.l_recont_btn').removeClass('show').hide(); 
+
+                        }
+
+                        var closestLabel = currentclick.closest('label'); 
+                    closestLabel= closestLabel.parent().find('a');               
+                    var newHref = "{{ url('connect_to_linkedin') }}" + '/' + account_id;                    
+                    closestLabel.attr('href', newHref);    
+                    //     toastr.error(`Please Connect Your Linkedin Account
+                    //  <div class="MDLsocial-icon p-2" style="background-color: #0072b1 !important;">
+                    //             <a class="p-2" href="{{url('connect_to_linkedin')}}/${account_id}">
+                    //                 <i class="fa fa-linkedin-square me-2"></i>Connect with Linkedin</a>
+                    //         </div>
+                    // `);
+                  
                     }
                 }
             });

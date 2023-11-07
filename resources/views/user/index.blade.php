@@ -450,12 +450,10 @@
         margin-top: 20px;
         text-align: center;
     }
-
     /*  */
     .offcanvas-start {
-        width: 350px !important;
-    }
-
+    width: 350px !important;
+}
     /*  */
 
 }
@@ -588,9 +586,11 @@
 .container.section5 .calendar_overflo {
     transition: all 1s ease;
 }
-
-.with-transition {
+ .with-transition {
     transition: all 1s ease-out !important;
+}
+.btn-close{
+    background-image:url("");
 }
 
 .btn-close {
@@ -662,7 +662,7 @@
 
 
                                             <ul class="list-unstyled form-wizard-steps form_wizard_steps clearfix">
-                                                <li section="youpost"><span
+                                               <li section="youpost"><span
                                                         class="d-flex justify-content-center align-items-center"><img
                                                             src="{{asset('images/you-post.png')}}" alt=""></span></li>
                                                 @if(in_array(('Facebook'),auth()->user()->account->platforms))
@@ -692,19 +692,18 @@
                                             </ul>
                                         </div>
 
-                                        <!-- you post content -->
+                                    <!-- you post content -->
                                         <fieldset class="wizard-fieldset youpost ">
                                             <div class="ml-2">
                                                 <span class="wizard-fieldset_edit">Edit</span> : <span
                                                     class="wizard-fieldset_youpost">You Post</span>
 
                                             </div>
-                                            <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
+                                            <div class="form-group emoji_parent emoji_parent2" data-emoji ='youpost' >
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention"
-                                                    data-id="youpost_error"
-                                                    placeholder="Write your Initial post...">{{old('youpost_content')}}</textarea>
+                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"
+                                                    placeholder="Write your post...">{{old('youpost_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
@@ -714,9 +713,9 @@
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0">
                                                         <li>
-                                                            <a href="javascript:void(0)"
-                                                                class="image_or_video_youpost_all" typpe="image"
-                                                                social="youpost" fordata="image_or_video_youpost"><label
+                                                            <a href="javascript:void(0)" class="image_or_video_youpost_all"
+                                                                typpe="image" social="youpost"
+                                                                fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
                                                                     <img src="{{asset('')}}images/Camera_Icon.png"
                                                                         class="img-fluid" alt="" />
@@ -724,9 +723,9 @@
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)"
-                                                                class="image_or_video_youpost_all" typpe="video"
-                                                                social="youpost" fordata="image_or_video_youpost"><label
+                                                            <a href="javascript:void(0)" class="image_or_video_youpost_all"
+                                                                typpe="video" social="youpost"
+                                                                fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
                                                                     <img src="{{asset('')}}images/new_image.png"
                                                                         class="img-fluid" alt="" />
@@ -749,16 +748,15 @@
                                                             id="facebook_tag">
                                                         </select>
                                                     </div> -->
-                                                </div>
-                                            </div>
+                                               </div>
+                                           </div>
                                             <!-- my code -->
                                             <!-- append div waleed start -->
-                                            <div id="image_div_youpost" class="image_div_2"><label for="file"
+                                           <div id="image_div_youpost" class="image_div_2"><label for="file"
                                                     style="margin-top: 20px;">
 
                                                     <div class="sm_container" id="12">
-                                                        <input type="file" name=""
-                                                            class="image d-none file_image_video_youpost"
+                                                       <input type="file" name="" class="image d-none file_image_video_youpost"
                                                             id="image_or_video_youpost" accept="image/*,video/*"
                                                             div_to_open="youpost">
                                                         <input type="hidden" name="media_type_youpost"
@@ -766,13 +764,13 @@
                                                         <input type="hidden" name="youpost_video" id="youpost_video">
 
                                                     </div>
-                                                </label>
+                                               </label>
 
-                                            </div>
+                                          </div>
                                             <p id="file_error_youpost">
-                                            </p>
+                                           </p>
                                             <!-- append div waleed start -->
-                                            <!-- end my coed -->
+                                          <!-- end my coed -->
 
 
                                             <div class="form-group clearfix clearfix2">
@@ -780,9 +778,9 @@
                                                    class="form-wizard-previous-btn float-left">Back</a>
                                                 <a href="javascript:;" class="form-wizard-next-btn float-right">Next
                                                    Platform</a> -->
-                                            </div>
-                                        </fieldset>
-                                        <!-- you post content end -->
+                                       </div>
+                                       </fieldset>
+                                          <!-- you post content end -->
 
                                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset fb">
@@ -848,7 +846,7 @@
                                             <div id="image_div" class="image_div_2"><label for="file"
                                                     style="margin-top: 20px;">
 
-                                                    <div class="sm_container" id="11">
+                                                    <div class="sm_container"  id="11">
                                                         <input type="file" name="" class="image d-none file_image_video"
                                                             id="image_or_videofb" accept="image/*,video/*"
                                                             div_to_open="facebook">
@@ -1269,7 +1267,7 @@
                                     <div class="w-50">
                                         <h6 class="text-light">You Post</h6>
                                     </div>
-                                    <div class="w-50 Mobsocial-icon Mobsocial_icon d-none">
+                                    <div class="w-50 Mobsocial-icon Mobsocial_icon">
                                         <div><i class="fa-solid fa-plus text-light i_one"></i></div>
                                         <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
                                         <div class="messenger"><i
@@ -1282,7 +1280,7 @@
                                 </div>
                             </div>
 
-                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2 px-2 pb-1 d-none">
+                            <div class="Mobcompny-smallicon Mobcompny_smallicon pt-2 px-2 pb-1">
                                 <span><i class="fa-solid fa-house"></i></span>
                                 <div class="one_img"><img src="{{asset('images/ad.png')}}" class="" alt=""></div>
                                 <div class="one_img messenger"><img src="{{asset('images/you.png')}}" class="" alt="">
@@ -1306,8 +1304,8 @@
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{asset('images/you-post.png')}}" class="img-fluid" width="40"
-                                                    height="40" alt="">
+                                                <img src="{{asset('images/you-post.png')}}" class="img-fluid"
+                                                    width="40" height="40" alt="">
                                             </div>
                                             <div>
                                                 <span id="" class="postname">{{auth()->user()->name}} <br>
@@ -1316,7 +1314,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="icons_d d-none">
+                                        <div class="icons_d">
                                             <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
                                             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
                                         </div>
@@ -1355,7 +1353,7 @@
                                         </div>
                                     </div>
                                     <hr style="color:gray;" class="m-0">
-                                    <div class="actions-buttons actions_buttons px-1 mt-3 d-none">
+                                    <div class="actions-buttons actions_buttons px-1 mt-3">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
@@ -2053,44 +2051,72 @@
 <!-- =======Calender========= -->
 <section class="position-relative">
     <div class=" container section5">
-        <!--  -->
-        <i class="sidebar-button fa-solid fa-bars" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
-            aria-controls="offcanvasLeft"></i>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
-            <div class="offcanvas-header">
-                <button type="button" class="btn-close text-reset clr" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
+        <div class="calender calendar_overflo container col-lg-12"
+            style="width: 0; position: absolute;z-index: 2; display:none;"
+            id="mySidebar">
+            <div clas="" style="padding-top:30px">
+                <span class="close-btn" onclick="closeSidebar()">&times;</span>
             </div>
-            <div class="offcanvas-body">
-                <div class="calender side-resp container"
-                    style="right: 0px; width: 100%; height:100%; position: absolute;z-index: 2;  transition: var(--tran-05);">
-                    <div clas="" style="padding-top:30px">
-                        <span><img class="img-fluid" src="{{asset('images/youpostlogo2.png')}}" alt=""></span>
+            <span class="croissant-icon"></span>
+            <div class="l1">
+                    <div class="navigation">
+                        <h1 class="date-day mt-0 mb-3">
+                            {{\Carbon\Carbon::now()->format('l')}}
+                        </h1>
                     </div>
-                    <span class="croissant-icon"></span>
-                    <div class="l1">
-                        <div class="navigation">
-                            <h1 class="date-day mt-0 mb-3">
-                                {{\Carbon\Carbon::now()->format('l')}}
-                            </h1>
+                </div>
+            <div class="calendarmain">
+                
 
 
-                        </div>
+
+                           
+                
+               
+               
+            </div>
+            <div class="Today-post-detail" style="margin-top:30px; display:none;">
+
+</div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
+        <div class="title_bar_wrap d-none">
+            <div class="container container_2">
+                <div class="title_bar">
+                    <div class="tabs_type_heading">
+                        <h3>Post Manager</h3>
                     </div>
-                    <div class="calendarmain">
-
-
-
-
-
-
-
-
-
+                    <div class="right_contents">
+                        <ul>
+                            <li class="filter_by">
+                                <span>Filter by:</span>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">VIDEO</a>
+                            </li>
+                            <li>
+                                <a class="filter_link" href="javascript:void(0)">IMAGE</a>
+                            <li class="month_name">
+                                <span>December 2022</span>
+                                <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid"
+                                        alt="" /></a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="Today-post-detail" style="margin-top:30px; display:none;">
+                </div>
+                <div class="Today-post-detail" style="margin-top:30px;">
 
-                    </div>
+</div>
+            </div>
+        </div>
+        <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
+            <div class="container container_2">
+                <div class="the_post_manager">
+                    <div id='postManagerCalendar'></div>
                 </div>
             </div>
         </div>
@@ -2158,6 +2184,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
     </div>
