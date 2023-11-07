@@ -26,7 +26,19 @@
                         <div class="pt-2 ps-2" style="width:100%;">
                             <div class="pb-2 account-detail">
                                 <span class=" ">
-                                    <img src="{{asset('images/fbposticon.png')}}" alt="">
+
+                        @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
+                        <img src="{{asset('images/fbposticon.png')}}" alt="">
+                        @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)                            
+                        <img src="{{asset('images/instagram.png')}}" alt="">
+                        @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
+                        <img src="{{asset('images/twitterpost.png')}}" alt="">
+                        @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
+                        <img src="{{asset('images/linkpost.png')}}" alt="">
+                        @endif
+
+
+                                  
                                 </span>
                                 <span class="post_username">
                                  {{auth()->user()->account->fb_page_name}}

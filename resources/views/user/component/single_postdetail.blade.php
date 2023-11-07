@@ -25,7 +25,7 @@ $newvar = $post->getPostLiveLink($post);
                          @endphp    
 
                              <div>
-                                    <span id="" class="postname">{{$post->content}} <br>
+                                    <span id="" class="postname"> {{auth()->user()->account->fb_page_name}} <br>
                                          <span class="sponsored">Public . <i
                                                    class="fa-solid fa-earth-americas"></i></span>
                                                 </span>
@@ -75,7 +75,7 @@ $newvar = $post->getPostLiveLink($post);
                                             </div>
                                                 @elseif($mediatype=='video')
                                                 <div class="video_container">
-                                                    <video src="{{asset("content_media/$post->media}")}}" controls></video>
+                                                    <video src="{{asset("content_media/$post->media")}}" controls></video>
                                                 </div>
                                                 @endif
                                         </div>
