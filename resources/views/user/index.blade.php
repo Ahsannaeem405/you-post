@@ -2051,14 +2051,15 @@ text-decoration-line: underline;
                 <span class="close-btn" onclick="closeSidebar()">&times;</span>
             </div>
             <span class="croissant-icon"></span>
-            <div class="calendarmain">
-                <div class="l1">
+            <div class="l1">
                     <div class="navigation">
-                        <h1 class="date-day mt-0 mb-5">
+                        <h1 class="date-day mt-0 mb-3">
                             {{\Carbon\Carbon::now()->format('l')}}
                         </h1>
                     </div>
                 </div>
+            <div class="calendarmain">
+                
 
 
 
