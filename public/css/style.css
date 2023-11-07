@@ -1661,10 +1661,12 @@ button {
     border-radius: 5px;
     border: 0.5px solid #BFBFBF;
     cursor: pointer;
+    margin: auto;
+    width: 90%;
 }
 .publishedpost{
     border-radius: 5px;
-    width: 60%;
+    width: 90%;
    background: rgba(137, 197, 127, 0.62);
 }
 .approved{
@@ -1746,10 +1748,17 @@ line-height: normal;
     }
 .post-img{
     height: 137px;
+    width: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;;
+
 }
-.post-img img{
+/* .post-img img{
     height: 100%;
-}
+    object-fit: none;
+} */
 .account-detail{
     display: flex;
     gap: 8px;
@@ -1769,8 +1778,12 @@ line-height: normal;
 
    
 }
-
-
+.select_the_platform.grid_item{
+    align-items: center;
+}
+.preview_post{
+    margin-top: 0px !important;
+}
 /*calendar posts structure */
 
  
