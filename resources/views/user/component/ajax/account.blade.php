@@ -19,7 +19,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin-top:40px;
+    margin-top: 40px;
 }
 
 .input_lb {
@@ -79,19 +79,34 @@
     line-height: normal;
 }
 
-.single_platform{
+.single_platform {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.fb-conect_btn, .fb-recont_btn,.l-conect_btn,.l_recont_btn,.T-conect_btn,.T-recont_btn,.instconect_btn,.instrecont_btn{
-    margin-top:10px;
+
+.fb-conect_btn,
+.fb-recont_btn,
+.l-conect_btn,
+.l_recont_btn,
+.T-conect_btn,
+.T-recont_btn,
+.instconect_btn,
+.instrecont_btn {
+    margin-top: 10px;
     border-radius: 30px;
-    border:none;
+    border: none;
 }
-.delete_accountbtn{
+
+.delete_accountbtn {
     height: 45px;
+}
+.linkedbtnabc{
+    background:#0d6efd;
+    color:#fff;
+    padding:10px;
+    border-radius:30px;
 }
 
 /* main account file styling */
@@ -118,41 +133,43 @@
 <div class="account_main mt-5">
     <div>
         @if(in_array("Facebook", $account->platforms))
-        <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle mb-3" alt=""/>
+        <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Instagram", $account->platforms))
-        <img src="{{ auth()->user()->account->inst_image}}" class="v_icon rounded-circle mb-3" alt=""/>
+        <img src="{{ auth()->user()->account->inst_image}}" class="v_icon rounded-circle mb-3" alt="" />
 
         @elseif(in_array("Twitter", $account->platforms))
-        <img src="{{auth()->user()->account->twt_image}}" class="v_icon rounded-circle mb-3" alt=""/>
+        <img src="{{auth()->user()->account->twt_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Linkedin", $account->platforms))
-        <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle mb-3" alt=""/>
+        <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @else
-        <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3 rounded-circle mb-3"  alt="Avatar" />
+        <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3 rounded-circle mb-3" alt="Avatar" />
         @endif
-        <div  class="input_lb all_social_platformCnt" style=" background:none;">
+        <div class="input_lb all_social_platformCnt" style=" background:none;">
             <label for="" class="user_detail">Account Name</label>
             <div class="account-info" style="display:flex; justify-content:center;">
-            <input type="text" value="{{$account->name}}" data-account="{{$account->id}}" placeholder="Account Name"
-                class="account-detail account_name">
-            <form action="{{ route('account-delete',$account->id) }}" method="POST">
-                @csrf
-                @method('Post')
-                <div class="index_delete"><button type="button" class="btn btn-danger delete_accountbtn"><img
-                            src="{{asset('images/deletebuckit.png')}}"  class="delete_account"/></button>
-                </div>
-            </form>
+                <input type="text" value="{{$account->name}}" data-account="{{$account->id}}" placeholder="Account Name"
+                    class="account-detail account_name">
+                <form action="{{ route('account-delete',$account->id) }}" method="POST">
+                    @csrf
+                    @method('Post')
+                    <div class="index_delete"><button type="button" class="btn btn-danger delete_accountbtn"><img
+                                src="{{asset('images/deletebuckit.png')}}" class="delete_account" /></button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="switch_account">
-            <span >Switch on & connect social platform for Facebook, Instagram, etc....</span>
+            <span>Switch on & connect social platform for Facebook, Instagram, etc....</span>
 
         </div>
         <div style="margin-top:40px; padding-bottom:20px">
             <div class="all_social_platform justify-content-evenly flex-fill" style="gap: 0 23px; background:none;">
                 <div class="single_platform  {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_fb">
-                        <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt="" style="height:32px;">
-                        <img src="{{asset('images/social_iconfbblack.png')}}" class="black_icon " alt="" style="height:32px;">
+                        <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt=""
+                            style="height:32px;">
+                        <img src="{{asset('images/social_iconfbblack.png')}}" class="black_icon " alt=""
+                            style="height:32px;">
                     </div>
                     <div></div>
                     <label class="switch" style="margin-top: 19px;">
@@ -161,35 +178,42 @@
                             {{ in_array('Facebook', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" id = "Facebookbtn" class="fb-recont_btn plateform_btn btn btn-primary {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }}" value="Facebook"
-                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" > {{ in_array('Facebook', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
-                  <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}" href="">
-                           <i class="fa fa-facebook-square me-2"></i> <span> Connect with Facebook</span>
-                        </a>
-                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
+                    <button type="button" id="Facebookbtn"
+                        class="fb-recont_btn plateform_btn btn  {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }}"
+                        value="Facebook" data-account="{{$account->id}}" name="plateform[{{$account->id}}]">
+                        {{ in_array('Facebook', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+                    <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}"
+                        href="">
+                         <span class="linkedbtnabc"> Connect with Facebook</span>
+                    </a>
+                    <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
-                
-                   
-                    
+
+
+
                 <div class="single_platform {{ in_array('Instagram', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_insta pb-1">
-                        <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt="" style="  height: 28px;"/>
-                        <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt="" style="height:28;"/>
+                        <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt=""
+                            style="  height: 28px;" />
+                        <img src="{{asset('images/Instagram_Black.png')}}" class="black_icon" alt=""
+                            style="height:28;" />
                     </div>
                     <label class="switch" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox plateform instCheckbox" value="Instagram"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
-                            {{ in_array('Instagram', $account->platforms) ? 'checked' : '' }} >
+                            {{ in_array('Instagram', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
-                    
-                    <button type="button"  value="Instagram"
-                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" class=" plateform_btn btn btn-primary instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" id="Instagrambtn">{{ in_array('Instagram', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+
+                    <button type="button" value="Instagram" data-account="{{$account->id}}"
+                        name="plateform[{{$account->id}}]"
+                        class=" plateform_btn btn instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}"
+                        id="Instagrambtn">{{ in_array('Instagram', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
                     <a class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
-                           <i class="fa fa-instagram me-2"></i> <span> Connect with Instagram</span>
-                        </a>
+                         <span class="linkedbtnabc"> Connect with Instagram</span>
+                    </a>
                     <!-- <button type="button" class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
-                    
+
                 </div>
                 <div class="single_platform {{ in_array('Twitter', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon" style="padding-bottom:2px;">
@@ -199,61 +223,72 @@
                     <label class="switch" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox plateform TwtCheckbox" value="Twitter"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
-                            {{ in_array('Twitter', $account->platforms) ? 'checked' : '' }} >
+                            {{ in_array('Twitter', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
-                  
-                    <button type="button" value="Twitter"
-                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" class=" plateform_btn btn btn-primary T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" id="Twitterbtn">{{ in_array('Twitter', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
-                    
-                     <a class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
-                     <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14"/> <span> Connect with Twitter</span>
-                        </a>
+
+                    <button type="button" value="Twitter" data-account="{{$account->id}}"
+                        name="plateform[{{$account->id}}]"
+                        class=" plateform_btn btn  T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}"
+                        id="Twitterbtn">{{ in_array('Twitter', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+
+                    <a class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
+                         <span class="linkedbtnabc">
+                            Connect with Twitter</span>
+                    </a>
                     <!-- <button type="button"class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" >Connect</button> -->
-                    
+
                 </div>
                 <div class="single_platform {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon pb-1" style="padding-bottom: 2px;">
-                        <img src="{{asset('images/Linkedin_Color.png')}}" class="color_icon" alt="" style="height:27px"/>
-                        <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt="" style="height:27px"/>
+                        <img src="{{asset('images/Linkedin_Color.png')}}" class="color_icon" alt=""
+                            style="height:27px" />
+                        <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt=""
+                            style="height:27px" />
                     </div>
                     <label class="switch" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox plateform LinkCheckbox" value="Linkedin"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
-                            {{ in_array('Linkedin', $account->platforms) ? 'checked' : '' }} >
+                            {{ in_array('Linkedin', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
-                    
-                    <button type="button" value="Linkedin"
-                            data-account="{{$account->id}}" name="plateform[{{$account->id}}]" class="plateform_btn btn btn-primary l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" id="Linkedinbtn">{{ in_array('Linkedin', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+
+                    <button type="button" value="Linkedin" data-account="{{$account->id}}"
+                        name="plateform[{{$account->id}}]"
+                        class="plateform_btn btn l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}"
+                        id="Linkedinbtn">{{ in_array('Linkedin', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
                     <!-- <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
                     <a class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
-                    <i class="fa fa-linkedin-square me-2"></i><span> Connect with Linkedin</span>
-                        </a>
+                        <span class="linkedbtnabc"> Connect with Linkedin</span>
+                    </a>
                 </div>
                 <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 9px;">
-                        <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt="" style="    height: 21px;"/>
-                        <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt="" style="    height: 21px;"/>
+                        <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt=""
+                            style="    height: 21px;" />
+                        <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt=""
+                            style="    height: 21px;" />
                     </div>
                     <label class="switch" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
                     <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
-                 
+
                 </div>
                 <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 6px;">
-                        <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt="" style="height: 23px;"/>
-                        <img src="{{asset('images/Telegram_Black.png')}}" class="black_icon" alt="" style="height: 23px;"/>
+                        <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt=""
+                            style="height: 23px;" />
+                        <img src="{{asset('images/Telegram_Black.png')}}" class="black_icon" alt=""
+                            style="height: 23px;" />
                     </div>
                     <label class="switch" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
                     <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
-              
+
                 </div>
             </div>
         </div>
@@ -282,8 +317,7 @@ $(document).ready(function() {
         if (checkbox.prop("checked")) {
             reconnectButton.show();
             connectButton.hide();
-        } 
-        else {
+        } else {
             reconnectButton.hide();
             connectButton.show();
         }
@@ -313,4 +347,3 @@ $(document).ready(function() {
     });
 });
 </script>
-
