@@ -24,7 +24,7 @@ use League\OAuth2\Client\Provider\Twitter;
 use Intervention\Image\Facades\Image;
 use getID3\getID3;
 use Abraham\TwitterOAuth\TwitterOAuth;
-
+use DB;
 
 class UserController extends Controller
 {
@@ -43,7 +43,12 @@ class UserController extends Controller
         
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
-        $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
+        // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
+        $posts = Post::select('*')
+        ->where('user_id', auth()->id())
+        ->where('account_id', auth()->user()->account_id)
+        ->groupBy(DB::raw('DATE(posted_at)')) 
+        ->get(); 
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
@@ -413,6 +418,109 @@ class UserController extends Controller
 
 
     }
+
+
+
+
+    public function reconnect_user__accounts(Request $req)
+    {
+        $account = Account::find($req->account_id);
+      
+        if ($req->plateform_val != null) {
+            $platformsArray = $account->platforms; 
+            $valueToRemove = $req->plateform_val;             
+               if (in_array($valueToRemove, $platformsArray)) {       
+                $platformsArray = array_diff($platformsArray, [$valueToRemove]);
+                $indexedArray = array_values($platformsArray);
+                $account->platforms = $indexedArray;            
+                $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'conet_or_not' => 'yes'
+
+                ];
+                return response()->json($response, 200);
+            }else{
+                $newValue = $req->plateform_val;           
+                $platformsArray[] = $newValue; 
+                $account->platforms = $platformsArray;              
+                $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'conet_or_not' => 'no'
+                ];
+                return response()->json($response, 200);
+            }                    
+
+        }
+
+        
+       
+
+       
+    }
+
+
+
+    public function update_user_platforms_accounts(Request $req)
+    {
+        $account = Account::find($req->account_id);
+
+        if ($req->plateform_val != null) {
+            if (($req->plateform_val =='Facebook') && ($account->fb_access_token == null || $account->fb_page_token == null)) {
+                $error = ['message' => 'fb_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            } if (($req->plateform_val =='Twitter') && ($account->twiter_access_token == null || $account->twiter_refresh_token == null)) {
+                $error = ['message' => 'twiter_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            } if (($req->plateform_val =='Instagram') && ($account->insta_access_token == null || $account->insta_user_id == null)) {
+                $error = ['message' => 'insta_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            } if (($req->plateform_val =='Linkedin') && ($account->linkedin_accesstoken == null || $account->linkedin_user_id == null || $account->linkedin_page_id == null)) {
+                $error = ['message' => 'linkedin_error',
+                'status' => $req->isChecked];
+                return response()->json($error, 404);
+            }
+        }
+        if ($req->plateform_val != null) {
+            $platformsArray = $account->platforms; 
+            $valueToRemove = $req->plateform_val;             
+            //    if (in_array($valueToRemove, $platformsArray)) {        
+                if (($req->isChecked == 'false')) {               
+       
+                // $platformsArray = array_diff($platformsArray, [$valueToRemove]);
+                // $indexedArray = array_values($platformsArray);
+                // $account->platforms = $indexedArray;            
+                // $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'status' => 'off'
+                ];
+                return response()->json($response, 200);
+            }else{
+                // $newValue = $req->plateform_val;           
+                // $platformsArray[] = $newValue; 
+                // $account->platforms = $platformsArray;              
+                // $account->save();
+                $response = [
+                    'message' => $req->plateform_val,
+                    'status' => 'on'
+                ];
+                return response()->json($response, 200);
+            }                    
+
+        }
+
+        
+       
+
+       
+    }
+
+
 
     public function update_user_platforms(Request $req)
     {

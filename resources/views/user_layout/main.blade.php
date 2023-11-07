@@ -176,7 +176,6 @@
             videoThumnail();
         })
         var eventDates =@json(collect($allPosts)->pluck('event_date'));
-
         var calendar = $('#postManagerCalendar').fullCalendar({
 
             defaultView: 'month',
@@ -209,6 +208,7 @@
                 }
 
             },
+            
 
 
             header: {
@@ -234,6 +234,7 @@
                     }
                 }
             },
+
             dayClick: function (date, jsEvent, view) {
                 $('html, body').animate({scrollTop: 0}, 'slow');
                 selectedDate = date;
