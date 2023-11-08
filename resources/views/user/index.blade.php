@@ -600,8 +600,7 @@
 .btn-close {
     background-image: url("");
 }
-
-#mypostresult_youpost {
+#mypostresult_youpost{
     display: block;
     display: -webkit-box;
     margin: 0 auto;
@@ -611,38 +610,37 @@
     text-overflow: ellipsis;
     word-wrap: break-word;
 }
-
-.wizard-fieldset_youpost {
+.wizard-fieldset_youpost{
     color: #171717;
     font-weight: 500;
     font-size: 17px;
 }
-
-.mydeltpostbtn {
+    .mydeltpostbtn{
     border-radius: 10px;
-    /* margin-top: 150px; */
+    margin-top:15px;
 }
-
-.visit_postsite {
+.visit_postsite{
     color: #6B9CFA;
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-decoration-line: underline;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-decoration-line: underline;
 }
-
-.postlink {
-    margin-top: 40px;
-    text-align: center;
+.postlink{
+    margin-top:40px;
+    text-align:center;
 }
 
 .content_main {
     text-align: left;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90192a76fba63a081ddc9ba8dd3d7b6cd114e74c
 /* close btn sidebar */
 /* timepicker style */
 </style>
@@ -703,15 +701,14 @@
                                         <fieldset class="wizard-fieldset youpost ">
                                             <div class="ml-2">
                                                 <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_youpost">You Post</span>
+                                                    class="wizard-fieldset_youpost">Intial Content</span>
 
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention"
-                                                    data-id="youpost_error"
-                                                    placeholder="Write your post...">{{old('youpost_content')}}</textarea>
+                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"
+                                                    placeholder="Write your intial content...">{{old('youpost_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
@@ -1637,7 +1634,7 @@
                                             <div>
                                                 <span class="twitter_post_content">
                                                     {{auth()->user()->account->tw_name}}</span> <img
-                                                    src="{{asset('images/offical2.png')}}" class="d-none" alt="">
+                                                    src="{{asset('images/offical2.png')}}" class="" alt="">
                                                 <span class="twitter_post_content_tag ">
                                                     {{'@'.auth()->user()->account->tw_user_name}}</span>
                                             </div>
@@ -1733,9 +1730,9 @@
                                             </div>
                                             <div class="follwers">
                                                 <span>
-                                                    0 followers
+                                                    1,511 followers
                                                 </span><br>
-                                                <span class="">0d . <i class="fa-solid fa-earth-americas"></i></span>
+                                                <span class="">3d . <i class="fa-solid fa-earth-americas"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -2066,14 +2063,14 @@
                 <span class="close-btn" onclick="closeSidebar()">&times;</span>
             </div>
             <span class="croissant-icon"></span>
-            <div class="l1">
-                <div class="navigation">
-                    <h1 class="date-day mt-4 mb-3">
-                        {{\Carbon\Carbon::now()->format('l')}}
-                    </h1>
-                </div>
-            </div>
             <div class="calendarmain">
+                <div class="l1">
+                    <div class="navigation">
+                        <h1 class="date-day mt-0 mb-5">
+                            {{\Carbon\Carbon::now()->format('l')}}
+                        </h1>
+                    </div>
+                </div>
 
 
 
@@ -2895,36 +2892,35 @@ $(document).ready(function() {
     // Add a click event handler to the todayEbents-list div
     $(document).on('click', '.fb-post', function() {
         var id = $(this).data('id');
-
+        
         $.ajax({
             type: "get",
             url: "{{ url('get_single_detail') }}",
             data: {
                 'id': id
             },
-            success: function(response) {
+            success: function (response) {
                 if (!isDetailVisible) {
-                    // If the detail is not visible, show it and set the flag
-                    // var contentToAppend = $(".the_preview").html();
-                    $(".Today-post-detail").html('');
-                    $(".Today-post-detail").append(response);
-                    $(".Today-post-detail").show();
-                    // isDetailVisible = true;
-                    $(".fb-post").css('display', 'none');
-                } else {
-                    // If the detail is visible, hide it and reset the flag
-                    // $(".Today-post-detail").hide();
-                    $(".fb-post").css('display', 'block');
-                    // isDetailVisible = false;
-                }
+                        // If the detail is not visible, show it and set the flag
+                        // var contentToAppend = $(".the_preview").html();
+                        $(".Today-post-detail").html('');
+                        $(".Today-post-detail").append(response);
+                        $(".Today-post-detail").show();
+                       
+                        $(".fb-post").css('display', 'none');
+                    } else {
+                        // If the detail is visible, hide it and reset the flag
+                        $(".Today-post-detail").hide();
+                        $(".fb-post").css('display', 'block');    
+                    }
             }
         });
 
 
 
-
-
-    });
+       
+    
+});
     // $(".fb-post").click(function() {
     //     if (!isDetailVisible) {
     //         // If the detail is not visible, show it and set the flag

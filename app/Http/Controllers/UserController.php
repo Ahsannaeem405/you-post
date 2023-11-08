@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function dashbaord()
     {
-        
+
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
@@ -76,44 +76,54 @@ class UserController extends Controller
     {
 
 
-
-//        $accesstoken = auth()->user()->account->linkedin_accesstoken;
-//        $linkedin = Http::withHeaders([
-//            'Authorization' => 'Bearer ' . $accesstoken,
-//        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
-//        dd($linkedin);
+        //linked in search user
+        $accesstoken = auth()->user()->account->linkedin_accesstoken;
+        $linkedin = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $accesstoken,
+        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
+        dd($linkedin);
 
 //         $bearerToken = auth()->user()->account->twiter_access_token;
-//        $api= Http::withToken($bearerToken)->get('https://api.twitter.com/2/users/by?usernames=reh');
+//        $api= Http::withToken($bearerToken)->get('https://api.twitter.com/2/users/me');
 //        dd($api->body(),$api->status());
 
 
 //        $connection = new TwitterOAuth(
-//            'aSQRkFaVlvQDPRjDXgMlYVVmD',
-//            'WD4j6rY3azsxlTQPI1kuAXiCmHw2vDbAzY3oYClzziAmvSd5VL',
+//            'igtttF6G2FPKOfoX000FUSWcD',
+//            '7iJdN74BN6GjNaddaaVgklbJnOOg1SbufzZekfzlcUl5N3YEVT',
 //        );
 //        $token = $connection->oauth('oauth/request_token', ['oauth_callback' => url('/connect_to_twitter/calback')]);
 //        dd($token);
 
-        $connection = new TwitterOAuth(
-            'aSQRkFaVlvQDPRjDXgMlYVVmD',
-            'WD4j6rY3azsxlTQPI1kuAXiCmHw2vDbAzY3oYClzziAmvSd5VL',
-            '869138965298806785-ur34Qxmt5fkkb3JViwX4U7XN9I9Eb45',
-            'X28xPqd42dfxeyKwlvczV84qlgPFvTfmO6oiRuj1xsmEO'
-        );
-
-
-        $connection->setApiVersion('1.1');
-        $status = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a2c97a42.png')]);
-        $status2 = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a28f2252.png')]);
-        $connection->setApiVersion('2');
-        $post = $connection->post("tweets", [
-            'text' => "test 1",
-            'media' => array(
-                'media_ids' => [$status->media_id_string,$status2->media_id_string]
-            )
-        ], true);
+//        $connection = new TwitterOAuth(
+//            'aSQRkFaVlvQDPRjDXgMlYVVmD',
+//            'WD4j6rY3azsxlTQPI1kuAXiCmHw2vDbAzY3oYClzziAmvSd5VL',
+//            '869138965298806785-ur34Qxmt5fkkb3JViwX4U7XN9I9Eb45',
+//            'X28xPqd42dfxeyKwlvczV84qlgPFvTfmO6oiRuj1xsmEO'
+//        );
+//
+//
+//        $connection->setApiVersion('1.1');
+//        $status = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a2c97a42.png')]);
+//        $status2 = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a28f2252.png')]);
+//        $connection->setApiVersion('2');
+//        $post = $connection->post("tweets", [
+//            'text' => "test 1",
+//            'media' => array(
+//                'media_ids' => [$status->media_id_string,$status2->media_id_string]
+//            )
+//        ], true);
         // dd($post);
+
+        $connection = new TwitterOAuth(
+            'zdJ9xLCWzub5fTrHekheVih4e',
+            'AEuHtEF1iXafGFxIsXE8RDSqePm90VKeAocQROz7oM0bQihsp6',
+            '940303773922152449-DfUhPtvEkBqm72WgHGRMnxnxwKGhs3Q',
+            'NRGA42pj0iANrGBM9LzNBYp9gZgxfyUacovAxb0zmMel3'
+        );
+        $connection->setApiVersion('2');
+        $search = $connection->get("tweets/search/recent");
+        dd($search);
 
 
     }
@@ -214,7 +224,7 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-    //    dd( $req->all());
+        //    dd( $req->all());
         $platforms = auth()->user()->account->platforms;
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
@@ -294,7 +304,7 @@ class UserController extends Controller
             $post = new Post();
 
             $firstPostOrNot = Post::where('user_id', auth()->user()->id)->count();
-            $scheduled ='no';
+            $scheduled = 'no';
             if ($firstPostOrNot > 0) {
                 session(['check_first_post' => $firstPostOrNot]);
             }
@@ -340,15 +350,15 @@ class UserController extends Controller
                         $up->update();
                     }
                 }
-            }else{
-                $scheduled ='yes';
+            } else {
+                $scheduled = 'yes';
                 session(['IsScheduled' => $scheduled]);
 
             }
 
         }
 
-        return back()->with(['success-post' => 'Post Created Successfully', 'platforms' => $platforms, 'firstPostOrNot' => $firstPostOrNot,'scheduled' => $scheduled]);
+        return back()->with(['success-post' => 'Post Created Successfully', 'platforms' => $platforms, 'firstPostOrNot' => $firstPostOrNot, 'scheduled' => $scheduled]);
         //****************end posting code****************//
 
     }
@@ -362,8 +372,8 @@ class UserController extends Controller
         // $platforms = $platforms->groupBy('plateform');
 
 
-        $parsedDate = Carbon::parse($request->date);   
-     
+        $parsedDate = Carbon::parse($request->date);
+
         $posts = Post::with('user')->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
 
 
@@ -373,10 +383,10 @@ class UserController extends Controller
 
     public function get_single_detail(Request $request)
     {
-         $post = Post::find($request->id);
+        $post = Post::find($request->id);
         // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         // $platformsName = $platforms->pluck('plateform')->toArray();
-        // $platforms = $platforms->groupBy('plateform');     
+        // $platforms = $platforms->groupBy('plateform');
 
         return view('user.component.single_postdetail', compact('post'));
     }
@@ -488,23 +498,23 @@ class UserController extends Controller
         if ($req->plateform_val != null) {
             $platformsArray = $account->platforms; 
             $valueToRemove = $req->plateform_val;             
-            //    if (in_array($valueToRemove, $platformsArray)) {        
-                if (($req->isChecked == 'false')) {               
+               if (in_array($valueToRemove, $platformsArray)) {        
+                // if (($req->isChecked == 'false')) {               
        
-                // $platformsArray = array_diff($platformsArray, [$valueToRemove]);
-                // $indexedArray = array_values($platformsArray);
-                // $account->platforms = $indexedArray;            
-                // $account->save();
+                $platformsArray = array_diff($platformsArray, [$valueToRemove]);
+                $indexedArray = array_values($platformsArray);
+                $account->platforms = $indexedArray;            
+                $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'off'
                 ];
                 return response()->json($response, 200);
             }else{
-                // $newValue = $req->plateform_val;           
-                // $platformsArray[] = $newValue; 
-                // $account->platforms = $platformsArray;              
-                // $account->save();
+                $newValue = $req->plateform_val;           
+                $platformsArray[] = $newValue; 
+                $account->platforms = $platformsArray;              
+                $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'on'
@@ -575,7 +585,8 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata', 'pages_show_list'];
+        //$permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata', 'pages_show_list'];
+        $permissions = ['pages_read_engagement','pages_read_user_content', 'pages_manage_posts', 'read_insights', 'pages_show_list'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
@@ -613,12 +624,12 @@ class UserController extends Controller
         $user->platforms = $platforms;
         $user->update();
 
-        $run=new Facebookservice();
-        $imageUrl=$run->get_fb_image();
-        $pageName=$run->get_fb_page_name();
+        $run = new Facebookservice();
+        $imageUrl = $run->get_fb_image();
+        $pageName = $run->get_fb_page_name();
         $user = auth()->user();
-        $user->account->fb_image =  $imageUrl ;
-        $user->account->fb_page_name =  $pageName ;
+        $user->account->fb_image = $imageUrl;
+        $user->account->fb_page_name = $pageName;
         $user->account->save();
 
 
@@ -740,18 +751,16 @@ class UserController extends Controller
             array_push($platforms, 'Instagram');
 
 
-
-
             $user->insta_user_id = $instagram_business_account_id;
             $user->platforms = $platforms;
             $user->save();
 
-            $run=new Instagramservice();
-            $instData=$run->get_inst_data($instagram_business_account_id);
+            $run = new Instagramservice();
+            $instData = $run->get_inst_data($instagram_business_account_id);
             $user = Account::find(auth()->user()->account_id);
-            $user->inst_name =  $instData['name'] ;
-            $user->inst_page_name =  $instData['username'] ;
-            $user->inst_image =  $instData['profile_picture_url'] ;
+            $user->inst_name = $instData['name'];
+            $user->inst_page_name = $instData['username'];
+            $user->inst_image = $instData['profile_picture_url'];
             $user->save();
             return back()->with('success', 'instagram Connected Successfully!');
         } else {
@@ -859,12 +868,12 @@ class UserController extends Controller
         $user->platforms = $platforms;
         $user->update();
 
-        $run=new Linkedinservice();
-        $imageUrl=$run->get_linkedin_image();
-        $pageName=$run->get_linkedin_pageName();
+        $run = new Linkedinservice();
+        $imageUrl = $run->get_linkedin_image();
+        $pageName = $run->get_linkedin_pageName();
         $user = auth()->user();
-        $user->account->link_image =  $imageUrl ;
-        $user->account->link_page_name =  $pageName ;
+        $user->account->link_image = $imageUrl;
+        $user->account->link_page_name = $pageName;
         $user->account->save();
 
         return back()->with('success', 'Linkedin  Connected Successfully!');
@@ -948,8 +957,8 @@ class UserController extends Controller
             curl_close($curl);
             $response2 = json_decode($response);
 
-            $run=new TwitterService();
-            $userData=$run->get_tw_data($response2->access_token);
+            $run = new TwitterService();
+            $userData = $run->get_tw_data($response2->access_token);
             $access_token = $response2->access_token;
             $refresh_token = $response2->refresh_token;
             $accountUser = User::find(auth()->user()->id);
@@ -961,9 +970,9 @@ class UserController extends Controller
                 'twiter_access_token' => $access_token,
                 'twiter_refresh_token' => $refresh_token,
                 'platforms' => $platforms,
-                'tw_name' =>  $userData['data']['name'] ?? '',
+                'tw_name' => $userData['data']['name'] ?? '',
                 'tw_user_name' => $userData['data']['username'] ?? '',
-                'twt_image' =>$userData['data']['profile_image_url'] ?? '',
+                'twt_image' => $userData['data']['profile_image_url'] ?? '',
 
             ]);
             return redirect('/index')->with('success', 'Twitter, Successfully Added');
