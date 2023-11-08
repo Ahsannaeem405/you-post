@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="mb-2 col-md-6">
                                         <label for="lname">Last Name</label>
-                                        <input type="text" name="lname" id="lname" class="form-control @error('lname') is-invalid @enderror" placeholder="Last Name" required>
+                                        <input type="text" name="lname" id="lname" class="form-control @error('lname') is-invalid @enderror" placeholder="Last Name" value="{{ old('lname') }}" required>
                                         @error('lname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -59,8 +59,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="mb-2 col-md-6">
-                                        <label for="email">Email or phone number</label>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email or phone number" required autocomplete="email">
+                                        <label for="email">Email</label>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="mb-2 col-md-6">
                                         <label for="date">Date of birth (MM/DD/YY)</label>
-                                        <input type="date" name="date" id="date" class="form-control" placeholder="Date of birth (MM/DD/YY)" required>
+                                        <input type="date" name="dob" value="{{ old('dob') }}" id="date" class="form-control" placeholder="Date of birth (MM/DD/YY)" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -102,9 +102,9 @@
                                 <div class="row mb-3">
                                     <div class="col-md-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="agree" id="agree">
+                                            <input class="form-check-input" type="checkbox" name="agree" required id="agree">
                                             <label class="form-check-label" for="agree">
-                                                I agree to all the <a href="#" class="text-decoration-none">Terms</a> and <a href="#" class="text-decoration-none">Privacy policy</a> 
+                                                I agree to all the <a href="#" class="text-decoration-none">Terms</a> and <a href="#" class="text-decoration-none">Privacy policy</a>
                                             </label>
                                         </div>
                                     </div>
@@ -126,7 +126,7 @@
                                         <img src="{{ asset('images/facebook-15.png') }}" alt="" class="mr-2">Login with Facebook
                                     </a>
                                 </div>
-                                <span class="Login__Reg">Don’t have an account? <a href="{{ route('login') }}">Log In</a></span>
+                                <span class="Login__Reg">Already have an account? <a href="{{ route('login') }}">Log In</a></span>
                             </form>
                         </div>
                     </div>
