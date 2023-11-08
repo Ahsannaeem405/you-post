@@ -18,11 +18,13 @@ class AccountController extends Controller
 
     public function index()
     {
+      
         $response = $this->createPostService->InitilizeData();
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
         return view('user.socialPlatform', compact('instapages', 'all_pages', 'all_pages_for_insta'));
+        
     }
 
     public function store(Request $request)
@@ -37,8 +39,9 @@ class AccountController extends Controller
     public function delete($id)
     {
         $acc = Account::find($id);
+        $accname= $acc->name;
         $acc->delete();
-        return back()->with('success', 'Account Deleted Successfully.');
+        return back()->with('success', 'Account Deleted Successfully.')->with('accname', $accname);
 
 
         // Redirect or return a response as needed

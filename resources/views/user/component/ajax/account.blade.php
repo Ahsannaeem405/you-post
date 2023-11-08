@@ -286,7 +286,7 @@
                     <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
                         <span > Reconnect</span>
                     </a>
-                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? 'd-none' : '' }}" href="">
+                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
@@ -312,7 +312,8 @@
                             style="height: 23px;" />
                     </div>
                     <label class="switch" style="margin-top: 19px;">
-                        <input type="checkbox" class="customCheckbox" disabled>
+                        <input type="checkbox" class="customCh
+                        eckbox" disabled>
                         <span class="slider round"></span>
                     </label>
                     <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->

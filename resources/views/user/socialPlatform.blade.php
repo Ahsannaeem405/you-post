@@ -58,7 +58,7 @@
                 <div class="all_social_platformMain">
 
                     <div class="all_social_platformCnt successFullyAdded">
-                        <h4>{{Session::get('success')}}: <span>“{{auth()->user()->account->name}}” </span></h4>
+                        <h4>{{Session::get('success')}}: <span>“{{ session('accname') }}” </span></h4>
                         <div>
                             <i class="fa-solid fa-check"></i>
                         </div>
@@ -73,7 +73,7 @@
   
         setTimeout(function() {
             
-            $('.all_social_platformMain').fadeOut(200); 
+            $('.all_social_platformMain').fadeOut(500); 
         }, 1000); 
 
         </script>
@@ -307,10 +307,16 @@
                                          closestLabel.attr('href', newHref);  
                                          closestLabel.removeClass('d-none').show();
                                        
-                                }  else{
-                                        var closestLabel = currentclick.closest('label'); 
-                                         closestLabel= closestLabel.parent().find('.fb-recont_btn');    
-                                        closestLabel.removeClass('show').hide();
+                                }  else{                                     
+
+
+                                    var closestLabel = currentclick.closest('label'); 
+                                    closestLabel_conne= closestLabel.parent().find('.fb-conect_btn'); 
+                                    closestLabel_conne.removeClass('show').hide();
+
+                                  
+                                    closestLabel= closestLabel.parent().find('.fb-recont_btn');  
+                                    closestLabel.removeClass('show').hide();
                                        
                                 }             
                           
@@ -324,10 +330,15 @@
                                          closestLabel.attr('href', newHref);  
                                          closestLabel.removeClass('d-none').show();
                                                                              
-                                }  else{
-                                          var closestLabel = currentclick.closest('label'); 
-                                          closestLabel= closestLabel.parent().find('.T-recont_btn');                                             closestLabel.removeClass('show').hide();
-                                          closestLabel.removeClass('show').hide();
+                                }  else{       
+
+                                    var closestLabel = currentclick.closest('label'); 
+                                    closestLabel_conne= closestLabel.parent().find('.T-conect_btn'); 
+                                    closestLabel_conne.removeClass('show').hide();
+
+                                  
+                                    closestLabel= closestLabel.parent().find('.instrecont_btn');  
+                                    closestLabel.removeClass('show').hide();
                                 }  
 
 
@@ -335,7 +346,7 @@
 
                                 if(status =='on'){
 
-                                    var closestLabel = currentclick.closest('label'); 
+                                        var closestLabel = currentclick.closest('label'); 
                                          closestLabel= closestLabel.parent().find('.instrecont_btn');               
                                          var newHref = "{{ url('connect_to_instagram') }}";                    
                                          closestLabel.attr('href', newHref);  
@@ -365,12 +376,16 @@
                                          closestLabel.removeClass('d-none').show();
                                          
                                 }  else{
-                                       var closestLabel = currentclick.closest('label'); 
-                                         closestLabel= closestLabel.parent().find('.l_recont_btn');
-                                         closestLabel_conne= closestLabel.parent().find('.instconect_btns'); 
 
+                                   
+                                         var closestLabel = currentclick.closest('label');                                       
+                                         closestLabel_conne= closestLabel.parent().find('.l-conect_btn'); 
+                                         closestLabel_conne.removeClass('show').hide();
+
+                                         closestLabel= closestLabel.parent().find('.l_recont_btn');
                                         closestLabel.removeClass('show').hide(); 
-                                        closestLabel_conne.removeClass('show').hide();
+                                        
+                                       
                                      
                                 }  
 

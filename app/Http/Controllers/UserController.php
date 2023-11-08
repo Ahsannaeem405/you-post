@@ -370,8 +370,8 @@ class UserController extends Controller
         // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         // $platformsName = $platforms->pluck('plateform')->toArray();
         // $platforms = $platforms->groupBy('plateform');
-
-
+         
+// dd($request->all());
         $parsedDate = Carbon::parse($request->date);
 
         $posts = Post::with('user')->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
