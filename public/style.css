@@ -2383,7 +2383,7 @@ height: 100%;
 /* newpopup start*/
 /* Pop up  */
 .post-detail{
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     text-align: center;
     /* border-bottom: 0.7px solid #e4e2e2; */
 }

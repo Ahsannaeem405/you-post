@@ -44,7 +44,7 @@ class UserController extends Controller
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
-        $posts = Post::select('*')
+        $posts = Post::select('*',DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'))
         ->where('user_id', auth()->id())
         ->where('account_id', auth()->user()->account_id)
         ->groupBy(DB::raw('DATE(posted_at)')) 
