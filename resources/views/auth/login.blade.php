@@ -81,7 +81,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="LeftLogin_Img">
-                                <h4>Social media shared today, tomorrow or by location</h4>
+                                <h4>Social Media posting made simple. YouPost offers a friendly, easy-to-use solution , try us free.</h4>
                                 <div class="rev_slider">
                                     <div class="rev_slide">
                                         <div class="test">

@@ -381,7 +381,7 @@
                                          var closestLabel = currentclick.closest('label');                                       
                                          closestLabel_conne= closestLabel.parent().find('.l-conect_btn'); 
                                          closestLabel_conne.removeClass('show').hide();
-
+                                         
                                          closestLabel= closestLabel.parent().find('.l_recont_btn');
                                         closestLabel.removeClass('show').hide(); 
                                         

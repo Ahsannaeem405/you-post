@@ -678,14 +678,14 @@ text-decoration-line: underline;
                                         <fieldset class="wizard-fieldset youpost ">
                                             <div class="ml-2">
                                                 <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_youpost">You Post</span>
+                                                    class="wizard-fieldset_youpost">Initial Content</span>
 
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji ='youpost' >
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea mention" data-id="youpost_error"
-                                                    placeholder="Write your post...">{{old('youpost_content')}}</textarea>
+                                                    placeholder="Write your initial content...">{{old('youpost_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
@@ -1217,7 +1217,7 @@ text-decoration-line: underline;
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title">
-                                        <span id="mypostresult_youpost" class="mypostresult">Write your post...</span>
+                                        <span id="mypostresult_youpost" class="mypostresult">Write your initial content...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1913,75 +1913,6 @@ text-decoration-line: underline;
 <!-- =======Calender========= -->
 <section class="position-relative">
     <div class=" container section5">
-        <div class="calender calendar_overflo container col-lg-12"
-            style="width: 0; position: absolute;z-index: 2; display:none;"
-            id="mySidebar">
-            <div clas="" style="padding-top:30px">
-                <span class="close-btn" onclick="closeSidebar()">&times;</span>
-            </div>
-            <span class="croissant-icon"></span>
-            <div class="calendarmain">
-                <div class="l1">
-                    <div class="navigation">
-                        <h1 class="date-day mt-0 mb-5">
-                            {{\Carbon\Carbon::now()->format('l')}}
-                        </h1>
-                    </div>
-                </div>
-
-
-
-                           
-                
-               
-               
-            </div>
-            <div class="Today-post-detail" style="margin-top:30px; display:none;">
-
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-12 col-lg-12 calendar2">
-        <div class="title_bar_wrap d-none">
-            <div class="container container_2">
-                <div class="title_bar">
-                    <div class="tabs_type_heading">
-                        <h3>Post Manager</h3>
-                    </div>
-                    <div class="right_contents">
-                        <ul>
-                            <li class="filter_by">
-                                <span>Filter by:</span>
-                            </li>
-                            <li>
-                                <a class="filter_link" href="javascript:void(0)">PLATFORM</a>
-                            </li>
-                            <li>
-                                <a class="filter_link" href="javascript:void(0)">VIDEO</a>
-                            </li>
-                            <li>
-                                <a class="filter_link" href="javascript:void(0)">IMAGE</a>
-                            <li class="month_name">
-                                <span>December 2022</span>
-                                <a href="javascript:void(0)"><img src="{{asset('images/V_Icon.png')}}" class="img-fluid" alt="" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="Today-post-detail" style="margin-top:30px;">
-
-                </div>
-            </div>
-        </div>
-        <div class="post_manage_calendar post_manage_calendar_card my-2 mx-2">
-            <div class="container container_2">
-                <div class="the_post_manager">
-                    <div id='postManagerCalendar'></div>
-                </div>
-            </div>
-        </div> -->
-        <!--  -->
-
         <div class="calender calendar_overflo container col-lg-12"
             style="width: 0; position: absolute;z-index: 2; display:none;" id="mySidebar">
             <div clas="" style="padding-top:30px">

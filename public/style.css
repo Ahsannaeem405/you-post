@@ -2024,10 +2024,11 @@ width: 100%;
     width: 37px;
 }
 .post_img_name {
-    background-color: #fff;
+    display: flex;
+    /* background-color: #fff;
     box-shadow: 0 0 5px #ddd;
     border-radius: 10px;
-    margin-top: 14px;
+    margin-top: 14px; */
 }
 .PostHeaderInner .d-flex{
 
@@ -2125,10 +2126,10 @@ width: 100%;
 .sponsored{
     padding-left: 5px;
 }
-.the_preview_card{
+/* .the_preview_card{
     padding: 12px;
     background-color: #fff;
-}
+} */
 
 
 .media-container.media_container img{
