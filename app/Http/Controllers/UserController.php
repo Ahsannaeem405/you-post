@@ -44,11 +44,11 @@ class UserController extends Controller
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
-        $posts = Post::select('*')
-            ->where('user_id', auth()->id())
-            ->where('account_id', auth()->user()->account_id)
-            ->groupBy(DB::raw('DATE(posted_at)'))
-            ->get();
+        $posts = Post::select('*',DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'))
+        ->where('user_id', auth()->id())
+        ->where('account_id', auth()->user()->account_id)
+        ->groupBy(DB::raw('DATE(posted_at)'))
+        ->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
@@ -371,7 +371,7 @@ class UserController extends Controller
         // $platformsName = $platforms->pluck('plateform')->toArray();
         // $platforms = $platforms->groupBy('plateform');
 
-
+// dd($request->all());
         $parsedDate = Carbon::parse($request->date);
 
         $posts = Post::with('user')->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
@@ -494,23 +494,23 @@ class UserController extends Controller
         if ($req->plateform_val != null) {
             $platformsArray = $account->platforms;
             $valueToRemove = $req->plateform_val;
-            //    if (in_array($valueToRemove, $platformsArray)) {
-            if (($req->isChecked == 'false')) {
+               if (in_array($valueToRemove, $platformsArray)) {
+                // if (($req->isChecked == 'false')) {
 
-                // $platformsArray = array_diff($platformsArray, [$valueToRemove]);
-                // $indexedArray = array_values($platformsArray);
-                // $account->platforms = $indexedArray;
-                // $account->save();
+                $platformsArray = array_diff($platformsArray, [$valueToRemove]);
+                $indexedArray = array_values($platformsArray);
+                $account->platforms = $indexedArray;
+                $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'off'
                 ];
                 return response()->json($response, 200);
-            } else {
-                // $newValue = $req->plateform_val;
-                // $platformsArray[] = $newValue;
-                // $account->platforms = $platformsArray;
-                // $account->save();
+            }else{
+                $newValue = $req->plateform_val;
+                $platformsArray[] = $newValue;
+                $account->platforms = $platformsArray;
+                $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'on'

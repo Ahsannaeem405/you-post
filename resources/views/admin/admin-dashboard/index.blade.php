@@ -17,14 +17,14 @@ height: 223px;
     height:100%;
 }
 .dashboard-card .card-content h3{
-  display:flex;
-  align-items:center;
+    display:flex;
+    align-items:center;
     color: #000;
-font-family: 'Sora', sans-serif;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .dashboard-card .card-content p{
     color: #9B9B9B;
