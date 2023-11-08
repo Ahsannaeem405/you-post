@@ -45,10 +45,10 @@ class UserController extends Controller
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
         $posts = Post::select('*')
-        ->where('user_id', auth()->id())
-        ->where('account_id', auth()->user()->account_id)
-        ->groupBy(DB::raw('DATE(posted_at)')) 
-        ->get(); 
+            ->where('user_id', auth()->id())
+            ->where('account_id', auth()->user()->account_id)
+            ->groupBy(DB::raw('DATE(posted_at)'))
+            ->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
@@ -77,11 +77,11 @@ class UserController extends Controller
 
 
         //linked in search user
-        $accesstoken = auth()->user()->account->linkedin_accesstoken;
-        $linkedin = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $accesstoken,
-        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
-        dd($linkedin);
+//        $accesstoken = auth()->user()->account->linkedin_accesstoken;
+//        $linkedin = Http::withHeaders([
+//            'Authorization' => 'Bearer ' . $accesstoken,
+//        ])->get('https://api.linkedin.com/v2/companySearch?q=search')->json();
+//        dd($linkedin);
 
 //         $bearerToken = auth()->user()->account->twiter_access_token;
 //        $api= Http::withToken($bearerToken)->get('https://api.twitter.com/2/users/me');
@@ -115,15 +115,15 @@ class UserController extends Controller
 //        ], true);
         // dd($post);
 
-        $connection = new TwitterOAuth(
-            'zdJ9xLCWzub5fTrHekheVih4e',
-            'AEuHtEF1iXafGFxIsXE8RDSqePm90VKeAocQROz7oM0bQihsp6',
-            '940303773922152449-DfUhPtvEkBqm72WgHGRMnxnxwKGhs3Q',
-            'NRGA42pj0iANrGBM9LzNBYp9gZgxfyUacovAxb0zmMel3'
-        );
-        $connection->setApiVersion('2');
-        $search = $connection->get("tweets/search/recent");
-        dd($search);
+//        $connection = new TwitterOAuth(
+//            'zdJ9xLCWzub5fTrHekheVih4e',
+//            'AEuHtEF1iXafGFxIsXE8RDSqePm90VKeAocQROz7oM0bQihsp6',
+//            '940303773922152449-DfUhPtvEkBqm72WgHGRMnxnxwKGhs3Q',
+//            'NRGA42pj0iANrGBM9LzNBYp9gZgxfyUacovAxb0zmMel3'
+//        );
+//        $connection->setApiVersion('2');
+//        $search = $connection->get("tweets/search/recent");
+//        dd($search);
 
 
     }
@@ -430,46 +430,39 @@ class UserController extends Controller
     }
 
 
-
-
     public function reconnect_user__accounts(Request $req)
     {
         $account = Account::find($req->account_id);
-      
+
         if ($req->plateform_val != null) {
-            $platformsArray = $account->platforms; 
-            $valueToRemove = $req->plateform_val;             
-               if (in_array($valueToRemove, $platformsArray)) {       
+            $platformsArray = $account->platforms;
+            $valueToRemove = $req->plateform_val;
+            if (in_array($valueToRemove, $platformsArray)) {
                 $platformsArray = array_diff($platformsArray, [$valueToRemove]);
                 $indexedArray = array_values($platformsArray);
-                $account->platforms = $indexedArray;            
+                $account->platforms = $indexedArray;
                 $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'conet_or_not' => 'yes'
-
                 ];
                 return response()->json($response, 200);
-            }else{
-                $newValue = $req->plateform_val;           
-                $platformsArray[] = $newValue; 
-                $account->platforms = $platformsArray;              
+            } else {
+                $newValue = $req->plateform_val;
+                $platformsArray[] = $newValue;
+                $account->platforms = $platformsArray;
                 $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'conet_or_not' => 'no'
                 ];
                 return response()->json($response, 200);
-            }                    
+            }
 
         }
 
-        
-       
 
-       
     }
-
 
 
     public function update_user_platforms_accounts(Request $req)
@@ -477,59 +470,58 @@ class UserController extends Controller
         $account = Account::find($req->account_id);
 
         if ($req->plateform_val != null) {
-            if (($req->plateform_val =='Facebook') && ($account->fb_access_token == null || $account->fb_page_token == null)) {
+            if (($req->plateform_val == 'Facebook') && ($account->fb_access_token == null || $account->fb_page_token == null)) {
                 $error = ['message' => 'fb_error',
-                'status' => $req->isChecked];
+                    'status' => $req->isChecked];
                 return response()->json($error, 404);
-            } if (($req->plateform_val =='Twitter') && ($account->twiter_access_token == null || $account->twiter_refresh_token == null)) {
+            }
+            if (($req->plateform_val == 'Twitter') && ($account->twiter_access_token == null || $account->twiter_refresh_token == null)) {
                 $error = ['message' => 'twiter_error',
-                'status' => $req->isChecked];
+                    'status' => $req->isChecked];
                 return response()->json($error, 404);
-            } if (($req->plateform_val =='Instagram') && ($account->insta_access_token == null || $account->insta_user_id == null)) {
+            }
+            if (($req->plateform_val == 'Instagram') && ($account->insta_access_token == null || $account->insta_user_id == null)) {
                 $error = ['message' => 'insta_error',
-                'status' => $req->isChecked];
+                    'status' => $req->isChecked];
                 return response()->json($error, 404);
-            } if (($req->plateform_val =='Linkedin') && ($account->linkedin_accesstoken == null || $account->linkedin_user_id == null || $account->linkedin_page_id == null)) {
+            }
+            if (($req->plateform_val == 'Linkedin') && ($account->linkedin_accesstoken == null || $account->linkedin_user_id == null || $account->linkedin_page_id == null)) {
                 $error = ['message' => 'linkedin_error',
-                'status' => $req->isChecked];
+                    'status' => $req->isChecked];
                 return response()->json($error, 404);
             }
         }
         if ($req->plateform_val != null) {
-            $platformsArray = $account->platforms; 
-            $valueToRemove = $req->plateform_val;             
-            //    if (in_array($valueToRemove, $platformsArray)) {        
-                if (($req->isChecked == 'false')) {               
-       
+            $platformsArray = $account->platforms;
+            $valueToRemove = $req->plateform_val;
+            //    if (in_array($valueToRemove, $platformsArray)) {
+            if (($req->isChecked == 'false')) {
+
                 // $platformsArray = array_diff($platformsArray, [$valueToRemove]);
                 // $indexedArray = array_values($platformsArray);
-                // $account->platforms = $indexedArray;            
+                // $account->platforms = $indexedArray;
                 // $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'off'
                 ];
                 return response()->json($response, 200);
-            }else{
-                // $newValue = $req->plateform_val;           
-                // $platformsArray[] = $newValue; 
-                // $account->platforms = $platformsArray;              
+            } else {
+                // $newValue = $req->plateform_val;
+                // $platformsArray[] = $newValue;
+                // $account->platforms = $platformsArray;
                 // $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'on'
                 ];
                 return response()->json($response, 200);
-            }                    
+            }
 
         }
 
-        
-       
 
-       
     }
-
 
 
     public function update_user_platforms(Request $req)
@@ -586,7 +578,7 @@ class UserController extends Controller
         ]);
         $helper = $fb->getRedirectLoginHelper();
         //$permissions = ['pages_read_engagement', 'pages_manage_posts', 'pages_read_user_content', 'read_insights', 'pages_manage_metadata', 'pages_show_list'];
-        $permissions = ['pages_read_engagement','pages_read_user_content', 'pages_manage_posts', 'read_insights', 'pages_show_list'];
+        $permissions = ['pages_read_engagement', 'pages_read_user_content', 'pages_manage_posts', 'read_insights', 'pages_show_list'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
         return redirect()->away($loginUrl);
@@ -900,18 +892,16 @@ class UserController extends Controller
             'platforms' => $platform
         ]);
 
-        try {
-            $twitter = config('services.twitter');
-            $client_id = $twitter['client_id'];
 
-
-            // $client_secret = $twitter['client_secret'];
-            $redirect_uri = $twitter['redirect'];
-            $auth_url = "https://twitter.com/i/oauth2/authorize?response_type=code&client_id=$client_id&redirect_uri=$redirect_uri&scope=tweet.read%20tweet.write%20users.read%20like.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain";
-            return redirect()->away($auth_url);
-        } catch (\Throwable $e) {
-            return back()->with('error', $e->getMessage());
-        }
+        $twitter = config('services.twitter');
+        $connection = new TwitterOAuth(
+            $twitter['client_id'],
+            $twitter['client_secret'],
+        );
+        $token = $connection->oauth('oauth/request_token', ['oauth_callback' => $twitter['redirect']]);
+        session()->put('oauth_token', $token['oauth_token']);
+        session()->put('oauth_token_secret', $token['oauth_token_secret']);
+        return redirect()->away('https://api.twitter.com/oauth/authorize?oauth_token=' . $token['oauth_token']);
 
 
     }
@@ -920,64 +910,35 @@ class UserController extends Controller
     {
 
 
-//        $connection = new TwitterOAuth(
-//            'aSQRkFaVlvQDPRjDXgMlYVVmD',
-//            'WD4j6rY3azsxlTQPI1kuAXiCmHw2vDbAzY3oYClzziAmvSd5VL',
-//            'C_HWMwAAAAABpjg-AAABi0ac51s',
-//            'CNcvKEg763DtInbKHSLynHQsRsxjbd3n'
-//
-//        );
-//        $accessToken = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->input("oauth_verifier")]);
-//        dd($accessToken);
+        $twitter = config('services.twitter');
+        $connection = new TwitterOAuth(
+            $twitter['client_id'],
+            $twitter['client_secret'],
+            session()->get('oauth_token'),
+            session()->get('oauth_token_secret'),
+        );
+        $accessToken = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->oauth_verifier]);
 
         try {
-            $twitter = config('services.twitter');
-            $client_id = $twitter['client_id'];
-            $client_secret = $twitter['client_secret'];
-            $redirect_uri = $twitter['redirect'];
-            //with curl
-            $basee = base64_encode($client_id . ':' . $client_secret);
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://api.twitter.com/2/oauth2/token',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => "code=$request->code&grant_type=authorization_code&client_id=$client_id&code_verifier=challenge&redirect_uri=$redirect_uri",
-                CURLOPT_HTTPHEADER => array(
-                    'Content-Type: application/x-www-form-urlencoded',
-                    "Authorization: Basic $basee",
-                ),
-            ));
-            $response = curl_exec($curl);
-            curl_close($curl);
-            $response2 = json_decode($response);
 
             $run = new TwitterService();
-            $userData = $run->get_tw_data($response2->access_token);
-            $access_token = $response2->access_token;
-            $refresh_token = $response2->refresh_token;
+            $userData = $run->get_tw_data($accessToken);
             $accountUser = User::find(auth()->user()->id);
             $platforms = $accountUser->account->platforms;
             array_push($platforms, 'Twitter');
 
 
             $accountUser->account()->update([
-                'twiter_access_token' => $access_token,
-                'twiter_refresh_token' => $refresh_token,
+                'twiter_access_token' => json_encode($accessToken),
+                'twiter_refresh_token' => 1,
                 'platforms' => $platforms,
-                'tw_name' => $userData['data']['name'] ?? '',
-                'tw_user_name' => $userData['data']['username'] ?? '',
-                'twt_image' => $userData['data']['profile_image_url'] ?? '',
+                'tw_name' => $userData->name ?? '',
+                'tw_user_name' => $userData->username ?? '',
+                'twt_image' => $userData->profile_image_url ?? '',
 
             ]);
             return redirect('/index')->with('success', 'Twitter, Successfully Added');
         } catch (\Throwable $e) {
-            dd($e);
             return redirect('/index')->with('error', $e->getMessage());
         }
 

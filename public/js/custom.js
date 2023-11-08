@@ -27,12 +27,12 @@ function settime() {
     var selectedMinute = $('#minute').val();
     var ampm = $('#ampm').val();
 
-   
-    // var ampm = selectedDate.getHours() >= 12 ? 'PM' : 'AM';     
-   
-    
+
+    // var ampm = selectedDate.getHours() >= 12 ? 'PM' : 'AM';
+
+
     var hours = parseInt(selectedHour);
-    var minutes = parseInt(selectedMinute); 
+    var minutes = parseInt(selectedMinute);
 
 
     var new_date_time = new Date(selectedDate);
@@ -42,7 +42,7 @@ function settime() {
 
     // new_date_time = new Date(new_date_time);
 
-   
+
 
     $('#browsertime').text(formattedDateTime);
     $('#browsertime2').text(formattedDateTime);
@@ -57,14 +57,14 @@ function formatDateTime(date, ampm) {
     var year = date.getFullYear();
     var hours = date.getHours();
     var minutes = date.getMinutes();
-    
+
     // Convert hours to 12-hour format and handle 12 AM/PM cases
     hours = hours % 12;
     hours = hours || 12; // Handle 0 hours (midnight)
-    
+
     // Ensure minutes are displayed with leading zeros
     var formattedDateTime = month + '/' + day + '/' + year + ', ' + hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ' ' + ampm;
-    
+
     return formattedDateTime;
 }
 
@@ -311,13 +311,13 @@ $(document).ready(function () {
 
      // Attach a click event handler to the cancel button
     //  $('#cancelButton').on('click', function() {
-       
-    //     const now_time = new Date();       
+
+    //     const now_time = new Date();
     //     const current_hours = now_time.getHours() > 12 ? (now_time.getHours() - 12).toString().padStart(2, '0') : now_time.getHours().toString().padStart(2, '0');
-    //     const current_minutes = now_time.getMinutes().toString().padStart(2, '0');      
+    //     const current_minutes = now_time.getMinutes().toString().padStart(2, '0');
     //     $('#hour').val(`${current_hours}`);
     //     $('#minute').val(`${current_minutes}`);
-    //     const ampm = now_time.getHours() >= 12 ? 'PM' : 'AM';     
+    //     const ampm = now_time.getHours() >= 12 ? 'PM' : 'AM';
     //      $('#ampm').val(ampm);
     //      apend_current_time();
     //     $('#TimetoUploadPost').modal('hide');
@@ -325,18 +325,18 @@ $(document).ready(function () {
 
 
     // $('#TimetoUploadPost').on('hide.bs.modal', function (e) {
-      
-          
-    //          const now_time = new Date();       
+
+
+    //          const now_time = new Date();
     //     const current_hours = now_time.getHours() > 12 ? (now_time.getHours() - 12).toString().padStart(2, '0') : now_time.getHours().toString().padStart(2, '0');
-    //     const current_minutes = now_time.getMinutes().toString().padStart(2, '0');      
+    //     const current_minutes = now_time.getMinutes().toString().padStart(2, '0');
     //     $('#hour').val(`${current_hours}`);
     //     $('#minute').val(`${current_minutes}`);
-    //     const ampm = now_time.getHours() >= 12 ? 'PM' : 'AM';     
+    //     const ampm = now_time.getHours() >= 12 ? 'PM' : 'AM';
     //      $('#ampm').val(ampm);
     //      apend_current_time();
-   
-       
+
+
     // });
 
     const now_time = new Date();
@@ -344,10 +344,10 @@ $(document).ready(function () {
     const current_hours = now_time.getHours() > 12 ? (now_time.getHours() - 12).toString().padStart(2, '0') : now_time.getHours().toString().padStart(2, '0');
     const current_minutes = now_time.getMinutes().toString().padStart(2, '0'); // add leading zero if necessary
     // $('.select_time').val(`${current_hours}:${current_minutes}`);
-    
+
     $('#hour').val(`${current_hours}`);
     $('#minute').val(`${current_minutes}`);
-    const ampm = now_time.getHours() >= 12 ? 'PM' : 'AM';     
+    const ampm = now_time.getHours() >= 12 ? 'PM' : 'AM';
      $('#ampm').val(ampm);
 
     // set current time
@@ -383,81 +383,8 @@ $(document).ready(function () {
         $('#TimetoUploadPost').modal('hide');
     });
 
-        // $("#post_form").submit(function(event) {
-        //     event.preventDefault();           
-        //     var facebook_content = '';
-        //     var instagram_content= '';
-        //     var twitter_content= '';
-        //     var linkedin_content = '';
-        //     var image_or_video_insta_file= '';
-        //     var error_input ='';
-        //         if ($("li[section='fb']").length > 0) {
-        //             facebook_content = $("#facebook_content").val();
-                
-        //             if (facebook_content === "") {
-                    
 
-        //                 error_input ="Facebook content can not be empty";
-        //                 $('#file_error_all').removeClass('d-none').text(error_input);
-        //                 return;
-                    
-        //             } else{
-        //                 $('#file_error_all').addClass('d-none')
-        //             }
-        //         }
-        //         if ($("li[section='insta']").length > 0) {
-        //             instagram_content = $("#instagram_content").val();
-        //             image_or_video_insta_file = $("#image_or_video_insta")[0];
-
-                
-        //                 if (instagram_content === ""  || image_or_video_insta_file.files.length === 0 ) {
-                        
-
-        //                     error_input ="Insta content and image can not be empty";
-        //                         $('#file_error_all').removeClass('d-none').text(error_input);
-        //                         return;
-        //                 }else{
-        //                     $('#file_error_all').addClass('d-none')
-        //                 } 
-        //         }
-        //         if ($("li[section='twitter']").length > 0) {
-        //             twitter_content = $("#twitter_content").val();
-        //                 if (twitter_content === "") {
-                        
-        //                     error_input ="Twitter content can not be empty";
-        //                     $('#file_error_all').removeClass('d-none').text(error_input);
-        //                     return;
-        //                 } else{
-        //                     $('#file_error_all').addClass('d-none');
-        //                 } 
-        //         }
-        //         if ($("li[section='linkedin']").length > 0) {
-        //             linkedin_content = $("#linkedin_content").val();
-                
-        //                 if (linkedin_content === "") {
-                        
-        //                     error_input ="Linkedin content can not be empty";
-        //                     $('#file_error_all').removeClass('d-none').text(error_input);
-        //                     return;
-        //                 } 
-        //                 else{
-        //                     $('#file_error_all').addClass('d-none')
-        //                 } 
-        //         }
-                
-            
-        //         if (error_input == "") {
-        //             $('#file_error_all').addClass('d-none');
-                
-        //             $(this).unbind('submit').submit();
-        //         } 
-                
-        
-
-
-            
-        // });
-    // 
+    //
     $(document).ready(function() {
         // Add input event listeners to input fields
         $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").on('input', function() {
@@ -468,7 +395,7 @@ $(document).ready(function () {
                 error_input.addClass('d-none');
             }
         });
-    
+
         // Add input event listener to image input field
         $("#image_or_video_insta").on('input', function() {
             var error_input = $('#file_error_all');
@@ -477,10 +404,10 @@ $(document).ready(function () {
                 error_input.addClass('d-none');
             }
         });
-    
+
         $("#post_form").submit(function(event) {
             event.preventDefault();
-    
+
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
@@ -488,7 +415,7 @@ $(document).ready(function () {
             var image_or_video_insta_file = $("#image_or_video_insta")[0];
               var data_id="";
             var error_input = '';
-    
+
             if ($("li[section='fb']").length > 0 && facebook_content === "") {
                 error_input = "Facebook content can not be empty";
                 data_id="facebok_error";
@@ -502,22 +429,23 @@ $(document).ready(function () {
                 error_input = "Linkedin content can not be empty";
                 data_id="link_error";
             }
-    
+
             if (error_input !== "") {
                 $('#file_error_all').removeClass('d-none').text(error_input);
                 $('#file_error_all').attr('data-id',data_id);
             } else {
                 $('#file_error_all').addClass('d-none');
+                $('.uplaod-gif-video').removeClass('d-none');
                 $(this).unbind('submit').submit();
             }
         });
     });
-    
-    
-    // 
+
+
+    //
 
     $(document).on('click', '.open_emoji', function () {
-        $('.emoji_parent > span').click();      
+        $('.emoji_parent > span').click();
 
     });
 
@@ -528,16 +456,16 @@ $(document).ready(function () {
         $('.emoji_parent div span').on('click', function() {
 
             var parentDiv = $(this).closest('.emoji_parent').find('textarea').attr('id');
-            var emoji = $(this).text();   
-       
+            var emoji = $(this).text();
+
             if(parentDiv == 'youpost_content'){
 
               $('#' + parentDiv).trigger('keyup');
-              
+
               $("#mypostresult_fb").append(emoji);
               $("#mypostresult_insta").append(emoji);
               $("#mypostresult_twitter").append(emoji);
-              $("#mypostresult_linkedin").append(emoji);          
+              $("#mypostresult_linkedin").append(emoji);
 
               var textareaIds = ['#facebook_content', '#instagram_content', '#twitter_content', '#linkedin_content'];
 
@@ -546,14 +474,14 @@ $(document).ready(function () {
                   var currentContent = $(textareaId).val();
                   var updatedContent = currentContent + emoji;
                   $(textareaId).val(updatedContent);
-              });                    
+              });
 
             }else{
-              
+
                   $('#' + parentDiv).trigger('keyup');
             }
 
-          
+
         });
     });
 
@@ -562,7 +490,7 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.image_or_video_youpost_all', function () {
-      
+
 
         if ($(this).attr('typpe') == 'image') {
             $('#image_or_videofb').attr('accept', 'image/*');
@@ -584,7 +512,7 @@ $(document).ready(function () {
 
 
     $(document).on('click', '.image_or_video', function () {
-       
+
 
         if ($(this).attr('typpe') == 'image') {
             $('#' + $(this).attr('fordata')).attr('accept', 'image/*');
@@ -622,19 +550,19 @@ $(document).ready(function () {
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
         var socialicon = $(this).closest(".sm_container").find('input[type=file]:first').attr('id');
 
-        if(socialicon == 'image_or_video_youpost'){          
+        if(socialicon == 'image_or_video_youpost'){
             var remove= $(this).closest('.cross_img_con').data('remove');
-            $('.' + remove).remove();       
+            $('.' + remove).remove();
         }else{
               $(this).closest('.cross_img_con').remove();
-         
+
         }
-       
-       
-        var parent = $(this).parent().parent();  
+
+
+        var parent = $(this).parent().parent();
         var img = parent.find("img");
         var len = img.length;
-      
+
 
         if (len <= 0) {
             if (id_of_div == 'media_type_fb') {
@@ -660,11 +588,11 @@ $(document).ready(function () {
             });
 
         }else{
-                     
+
             setPreview(socialicon);
         }
 
-       
+
     });
 
 
@@ -773,11 +701,11 @@ $(document).ready(function () {
     }
     function appendtoall(file,dimention,dimention_error,getRandomClass) {
 
-            
-        var getRandomID=getRandomClassName();
-        
 
-       
+        var getRandomID=getRandomClassName();
+
+
+
 
         var img_con = `<div class="cross_img_con  ${getRandomClass}" id="remove_id" data-remove="${getRandomClass}" >
         <img name='image/*' id="teting" src="${file}"/>
@@ -788,14 +716,14 @@ $(document).ready(function () {
                           $("#image_or_video_youpost").parent().append(img_con);
                           $('#media_type_youpost').val('image');
                           if (!dimention){
-                             
+
                               $('#file_error_youpost').removeClass('d-none').text(dimention_error)
                           }
                           else {
-                        
+
                               $('#file_error_youpost').addClass('d-none')
                           }
-       
+
 
         var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
         <img name='image/*' id="teting" src="${file}"/>
@@ -806,11 +734,11 @@ $(document).ready(function () {
                           $("#image_or_videofb").parent().append(img_con);
                           $('#media_type_fb').val('image');
                           if (!dimention){
-                             
+
                               $('#file_error_fb').removeClass('d-none').text(dimention_error)
                           }
                           else {
-                        
+
                               $('#file_error_fb').addClass('d-none')
                           }
 
@@ -858,7 +786,7 @@ $(document).ready(function () {
 
 
                 if (socialicon == 'image_or_videofb') {
-                 
+
                     var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id">
   <img name='image/*' id="teting" src="${e.target.result}"/>
    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
@@ -867,13 +795,13 @@ $(document).ready(function () {
    </div>`;
                     $("#image_or_videofb").parent().append(img_con);
                     $('#media_type_fb').val('image');
-                  
+
                     if (!dimention){
-                       
+
                         $('#file_error_fb').removeClass('d-none').text(dimention_error)
                     }
                     else {
-                  
+
                         $('#file_error_fb').addClass('d-none')
                     }
 
@@ -922,13 +850,13 @@ $(document).ready(function () {
                     }
                 });
                 $.ajax({
-                    
+
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
                     type: 'POST',
                     data: {image: base64Data, 'dimention': dimention},
-                   
+
                     success: function (response) {
-                      
+
                         $('.'+getRandomClass).find('textarea').val(response.path);
                         $('.'+getRandomClass).find('.uplaod-gif').remove();
 
@@ -938,12 +866,12 @@ $(document).ready(function () {
                                 ids.forEach(function(socialicon) {
                                     setPreview(socialicon, response.path);
                                 });
-                                
+
 
                              }else{
                                 setPreview(socialicon,response.path);
                              }
-                           
+
                     },
                 });
 
@@ -960,12 +888,12 @@ $(document).ready(function () {
     function setPreview(socialicon,path){
     //  alert("onetime");
         path = path || "DefaultParam2";
-     
+
         if (socialicon == 'image_or_video_youpost') {
-         
+
             var imgOrVideo= $('#media_type_youpost').val();
-           //  var imgCount = $(".prv_div img").length;  
-            var imgCount = $(".prv_div_youpost .mobile_post_img").length;  
+           //  var imgCount = $(".prv_div img").length;
+            var imgCount = $(".prv_div_youpost .mobile_post_img").length;
             var add_imge = $('#image_div_youpost .cross_img_con').length;
             if(imgCount == 0 || add_imge == 1)
             {
@@ -974,40 +902,40 @@ $(document).ready(function () {
                 $('.prv_div_youpost').css('column-count', '2');
             }
             if(imgOrVideo =='image'){
-               $('.prv_div_youpost').empty();                                          
+               $('.prv_div_youpost').empty();
                var parentElement = $("#media_type_youpost").closest(".sm_container");
                var img = parentElement.find("img");
                // var img = parentElement.find("div");
-               var imgCount = 0; 
+               var imgCount = 0;
                  $(img).each(function(index) {
                     imgCount++;
-                    
+
                     // if (imgCount >= 6) {
-                    //    if ($("div.div_in_div_youpost").length === 0) {                                                        
+                    //    if ($("div.div_in_div_youpost").length === 0) {
                     //        var lastImg = $(".prv_div_youpost").find($(".mobile_post_img:last"));
                     //         lastImg.wrap("<div class='div_in_div_youpost'></div>");
-                         
+
                     //     //    $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_you_bg'> </div>`);
                     //     $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_you_bg'> </div>`);
-                        
-                        
-                    //    } 
+
+
+                    //    }
                     if (imgCount >= 6) {
                         if ($("div.div_in_div_youpost").length === 0) {
                             var lastImg = $(".prv_div_youpost").find(".mobile_post_img:last");
                             lastImg.wrap("<div class='div_in_div_youpost'></div>");
-                    
+
                             // Add the new span element with the class 'fb_counter_youpost'
                             $(".div_in_div_youpost").append(`<span id='my_value_youpost' class='fb_counter_youpost'><i class='fa-solid fa-plus plus_fb_icon'></i> ${imgCount - 5}</span><div class='div_in_div_you_bg'></div>`);
-                        
+
                     }
                        else {
-                            
+
                            const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
-                           var spanElement = $('#my_value_youpost');    
-                           var currentValue = parseInt(spanElement.text());                                    
-                           newValue =  currentValue + 1;  
-                           $('#my_value_youpost').empty();                                                                 
+                           var spanElement = $('#my_value_youpost');
+                           var currentValue = parseInt(spanElement.text());
+                           newValue =  currentValue + 1;
+                           $('#my_value_youpost').empty();
                            $('#my_value_youpost').append(iconElement, newValue);
 
                        }
@@ -1016,7 +944,7 @@ $(document).ready(function () {
                    //  var src=   $(this).attr("src");
                    //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
                    //  $('.prv_div').append(newImage);
-                   
+
                    var src=   $(this).attr("src");
                    //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
                     var newImage = `<div class="mobile_post_img"></div>`;
@@ -1032,54 +960,54 @@ $(document).ready(function () {
                     if(add_imge == 3){
                        $('.prv_div_youpost .mobile_post_img:nth-child(1)').addClass('first_child_img1');
                        $('.prv_div_youpost .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
-                     
+
                     }
                     else{
                        $('.prv_div_youpost .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
                        $('.prv_div_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
-                      
+
                     }
-                   
+
                     if(add_imge == 4){
                        $('.prv_div_youpost .mobile_post_img:nth-child(3)').addClass('first_child_img4');
-                     
+
 
                     }
                     else{
                        $('.my_value_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
-   
+
                     }
                     if(add_imge == 6){
                        $('.prv_div_youpost .mobile_post_img:nth-child(5)').addClass('first_child_img5');
-                     
+
 
                     }
                     else{
                         $('.prv_div_youpost .mobile_post_img:nth-child(5)').addClass('first_child_img5');
                     }
-                   
-                    
+
+
                });
 
 
-                  
+
                 $('#mediaContainervideo_youpost').html('');
 
 
-            }else if(imgOrVideo =='video'){    
-                   
-          
+            }else if(imgOrVideo =='video'){
+
+
                         var video_youpost = $('<video controls class="w-100" loading="lazy">').attr('src', 'content_media/'+path);
-                        var video_fb = $('<video controls class="video_preview w-100" loading="lazy">').attr('src', 'content_media/'+path); 
-                        // var video_ins = $('<video controls class=" video_preview_inst w-100" loading="lazy">').attr('src', 'content_media/'+path);                             
-                        $('#mediaContainervideo_youpost').html(video_youpost);   
-                        $('#mediaContainervideo_fb').html(video_fb);                     
-                       // $('#mediaContainervideo_inst').html(video_ins); 
-                                                                  
-                                               
-                               
+                        var video_fb = $('<video controls class="video_preview w-100" loading="lazy">').attr('src', 'content_media/'+path);
+                        // var video_ins = $('<video controls class=" video_preview_inst w-100" loading="lazy">').attr('src', 'content_media/'+path);
+                        $('#mediaContainervideo_youpost').html(video_youpost);
+                        $('#mediaContainervideo_fb').html(video_fb);
+                       // $('#mediaContainervideo_inst').html(video_ins);
+
+
+
             }else{
-           
+
                $('.prv_div_youpost').html('');
                $('#mediaContainervideo_youpost').html('');
 
@@ -1088,8 +1016,8 @@ $(document).ready(function () {
             else if (socialicon == 'image_or_videofb') {
 
                      var imgOrVideo= $('#media_type_fb').val();
-                    //  var imgCount = $(".prv_div img").length;  
-                     var imgCount = $(".prv_div .mobile_post_img").length;  
+                    //  var imgCount = $(".prv_div img").length;
+                     var imgCount = $(".prv_div .mobile_post_img").length;
                      var add_imge = $('#image_div .cross_img_con ').length;
                      if(imgCount == 0 || add_imge == 1)
                      {
@@ -1098,15 +1026,15 @@ $(document).ready(function () {
                          $('.prv_div').css('column-count', '2');
                      }
                      if(imgOrVideo =='image'){
-                        $('.prv_div').empty();                                          
+                        $('.prv_div').empty();
                         var parentElement = $("#media_type_fb").closest(".sm_container");
                         var img = parentElement.find("img");
                         // var img = parentElement.find("div");
-                        var imgCount = 0; 
+                        var imgCount = 0;
                           $(img).each(function(index) {
                              imgCount++;
                              if (imgCount >= 6) {
-                                if ($("div.div_in_div").length === 0) {                                                        
+                                if ($("div.div_in_div").length === 0) {
                                     var lastImg = $(".prv_div").find($(".mobile_post_img:last"));
                                     // var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
                                     //  lastImg.after(spanElement);
@@ -1115,12 +1043,12 @@ $(document).ready(function () {
                                     //    $(".div_in_div").after(newDiv);
                                        $(".div_in_div").append(`<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_bg'> </div>`);
                                 } else {
-                                     
+
                                     const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
-                                    var spanElement = $('#my_value');    
-                                    var currentValue = parseInt(spanElement.text());                                    
-                                    newValue =  currentValue + 1;  
-                                    $('#my_value').empty();                                                                 
+                                    var spanElement = $('#my_value');
+                                    var currentValue = parseInt(spanElement.text());
+                                    newValue =  currentValue + 1;
+                                    $('#my_value').empty();
                                     $('#my_value').append(iconElement, newValue);
 
                                 }
@@ -1129,7 +1057,7 @@ $(document).ready(function () {
                             //  var src=   $(this).attr("src");
                             //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
                             //  $('.prv_div').append(newImage);
-                            
+
                             var src=   $(this).attr("src");
                             //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
                              var newImage = `<div class="mobile_post_img"></div>`;
@@ -1145,40 +1073,40 @@ $(document).ready(function () {
                              if(add_imge == 3){
                                 $('.prv_div .mobile_post_img:nth-child(1)').addClass('first_child_img1');
                                 $('.prv_div .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
-                              
+
                              }
                              else{
                                 $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
                                 $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
-                               
+
                              }
-                            
+
                              if(add_imge == 4){
                                 $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img4');
-                              
+
 
                              }
                              else{
                                 $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
-            
+
                              }
                         });
 
 
-                           
+
                          $('#mediaContainervideo_fb').html('');
 
 
                      }else if(imgOrVideo =='video'){
-                       
+
                         var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
-                      
+
 
                         $('.prv_div').html('');
                         $('#mediaContainervideo_fb').html(video);
-                        
+
                      }else{
-                   
+
                         $('.prv_div').html('');
                         $('#mediaContainervideo_fb').html('');
 
@@ -1186,13 +1114,13 @@ $(document).ready(function () {
              }else if(socialicon == 'image_or_video_insta'){
 
                 var imgOrVideo= $('#media_type_insta').val();
-              
-                // var imgCount = $(".prv_div_isnt img").length; 
-                var imgCount = $(".prv_div_isnt .mobile_post_img_inst").length;   
+
+                // var imgCount = $(".prv_div_isnt img").length;
+                var imgCount = $(".prv_div_isnt .mobile_post_img_inst").length;
                 var add_imge2 = $('#image_div_ins .cross_img_con ').length;
-                              
+
              if(imgOrVideo =='image'){
-                        $('.prv_div_isnt').empty();  
+                        $('.prv_div_isnt').empty();
                         var parentElement = $("#media_type_insta").closest(".sm_container");
                         var img = parentElement.find("img:last");
                              var src= $(img).attr("src");
@@ -1205,20 +1133,20 @@ $(document).ready(function () {
                     var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/'+path);
                             $('.prv_div_isnt').html('');
                             $('#mediaContainervideo_inst').html(video);
-                
-                   
+
+
                 }else{
-                  
+
                    $('.prv_div_isnt').html('');
                    $('#mediaContainervideo_inst').html('');
 
                 }
-              
+
             }else if(socialicon == 'image_or_video_linkedin'){
 
                 var imgOrVideo= $('#media_type_linkedin').val();
-                // var imgCount = $(".prv_div_link img").length; 
-                var imgCount = $(".prv_div_link .mobile_post_img_link").length;   
+                // var imgCount = $(".prv_div_link img").length;
+                var imgCount = $(".prv_div_link .mobile_post_img_link").length;
                 var add_imge3 = $('#image_div_linked .cross_img_con ').length;
                 if(imgCount == 0 || add_imge3 == 1)
                 {
@@ -1226,17 +1154,17 @@ $(document).ready(function () {
                 }else{
                     $('.prv_div_link').css('column-count', '2');
                 }
-                if(imgOrVideo =='image'){                                   
+                if(imgOrVideo =='image'){
 
-                   $('.prv_div_link').empty();                                          
+                   $('.prv_div_link').empty();
                    var parentElement = $("#media_type_linkedin").closest(".sm_container");
                    var img = parentElement.find("img");
-                   var imgCount = 0; 
+                   var imgCount = 0;
 
                      $(img).each(function(index) {
                         imgCount++;  if (imgCount >= 6) {
-                              
-                            if ($("div.div_in_div_link").length === 0) {                                                   
+
+                            if ($("div.div_in_div_link").length === 0) {
                                 var lastImg = $(".prv_div_link").find($(".mobile_post_img_link:last"));
                                 // var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
                                 //  lastImg.after(spanElement);
@@ -1246,10 +1174,10 @@ $(document).ready(function () {
                                 $(".div_in_div_link").append(`<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>${imgCount-5}</span> <div class='div_in_div_linkedin_bg'> </div>`);
                             } else {
                                         const iconElement = $('<i>').addClass('fa-solid fa-plus plus_linkedin_icon');
-                                        var spanElement = $('#my_value_link');    
-                                        var currentValue = parseInt(spanElement.text());                                    
-                                        newValue =  currentValue + 1;  
-                                        $('#my_value_link').empty();                                                                 
+                                        var spanElement = $('#my_value_link');
+                                        var currentValue = parseInt(spanElement.text());
+                                        newValue =  currentValue + 1;
+                                        $('#my_value_link').empty();
                                         $('#my_value_link').append(iconElement, newValue);
                                 }
                         }else{
@@ -1262,7 +1190,7 @@ $(document).ready(function () {
                             $('.prv_div_link .mobile_post_img_link').addClass('max_height_linkedin');
                          }else{
                             $('.prv_div_link .mobile_post_img_link').removeClass('max_height_linkedin');
-    
+
                          }
 
                          if(add_imge3 == 3){
@@ -1272,7 +1200,7 @@ $(document).ready(function () {
                          else{
                             $('.prv_div_link .mobile_post_img_link:nth-child(1)').removeClass('third_child_img1');
                          }
-                        
+
                          if(add_imge3 == 4){
                             $('.prv_div_link .mobile_post_img_link:nth-child(3)').addClass('third_child_img3');
                          }
@@ -1287,9 +1215,9 @@ $(document).ready(function () {
                     var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/'+path);
                       $('.prv_div_link').html('');
                     $('#mediaContainervideo_link').html(video);
-                 
-                  
-                   
+
+
+
                 }else{
                    $('.prv_div_link').html('');
                    $('#mediaContainervideo_link').html('');
@@ -1354,12 +1282,12 @@ $(document).ready(function () {
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
 
                             $('.video_preview_link').removeClass('d-none');
-                            $('.preview_image_link').addClass('d-none');                           
+                            $('.preview_image_link').addClass('d-none');
                             setPreview(socialicon,response.path);
 
                         }
                         else if (socialicon == 'image_or_video_youpost') {
-                              
+
                             $('#youpost_video').val(response.path);
                             $('#media_type_youpost').val('video');
                             $("#image_or_video_youpost").parent().find('.cross_img_con').remove();
@@ -1367,37 +1295,37 @@ $(document).ready(function () {
                             $('.prv_div_youpost').html('');
 
                             $('#fb_video').val(response.path);
-                            $('#media_type_fb').val('video');                           
+                            $('#media_type_fb').val('video');
                             $("#image_or_videofb").parent().find('.cross_img_con').remove();
                             $('.video_preview').removeClass('d-none');
-                            $('.preview_image').addClass('d-none'); 
+                            $('.preview_image').addClass('d-none');
                             $('.prv_div').html('');
-                            
+
                             $('#inst_video').val(response.path);
-                            $('#media_type_insta').val('video');                          
+                            $('#media_type_insta').val('video');
                             $("#image_or_video_insta").parent().find('.cross_img_con').remove();
                             $('.video_preview_inst').removeClass('d-none');
                             $('.preview_image_inst').addClass('d-none');
                             $('.prv_div_isnt').html('');
-                            
-                            
+
+
                             $('#link_video').val(response.path);
                             $('#media_type_linkedin').val('video');
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
                             $('.video_preview_link').removeClass('d-none');
                             $('.preview_image_link').addClass('d-none');
-                            $('.prv_div_link').html('');                       
+                            $('.prv_div_link').html('');
 
-                                                                                                   
-                           
 
-                                setPreview(socialicon,response.path);  
-                        
-                
-                            
-                                              
-                                                
-                           
+
+
+                                setPreview(socialicon,response.path);
+
+
+
+
+
+
                         }
                     },
                     error: function () {
@@ -1408,7 +1336,7 @@ $(document).ready(function () {
 
             };
             reader.readAsDataURL(file);
-           
+
         }
     }
 
@@ -1437,8 +1365,8 @@ $(document).ready(function () {
 
     $('.file_image_video').change(function (e) {
 
-            
-        var socialicon = $(this).attr('id');           
+
+        var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
 
@@ -1456,22 +1384,22 @@ $(document).ready(function () {
 
 
     $('.file_image_video_youpost').change(function (e) {
-     
-                    
-                var socialicon = $(this).attr('id');           
+
+
+                var socialicon = $(this).attr('id');
                 var file = e.target.files[0];
-        
-        
+
+
                 // *********************  Validate Size and Memes ************************
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     var mediaType = file.type.split('/')[0];
                     validateFileImageVideo(file, socialicon);
-        
+
                 };
                 reader.readAsDataURL(file);
-        
-        
+
+
             });
 
     $('.preview_div').click(function (e) {
@@ -1537,7 +1465,7 @@ $(document).ready(function () {
 
     });
 // set each tab image preview on load
-    
+
 
 // set each tab image preview on load
 
@@ -1547,5 +1475,5 @@ $(document).ready(function () {
     $('.timezone').val(timezone_name);
     return true;
 
-    
+
 });

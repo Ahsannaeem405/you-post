@@ -48,32 +48,44 @@ class TwitterService
 
     public function create_post($data)
     {
-       
 
-        $post = Post::find($data['post']->id);
-        $this->twiter_refresh($post->account);
+
         $post = Post::find($data['post']->id);
         $tags = $post->tag ? " $post->tag" : '';
         $content = "$post->content $tags";
-        $bearerToken = $post->account->twiter_access_token;
+        $bearerToken = json_decode($post->account->twiter_access_token);
 
 
-        $response = Http::withToken($bearerToken)->post('https://api.twitter.com/2/tweets',
-            [
-                "text" => $content,
+        $twitter = config('services.twitter');
+        $connection = new TwitterOAuth(
+            $twitter['client_id'],
+            $twitter['client_secret'],
+            $bearerToken->oauth_token,
+            $bearerToken->oauth_token_secret,
+        );
 
-            ]);
-        $get = json_decode($response->body());
-       
-        if ($response->status() == 201) {
+//        $connection->setApiVersion('1.1');
+//        $status = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a2c97a42.png')]);
+//        $status2 = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a28f2252.png')]);
+        $connection->setApiVersion('2');
+        $postTwitter = $connection->post("tweets", [
+            'text' => $content,
+//            'media' => array(
+//                'media_ids' => [$status->media_id_string,$status2->media_id_string]
+//            )
+        ], true);
+
+
+
+
+        if (isset($postTwitter->data)) {
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
             $postdetail->plateform = 'Twitter';
-            $postdetail->social_id = $get->data->id;
+            $postdetail->social_id = $postTwitter->data->id;
             $postdetail->save();
             $msg = ['status' => true];
         } else {
-
             $msg = ['status' => false];
             $post->delete();
 
@@ -84,11 +96,19 @@ class TwitterService
 
     public function get_tw_data($access_token)
     {
-      
-        $getProfile = \Http::withToken($access_token)
-        ->get("https://api.twitter.com/2/users/me?user.fields=profile_image_url")->json();     
-           return $getProfile;
+
+        $twitter = config('services.twitter');
+        $connection = new TwitterOAuth(
+            $twitter['client_id'],
+            $twitter['client_secret'],
+            $access_token['oauth_token'],
+            $access_token['oauth_token_secret'],
+        );
+        $connection->setApiVersion('2');
+        $getProfile = $connection->get('users/me', ['user.fields' => 'id,profile_image_url']);
+        return $getProfile->data;
     }
+
     public function twiter_refresh($account)
     {
         $refresh_token = $account->twiter_refresh_token;
@@ -116,24 +136,23 @@ class TwitterService
 
         $access_token = $response2->access_token;
         $refresh_token = $response2->refresh_token;
-        $user = Account::find( $account->id)->update([
+        $user = Account::find($account->id)->update([
             'twiter_access_token' => $access_token,
             'twiter_refresh_token' => $refresh_token
         ]);
 
 
-
     }
- 
+
 
     function stats($post)
     {
         $getStats = \Http::withToken($post->account->twiter_access_token)
             ->get("https://api.twitter.com/2/tweets/{$post->post_dt->social_id}/liking_users")->json();
         $post->post_dt->update([
-            'likes'=>$getStats['like_count'] ?? 0,
-            'comments'=>$getStats['comments_count'] ?? 0,
-            'shares'=>$getStats['shares_count'] ?? 0,
+            'likes' => $getStats['like_count'] ?? 0,
+            'comments' => $getStats['comments_count'] ?? 0,
+            'shares' => $getStats['shares_count'] ?? 0,
         ]);
 
     }

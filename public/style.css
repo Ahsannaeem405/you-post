@@ -1673,9 +1673,9 @@ width: 30%;
     position: relative;
 }
 .form-wizard .form-wizard-steps li::after {
-    
+
     position: absolute;
- 
+
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
@@ -2008,8 +2008,8 @@ width: 100%;
 }
 
 .Mobcompny-smallicon.Mobcompny_smallicon {
-    margin-top: unset !important;    
-    border-radius: unset !important;   
+    margin-top: unset !important;
+    border-radius: unset !important;
 }
 .post_img_name{
     display: flex ;
@@ -2493,7 +2493,7 @@ height: 100%;
 /* salman_post start */
 .user_name {
     color: #000 !important;
-   
+
     font-size: 14px !important;
     font-style: normal !important;
     font-weight: 500 !important;
@@ -2645,7 +2645,7 @@ height: 100%;
     border-radius: 10px;
     background-color: #707070;
     background-blend-mode: lighten;
-  
+
 }
 .x_bar_icons span{
     color: #8a96a3;
@@ -2898,7 +2898,7 @@ position: relative;
 }
 .mobile_post_img img{
     width: 100%;
-    height: 100%; 
+    height: 100%;
 }
 .prv_div{
     column-count: 2;
@@ -3055,9 +3055,9 @@ z-index: 1;
     position: relative;
 }
 .uplaod-gif{
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+    top: -22px;
+    left: -41px;
 }
 .div_in_div_youpost{
     position: relative;
