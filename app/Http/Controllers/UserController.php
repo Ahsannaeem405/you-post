@@ -44,7 +44,7 @@ class UserController extends Controller
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
-        $posts = Post::select('*')
+        $posts = Post::select('*',DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'))
         ->where('user_id', auth()->id())
         ->where('account_id', auth()->user()->account_id)
         ->groupBy(DB::raw('DATE(posted_at)')) 
@@ -488,23 +488,23 @@ class UserController extends Controller
         if ($req->plateform_val != null) {
             $platformsArray = $account->platforms; 
             $valueToRemove = $req->plateform_val;             
-            //    if (in_array($valueToRemove, $platformsArray)) {        
-                if (($req->isChecked == 'false')) {               
+               if (in_array($valueToRemove, $platformsArray)) {        
+                // if (($req->isChecked == 'false')) {               
        
-                // $platformsArray = array_diff($platformsArray, [$valueToRemove]);
-                // $indexedArray = array_values($platformsArray);
-                // $account->platforms = $indexedArray;            
-                // $account->save();
+                $platformsArray = array_diff($platformsArray, [$valueToRemove]);
+                $indexedArray = array_values($platformsArray);
+                $account->platforms = $indexedArray;            
+                $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'off'
                 ];
                 return response()->json($response, 200);
             }else{
-                // $newValue = $req->plateform_val;           
-                // $platformsArray[] = $newValue; 
-                // $account->platforms = $platformsArray;              
-                // $account->save();
+                $newValue = $req->plateform_val;           
+                $platformsArray[] = $newValue; 
+                $account->platforms = $platformsArray;              
+                $account->save();
                 $response = [
                     'message' => $req->plateform_val,
                     'status' => 'on'

@@ -6,19 +6,16 @@ $newvar = $post->getPostLiveLink($post);
         <div class="post_img_name">
             <div class="post_img">
 
-                @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
+                @if($post->plateform === 'Facebook' )
                 <img src="{{auth()->user()->account->fb_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
+                @elseif($post->plateform === 'Instagram')
                 <img src="{{auth()->user()->account->inst_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
+                @elseif($post->plateform === 'Twitter' )
                 <img src="{{auth()->user()->account->twt_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
+                @elseif($post->plateform === 'Linkedin' )
                 <img src="{{auth()->user()->account->link_image}}" class="img-fluid" width="40" height="40" alt="">
                 @endif
+              
             </div>
             @php
             $mediatype = $post->media_type;

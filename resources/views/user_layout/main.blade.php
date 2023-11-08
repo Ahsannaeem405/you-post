@@ -256,7 +256,7 @@
 
             eventRender: function (event, element) {
                 element.find('.fc-title').text(event.title);
-                element.find('.fc-time').text(''); // remove start time
+                element.find('.fc-time').text(event.formatted_posted_at ); // remove start time
                 if (event.imageUrl) {
                     element.find('.fc-content').prepend('<img src="' + event.imageUrl + '" class="thumbnail" />');
                 }
