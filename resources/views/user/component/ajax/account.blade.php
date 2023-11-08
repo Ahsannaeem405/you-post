@@ -21,6 +21,13 @@
     border-radius: 50%;
     margin-top: 40px;
 }
+.rounded-circle2{
+    object-fit: none;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 40px;
+}
 
 .input_lb {
     position: relative;
@@ -108,6 +115,10 @@
     padding:10px;
     border-radius:30px;
 }
+.r_btn{
+    text-decoration:none;
+    color:#000;
+}
 
 /* main account file styling */
 @media (max-width:992px) {
@@ -142,7 +153,7 @@
         @elseif(in_array("Linkedin", $account->platforms))
         <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @else
-        <img src="{{asset('images/admin.png')}}" class="rounded-circle mb-3 rounded-circle mb-3" alt="Avatar" />
+        <img src="{{asset('images/you-post.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
             <label for="" class="user_detail">Account Name</label>
@@ -178,10 +189,16 @@
                             {{ in_array('Facebook', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
                     </label>
-                    <button type="button" id="Facebookbtn"
-                        class="fb-recont_btn plateform_btn btn  {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }}"
+                    <!-- <button type="button" id="Facebookbtn"
+                        class="fb-recont_btn  btn  {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }}"
                         value="Facebook" data-account="{{$account->id}}" name="plateform[{{$account->id}}]">
-                        {{ in_array('Facebook', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+                        Reconnect</button> -->
+
+                    <a class="fb-recont_btn {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }} r_btn"
+                        href="">
+                         <span > Reconnect</span>
+                    </a>
+
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}"
                         href="">
                          <span class="linkedbtnabc"> Connect</span>
@@ -205,11 +222,14 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <button type="button" value="Instagram" data-account="{{$account->id}}"
+                    <!-- <button type="button" value="Instagram" data-account="{{$account->id}}"
                         name="plateform[{{$account->id}}]"
-                        class=" plateform_btn btn instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}"
-                        id="Instagrambtn">{{ in_array('Instagram', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
-                    <a class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
+                        class="  btn instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}"
+                        id="Instagrambtn">Reconnect</button> -->
+                    <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                         <span> Reconnect</span>
+                    </a>
+                    <a class="instconect_btn {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
                          <span class="linkedbtnabc"> Connect</span>
                     </a>
                     <!-- <button type="button" class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
@@ -227,12 +247,17 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <button type="button" value="Twitter" data-account="{{$account->id}}"
+                    <!-- <button type="button" value="Twitter" data-account="{{$account->id}}"
                         name="plateform[{{$account->id}}]"
-                        class=" plateform_btn btn  T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}"
-                        id="Twitterbtn">{{ in_array('Twitter', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+                        class="  btn  T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}"
+                        id="Twitterbtn">Reconnect</button> -->
 
-                    <a class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
+                    <a class="T-recont_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                         <span>
+                         Reconnect</span>
+                    </a>
+
+                    <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
                          <span class="linkedbtnabc">
                             Connect</span>
                     </a>
@@ -253,12 +278,15 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <button type="button" value="Linkedin" data-account="{{$account->id}}"
+                    <!-- <button type="button" value="Linkedin" data-account="{{$account->id}}"
                         name="plateform[{{$account->id}}]"
-                        class="plateform_btn btn l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}"
-                        id="Linkedinbtn">{{ in_array('Linkedin', $account->platforms) ? 'Disconnect' : 'Reconnect' }}</button>
+                        class=" btn l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}"
+                        id="Linkedinbtn">Reconnect</button> -->
                     <!-- <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
-                    <a class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
+                    <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                        <span > Reconnect</span>
+                    </a>
+                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
@@ -284,7 +312,8 @@
                             style="height: 23px;" />
                     </div>
                     <label class="switch" style="margin-top: 19px;">
-                        <input type="checkbox" class="customCheckbox" disabled>
+                        <input type="checkbox" class="customCh
+                        eckbox" disabled>
                         <span class="slider round"></span>
                     </label>
                     <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->

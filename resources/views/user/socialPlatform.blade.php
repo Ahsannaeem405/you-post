@@ -58,7 +58,7 @@
                 <div class="all_social_platformMain">
 
                     <div class="all_social_platformCnt successFullyAdded">
-                        <h4>{{Session::get('success')}}: <span>“{{auth()->user()->account->name}}” </span></h4>
+                        <h4>{{Session::get('success')}}: <span>“{{ session('accname') }}” </span></h4>
                         <div>
                             <i class="fa-solid fa-check"></i>
                         </div>
@@ -73,7 +73,7 @@
   
         setTimeout(function() {
             
-            $('.all_social_platformMain').fadeOut(200); 
+            $('.all_social_platformMain').fadeOut(500); 
         }, 1000); 
 
         </script>
@@ -251,7 +251,7 @@
                     `);
                     }
                     else{
-                        toastr.success(`${response.message} dis connected successfully!                   
+                        toastr.success(`${response.message} Disconnected successfully!                   
                     `);
                     $('#' +response.message + 'btn' ).text('Reconncet'); 
                     } 
@@ -271,7 +271,7 @@
 
         $(document).on('click', '.plateform', function () {
             var isChecked = $(this).prop('checked');
-           var currentclick= $(this);
+            var currentclick= $(this);
             var account_id = $(this).data('account');
             var plateform_val= $(this).val();
         //    alert(plateform_val);
@@ -300,42 +300,93 @@
                      if (message == 'Facebook') { 
 
                                 if(status =='on'){
-                                        $('.fb-recont_btn').removeClass('d-none').show();
-                                        $('.fb-conect_btn').removeClass('show').hide();
-                                }  else{
-                                        $('.fb-recont_btn').removeClass('show').hide();
-                                        $('.fb-conect_btn').removeClass('show').hide();
+
+                                         var closestLabel = currentclick.closest('label'); 
+                                         closestLabel= closestLabel.parent().find('.fb-recont_btn');               
+                                         var newHref = "{{ url('connect_to_facebook') }}";                    
+                                         closestLabel.attr('href', newHref);  
+                                         closestLabel.removeClass('d-none').show();
+                                       
+                                }  else{                                     
+
+
+                                    var closestLabel = currentclick.closest('label'); 
+                                    closestLabel_conne= closestLabel.parent().find('.fb-conect_btn'); 
+                                    closestLabel_conne.removeClass('show').hide();
+
+                                  
+                                    closestLabel= closestLabel.parent().find('.fb-recont_btn');  
+                                    closestLabel.removeClass('show').hide();
+                                       
                                 }             
                           
                         } else if (message == 'Twitter') {
 
                                 if(status =='on'){
-                                        $('.T-recont_btn').removeClass('d-none').show();
-                                        $('.T-conect_btn').removeClass('show').hide();
-                                }  else{
-                                        $('.T-recont_btn').removeClass('show').hide();
-                                        $('.T-conect_btn').removeClass('show').hide();
+
+                                         var closestLabel = currentclick.closest('label'); 
+                                         closestLabel= closestLabel.parent().find('.T-recont_btn');               
+                                         var newHref = "{{ url('connect_twitter') }}";                    
+                                         closestLabel.attr('href', newHref);  
+                                         closestLabel.removeClass('d-none').show();
+                                                                             
+                                }  else{       
+
+                                    var closestLabel = currentclick.closest('label'); 
+                                    closestLabel_conne= closestLabel.parent().find('.T-conect_btn'); 
+                                    closestLabel_conne.removeClass('show').hide();
+
+                                  
+                                    closestLabel= closestLabel.parent().find('.instrecont_btn');  
+                                    closestLabel.removeClass('show').hide();
                                 }  
 
 
                         } else if (message == 'Instagram') {
 
                                 if(status =='on'){
-                                        $('.instrecont_btn').removeClass('d-none').show();
-                                        $('.instconect_btn').removeClass('show').hide();
+
+                                        var closestLabel = currentclick.closest('label'); 
+                                         closestLabel= closestLabel.parent().find('.instrecont_btn');               
+                                         var newHref = "{{ url('connect_to_instagram') }}";                    
+                                         closestLabel.attr('href', newHref);  
+                                         closestLabel.removeClass('d-none').show();
+                                              
+                                      
                                 }  else{
-                                        $('.instrecont_btn').removeClass('show').hide();
-                                        $('.instconect_btn').removeClass('show').hide();
+                                    var closestLabel = currentclick.closest('label'); 
+                                    closestLabel_conne= closestLabel.parent().find('.instconect_btn'); 
+                                    closestLabel_conne.removeClass('show').hide();
+
+                                  
+                                    closestLabel= closestLabel.parent().find('.instrecont_btn');  
+                                    closestLabel.removeClass('show').hide();
+                                  
+
+                                 
                                 }  
 
-                        } else if (message == 'Linkedin') {
-
+                        } else if (message == 'Linkedin') {                          
+               
                                 if(status =='on'){
-                                        $('.l_recont_btn').removeClass('d-none').show();
-                                        $('.l-conect_btn').removeClass('show').hide();
+                                        var closestLabel = currentclick.closest('label'); 
+                                         closestLabel= closestLabel.parent().find('.l_recont_btn');               
+                                         var newHref = "{{ url('connect_to_linkedin') }}";                    
+                                         closestLabel.attr('href', newHref);  
+                                         closestLabel.removeClass('d-none').show();
+                                         
                                 }  else{
-                                        $('.l_recont_btn').removeClass('show').hide();
-                                        $('.l-conect_btn').removeClass('show').hide();
+
+                                   
+                                         var closestLabel = currentclick.closest('label');                                       
+                                         closestLabel_conne= closestLabel.parent().find('.l-conect_btn'); 
+                                         closestLabel_conne.removeClass('show').hide();
+
+                                         closestLabel= closestLabel.parent().find('.l_recont_btn');
+                                        closestLabel.removeClass('show').hide(); 
+                                        
+                                       
+                                     
                                 }  
 
                         }                              
@@ -343,42 +394,51 @@
                 },
                 error: function (xhr, status, error) {
                    
-                    var errorData = JSON.parse(xhr.responseText);
-                    // RefresehAccounts();
-                   
+                    var errorData = JSON.parse(xhr.responseText);                 
+                
 
                     if (errorData.message == 'fb_error') {
 
+                               var closestLabel = currentclick.closest('label'); 
+                               closestRecon= closestLabel.parent().find('.fb-recont_btn'); 
+                               closestCon= closestLabel.parent().find('.fb-conect_btn'); 
+
                         if(errorData.status == 'false'){                           
-                                $('.fb-recont_btn').removeClass('show').hide(); 
-                                $('.fb-conect_btn').removeClass('d-none').hide();        
-                        }else{
-                                $('.fb-recont_btn').removeClass('show').hide(); 
-                                $('.fb-conect_btn').removeClass('d-none').show();
+                               closestRecon.removeClass('show').hide(); 
+                               closestCon.removeClass('d-none').hide();        
+                        }else{                                                             
+                               var closestLabel = currentclick.closest('label'); 
+                                closestLabel= closestLabel.parent().find('.fb-conect_btn');               
+                                var newHref = "{{ url('connect_to_facebook') }}" + '/' + account_id;                    
+                                closestLabel.attr('href', newHref);   
+
+                               closestRecon.removeClass('show').hide(); 
+                               closestCon.removeClass('d-none').show();
                         }                     
                    
-                    var closestLabel = currentclick.closest('label'); 
-                    closestLabel= closestLabel.parent().find('a');               
-                    var newHref = "{{ url('connect_to_facebook') }}" + '/' + account_id;                    
-                    closestLabel.attr('href', newHref);                 
+                               
 
                     } else if (errorData.message == 'twiter_error') {
-
+                              var closestLabel = currentclick.closest('label'); 
+                               closestRecon= closestLabel.parent().find('.T-recont_btn'); 
+                               closestCon= closestLabel.parent().find('.T-conect_btn'); 
 
                         if(errorData.status == 'false'){                           
-                            $('.T-conect_btn').removeClass('d-none').hide();
-                        $('.T-recont_btn').removeClass('show').hide(); 
+                            closestRecon.removeClass('show').hide(); 
+                               closestCon.removeClass('d-none').hide();
         
                         }else{
-                            $('.T-conect_btn').removeClass('d-none').show();
-                        $('.T-recont_btn').removeClass('show').hide(); 
+                             var closestLabel = currentclick.closest('label'); 
+                            closestLabel= closestLabel.parent().find('.T-conect_btn');               
+                            var newHref = "{{ url('connect_twitter') }}" + '/' + account_id;                    
+                            closestLabel.attr('href', newHref);    
+
+                             closestRecon.removeClass('show').hide(); 
+                               closestCon.removeClass('d-none').show(); 
 
                         }
 
-                    var closestLabel = currentclick.closest('label'); 
-                    closestLabel= closestLabel.parent().find('a');               
-                    var newHref = "{{ url('connect_twitter') }}" + '/' + account_id;                    
-                    closestLabel.attr('href', newHref);    
+                   
 
                         
                     //     toastr.error(`Please Connect Your Twitter Account
@@ -391,44 +451,43 @@
                     
                     } else if (errorData.message == 'insta_error') {
 
+                              var closestLabel = currentclick.closest('label'); 
+                               closestRecon= closestLabel.parent().find('.instrecont_btn'); 
+                               closestCon= closestLabel.parent().find('.instconect_btn');
+
                         if(errorData.status == 'false'){                           
-                            $('.instconect_btn').removeClass('d-none').hide();
-                        $('.instrecont_btn').removeClass('show').hide(); 
+                            closestRecon.removeClass('show').hide(); 
+                               closestCon.removeClass('d-none').hide();
         
                         }else{
-                            $('.instconect_btn').removeClass('d-none').show();
-                        $('.instrecont_btn').removeClass('show').hide(); 
-
-                        }
-                       
-                        var closestLabel = currentclick.closest('label'); 
-                    closestLabel= closestLabel.parent().find('a');               
-                    var newHref = "{{ url('connect_to_instagram') }}" + '/' + account_id;                    
-                    closestLabel.attr('href', newHref);    
-                    //     toastr.error(`Please Connect Your instagram Account
-                    //  <div class="MDLsocial-icon p-2" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%) !important;">
-                    //             <a class="p-2" href="{{url('connect_to_instagram')}}/${account_id}">
-                    //                 <i class="fa fa-instagram me-2"></i>Connect with Instagram</a>
-                    //         </div>
-
-                    // `);
+                                   var closestLabel = currentclick.closest('label'); 
+                                    closestLabel= closestLabel.parent().find('a');               
+                                    var newHref = "{{ url('connect_to_instagram') }}" + '/' + account_id;                    
+                                    closestLabel.attr('href', newHref);  
+                                    closestRecon.removeClass('show').hide(); 
+                                    closestCon.removeClass('d-none').show();
+                        }                     
+                                     
                    
                     } else if (errorData.message == 'linkedin_error') {
+
+                            var closestLabel = currentclick.closest('label'); 
+                               closestRecon= closestLabel.parent().find('.l_recont_btn'); 
+                               closestCon= closestLabel.parent().find('.l-conect_btn');
                         
                         if(errorData.status == 'false'){                           
-                            $('.l-conect_btn').removeClass('d-none').hide();
-                        $('.l_recont_btn').removeClass('show').hide(); 
+                               closestRecon.removeClass('show').hide(); 
+                               closestCon.removeClass('d-none').hide();
         
-                        }else{
-                            $('.l-conect_btn').removeClass('d-none').show();
-                        $('.l_recont_btn').removeClass('show').hide(); 
+                        }else{                                              
+                                var newHref = "{{ url('connect_to_linkedin') }}" + '/' + account_id;                    
+                                closestCon.attr('href', newHref); 
+                               closestRecon.removeClass('show').hide(); 
+                               closestCon.removeClass('d-none').show();
 
                         }
 
-                        var closestLabel = currentclick.closest('label'); 
-                    closestLabel= closestLabel.parent().find('a');               
-                    var newHref = "{{ url('connect_to_linkedin') }}" + '/' + account_id;                    
-                    closestLabel.attr('href', newHref);    
+                      
                     //     toastr.error(`Please Connect Your Linkedin Account
                     //  <div class="MDLsocial-icon p-2" style="background-color: #0072b1 !important;">
                     //             <a class="p-2" href="{{url('connect_to_linkedin')}}/${account_id}">

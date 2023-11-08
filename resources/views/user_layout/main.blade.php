@@ -254,9 +254,18 @@
             },
 
 
-            eventRender: function (event, element) {
+            eventRender: function (event, element,view) {
+                var date = event.start.format('YYYY-MM-DD'); //for acieve full background on date event cell
+                // view.el.find('.fc-day[data-date="' + date + '"]').addClass('custom-event-bg');//for acieve full background on date event cell
+                if (view.type === 'month') {
+        // Apply the background color only in the month view
+        view.el.find('.fc-day[data-date="' + date + '"]').addClass('custom-event-bg');
+    } else {
+        // Remove the background color in other views
+        view.el.find('.fc-day[data-date="' + date + '"]').removeClass('custom-event-bg');
+    }
                 element.find('.fc-title').text(event.title);
-                element.find('.fc-time').text(''); // remove start time
+                element.find('.fc-time').text(event.formatted_posted_at); // remove start time
                 if (event.imageUrl) {
                     element.find('.fc-content').prepend('<img src="' + event.imageUrl + '" class="thumbnail" />');
                 }
@@ -349,12 +358,14 @@
                 $('.event_detail_parent').empty().append(response);
                 $('.calendarmain').empty().append(response);
 
-                $('.fc-popover').css('display', 'none');
+                // $('.fc-popover').css('display', 'none');
               
-                $('.calendar2').css('padding-left', '29.8%');
+                // $('.calendar2').css({'padding-left': '29.8%',' transition':'all 0.5s ease'});
+                $('.calendar2').css({'transition': 'all 0.5s ease', 'padding-left': '29.8%'});
+
                
                 $(".calendar_overflo").css('left', '0');
-                $(".Today-post-detail").hide();
+                // $(".Today-post-detail").hide();
             
                 $('.calendar_overflo').css({
                 'display': 'block','width':'29.8%'});
@@ -852,8 +863,6 @@
   });
 
 </script> -->
-
-
 @yield('js')
 </body>
 
