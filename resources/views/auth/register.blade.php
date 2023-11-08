@@ -13,17 +13,17 @@
                                 <div class="rev_slider">
                                     <div class="rev_slide">
                                         <div class="test">
-                                            <img src="{{ asset('images/imgfeatures-archive.png') }}" alt="">
+                                            <img src="{{ asset('images/auth-img-1.png') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="rev_slide">
                                         <div class="test">
-                                            <img src="{{ asset('images/imgfeatures-archive.png') }}" alt="">
+                                            <img src="{{ asset('images/auth-img-2.png') }}" alt="">
                                         </div>
                                     </div>
                                     <div class="rev_slide">
                                         <div class="test">
-                                            <img src="{{ asset('images/imgfeatures-archive.png') }}" alt="">
+                                            <img src="{{ asset('images/auth-img-3.png') }}" alt="">
                                         </div>
                                     </div>
                                 </div>

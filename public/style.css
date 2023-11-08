@@ -2011,17 +2011,125 @@ width: 100%;
     margin-top: unset !important;    
     border-radius: unset !important;   
 }
-.post_img_name{
-    display: flex ;
-    gap: 0 5px;
+.MainMobileview h5.HeadingTop{
+
 }
+.Twitter .post_img_name{
+    display: flex;
+    align-items: flex-start;
+}
+.Twitter .post_img_name img.ProfileIcon {
+    height: 36px !important;
+    margin: 10px 0px 10px 10px;
+    width: 37px;
+}
+.post_img_name {
+    background-color: #fff;
+    box-shadow: 0 0 5px #ddd;
+    border-radius: 10px;
+    margin-top: 14px;
+}
+.PostHeaderInner .d-flex{
+
+}
+.PostHeaderInner .d-flex div{
+    
+}
+.PostHeaderInner .d-flex div h5,
+.MainMobileview h5.HeadingTop,
+.Twitter .post_img_name .PostHeaderInner h5{
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+.PostHeaderInner .d-flex div span{
+    color: #272727ba;
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+.PostHeaderInner .dropdown button {
+    padding: 0;
+    background-color: transparent !important;
+    border: none !important;
+}
+.PostHeaderInner .dropdown button img {
+    border: none;
+    width: 15px;
+}
+.post_img_name .post_img .PostHeaderInner,
+.post_img_name .post_img .DetailText,
+.post_img_name .post_img .TagsSec{
+    padding: 12px 12px 0;
+}
+.post_img_name .post_img .DetailText{
+    position: relative;
+    margin-top: 20px;
+}
+.post_img_name .post_img .DetailText p{
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    max-width: 90.5%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 110px;
+    color: #000;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+.post_img_name .post_img .DetailText p.show-full-text{
+    -webkit-line-clamp: 20 !important;
+    max-height: 100% !important;
+}
+.post_img_name .post_img .DetailText span {
+    position: absolute;
+    right: 12px;
+    bottom: 0;
+    background-color: #fff;
+    cursor: pointer;
+}
+.post_img_name .post_img .TagsSec{
+    margin: 10px 0;
+}
+.post_img_name .post_img .TagsSec a{
+    text-decoration: none;
+}
+.post_img_name .post_img .ImgSec{
+
+}
+.post_img_name .post_img .ImgSec img {
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+}
+.NavBtmSec{
+    padding: 12px;
+}
+.NavBtmSec ul{
+    
+}
+.NavBtmSec ul li{
+    
+}
+.NavBtmSec ul li img{
+    border: none;
+    border-radius: 0;
+    width: 100%;
+}
+.NavBtmSec ul li span{
+    color: #000;
+}
+
 .sponsored{
     padding-left: 5px;
 }
 .the_preview_card{
-    padding: 0 5px;
-    margin-left: 4px;
+    padding: 12px;
+    background-color: #fff;
 }
+
 
 .media-container.media_container img{
     object-fit: cover !important;
