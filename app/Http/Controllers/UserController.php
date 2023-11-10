@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function dashbaord()
     {
-
+        // dd(auth()->user()->account_id);
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
@@ -57,7 +57,8 @@ class UserController extends Controller
                 'id' => $post->id,
                 'title' => $post->content,
                 'start' => $post->posted_at,
-                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
+                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d'),
+                'ac_id' => auth()->user()->account_id,
             ];
         }
         // dd($allPosts);
@@ -230,7 +231,7 @@ class UserController extends Controller
             return back()->with('error', 'Please select platform to post.');
         }
 
-        $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = [];
+        $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = $mediaDataTw = [];
 
         //*****************facebook validation******************//
         if (in_array('Facebook', $platforms)) {
@@ -285,6 +286,32 @@ class UserController extends Controller
 
         //****************end linkedin validation****************//
 
+
+
+  //*****************twitter validation******************//
+
+            if (in_array('Twitter', $platforms)) {
+                if ($req->media_type_twitter == 'image') {
+
+                    foreach ($req->tw_image as $media) {
+                        $mediaDataTw[] = $media;
+                    }
+
+                } else if ($req->media_type_twitter == 'video') {
+
+                    $mediaDataTw[] = $req->twitter_video;
+
+                }
+
+            }
+
+
+//****************end twitter validation**************//
+
+
+
+
+
         //****************posting code****************//
         $group_id = Str::random(40);
         foreach ($platforms as $i => $platform) {
@@ -300,6 +327,8 @@ class UserController extends Controller
                 $media = implode(',', $mediaDataInsta);
             elseif ($platforms[$i] == 'Linkedin')
                 $media = implode(',', $mediaDataLinkedin);
+            elseif ($platforms[$i] == 'Twitter')
+                $media = implode(',', $mediaDataTw);
 
             $post = new Post();
 
@@ -374,7 +403,7 @@ class UserController extends Controller
 // dd($request->all());
         $parsedDate = Carbon::parse($request->date);
 
-        $posts = Post::with('user')->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
+        $posts = Post::with('user')->where('account_id', '=', $request->id)->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
 
 
         return view('user.component.allday_post', compact('posts'));

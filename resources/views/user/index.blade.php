@@ -926,14 +926,14 @@ text-decoration-line: underline;
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0">
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="image" social="insta" fordata="image_or_video_twitter"><label for="image_or_video_twitter">
-                                                                    <img style="opacity: 0.3" src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video" typpe="image" social="insta" fordata="image_or_video_twiter"><label for="image_or_video_twiter">
+                                                                    <img  src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="video" social="insta" fordata="image_or_video_twitter"><label for="image_or_video_twitter">
-                                                                    <img style="opacity: 0.3" src="{{asset('')}}images/new_image.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video" typpe="video" social="insta" fordata="image_or_video_twiter"><label for="image_or_video_twiter">
+                                                                    <img  src="{{asset('')}}images/new_image.png" class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -958,6 +958,18 @@ text-decoration-line: underline;
                                                     </div> -->
                                                 </div>
                                             </div>
+                                            <div id="image_div_twi"><label for="file" style="margin-top: 20px;">
+
+                                                    <div class="sm_container">
+
+                                                        <input type="file" name="" class="image d-none file_image_video" id="image_or_video_twiter" accept="image/*,video/*">
+                                                        <input type="hidden" name="media_type_twitter" id="media_type_twitter">
+                                                        <input type="hidden" name="twitter_video" id="twitter_video">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <p class=" p-2  w-100 d-none mt-2 erro_background" id="file_error_twiiter">
+                                            </p>
                                             <div class="form-group clearfix clearfix2">
                                                 <!-- <a href="javascript:;"
                                                     class="form-wizard-previous-btn float-left">Back</a>
@@ -1520,10 +1532,20 @@ text-decoration-line: underline;
 
                                     </div>
                                     <div class="twitter_img_container">
-                                        <img class="uploader_img" src="{{asset('')}}images/upload22.png" class="" alt="" />
+
+                                       <div class="prv_div_tw">
+                                            <!-- <img src="" class="d-none preview_image_link" alt=""> -->
+                                        </div>
+                                        <div id="mediaContainervideo_twitter">
+                                            <!-- <video class="d-none video_preview_link" controls>
+                                                <source src="movie.mp4" type="video/*">
+                                            </video> -->
+                                        </div>
+
+                                        <!-- <img class="uploader_img" src="{{asset('')}}images/upload22.png" class="" alt="" /> -->
                                     </div>
                                     <div class="x_bar_icons pt-1">
-                                        <div>
+                                        <!-- <div>
                                             <img src="{{asset('')}}images/icons/Comment-titter.svg" class="" alt="" />
                                             <span>0</span>
                                         </div>
@@ -1538,7 +1560,7 @@ text-decoration-line: underline;
                                         <div class="d-flex mt-1 gap-1">
                                             <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
                                             <div style="color:#8a96a3; font-size:12px;">0</div>
-                                        </div>
+                                        </div> -->
                                         <!-- <div>
                                             <img src="{{asset('')}}images/share2.png" class="ShareIcon" alt="" />
 
