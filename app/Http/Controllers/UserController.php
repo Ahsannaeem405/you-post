@@ -224,13 +224,13 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-        //    dd( $req->all());
+           dd( $req->all());
         $platforms = auth()->user()->account->platforms;
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
         }
 
-        $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = [];
+        $mediaDatafb = $mediaDataInsta = $mediaDataLinkedin = $mediaDataTw = [];
 
         //*****************facebook validation******************//
         if (in_array('Facebook', $platforms)) {
@@ -285,6 +285,32 @@ class UserController extends Controller
 
         //****************end linkedin validation****************//
 
+
+
+  //*****************twitter validation******************//
+
+            if (in_array('Twitter', $platforms)) {
+                if ($req->media_type_twitter == 'image') {
+
+                    foreach ($req->tw_image as $media) {
+                        $mediaDataTw[] = $media;
+                    }
+
+                } else if ($req->media_type_twitter == 'video') {
+
+                    $mediaDataTw[] = $req->twitter_video;
+
+                }
+
+            }
+
+
+//****************end twitter validation**************//
+
+
+
+
+
         //****************posting code****************//
         $group_id = Str::random(40);
         foreach ($platforms as $i => $platform) {
@@ -300,6 +326,8 @@ class UserController extends Controller
                 $media = implode(',', $mediaDataInsta);
             elseif ($platforms[$i] == 'Linkedin')
                 $media = implode(',', $mediaDataLinkedin);
+            elseif ($platforms[$i] == 'Twitter')
+                $media = implode(',', $mediaDataTw);
 
             $post = new Post();
 
