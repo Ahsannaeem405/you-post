@@ -162,7 +162,7 @@ $newvar = $post->getPostLiveLink($post);
             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
         </div>
     </div> --}}
-    <div class="MainMobileview MainMobileview2 mt-1 Twitter">
+    {{-- <div class="MainMobileview MainMobileview2 mt-1 Twitter">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop"><img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1"> Twitter</h5>
             <a href="#">View on Twitter Page</a>
@@ -203,6 +203,87 @@ $newvar = $post->getPostLiveLink($post);
                             <img src="{{ asset('images/icons/thum-01.svg')}}" class="" alt="" height="18">
                         </li>
                     </ul>
+                </div>
+                @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account &&
+                auth()->user()->account->fb_image)
+                <img src="{{auth()->user()->account->fb_image}}" class="img-fluid" width="40" height="40" alt="">
+                @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account &&
+                auth()->user()->account->fb_image)
+                <img src="{{auth()->user()->account->inst_image}}" class="img-fluid" width="40" height="40" alt="">
+                @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account &&
+                auth()->user()->account->fb_image)
+                <img src="{{auth()->user()->account->twt_image}}" class="img-fluid" width="40" height="40" alt="">
+                @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account &&
+                auth()->user()->account->fb_image)
+                <img src="{{auth()->user()->account->link_image}}" class="img-fluid" width="40" height="40" alt="">
+                @endif
+            </div>
+            @php
+            $mediatype = $post->media_type;
+            @endphp
+
+            <div>
+                <span id="" class="postname"> {{auth()->user()->account->fb_page_name}}<br>
+                    <span class="sponsored">Public . <i class="fa-solid fa-earth-americas"></i></span>
+                </span>
+            </div>
+        </div>
+        <div class="icons_d">
+            <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
+            <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+    </div> --}}
+    <div class="MainMobileview MainMobileview2 mt-1 Instagram">
+        <div class="PostHeader d-flex justify-content-between align-items-center">
+            <h5 class="HeadingTop"><img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1"> Instagram</h5>
+            <a href="#">View on Instagram Page</a>
+        </div>
+        <div class="post_img_name">
+            <div class="post_img">
+                <div class="PostHeaderInner d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center w-100 mb-2">
+                        <div class="d-flex align-items-center gap-1">
+                            <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1 ProfileIcon">
+                            <h5 class="m-0">Instagram</h5>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset('images/dots-25.png') }}" alt="">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ImgSec">
+                    <img src="{{ asset('images/linkedinpost.jpg') }}" alt="">
+                </div>
+                <div class="NavBtmSec">
+                    <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between align-items-center">
+                        <li class="actions-buttons-item  d-flex align-item-center">
+                            <img src="{{ asset('images/icons/heart-twitter.svg')}}" class="" alt="" height="18">
+                        </li>
+                        <li class="actions-buttons-item d-flex align-item-center">
+                            <img src="{{ asset('images/icons/Comment-titter.svg') }}" class="" alt="" height="20">
+                        </li>
+                        <li class="actions-buttons-item  d-flex align-item-center">
+                            <img src="{{ asset('images/icons/send-insta.svg')}}" class="" alt="" height="18">
+                        </li>
+                    </ul>
+                    <ul class="SaveBtn">
+                        <li class="actions-buttons-item d-flex align-item-center">
+                            <img src="{{ asset('images/myiconheart.png')}}" class="" alt="" height="18">
+                        </li>
+                    </ul>
+                </div>
+                <div class="DetailText pt-0">
+                    <p class="short_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ex aperiam doloribus exercitationem reprehenderit quo, ipsam architecto perferendis sapiente eaque, qui provident? Sapiente delectus, perspiciatis deserunt veritatis cupiditate possimus cum. <span id="show-button">See more</span></p>
+                </div>
+                <div class="TagsSec">
+                    <a href="#">#BrownTechInt</a>
                 </div>
                 @if($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account &&
                 auth()->user()->account->fb_image)
