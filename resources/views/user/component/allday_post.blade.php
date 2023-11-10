@@ -4,7 +4,7 @@
     @endphp
     <div class="fb-post mb-2" data-id="{{ $post->id }}">
         <div style="border-radius:20px">
-            <div class="d-flex post-detail p-2">
+            {{-- <div class="d-flex post-detail p-2">
                 @if ($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
                     <div class="post-img" style="background-image: url('{{ auth()->user()->account->fb_image }}');">
                     </div>
@@ -79,6 +79,26 @@
                                 @endif
                             </span>
                         </div>
+                    </div>
+                </div>
+            </div> --}}
+            <div class="d-flex post-detail post_detailWrap">
+                <div class="">
+                    <img src="{{ asset('images/linkediniii.jpg') }}" alt="" class="ProfileImg">
+                </div>
+                <div class="DetailText">
+                    <div class="d-flex align-items-center gap-1">
+                        <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1 ProfileIcon">
+                        <h5 class="m-0">Instagram</h5>
+                    </div>
+                    <p class="m-0">Lorem ipsum dolor sit amet, adipisicing elit. Maxime officiis voluptatem nobis?</p>
+                    <div class="publishedpost mt-2">
+                        <span>
+                            <img src="http://localhost:8000/images/approvodpost2.png" alt="">
+                        </span>
+                        <span class="approved">
+                            Posted
+                        </span>
                     </div>
                 </div>
             </div>
