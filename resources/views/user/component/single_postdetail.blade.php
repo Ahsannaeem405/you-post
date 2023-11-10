@@ -191,16 +191,16 @@ $newvar = $post->getPostLiveLink($post);
                 <div class="NavBtmSec">
                     <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between">
                         <li class="actions-buttons-item d-flex align-item-center">
-                            <img src="{{ asset('images/thumbs_up_black.png') }}" class="" alt="" height="20">
-                            <span class="d-flex align-items-center" style="opacity: 1;">Like</span>
+                            <img src="{{ asset('images/icons/Comment-titter.svg') }}" class="" alt="" height="20">
                         </li>
                         <li class="actions-buttons-item d-flex align-item-center pt-1">
-                            <img src="{{ asset('images/coment_msg_black.png') }}" class="" alt="" height="15" width="14">
-                            <span class="" style="opacity: 1;">Comment</span>
+                            <img src="{{ asset('images/icons/share-twitter.svg') }}" class="" alt="" height="15" width="14">
                         </li>
                         <li class="actions-buttons-item  d-flex align-item-center share_fb">
-                            <img src="{{ asset('images/share_black.png')}}" class="" alt="" height="18">
-                            <span class="" style="opacity: 1;">Share</span>
+                            <img src="{{ asset('images/icons/heart-twitter.svg')}}" class="" alt="" height="18">
+                        </li>
+                        <li class="actions-buttons-item  d-flex align-item-center share_fb">
+                            <img src="{{ asset('images/icons/thum-01.svg')}}" class="" alt="" height="18">
                         </li>
                     </ul>
                 </div>
