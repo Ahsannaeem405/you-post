@@ -1245,7 +1245,8 @@ body {
 
 .MainMobileview {
 	align-items: center;
-	/* padding: 10px 5px; */
+	padding: 10px 5px;
+    background-color: #f7f7f7;
 }
 .MainMobileview img{
 	border-radius: 50%
@@ -2105,21 +2106,28 @@ width: 100%;
     border-radius: 0;
     width: 100%;
 }
-.NavBtmSec{
+.NavBtmSec {
     padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.NavBtmSec ul{
+.NavBtmSec ul.SaveBtn{
+    padding: 0;
+}
+.NavBtmSec ul.actions-buttons-list{
+    width: 30%;
+}
+.NavBtmSec ul.actions-buttons-list li{
     
 }
-.NavBtmSec ul li{
-    
-}
-.NavBtmSec ul li img{
+.NavBtmSec ul.actions-buttons-list li img,
+.NavBtmSec ul.SaveBtn li img{
     border: none;
     border-radius: 0;
     width: 100%;
 }
-.NavBtmSec ul li span{
+.NavBtmSec ul.actions-buttons-list li span{
     color: #000;
 }
 
