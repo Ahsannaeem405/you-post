@@ -64,20 +64,24 @@ class TwitterService
             $bearerToken->oauth_token_secret,
         );
 
-//        $connection->setApiVersion('1.1');
-//        $status = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a2c97a42.png')]);
-//        $status2 = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a28f2252.png')]);
+        if ($data['post']->media_type) {
+            $images = explode(',', $post->media);
+            $imagesdIds = [];
+            foreach ($images as $image) {
+                $connection->setApiVersion('1.1');
+                $status = $connection->upload("media/upload", ["media" => public_path('content_media/' . $image)]);
+                $imagesdIds[] = $status->media_id_string;
+            }
+        }
+        $body = array();
+        $body['text'] = $content;
+        if (count($imagesdIds) >= 1) {
+            $body['media'] = array(
+                'media_ids' => $imagesdIds
+            );
+        }
         $connection->setApiVersion('2');
-        $postTwitter = $connection->post("tweets", [
-            'text' => $content,
-//            'media' => array(
-//                'media_ids' => [$status->media_id_string,$status2->media_id_string]
-//            )
-        ], true);
-
-
-
-
+        $postTwitter = $connection->post("tweets", $body, true);
         if (isset($postTwitter->data)) {
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
