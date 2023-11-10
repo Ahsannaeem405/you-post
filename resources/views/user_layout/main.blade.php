@@ -219,9 +219,9 @@
             // salman new code calendar 7/9/23
 
             eventClick: function (event, jsEvent, view) {
-                // var id = event.id;
+                var id = event.ac_id;
                 var date = event.event_date;
-                get_detail(date);
+                get_detail(date,id);
 
             },
             dayRender: function (date, cell) {
@@ -347,12 +347,13 @@
     @endforeach
     @endif
 
-    function get_detail(date) {
+    function get_detail(date,id) {
         $.ajax({
             type: "get",
             url: "{{ url('get_event_detail') }}",
             data: {
-                'date': date
+                'date': date,
+                'id': id
             },
             success: function (response) {
                 $('.event_detail_parent').empty().append(response);

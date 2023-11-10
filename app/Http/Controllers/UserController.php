@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function dashbaord()
     {
-
+        // dd(auth()->user()->account_id);
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
@@ -57,7 +57,8 @@ class UserController extends Controller
                 'id' => $post->id,
                 'title' => $post->content,
                 'start' => $post->posted_at,
-                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d')
+                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d'),
+                'ac_id' => auth()->user()->account_id,
             ];
         }
         // dd($allPosts);
@@ -402,7 +403,7 @@ class UserController extends Controller
 // dd($request->all());
         $parsedDate = Carbon::parse($request->date);
 
-        $posts = Post::with('user')->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
+        $posts = Post::with('user')->where('account_id', '=', $request->id)->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
 
 
         return view('user.component.allday_post', compact('posts'));
