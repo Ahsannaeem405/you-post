@@ -72,116 +72,116 @@ var graphdata1 = {
     linecolor: "#000000",
     title: "TikTok",
     values: [
-        {X: "6:00", Y: 10.00},
-        {X: "7:00", Y: 20.00},
-        {X: "8:00", Y: 500.00},
-        {X: "9:00", Y: 34.00},
-        {X: "10:00", Y: 40.25},
-        {X: "11:00", Y: 28.56},
-        {X: "12:00", Y: 18.57},
-        {X: "13:00", Y: 34.00},
-        {X: "14:00", Y: 40.89},
-        {X: "15:00", Y: 12.57},
-        {X: "16:00", Y: 28.24},
-        {X: "17:00", Y: 18.00},
-        {X: "18:00", Y: 34.24},
-        {X: "19:00", Y: 40.58},
-        {X: "20:00", Y: 12.54},
-        {X: "21:00", Y: 28.00},
-        {X: "22:00", Y: 18.00},
-        {X: "23:00", Y: 34.89},
-        {X: "0:00", Y: 40.26},
-        {X: "1:00", Y: 28.89},
-        {X: "2:00", Y: 18.87},
-        {X: "3:00", Y: 34.00},
-        {X: "4:00", Y: 40.00}
+        { X: "6:00", Y: 10.00 },
+        { X: "7:00", Y: 20.00 },
+        { X: "8:00", Y: 500.00 },
+        { X: "9:00", Y: 34.00 },
+        { X: "10:00", Y: 40.25 },
+        { X: "11:00", Y: 28.56 },
+        { X: "12:00", Y: 18.57 },
+        { X: "13:00", Y: 34.00 },
+        { X: "14:00", Y: 40.89 },
+        { X: "15:00", Y: 12.57 },
+        { X: "16:00", Y: 28.24 },
+        { X: "17:00", Y: 18.00 },
+        { X: "18:00", Y: 34.24 },
+        { X: "19:00", Y: 40.58 },
+        { X: "20:00", Y: 12.54 },
+        { X: "21:00", Y: 28.00 },
+        { X: "22:00", Y: 18.00 },
+        { X: "23:00", Y: 34.89 },
+        { X: "0:00", Y: 40.26 },
+        { X: "1:00", Y: 28.89 },
+        { X: "2:00", Y: 18.87 },
+        { X: "3:00", Y: 34.00 },
+        { X: "4:00", Y: 40.00 }
     ]
 };
 var graphdata2 = {
     linecolor: "#CF2872",
     title: "Instagram",
     values: [
-        {X: "6:00", Y: 100.00},
-        {X: "7:00", Y: 120.00},
-        {X: "8:00", Y: 140.00},
-        {X: "9:00", Y: 134.00},
-        {X: "10:00", Y: 140.25},
-        {X: "11:00", Y: 128.56},
-        {X: "12:00", Y: 118.57},
-        {X: "13:00", Y: 134.00},
-        {X: "14:00", Y: 140.89},
-        {X: "15:00", Y: 112.57},
-        {X: "16:00", Y: 128.24},
-        {X: "17:00", Y: 118.00},
-        {X: "18:00", Y: 134.24},
-        {X: "19:00", Y: 140.58},
-        {X: "20:00", Y: 112.54},
-        {X: "21:00", Y: 128.00},
-        {X: "22:00", Y: 118.00},
-        {X: "23:00", Y: 134.89},
-        {X: "0:00", Y: 140.26},
-        {X: "1:00", Y: 128.89},
-        {X: "2:00", Y: 118.87},
-        {X: "3:00", Y: 134.00},
-        {X: "4:00", Y: 180.00}
+        { X: "6:00", Y: 100.00 },
+        { X: "7:00", Y: 120.00 },
+        { X: "8:00", Y: 140.00 },
+        { X: "9:00", Y: 134.00 },
+        { X: "10:00", Y: 140.25 },
+        { X: "11:00", Y: 128.56 },
+        { X: "12:00", Y: 118.57 },
+        { X: "13:00", Y: 134.00 },
+        { X: "14:00", Y: 140.89 },
+        { X: "15:00", Y: 112.57 },
+        { X: "16:00", Y: 128.24 },
+        { X: "17:00", Y: 118.00 },
+        { X: "18:00", Y: 134.24 },
+        { X: "19:00", Y: 140.58 },
+        { X: "20:00", Y: 112.54 },
+        { X: "21:00", Y: 128.00 },
+        { X: "22:00", Y: 118.00 },
+        { X: "23:00", Y: 134.89 },
+        { X: "0:00", Y: 140.26 },
+        { X: "1:00", Y: 128.89 },
+        { X: "2:00", Y: 118.87 },
+        { X: "3:00", Y: 134.00 },
+        { X: "4:00", Y: 180.00 }
     ]
 };
 var graphdata3 = {
     linecolor: "#26C6DA",
     title: "Twitter",
     values: [
-        {X: "5:00", Y: 230.00},
-        {X: "10:00", Y: 210.00},
-        {X: "15:00", Y: 214.00},
-        {X: "9:00", Y: 234.00},
-        {X: "10:00", Y: 247.25},
-        {X: "11:00", Y: 218.56},
-        {X: "12:00", Y: 268.57},
-        {X: "13:00", Y: 274.00},
-        {X: "14:00", Y: 280.89},
-        {X: "15:00", Y: 242.57},
-        {X: "16:00", Y: 298.24},
-        {X: "17:00", Y: 208.00},
-        {X: "18:00", Y: 214.24},
-        {X: "19:00", Y: 214.58},
-        {X: "20:00", Y: 211.54},
-        {X: "21:00", Y: 248.00},
-        {X: "22:00", Y: 258.00},
-        {X: "23:00", Y: 234.89},
-        {X: "0:00", Y: 210.26},
-        {X: "1:00", Y: 248.89},
-        {X: "2:00", Y: 238.87},
-        {X: "3:00", Y: 264.00},
-        {X: "4:00", Y: 270.00}
+        { X: "5:00", Y: 230.00 },
+        { X: "10:00", Y: 210.00 },
+        { X: "15:00", Y: 214.00 },
+        { X: "9:00", Y: 234.00 },
+        { X: "10:00", Y: 247.25 },
+        { X: "11:00", Y: 218.56 },
+        { X: "12:00", Y: 268.57 },
+        { X: "13:00", Y: 274.00 },
+        { X: "14:00", Y: 280.89 },
+        { X: "15:00", Y: 242.57 },
+        { X: "16:00", Y: 298.24 },
+        { X: "17:00", Y: 208.00 },
+        { X: "18:00", Y: 214.24 },
+        { X: "19:00", Y: 214.58 },
+        { X: "20:00", Y: 211.54 },
+        { X: "21:00", Y: 248.00 },
+        { X: "22:00", Y: 258.00 },
+        { X: "23:00", Y: 234.89 },
+        { X: "0:00", Y: 210.26 },
+        { X: "1:00", Y: 248.89 },
+        { X: "2:00", Y: 238.87 },
+        { X: "3:00", Y: 264.00 },
+        { X: "4:00", Y: 270.00 }
     ]
 };
 var graphdata4 = {
     linecolor: "#1976D2",
     title: "Facebook",
     values: [
-        {X: "6:00", Y: 300.00},
-        {X: "7:00", Y: 410.98},
-        {X: "8:00", Y: 310.00},
-        {X: "9:00", Y: 314.00},
-        {X: "10:00", Y: 310.25},
-        {X: "11:00", Y: 318.56},
-        {X: "12:00", Y: 318.57},
-        {X: "13:00", Y: 314.00},
-        {X: "14:00", Y: 310.89},
-        {X: "15:00", Y: 512.57},
-        {X: "16:00", Y: 318.24},
-        {X: "17:00", Y: 318.00},
-        {X: "18:00", Y: 314.24},
-        {X: "19:00", Y: 310.58},
-        {X: "20:00", Y: 312.54},
-        {X: "21:00", Y: 318.00},
-        {X: "22:00", Y: 318.00},
-        {X: "23:00", Y: 314.89},
-        {X: "0:00", Y: 310.26},
-        {X: "1:00", Y: 318.89},
-        {X: "2:00", Y: 518.87},
-        {X: "3:00", Y: 314.00},
-        {X: "4:00", Y: 310.00}
+        { X: "6:00", Y: 300.00 },
+        { X: "7:00", Y: 410.98 },
+        { X: "8:00", Y: 310.00 },
+        { X: "9:00", Y: 314.00 },
+        { X: "10:00", Y: 310.25 },
+        { X: "11:00", Y: 318.56 },
+        { X: "12:00", Y: 318.57 },
+        { X: "13:00", Y: 314.00 },
+        { X: "14:00", Y: 310.89 },
+        { X: "15:00", Y: 512.57 },
+        { X: "16:00", Y: 318.24 },
+        { X: "17:00", Y: 318.00 },
+        { X: "18:00", Y: 314.24 },
+        { X: "19:00", Y: 310.58 },
+        { X: "20:00", Y: 312.54 },
+        { X: "21:00", Y: 318.00 },
+        { X: "22:00", Y: 318.00 },
+        { X: "23:00", Y: 314.89 },
+        { X: "0:00", Y: 310.26 },
+        { X: "1:00", Y: 318.89 },
+        { X: "2:00", Y: 518.87 },
+        { X: "3:00", Y: 314.00 },
+        { X: "4:00", Y: 310.00 }
     ]
 };
 
@@ -309,7 +309,7 @@ $(document).ready(function () {
     // set current time
 
 
-     // Attach a click event handler to the cancel button
+    // Attach a click event handler to the cancel button
     //  $('#cancelButton').on('click', function() {
 
     //     const now_time = new Date();
@@ -348,7 +348,7 @@ $(document).ready(function () {
     $('#hour').val(`${current_hours}`);
     $('#minute').val(`${current_minutes}`);
     const ampm = now_time.getHours() >= 12 ? 'PM' : 'AM';
-     $('#ampm').val(ampm);
+    $('#ampm').val(ampm);
 
     // set current time
 
@@ -385,19 +385,19 @@ $(document).ready(function () {
 
 
     //
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Add input event listeners to input fields
-        $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").on('input', function() {
+        $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").on('input', function () {
             var error_input = $('#file_error_all');
             var data_id = $(this).attr('data-id');
             var error_data_id = $('#file_error_all').attr('data-id');
-            if (data_id ==  error_data_id) {
+            if (data_id == error_data_id) {
                 error_input.addClass('d-none');
             }
         });
 
         // Add input event listener to image input field
-        $("#image_or_video_insta").on('input', function() {
+        $("#image_or_video_insta").on('input', function () {
             var error_input = $('#file_error_all');
             // Check if a file is selected, and if so, hide the error message
             if (this.files.length > 0) {
@@ -405,7 +405,7 @@ $(document).ready(function () {
             }
         });
 
-        $("#post_form").submit(function(event) {
+        $("#post_form").submit(function (event) {
             event.preventDefault();
 
             var facebook_content = $("#facebook_content").val();
@@ -413,26 +413,26 @@ $(document).ready(function () {
             var twitter_content = $("#twitter_content").val();
             var linkedin_content = $("#linkedin_content").val();
             var image_or_video_insta_file = $("#image_or_video_insta")[0];
-              var data_id="";
+            var data_id = "";
             var error_input = '';
 
             if ($("li[section='fb']").length > 0 && facebook_content === "") {
                 error_input = "Facebook content can not be empty";
-                data_id="facebok_error";
+                data_id = "facebok_error";
             } else if ($("li[section='insta']").length > 0 && (instagram_content === "" || image_or_video_insta_file.length === 0)) {
                 error_input = "Insta content and image can not be empty";
-                data_id="insta_error";
+                data_id = "insta_error";
             } else if ($("li[section='twitter']").length > 0 && twitter_content === "") {
                 error_input = "Twitter content can not be empty";
-                data_id="twitter_error";
+                data_id = "twitter_error";
             } else if ($("li[section='linkedin']").length > 0 && linkedin_content === "") {
                 error_input = "Linkedin content can not be empty";
-                data_id="link_error";
+                data_id = "link_error";
             }
 
             if (error_input !== "") {
                 $('#file_error_all').removeClass('d-none').text(error_input);
-                $('#file_error_all').attr('data-id',data_id);
+                $('#file_error_all').attr('data-id', data_id);
             } else {
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
@@ -452,33 +452,33 @@ $(document).ready(function () {
 
 
 
-    $(document).ready(function() {
-        $('.emoji_parent div span').on('click', function() {
+    $(document).ready(function () {
+        $('.emoji_parent div span').on('click', function () {
 
             var parentDiv = $(this).closest('.emoji_parent').find('textarea').attr('id');
             var emoji = $(this).text();
 
-            if(parentDiv == 'youpost_content'){
+            if (parentDiv == 'youpost_content') {
 
-              $('#' + parentDiv).trigger('keyup');
+                $('#' + parentDiv).trigger('keyup');
 
-              $("#mypostresult_fb").append(emoji);
-              $("#mypostresult_insta").append(emoji);
-              $("#mypostresult_twitter").append(emoji);
-              $("#mypostresult_linkedin").append(emoji);
+                $("#mypostresult_fb").append(emoji);
+                $("#mypostresult_insta").append(emoji);
+                $("#mypostresult_twitter").append(emoji);
+                $("#mypostresult_linkedin").append(emoji);
 
-              var textareaIds = ['#facebook_content', '#instagram_content', '#twitter_content', '#linkedin_content'];
+                var textareaIds = ['#facebook_content', '#instagram_content', '#twitter_content', '#linkedin_content'];
 
-              // Loop through the textarea IDs and append the emoji to their content
-              textareaIds.forEach(function(textareaId) {
-                  var currentContent = $(textareaId).val();
-                  var updatedContent = currentContent + emoji;
-                  $(textareaId).val(updatedContent);
-              });
+                // Loop through the textarea IDs and append the emoji to their content
+                textareaIds.forEach(function (textareaId) {
+                    var currentContent = $(textareaId).val();
+                    var updatedContent = currentContent + emoji;
+                    $(textareaId).val(updatedContent);
+                });
 
-            }else{
+            } else {
 
-                  $('#' + parentDiv).trigger('keyup');
+                $('#' + parentDiv).trigger('keyup');
             }
 
 
@@ -498,10 +498,10 @@ $(document).ready(function () {
             $('#image_or_video_linkedin').attr('accept', 'image/*');
             $('#' + $(this).attr('fordata')).attr('accept', 'image/*');
         } else {
-                $('#image_or_videofb').attr('accept', 'video/*');
-                $('#image_or_video_insta').attr('accept', 'video/*');
-                $('#image_or_video_linkedin').attr('accept', 'video/*');
-                $('#' + $(this).attr('fordata')).attr('accept', 'video/*');
+            $('#image_or_videofb').attr('accept', 'video/*');
+            $('#image_or_video_insta').attr('accept', 'video/*');
+            $('#image_or_video_linkedin').attr('accept', 'video/*');
+            $('#' + $(this).attr('fordata')).attr('accept', 'video/*');
         }
 
     });
@@ -521,7 +521,7 @@ $(document).ready(function () {
         }
 
     });
-// my code
+    // my code
     $(document).on('click', '.image_or_video_div', function () {
 
         if ($(this).attr('social') == 'fb') {
@@ -543,18 +543,18 @@ $(document).ready(function () {
     $(document).on("click", ".cancel_mark", function () {
 
         var id = $(this).attr('id');
-        $(this).closest(".create_preview_post").find('.'+ id).remove();
+        $(this).closest(".create_preview_post").find('.' + id).remove();
         var length = $('.mobile_post_img').length;
-        var gran_par=  $(this).closest(".create_preview_post");
+        var gran_par = $(this).closest(".create_preview_post");
 
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
         var socialicon = $(this).closest(".sm_container").find('input[type=file]:first').attr('id');
 
-        if(socialicon == 'image_or_video_youpost'){
-            var remove= $(this).closest('.cross_img_con').data('remove');
+        if (socialicon == 'image_or_video_youpost') {
+            var remove = $(this).closest('.cross_img_con').data('remove');
             $('.' + remove).remove();
-        }else{
-              $(this).closest('.cross_img_con').remove();
+        } else {
+            $(this).closest('.cross_img_con').remove();
 
         }
 
@@ -576,21 +576,21 @@ $(document).ready(function () {
             } else if (id_of_div == 'media_type_linkedin') {
                 $('#media_type_linkedin').val('');
                 $('.prv_div_link').html('');
-            }else if (id_of_div == 'media_type_twitter') {
+            } else if (id_of_div == 'media_type_twitter') {
                 $('#media_type_twitter').val('');
                 $('.prv_div_tw').html('');
             }
 
         }
 
-        if(socialicon == 'image_or_video_youpost'){
+        if (socialicon == 'image_or_video_youpost') {
 
-            var ids = ['image_or_video_youpost','image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin','image_or_video_twiter'];
-            ids.forEach(function(socialicon) {
+            var ids = ['image_or_video_youpost', 'image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin', 'image_or_video_twiter'];
+            ids.forEach(function (socialicon) {
                 setPreview(socialicon);
             });
 
-        }else{
+        } else {
 
             setPreview(socialicon);
         }
@@ -599,10 +599,10 @@ $(document).ready(function () {
     });
 
 
-// validation  ********************************** ********************************* validation//
+    // validation  ********************************** ********************************* validation//
     function validateDimenstionImage(file, socialicon) {
 
-      
+
 
         if (socialicon == 'image_or_videofb') {
             appendImage(file, socialicon, true);
@@ -639,9 +639,9 @@ $(document).ready(function () {
             var videoEl = document.createElement("video");
             videoEl.onloadedmetadata = event => {
                 window.URL.revokeObjectURL(videoEl.src);
-                var {name, type} = file;
+                var { name, type } = file;
 
-                var {videoWidth, videoHeight} = videoEl;
+                var { videoWidth, videoHeight } = videoEl;
 
                 var aspectRatio = (videoWidth / videoHeight).toFixed(2);
 
@@ -653,7 +653,7 @@ $(document).ready(function () {
 
                 if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
 
-                    toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', {timeOut: 5000})
+                    toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
                     return false;
                 } else {
 
@@ -677,13 +677,13 @@ $(document).ready(function () {
         var mediaType = file.type.split('/')[0];
         var response = true;
         if (mediaType === 'image') {
-           
+
             if (file_size >= 8000000) {
-                toastr.error('size should be less than 8MB.', 'Image', {timeOut: 5000})
+                toastr.error('size should be less than 8MB.', 'Image', { timeOut: 5000 })
                 response = false;
             }
             if ((ext != 'png') && (ext != 'jpeg') && (ext != 'gif') && (ext != 'jpg')) {
-                toastr.error('type should be jpeg,jpg,png,gif.', 'Image', {timeOut: 5000})
+                toastr.error('type should be jpeg,jpg,png,gif.', 'Image', { timeOut: 5000 })
                 response = false;
             }
 
@@ -693,7 +693,7 @@ $(document).ready(function () {
         } else if (mediaType === 'video') {
             var total_size = getMB(file_size);
             if (total_size > 4) {
-                toastr.error('size should be less than 4MB.', 'Video', {timeOut: 5000})
+                toastr.error('size should be less than 4MB.', 'Video', { timeOut: 5000 })
                 response = false;
             }
 
@@ -703,15 +703,12 @@ $(document).ready(function () {
             }
         }
         //************************** Video Validatoin End *********************************
-         //**************************Appedn to all using youpot div ***********************
+        //**************************Appedn to all using youpot div ***********************
     }
-    function appendtoall(file,dimention,dimention_error,getRandomClass) {
+    function appendtoall(file, dimention, dimention_error, getRandomClass) {
+        alert('video');
 
-
-        var getRandomID=getRandomClassName();
-
-
-
+        var getRandomID = getRandomClassName();
 
         var img_con = `<div class="cross_img_con  ${getRandomClass}" id="remove_id" data-remove="${getRandomClass}" >
         <img name='image/*' id="teting" src="${file}"/>
@@ -719,101 +716,101 @@ $(document).ready(function () {
          <textarea id="removeit_file_id" name=youpost_image[] class="removeit_file d-none"></textarea>
          <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
          </div>`;
-                          $("#image_or_video_youpost").parent().append(img_con);
-                          $('#media_type_youpost').val('image');
-                          if (!dimention){
+        $("#image_or_video_youpost").parent().append(img_con);
+        $('#media_type_youpost').val('image');
+        if (!dimention) {
 
-                              $('#file_error_youpost').removeClass('d-none').text(dimention_error)
-                          }
-                          else {
+            $('#file_error_youpost').removeClass('d-none').text(dimention_error)
+        }
+        else {
 
-                              $('#file_error_youpost').addClass('d-none')
-                          }
+            $('#file_error_youpost').addClass('d-none')
+        }
         var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
         <img name='image/*' id="teting" src="${file}"/>
          <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
          <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
          <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
          </div>`;
-                          $("#image_or_videofb").parent().append(img_con);
-                          $('#media_type_fb').val('image');
-                          if (!dimention){
+        $("#image_or_videofb").parent().append(img_con);
+        $('#media_type_fb').val('image');
+        if (!dimention) {
 
-                              $('#file_error_fb').removeClass('d-none').text(dimention_error)
-                          }
-                          else {
+            $('#file_error_fb').removeClass('d-none').text(dimention_error)
+        }
+        else {
 
-                              $('#file_error_fb').addClass('d-none')
-                          }
+            $('#file_error_fb').addClass('d-none')
+        }
 
-                          var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
+        var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
                           <img name='image/*' id="teting" src="${file}"/>
                           <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
                           <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
                              <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
                           </div>`;
-                                            $("#image_or_video_insta").parent().append(img_con_ins);
-                                            $('#media_type_insta').val('image');
-                                            if (!dimention){
-                                                $('#file_error_insta').removeClass('d-none').text(dimention_error)
-                                            }else {
-                                                $('#file_error_insta').addClass('d-none')
-                                            }
-                      var img_con_lin = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
+        $("#image_or_video_insta").parent().append(img_con_ins);
+        $('#media_type_insta').val('image');
+        if (!dimention) {
+            $('#file_error_insta').removeClass('d-none').text(dimention_error)
+        } else {
+            $('#file_error_insta').addClass('d-none')
+        }
+        var img_con_lin = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
                       <img name='image/*' id="teting" src="${file}"/>
                          <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
                            <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
                              <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
                                 </div>`;
-                                       $("#image_or_video_linkedin").parent().append(img_con_lin);
-                                          $('#media_type_linkedin').val('image');
-                                             if (!dimention){
-                                              $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
-                                                 }else {
-                                                       $('#file_error_linkedin').addClass('d-none')
-                                                        }
+        $("#image_or_video_linkedin").parent().append(img_con_lin);
+        $('#media_type_linkedin').val('image');
+        if (!dimention) {
+            $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
+        } else {
+            $('#file_error_linkedin').addClass('d-none')
+        }
 
-                        var img_con_tw = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
+        var img_con_tw = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
                            <img name='image/*' id="teting" src="${file}"/>
                              <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
                              <textarea id="removeit_file_id" name=tw_image[] class="removeit_file d-none">}</textarea>
                             <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
                           </div>`;
-                            $("#image_or_video_twiter").parent().append(img_con_tw);
-                             $('#media_type_twitter').val('image');
-                            if (!dimention){
-                                $('#file_error_twiiter').removeClass('d-none').text(dimention_error)
-                                   }else {
-                                          $('#file_error_twiiter').addClass('d-none')
-                                         }
+        $("#image_or_video_twiter").parent().append(img_con_tw);
+        $('#media_type_twitter').val('image');
+        if (!dimention) {
+            $('#file_error_twiiter').removeClass('d-none').text(dimention_error)
+        } else {
+            $('#file_error_twiiter').addClass('d-none')
+        }
 
     }
-  //**************************Appedn to all using youpot div end **************************
+    //**************************Appedn to all using youpot div end **************************
     function appendImage(file, socialicon, dimention) {
 
-  var dimention_error="Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
+        var dimention_error = "Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
 
         if (file) {
             var reader = new FileReader();
             reader.onload = function (e) {
 
                 var base64Data = e.target.result.split(',')[1]; // Remove the "data:image/jpeg;base64," prefix
-                var getRandomClass=getRandomClassName();
-                var getRandomID=getRandomClassName();
+                var getRandomClass = getRandomClassName();
+                var getRandomID = getRandomClassName();
 
 
                 if (socialicon == 'image_or_videofb') {
 
                     var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id">
-  <img name='image/*' id="teting" src="${e.target.result}"/>
-   <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
-   <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
-   <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
-   </div>`;
+                    <img name='image/*' id="teting" src="${e.target.result}"/>
+                    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+                    <textarea id="removeit_file_id" name=fb_image[] class="removeit_file d-none"></textarea>
+                    <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+                    </div>`;
                     $("#image_or_videofb").parent().append(img_con);
                     $('#media_type_fb').val('image');
 
-                    if (!dimention){
+                    if (!dimention) {
 
                         $('#file_error_fb').removeClass('d-none').text(dimention_error)
                     }
@@ -826,57 +823,54 @@ $(document).ready(function () {
 
                 else if (socialicon == 'image_or_video_insta') {
                     var img_con_ins = `<div class="cross_img_con ${getRandomClass}" id="remove_id">
-  <img name='image/*' id="teting" src="${e.target.result}"/>
-  <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
-  <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
-     <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
-  </div>`;
+                    <img name='image/*' id="teting" src="${e.target.result}"/>
+                    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+                    <textarea id="removeit_file_id" name=inst_image[] class="removeit_file d-none"></textarea>
+                        <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+                    </div>`;
                     $("#image_or_video_insta").parent().append(img_con_ins);
                     $('#media_type_insta').val('image');
-                    if (!dimention){
+                    if (!dimention) {
                         $('#file_error_insta').removeClass('d-none').text(dimention_error)
-                    }else {
+                    } else {
                         $('#file_error_insta').addClass('d-none')
                     }
-
-
                 }
                 else if (socialicon == 'image_or_video_linkedin') {
                     var img_con_lin = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id">
- <img name='image/*' id="teting" src="${e.target.result}"/>
- <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
- <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
-      <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
- </div>`;
+                    <img name='image/*' id="teting" src="${e.target.result}"/>
+                    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+                    <textarea id="removeit_file_id" name=lin_image[] class="removeit_file d-none">}</textarea>
+                        <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+                    </div>`;
                     $("#image_or_video_linkedin").parent().append(img_con_lin);
                     $('#media_type_linkedin').val('image');
-                    if (!dimention){
+                    if (!dimention) {
                         $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
-                    }else {
+                    } else {
                         $('#file_error_linkedin').addClass('d-none')
                     }
-                }else if (socialicon == 'image_or_video_twiter') {
-                   
+                } else if (socialicon == 'image_or_video_twiter') {
+
                     var img_con_lin = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id">
-            <img name='image/*' id="teting" src="${e.target.result}"/>
-            <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
-            <textarea id="removeit_file_id" name=tw_image[] class="removeit_file d-none">}</textarea>
-                <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
-            </div>`;
+                    <img name='image/*' id="teting" src="${e.target.result}"/>
+                    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+                    <textarea id="removeit_file_id" name=tw_image[] class="removeit_file d-none">}</textarea>
+                        <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
+                    </div>`;
                     $("#image_or_video_twiter").parent().append(img_con_lin);
                     $('#media_type_twitter').val('image');
-                    if (!dimention){
+                    if (!dimention) {
                         $('#file_error_twiiter').removeClass('d-none').text(dimention_error)
-                    }else {
+                    } else {
                         $('#file_error_twiiter').addClass('d-none')
                     }
                 }
-                    
-                else if(socialicon == 'image_or_video_youpost'){
 
-                     appendtoall(e.target.result,dimention,dimention_error,getRandomClass);
+                else if (socialicon == 'image_or_video_youpost') {
+                    appendtoall(e.target.result, dimention, dimention_error, getRandomClass);
                 }
-               
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -886,61 +880,74 @@ $(document).ready(function () {
 
                     url: '/save-image-video', // Replace with your server-side route to handle image saving
                     type: 'POST',
-                    data: {image: base64Data, 'dimention': dimention},
+                    data: { image: base64Data, 'dimention': dimention },
 
                     success: function (response) {
 
-                        $('.'+getRandomClass).find('textarea').val(response.path);
-                        $('.'+getRandomClass).find('.uplaod-gif').remove();
+                        $('.' + getRandomClass).find('textarea').val(response.path);
+                        $('.' + getRandomClass).find('.uplaod-gif').remove();
 
-                             if(socialicon == 'image_or_video_youpost'){
-                                var ids = ['image_or_video_youpost','image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin'];
+                        if (socialicon == 'image_or_video_youpost') {
+                            var ids = ['image_or_video_youpost', 'image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin'];
 
-                                ids.forEach(function(socialicon) {
-                                    setPreview(socialicon, response.path);
-                                });
-
-
-                             }else{
-                                setPreview(socialicon,response.path);
-                             }
-
+                            ids.forEach(function (socialicon) {
+                                setPreview(socialicon, response.path);
+                            });
+                        } else {
+                            setPreview(socialicon, response.path);
+                        }
                     },
                 });
-
                 var mediaType = file.type.split('/')[0];
-
-
-
-
-
             };
             reader.readAsDataURL(file);
         }
     }
-    function setPreview(socialicon,path){
-    //  alert("onetime");
+
+    function handleVideoUpload(socialicon, path, imgOrVideo) {
+        // Function to handle video upload within the 'setPreview' function
+       
+        var videoPath = 'content_media/' + path;
+        alert(videoPath);
+        // Create new video elements for each platform and set their sources
+        var video_youpost = $('<video controls class="w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        var video_fb = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        var video_inst = $('<video controls class="video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        var video_link = $('<video controls class="video_preview_link w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        var video_twitter = $('<video controls class="video_preview_twitter w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+
+        // Display the videos on different platform sections
+        $('#mediaContainervideo_youpost').html(video_youpost);
+        $('#mediaContainervideo_fb').html(video_fb);
+        $('#mediaContainervideo_inst').html(video_inst);
+        $('#mediaContainervideo_link').html(video_link);
+        $('#mediaContainervideo_twitter').html(video_twitter);
+       
+    }
+
+
+    function setPreview(socialicon, path) {
+        //  alert("onetime");
         path = path || "DefaultParam2";
 
         if (socialicon == 'image_or_video_youpost') {
 
-            var imgOrVideo= $('#media_type_youpost').val();
-           //  var imgCount = $(".prv_div img").length;
+            var imgOrVideo = $('#media_type_youpost').val();
+            //  var imgCount = $(".prv_div img").length;
             var imgCount = $(".prv_div_youpost .mobile_post_img").length;
             var add_imge = $('#image_div_youpost .cross_img_con').length;
-            if(imgCount == 0 || add_imge == 1)
-            {
+            if (imgCount == 0 || add_imge == 1) {
                 $('.prv_div_youpost').css('column-count', '1');
-            }else{
+            } else {
                 $('.prv_div_youpost').css('column-count', '2');
             }
-            if(imgOrVideo =='image'){
-               $('.prv_div_youpost').empty();
-               var parentElement = $("#media_type_youpost").closest(".sm_container");
-               var img = parentElement.find("img");
-               // var img = parentElement.find("div");
-               var imgCount = 0;
-                 $(img).each(function(index) {
+            if (imgOrVideo == 'image') {
+                $('.prv_div_youpost').empty();
+                var parentElement = $("#media_type_youpost").closest(".sm_container");
+                var img = parentElement.find("img");
+                // var img = parentElement.find("div");
+                var imgCount = 0;
+                $(img).each(function (index) {
                     imgCount++;
 
                     // if (imgCount >= 6) {
@@ -951,7 +958,6 @@ $(document).ready(function () {
                     //     //    $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_you_bg'> </div>`);
                     //     $(".div_in_div_youpost").append(`<span id= 'my_value_youpost' class='fb_counter_youpost'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_you_bg'> </div>`);
 
-
                     //    }
                     if (imgCount >= 6) {
                         if ($("div.div_in_div_youpost").length === 0) {
@@ -960,415 +966,356 @@ $(document).ready(function () {
 
                             // Add the new span element with the class 'fb_counter_youpost'
                             $(".div_in_div_youpost").append(`<span id='my_value_youpost' class='fb_counter_youpost'><i class='fa-solid fa-plus plus_fb_icon'></i> ${imgCount - 5}</span><div class='div_in_div_you_bg'></div>`);
+                        }
+                        else {
 
+                            const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
+                            var spanElement = $('#my_value_youpost');
+                            var currentValue = parseInt(spanElement.text());
+                            newValue = currentValue + 1;
+                            $('#my_value_youpost').empty();
+                            $('#my_value_youpost').append(iconElement, newValue);
+                        }
                     }
-                       else {
+                    else {
+                        //  var src=   $(this).attr("src");
+                        //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                        //  $('.prv_div').append(newImage);
 
-                           const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
-                           var spanElement = $('#my_value_youpost');
-                           var currentValue = parseInt(spanElement.text());
-                           newValue =  currentValue + 1;
-                           $('#my_value_youpost').empty();
-                           $('#my_value_youpost').append(iconElement, newValue);
-
-                       }
-                   }
-                   else{
-                   //  var src=   $(this).attr("src");
-                   //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
-                   //  $('.prv_div').append(newImage);
-
-                   var src=   $(this).attr("src");
-                   //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
-                    var newImage = `<div class="mobile_post_img"></div>`;
-                    $('.prv_div_youpost').append(newImage);
-                    $('.prv_div_youpost .mobile_post_img').last().css('background-image', 'url(' + src + ')');
-                   }
-                   if(add_imge == 1 || add_imge == 2){
-                       $('.prv_div_youpost .mobile_post_img').addClass('max_height');
-
-                    }else{
-                       $('.prv_div_youpost .mobile_post_img').removeClass('max_height');
+                        var src = $(this).attr("src");
+                        //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                        var newImage = `<div class="mobile_post_img"></div>`;
+                        $('.prv_div_youpost').append(newImage);
+                        $('.prv_div_youpost .mobile_post_img').last().css('background-image', 'url(' + src + ')');
                     }
-                    if(add_imge == 3){
-                       $('.prv_div_youpost .mobile_post_img:nth-child(1)').addClass('first_child_img1');
-                       $('.prv_div_youpost .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
-
+                    if (add_imge == 1 || add_imge == 2) {
+                        $('.prv_div_youpost .mobile_post_img').addClass('max_height');
+                    } else {
+                        $('.prv_div_youpost .mobile_post_img').removeClass('max_height');
                     }
-                    else{
-                       $('.prv_div_youpost .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
-                       $('.prv_div_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
-
+                    if (add_imge == 3) {
+                        $('.prv_div_youpost .mobile_post_img:nth-child(1)').addClass('first_child_img1');
+                        $('.prv_div_youpost .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
                     }
-
-                    if(add_imge == 4){
-                       $('.prv_div_youpost .mobile_post_img:nth-child(3)').addClass('first_child_img4');
-
-
+                    else {
+                        $('.prv_div_youpost .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
+                        $('.prv_div_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
                     }
-                    else{
-                       $('.my_value_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
-
+                    if (add_imge == 4) {
+                        $('.prv_div_youpost .mobile_post_img:nth-child(3)').addClass('first_child_img4');
                     }
-                    if(add_imge == 6){
-                       $('.prv_div_youpost .mobile_post_img:nth-child(5)').addClass('first_child_img5');
-
-
+                    else {
+                        $('.my_value_youpost .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
                     }
-                    else{
+                    if (add_imge == 6) {
                         $('.prv_div_youpost .mobile_post_img:nth-child(5)').addClass('first_child_img5');
                     }
-
-
-               });
-
-
+                    else {
+                        $('.prv_div_youpost .mobile_post_img:nth-child(5)').addClass('first_child_img5');
+                    }
+                });
 
                 $('#mediaContainervideo_youpost').html('');
 
+            } else if (imgOrVideo == 'video') {
+                handleVideoUpload(imgOrVideo, path, socialicon);
+                // var BaseUrl = 'http://localhost:8000/';
+                // var video_youpost = $('<video controls class="w-100" loading="lazy" autoplay="autoplay">').attr('src', BaseUrl + 'content_media/' + path);
+                // var video_fb = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', BaseUrl + 'content_media/' + path);
+                // var video_ins = $('<video controls class=" video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', BaseUrl + 'content_media/' + path);
 
-            }else if(imgOrVideo =='video'){
+                // $('#mediaContainervideo_link').html(video_youpost.clone());
+                // $('#mediaContainervideo_fb').html(video_youpost.clone());
+                // $('#mediaContainervideo_youpost').html(video_youpost);
+                // $('#mediaContainervideo_inst').html(video_ins);
+                // $('#mediaContainervideo_twitter').html(video_youpost);
 
-
-                        var video_youpost = $('<video controls class="w-100" loading="lazy">').attr('src', 'content_media/'+path);
-                        var video_fb = $('<video controls class="video_preview w-100" loading="lazy">').attr('src', 'content_media/'+path);
-                        // var video_ins = $('<video controls class=" video_preview_inst w-100" loading="lazy">').attr('src', 'content_media/'+path);
-                        $('#mediaContainervideo_youpost').html(video_youpost);
-                        $('#mediaContainervideo_fb').html(video_fb);
-                       // $('#mediaContainervideo_inst').html(video_ins);
-
-
-
-            }else{
-
-               $('.prv_div_youpost').html('');
-               $('#mediaContainervideo_youpost').html('');
-
+            } else {
+                $('.prv_div_youpost').html('');
+                $('#mediaContainervideo_youpost').html('');
             }
-          }
-            else if (socialicon == 'image_or_videofb') {
+        }
+        else if (socialicon == 'image_or_videofb') {
 
-                     var imgOrVideo= $('#media_type_fb').val();
-                    //  var imgCount = $(".prv_div img").length;
-                     var imgCount = $(".prv_div .mobile_post_img").length;
-                     var add_imge = $('#image_div .cross_img_con ').length;
-                     if(imgCount == 0 || add_imge == 1)
-                     {
-                         $('.prv_div').css('column-count', '1');
-                     }else{
-                         $('.prv_div').css('column-count', '2');
-                     }
-                     if(imgOrVideo =='image'){
-                        $('.prv_div').empty();
-                        var parentElement = $("#media_type_fb").closest(".sm_container");
-                        var img = parentElement.find("img");
-                        // var img = parentElement.find("div");
-                        var imgCount = 0;
-                          $(img).each(function(index) {
-                             imgCount++;
-                             if (imgCount >= 6) {
-                                if ($("div.div_in_div").length === 0) {
-                                    var lastImg = $(".prv_div").find($(".mobile_post_img:last"));
-                                    // var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
-                                    //  lastImg.after(spanElement);
-                                     lastImg.wrap("<div class='div_in_div'></div>");
-                                    //  var newDiv = $("<div class='div_in_div_bg'> </div>");
-                                    //    $(".div_in_div").after(newDiv);
-                                       $(".div_in_div").append(`<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount-5}</span> <div class='div_in_div_bg'> </div>`);
-                                } else {
+            var imgOrVideo = $('#media_type_fb').val();
+            //  var imgCount = $(".prv_div img").length;
+            var imgCount = $(".prv_div .mobile_post_img").length;
+            var add_imge = $('#image_div .cross_img_con ').length;
+            if (imgCount == 0 || add_imge == 1) {
+                $('.prv_div').css('column-count', '1');
+            } else {
+                $('.prv_div').css('column-count', '2');
+            }
+            if (imgOrVideo == 'image') {
+                $('.prv_div').empty();
+                var parentElement = $("#media_type_fb").closest(".sm_container");
+                var img = parentElement.find("img");
+                // var img = parentElement.find("div");
+                var imgCount = 0;
+                $(img).each(function (index) {
+                    imgCount++;
+                    if (imgCount >= 6) {
+                        if ($("div.div_in_div").length === 0) {
+                            var lastImg = $(".prv_div").find($(".mobile_post_img:last"));
+                            // var spanElement = $("<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>"+1+"</span>");
+                            //  lastImg.after(spanElement);
+                            lastImg.wrap("<div class='div_in_div'></div>");
+                            //  var newDiv = $("<div class='div_in_div_bg'> </div>");
+                            //    $(".div_in_div").after(newDiv);
+                            $(".div_in_div").append(`<span id= 'my_value' class='fb_counter'> <i class='fa-solid fa-plus plus_fb_icon'></i>${imgCount - 5}</span> <div class='div_in_div_bg'> </div>`);
+                        } else {
+                            const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
+                            var spanElement = $('#my_value');
+                            var currentValue = parseInt(spanElement.text());
+                            newValue = currentValue + 1;
+                            $('#my_value').empty();
+                            $('#my_value').append(iconElement, newValue);
+                        }
+                    }
+                    else {
+                        //  var src=   $(this).attr("src");
+                        //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                        //  $('.prv_div').append(newImage);
+                        var src = $(this).attr("src");
+                        //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
+                        var newImage = `<div class="mobile_post_img"></div>`;
+                        $('.prv_div').append(newImage);
+                        $('.prv_div .mobile_post_img').last().css('background-image', 'url(' + src + ')');
+                    }
+                    if (add_imge == 1 || add_imge == 2) {
+                        $('.prv_div .mobile_post_img').addClass('max_height');
+                    } else {
+                        $('.prv_div .mobile_post_img').removeClass('max_height');
+                    }
+                    if (add_imge == 3) {
+                        $('.prv_div .mobile_post_img:nth-child(1)').addClass('first_child_img1');
+                        $('.prv_div .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
+                    }
+                    else {
+                        $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
+                        $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
+                    }
+                    if (add_imge == 4) {
+                        $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img4');
+                    }
+                    else {
+                        $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
+                    }
+                });
+                $('#mediaContainervideo_fb').html('');
 
-                                    const iconElement = $('<i>').addClass('fa-solid fa-plus plus_fb_icon');
-                                    var spanElement = $('#my_value');
-                                    var currentValue = parseInt(spanElement.text());
-                                    newValue =  currentValue + 1;
-                                    $('#my_value').empty();
-                                    $('#my_value').append(iconElement, newValue);
+            } else if (imgOrVideo == 'video') {
+                var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/' + path);
+                $('.prv_div').html('');
+                $('#mediaContainervideo_fb').html(video);
+            } else {
+                $('.prv_div').html('');
+                $('#mediaContainervideo_fb').html('');
+            }
+        } else if (socialicon == 'image_or_video_insta') {
 
-                                }
-                            }
-                            else{
-                            //  var src=   $(this).attr("src");
-                            //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
-                            //  $('.prv_div').append(newImage);
+            var imgOrVideo = $('#media_type_insta').val();
 
-                            var src=   $(this).attr("src");
-                            //  var newImage = `<div class="mobile_post_img"><img  src="${src}"/></div>`;
-                             var newImage = `<div class="mobile_post_img"></div>`;
-                             $('.prv_div').append(newImage);
-                             $('.prv_div .mobile_post_img').last().css('background-image', 'url(' + src + ')');
-                            }
-                            if(add_imge == 1 || add_imge == 2){
-                                $('.prv_div .mobile_post_img').addClass('max_height');
+            // var imgCount = $(".prv_div_isnt img").length;
+            var imgCount = $(".prv_div_isnt .mobile_post_img_inst").length;
+            var add_imge2 = $('#image_div_ins .cross_img_con ').length;
 
-                             }else{
-                                $('.prv_div .mobile_post_img').removeClass('max_height');
-                             }
-                             if(add_imge == 3){
-                                $('.prv_div .mobile_post_img:nth-child(1)').addClass('first_child_img1');
-                                $('.prv_div .mobile_post_img:nth-child(2)').addClass('first_child_img_2');
+            if (imgOrVideo == 'image') {
+                $('.prv_div_isnt').empty();
+                var parentElement = $("#media_type_insta").closest(".sm_container");
+                var img = parentElement.find("img:last");
+                var src = $(img).attr("src");
+                var newImage = `<div class="mobile_post_img_inst"></div>`;
+                $('.prv_div_isnt').append(newImage);
+                $('#mediaContainervideo_inst').html('');
+                $('.prv_div_isnt .mobile_post_img_inst').last().css('background-image', 'url(' + src + ')');
 
-                             }
-                             else{
-                                $('.prv_div .mobile_post_img:nth-child(1)').removeClass('first_child_img1');
-                                $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img_3');
+            } else if (imgOrVideo == 'video') {
+                var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/' + path);
+                $('.prv_div_isnt').html('');
+                $('#mediaContainervideo_inst').html(video);
+            } else {
+                $('.prv_div_isnt').html('');
+                $('#mediaContainervideo_inst').html('');
+            }
+        } else if (socialicon == 'image_or_video_linkedin') {
 
-                             }
+            var imgOrVideo = $('#media_type_linkedin').val();
+            // var imgCount = $(".prv_div_link img").length;
+            var imgCount = $(".prv_div_link .mobile_post_img_link").length;
+            var add_imge3 = $('#image_div_linked .cross_img_con ').length;
+            if (imgCount == 0 || add_imge3 == 1) {
+                $('.prv_div_link').css('column-count', '1');
+            } else {
+                $('.prv_div_link').css('column-count', '2');
+            }
+            if (imgOrVideo == 'image') {
 
-                             if(add_imge == 4){
-                                $('.prv_div .mobile_post_img:nth-child(3)').addClass('first_child_img4');
+                $('.prv_div_link').empty();
+                var parentElement = $("#media_type_linkedin").closest(".sm_container");
+                var img = parentElement.find("img");
+                var imgCount = 0;
 
-
-                             }
-                             else{
-                                $('.prv_div .mobile_post_img:nth-child(3)').removeClass('first_child_img4');
-
-                             }
-                        });
-
-
-
-                         $('#mediaContainervideo_fb').html('');
-
-
-                     }else if(imgOrVideo =='video'){
-
-                        var video = $('<video controls class="video_preview w-100">').attr('src', 'content_media/'+path);
-
-
-                        $('.prv_div').html('');
-                        $('#mediaContainervideo_fb').html(video);
-
-                     }else{
-
-                        $('.prv_div').html('');
-                        $('#mediaContainervideo_fb').html('');
-
-                     }
-             }else if(socialicon == 'image_or_video_insta'){
-
-                var imgOrVideo= $('#media_type_insta').val();
-
-                // var imgCount = $(".prv_div_isnt img").length;
-                var imgCount = $(".prv_div_isnt .mobile_post_img_inst").length;
-                var add_imge2 = $('#image_div_ins .cross_img_con ').length;
-
-             if(imgOrVideo =='image'){
-                        $('.prv_div_isnt').empty();
-                        var parentElement = $("#media_type_insta").closest(".sm_container");
-                        var img = parentElement.find("img:last");
-                             var src= $(img).attr("src");
-                             var newImage = `<div class="mobile_post_img_inst"></div>`;
-                             $('.prv_div_isnt').append(newImage);
-                            $('#mediaContainervideo_inst').html('');
-                            $('.prv_div_isnt .mobile_post_img_inst').last().css('background-image', 'url(' + src + ')');
-
-                }else if(imgOrVideo =='video'){
-                    var video = $('<video controls class="video_preview_inst w-100">').attr('src', 'content_media/'+path);
-                            $('.prv_div_isnt').html('');
-                            $('#mediaContainervideo_inst').html(video);
-
-
-                }else{
-
-                   $('.prv_div_isnt').html('');
-                   $('#mediaContainervideo_inst').html('');
-
-                }
-
-            }else if(socialicon == 'image_or_video_linkedin'){
-
-                var imgOrVideo= $('#media_type_linkedin').val();
-                // var imgCount = $(".prv_div_link img").length;
-                var imgCount = $(".prv_div_link .mobile_post_img_link").length;
-                var add_imge3 = $('#image_div_linked .cross_img_con ').length;
-                if(imgCount == 0 || add_imge3 == 1)
-                {
-                    $('.prv_div_link').css('column-count', '1');
-                }else{
-                    $('.prv_div_link').css('column-count', '2');
-                }
-                if(imgOrVideo =='image'){
-
-                   $('.prv_div_link').empty();
-                   var parentElement = $("#media_type_linkedin").closest(".sm_container");
-                   var img = parentElement.find("img");
-                   var imgCount = 0;
-
-                     $(img).each(function(index) {
-                        imgCount++;  if (imgCount >= 6) {
-
-                            if ($("div.div_in_div_link").length === 0) {
-                                var lastImg = $(".prv_div_link").find($(".mobile_post_img_link:last"));
-                                // var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
-                                //  lastImg.after(spanElement);
-                                 lastImg.wrap("<div class='div_in_div_link'> </div>");
-                                //  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
-                                //    $(".div_in_div_link").after(newDiv);
-                                $(".div_in_div_link").append(`<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>${imgCount-5}</span> <div class='div_in_div_linkedin_bg'> </div>`);
-                            } else {
-                                        const iconElement = $('<i>').addClass('fa-solid fa-plus plus_linkedin_icon');
-                                        var spanElement = $('#my_value_link');
-                                        var currentValue = parseInt(spanElement.text());
-                                        newValue =  currentValue + 1;
-                                        $('#my_value_link').empty();
-                                        $('#my_value_link').append(iconElement, newValue);
-                                }
-                        }else{
-                        var src=   $(this).attr("src");
+                $(img).each(function (index) {
+                    imgCount++; if (imgCount >= 6) {
+                        if ($("div.div_in_div_link").length === 0) {
+                            var lastImg = $(".prv_div_link").find($(".mobile_post_img_link:last"));
+                            // var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
+                            //  lastImg.after(spanElement);
+                            lastImg.wrap("<div class='div_in_div_link'> </div>");
+                            //  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
+                            //    $(".div_in_div_link").after(newDiv);
+                            $(".div_in_div_link").append(`<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>${imgCount - 5}</span> <div class='div_in_div_linkedin_bg'> </div>`);
+                        } else {
+                            const iconElement = $('<i>').addClass('fa-solid fa-plus plus_linkedin_icon');
+                            var spanElement = $('#my_value_link');
+                            var currentValue = parseInt(spanElement.text());
+                            newValue = currentValue + 1;
+                            $('#my_value_link').empty();
+                            $('#my_value_link').append(iconElement, newValue);
+                        }
+                    } else {
+                        var src = $(this).attr("src");
                         var newImage = `<div class="mobile_post_img_link"></div>`;
                         $('.prv_div_link').append(newImage);
                         $('.prv_div_link .mobile_post_img_link').last().css('background-image', 'url(' + src + ')');
-                        }
-                        if(add_imge3 == 1 || add_imge3 == 2){
-                            $('.prv_div_link .mobile_post_img_link').addClass('max_height_linkedin');
-                         }else{
-                            $('.prv_div_link .mobile_post_img_link').removeClass('max_height_linkedin');
+                    }
+                    if (add_imge3 == 1 || add_imge3 == 2) {
+                        $('.prv_div_link .mobile_post_img_link').addClass('max_height_linkedin');
+                    } else {
+                        $('.prv_div_link .mobile_post_img_link').removeClass('max_height_linkedin');
 
-                         }
+                    }
+                    if (add_imge3 == 3) {
+                        $('.prv_div_link .mobile_post_img_link:nth-child(1)').addClass('third_child_img1');
+                        $('.prv_div_link .mobile_post_img_link:nth-child(2)').addClass('third_child_img2');
+                    }
+                    else {
+                        $('.prv_div_link .mobile_post_img_link:nth-child(1)').removeClass('third_child_img1');
+                    }
+                    if (add_imge3 == 4) {
+                        $('.prv_div_link .mobile_post_img_link:nth-child(3)').addClass('third_child_img3');
+                    }
+                    else {
+                        $('.prv_div_link .mobile_post_img_link:nth-child(3)').removeClass('third_child_img3');
+                    }
+                });
+                $('#mediaContainervideo_link').html('');
 
-                         if(add_imge3 == 3){
-                            $('.prv_div_link .mobile_post_img_link:nth-child(1)').addClass('third_child_img1');
-                            $('.prv_div_link .mobile_post_img_link:nth-child(2)').addClass('third_child_img2');
-                         }
-                         else{
-                            $('.prv_div_link .mobile_post_img_link:nth-child(1)').removeClass('third_child_img1');
-                         }
-
-                         if(add_imge3 == 4){
-                            $('.prv_div_link .mobile_post_img_link:nth-child(3)').addClass('third_child_img3');
-                         }
-                         else{
-                            $('.prv_div_link .mobile_post_img_link:nth-child(3)').removeClass('third_child_img3');
-                         }
-
-                   });
-                   $('#mediaContainervideo_link').html('');
-
-                }else if(imgOrVideo =='video'){
-                    var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/'+path);
-                      $('.prv_div_link').html('');
-                    $('#mediaContainervideo_link').html(video);
-
-
-
-                }else{
-                   $('.prv_div_link').html('');
-                   $('#mediaContainervideo_link').html('');
-
-                }
+            } else if (imgOrVideo == 'video') {
+                var video = $('<video controls class="video_preview_link w-100">').attr('src', 'content_media/' + path);
+                $('.prv_div_link').html('');
+                $('#mediaContainervideo_link').html(video);
+            } else {
+                $('.prv_div_link').html('');
+                $('#mediaContainervideo_link').html('');
             }
-            else if(socialicon == 'image_or_video_twiter'){
+        }
+        else if (socialicon == 'image_or_video_twiter') {
 
-                var imgOrVideo= $('#media_type_twitter').val();
-                // var imgCount = $(".prv_div_link img").length;
-                var imgCount = $(".prv_div_tw .mobile_post_img_tw").length;
-                var add_imge3 = $('#image_div_twi .cross_img_con ').length;
-                if(imgCount == 0 || add_imge3 == 1)
-                {
-                    $('.prv_div_tw').css('column-count', '1');
-                }else{
-                    $('.prv_div_tw').css('column-count', '2');
-                }
-                if(imgOrVideo =='image'){
+            var imgOrVideo = $('#media_type_twitter').val();
+            // var imgCount = $(".prv_div_link img").length;
+            var imgCount = $(".prv_div_tw .mobile_post_img_tw").length;
+            var add_imge3 = $('#image_div_twi .cross_img_con ').length;
+            if (imgCount == 0 || add_imge3 == 1) {
+                $('.prv_div_tw').css('column-count', '1');
+            } else {
+                $('.prv_div_tw').css('column-count', '2');
+            }
+            if (imgOrVideo == 'image') {
 
-                   $('.prv_div_tw').empty();
-                   var parentElement = $("#media_type_twitter").closest(".sm_container");
-                   var img = parentElement.find("img");
-                   var imgCount = 0;
+                $('.prv_div_tw').empty();
+                var parentElement = $("#media_type_twitter").closest(".sm_container");
+                var img = parentElement.find("img");
+                var imgCount = 0;
 
-                     $(img).each(function(index) {
-                        imgCount++;  if (imgCount >= 6) {
+                $(img).each(function (index) {
+                    imgCount++; if (imgCount >= 6) {
 
-                            if ($("div.div_in_div_tw").length === 0) {
-                                var lastImg = $(".prv_div_tw").find($(".mobile_post_img_tw:last"));
-                                // var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
-                                //  lastImg.after(spanElement);
-                                 lastImg.wrap("<div class='div_in_div_tw'> </div>");
-                                //  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
-                                //    $(".div_in_div_link").after(newDiv);                 
-                                $(".div_in_div_tw").append(`<span id= 'my_value_tw' class='twitter_counter'> <i class='fa-solid fa-plus plus_twitter_icon'></i>${imgCount-5}</span> <div class='div_in_div_twitter_bg'> </div>`);
-                            } else {
-                                        const iconElement = $('<i>').addClass('fa-solid fa-plus plus_twitter_icon');
-                                        var spanElement = $('#my_value_tw');
-                                        var currentValue = parseInt(spanElement.text());
-                                        newValue =  currentValue + 1;
-                                        $('#my_value_tw').empty();
-                                        $('#my_value_tw').append(iconElement, newValue);
-                                }
-                        }else{
-                        var src=   $(this).attr("src");
+                        if ($("div.div_in_div_tw").length === 0) {
+                            var lastImg = $(".prv_div_tw").find($(".mobile_post_img_tw:last"));
+                            // var spanElement = $("<span id= 'my_value_link' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>"+1+"</span>");
+                            //  lastImg.after(spanElement);
+                            lastImg.wrap("<div class='div_in_div_tw'> </div>");
+                            //  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
+                            //    $(".div_in_div_link").after(newDiv);                 
+                            $(".div_in_div_tw").append(`<span id= 'my_value_tw' class='twitter_counter'> <i class='fa-solid fa-plus plus_twitter_icon'></i>${imgCount - 5}</span> <div class='div_in_div_twitter_bg'> </div>`);
+                        } else {
+                            const iconElement = $('<i>').addClass('fa-solid fa-plus plus_twitter_icon');
+                            var spanElement = $('#my_value_tw');
+                            var currentValue = parseInt(spanElement.text());
+                            newValue = currentValue + 1;
+                            $('#my_value_tw').empty();
+                            $('#my_value_tw').append(iconElement, newValue);
+                        }
+                    } else {
+                        var src = $(this).attr("src");
                         var newImage = `<div class="mobile_post_img_tw"></div>`;
                         $('.prv_div_tw').append(newImage);
                         $('.prv_div_tw .mobile_post_img_tw').last().css('background-image', 'url(' + src + ')');
-                        }
-                        if(add_imge3 == 1 || add_imge3 == 2){
-                            $('.prv_div_tw .mobile_post_img_tw').addClass('max_height_twitter');
-                         }else{
-                            $('.prv_div_tw .mobile_post_img_tw').removeClass('max_height_twitter');
+                    }
+                    if (add_imge3 == 1 || add_imge3 == 2) {
+                        $('.prv_div_tw .mobile_post_img_tw').addClass('max_height_twitter');
+                    } else {
+                        $('.prv_div_tw .mobile_post_img_tw').removeClass('max_height_twitter');
+                    }
 
-                         }
+                    if (add_imge3 == 3) {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img1');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(2)').addClass('fourth_child_img2');
+                    }
+                    else {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img1');
+                    }
 
-                         if(add_imge3 == 3){
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img1');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(2)').addClass('fourth_child_img2');
-                         }
-                         else{
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img1');
-                         }
+                    if (add_imge3 == 4) {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img3');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img4');
+                    }
+                    else {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img3');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img4');
+                    }
+                    if (add_imge3 >= 5) {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img5');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img6');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').addClass('fourth_child_img6');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').addClass('fourth_child_img6');
+                    }
+                    else {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img5');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img6');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').removeClass('fourth_child_img6');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').removeClass('fourth_child_img6');
 
-                         if(add_imge3 == 4){
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img3');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img4');
-                         }
-                         else{
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img3');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img4');
-                         }
-                         if(add_imge3 >= 5){
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img5');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img6');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').addClass('fourth_child_img6');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').addClass('fourth_child_img6');
-                         }
-                         else{
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img5');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img6');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').removeClass('fourth_child_img6');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').removeClass('fourth_child_img6');
+                    }
+                    if (add_imge3 >= 6) {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img7');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').addClass('fourth_child_img7');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').addClass('fourth_child_img7');
 
-                         }
-                         if(add_imge3 >= 6){
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img7');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').addClass('fourth_child_img7');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').addClass('fourth_child_img7');
-                          
-                         }else{
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img7');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').removeClass('fourth_child_img7');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').removeClass('fourth_child_img7');
-                         }
-                        
-                       
-                        
+                    } else {
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img7');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').removeClass('fourth_child_img7');
+                        $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').removeClass('fourth_child_img7');
+                    }
+                });
+                $('#mediaContainervideo_twitter').html('');
 
-                   });
-                   $('#mediaContainervideo_twitter').html('');
+            } else if (imgOrVideo == 'video') {
+                var video = $('<video controls class="video_preview_twitter w-100">').attr('src', 'content_media/' + path);
+                $('.prv_div_tw').html('');
+                $('#mediaContainervideo_twitter').html(video);
 
-                }else if(imgOrVideo =='video'){
-                    var video = $('<video controls class="video_preview_twitter w-100">').attr('src', 'content_media/'+path);
-                      $('.prv_div_tw').html('');
-                    $('#mediaContainervideo_twitter').html(video);
+            } else {
+                $('.prv_div_tw').html('');
+                $('#mediaContainervideo_twitter').html('');
 
-                }else{
-                   $('.prv_div_tw').html('');
-                   $('#mediaContainervideo_twitter').html('');
-
-                }
             }
-
+        }
     }
+    
     function appendVideo(file, socialicon) {
-
         if (file) {
             $('.uplaod-gif-video').removeClass('d-none');
             var reader = new FileReader();
@@ -1390,9 +1337,6 @@ $(document).ready(function () {
                     success: function (response) {
                         $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
-
-
-                       
                         if (socialicon == 'image_or_videofb') {
 
                             $('#fb_video').val(response.path);
@@ -1402,9 +1346,7 @@ $(document).ready(function () {
 
                             $('.video_preview').removeClass('d-none');
                             $('.preview_image').addClass('d-none');
-                            setPreview(socialicon,response.path);
-                            
-
+                            setPreview(socialicon, response.path);
 
                         } else if (socialicon == 'image_or_video_insta') {
 
@@ -1415,7 +1357,7 @@ $(document).ready(function () {
 
                             $('.video_preview_inst').removeClass('d-none');
                             $('.preview_image_inst').addClass('d-none');
-                              setPreview(socialicon,response.path);
+                            setPreview(socialicon, response.path);
 
                         } else if (socialicon == 'image_or_video_linkedin') {
 
@@ -1425,7 +1367,7 @@ $(document).ready(function () {
 
                             $('.video_preview_link').removeClass('d-none');
                             $('.preview_image_link').addClass('d-none');
-                            setPreview(socialicon,response.path);
+                            setPreview(socialicon, response.path);
 
                         }
                         else if (socialicon == 'image_or_video_twiter') {
@@ -1436,7 +1378,7 @@ $(document).ready(function () {
 
                             $('.video_preview_twitter').removeClass('d-none');
                             $('.preview_image_twitter').addClass('d-none');
-                            setPreview(socialicon,response.path);
+                            setPreview(socialicon, response.path);
 
                         }
                         else if (socialicon == 'image_or_video_youpost') {
@@ -1461,14 +1403,12 @@ $(document).ready(function () {
                             $('.preview_image_inst').addClass('d-none');
                             $('.prv_div_isnt').html('');
 
-
                             $('#link_video').val(response.path);
                             $('#media_type_linkedin').val('video');
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
                             $('.video_preview_link').removeClass('d-none');
                             $('.preview_image_link').addClass('d-none');
                             $('.prv_div_link').html('');
-
 
                             $('#twitter_video').val(response.path);
                             $('#media_type_twitter').val('video');
@@ -1477,24 +1417,15 @@ $(document).ready(function () {
                             $('.preview_image_twitter').addClass('d-none');
                             $('.prv_div_tw').html('');
 
-                                setPreview(socialicon,response.path);
-
-
-
-
-
-
+                            setPreview(socialicon, response.path);
                         }
                     },
                     error: function () {
                         alert('Error saving the video.');
                     }
                 });
-
-
             };
             reader.readAsDataURL(file);
-
         }
     }
 
@@ -1518,65 +1449,53 @@ $(document).ready(function () {
 
     //*************************** calculate MB End ****************************
 
-
     var _URL = window.URL;
 
     $('.file_image_video').change(function (e) {
 
-
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
-    
+
         // *********************  Validate Size and Memes ************************
         var reader = new FileReader();
         reader.onload = function (e) {
             var mediaType = file.type.split('/')[0];
             validateFileImageVideo(file, socialicon);
-
         };
         reader.readAsDataURL(file);
-
-
     });
-
 
     $('.file_image_video_youpost').change(function (e) {
 
+        var socialicon = $(this).attr('id');
+        var file = e.target.files[0];
 
-                var socialicon = $(this).attr('id');
-                var file = e.target.files[0];
-
-
-                // *********************  Validate Size and Memes ************************
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    var mediaType = file.type.split('/')[0];
-                    validateFileImageVideo(file, socialicon);
-
-                };
-                reader.readAsDataURL(file);
-
-
-            });
+        // *********************  Validate Size and Memes ************************
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var mediaType = file.type.split('/')[0];
+            validateFileImageVideo(file, socialicon);
+        };
+        reader.readAsDataURL(file);
+    });
 
     $('.preview_div').click(function (e) {
 
-         if($(this).attr('data-value')=='fb'){
+        if ($(this).attr('data-value') == 'fb') {
 
-             var parent = $(".create_preview_post ");
+            var parent = $(".create_preview_post ");
 
-             parent.find('#fb_preview').addClass("active");
-             parent.find('#ins_preview').addClass("d-none");
-             parent.find('#tw_preview').addClass("d-none");
-             parent.find('#link_preview').addClass("d-none");
+            parent.find('#fb_preview').addClass("active");
+            parent.find('#ins_preview').addClass("d-none");
+            parent.find('#tw_preview').addClass("d-none");
+            parent.find('#link_preview').addClass("d-none");
 
-             parent.find('#fb_preview').removeClass("d-none");
-             parent.find('#ins_preview').removeClass("active");
-             parent.find('#tw_preview').removeClass("active");
-             parent.find('#link_preview').removeClass("active");
+            parent.find('#fb_preview').removeClass("d-none");
+            parent.find('#ins_preview').removeClass("active");
+            parent.find('#tw_preview').removeClass("active");
+            parent.find('#link_preview').removeClass("active");
 
-
-         }else if($(this).attr('data-value')=='insta'){
+        } else if ($(this).attr('data-value') == 'insta') {
 
             var parent = $(".create_preview_post ");
 
@@ -1590,47 +1509,36 @@ $(document).ready(function () {
             parent.find('#tw_preview').removeClass("active");
             parent.find('#link_preview').removeClass("active");
 
-         }else if($(this).attr('data-value')=='twitter'){
+        } else if ($(this).attr('data-value') == 'twitter') {
 
-                var parent = $(".create_preview_post ");
-                parent.find('#fb_preview').addClass("d-none");
-                parent.find('#ins_preview').addClass("d-none");
-                parent.find('#tw_preview').addClass("active");
-                parent.find('#link_preview').addClass("d-none");
+            var parent = $(".create_preview_post ");
+            parent.find('#fb_preview').addClass("d-none");
+            parent.find('#ins_preview').addClass("d-none");
+            parent.find('#tw_preview').addClass("active");
+            parent.find('#link_preview').addClass("d-none");
 
-                parent.find('#fb_preview').removeClass("active");
-                parent.find('#ins_preview').removeClass("active");
-                parent.find('#tw_preview').removeClass("d-none");
-                parent.find('#link_preview').removeClass("active");
+            parent.find('#fb_preview').removeClass("active");
+            parent.find('#ins_preview').removeClass("active");
+            parent.find('#tw_preview').removeClass("d-none");
+            parent.find('#link_preview').removeClass("active");
 
-         }else if($(this).attr('data-value')=='linkedin'){
+        } else if ($(this).attr('data-value') == 'linkedin') {
 
-                var parent = $(".create_preview_post ");
-                parent.find('#fb_preview').addClass("d-none");
-                parent.find('#ins_preview').addClass("d-none");
-                parent.find('#tw_preview').addClass("d-none");
-                parent.find('#link_preview').addClass("active");
+            var parent = $(".create_preview_post ");
+            parent.find('#fb_preview').addClass("d-none");
+            parent.find('#ins_preview').addClass("d-none");
+            parent.find('#tw_preview').addClass("d-none");
+            parent.find('#link_preview').addClass("active");
 
-                parent.find('#fb_preview').removeClass("active");
-                parent.find('#ins_preview').removeClass("active");
-                parent.find('#tw_preview').removeClass("active");
-                parent.find('#link_preview').removeClass("d-none");
+            parent.find('#fb_preview').removeClass("active");
+            parent.find('#ins_preview').removeClass("active");
+            parent.find('#tw_preview').removeClass("active");
+            parent.find('#link_preview').removeClass("d-none");
 
-         }
-
-
-
+        }
     });
-// set each tab image preview on load
-
-
-// set each tab image preview on load
-
-
-
+    // set each tab image preview on load
     var timezone_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
     $('.timezone').val(timezone_name);
     return true;
-
-
 });
