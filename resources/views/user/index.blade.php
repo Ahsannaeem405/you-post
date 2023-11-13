@@ -641,7 +641,14 @@
 .content_main {
     text-align: left;
 }
-
+#mySidebar{
+    position: relative;
+}
+#mySidebar .CloseSidebar_Btn{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
 /* close btn sidebar */
 /* timepicker style */
 </style>
@@ -2025,9 +2032,6 @@
                                     </div>
                                 </div>
 
-
-
-
                                 <!-- <div class="AIgeneratedContentDataWrp d-flex mb-3">
                                             <div class="AIgeneratedContentAdd">
                                                 <a id="addContent" href="#">Add +</a>
@@ -2056,12 +2060,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
             {{-- Instagram card ------}}
 
             {{-- End Instagram card  --}}
@@ -2069,14 +2070,11 @@
     </div>
 </section>
 
-
-
 <!-- =======Calender========= -->
 <section class="position-relative">
     <div class=" container section5">
-        <div class="calender calendar_overflo container col-lg-12"
-            style="width: 0; position: absolute;z-index: 2; display:none;" id="mySidebar">
-            <div clas="" style="padding-top:30px">
+        <div class="calender calendar_overflo container col-lg-12" style="width: 0; position: absolute;z-index: 2; display:none;" id="mySidebar">
+            <div class="CloseSidebar_Btn" style="">
                 <span class="close-btn" onclick="closeSidebar()">&times;</span>
             </div>
             <span class="croissant-icon"></span>
@@ -2899,6 +2897,9 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
         var isDetailVisible = false; // Initialize a flag to track visibility
 
         // Add a click event handler to the todayEbents-list div
+        $(document).on('click', '.fc-content', function() {
+            $(".the_preview_card").css('display', 'none');
+        });
         $(document).on('click', '.fb-post', function() {
             var id = $(this).data('id');
             var platform = $(this).data('plateform'); 
