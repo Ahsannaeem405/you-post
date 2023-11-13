@@ -4,7 +4,7 @@
 @php
     $mediatype = $post->media_type;
 @endphp
-<div class="col-md-12 the_preview_card">
+<div class="col-md-12 the_preview_card ">
     <div class="MainMobileview MainMobileview2 mt-1 FacebookWrap" style="display: none;">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
@@ -156,7 +156,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
         <div class="icons_d">
             <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
@@ -392,7 +391,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="DetailText pb-2">
+                <div class="DetailText pb-2 sidebar_preview">
                     <div class="short_text Mobcart_title">
                         <span id="mypostresult_youpost" class="mypostresult">{{ $post->content }}</span>
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>

@@ -34,7 +34,7 @@
                     @endif
                 </div>
                 <div class="DetailText">
-                    <div class="d-flex align-items-center gap-1">
+                    <div class="d-flex align-items-center gap-1 post_card_detail">
                         @if ($post->plateform === 'Facebook')
                             <img src="{{ asset('images/fbposticon.png') }}" alt="" class="mr-1 ProfileIcon">
                         @elseif($post->plateform === 'Instagram')
