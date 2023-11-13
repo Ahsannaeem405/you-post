@@ -2012,8 +2012,11 @@ width: 100%;
     margin-top: unset !important;
     border-radius: unset !important;
 }
-.MainMobileview h5.HeadingTop{
-
+.MainMobileview .PostHeader h5.HeadingTop{
+    margin: 0;
+}
+.MainMobileview h5.HeadingTop img{
+    border: none;
 }
 .Twitter .post_img_name{
     display: flex;
@@ -2030,6 +2033,10 @@ width: 100%;
     box-shadow: 0 0 5px #ddd;
     border-radius: 10px;
     margin-top: 14px;
+    width: 100%;
+}
+.post_img_name .post_img{
+    width: 100%;
 }
 .PostHeaderInner .d-flex{
 
@@ -2067,7 +2074,7 @@ width: 100%;
 }
 .post_img_name .post_img .DetailText{
     position: relative;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 .post_img_name .post_img .DetailText p{
     text-overflow: ellipsis;
@@ -2086,15 +2093,19 @@ width: 100%;
     -webkit-line-clamp: 20 !important;
     max-height: 100% !important;
 }
-.post_img_name .post_img .DetailText span {
+/* .post_img_name .post_img .DetailText span {
     position: absolute;
     right: 12px;
     bottom: 0;
     background-color: #fff;
     cursor: pointer;
+} */
+.post_img_name .post_img .DetailText span{
+    color: #000 !important;
 }
+
 .post_img_name .post_img .TagsSec{
-    margin: 10px 0;
+    margin: 0px 0 7px;
 }
 .post_img_name .post_img .TagsSec a{
     text-decoration: none;
@@ -2134,6 +2145,7 @@ width: 100%;
 
 .post_detailWrap{
     padding: 14px;
+    align-items: center;
 }
 .post_detailWrap img.ProfileImg{
     width: 100px;
@@ -2141,6 +2153,7 @@ width: 100%;
 }
 .post_detailWrap .DetailText{
     padding-left: 12px;
+    width: 100%;
 }
 .post_detailWrap .DetailText .d-flex{
     padding-bottom: 8px;
@@ -2157,9 +2170,6 @@ width: 100%;
     font-weight: normal;
     text-align: left;
     font-family: 'Poppins', sans-serif;
-}
-.post_detailWrap .DetailText{
-    
 }
 .post_detailWrap .DetailText .publishedpost {
     margin: unset;
@@ -2178,6 +2188,15 @@ width: 100%;
 .post_detailWrap .DetailText .publishedpost span img{
     width: 20px;
 }
+.postlink{
+    margin: 0 !important;
+}
+.postlink .visit_postsite img.CopyIcon{
+    width: 13px;
+    border: none;
+    border-radius: 0;
+}
+
 
 .sponsored{
     padding-left: 5px;

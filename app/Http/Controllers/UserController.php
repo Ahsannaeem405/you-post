@@ -412,6 +412,7 @@ class UserController extends Controller
 
     public function get_single_detail(Request $request)
     {
+        
         $post = Post::find($request->id);
         // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         // $platformsName = $platforms->pluck('plateform')->toArray();

@@ -2564,7 +2564,8 @@ text-decoration-line: underline;
         // Add a click event handler to the todayEbents-list div
         $(document).on('click', '.fb-post', function() {
             var id = $(this).data('id');
-
+            var platform = $(this).data('plateform'); 
+                   
             $.ajax({
                 type: "get"
                 , url: "{{ url('get_single_detail') }}"
@@ -2578,7 +2579,16 @@ text-decoration-line: underline;
                         $(".Today-post-detail").html('');
                         $(".Today-post-detail").append(response);
                         $(".Today-post-detail").show();
-                       
+
+                        if (platform == 'Facebook') {
+                            $(".FacebookWrap").removeAttr('style');
+                        } else if (platform == 'Instagram') {
+                            $(".InstagramWrap").removeAttr('style');
+                        }else if (platform == 'Linkedin') {
+                            $(".LinkedinWrap").css('display', 'block');    
+                        }else if (platform == 'Twitter') {
+                            $(".TwitterWrap").removeAttr('style');
+                        }
                         $(".fb-post").css('display', 'none');
                     } else {
                         // If the detail is visible, hide it and reset the flag
