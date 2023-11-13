@@ -1321,11 +1321,11 @@
                                 <div class="one_img"><img src="{{asset('images/br.png')}}" class="" alt=""></div>
                             </div>
                             <hr style="color:gray;" class="m-0">
-                            <div class="the_preview">
+                            <div class="the_preview ">
                                 <div class="col-md-12 the_preview_card" style="height: 80px">
-                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
-                                        <div class="post_img_name">
-                                            <div class="post_img">
+                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1 youpost_prev">
+                                        <div class="post_img_name youpost_prev_name">
+                                            <div class="post_img youpost_prev_img">
                                                 <img src="{{asset('images/you-post.png')}}" class="img-fluid" width="40"
                                                     height="40" alt="">
                                             </div>
@@ -2901,6 +2901,7 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
             $(".the_preview_card").css('display', 'none');
         });
         $(document).on('click', '.fb-post', function() {
+           
             var id = $(this).data('id');
             var platform = $(this).data('plateform'); 
                    
@@ -2911,6 +2912,7 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
                     'id': id
                 }
                 , success: function(response) {
+                  
                     if (!isDetailVisible) {
                         // If the detail is not visible, show it and set the flag
                         // var contentToAppend = $(".the_preview").html();

@@ -650,8 +650,8 @@
             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
         </div>
     </div>
-    <p class="m-0"></p>
-    <div id="selectedValues"></div>
+    <!-- <p class="m-0"></p>
+    <div id="selectedValues"></div> -->
     <div class="MainMobileimg">
         <div class="media-container media_container">
             <div class="prv_div_youpost"> </div>
@@ -670,39 +670,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="col-md-12">
-    <div class="col-md-12 d-none">
-        <div class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
-            <div class="reactions reactions2 d-flex justify-content-center align-items-center d-none">
-                <img src="{{ asset('') }}images/fb_thumb.png" class="" alt="" height="12" />
-                <img src="{{ asset('') }}images/fb_heart.png" class="thums_up" alt="" height="12" />
-            </div>
-            <div class="total-comments total_comments u-margin-inline-start d-none">
-                <a>Muhammad Talha and 24k others 8.3k comments</a>
-            </div>
-        </div>
-        <hr style="color:gray; d-none" class="m-0">
-        <div class="actions-buttons actions_buttons px-1 mt-3">
-            <ul class="actions-buttons-list d-flex p-0 justify-content-between">
-                <li class="actions-buttons-item  d-flex align-item-center">
-                    <!-- <i class="fa-regular fa-thumbs-up"></i> -->
-                    <img src="{{ asset('') }}images/thumbs_up.png" class="" alt=""
-                        height="20" />
-                    <span class="lign-items-center">Like</span>
-                </li>
-                <li class="actions-buttons-item d-flex align-item-center pt-1">
-                    <img src="{{ asset('') }}images/coment_msg.png" class="" alt=""
-                        height="15" width="14" />
-                    <span class="">Comment</span>
-                </li>
-                <li class="actions-buttons-item  d-flex align-item-center share_fb">
-                    <img src="{{ asset('') }}images/share.png" class="" alt="" height="18" />
-                    <span class="">Share</span>
-                </li>
-            </ul>
-        </div>
-    </div>
+
+
 
     <script>
         $(document).ready(function() {
