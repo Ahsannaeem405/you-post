@@ -92,6 +92,14 @@
     justify-content: center;
     align-items: center;
 }
+.reconnect_platform{
+    color:blue;
+    border-bottom: 1px solid blue;
+}
+.reconnect_platform:active{
+    color:red;
+    border-bottom: 1px solid red;
+}
 
 .fb-conect_btn,
 .fb-recont_btn,
@@ -119,7 +127,32 @@
     text-decoration:none;
     color:#000;
 }
+/*  */
+.fb-reconect_btn, .l_recont_btn, .T-recont_btn, .instrecont_btn{
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted black; */
+}
 
+ .tooltiptext_fb, .tooltiptext_inst ,.tooltiptext_tw ,.tooltiptext_link {
+  visibility: hidden;
+  width: 120px;
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.fb-recont_btn:hover .tooltiptext_fb, .l_recont_btn:hover .tooltiptext_link, .T-recont_btn:hover .tooltiptext_tw, .instrecont_btn:hover .tooltiptext_inst{
+  visibility: visible;
+}
+/*  */
 /* main account file styling */
 @media (max-width:992px) {
     .all_social_platformWrp {
@@ -196,7 +229,11 @@
 
                     <a class="fb-recont_btn {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }} r_btn"
                         href="">
-                         <span > Reconnect</span>
+                         <span class="reconnect_platform"> Reconnect</span>
+                         
+                        <span class="tooltiptext_fb">Click here to connect facebook account</span>
+                       
+
                     </a>
 
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}"
@@ -227,7 +264,10 @@
                         class="  btn instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}"
                         id="Instagrambtn">Reconnect</button> -->
                     <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
-                         <span> Reconnect</span>
+                         <span class="reconnect_platform"> Reconnect</span>
+                       
+                        <span class="tooltiptext_inst">Click here to connect Instagram account</span>
+                       
                     </a>
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
                          <span class="linkedbtnabc"> Connect</span>
@@ -253,8 +293,11 @@
                         id="Twitterbtn">Reconnect</button> -->
 
                     <a class="T-recont_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
-                         <span>
+                         <span class="reconnect_platform">
                          Reconnect</span>
+                        
+                        <span class="tooltiptext_tw">Click here to connect Twitter account</span>
+                       
                     </a>
 
                     <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
@@ -284,13 +327,16 @@
                         id="Linkedinbtn">Reconnect</button> -->
                     <!-- <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
                     <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
-                        <span > Reconnect</span>
+                        <span class="reconnect_platform" > Reconnect</span>
+                        
+                        <span class="tooltiptext_link">Click here to connect Linkedin account</span>
+                        
                     </a>
                     <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
-                <div class="single_platform" style="">
+                <div class="single_platform d-none" style="">
                     <div class="social_icon" style="padding-bottom: 9px;">
                         <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt=""
                             style="    height: 21px;" />
@@ -304,7 +350,7 @@
                     <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
 
                 </div>
-                <div class="single_platform" style="">
+                <div class="single_platform d-none" style="">
                     <div class="social_icon" style="padding-bottom: 6px;">
                         <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt=""
                             style="height: 23px;" />

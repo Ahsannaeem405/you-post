@@ -112,7 +112,7 @@
                         <label for="socialTiktok"></label>
                     </div> -->
 
-                    <div class="single_platform">
+                    <div class="single_platform d-none">
                         <div class="social_icon">
                             <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt="" />
                             <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt="" />
@@ -122,7 +122,7 @@
                         <label for="socialYoutube"></label>
                     </div>
 
-                    <div class="single_platform">
+                    <div class="single_platform d-none">
                         <div class="social_icon">
                             <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt="" />
                             <img src="{{asset('images/Telegram_Black.png')}}" class="black_icon" alt="" />
@@ -132,7 +132,7 @@
                         <label for="socialTelegram"></label>
                     </div>
 
-                    <div class="single_platform">
+                    <div class="single_platform d-none">
                         <div class="social_icon">
                             <img src="{{asset('images/WhatsApp_Color.png')}}" class="color_icon" alt="" />
                             <img src="{{asset('images/WhatsApp_Black.png')}}" class="black_icon" alt="" />

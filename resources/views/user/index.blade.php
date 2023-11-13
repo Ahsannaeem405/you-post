@@ -1,602 +1,607 @@
 @extends('user_layout.main')
 <style>
-    #image_div {
-        position: relative;
-        max-width: 270px;
-        margin: auto;
-    }
-
-    #image_div_youpost {
-        position: relative;
-        max-width: 270px;
-        margin: auto;
-    }
-
-    #image_div_ins,
-    #image_div_linked {
-        max-width: 270px;
-        margin: auto;
-    }
-
-    .uplaod-gif {
-        width: 125px;
-        position: absolute;
-        left: -37px;
-        top: -14px;
-    }
-
-    .uplaod-gif-video {
-        width: 125px;
-        position: absolute;
-        left: -37px;
-        top: -22px;
-    }
-
-    .create_preview_post_wrapInner {
-        padding: unset !important;
-    }
-
-    .AIgeneratedContent .AIgeneratedContentInner {
-        background: rgb(235 235 235);
-        padding: 10px;
-        border-radius: 10px;
-        margin-top: 25px !important;
-    }
-
-    .create_preview_post_index {
-        display: flex !important;
-        max-width: 100% !important;
-        gap: 0px !important;
-        overflow: hidden;
-        justify-content: space-between;
-    }
-
-    .create_preview_post_index .create_preview_post_index_itemLeft {
-        width: 30%;
-        background: #fff;
-        padding: 20px 10px;
-        border-radius: 5px;
-    }
-
-    .create_preview_post_index .create_preview_post_index_itemRight {
-        width: calc(70% - 20px);
-        display: flex;
-        background: #fff;
-        padding: 20px 10px;
-        border-radius: 5px;
-    }
-
-    .create_preview_post_index_itemRight .create_preview_post_index_itemRightInner {
-        width: 40%;
-    }
-
-    .create_preview_post_index_itemRight .AIgeneratedContent.create_preview_post_index_itemRightInner {
-        width: 60%;
-    }
-
-    .create_preview_post_index_item .preview_post,
-    .create_preview_post_index_item .preview_post .preview_wrap {
-        width: auto !important;
-        margin: auto;
-
-    }
-
-    .create_preview_post_index .create_post {}
-
-    .create_preview_post_index .justify-content-center {}
-
-    .create_preview_post_index .AIgeneratedContent {}
-
-    .AIgeneratedContentAdd {
-        width: 60px;
-    }
-
-    .AIgeneratedContentAdd a {
-        background: rgb(15 116 206);
-        color: #fff;
-        display: inline-block;
-        text-decoration: none;
-        padding: 1px 10px;
-        border-radius: 5px;
-        font-size: 14px;
-        border: 1px solid transparent;
-    }
-
-    .AIgeneratedContentText {
-        width: calc(100% - 65px);
-        margin-left: 5px;
-    }
-
-    .AIgeneratedContentText p {
-        font-size: 12px;
-    }
-
-    .AIgeneratedCarousel {
-        position: relative;
-    }
-
-    .AIgeneratedCarouselWrp {
-        margin-top: 30px;
-    }
-
-    .AIgeneratedCarousel {}
-
-    .AIgeneratedCarousel .item .itemCnt {
-        position: relative;
-    }
-
-    .AIgeneratedCarousel .item .itemCntPlusWrp {}
-
-    .AIgeneratedCarousel .item .itemCntPlusWrp i {
-        position: absolute;
-        top: 45%;
-        left: 45%;
-        margin: auto;
-        z-index: 999;
-        font-size: 20px;
-        background: #0f74ce;
-        color: #fff;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid #000;
-        cursor: pointer;
-        display: none;
-    }
-
-    .AIgeneratedCarousel .owl-item.active .item .itemCntPlusWrp i {
-        display: flex;
-    }
-
-    .AIgeneratedCarousel .owl-item .item {
-        opacity: 0.5;
-    }
-
-    .AIgeneratedCarousel .owl-item.active {}
-
-    .AIgeneratedCarousel .owl-item.cloned {}
-
-    .AIgeneratedCarousel .owl-item.cloned:nth-child(2) {}
-
-    .AIgeneratedCarousel .owl-item.active:nth-child(2) {}
-
-    .AIgeneratedCarousel .owl-item.active .item {
-        opacity: unset;
-    }
-
-    .AIgeneratedCarousel .owl-item.active:first-of-type {}
-
-    .AIgeneratedCarousel .owl-nav {
-        position: absolute;
-        right: 30px;
-        top: 40%;
-        width: 80px;
-        margin-top: unset !important;
-        background: #0f74ce;
-        color: #fff;
-        border-radius: 5px;
-    }
-
-    .AIgeneratedCarousel .owl-nav .owl-prev {
-        display: none !important;
-    }
-
-    .AIgeneratedCarousel .owl-nav button:hover {
-        background: transparent !important;
-    }
-
-    .AIgeneratedCarousel .owl-nav .owl-next {
-        width: 100%;
-    }
-
-    .AIgeneratedCarousel .owl-nav .owl-next span {
-        position: relative;
-        width: 90%;
-        display: inline-block;
-        text-align: end;
-        padding-right: 20px;
-    }
-
-    .AIgeneratedCarousel .owl-nav .owl-next span::before {
-        position: absolute;
-        content: 'Next';
-        left: 10px;
-    }
-
-    .AIgeneratedCarouselBtmBtn {
-        display: flex;
-        justify-content: end;
-        margin: 60px 0 0px;
-    }
-
-    .AIgeneratedCarouselBtmBtn a {
-        display: inline-block;
-        color: #fff;
-        padding: 5px 10px;
-        border-radius: 6px;
-        font-size: 13px;
-        margin: 2px;
-        font-family: 'Poppins', sans-serif;
-
-    }
-
-    .AIgeneratedCarouselBtmBtn a:hover,
-    .AIgeneratedContentAdd a:hover {
-        background: transparent;
-        color: rgb(15 116 206);
-        border: 1px solid rgb(15 116 206);
-    }
-
-
-    .create_preview_post_wrap {
-        padding-bottom: 20px !important;
-    }
-
-    .post_manage_calendar {
-        padding-top: unset !important;
-    }
-
-    .post_manage_calendar .container {
-        background: #fff;
-        padding-top: 30px;
-    }
-
-    .post_manage_calendar .fc .fc-toolbar {
-        background: #fff !important;
-    }
-
-    .post_manage_calendar .the_post_manager {
-        max-width: 100% !important;
-    }
-
-    .fc-head {}
-
-    .fc-head .fc-row {}
-
-    .fc-head .fc-row thead {}
-
-    .fc-head .fc-row thead .fc-day-header {
-        padding: 40px 0;
-    }
-
-    .fc-unthemed .fc-content,
-    .fc-unthemed .fc-divider,
-    .fc-unthemed .fc-list-heading td,
-    .fc-unthemed .fc-list-view,
-    .fc-unthemed .fc-popover,
-    .fc-unthemed .fc-row,
-    .fc-unthemed tbody,
-    .fc-unthemed td,
-    .fc-unthemed th,
-    .fc-unthemed thead {
-        border-color: transparent !important;
-    }
-
-
-    .form-wizard {
-        padding: 0px !important;
-        margin: unset;
-        border: unset !important;
-    }
-
-    .form-wizard .wizard-fieldset.show {
-        padding: 0 !important;
-    }
-
-    .create_preview_post .create_post .icon_buttons_tags .form-control {
-        box-shadow: -1px 0px 3px 2px rgba(0, 0, 0, 0.25) inset !important;
-    }
-
-    .post_now_button {
-        display: flex;
-    }
-
-    .post_now_button input {
-        min-width: unset !important;
-        font-weight: 600 !important;
-        font-size: 14px !important;
-        border: 1px solid transparent !important;
-        width: calc(50% - 10px);
-        margin: 5px !important;
-        /* background: rgb(15 116 206) !important; */
-    }
-
-    .post_now_button.next_plat_button {}
-
-    .post_now_button.schedule_post input {}
-
-    /* .post_now_button.schedule_post_button input:nth-child(1) {
+#image_div {
+    position: relative;
+    max-width: 270px;
+    margin: auto;
+}
+
+#image_div_youpost {
+    position: relative;
+    max-width: 270px;
+    margin: auto;
+}
+
+#image_div_ins,
+#image_div_linked {
+    max-width: 270px;
+    margin: auto;
+}
+
+.uplaod-gif {
+    width: 125px;
+    position: absolute;
+    left: -37px;
+    top: -14px;
+}
+
+.uplaod-gif-video {
+    width: 125px;
+    position: absolute;
+    left: -37px;
+    top: -22px;
+}
+
+.create_preview_post_wrapInner {
+    padding: unset !important;
+}
+
+.AIgeneratedContent .AIgeneratedContentInner {
+    background: rgb(235 235 235);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 25px !important;
+}
+
+.create_preview_post_index {
+    display: flex !important;
+    max-width: 100% !important;
+    gap: 0px !important;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.create_preview_post_index .create_preview_post_index_itemLeft {
+    width: 30%;
+    background: #fff;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+
+.create_preview_post_index .create_preview_post_index_itemRight {
+    width: calc(70% - 20px);
+    display: flex;
+    background: #fff;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+
+.create_preview_post_index_itemRight .create_preview_post_index_itemRightInner {
+    width: 40%;
+}
+
+.create_preview_post_index_itemRight .AIgeneratedContent.create_preview_post_index_itemRightInner {
+    width: 60%;
+}
+
+.create_preview_post_index_item .preview_post,
+.create_preview_post_index_item .preview_post .preview_wrap {
+    width: auto !important;
+    margin: auto;
+
+}
+
+.create_preview_post_index .create_post {}
+
+.create_preview_post_index .justify-content-center {}
+
+.create_preview_post_index .AIgeneratedContent {}
+
+.AIgeneratedContentAdd {
+    width: 60px;
+}
+
+.AIgeneratedContentAdd a {
+    background: rgb(15 116 206);
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    padding: 1px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+.AIgeneratedContentText {
+    width: calc(100% - 65px);
+    margin-left: 5px;
+}
+
+.AIgeneratedContentText p {
+    font-size: 12px;
+}
+
+.AIgeneratedCarousel {
+    position: relative;
+}
+
+.AIgeneratedCarouselWrp {
+    margin-top: 30px;
+}
+
+.AIgeneratedCarousel {}
+
+.AIgeneratedCarousel .item .itemCnt {
+    position: relative;
+}
+
+.AIgeneratedCarousel .item .itemCntPlusWrp {}
+
+.AIgeneratedCarousel .item .itemCntPlusWrp i {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    margin: auto;
+    z-index: 999;
+    font-size: 20px;
+    background: #0f74ce;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    cursor: pointer;
+    display: none;
+}
+
+.AIgeneratedCarousel .owl-item.active .item .itemCntPlusWrp i {
+    display: flex;
+}
+
+.AIgeneratedCarousel .owl-item .item {
+    opacity: 0.5;
+}
+
+.AIgeneratedCarousel .owl-item.active {}
+
+.AIgeneratedCarousel .owl-item.cloned {}
+
+.AIgeneratedCarousel .owl-item.cloned:nth-child(2) {}
+
+.AIgeneratedCarousel .owl-item.active:nth-child(2) {}
+
+.AIgeneratedCarousel .owl-item.active .item {
+    opacity: unset;
+}
+
+.AIgeneratedCarousel .owl-item.active:first-of-type {}
+
+.AIgeneratedCarousel .owl-nav {
+    position: absolute;
+    right: 30px;
+    top: 40%;
+    width: 80px;
+    margin-top: unset !important;
+    background: #0f74ce;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.AIgeneratedCarousel .owl-nav .owl-prev {
+    display: none !important;
+}
+
+.AIgeneratedCarousel .owl-nav button:hover {
+    background: transparent !important;
+}
+
+.AIgeneratedCarousel .owl-nav .owl-next {
+    width: 100%;
+}
+
+.AIgeneratedCarousel .owl-nav .owl-next span {
+    position: relative;
+    width: 90%;
+    display: inline-block;
+    text-align: end;
+    padding-right: 20px;
+}
+
+.AIgeneratedCarousel .owl-nav .owl-next span::before {
+    position: absolute;
+    content: 'Next';
+    left: 10px;
+}
+
+.AIgeneratedCarouselBtmBtn {
+    display: flex;
+    justify-content: end;
+    margin: 60px 0 0px;
+}
+
+.AIgeneratedCarouselBtmBtn a {
+    display: inline-block;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin: 2px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.AIgeneratedCarouselBtmBtn a:hover,
+.AIgeneratedContentAdd a:hover {
+    background: transparent;
+    color: rgb(15 116 206);
+    border: 1px solid rgb(15 116 206);
+}
+
+
+.create_preview_post_wrap {
+    padding-bottom: 20px !important;
+}
+
+.post_manage_calendar {
+    padding-top: unset !important;
+}
+
+.post_manage_calendar .container {
+    background: #fff;
+    padding-top: 30px;
+}
+
+.post_manage_calendar .fc .fc-toolbar {
+    background: #fff !important;
+}
+
+.post_manage_calendar .the_post_manager {
+    max-width: 100% !important;
+}
+
+.fc-head {}
+
+.fc-head .fc-row {}
+
+.fc-head .fc-row thead {}
+
+.fc-head .fc-row thead .fc-day-header {
+    padding: 40px 0;
+}
+
+.fc-unthemed .fc-content,
+.fc-unthemed .fc-divider,
+.fc-unthemed .fc-list-heading td,
+.fc-unthemed .fc-list-view,
+.fc-unthemed .fc-popover,
+.fc-unthemed .fc-row,
+.fc-unthemed tbody,
+.fc-unthemed td,
+.fc-unthemed th,
+.fc-unthemed thead {
+    border-color: transparent !important;
+}
+
+
+.form-wizard {
+    padding: 0px !important;
+    margin: unset;
+    border: unset !important;
+}
+
+.form-wizard .wizard-fieldset.show {
+    padding: 0 !important;
+}
+
+.create_preview_post .create_post .icon_buttons_tags .form-control {
+    box-shadow: -1px 0px 3px 2px rgba(0, 0, 0, 0.25) inset !important;
+}
+
+.post_now_button {
+    display: flex;
+}
+
+.post_now_button input {
+    min-width: unset !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    border: 1px solid transparent !important;
+    width: calc(50% - 10px);
+    margin: 5px !important;
+    /* background: rgb(15 116 206) !important; */
+}
+
+.post_now_button.next_plat_button {}
+
+.post_now_button.schedule_post input {}
+
+/* .post_now_button.schedule_post_button input:nth-child(1) {
         background: #28a745 !important;
     } */
 
-    .post_now_button.schedule_post_button input:nth-child(2) {
-        background: #dc3545 !important;
-        color: #fff;
-    }
+.post_now_button.schedule_post_button input:nth-child(2) {
+    background: #dc3545 !important;
+    color: #fff;
+}
 
-    /* .list-unstyled.form-wizard-steps {
+/* .list-unstyled.form-wizard-steps {
         margin-top: 20px;
     } */
 
-    .Customemojiarea {
-        /* min-height: 130px !important; */
+.Customemojiarea {
+    /* min-height: 130px !important; */
+}
+
+.MainMobileview img {
+    width: 30px;
+    border: 2px solid #0f74ce;
+}
+
+.MainMobileview span {
+    font-size: 12px;
+    font-weight: 600 !important;
+    margin-left: 4px !important;
+}
+
+.MainMobileview span.sponsored {
+    margin-left: 0 !important;
+    color: #888888;
+    font-weight: 400 !important;
+    font-size: 10px;
+}
+
+.MainMobileview span.sponsored i {
+    font-size: 8px;
+}
+
+.Mobcart_title span {
+    margin-left: unset !important;
+    margin-top: 3px;
+    font-weight: 600;
+}
+
+.Mobcart_titleCustom,
+.actions-buttons {
+    /* border-top: 1px solid #dddddd7a; */
+    padding: 5px 0;
+}
+
+.actions-buttons {}
+
+.actions-buttons ul {}
+
+.actions-buttons ul li button {}
+
+.actions-buttons ul li button i {
+    font-size: 12px !important;
+}
+
+.actions-buttons ul li span {
+    font-size: 10px !important;
+    margin-left: 3px;
+    font-weight: 600;
+    color: #646464;
+}
+
+.PostDateTimePicker {
+    text-align: end;
+}
+
+.PostDateTimePicker span {
+    color: #0f74ce;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    display: inline-block;
+}
+
+.x_bar_icons div img {
+    width: 1em;
+    height: 1em;
+}
+
+.LikeIcons .InnerIcon img:last-child {
+    margin: 0 0 0 -7px;
+}
+
+.ActionBtn_Linkedin ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 17px;
+    justify-content: space-around;
+}
+
+.ActionBtn_Linkedin ul li button {
+    background-color: transparent;
+    border: none;
+}
+
+.ActionBtn_Linkedin ul li button svg {}
+
+.ActionBtn_Linkedin ul li button span {
+    color: #fff;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .create_preview_post_wrapInner {
+        padding: 10px !important;
     }
 
-    .MainMobileview img {
-        width: 30px;
-        border: 2px solid #0f74ce;
+    .create_preview_post_index {
+        flex-direction: column;
     }
 
-    .MainMobileview span {
-        font-size: 12px;
-        font-weight: 600 !important;
-        margin-left: 4px !important;
+    .create_preview_post_index .create_preview_post_index_item {
+        width: 100% !important;
     }
 
-    .MainMobileview span.sponsored {
-        margin-left: 0 !important;
-        color: #888888;
-        font-weight: 400 !important;
-        font-size: 10px;
+    .create_preview_post_index .create_preview_post_index_itemLeft {
+        margin-bottom: 15px;
     }
 
-    .MainMobileview span.sponsored i {
-        font-size: 8px;
+    .create_preview_post_index .create_preview_post_index_item.create_preview_post_index_itemRight {
+        flex-direction: column;
     }
 
-    .Mobcart_title span {
-        margin-left: unset !important;
-        margin-top: 3px;
-        font-weight: 600;
+    .AIgeneratedCarousel .item .itemCntPlusWrp i {}
+
+    .create_preview_post_index_itemRight .create_preview_post_index_itemRightInner,
+    .create_preview_post_index_itemRight .AIgeneratedContent.create_preview_post_index_itemRightInner {
+        width: 100% !important;
     }
-
-    .Mobcart_titleCustom,
-    .actions-buttons {
-        /* border-top: 1px solid #dddddd7a; */
-        padding: 5px 0;
-    }
-
-    .actions-buttons {}
-
-    .actions-buttons ul {}
-
-    .actions-buttons ul li button {}
-
-    .actions-buttons ul li button i {
-        font-size: 12px !important;
-    }
-
-    .actions-buttons ul li span {
-        font-size: 10px !important;
-        margin-left: 3px;
-        font-weight: 600;
-        color: #646464;
-    }
-
-    .PostDateTimePicker {
-        text-align: end;
-    }
-
-    .PostDateTimePicker span {
-        color: #0f74ce;
-        font-size: 14px;
-        cursor: pointer;
-        text-align: left;
-        display: inline-block;
-    }
-
-    .x_bar_icons div img {
-        width: 1em;
-        height: 1em;
-    }
-
-    .LikeIcons .InnerIcon img:last-child {
-        margin: 0 0 0 -7px;
-    }
-
-    .ActionBtn_Linkedin ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        gap: 17px;
-        justify-content: space-around;
-    }
-
-    .ActionBtn_Linkedin ul li button {
-        background-color: transparent;
-        border: none;
-    }
-
-    .ActionBtn_Linkedin ul li button svg {}
-
-    .ActionBtn_Linkedin ul li button span {
-        color: #fff;
-        font-size: 12px;
-    }
-
-    @media screen and (max-width: 768px) {
-        .create_preview_post_wrapInner {
-            padding: 10px !important;
-        }
-
-        .create_preview_post_index {
-            flex-direction: column;
-        }
-
-        .create_preview_post_index .create_preview_post_index_item {
-            width: 100% !important;
-        }
-
-        .create_preview_post_index .create_preview_post_index_itemLeft {
-            margin-bottom: 15px;
-        }
-
-        .create_preview_post_index .create_preview_post_index_item.create_preview_post_index_itemRight {
-            flex-direction: column;
-        }
-
-        .AIgeneratedCarousel .item .itemCntPlusWrp i {}
-
-        .create_preview_post_index_itemRight .create_preview_post_index_itemRightInner,
-        .create_preview_post_index_itemRight .AIgeneratedContent.create_preview_post_index_itemRightInner {
-            width: 100% !important;
-        }
 
     .create_preview_post_index .AIgeneratedContent h4 {
         margin-top: 20px;
         text-align: center;
     }
+
     /*  */
     .offcanvas-start {
-    width: 350px !important;
-}
+        width: 350px !important;
+    }
+
     /*  */
 
+}
+
+@media screen and (max-width: 575px) {
+    .AIgeneratedCarousel .item .itemCntPlusWrp i {
+        top: 45%;
+        left: 45%;
     }
 
-    @media screen and (max-width: 575px) {
-        .AIgeneratedCarousel .item .itemCntPlusWrp i {
-            top: 45%;
-            left: 45%;
-        }
-
-        .plus-icon-calender {
-            padding: 5px !important;
-            font-size: 12px !important;
-            width: 10px !important;
-            height: 10px !important;
-            left: 50px !important;
-        }
-
-        .fc-scroller.fc-day-grid-container {
-            height: 300px !important;
-        }
-
-        .AIgeneratedCarousel .owl-nav {
-            bottom: -40px;
-            left: calc(50% - 35px);
-            top: unset;
-            right: unset;
-        }
+    .plus-icon-calender {
+        padding: 5px !important;
+        font-size: 12px !important;
+        width: 10px !important;
+        height: 10px !important;
+        left: 50px !important;
     }
 
-    #selectedValues span {
-        color: #fff;
+    .fc-scroller.fc-day-grid-container {
+        height: 300px !important;
     }
 
-    .erro_background {
-        background-color: rgba(255, 222, 144, 255) !important;
-        color: rgba(125, 108, 71, 255) !important;
+    .AIgeneratedCarousel .owl-nav {
+        bottom: -40px;
+        left: calc(50% - 35px);
+        top: unset;
+        right: unset;
     }
+}
 
-    .color_info {
-        text-align: center;
-        margin-top: 43px;
-        padding-bottom: 22px;
-        color: #605858;
-        font-size: 14px;
-    }
+#selectedValues span {
+    color: #fff;
+}
 
-    .fc-content-skeleton table thead {
-        height: 40px !important;
-    }
+.erro_background {
+    background-color: rgba(255, 222, 144, 255) !important;
+    color: rgba(125, 108, 71, 255) !important;
+}
 
-    .fc-content-skeleton table thead tr .fc-day-top .fc-day-number {
-        padding: 12px;
-    }
+.color_info {
+    text-align: center;
+    margin-top: 43px;
+    padding-bottom: 22px;
+    color: #605858;
+    font-size: 14px;
+}
 
-    /* timepicker style */
-    .time-picker_cls {
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        background-color: #f4f4f4;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        padding: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-family: 'Arial', sans-serif;
-    }
+.fc-content-skeleton table thead {
+    height: 40px !important;
+}
 
-    /* Style the select elements (hour, minute, am/pm) */
-    .time-picker_cls select {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        padding: 5px;
-        margin: 0 5px;
-        font-size: 16px;
-        color: #333;
-    }
+.fc-content-skeleton table thead tr .fc-day-top .fc-day-number {
+    padding: 12px;
+}
 
-    /* Add some hover and focus styles for better user interaction */
-    .time-picker_cls select:hover,
-    .time-picker_cls select:focus {
-        border-color: #3498db;
-    }
+/* timepicker style */
+.time-picker_cls {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
 
-    /* Style the AM/PM select element */
-    .time-picker_cls #ampm {
-        margin-right: 0;
-    }
+/* Style the select elements (hour, minute, am/pm) */
+.time-picker_cls select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 16px;
+    color: #333;
+}
 
-    /* Customize the appearance of the selected option */
-    .time-picker_cls select option:checked {
-        background-color: #3498db;
-        color: #fff;
-    }
+/* Add some hover and focus styles for better user interaction */
+.time-picker_cls select:hover,
+.time-picker_cls select:focus {
+    border-color: #3498db;
+}
 
-    /* close btn sidebar */
-    .close-btn {
-        position: absolute;
-        top: -5px;
-        left: 6px;
-        font-size: 24px;
-        cursor: pointer;
-        color: #fff;
-    }
+/* Style the AM/PM select element */
+.time-picker_cls #ampm {
+    margin-right: 0;
+}
+
+/* Customize the appearance of the selected option */
+.time-picker_cls select option:checked {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* close btn sidebar */
+.close-btn {
+    position: absolute;
+    top: 4px;
+    left: 13px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
 
 
 .croissant-icon:before {
     content: "\f190";
 }
 
-    .bx-chevron-right.toggle2 {
-        position: absolute;
-        top: 4%;
-        right: 94%;
-        transform: translateY(-50%) rotate(180deg);
-        height: 25px;
-        width: 25px;
-        background-color: var(--primary-color);
-        color: var(--sidebar-color);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        cursor: pointer;
-        transition: var(--tran-05);
-    }
+.bx-chevron-right.toggle2 {
+    position: absolute;
+    top: 4%;
+    right: 94%;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
 
 .container.section5 .calendar_overflo {
     transition: all 1s ease;
 }
- .with-transition {
+
+.with-transition {
     transition: all 1s ease-out !important;
-}
-.btn-close{
-    background-image:url("");
 }
 
 .btn-close {
     background-image: url("");
 }
-#mypostresult_youpost{
+
+.btn-close {
+    background-image: url("");
+}
+
+#mypostresult_youpost {
     display: block;
     display: -webkit-box;
     margin: 0 auto;
@@ -606,30 +611,35 @@
     text-overflow: ellipsis;
     word-wrap: break-word;
 }
-.wizard-fieldset_youpost{
+
+.wizard-fieldset_youpost {
     color: #171717;
     font-weight: 500;
     font-size: 17px;
 }
-    .mydeltpostbtn{
+
+.mydeltpostbtn {
     border-radius: 10px;
-    margin-top:15px;
+    margin-top: 15px;
 }
-.visit_postsite{
+
+.visit_postsite {
     color: #6B9CFA;
     font-family: 'Poppins', sans-serif;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-text-decoration-line: underline;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
 }
-.postlink{
-    margin-top:40px;
-    text-align:center;
+
+.postlink {
+    margin-top: 40px;
+    text-align: center;
 }
-.content_main{
-    text-align:left;
+
+.content_main {
+    text-align: left;
 }
 
 /* close btn sidebar */
@@ -642,8 +652,10 @@ text-decoration-line: underline;
     <div class="container container_2 create_preview_post_wrapInner">
         <div class="create_preview_post create_preview_post_index">
 
-            <div class="create_post create_preview_post_index_item create_preview_post_index_itemLeft section2_borderleft_card mx-2 my-2">
-                <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data" id="post_form">
+            <div
+                class="create_post create_preview_post_index_item create_preview_post_index_itemLeft section2_borderleft_card mx-2 my-2">
+                <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data"
+                    id="post_form">
                     @csrf
                     <section class="wizard-section" style="display: none">
                         <div class="row no-gutters">
@@ -656,20 +668,32 @@ text-decoration-line: underline;
 
 
                                             <ul class="list-unstyled form-wizard-steps form_wizard_steps clearfix">
-                                               <li section="youpost"><span
+                                                <li section="youpost"><span
                                                         class="d-flex justify-content-center align-items-center"><img
                                                             src="{{asset('images/you-post.png')}}" alt=""></span></li>
                                                 @if(in_array(('Facebook'),auth()->user()->account->platforms))
-                                                <li section="fb"><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/FB_Color.png')}}" width="12px" height="20" alt=""></span></li>
+                                                <li section="fb"><span
+                                                        class="d-flex justify-content-center align-items-center"><img
+                                                            src="{{asset('images/FB_Color.png')}}" width="12px"
+                                                            height="20" alt=""></span></li>
                                                 @endif
                                                 @if(in_array(('Instagram'),auth()->user()->account->platforms))
-                                                <li section="insta"><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/Instagram_Color.png')}}" width="20px" alt=""></span></li>
+                                                <li section="insta"><span
+                                                        class="d-flex justify-content-center align-items-center"><img
+                                                            src="{{asset('images/Instagram_Color.png')}}" width="20px"
+                                                            alt=""></span></li>
                                                 @endif
                                                 @if(in_array(('Twitter'),auth()->user()->account->platforms))
-                                                <li section="twitter"><span><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/Twitter_Color.png')}}" width="20px" alt=""></span></span></li>
+                                                <li section="twitter"><span><span
+                                                            class="d-flex justify-content-center align-items-center"><img
+                                                                src="{{asset('images/Twitter_Color.png')}}" width="20px"
+                                                                alt=""></span></span></li>
                                                 @endif
                                                 @if(in_array(('Linkedin'),auth()->user()->account->platforms))
-                                                <li section="linkedin"><span><span class="d-flex justify-content-center align-items-center"><img src="{{asset('images/Linkedin_Color.png')}}" width="20px" alt=""></span></span></li>
+                                                <li section="linkedin"><span><span
+                                                            class="d-flex justify-content-center align-items-center"><img
+                                                                src="{{asset('images/Linkedin_Color.png')}}"
+                                                                width="20px" alt=""></span></span></li>
                                                 @endif
                                             </ul>
                                         </div>
@@ -681,10 +705,11 @@ text-decoration-line: underline;
                                                     class="wizard-fieldset_youpost">Initial Content</span>
 
                                             </div>
-                                            <div class="form-group emoji_parent emoji_parent2" data-emoji ='youpost' >
+                                            <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"
+                                                    class="form-control wizard-required emojiarea mention"
+                                                    data-id="youpost_error"
                                                     placeholder="Write your initial content...">{{old('youpost_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -695,9 +720,9 @@ text-decoration-line: underline;
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0">
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video_youpost_all"
-                                                                typpe="image" social="youpost"
-                                                                fordata="image_or_video_youpost"><label
+                                                            <a href="javascript:void(0)"
+                                                                class="image_or_video_youpost_all" typpe="image"
+                                                                social="youpost" fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
                                                                     <img src="{{asset('')}}images/Camera_Icon.png"
                                                                         class="img-fluid" alt="" />
@@ -705,9 +730,9 @@ text-decoration-line: underline;
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video_youpost_all"
-                                                                typpe="video" social="youpost"
-                                                                fordata="image_or_video_youpost"><label
+                                                            <a href="javascript:void(0)"
+                                                                class="image_or_video_youpost_all" typpe="video"
+                                                                social="youpost" fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
                                                                     <img src="{{asset('')}}images/new_image.png"
                                                                         class="img-fluid" alt="" />
@@ -716,7 +741,8 @@ text-decoration-line: underline;
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
+                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                    class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -733,11 +759,12 @@ text-decoration-line: underline;
                                             </div>
                                             <!-- my code -->
                                             <!-- append div waleed start -->
-                                           <div id="image_div_youpost" class="image_div_2"><label for="file"
+                                            <div id="image_div_youpost" class="image_div_2"><label for="file"
                                                     style="margin-top: 20px;">
 
                                                     <div class="sm_container" id="12">
-                                                       <input type="file" name="" class="image d-none file_image_video_youpost"
+                                                        <input type="file" name=""
+                                                            class="image d-none file_image_video_youpost"
                                                             id="image_or_video_youpost" accept="image/*,video/*"
                                                             div_to_open="youpost">
                                                         <input type="hidden" name="media_type_youpost"
@@ -766,12 +793,18 @@ text-decoration-line: underline;
                                         @if(in_array(('Facebook'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset fb">
                                             <div class="ml-2">
-                                                <span class="wizard-fieldset_edit">Edit</span> : <span class="wizard-fieldset_facebook">Facebook</span>
+                                                <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                    class="wizard-fieldset_facebook">Facebook</span>
 
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2">
-                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)" name="facebook_content" id="facebook_content" cols="30" rows="10" class="form-control wizard-required emojiarea mention" data-id="facebok_error" placeholder="Write your post...">{{old('facebook_content')}}</textarea>
-                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png" class="img-fluid" alt="" /></div>
+                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
+                                                    name="facebook_content" id="facebook_content" cols="30" rows="10"
+                                                    class="form-control wizard-required emojiarea mention"
+                                                    data-id="facebok_error"
+                                                    placeholder="Write your post...">{{old('facebook_content')}}</textarea>
+                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
+                                                        class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
@@ -779,20 +812,29 @@ text-decoration-line: underline;
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0">
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="image" social="fb" fordata="image_or_videofb"><label for="image_or_videofb">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="fb"
+                                                                fordata="image_or_videofb"><label
+                                                                    for="image_or_videofb">
+                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="video" social="fb" fordata="image_or_videofb"><label for="image_or_videofb">
-                                                                    <img src="{{asset('')}}images/new_image.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="video" social="fb"
+                                                                fordata="image_or_videofb"><label
+                                                                    for="image_or_videofb">
+                                                                    <img src="{{asset('')}}images/new_image.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
+                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                    class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -809,9 +851,10 @@ text-decoration-line: underline;
                                             </div>
                                             <!-- my code -->
                                             <!-- append div waleed start -->
-                                            <div id="image_div" class="image_div_2"><label for="file" style="margin-top: 20px;">
+                                            <div id="image_div" class="image_div_2"><label for="file"
+                                                    style="margin-top: 20px;">
 
-                                                    <div class="sm_container"  id="11">
+                                                    <div class="sm_container" id="11">
                                                         <input type="file" name="" class="image d-none file_image_video"
                                                             id="image_or_videofb" accept="image/*,video/*"
                                                             div_to_open="facebook">
@@ -840,7 +883,8 @@ text-decoration-line: underline;
 
                                         @if(in_array(('Instagram'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset insta">
-                                            <span class="wizard-fieldset_edit">Edit</span> : <span class="wizard-fieldset_facebook">Instagram</span>
+                                            <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                class="wizard-fieldset_facebook">Instagram</span>
                                             <!-- <div class="IG_social_main must_add_image ">
                                                 <div class="IG_main_card">
                                                     <div class="d-flex align-items-center">
@@ -855,27 +899,39 @@ text-decoration-line: underline;
                                             </div> -->
 
                                             <div class="form-group emoji_parent emoji_parent2 ">
-                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)" name="instagram_content" id="instagram_content" cols="30" rows="10" class="form-control wizard-required emojiarea" data-id="insta_error" placeholder="Write your post...">{{old('instagram_content')}}</textarea>
+                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
+                                                    name="instagram_content" id="instagram_content" cols="30" rows="10"
+                                                    class="form-control wizard-required emojiarea" data-id="insta_error"
+                                                    placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0">
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="image" social="insta" fordata="image_or_video_insta"><label for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="insta"
+                                                                fordata="image_or_video_insta"><label
+                                                                    for="image_or_video_insta">
+                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="video" social="insta" fordata="image_or_video_insta"><label for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/new_image.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="video" social="insta"
+                                                                fordata="image_or_video_insta"><label
+                                                                    for="image_or_video_insta">
+                                                                    <img src="{{asset('')}}images/new_image.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
+                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                    class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -895,8 +951,12 @@ text-decoration-line: underline;
                                                 <label for="file" style="margin-top: 20px;">
                                                     <div class="sm_container">
 
-                                                        <input type="file" name="" class="image d-none file_image_video wizard-required" id="image_or_video_insta" accept="image/*,video/*" div_to_open="instagram">
-                                                        <input type="hidden" name="media_type_instagram" id="media_type_insta">
+                                                        <input type="file" name=""
+                                                            class="image d-none file_image_video wizard-required"
+                                                            id="image_or_video_insta" accept="image/*,video/*"
+                                                            div_to_open="instagram">
+                                                        <input type="hidden" name="media_type_instagram"
+                                                            id="media_type_insta">
                                                         <input type="hidden" name="inst_video" id="inst_video">
                                                     </div>
                                                 </label>
@@ -915,9 +975,15 @@ text-decoration-line: underline;
 
                                         @if(in_array(('Twitter'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset twitter">
-                                            <span class="wizard-fieldset_edit">Edit</span> : <span class="wizard-fieldset_facebook">Twitter</span>
+                                            <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                class="wizard-fieldset_facebook">Twitter</span>
                                             <div class="form-group emoji_parent  emoji_parent2">
-                                                <textarea datatype="fsdf" onkeyup="updateDiv(this)" onchange="suggested_text(this)" name="twitter_content" id="twitter_content" cols="30" rows="10" data-id="twitter_error" class="form-control wizard-required emojiarea mention" placeholder="Write your post..." plt-name="fb">{{old('twitter_content')}}</textarea>
+                                                <textarea datatype="fsdf" onkeyup="updateDiv(this)"
+                                                    onchange="suggested_text(this)" name="twitter_content"
+                                                    id="twitter_content" cols="30" rows="10" data-id="twitter_error"
+                                                    class="form-control wizard-required emojiarea mention"
+                                                    placeholder="Write your post..."
+                                                    plt-name="fb">{{old('twitter_content')}}</textarea>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
 
@@ -926,14 +992,22 @@ text-decoration-line: underline;
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0">
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="image" social="insta" fordata="image_or_video_twiter"><label for="image_or_video_twiter">
-                                                                    <img  src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="insta"
+                                                                fordata="image_or_video_twiter"><label
+                                                                    for="image_or_video_twiter">
+                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="video" social="insta" fordata="image_or_video_twiter"><label for="image_or_video_twiter">
-                                                                    <img  src="{{asset('')}}images/new_image.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="video" social="insta"
+                                                                fordata="image_or_video_twiter"><label
+                                                                    for="image_or_video_twiter">
+                                                                    <img src="{{asset('')}}images/new_image.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -941,7 +1015,8 @@ text-decoration-line: underline;
 
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
+                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                    class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -962,8 +1037,10 @@ text-decoration-line: underline;
 
                                                     <div class="sm_container">
 
-                                                        <input type="file" name="" class="image d-none file_image_video" id="image_or_video_twiter" accept="image/*,video/*">
-                                                        <input type="hidden" name="media_type_twitter" id="media_type_twitter">
+                                                        <input type="file" name="" class="image d-none file_image_video"
+                                                            id="image_or_video_twiter" accept="image/*,video/*">
+                                                        <input type="hidden" name="media_type_twitter"
+                                                            id="media_type_twitter">
                                                         <input type="hidden" name="twitter_video" id="twitter_video">
                                                     </div>
                                                 </label>
@@ -982,10 +1059,15 @@ text-decoration-line: underline;
 
                                         @if(in_array(('Linkedin'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset linkedin">
-                                            <span class="wizard-fieldset_edit">Edit</span> : <span class="wizard-fieldset_facebook">Linkedin</span>
+                                            <span class="wizard-fieldset_edit">Edit</span> : <span
+                                                class="wizard-fieldset_facebook">Linkedin</span>
 
                                             <div class="form-group emoji_parent emoji_parent2">
-                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)" name="linkedin_content" id="linkedin_content" cols="30" rows="10" data-id="link_error" class="Customemojiarea form-control wizard-required emojiarea mention " placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
+                                                <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
+                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10"
+                                                    data-id="link_error"
+                                                    class="Customemojiarea form-control wizard-required emojiarea mention "
+                                                    placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
@@ -993,20 +1075,30 @@ text-decoration-line: underline;
                                                     <ul class="p-0">
                                                         <li>
 
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="image" social="linkedin" fordata="image_or_video_linkedin"><label for="image_or_video_linkedin">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="image" social="linkedin"
+                                                                fordata="image_or_video_linkedin"><label
+                                                                    for="image_or_video_linkedin">
+                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="image_or_video" typpe="video" social="linkedin" fordata="image_or_video_linkedin"><label for="image_or_video_linkedin">
-                                                                    <img style="border-radius:50px" src="{{asset('')}}images/new_image.png" class="img-fluid" alt="" />
+                                                            <a href="javascript:void(0)" class="image_or_video"
+                                                                typpe="video" social="linkedin"
+                                                                fordata="image_or_video_linkedin"><label
+                                                                    for="image_or_video_linkedin">
+                                                                    <img style="border-radius:50px"
+                                                                        src="{{asset('')}}images/new_image.png"
+                                                                        class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png" class="img-fluid" alt="" />
+                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                    class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -1026,8 +1118,10 @@ text-decoration-line: underline;
 
                                                     <div class="sm_container">
 
-                                                        <input type="file" name="" class="image d-none file_image_video" id="image_or_video_linkedin" accept="image/*,video/*">
-                                                        <input type="hidden" name="media_type_linkedin" id="media_type_linkedin">
+                                                        <input type="file" name="" class="image d-none file_image_video"
+                                                            id="image_or_video_linkedin" accept="image/*,video/*">
+                                                        <input type="hidden" name="media_type_linkedin"
+                                                            id="media_type_linkedin">
                                                         <input type="hidden" name="link_video" id="link_video">
                                                     </div>
                                                 </label>
@@ -1045,12 +1139,16 @@ text-decoration-line: underline;
                                         <p class="  p-2  w-100 d-none mt-2 erro_background" id="file_error_all"></p>
                                         <div class="post_now_button schedule_post_button">
 
-                                            <button type="button" class="btn post_later_now_btn  post_later_now_btn2 w-100" data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
+                                            <button type="button"
+                                                class="btn post_later_now_btn  post_later_now_btn2 w-100"
+                                                data-bs-toggle="modal" data-bs-target="#TimetoUploadPost">
                                                 Schedule Post
                                             </button>
 
-                                            <button type="submit" class="btn post_later_now_btn w-100 post_now_btn position-relative btn-danger">
-                                                <img class="uplaod-gif uplaod-gif-video d-none" src="{{asset("images/newimages/loader.gif")}}" alt=""> Post Now
+                                            <button type="submit"
+                                                class="btn post_later_now_btn w-100 post_now_btn position-relative btn-danger">
+                                                <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
+                                                    src="{{asset("images/newimages/loader.gif")}}" alt=""> Post Now
                                             </button>
 
                                         </div>
@@ -1108,12 +1206,14 @@ text-decoration-line: underline;
                             </div>
                         </div> -->
                     <!-- salman popup start-->
-                    <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="TimetoUploadPost" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Date & Time To Upload Post</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="Timeselect d-flex justify-content-between">
                                     <label for="">Select Time:</label>
@@ -1122,9 +1222,12 @@ text-decoration-line: underline;
                                     <div class="time-picker time-picker_cls">
                                         <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
 
-                                        <select id="hour" class="select_time" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="minute" class="select_time" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="ampm" name="ampm" class="select_time" style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
+                                        <select id="hour" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="minute" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="ampm" name="ampm" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
                                             <option value="AM">AM</option>
                                             <option value="PM">PM</option>
                                         </select>
@@ -1146,7 +1249,8 @@ text-decoration-line: underline;
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="cancelButton">Cancel
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                        id="cancelButton">Cancel
                                     </button>
                                     <button type="submit" class="btn post_later_now_btn btn-success">Schedule Post
                                     </button>
@@ -1159,9 +1263,11 @@ text-decoration-line: underline;
             </div>
 
 
-            <div class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
+            <div
+                class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">
 
-                <div class="d-lg-flex justify-content-center post_preview_small_screen create_preview_post_index_itemRightInner">
+                <div
+                    class="d-lg-flex justify-content-center post_preview_small_screen create_preview_post_index_itemRightInner">
                     <!-- <div class="preview_post position-relative" style="width: 80%!important;"> -->
                     <div class="preview_post position-relative" style="width: 80%">
                         <div class="loader d-none"></div>
@@ -1180,7 +1286,8 @@ text-decoration-line: underline;
                                     <div class="w-50 Mobsocial-icon Mobsocial_icon d-none">
                                         <div><i class="fa-solid fa-plus text-light i_one"></i></div>
                                         <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
-                                        <div class="messenger"><i class="fab fa-facebook-messenger text-light i_one"></i>
+                                        <div class="messenger"><i
+                                                class="fab fa-facebook-messenger text-light i_one"></i>
                                             <div class="msg_2 d-none">
                                                 <p>2</p>
                                             </div>
@@ -1213,12 +1320,13 @@ text-decoration-line: underline;
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{asset('images/you-post.png')}}" class="img-fluid"
-                                                    width="40" height="40" alt="">
+                                                <img src="{{asset('images/you-post.png')}}" class="img-fluid" width="40"
+                                                    height="40" alt="">
                                             </div>
                                             <div>
                                                 <span id="" class="postname">{{auth()->user()->name}} <br>
-                                                    <span class="sponsored">Public . <i class="fa-solid fa-earth-americas"></i></span>
+                                                    <span class="sponsored">Public . <i
+                                                            class="fa-solid fa-earth-americas"></i></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -1229,7 +1337,8 @@ text-decoration-line: underline;
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title">
-                                        <span id="mypostresult_youpost" class="mypostresult">Write your initial content...</span>
+                                        <span id="mypostresult_youpost" class="mypostresult">Write your initial
+                                            content...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1248,10 +1357,13 @@ text-decoration-line: underline;
                                     <hr style="color:gray; margin-top:41px !important;" class="m-0">
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
-                                        <div class="reactions reactions2 d-flex justify-content-center align-items-center d-none">
+                                    <div
+                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
+                                        <div
+                                            class="reactions reactions2 d-flex justify-content-center align-items-center d-none">
                                             <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />
-                                            <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt="" height="12" />
+                                            <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
+                                                height="12" />
                                         </div>
                                         <div class="total-comments total_comments u-margin-inline-start d-none">
                                             <a>Muhammad Talha and 24k others 8.3k comments</a>
@@ -1262,11 +1374,13 @@ text-decoration-line: underline;
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
-                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt="" height="20" />
+                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""
+                                                    height="20" />
                                                 <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt="" height="15" width="14" />
+                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                    height="15" width="14" />
                                                 <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
@@ -1290,7 +1404,8 @@ text-decoration-line: underline;
                                     <div class="w-50 Mobsocial-icon Mobsocial_icon">
                                         <div><i class="fa-solid fa-plus text-light i_one"></i></div>
                                         <div><i class="fa-solid fa-magnifying-glass text-light i_one "></i></div>
-                                        <div class="messenger"><i class="fab fa-facebook-messenger text-light i_one"></i>
+                                        <div class="messenger"><i
+                                                class="fab fa-facebook-messenger text-light i_one"></i>
                                             <div class="msg_2 d-none">
                                                 <p>2</p>
                                             </div>
@@ -1323,12 +1438,14 @@ text-decoration-line: underline;
                                     <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
                                         <div class="post_img_name">
                                             <div class="post_img">
-                                                <img src="{{auth()->user()->account->fb_image}}" class="img-fluid" width="40" height="40" alt="">
+                                                <img src="{{auth()->user()->account->fb_image}}" class="img-fluid"
+                                                    width="40" height="40" alt="">
                                             </div>
                                             <div>
                                                 <span id="" class="postname">{{auth()->user()->account->fb_page_name}}
                                                     <br>
-                                                    <span class="sponsored">Public . <i class="fa-solid fa-earth-americas"></i></span>
+                                                    <span class="sponsored">Public . <i
+                                                            class="fa-solid fa-earth-americas"></i></span>
                                                 </span>
                                             </div>
                                         </div>
@@ -1358,10 +1475,13 @@ text-decoration-line: underline;
                                     <hr style="color:gray; margin-top:41px !important;" class="m-0">
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
-                                        <div class="reactions reactions2 d-flex justify-content-center align-items-center">
+                                    <div
+                                        class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
+                                        <div
+                                            class="reactions reactions2 d-flex justify-content-center align-items-center">
                                             <img src="{{asset('')}}images/fb_thumb.png" class="" alt="" height="12" />
-                                            <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt="" height="12" />
+                                            <img src="{{asset('')}}images/fb_heart.png" class="thums_up" alt=""
+                                                height="12" />
                                         </div>
                                         <div class="total-comments total_comments u-margin-inline-start">
                                             <a>Muhammad Talha and 24k others 8.3k comments</a>
@@ -1372,11 +1492,13 @@ text-decoration-line: underline;
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
-                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt="" height="20" />
+                                                <img src="{{asset('')}}images/thumbs_up.png" class="" alt=""
+                                                    height="20" />
                                                 <span class="text text2  d-flex align-items-center">Like</span>
                                             </li>
                                             <li class="actions-buttons-item d-flex align-item-center pt-1">
-                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt="" height="15" width="14" />
+                                                <img src="{{asset('')}}images/coment_msg.png" class="" alt=""
+                                                    height="15" width="14" />
                                                 <span class="text text2">Comment</span>
                                             </li>
                                             <li class="actions-buttons-item  d-flex align-item-center share_fb">
@@ -1408,7 +1530,8 @@ text-decoration-line: underline;
                                     <div class="col-10">
                                         <div class="d-flex show active gap-1 px-1">
                                             <div class="show active">
-                                                <img src="{{auth()->user()->account->inst_image}} " class="rounded-circle" alt="" height="28" />
+                                                <img src="{{auth()->user()->account->inst_image}} "
+                                                    class="rounded-circle" alt="" height="28" />
                                             </div>
                                             <div class="inst_post_name">
                                                 <h3 class="mb-0 user_name">{{auth()->user()->account->inst_name}}
@@ -1440,9 +1563,12 @@ text-decoration-line: underline;
                                         <div class="actions-buttons-list d-flex justify-content-between show active">
                                             <div class="actions-buttons-button show active">
                                                 <div class="d-flex show active" style="gap: 0 10px;">
-                                                    <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}" alt="" style="cursor:pointer;">
-                                                    <img class="ins_icon" src="{{asset('images/bubble-chat.png')}}" alt="" style="cursor:pointer;">
-                                                    <img class="ins_icon" src="{{asset('images/send1.png')}}" alt="" style="cursor:pointer;">
+                                                    <img class="ins_icon" src="{{asset('images/icons8-heart1.png')}}"
+                                                        alt="" style="cursor:pointer;">
+                                                    <img class="ins_icon" src="{{asset('images/bubble-chat.png')}}"
+                                                        alt="" style="cursor:pointer;">
+                                                    <img class="ins_icon" src="{{asset('images/send1.png')}}" alt=""
+                                                        style="cursor:pointer;">
                                                 </div>
                                             </div>
                                             <!-- <div class="actions-buttons-button d-flex" style="padding-top:
@@ -1455,7 +1581,8 @@ text-decoration-line: underline;
                                             <div class="actions-buttons-button">
                                             </div>
                                             <div class="actions-buttons-button d-flex">
-                                                <img class="ins_icon" src="{{asset('images/myiconsave.png')}}" alt="" style="cursor:pointer;">
+                                                <img class="ins_icon" src="{{asset('images/myiconsave.png')}}" alt=""
+                                                    style="cursor:pointer;">
                                             </div>
                                         </div>
                                         <div class="pt-1 insta_likes_post">
@@ -1490,7 +1617,8 @@ text-decoration-line: underline;
                                             <img src="{{asset('images/search-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/Plus-01.png')}}" alt="" class="insta_acc_bar">
                                             <img src="{{asset('images/Movie-01.png')}}" alt="" class="insta_acc_bar">
-                                            <img src="{{asset('images/accountfbicon.png')}}" alt="" class="insta_acc_bar">
+                                            <img src="{{asset('images/accountfbicon.png')}}" alt=""
+                                                class="insta_acc_bar">
 
 
                                         </div>
@@ -1516,7 +1644,8 @@ text-decoration-line: underline;
                                         <div class="twitter_header">
                                             <div>
                                                 <span class="twitter_post_content">
-                                                    {{auth()->user()->account->tw_name}}</span> <img src="{{asset('images/offical2.png')}}" class="" alt="">
+                                                    {{auth()->user()->account->tw_name}}</span> <img
+                                                    src="{{asset('images/offical2.png')}}" class="d-none" alt="">
                                                 <span class="twitter_post_content_tag ">
                                                     {{'@'.auth()->user()->account->tw_user_name}}</span>
                                             </div>
@@ -1531,21 +1660,24 @@ text-decoration-line: underline;
                                         <span id="mynameresult_twitter" class="icon icon-privacy text-primary"></span>
 
                                     </div>
-                                    <div class="twitter_img_container">
+                                </div>
+                                <div class="col-12">
+                                    <div class="twitter_img_container ">
 
-                                       <div class="prv_div_tw">
+                                        <div class="prv_div_tw twitter_preview" >
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
                                         <div id="mediaContainervideo_twitter">
                                             <!-- <video class="d-none video_preview_link" controls>
-                                                <source src="movie.mp4" type="video/*">
-                                            </video> -->
+         <source src="movie.mp4" type="video/*">
+     </video> -->
                                         </div>
 
                                         <!-- <img class="uploader_img" src="{{asset('')}}images/upload22.png" class="" alt="" /> -->
                                     </div>
-                                    <div class="x_bar_icons pt-1">
-                                        <!-- <div>
+                                </div>
+                                <div class="x_bar_icons pt-1 col-12">
+                                        <div>
                                             <img src="{{asset('')}}images/icons/Comment-titter.svg" class="" alt="" />
                                             <span>0</span>
                                         </div>
@@ -1560,17 +1692,13 @@ text-decoration-line: underline;
                                         <div class="d-flex mt-1 gap-1">
                                             <img src="{{asset('')}}images/icons/graph.svg" class="" alt="" />
                                             <div style="color:#8a96a3; font-size:12px;">0</div>
-                                        </div> -->
-                                        <!-- <div>
+                                        </div>
+                                        <div>
                                             <img src="{{asset('')}}images/share2.png" class="ShareIcon" alt="" />
 
-                                        </div> -->
+                                        </div>
 
                                     </div>
-
-
-                                </div>
-
                             </div>
                             <!-- <div class="row mt-3">
                                 <div class="col-12 twitter_second_row pt-2"></div>
@@ -1661,9 +1789,12 @@ text-decoration-line: underline;
                                     <div class="LikeIcons px-2 d-none">
                                         <div class="d-flex">
                                             <div class="InnerIcon">
-                                                <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt="" height="12">
-                                                <img src="{{asset('images/icons/linkedin-thumb.svg')}}" alt="" height="12" style="margin: 0 0 0 -7px;">
-                                                <img src="{{asset('images/icons/linkedin-heart.svg')}}" alt="" height="12">
+                                                <img src="{{asset('images/icons/linkedin-laugh.svg')}}" alt=""
+                                                    height="12">
+                                                <img src="{{asset('images/icons/linkedin-thumb.svg')}}" alt=""
+                                                    height="12" style="margin: 0 0 0 -7px;">
+                                                <img src="{{asset('images/icons/linkedin-heart.svg')}}" alt=""
+                                                    height="12">
                                             </div>
                                             <span style="color:#888d91; font-size:10px; padding-top:7px;">345</span>
                                         </div>
@@ -1679,25 +1810,29 @@ text-decoration-line: underline;
                                         <ul class="LI_Like">
                                             <li>
                                                 <button>
-                                                    <img src="{{asset('images/icons/thum-linkedin.svg')}}" alt="" height="18">
+                                                    <img src="{{asset('images/icons/thum-linkedin.svg')}}" alt=""
+                                                        height="18">
                                                     <span class="Innerxt">Like</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
-                                                    <img src="{{asset('images/icons/comment-linkedin.svg')}}" alt="" height="18">
+                                                    <img src="{{asset('images/icons/comment-linkedin.svg')}}" alt=""
+                                                        height="18">
                                                     <span class="Innerxt">Comment</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
-                                                    <img src="{{asset('images/icons/share-linkedin.svg')}}" alt="" height="18">
+                                                    <img src="{{asset('images/icons/share-linkedin.svg')}}" alt=""
+                                                        height="18">
                                                     <span class="Innerxt">Repost</span>
                                                 </button>
                                             </li>
                                             <li>
                                                 <button>
-                                                    <img src="{{asset('images/icons/send-linkedin.svg')}}" alt="" height="18">
+                                                    <img src="{{asset('images/icons/send-linkedin.svg')}}" alt=""
+                                                        height="18">
                                                     <span class="Innerxt">Send</span>
                                                 </button>
                                             </li>
@@ -1724,18 +1859,21 @@ text-decoration-line: underline;
                                             </div>
                                         </div>
                                         <div class="btm_icon">
-                                            <div style="text-align:center;"><img src="{{asset('images/postlinked.png')}}" alt=""></div>
+                                            <div style="text-align:center;"><img
+                                                    src="{{asset('images/postlinked.png')}}" alt=""></div>
                                             <div><span>Post</span></div>
                                         </div>
                                         <div class="btm_icon btm_icon_notification">
-                                            <div style="text-align:center;"><img src="{{asset('images/updatebellicon.png')}}" alt=""></div>
+                                            <div style="text-align:center;"><img
+                                                    src="{{asset('images/updatebellicon.png')}}" alt=""></div>
                                             <div> <span>Notifications</span></div>
                                             <div class="notification_circle d-none">
                                                 <p>14</p>
                                             </div>
                                         </div>
                                         <div class="btm_icon">
-                                            <div style="text-align:center;"> <img src="{{asset('images/jobs.png')}}" alt=""></div>
+                                            <div style="text-align:center;"> <img src="{{asset('images/jobs.png')}}"
+                                                    alt=""></div>
                                             <div> <span>Jobs</span></div>
                                         </div>
                                     </div>
@@ -1750,9 +1888,11 @@ text-decoration-line: underline;
                 </div>
                 <div class="mybgcontainer">
                     <div>
-                        <img src="{{asset('images/overlayimgwithbg.png')}}" alt="" class="overlayimg" style="object-fit:contain;">
+                        <img src="{{asset('images/overlayimgwithbg.png')}}" alt="" class="overlayimg"
+                            style="object-fit:contain;">
                     </div>
-                    <div class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner  overlay">
+                    <div
+                        class="AIgeneratedContent AIgeneratedContent_hiddenpart create_preview_post_index_itemRightInner  overlay">
                         <div class="sub_heading">
                             <div>
                                 <h4>AI Generated Content</h4>
@@ -1911,7 +2051,8 @@ text-decoration-line: underline;
                                     <div class="owl-carousel owl-theme AIgeneratedCarousel">
                                     </div>
                                     <div class="AIgeneratedCarouselBtmBtn AIgenerated_new">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt" class="btn btn-primary">Edit / Prompt</a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_prompt"
+                                            class="btn btn-primary">Edit / Prompt</a>
                                         <a href="#" class="add_to_post btn btn-primary">Add to Post</a>
                                     </div>
                                 </div>
@@ -2008,7 +2149,8 @@ text-decoration-line: underline;
             <div class="row pb-5">
                 <div class="col-12">
                     <div class="dropdown dropdown1 ">
-                        <button style="background-color:#6CB0FF; border:none;" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button style="background-color:#6CB0FF; border:none;" class="btn btn-primary dropdown-toggle"
+                            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Last 7 days <img src="{{asset('images/vector.png')}}" class="img-fluid" alt="" />
 
                         </button>
@@ -2022,7 +2164,8 @@ text-decoration-line: underline;
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main ">
                         <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
-                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2" style="object-fit: contain;">
+                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2"
+                                style="object-fit: contain;">
                             <div class="card-body overlay">
                                 <div class="likes_card">
                                     <h3 class="card-title">Likes</h3>
@@ -2031,29 +2174,63 @@ text-decoration-line: underline;
 
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
-                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;" class="morris-chart">
+                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;"
+                                            class="morris-chart">
                                             <div class="width:238px;">
-                                                <svg height="245" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence" style="overflow: hidden; position: relative; top: -0.375px;">
+                                                <svg height="245" version="1.1" width="100%"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence"
+                                                    style="overflow: hidden; position: relative; top: -0.375px;">
                                                     <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                                                         Created
                                                         with Raphaël 2.3.0
                                                     </desc>
                                                     <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
-                                                    <path fill="none" stroke="" d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296" stroke-width="0" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    <path fill="none" stroke=""
+                                                        d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296"
+                                                        stroke-width="0" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
                                                     </path>
-                                                    <path fill="#FF9966" stroke="#000000" d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <path fill="none" stroke="#000" d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871" stroke-width="2" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
+                                                    <path fill="#FF9966" stroke="#000000"
+                                                        d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#000"
+                                                        d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871"
+                                                        stroke-width="2" opacity="1"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
                                                     </path>
-                                                    <path fill="#000000" stroke="#000000" d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <path fill="none" stroke="#288eff" d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    <path fill="#000000" stroke="#000000"
+                                                        d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#288eff"
+                                                        d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984"
+                                                        stroke-width="2" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
                                                     </path>
-                                                    <path fill="#288eff" stroke="#000000" d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;" transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)" stroke-width="0.7405364990234375">
-                                                        <tspan dy="5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="total_likes">Total Likes
+                                                    <path fill="#288eff" stroke="#000000"
+                                                        d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)"
+                                                        stroke-width="0.7405364990234375">
+                                                        <tspan dy="5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes">Total Likes
                                                         </tspan>
                                                     </text>
-                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;" transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)" stroke-width="0.6799999999999999">
-                                                        <tspan dy="4.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="total_likes_value">26.20k
+                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)"
+                                                        stroke-width="0.6799999999999999">
+                                                        <tspan dy="4.5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes_value">26.20k
                                                         </tspan>
                                                     </text>
                                                 </svg>
@@ -2069,7 +2246,8 @@ text-decoration-line: underline;
                                                 <div class="oval-img-div d-flex ">
                                                     <div class="cirle-img fb-image">
                                                         <!-- <img src="/Oval (1).png" class="fb-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Facebook</h5>
                                                 </div>
@@ -2084,7 +2262,8 @@ text-decoration-line: underline;
                                                 <div class=" oval-img-div d-flex ">
                                                     <div class="cirle-img fb-image ">
                                                         <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Instagram</h5>
                                                 </div>
@@ -2099,7 +2278,8 @@ text-decoration-line: underline;
                                                 <div class="oval-img-div d-flex ">
                                                     <div class="cirle-img x-com">
                                                         <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">x.com</h5>
                                                 </div>
@@ -2114,7 +2294,8 @@ text-decoration-line: underline;
                                         <div class="d-flex gap-2 captions">
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <!-- <img src="/caption-image1.png" alt=""> -->
@@ -2125,11 +2306,13 @@ text-decoration-line: underline;
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2138,7 +2321,8 @@ text-decoration-line: underline;
                                     <div class="caption-main d-flex align-center justify-space-between mt-2">
                                         <div class="d-flex gap-2 captions">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
@@ -2148,11 +2332,13 @@ text-decoration-line: underline;
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2169,7 +2355,8 @@ text-decoration-line: underline;
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
-                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2" style="object-fit: contain;">
+                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2"
+                                style="object-fit: contain;">
                             <div class="card-body overlay">
                                 <div class="likes_card">
                                     <h3 class="card-title">Share</h3>
@@ -2178,29 +2365,63 @@ text-decoration-line: underline;
 
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
-                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;" class="morris-chart">
+                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;"
+                                            class="morris-chart">
                                             <div class="width:238px;">
-                                                <svg height="245" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence" style="overflow: hidden; position: relative; top: -0.375px;">
+                                                <svg height="245" version="1.1" width="100%"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence"
+                                                    style="overflow: hidden; position: relative; top: -0.375px;">
                                                     <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                                                         Created
                                                         with Raphaël 2.3.0
                                                     </desc>
                                                     <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
-                                                    <path fill="none" stroke="" d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296" stroke-width="0" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    <path fill="none" stroke=""
+                                                        d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296"
+                                                        stroke-width="0" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
                                                     </path>
-                                                    <path fill="#FF9966" stroke="#000000" d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <path fill="none" stroke="#000" d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871" stroke-width="2" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
+                                                    <path fill="#FF9966" stroke="#000000"
+                                                        d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#000"
+                                                        d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871"
+                                                        stroke-width="2" opacity="1"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
                                                     </path>
-                                                    <path fill="#000000" stroke="#000000" d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <path fill="none" stroke="#288eff" d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    <path fill="#000000" stroke="#000000"
+                                                        d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#288eff"
+                                                        d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984"
+                                                        stroke-width="2" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
                                                     </path>
-                                                    <path fill="#288eff" stroke="#000000" d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;" transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)" stroke-width="0.7405364990234375">
-                                                        <tspan dy="5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="total_likes">Total Share
+                                                    <path fill="#288eff" stroke="#000000"
+                                                        d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)"
+                                                        stroke-width="0.7405364990234375">
+                                                        <tspan dy="5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes">Total Share
                                                         </tspan>
                                                     </text>
-                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;" transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)" stroke-width="0.6799999999999999">
-                                                        <tspan dy="4.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="total_likes_value">26.20k
+                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)"
+                                                        stroke-width="0.6799999999999999">
+                                                        <tspan dy="4.5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes_value">26.20k
                                                         </tspan>
                                                     </text>
                                                 </svg>
@@ -2216,7 +2437,8 @@ text-decoration-line: underline;
                                                 <div class="oval-img-div d-flex ">
                                                     <div class="cirle-img fb-image">
                                                         <!-- <img src="/Oval (1).png" class="fb-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Facebook</h5>
                                                 </div>
@@ -2231,7 +2453,8 @@ text-decoration-line: underline;
                                                 <div class=" oval-img-div d-flex ">
                                                     <div class="cirle-img fb-image ">
                                                         <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Instagram</h5>
                                                 </div>
@@ -2246,7 +2469,8 @@ text-decoration-line: underline;
                                                 <div class="oval-img-div d-flex ">
                                                     <div class="cirle-img x-com">
                                                         <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">x.com</h5>
                                                 </div>
@@ -2261,7 +2485,8 @@ text-decoration-line: underline;
                                         <div class="d-flex gap-2 captions">
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <!-- <img src="/caption-image1.png" alt=""> -->
@@ -2272,11 +2497,13 @@ text-decoration-line: underline;
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2285,7 +2512,8 @@ text-decoration-line: underline;
                                     <div class="caption-main d-flex align-center justify-space-between mt-2">
                                         <div class="d-flex gap-2 captions">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
@@ -2295,11 +2523,13 @@ text-decoration-line: underline;
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2315,7 +2545,8 @@ text-decoration-line: underline;
                 <div class="col-lg-4 col-sm-12 col-md-6 ">
                     <div class="card-main">
                         <div class="card custom_card mt-3 mybgcontainer2" id="like-card">
-                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2" style="object-fit: contain;">
+                            <img src="{{asset('images/overlayimg.jpg')}}" alt="" class="overlayimg2"
+                                style="object-fit: contain;">
                             <div class="card-body overlay">
                                 <!-- <h3 class="card-title">Engagement</h3> -->
                                 <div class="likes_card">
@@ -2324,29 +2555,63 @@ text-decoration-line: underline;
                                 </div>
                                 <div class="card-content">
                                     <div class="widget-chart text-center">
-                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;" class="morris-chart">
+                                        <div id="morris-donut-example" dir="ltr" style="height: 245px;"
+                                            class="morris-chart">
                                             <div class="width:238px;">
-                                                <svg height="245" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence" style="overflow: hidden; position: relative; top: -0.375px;">
+                                                <svg height="245" version="1.1" width="100%"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" class="svg_sequence"
+                                                    style="overflow: hidden; position: relative; top: -0.375px;">
                                                     <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                                                         Created
                                                         with Raphaël 2.3.0
                                                     </desc>
                                                     <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
-                                                    <path fill="none" stroke="" d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296" stroke-width="0" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    <path fill="none" stroke=""
+                                                        d="M126.5,197.5A75,75,0,0,0,197.53058844420985,146.57603591269296"
+                                                        stroke-width="0" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
                                                     </path>
-                                                    <path fill="#FF9966" stroke="#000000" d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <path fill="none" stroke="#000" d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871" stroke-width="2" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
+                                                    <path fill="#FF9966" stroke="#000000"
+                                                        d="M126.5,200.5A78,78,0,0,0,200.37181198197825,147.53907734920068L228.31051010336745,157.00898480819325A107.5,107.5,0,0,1,126.5,230Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#000"
+                                                        d="M197.53058844420985,146.57603591269296A75,75,0,0,0,59.2429080941063,89.31139369659871"
+                                                        stroke-width="2" opacity="1"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;">
                                                     </path>
-                                                    <path fill="#000000" stroke="#000000" d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <path fill="none" stroke="#288eff" d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
+                                                    <path fill="#000000" stroke="#000000"
+                                                        d="M200.37181198197825,147.53907734920068A78,78,0,0,0,56.55262441787056,87.98384944446265L25.61436214115946,72.71709054489806A112.5,112.5,0,0,1,233.04588266631478,158.61405386903942Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <path fill="none" stroke="#288eff"
+                                                        d="M59.2429080941063,89.31139369659871A75,75,0,0,0,126.4764380554856,197.4999962988984"
+                                                        stroke-width="2" opacity="0"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;">
                                                     </path>
-                                                    <path fill="#288eff" stroke="#000000" d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;" transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)" stroke-width="0.7405364990234375">
-                                                        <tspan dy="5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="total_likes">Total Likes
+                                                    <path fill="#288eff" stroke="#000000"
+                                                        d="M56.55262441787056,87.98384944446265A78,78,0,0,0,126.47549557770502,200.49999615085432L126.46622787952936,229.99999469508768A107.5,107.5,0,0,1,30.09816826821904,74.92966429845814Z"
+                                                        stroke-opacity="0" stroke-width="2"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                                                    <text x="126.5" y="112.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.3504,0,0,1.3504,-44.3364,-42.5702)"
+                                                        stroke-width="0.7405364990234375">
+                                                        <tspan dy="5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes">Total Likes
                                                         </tspan>
                                                     </text>
-                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;" transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)" stroke-width="0.6799999999999999">
-                                                        <tspan dy="4.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" class="total_likes_value">26.20k
+                                                    <text x="126.5" y="132.5" text-anchor="middle" stroke="none"
+                                                        fill="#000000"
+                                                        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle;"
+                                                        transform="matrix(1.4706,0,0,1.4706,-59.5294,-58.3529)"
+                                                        stroke-width="0.6799999999999999">
+                                                        <tspan dy="4.5"
+                                                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                                            class="total_likes_value">26.20k
                                                         </tspan>
                                                     </text>
                                                 </svg>
@@ -2362,7 +2627,8 @@ text-decoration-line: underline;
                                                 <div class="oval-img-div d-flex ">
                                                     <div class="cirle-img fb-image">
                                                         <!-- <img src="/Oval (1).png" class="fb-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (1).png" class=" x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Facebook</h5>
                                                 </div>
@@ -2377,7 +2643,8 @@ text-decoration-line: underline;
                                                 <div class=" oval-img-div d-flex ">
                                                     <div class="cirle-img fb-image ">
                                                         <!-- <img src="/Oval (2).png" class="fb-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (2).png" class=" x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">Instagram</h5>
                                                 </div>
@@ -2392,7 +2659,8 @@ text-decoration-line: underline;
                                                 <div class="oval-img-div d-flex ">
                                                     <div class="cirle-img x-com">
                                                         <!-- <img src="/Oval (3).png" class="x-com-img" alt=""> -->
-                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img" alt="" />
+                                                        <img src="{{asset('')}}images/Oval (3).png" class="x-com-img"
+                                                            alt="" />
                                                     </div>
                                                     <h5 class="fb-text">x.com</h5>
                                                 </div>
@@ -2407,7 +2675,8 @@ text-decoration-line: underline;
                                         <div class="d-flex gap-2 captions">
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <!-- <img src="/caption-image1.png" alt=""> -->
@@ -2418,11 +2687,13 @@ text-decoration-line: underline;
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2431,7 +2702,8 @@ text-decoration-line: underline;
                                     <div class="caption-main d-flex align-center justify-space-between mt-2">
                                         <div class="d-flex gap-2 captions">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="flexCheckDefault" disabled>
                                             </div>
                                             <div>
                                                 <img src="{{asset('')}}images/circle1.png" class="img-fluid" alt="" />
@@ -2441,11 +2713,13 @@ text-decoration-line: underline;
                                         <div class="likesAndShare d-flex align-center justify-content-end ">
                                             <div class="d-flex align-center justify-content-end ">
                                                 <div class="only-like me-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-thumbs-up"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-thumbs-up"></i></a>
                                                     <p class="like-para">likes</p>
                                                 </div>
                                                 <div class="only-share ms-1">
-                                                    <a href="javascript:void(0)"><i class="fa-solid fa-share-nodes"></i></a>
+                                                    <a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-share-nodes"></i></a>
                                                     <p class="like-para">share</p>
                                                 </div>
                                             </div>
@@ -2479,20 +2753,24 @@ text-decoration-line: underline;
                         @if (isset($platforms))
 
                         @if (in_array('Facebook', $platforms))
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/FB_Color.png" class="img-fluid" alt="" /></a>
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/FB_Color.png" class="img-fluid"
+                                    alt="" /></a>
                         </div>
                         @endif
                         @if (in_array('Instagram', $platforms))
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Instagram_Color.png" class="img-fluid" alt="" /></a>
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Instagram_Color.png"
+                                    class="img-fluid" alt="" /></a>
                         </div>
 
                         @endif
                         @if (in_array('Twitter',$platforms))
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Twitter_Color.png" class="img-fluid" alt="" /></a>
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Twitter_Color.png"
+                                    class="img-fluid" alt="" /></a>
                         </div>
                         @endif
                         @if (in_array('Linkedin', $platforms))
-                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Linkedin_Color.png" class="img-fluid" alt="" /></a>
+                        <div class="success_fb"><a href=""><img src="{{asset('')}}images/Linkedin_Color.png"
+                                    class="img-fluid" alt="" /></a>
                         </div>
                         @endif
                         @endif
@@ -2531,378 +2809,371 @@ text-decoration-line: underline;
 <!-- sidebar close btn -->
 <!--  -->
 <script>
-    var abc = 0;
+var abc = 0;
 
-    $('.mybgcontainer2').click(function() {
-        $('.overlay', this).css('opacity', 1);
-        $('.overlayimg2', this).css('opacity', 0);
-    });
-    $('.mybgcontainer').click(function() {
-        $('.overlay', this).css('opacity', 1);
-        $('.overlayimg', this).css('opacity', 0);
+$('.mybgcontainer2').click(function() {
+    $('.overlay', this).css('opacity', 1);
+    $('.overlayimg2', this).css('opacity', 0);
+});
+$('.mybgcontainer').click(function() {
+    $('.overlay', this).css('opacity', 1);
+    $('.overlayimg', this).css('opacity', 0);
 
-    });
-
+});
 </script>
 
 
 
 <!--  -->
 <script>
-    function closeSidebar() {
-        document.getElementById("mySidebar").style.display = "none";
-        $('.calendar2').css('padding-left', '0px');
-        $('.calender.calendar_overflo').addClass('with-transition');
-        $(".fb-post").css('display', 'block');
-        $(".Today-post-detail").hide();
+function closeSidebar() {
+    document.getElementById("mySidebar").style.display = "none";
+    $('.calendar2').css('padding-left', '0px');
+    $('.calender.calendar_overflo').addClass('with-transition');
+    $(".fb-post").css('display', 'block');
+    $(".Today-post-detail").hide();
+
+
+}
+$(document).ready(function() {
+    var isDetailVisible = false; // Initialize a flag to track visibility
+
+    // Add a click event handler to the todayEbents-list div
+    $(document).on('click', '.fb-post', function() {
+        var id = $(this).data('id');
+
+        $.ajax({
+            type: "get",
+            url: "{{ url('get_single_detail') }}",
+            data: {
+                'id': id
+            },
+            success: function(response) {
+                if (!isDetailVisible) {
+                    // If the detail is not visible, show it and set the flag
+                    // var contentToAppend = $(".the_preview").html();
+                    $(".Today-post-detail").html('');
+                    $(".Today-post-detail").append(response);
+                    $(".Today-post-detail").show();
+
+                    $(".fb-post").css('display', 'none');
+                } else {
+                    // If the detail is visible, hide it and reset the flag
+                    $(".Today-post-detail").hide();
+                    $(".fb-post").css('display', 'block');
+                }
+            }
+        });
+
+
+
+
+
+    });
+    // $(".fb-post").click(function() {
+    //     if (!isDetailVisible) {
+    //         // If the detail is not visible, show it and set the flag
+    //         var contentToAppend = $(".the_preview").html();
+    //         $(".Today-post-detail").html(contentToAppend).show();
+    //         isDetailVisible = true;
+    //     } else {
+    //         // If the detail is visible, hide it and reset the flag
+    //         $(".Today-post-detail").hide();
+    //         isDetailVisible = false;
+    //     }
+
+
+    // });
+});
+var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
+
+$(document).on('mouseleave', '.calendar_overflo', function() {
+    if (mouseLeaveEnabled) {
+        $(this).addClass('close');
+        $(this).css('z-index', '2222');
+        $(".text").css('opacity', '1');
+        $(".todayEbents-list2").css('display', 'none');
+        // $(".Today-post-detail").css('display', 'none');
 
 
     }
-    $(document).ready(function() {
-        var isDetailVisible = false; // Initialize a flag to track visibility
+});
+$(document).on('mouseenter', '.calendar_overflo', function() {
+    $(".text").css('opacity', '1');
+    $(".todayEbents-list2").css('display', 'block');
+    // $(".Today-post-detail").css('display', 'block');
+    $(this).css('z-index', '9999');
 
-        // Add a click event handler to the todayEbents-list div
-        $(document).on('click', '.fb-post', function() {
-            var id = $(this).data('id');
-
-            $.ajax({
-                type: "get"
-                , url: "{{ url('get_single_detail') }}"
-                , data: {
-                    'id': id
-                }
-                , success: function(response) {
-                    if (!isDetailVisible) {
-                        // If the detail is not visible, show it and set the flag
-                        // var contentToAppend = $(".the_preview").html();
-                        $(".Today-post-detail").html('');
-                        $(".Today-post-detail").append(response);
-                        $(".Today-post-detail").show();
-                       
-                        $(".fb-post").css('display', 'none');
-                    } else {
-                        // If the detail is visible, hide it and reset the flag
-                        $(".Today-post-detail").hide();
-                        $(".fb-post").css('display', 'block');    
-                    }
-                }
-            });
-
-
-
-
-
-        });
-        // $(".fb-post").click(function() {
-        //     if (!isDetailVisible) {
-        //         // If the detail is not visible, show it and set the flag
-        //         var contentToAppend = $(".the_preview").html();
-        //         $(".Today-post-detail").html(contentToAppend).show();
-        //         isDetailVisible = true;
-        //     } else {
-        //         // If the detail is visible, hide it and reset the flag
-        //         $(".Today-post-detail").hide();
-        //         isDetailVisible = false;
-        //     }
-
-
-        // });
-    });
-    var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
-
-    $(document).on('mouseleave', '.calendar_overflo', function() {
-        if (mouseLeaveEnabled) {
-            $(this).addClass('close');
-            $(this).css('z-index', '2222');
-            $(".text").css('opacity', '1');
-            $(".todayEbents-list2").css('display', 'none');
-            // $(".Today-post-detail").css('display', 'none');
-
-
-        }
-    });
-    $(document).on('mouseenter', '.calendar_overflo', function() {
-        $(".text").css('opacity', '1');
-        $(".todayEbents-list2").css('display', 'block');
-        // $(".Today-post-detail").css('display', 'block');
-        $(this).css('z-index', '9999');
-
-    });
-
+});
 </script>
 <!-- sidebar close btn -->
 <script>
-    $(document).ready(function() {
-        $('.mention').each(function() {
-            const textarea = $(this);
-            const dropdown = textarea.parent().find('.dropdown-content-search');
+$(document).ready(function() {
+    $('.mention').each(function() {
+        const textarea = $(this);
+        const dropdown = textarea.parent().find('.dropdown-content-search');
 
-            textarea.on('input', function() {
+        textarea.on('input', function() {
 
-                const text = textarea.val();
-                const atIndex = text.lastIndexOf('@');
+            const text = textarea.val();
+            const atIndex = text.lastIndexOf('@');
 
-                if (atIndex !== -1) {
+            if (atIndex !== -1) {
 
-                    const searchString = text.slice(atIndex + 1);
-                    const suggestions = getFriendSuggestions(
-                        searchString); // Replace with your friend suggestion logic
+                const searchString = text.slice(atIndex + 1);
+                const suggestions = getFriendSuggestions(
+                    searchString); // Replace with your friend suggestion logic
 
 
-                    if (suggestions.length > 0) {
-                        const dropdownHTML = suggestions.map(suggestion =>
-                            `<div class="suggestion">${suggestion}</div>`).join('');
-                        dropdown.html(dropdownHTML);
-                        dropdown.css('display', 'block');
-                    } else {
-                        dropdown.css('display', 'none');
-                    }
+                if (suggestions.length > 0) {
+                    const dropdownHTML = suggestions.map(suggestion =>
+                        `<div class="suggestion">${suggestion}</div>`).join('');
+                    dropdown.html(dropdownHTML);
+                    dropdown.css('display', 'block');
                 } else {
                     dropdown.css('display', 'none');
                 }
-            });
-
-            // Rest of your code...
+            } else {
+                dropdown.css('display', 'none');
+            }
         });
 
-        // Replace this with your actual logic to fetch friend suggestions
-        function getFriendSuggestions(searchString) {
-            // Your suggestion logic here...
-            const mockSuggestions = [
-                'Friend1'
-                , 'Friend2'
-                , 'Friend3',
-                // ...
-            ];
-
-            return mockSuggestions.filter(suggestion => suggestion.toLowerCase().includes(searchString
-                .toLowerCase()));
-        }
-
-
-        // Handle dropdown suggestion click
-        $('.dropdown-content-search').on('click', '.suggestion', function() {
-
-            const suggestionText = $(this).text();
-            const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
-            const currentText = textarea.val();
-            const atIndex = currentText.lastIndexOf('@');
-
-            const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(
-                atIndex + suggestionText.length + 1);
-            textarea.val(newText);
-            $(this).parent().css('display', 'none');
-        });
+        // Rest of your code...
     });
 
-</script>
-<script>
-    $(document).ready(function() {
+    // Replace this with your actual logic to fetch friend suggestions
+    function getFriendSuggestions(searchString) {
+        // Your suggestion logic here...
+        const mockSuggestions = [
+            'Friend1', 'Friend2', 'Friend3',
+            // ...
+        ];
 
-
-        if ($('.add_preview').length == 0) {
-
-
-            $('.preview_post').hide();
-        } else {
-            $('.preview_post').show();
-            $('.add_preview:first').addClass('show');
-            $('.add_preview:first').removeClass('d-none');
-
-        }
-
-
-        if ($('.wizard-fieldset').length == 0) {
-            $('.wizard-section').hide();
-        } else {
-            $('.wizard-section').show();
-        }
-        $('.wizard-fieldset').last().find('.form-wizard-next-btn').remove();
-        $('.wizard-fieldset').first().find('.form-wizard-previous-btn').remove();
-        $('.list-unstyled.form-wizard-steps li:first').addClass('active');
-        $('.wizard-fieldset:first').addClass('show');
-
-        // click on next button
-        $('.form-wizard-next-btn').click(function() {
-            var parentFieldset = $(this).parents('.wizard-fieldset');
-            var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
-            var next = $(this);
-            var nextWizardStep = true;
-            parentFieldset.find('.wizard-required').each(function() {
-                var thisValue = $(this).val();
-
-                if (thisValue == "") {
-                    $(this).addClass("wizard-error");
-                    nextWizardStep = false;
-                } else {
-                    $(this).removeClass("wizard-error");
-                }
-            });
-
-            if (nextWizardStep) {
-
-                var nextFieldset = next.parents('.wizard-fieldset').next('fieldset');
-
-                var classAttribute = next.parents('.wizard-fieldset').next('fieldset').attr('class');
-                var classNames = classAttribute.split(" ");
-
-
-                if (nextFieldset.length > 0) {
-
-                    next.parents('.wizard-fieldset').removeClass("show", "400");
-                    currentActiveStep.removeClass('active').addClass('activatedold').next().addClass(
-                        'active'
-                        , "400");
-                    next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show", "400");
-                    $(document).find('.wizard-fieldset').each(function() {
-                        if ($(this).hasClass('show')) {
-                            var formAtrr = $(this).attr('data-tab-content');
-                            $(document).find('.form-wizard-steps .form-wizard-step-item').each(
-                                function() {
-                                    if ($(this).attr('data-attr') == formAtrr) {
-                                        $(this).addClass('active');
-                                        var innerWidth = $(this).innerWidth();
-                                        var position = $(this).position();
-                                        $(document).find('.form-wizard-step-move').css({
-                                            "left": position.left
-                                            , "width": innerWidth
-                                        });
-                                    } else {
-                                        $(this).removeClass('active');
-                                    }
-                                });
-                        }
-                    });
-                    $(".preview_post").find(".add_preview").addClass("d-none");
-                    $(".preview_post").find($('.prv_' + classNames[1])).addClass("show");
-                    $(".preview_post").find($('.prv_' + classNames[1])).removeClass("d-none");
-                }
-
-            }
-        });
-        //click on previous button
-        $('.form-wizard-previous-btn').click(function() {
-            var counter = parseInt($(".wizard-counter").text());;
-            var prev = $(this);
-            var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
-            prev.parents('.wizard-fieldset').removeClass("show", "400");
-            prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show", "400");
-
-            var classAttribute = prev.parents('.wizard-fieldset').prev('.wizard-fieldset').attr('class');
-            var classNames = classAttribute.split(" ");
-
-            currentActiveStep.removeClass('active').prev().removeClass('activatedold').addClass('active'
-                , "400");
-            $(document).find('.wizard-fieldset').each(function() {
-                if ($(this).hasClass('show')) {
-                    var formAtrr = $(this).attr('data-tab-content');
-                    $(document).find('.form-wizard-steps .form-wizard-step-item').each(
-                        function() {
-                            if ($(this).attr('data-attr') == formAtrr) {
-                                $(this).addClass('active');
-                                var innerWidth = $(this).innerWidth();
-                                var position = $(this).position();
-                                $(document).find('.form-wizard-step-move').css({
-                                    "left": position.left
-                                    , "width": innerWidth
-                                });
-                            } else {
-                                $(this).removeClass('active');
-                            }
-                        });
-                }
-            });
-
-            $(".preview_post").find(".add_preview").addClass("d-none");
-            $(".preview_post").find($('.prv_' + classNames[1])).addClass("show");
-            $(".preview_post").find($('.prv_' + classNames[1])).removeClass("d-none");
-        });
-        //click on form submit button
-        $(document).on("click", ".form-wizard .form-wizard-submit", function() {
-            var parentFieldset = $(this).parents('.wizard-fieldset');
-            var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
-            parentFieldset.find('.wizard-required').each(function() {
-                var thisValue = $(this).val();
-                if (thisValue == "") {
-                    $(this).siblings(".wizard-form-error").slideDown();
-                } else {
-                    $(this).siblings(".wizard-form-error").slideUp();
-                }
-            });
-        });
-
-        // focus on input field check empty or not
-        $(".form-control").on('focus', function() {
-            var tmpThis = $(this).val();
-            if (tmpThis == '') {
-                $(this).parent().addClass("focus-input");
-            } else if (tmpThis != '') {
-                $(this).parent().addClass("focus-input");
-            }
-        }).on('blur', function() {
-            var tmpThis = $(this).val();
-            if (tmpThis == '') {
-                $(this).parent().removeClass("focus-input");
-                $(this).siblings('.wizard-form-error').slideDown("3000");
-            } else if (tmpThis != '') {
-                $(this).parent().addClass("focus-input");
-                $(this).siblings('.wizard-form-error').slideUp("3000");
-            }
-        });
-
-        $('.form-wizard-steps li').click(function() {
-            $('.form-wizard-steps li').removeClass('active');
-            $(this).addClass('active');
-            var section = $(this).attr('section');
-            $('.wizard-fieldset').removeClass('show');
-            $('.' + section).addClass('show');
-
-
-            $(".preview_post").find(".add_preview").addClass("d-none");
-            $(".preview_post").find($('.prv_' + section)).addClass("show");
-            $(".preview_post").find($('.prv_' + section)).removeClass("d-none");
-        })
-
-    });
-
-
-
-
-    $('.owl-carousel').owlCarousel({
-        loop: true
-        , autoplay: false
-        , margin: 10
-        , touchDrag: false
-        , mouseDrag: false
-        , nav: false
-        , pages: true
-        , dots: false
-        , pagination: false
-        , navigation: true
-        , responsive: {
-            0: {
-                items: 1
-            }
-            , 600: {
-                items: 2
-            }
-            , 1000: {
-                items: 3
-            }
-        }
-    })
-
-
-    function setActiveItem(event) {
-        var current = event.item.index;
-        var owlItems = $('.owl-carousel .owl-item');
-
-        owlItems.removeClass('active');
-        owlItems.eq(current).addClass('active');
+        return mockSuggestions.filter(suggestion => suggestion.toLowerCase().includes(searchString
+            .toLowerCase()));
     }
 
-    // ---------------------
 
+    // Handle dropdown suggestion click
+    $('.dropdown-content-search').on('click', '.suggestion', function() {
+
+        const suggestionText = $(this).text();
+        const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
+        const currentText = textarea.val();
+        const atIndex = currentText.lastIndexOf('@');
+
+        const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(
+            atIndex + suggestionText.length + 1);
+        textarea.val(newText);
+        $(this).parent().css('display', 'none');
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+
+
+    if ($('.add_preview').length == 0) {
+
+
+        $('.preview_post').hide();
+    } else {
+        $('.preview_post').show();
+        $('.add_preview:first').addClass('show');
+        $('.add_preview:first').removeClass('d-none');
+
+    }
+
+
+    if ($('.wizard-fieldset').length == 0) {
+        $('.wizard-section').hide();
+    } else {
+        $('.wizard-section').show();
+    }
+    $('.wizard-fieldset').last().find('.form-wizard-next-btn').remove();
+    $('.wizard-fieldset').first().find('.form-wizard-previous-btn').remove();
+    $('.list-unstyled.form-wizard-steps li:first').addClass('active');
+    $('.wizard-fieldset:first').addClass('show');
+
+    // click on next button
+    $('.form-wizard-next-btn').click(function() {
+        var parentFieldset = $(this).parents('.wizard-fieldset');
+        var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
+        var next = $(this);
+        var nextWizardStep = true;
+        parentFieldset.find('.wizard-required').each(function() {
+            var thisValue = $(this).val();
+
+            if (thisValue == "") {
+                $(this).addClass("wizard-error");
+                nextWizardStep = false;
+            } else {
+                $(this).removeClass("wizard-error");
+            }
+        });
+
+        if (nextWizardStep) {
+
+            var nextFieldset = next.parents('.wizard-fieldset').next('fieldset');
+
+            var classAttribute = next.parents('.wizard-fieldset').next('fieldset').attr('class');
+            var classNames = classAttribute.split(" ");
+
+
+            if (nextFieldset.length > 0) {
+
+                next.parents('.wizard-fieldset').removeClass("show", "400");
+                currentActiveStep.removeClass('active').addClass('activatedold').next().addClass(
+                    'active', "400");
+                next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show", "400");
+                $(document).find('.wizard-fieldset').each(function() {
+                    if ($(this).hasClass('show')) {
+                        var formAtrr = $(this).attr('data-tab-content');
+                        $(document).find('.form-wizard-steps .form-wizard-step-item').each(
+                            function() {
+                                if ($(this).attr('data-attr') == formAtrr) {
+                                    $(this).addClass('active');
+                                    var innerWidth = $(this).innerWidth();
+                                    var position = $(this).position();
+                                    $(document).find('.form-wizard-step-move').css({
+                                        "left": position.left,
+                                        "width": innerWidth
+                                    });
+                                } else {
+                                    $(this).removeClass('active');
+                                }
+                            });
+                    }
+                });
+                $(".preview_post").find(".add_preview").addClass("d-none");
+                $(".preview_post").find($('.prv_' + classNames[1])).addClass("show");
+                $(".preview_post").find($('.prv_' + classNames[1])).removeClass("d-none");
+            }
+
+        }
+    });
+    //click on previous button
+    $('.form-wizard-previous-btn').click(function() {
+        var counter = parseInt($(".wizard-counter").text());;
+        var prev = $(this);
+        var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
+        prev.parents('.wizard-fieldset').removeClass("show", "400");
+        prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show", "400");
+
+        var classAttribute = prev.parents('.wizard-fieldset').prev('.wizard-fieldset').attr('class');
+        var classNames = classAttribute.split(" ");
+
+        currentActiveStep.removeClass('active').prev().removeClass('activatedold').addClass('active',
+            "400");
+        $(document).find('.wizard-fieldset').each(function() {
+            if ($(this).hasClass('show')) {
+                var formAtrr = $(this).attr('data-tab-content');
+                $(document).find('.form-wizard-steps .form-wizard-step-item').each(
+                    function() {
+                        if ($(this).attr('data-attr') == formAtrr) {
+                            $(this).addClass('active');
+                            var innerWidth = $(this).innerWidth();
+                            var position = $(this).position();
+                            $(document).find('.form-wizard-step-move').css({
+                                "left": position.left,
+                                "width": innerWidth
+                            });
+                        } else {
+                            $(this).removeClass('active');
+                        }
+                    });
+            }
+        });
+
+        $(".preview_post").find(".add_preview").addClass("d-none");
+        $(".preview_post").find($('.prv_' + classNames[1])).addClass("show");
+        $(".preview_post").find($('.prv_' + classNames[1])).removeClass("d-none");
+    });
+    //click on form submit button
+    $(document).on("click", ".form-wizard .form-wizard-submit", function() {
+        var parentFieldset = $(this).parents('.wizard-fieldset');
+        var currentActiveStep = $(this).parents('.form-wizard').find('.form-wizard-steps .active');
+        parentFieldset.find('.wizard-required').each(function() {
+            var thisValue = $(this).val();
+            if (thisValue == "") {
+                $(this).siblings(".wizard-form-error").slideDown();
+            } else {
+                $(this).siblings(".wizard-form-error").slideUp();
+            }
+        });
+    });
+
+    // focus on input field check empty or not
+    $(".form-control").on('focus', function() {
+        var tmpThis = $(this).val();
+        if (tmpThis == '') {
+            $(this).parent().addClass("focus-input");
+        } else if (tmpThis != '') {
+            $(this).parent().addClass("focus-input");
+        }
+    }).on('blur', function() {
+        var tmpThis = $(this).val();
+        if (tmpThis == '') {
+            $(this).parent().removeClass("focus-input");
+            $(this).siblings('.wizard-form-error').slideDown("3000");
+        } else if (tmpThis != '') {
+            $(this).parent().addClass("focus-input");
+            $(this).siblings('.wizard-form-error').slideUp("3000");
+        }
+    });
+
+    $('.form-wizard-steps li').click(function() {
+        $('.form-wizard-steps li').removeClass('active');
+        $(this).addClass('active');
+        var section = $(this).attr('section');
+        $('.wizard-fieldset').removeClass('show');
+        $('.' + section).addClass('show');
+
+
+        $(".preview_post").find(".add_preview").addClass("d-none");
+        $(".preview_post").find($('.prv_' + section)).addClass("show");
+        $(".preview_post").find($('.prv_' + section)).removeClass("d-none");
+    })
+
+});
+
+
+
+
+$('.owl-carousel').owlCarousel({
+    loop: true,
+    autoplay: false,
+    margin: 10,
+    touchDrag: false,
+    mouseDrag: false,
+    nav: false,
+    pages: true,
+    dots: false,
+    pagination: false,
+    navigation: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+        1000: {
+            items: 3
+        }
+    }
+})
+
+
+function setActiveItem(event) {
+    var current = event.item.index;
+    var owlItems = $('.owl-carousel .owl-item');
+
+    owlItems.removeClass('active');
+    owlItems.eq(current).addClass('active');
+}
+
+// ---------------------
 </script>
 
 <script>
@@ -2913,23 +3184,23 @@ text-decoration-line: underline;
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 <script>
-    let currentDate = new Date();
+let currentDate = new Date();
 
-    function displayCalendar() {
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
-        const day = currentDate.getDay();
-        const today = new Date(year, month, currentDate.getDate());
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const firstDay = new Date(year, month, 1).getDay();
-        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const monthNames = [
-            "January", "February", "March", "April", "May", "June", "July"
-            , "August", "September", "October", "November", "December"
-        ];
-        document.getElementById("month-year").textContent = monthNames[month] + " , " + year;
-        // Add day names row
-        let tableHtml = `
+function displayCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const day = currentDate.getDay();
+    const today = new Date(year, month, currentDate.getDate());
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+        "November", "December"
+    ];
+    document.getElementById("month-year").textContent = monthNames[month] + " , " + year;
+    // Add day names row
+    let tableHtml = `
         <table class="table">
             <tr>
             <th style="opacity:0.5;" class="myro">Sun</th>
@@ -2941,237 +3212,232 @@ text-decoration-line: underline;
             <th style="opacity:0.5;" class="myro">Sat</th>
             </tr>
         `;
-        let prevMonth = new Date(year, month, 0).getDate();
-        let dayNum = 1 - firstDay;
-        for (let i = 0; i < 6; i++) {
-            tableHtml += '<tr>';
-            for (let j = 0; j < 7; j++) {
-                if (dayNum <= 0) {
-                    tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
-                } else if (dayNum <= daysInMonth) {
-                    const isCurrentDay = (dayNum === today.getDate());
-                    const dayClass = isCurrentDay ? "current-day current-date" : "current-day";
-                    const formattedDate =
-                        `${String(month + 1).padStart(2, '0')}/${String(dayNum).padStart(2, '0')}/${year}`;
+    let prevMonth = new Date(year, month, 0).getDate();
+    let dayNum = 1 - firstDay;
+    for (let i = 0; i < 6; i++) {
+        tableHtml += '<tr>';
+        for (let j = 0; j < 7; j++) {
+            if (dayNum <= 0) {
+                tableHtml += `<td class="other-month" style="opacity:0.5;">${prevMonth + dayNum}</td>`;
+            } else if (dayNum <= daysInMonth) {
+                const isCurrentDay = (dayNum === today.getDate());
+                const dayClass = isCurrentDay ? "current-day current-date" : "current-day";
+                const formattedDate =
+                    `${String(month + 1).padStart(2, '0')}/${String(dayNum).padStart(2, '0')}/${year}`;
 
-                    tableHtml +=
-                        `<td class="${dayClass}" data-date="${formattedDate}">${String(dayNum).padStart(2, '0')}</td>`;
-                } else {
-                    tableHtml +=
-                        `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
-                }
-                dayNum++;
+                tableHtml +=
+                    `<td class="${dayClass}" data-date="${formattedDate}">${String(dayNum).padStart(2, '0')}</td>`;
+            } else {
+                tableHtml +=
+                    `<td class="other-month" style="opacity:0.5">${String(dayNum - daysInMonth).padStart(2, '0')}</td>`;
             }
-            tableHtml += '</tr>';
+            dayNum++;
         }
-        tableHtml += '</table>';
-        document.getElementById('calendar-container').innerHTML = tableHtml;
-        //document.getElementById('current-day').textContent = ` ${daysOfWeek[day]}`;
+        tableHtml += '</tr>';
     }
+    tableHtml += '</table>';
+    document.getElementById('calendar-container').innerHTML = tableHtml;
+    //document.getElementById('current-day').textContent = ` ${daysOfWeek[day]}`;
+}
 
-    $(document).on('click', '.current-day', function() {
-        $('.current-day').removeClass('current-date');
-        $(this).addClass('current-date');
-        getEvents();
+$(document).on('click', '.current-day', function() {
+    $('.current-day').removeClass('current-date');
+    $(this).addClass('current-date');
+    getEvents();
 
+});
+
+function getEvents() {
+    var dateSelect = $('.current-day.current-date').data('date');
+
+    const dateString = dateSelect;
+    // Split the date string into day, month, and year components
+    const [month, day, year] = dateString.split('/').map(Number);
+    // Create a JavaScript Date object
+    const date = new Date(year, month - 1, day); // Note: month is zero-based (0 for January)
+    // Get the weekday index (0 for Sunday, 1 for Monday, and so on)
+    const weekdayIndex = date.getDay();
+    // Define an array of weekday names
+    const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    // Get the weekday name based on the weekday index
+    const weekdayName = weekdayNames[weekdayIndex];
+
+    $('.date-date').text(dateSelect);
+    $('.date-day').text(weekdayName);
+
+    $.ajax({
+        type: "get",
+        url: "{{ url('get-events') }}",
+        data: {
+            'date': dateSelect
+        },
+        success: function(response) {
+
+            $('.todayEbents-list').empty().append(response);
+        }
     });
 
-    function getEvents() {
-        var dateSelect = $('.current-day.current-date').data('date');
-
-        const dateString = dateSelect;
-        // Split the date string into day, month, and year components
-        const [month, day, year] = dateString.split('/').map(Number);
-        // Create a JavaScript Date object
-        const date = new Date(year, month - 1, day); // Note: month is zero-based (0 for January)
-        // Get the weekday index (0 for Sunday, 1 for Monday, and so on)
-        const weekdayIndex = date.getDay();
-        // Define an array of weekday names
-        const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        // Get the weekday name based on the weekday index
-        const weekdayName = weekdayNames[weekdayIndex];
-
-        $('.date-date').text(dateSelect);
-        $('.date-day').text(weekdayName);
-
-        $.ajax({
-            type: "get"
-            , url: "{{ url('get-events') }}"
-            , data: {
-                'date': dateSelect
-            }
-            , success: function(response) {
-
-                $('.todayEbents-list').empty().append(response);
-            }
-        });
-
-    }
+}
 
 
-    setInterval(getEvents, 10000);
+setInterval(getEvents, 10000);
 
-    function prevMonth() {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        displayCalendar();
-        getEvents();
-    }
+function prevMonth() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    displayCalendar();
+    getEvents();
+}
 
-    function nextMonth() {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        displayCalendar();
-        getEvents();
-    }
+function nextMonth() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    displayCalendar();
+    getEvents();
+}
 
-    // Call the displayCalendar function when the page loads
-    window.onload = function() {
-        displayCalendar();
+// Call the displayCalendar function when the page loads
+window.onload = function() {
+    displayCalendar();
 
-    };
-
+};
 </script>
 
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const todayBtn = document.getElementById("today-btn");
-        const prevBtn = document.getElementById("prev-btn");
-        const nextBtn = document.getElementById("next-btn");
-        const currentDateElem = document.getElementById("current-date");
-        const calendarDaysContainer = document.querySelector(".calendar-days");
-        const dayNamesContainer = document.querySelector(".day-names");
+document.addEventListener("DOMContentLoaded", function() {
+    const todayBtn = document.getElementById("today-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const currentDateElem = document.getElementById("current-date");
+    const calendarDaysContainer = document.querySelector(".calendar-days");
+    const dayNamesContainer = document.querySelector(".day-names");
 
-        // Set the current date to display initially
-        let currentDate = new Date();
+    // Set the current date to display initially
+    let currentDate = new Date();
+    currentDateElem.textContent = currentDate.toDateString();
+
+    // Define day names
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    // Populate day names at the top of the calendar
+    dayNames.forEach(dayName => {
+        const dayNameCell = document.createElement("div");
+        dayNameCell.classList.add("day-name-cell");
+        dayNameCell.textContent = dayName;
+        dayNamesContainer.appendChild(dayNameCell);
+    });
+
+    // Event listeners for buttons
+    todayBtn.addEventListener("click", () => {
+        // Set the current date as today's date
+        currentDate = new Date();
         currentDateElem.textContent = currentDate.toDateString();
-
-        // Define day names
-        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-        // Populate day names at the top of the calendar
-        dayNames.forEach(dayName => {
-            const dayNameCell = document.createElement("div");
-            dayNameCell.classList.add("day-name-cell");
-            dayNameCell.textContent = dayName;
-            dayNamesContainer.appendChild(dayNameCell);
-        });
-
-        // Event listeners for buttons
-        todayBtn.addEventListener("click", () => {
-            // Set the current date as today's date
-            currentDate = new Date();
-            currentDateElem.textContent = currentDate.toDateString();
-            generateCalendar();
-        });
-
-        prevBtn.addEventListener("click", () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            currentDateElem.textContent = currentDate.toDateString();
-            generateCalendar();
-        });
-
-        nextBtn.addEventListener("click", () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            currentDateElem.textContent = currentDate.toDateString();
-            generateCalendar();
-        });
-
-        // Function to generate calendar days and events
-        function generateCalendar() {
-            // Clear existing content
-            calendarDaysContainer.innerHTML = "";
-
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const firstDay = new Date(year, month, 1).getDay();
-
-            // Generate calendar days
-            let dayNum = 1 - firstDay;
-            for (let i = 0; i < 6; i++) {
-                const weekRow = document.createElement("div");
-                weekRow.classList.add("week-row");
-
-                for (let j = 0; j < 7; j++) {
-                    const dayCell = document.createElement("div");
-                    dayCell.classList.add("day-cell");
-
-                    if (dayNum <= 0 || dayNum > daysInMonth) {
-                        const otherMonthDate = new Date(year, month, dayNum);
-                        dayCell.classList.add("other-month");
-                        dayCell.textContent = otherMonthDate.getDate();
-                    } else {
-                        dayCell.textContent = dayNum;
-                    }
-
-                    if (dayNum === 1) {
-                        dayCell.classList.add("first-day");
-                    }
-
-                    dayCell.addEventListener("click", () => openEventModal(year, month, dayNum));
-                    weekRow.appendChild(dayCell);
-                    dayNum++;
-                }
-
-                calendarDaysContainer.appendChild(weekRow);
-            }
-        }
-
-        // Initial calendar generation
         generateCalendar();
     });
 
-</script>
+    prevBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
 
+    nextBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        currentDateElem.textContent = currentDate.toDateString();
+        generateCalendar();
+    });
 
-<script>
-    function openEventModal(year, month, day) {
-        const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
-        if (event) {
-            const eventElement = document.createElement("div");
-            eventElement.classList.add("event");
-            eventElement.textContent = event;
-            calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
+    // Function to generate calendar days and events
+    function generateCalendar() {
+        // Clear existing content
+        calendarDaysContainer.innerHTML = "";
+
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+
+        // Generate calendar days
+        let dayNum = 1 - firstDay;
+        for (let i = 0; i < 6; i++) {
+            const weekRow = document.createElement("div");
+            weekRow.classList.add("week-row");
+
+            for (let j = 0; j < 7; j++) {
+                const dayCell = document.createElement("div");
+                dayCell.classList.add("day-cell");
+
+                if (dayNum <= 0 || dayNum > daysInMonth) {
+                    const otherMonthDate = new Date(year, month, dayNum);
+                    dayCell.classList.add("other-month");
+                    dayCell.textContent = otherMonthDate.getDate();
+                } else {
+                    dayCell.textContent = dayNum;
+                }
+
+                if (dayNum === 1) {
+                    dayCell.classList.add("first-day");
+                }
+
+                dayCell.addEventListener("click", () => openEventModal(year, month, dayNum));
+                weekRow.appendChild(dayCell);
+                dayNum++;
+            }
+
+            calendarDaysContainer.appendChild(weekRow);
         }
     }
-
 
     // Initial calendar generation
-    //generateCalendar();
-
+    generateCalendar();
+});
 </script>
 
 
 <script>
-    function openEventModal(year, month, day) {
-        const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
-        if (event) {
-            const eventElement = document.createElement("div");
-            eventElement.classList.add("event");
-            eventElement.textContent = event;
-            calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
-        }
+function openEventModal(year, month, day) {
+    const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
+    if (event) {
+        const eventElement = document.createElement("div");
+        eventElement.classList.add("event");
+        eventElement.textContent = event;
+        calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
     }
+}
 
+
+// Initial calendar generation
+//generateCalendar();
+</script>
+
+
+<script>
+function openEventModal(year, month, day) {
+    const event = prompt(`Enter event for ${month + 1}/${day}/${year}:`);
+    if (event) {
+        const eventElement = document.createElement("div");
+        eventElement.classList.add("event");
+        eventElement.textContent = event;
+        calendarDaysContainer.querySelector(`[data-day="${day}"]`).appendChild(eventElement);
+    }
+}
 </script>
 <script>
-    function populateOptions(selectId, start, end, step) {
-        const select = document.getElementById(selectId);
-        for (let i = start; i <= end; i += step) {
-            const option = document.createElement("option");
-            option.value = String(i).padStart(2, "0");
-            option.text = String(i).padStart(2, "0");
-            select.appendChild(option);
-        }
-
+function populateOptions(selectId, start, end, step) {
+    const select = document.getElementById(selectId);
+    for (let i = start; i <= end; i += step) {
+        const option = document.createElement("option");
+        option.value = String(i).padStart(2, "0");
+        option.text = String(i).padStart(2, "0");
+        select.appendChild(option);
     }
-    // Populate hour options (01 to 12)
-    populateOptions("hour", 1, 12, 1);
+
+}
+// Populate hour options (01 to 12)
+populateOptions("hour", 1, 12, 1);
 
 
-    // Populate minute options (00 to 59)
-    populateOptions("minute", 0, 59, 1);
-
+// Populate minute options (00 to 59)
+populateOptions("minute", 0, 59, 1);
 </script>
 @endsection
