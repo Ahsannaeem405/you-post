@@ -652,14 +652,10 @@
     </div>
     <p class="m-0"></p>
     <div id="selectedValues"></div>
-</div>
-<div class="col-md-12">
     <div class="MainMobileimg">
         <div class="media-container media_container">
             <div class="prv_div_youpost"> </div>
             <div id="mediaContainervideo_youpost">
-
-
                 <div class="">
                     <div class="">
                         <div class="deletepost_btn mydeltpostbtn">
@@ -674,7 +670,8 @@
             </div>
         </div>
     </div>
-
+</div>
+<div class="col-md-12">
     <div class="col-md-12 d-none">
         <div class="Mobcart_title Mobcart_title2 bile d-flex justify-content-between Mobcart_titleCustom d-none">
             <div class="reactions reactions2 d-flex justify-content-center align-items-center d-none">
