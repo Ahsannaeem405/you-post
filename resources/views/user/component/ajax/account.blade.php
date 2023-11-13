@@ -205,9 +205,6 @@
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
-
-
-
                 <div class="single_platform {{ in_array('Instagram', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_insta pb-1">
                         <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt=""
@@ -222,17 +219,13 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <!-- <button type="button" value="Instagram" data-account="{{$account->id}}"
-                        name="plateform[{{$account->id}}]"
-                        class="  btn instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}"
-                        id="Instagrambtn">Reconnect</button> -->
+                
                     <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
                          <span> Reconnect</span>
                     </a>
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
                          <span class="linkedbtnabc"> Connect</span>
                     </a>
-                    <!-- <button type="button" class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
 
                 </div>
                 <div class="single_platform {{ in_array('Twitter', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -247,10 +240,7 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <!-- <button type="button" value="Twitter" data-account="{{$account->id}}"
-                        name="plateform[{{$account->id}}]"
-                        class="  btn  T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}"
-                        id="Twitterbtn">Reconnect</button> -->
+                   
 
                     <a class="T-recont_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
                          <span>
@@ -261,7 +251,6 @@
                          <span class="linkedbtnabc">
                             Connect</span>
                     </a>
-                    <!-- <button type="button"class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" >Connect</button> -->
 
                 </div>
                 <div class="single_platform {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -278,19 +267,14 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <!-- <button type="button" value="Linkedin" data-account="{{$account->id}}"
-                        name="plateform[{{$account->id}}]"
-                        class=" btn l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}"
-                        id="Linkedinbtn">Reconnect</button> -->
-                    <!-- <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
-                    <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                   <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? 'show' : 'd-none' }} r_btn" href="">
                         <span > Reconnect</span>
                     </a>
-                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
+                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? 'd-none' : '' }}" href="">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
-                <div class="single_platform" style="">
+                <!-- <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 9px;">
                         <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt=""
                             style="    height: 21px;" />
@@ -301,7 +285,6 @@
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
 
                 </div>
                 <div class="single_platform" style="">
@@ -316,9 +299,8 @@
                         eckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

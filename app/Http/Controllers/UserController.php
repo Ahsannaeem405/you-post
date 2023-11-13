@@ -44,9 +44,16 @@ class UserController extends Controller
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
-        $posts = Post::select('*',DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'))
+        // $posts = Post::select('*',DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'),DB::raw('COUNT(*) as post_count'))
+        $posts = Post::select(
+            DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'),
+            DB::raw('COUNT(*) as total_count'),
+            DB::raw('SUM(CASE WHEN posted_at_moment = "now" THEN 1 ELSE 0 END) as published_count'),
+            DB::raw('SUM(CASE WHEN posted_at_moment != "now" THEN 1 ELSE 0 END) as not_published_count')
+        )
         ->where('user_id', auth()->id())
         ->where('account_id', auth()->user()->account_id)
+      
         ->groupBy(DB::raw('DATE(posted_at)'))
         ->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
@@ -55,13 +62,17 @@ class UserController extends Controller
         foreach ($posts as $post) {
             $allPosts[] = [
                 'id' => $post->id,
-                'title' => $post->content,
-                'start' => $post->posted_at,
+                // 'title' => $post->post_count . ' Published',
+                'title' => $post->published_count . ' Published <br>' . $post->not_published_count . ' Scheduled',
+
+                'start' => $post->formatted_posted_at,
                 'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d'),
                 'ac_id' => auth()->user()->account_id,
+                // 'formatted_posted_at' => Carbon::parse($post->formatted_posted_at)->format('h:i A'),
             ];
         }
         // dd($allPosts);
+
         $response = $this->createPostService->InitilizeData();
         $stattistics = $this->createPostService->Statisics();
         $instapages = $response['linkedin'];
@@ -358,27 +369,27 @@ class UserController extends Controller
             $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
 
             if ($timeDiffLessTennOneMnt) {
-                $platformServiceMap = [
-                    'Facebook' => '\App\Services\Facebookservice',
-                    'Instagram' => '\App\Services\Instagramservice',
-                    'Twitter' => '\App\Services\TwitterService',
-                    'Linkedin' => '\App\Services\Linkedinservice',
-                ];
+                // $platformServiceMap = [
+                //     'Facebook' => '\App\Services\Facebookservice',
+                //     'Instagram' => '\App\Services\Instagramservice',
+                //     'Twitter' => '\App\Services\TwitterService',
+                //     'Linkedin' => '\App\Services\Linkedinservice',
+                // ];
 
-                $platform = $platforms[$i];
+                // $platform = $platforms[$i];
 
 
-                if (array_key_exists($platform, $platformServiceMap)) {
-                    $serviceClassName = $platformServiceMap[$platform];
-                    $run = new $serviceClassName();
-                    $arr['post'] = $post;
-                    $result = $run->create_post($arr);
-                    if ($result['status'] == true) {
-                        $up = Post::find($post->id);
-                        $up->posted_at_moment = 'now';
-                        $up->update();
-                    }
-                }
+                // if (array_key_exists($platform, $platformServiceMap)) {
+                //     $serviceClassName = $platformServiceMap[$platform];
+                //     $run = new $serviceClassName();
+                //     $arr['post'] = $post;
+                //     $result = $run->create_post($arr);
+                //     if ($result['status'] == true) {
+                //         $up = Post::find($post->id);
+                //         $up->posted_at_moment = 'now';
+                //         $up->update();
+                //     }
+                // }
             } else {
                 $scheduled = 'yes';
                 session(['IsScheduled' => $scheduled]);
@@ -710,7 +721,6 @@ class UserController extends Controller
 
     public function get_page_for_instagram()
     {
-
         $insta_access_token = auth()->user()->account->insta_access_token;
         $insta_user_id = auth()->user()->account->insta_user_id;
 
