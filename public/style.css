@@ -1243,11 +1243,11 @@ body {
     object-fit: cover;
 }
 
-.MainMobileview {
+/* .MainMobileview {
 	align-items: center;
 	padding: 10px 5px;
     background-color: #f7f7f7;
-}
+} */
 .MainMobileview img{
 	border-radius: 50%
 }
@@ -2029,15 +2029,15 @@ width: 100%;
 }
 .post_img_name {
     display: flex;
-    background-color: #fff;
-    box-shadow: 0 0 5px #ddd;
-    border-radius: 10px;
-    margin-top: 14px;
+    /* background-color: #fff; */
+    /* box-shadow: 0 0 5px #ddd; */
+    /* border-radius: 10px; */
+    /* margin-top: 14px; */
     width: 100%;
 }
-.post_img_name .post_img{
+/* .post_img_name .post_img{
     width: 100%;
-}
+} */
 .PostHeaderInner .d-flex{
 
 }
