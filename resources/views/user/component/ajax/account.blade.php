@@ -267,12 +267,21 @@
                         <span class="slider round"></span>
                     </label>
 
-                   <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? 'show' : 'd-none' }} r_btn" href="">
-                        <span > Reconnect</span>
-                    </a>
-                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? 'd-none' : '' }}" href="">
-                        <span class="linkedbtnabc"> Connect</span>
-                    </a>
+                    @if(in_array('Linkedin', $account->platforms))
+    <a class="l_recont_btn r_btn" href="">
+        <span>Reconnect</span>
+    </a>
+    <a class="l-conect_btn d-none" href="">
+        <span class="linkedbtnabc">Connect</span>
+    </a>
+@else
+    <a class="l_recont_btn d-none" href="">
+        <span>Reconnect</span>
+    </a>
+    <a class="l-conect_btn" href="">
+        <span class="linkedbtnabc">Connect</span>
+    </a>
+@endif
                 </div>
                 <!-- <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 9px;">
@@ -286,8 +295,8 @@
                         <span class="slider round"></span>
                     </label>
 
-                </div>
-                <div class="single_platform" style="">
+                </div> -->
+                <!-- <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 6px;">
                         <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt=""
                             style="height: 23px;" />

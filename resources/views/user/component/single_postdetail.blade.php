@@ -225,7 +225,7 @@
                     <div class="d-flex justify-content-center align-items-start gap-1">
                         <img src="{{ asset('images/linkedinlogo.png') }}" alt="" class="mr-1">
                         <div class="">
-                            <h5 class="m-0">{{ auth()->user()->account->fb_page_name }}</h5>
+                            <h5 class="m-0">{{ auth()->user()->account->link_page_name }}</h5>
                             <span>Just Now</span>
                         </div>
                     </div>
@@ -385,22 +385,22 @@
             <div class="post_img">
                 <div class="PostHeaderInner d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-between align-items-center w-100">
-                        <h5 class="m-0">{{auth()->user()->account->fb_page_name}}</h5>
+                        <h5 class="m-0">{{auth()->user()->account->tw_name}}</h5>
                         <div class="">
                             <span>@Tang...</span>
                             <span>Just Now</span>
                         </div>
                     </div>
                 </div>
-                <div class="DetailText">
+                <div class="DetailText pb-2">
                     <div class="short_text Mobcart_title">
                         <span id="mypostresult_youpost" class="mypostresult">{{ $post->content }}</span>
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                     </div>
                 </div>
-                <div class="TagsSec">
+                <!-- <div class="TagsSec">
                     <a href="#">#BrownTechInt</a>
-                </div>
+                </div> -->
                 <div class="ImgSec">
                     {{-- <img src="{{ asset('images/linkedinpost.jpg') }}" alt=""> --}}
                     @if ($mediatype == 'image')
@@ -534,7 +534,7 @@
                     <div class="d-flex justify-content-between align-items-center w-100 mb-2">
                         <div class="d-flex align-items-center gap-1">
                             <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1 ProfileIcon">
-                            <h5 class="m-0">{{auth()->user()->account->fb_page_name}}</h5>
+                            <h5 class="m-0">{{auth()->user()->account->inst_page_name}}</h5>
                         </div>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"

@@ -2018,11 +2018,11 @@ width: 100%;
 .MainMobileview h5.HeadingTop img{
     border: none;
 }
-.Twitter .post_img_name{
+.TwitterWrap .post_img_name{
     display: flex;
     align-items: flex-start;
 }
-.Twitter .post_img_name img.ProfileIcon {
+.TwitterWrap .post_img_name img.ProfileIcon {
     height: 36px !important;
     margin: 10px 0px 10px 10px;
     width: 37px;
@@ -2046,7 +2046,7 @@ width: 100%;
 }
 .PostHeaderInner .d-flex div h5,
 .MainMobileview h5.HeadingTop,
-.Twitter .post_img_name .PostHeaderInner h5,
+.TwitterWrap .post_img_name .PostHeaderInner h5,
 .DetailText .d-flex h5{
     color: #000;
     font-size: 12px;

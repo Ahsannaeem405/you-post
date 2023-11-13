@@ -52,26 +52,25 @@ class UserController extends Controller
             DB::raw('SUM(CASE WHEN posted_at_moment != "now" THEN 1 ELSE 0 END) as not_published_count')
         )
         ->where('user_id', auth()->id())
-        ->where('account_id', auth()->user()->account_id)
-      
+        ->where('account_id', auth()->user()->account_id)      
         ->groupBy(DB::raw('DATE(posted_at)'))
         ->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
+     
         foreach ($posts as $post) {
             $allPosts[] = [
                 'id' => $post->id,
                 // 'title' => $post->post_count . ' Published',
                 'title' => $post->published_count . ' Published <br>' . $post->not_published_count . ' Scheduled',
-
                 'start' => $post->formatted_posted_at,
-                'event_date' => Carbon::parse($post->posted_at)->format('Y-m-d'),
+                'event_date' => Carbon::parse($post->formatted_posted_at)->format('Y-m-d'),
                 'ac_id' => auth()->user()->account_id,
                 // 'formatted_posted_at' => Carbon::parse($post->formatted_posted_at)->format('h:i A'),
             ];
         }
-        // dd($allPosts);
+      
 
         $response = $this->createPostService->InitilizeData();
         $stattistics = $this->createPostService->Statisics();
