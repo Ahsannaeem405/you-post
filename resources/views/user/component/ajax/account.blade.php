@@ -195,12 +195,12 @@
                         Reconnect</button> -->
 
                     <a class="fb-recont_btn {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }} r_btn"
-                        href="">
+                        href="{{ url('connect_to_facebook') }}">
                          <span > Reconnect</span>
                     </a>
 
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}"
-                        href="">
+                        href="{{ url('connect_to_facebook') }}">
                          <span class="linkedbtnabc"> Connect</span>
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
@@ -220,10 +220,10 @@
                     </label>
 
                 
-                    <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                    <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }} r_btn" href="{{ url('connect_to_instagram') }}">
                          <span> Reconnect</span>
                     </a>
-                    <a class="instconect_btn {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
+                    <a class="instconect_btn {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="{{ url('connect_to_instagram') }}">
                          <span class="linkedbtnabc"> Connect</span>
                     </a>
 
@@ -242,12 +242,12 @@
 
                    
 
-                    <a class="T-recont_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                    <a class="T-recont_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }} r_btn" href="{{ url('connect_twitter') }}">
                          <span>
                          Reconnect</span>
                     </a>
 
-                    <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="">
+                    <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="{{ url('connect_twitter') }}">
                          <span class="linkedbtnabc">
                             Connect</span>
                     </a>
@@ -267,21 +267,12 @@
                         <span class="slider round"></span>
                     </label>
 
-                    @if(in_array('Linkedin', $account->platforms))
-    <a class="l_recont_btn r_btn" href="">
-        <span>Reconnect</span>
-    </a>
-    <a class="l-conect_btn d-none" href="">
-        <span class="linkedbtnabc">Connect</span>
-    </a>
-@else
-    <a class="l_recont_btn d-none" href="">
-        <span>Reconnect</span>
-    </a>
-    <a class="l-conect_btn" href="">
-        <span class="linkedbtnabc">Connect</span>
-    </a>
-@endif
+                   <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }} r_btn" href="{{ url('connect_to_linkedin') }}">
+                        <span > Reconnect</span>
+                    </a>
+                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="{{ url('connect_to_linkedin') }}">
+                        <span class="linkedbtnabc"> Connect</span>
+                    </a>
                 </div>
                 <!-- <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 9px;">
