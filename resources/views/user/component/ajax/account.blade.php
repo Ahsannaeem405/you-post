@@ -130,7 +130,7 @@
 /*  */
 .fb-reconect_btn, .l_recont_btn, .T-recont_btn, .instrecont_btn{
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
   /* border-bottom: 1px dotted black; */
 }
 
@@ -227,8 +227,9 @@
                         value="Facebook" data-account="{{$account->id}}" name="plateform[{{$account->id}}]">
                         Reconnect</button> -->
 
-                    <a class="fb-recont_btn {{ in_array('Facebook', $account->platforms) ? '' : 'd-none' }} r_btn"
-                        href="">
+                    <a class="fb-recont_btn {{ in_array('Facebook', $account->platforms) &&
+                        $account->fb_access_token != null  ? '' : 'd-none' }} r_btn"
+                        href="{{ url('connect_to_facebook') }}">
                          <span class="reconnect_platform"> Reconnect</span>
                          
                         <span class="tooltiptext_fb">Click here to connect facebook account</span>
@@ -236,7 +237,8 @@
 
                     </a>
 
-                    <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}"
+                    <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) &&
+                        $account->fb_access_token == null  ? 'showColorIcon' : 'd-none' }}"
                         href="{{ url('connect_to_facebook') }}">
                          <span class="linkedbtnabc"> Connect</span>
                     </a>
@@ -257,13 +259,15 @@
                     </label>
 
                 
-                    <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                    <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) &&
+                        $account->insta_access_token != null  ? '' : 'd-none' }} r_btn" href="{{ url('connect_to_instagram') }}">
                          <span class="reconnect_platform"> Reconnect</span>
                        
                         <span class="tooltiptext_inst">Click here to connect Instagram account</span>
                        
                     </a>
-                    <a class="instconect_btn {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="{{ url('connect_to_instagram') }}">
+                    <a class="instconect_btn {{ in_array('Instagram', $account->platforms) &&
+                        $account->insta_access_token == null  ? '' : 'd-none' }}" href="{{ url('connect_to_instagram') }}">
                          <span class="linkedbtnabc"> Connect</span>
                     </a>
 
@@ -282,7 +286,9 @@
 
                    
 
-                    <a class="T-recont_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
+                    <a class="T-recont_btn {{ 
+                        in_array('Twitter', $account->platforms) &&
+                        $account->twiter_access_token != null  ? '' : 'd-none' }} r_btn" href="{{ url('connect_twitter') }}">
                          <span class="reconnect_platform">
                          Reconnect</span>
                         
@@ -290,38 +296,39 @@
                        
                     </a>
 
-                    <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" href="{{ url('connect_twitter') }}">
+                    <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) &&
+                        $account->twiter_access_token ==  null  ? '' : 'd-none' }}" href="{{ url('connect_twitter') }}">
                          <span class="linkedbtnabc">
                             Connect</span>
                     </a>
 
                 </div>
-                <div class="single_platform {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
+                <div class="single_platform  {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon pb-1" style="padding-bottom: 2px;">
                         <img src="{{asset('images/Linkedin_Color.png')}}" class="color_icon" alt=""
                             style="height:27px" />
                         <img src="{{asset('images/Linkedin_Black.png')}}" class="black_icon" alt=""
                             style="height:27px" />
                     </div>
-                    <label class="switch" style="margin-top: 19px;">
+                    <label class="switch" id="{{$account->id}}" style="margin-top: 19px;">
                         <input type="checkbox" class="customCheckbox plateform LinkCheckbox" value="Linkedin"
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
                             {{ in_array('Linkedin', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
-                    </label>
-
-                    <!-- <button type="button" value="Linkedin" data-account="{{$account->id}}"
-                        name="plateform[{{$account->id}}]"
-                        class=" btn l_recont_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}"
-                        id="Linkedinbtn">Reconnect</button> -->
-                    <!-- <button type="button" class="l-conect_btn  {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
-                    <a class="l_recont_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
-                        <span class="reconnect_platform" > Reconnect</span>
-                        
-                        <span class="tooltiptext_link">Click here to connect Linkedin account</span>
-                        
+                    </label>                   
+                    <a class="l_recont_btn {{
+                        in_array('Linkedin', $account->platforms) &&
+                        $account->linkedin_accesstoken != null &&
+                        $account->linkedin_user_id != null
+                        ? '' : 'd-none'
+                    }} r_btn" href="{{ url('connect_to_linkedin') }}">                      
+                       <span class="reconnect_platform" > Reconnect</span>                        
+                        <span class="tooltiptext_link">Click here to connect Linkedin account</span>                        
                     </a>
-                    <a class="l-conect_btn {{ in_array('Linkedin', $account->platforms) ? '' : 'd-none' }}" href="">
+                    <a class="l-conect_btn {{ 
+                        in_array('Linkedin', $account->platforms)
+                        && $account->linkedin_accesstoken == null
+                        &&  $account->linkedin_user_id == null ? '' : 'd-none' }}" href="{{ url('connect_to_linkedin') }}">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
@@ -359,53 +366,3 @@
 
 <!--  -->
 @endforeach
-<script>
-$(document).ready(function() {
-    var fbCheckbox = $(".fbCheckbox");
-    var instCheckbox = $(".instCheckbox");
-    var TwtCheckbox = $(".TwtCheckbox");
-    var LinkCheckbox = $(".LinkCheckbox");
-    var reconnectButtonfb = $(".fb-recont_btn");
-    var reconnectButtoninst = $(".instrecont_btn");
-    var reconnectButtontwt = $(".T-recont_btn");
-    var reconnectButtonLink = $(".l_recont_btn");
-    var connectButtonfb = $(".fb-conect_btn");
-    var connectButtoninst = $(".instconect_btn");
-    var connectButtontwt = $(".T-conect_btn");
-    var connectButtonLink = $(".l-conect_btn");
-
-    // Function to toggle the visibility of the buttons based on the checkbox state
-    function toggleButtonVisibility(checkbox, reconnectButton, connectButton) {
-        if (checkbox.prop("checked")) {
-            reconnectButton.show();
-            connectButton.hide();
-        } else {
-            reconnectButton.hide();
-            connectButton.show();
-        }
-    }
-
-    // Initially set the visibility of buttons for each checkbox
-    toggleButtonVisibility(fbCheckbox, reconnectButtonfb, connectButtonfb);
-    toggleButtonVisibility(instCheckbox, reconnectButtoninst, connectButtoninst);
-    toggleButtonVisibility(TwtCheckbox, reconnectButtontwt, connectButtontwt);
-    toggleButtonVisibility(LinkCheckbox, reconnectButtonLink, connectButtonLink);
-
-    // Add event listeners to each checkbox to toggle the button visibility
-    fbCheckbox.change(function() {
-        toggleButtonVisibility(fbCheckbox, reconnectButtonfb, connectButtonfb);
-    });
-
-    instCheckbox.change(function() {
-        toggleButtonVisibility(instCheckbox, reconnectButtoninst, connectButtoninst);
-    });
-
-    TwtCheckbox.change(function() {
-        toggleButtonVisibility(TwtCheckbox, reconnectButtontwt, connectButtontwt);
-    });
-
-    LinkCheckbox.change(function() {
-        toggleButtonVisibility(LinkCheckbox, reconnectButtonLink, connectButtonLink);
-    });
-});
-</script>

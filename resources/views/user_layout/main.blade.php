@@ -570,10 +570,12 @@
             function updateDiv_other($obj) {
 
                    var inputText = $($obj).val();
-                    $("#mypostresult_fb").empty().append(inputText);
-                    $("#mypostresult_insta").empty().append(inputText);
-                    $("#mypostresult_twitter").empty().append(inputText);
-                    $("#mypostresult_linkedin").empty().append(inputText);
+                   var formattedText = inputText.replace(/\n/g, '<br>');
+                   
+                    $("#mypostresult_fb").empty().html( formattedText );
+                    $("#mypostresult_insta").empty().html(formattedText);
+                    $("#mypostresult_twitter").empty().html( formattedText);
+                    $("#mypostresult_linkedin").empty().html( formattedText);
 
 
                     $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
@@ -585,42 +587,52 @@
                 var textareaAttr = $($obj).attr("attr_of_text_area");
                 var inputText = $($obj).val();
                 var lart= inputText.slice(-1);
-                if(lart.trim() == ''){
-                       return;
-                }
+                // if(lart.trim() == ''){
+                //        return;
+                // }
 
 
                 if (textareaAttr == 'youpost') {
-                    $("#mypostresult_youpost").empty().append(inputText);
+                    
+                    var formattedText = inputText.replace(/\n/g, '<br>');
+                   $("#mypostresult_youpost").html('<pre>' + formattedText + '</pre>');
+   
 
                 }else if (textareaAttr == 'fb') {
 
                 var selectedValues = $('#facebook_tag').val();
                 var new_str= getString(selectedValues);
-                $("#mypostresult_fb").empty().append(inputText) ;
-                $("#mynameresult").empty().append(new_str) ;
+
+                var formattedText = inputText.replace(/\n/g, '<br>');
+                   $("#mypostresult_fb").html('<pre>' + formattedText + '</pre>');
+                // $("#mypostresult_fb").empty().append(inputText) ;
+                 $("#mynameresult").empty().append(new_str) ;
 
           }else if(textareaAttr == 'insta'){
 
             var selectedValues = $('#instagram_tag').val();
             var new_str= getString(selectedValues);
-             $("#mypostresult_insta").empty().append(inputText) ;
+            var formattedText = inputText.replace(/\n/g, '<br>');
+                   $("#mypostresult_insta").html('<pre>' + formattedText + '</pre>');
+            //  $("#mypostresult_insta").empty().append(inputText) ;
                $("#mynameresult_insta").empty().append(new_str) ;
 
           }else if(textareaAttr == 'twitter'){
 
             var selectedValues = $('#twitter_tag').val();
             var new_str= getString(selectedValues);
-
-            $("#mypostresult_twitter").empty().append(inputText) ;
+            var formattedText = inputText.replace(/\n/g, '<br>');
+            $("#mypostresult_twitter").html('<pre>' + formattedText + '</pre>');
+            // $("#mypostresult_twitter").empty().append(inputText) ;
                $("#mynameresult_twitter").empty().append(new_str) ;
 
           }else if(textareaAttr == 'linkedin'){
 
             var selectedValues = $('#linkedin_tag').val();
             var new_str= getString(selectedValues);
-
-            $("#mypostresult_linkedin").empty().append(inputText) ;
+            var formattedText = inputText.replace(/\n/g, '<br>');
+            $("#mypostresult_linkedin").html('<pre>' + formattedText + '</pre>');
+            // $("#mypostresult_linkedin").empty().append(inputText) ;
                $("#mynameresult_linkedin").empty().append(new_str) ;
           }
         }
