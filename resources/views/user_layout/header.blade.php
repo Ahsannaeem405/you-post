@@ -112,7 +112,7 @@
                         <label for="socialTiktok"></label>
                     </div> -->
 
-                    <div class="single_platform">
+                    <!-- <div class="single_platform">
                         <div class="social_icon">
                             <img src="{{asset('images/Youtube_Color.png')}}" class="color_icon" alt="" />
                             <img src="{{asset('images/Youtube_Black.png')}}" class="black_icon" alt="" />
@@ -140,7 +140,7 @@
 
                         <input type="checkbox" name="" id="socialWhatsApp" disabled>
                         <label for="socialWhatsApp"></label>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

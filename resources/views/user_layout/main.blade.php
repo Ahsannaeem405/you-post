@@ -264,8 +264,8 @@
         // Remove the background color in other views
         view.el.find('.fc-day[data-date="' + date + '"]').removeClass('custom-event-bg');
     }
-                element.find('.fc-title').text(event.title);
-                element.find('.fc-time').text(event.formatted_posted_at); // remove start time
+                element.find('.fc-title').html(event.title);
+                element.find('.fc-time').text(''); // remove start time
                 if (event.imageUrl) {
                     element.find('.fc-content').prepend('<img src="' + event.imageUrl + '" class="thumbnail" />');
                 }

@@ -129,6 +129,7 @@
             <form action="{{url('set_page_for_instagram')}}" method="post">
                 @csrf
                 <div class="modal-body">
+                <div id="loader_tst" style="display: none;">Loading...</div>
 
                     <select required name="page" class="form-control instapage_selection">
                         <option value="">-select--</option>
