@@ -706,7 +706,6 @@ $(document).ready(function () {
         //**************************Appedn to all using youpot div ***********************
     }
     function appendtoall(file, dimention, dimention_error, getRandomClass) {
-        alert('video');
 
         var getRandomID = getRandomClassName();
 
@@ -908,7 +907,6 @@ $(document).ready(function () {
         // Function to handle video upload within the 'setPreview' function
        
         var videoPath = 'content_media/' + path;
-        alert(videoPath);
         // Create new video elements for each platform and set their sources
         var video_youpost = $('<video controls class="w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
         var video_fb = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
@@ -1383,6 +1381,8 @@ $(document).ready(function () {
                         }
                         else if (socialicon == 'image_or_video_youpost') {
 
+                            
+
                             $('#youpost_video').val(response.path);
                             $('#media_type_youpost').val('video');
                             $("#image_or_video_youpost").parent().find('.cross_img_con').remove();
@@ -1416,6 +1416,10 @@ $(document).ready(function () {
                             $('.video_preview_twitter').removeClass('d-none');
                             $('.preview_image_twitter').addClass('d-none');
                             $('.prv_div_tw').html('');
+
+                        
+                         
+
 
                             setPreview(socialicon, response.path);
                         }
