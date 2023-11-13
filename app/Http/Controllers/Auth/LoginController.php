@@ -59,7 +59,7 @@ class LoginController extends Controller
                
                 return redirect()->route('admin.dashboard')->with('message','Login Successful');  
             } else{                   
-                return redirect()->route('index')->with('message','Login Successful'); 
+                return redirect()->route('dashboard')->with('message','Login Successful'); 
             }
         }
         else

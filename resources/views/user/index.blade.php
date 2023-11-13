@@ -702,15 +702,14 @@
                                         <fieldset class="wizard-fieldset youpost ">
                                             <div class="ml-2">
                                                 <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_youpost">Initial Content</span>
+                                                    class="wizard-fieldset_youpost">Universal Content</span>
 
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention"
-                                                    data-id="youpost_error"
-                                                    placeholder="Write your initial content...">{{old('youpost_content')}}</textarea>
+                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"
+                                                    placeholder="Write your universal content...">{{old('youpost_content')}}</textarea>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
@@ -1337,8 +1336,7 @@
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title">
-                                        <span id="mypostresult_youpost" class="mypostresult">Write your initial
-                                            content...</span>
+                                        <span id="mypostresult_youpost" class="mypostresult">Write your universal content...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -2897,12 +2895,86 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
 
 
     }
-});
-$(document).on('mouseenter', '.calendar_overflo', function() {
-    $(".text").css('opacity', '1');
-    $(".todayEbents-list2").css('display', 'block');
-    // $(".Today-post-detail").css('display', 'block');
-    $(this).css('z-index', '9999');
+    $(document).ready(function() {
+        var isDetailVisible = false; // Initialize a flag to track visibility
+
+        // Add a click event handler to the todayEbents-list div
+        $(document).on('click', '.fb-post', function() {
+            var id = $(this).data('id');
+            var platform = $(this).data('plateform'); 
+                   
+            $.ajax({
+                type: "get"
+                , url: "{{ url('get_single_detail') }}"
+                , data: {
+                    'id': id
+                }
+                , success: function(response) {
+                    if (!isDetailVisible) {
+                        // If the detail is not visible, show it and set the flag
+                        // var contentToAppend = $(".the_preview").html();
+                        $(".Today-post-detail").html('');
+                        $(".Today-post-detail").append(response);
+                        $(".Today-post-detail").show();
+
+                        if (platform == 'Facebook') {
+                            $(".FacebookWrap").removeAttr('style');
+                        } else if (platform == 'Instagram') {
+                            $(".InstagramWrap").removeAttr('style');
+                        }else if (platform == 'Linkedin') {
+                            $(".LinkedinWrap").css('display', 'block');    
+                        }else if (platform == 'Twitter') {
+                            $(".TwitterWrap").removeAttr('style');
+                        }
+                        $(".fb-post").css('display', 'none');
+                    } else {
+                        // If the detail is visible, hide it and reset the flag
+                        $(".Today-post-detail").hide();
+                        $(".fb-post").css('display', 'block');    
+                    }
+                }
+            });
+
+
+
+
+
+        });
+        // $(".fb-post").click(function() {
+        //     if (!isDetailVisible) {
+        //         // If the detail is not visible, show it and set the flag
+        //         var contentToAppend = $(".the_preview").html();
+        //         $(".Today-post-detail").html(contentToAppend).show();
+        //         isDetailVisible = true;
+        //     } else {
+        //         // If the detail is visible, hide it and reset the flag
+        //         $(".Today-post-detail").hide();
+        //         isDetailVisible = false;
+        //     }
+
+
+        // });
+    });
+    var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
+
+    $(document).on('mouseleave', '.calendar_overflo', function() {
+        if (mouseLeaveEnabled) {
+            $(this).addClass('close');
+            $(this).css('z-index', '2222');
+            $(".text").css('opacity', '1');
+            $(".todayEbents-list2").css('display', 'none');
+            // $(".Today-post-detail").css('display', 'none');
+
+
+        }
+    });
+    $(document).on('mouseenter', '.calendar_overflo', function() {
+        $(".text").css('opacity', '1');
+        $(".todayEbents-list2").css('display', 'block');
+        // $(".Today-post-detail").css('display', 'block');
+        $(this).css('z-index', '9999');
+
+    });
 
 });
 </script>

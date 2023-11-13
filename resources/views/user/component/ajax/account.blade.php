@@ -242,9 +242,6 @@
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
-
-
-
                 <div class="single_platform {{ in_array('Instagram', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_insta pb-1">
                         <img src="{{asset('images/Instagram_Color.png')}}" class="color_icon" alt=""
@@ -259,10 +256,7 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <!-- <button type="button" value="Instagram" data-account="{{$account->id}}"
-                        name="plateform[{{$account->id}}]"
-                        class="  btn instrecont_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}"
-                        id="Instagrambtn">Reconnect</button> -->
+                
                     <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
                          <span class="reconnect_platform"> Reconnect</span>
                        
@@ -272,7 +266,6 @@
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}" href="">
                          <span class="linkedbtnabc"> Connect</span>
                     </a>
-                    <!-- <button type="button" class="instconect_btn  {{ in_array('Instagram', $account->platforms) ? '' : 'd-none' }}">Connect</button> -->
 
                 </div>
                 <div class="single_platform {{ in_array('Twitter', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -287,10 +280,7 @@
                         <span class="slider round"></span>
                     </label>
 
-                    <!-- <button type="button" value="Twitter" data-account="{{$account->id}}"
-                        name="plateform[{{$account->id}}]"
-                        class="  btn  T-recont_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}"
-                        id="Twitterbtn">Reconnect</button> -->
+                   
 
                     <a class="T-recont_btn {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }} r_btn" href="">
                          <span class="reconnect_platform">
@@ -304,7 +294,6 @@
                          <span class="linkedbtnabc">
                             Connect</span>
                     </a>
-                    <!-- <button type="button"class="T-conect_btn  {{ in_array('Twitter', $account->platforms) ? '' : 'd-none' }}" >Connect</button> -->
 
                 </div>
                 <div class="single_platform {{ in_array('Linkedin', $account->platforms) ? 'showColorIcon' : '' }}">
@@ -347,10 +336,9 @@
                         <input type="checkbox" class="customCheckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
 
-                </div>
-                <div class="single_platform d-none" style="">
+                </div> 
+                <!-- <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 6px;">
                         <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt=""
                             style="height: 23px;" />
@@ -362,9 +350,8 @@
                         eckbox" disabled>
                         <span class="slider round"></span>
                     </label>
-                    <!-- <button type="button" class="btn btn-primary" style="opacity:0;">Reconnect</button> -->
 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

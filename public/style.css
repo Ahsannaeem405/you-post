@@ -1245,7 +1245,8 @@ body {
 
 .MainMobileview {
 	align-items: center;
-	/* padding: 10px 5px; */
+	padding: 10px 5px;
+    background-color: #f7f7f7;
 }
 .MainMobileview img{
 	border-radius: 50%
@@ -2011,24 +2012,31 @@ width: 100%;
     margin-top: unset !important;
     border-radius: unset !important;
 }
-.MainMobileview h5.HeadingTop{
-
+.MainMobileview .PostHeader h5.HeadingTop{
+    margin: 0;
 }
-.Twitter .post_img_name{
+.MainMobileview h5.HeadingTop img{
+    border: none;
+}
+.TwitterWrap .post_img_name{
     display: flex;
     align-items: flex-start;
 }
-.Twitter .post_img_name img.ProfileIcon {
+.TwitterWrap .post_img_name img.ProfileIcon {
     height: 36px !important;
     margin: 10px 0px 10px 10px;
     width: 37px;
 }
 .post_img_name {
     display: flex;
-    /* background-color: #fff;
+    background-color: #fff;
     box-shadow: 0 0 5px #ddd;
     border-radius: 10px;
-    margin-top: 14px; */
+    margin-top: 14px;
+    width: 100%;
+}
+.post_img_name .post_img{
+    width: 100%;
 }
 .PostHeaderInner .d-flex{
 
@@ -2038,7 +2046,8 @@ width: 100%;
 }
 .PostHeaderInner .d-flex div h5,
 .MainMobileview h5.HeadingTop,
-.Twitter .post_img_name .PostHeaderInner h5{
+.TwitterWrap .post_img_name .PostHeaderInner h5,
+.DetailText .d-flex h5{
     color: #000;
     font-size: 12px;
     font-weight: 700;
@@ -2065,7 +2074,7 @@ width: 100%;
 }
 .post_img_name .post_img .DetailText{
     position: relative;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 .post_img_name .post_img .DetailText p{
     text-overflow: ellipsis;
@@ -2084,15 +2093,19 @@ width: 100%;
     -webkit-line-clamp: 20 !important;
     max-height: 100% !important;
 }
-.post_img_name .post_img .DetailText span {
+/* .post_img_name .post_img .DetailText span {
     position: absolute;
     right: 12px;
     bottom: 0;
     background-color: #fff;
     cursor: pointer;
+} */
+.post_img_name .post_img .DetailText span{
+    color: #000 !important;
 }
+
 .post_img_name .post_img .TagsSec{
-    margin: 10px 0;
+    margin: 0px 0 7px;
 }
 .post_img_name .post_img .TagsSec a{
     text-decoration: none;
@@ -2105,23 +2118,85 @@ width: 100%;
     border-radius: 0;
     width: 100%;
 }
-.NavBtmSec{
+.NavBtmSec {
     padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.NavBtmSec ul{
+.NavBtmSec ul.SaveBtn{
+    padding: 0;
+}
+.NavBtmSec ul.actions-buttons-list{
+    width: 30%;
+}
+.NavBtmSec ul.actions-buttons-list li{
     
 }
-.NavBtmSec ul li{
-    
-}
-.NavBtmSec ul li img{
+.NavBtmSec ul.actions-buttons-list li img,
+.NavBtmSec ul.SaveBtn li img{
     border: none;
     border-radius: 0;
     width: 100%;
 }
-.NavBtmSec ul li span{
+.NavBtmSec ul.actions-buttons-list li span{
     color: #000;
 }
+
+.post_detailWrap{
+    padding: 14px;
+    align-items: center;
+}
+.post_detailWrap img.ProfileImg{
+    width: 100px;
+    border-radius: 10px;
+}
+.post_detailWrap .DetailText{
+    padding-left: 12px;
+    width: 100%;
+}
+.post_detailWrap .DetailText .d-flex{
+    padding-bottom: 8px;
+}
+.post_detailWrap .DetailText .d-flex img{
+    border-radius: 50%;
+}
+.post_detailWrap .DetailText .d-flex h5{
+    
+}
+.post_detailWrap .DetailText p{
+    color: #000;
+    font-size: 10px;
+    font-weight: normal;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+.post_detailWrap .DetailText .publishedpost {
+    margin: unset;
+    border-radius: 5px;
+    width: 60%;
+    background: rgba(137, 197, 127, 0.62);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 2px;
+}
+.post_detailWrap .DetailText .publishedpost .approved{
+    font-size: 10px;
+}
+.post_detailWrap .DetailText .publishedpost span img{
+    width: 20px;
+}
+.postlink{
+    margin: 0 !important;
+}
+.postlink .visit_postsite img.CopyIcon{
+    width: 13px;
+    border: none;
+    border-radius: 0;
+}
+
 
 .sponsored{
     padding-left: 5px;

@@ -63,21 +63,42 @@ class TwitterService
             $bearerToken->oauth_token,
             $bearerToken->oauth_token_secret,
         );
+            $connection->setTimeouts(120,60);
+            $imagesdIds = [];
+        if ($data['post']->media_type) {
+            $images = explode(',', $post->media);
+            foreach ($images as $image) {
+                $connection->setApiVersion('1.1');
+                $imagePath=public_path('content_media/' . $image);
 
-//        $connection->setApiVersion('1.1');
-//        $status = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a2c97a42.png')]);
-//        $status2 = $connection->upload("media/upload", ["media" => public_path('content_media/650a8a28f2252.png')]);
+               // Map the file extension to a media type
+               $mediaType = \File::mimeType($imagePath);
+               if ($data['post']->media_type=='image'){
+                $status = $connection->upload("media/upload", ["media" => $imagePath]);
+                }
+                else{
+                $status = $connection->upload("media/upload", [
+                "media" => $imagePath,
+                'media_type' => $mediaType,
+                'media_category' => 'tweet_video'
+                ],true);
+
+                }
+
+                $imagesdIds[] = $status->media_id_string;
+            }
+        }
+        $body = array();
+        $body['text'] = $content;
+        if (count($imagesdIds) >= 1) {
+            $body['media'] = array(
+                'media_ids' => $imagesdIds
+            );
+        }
+        sleep(10);
         $connection->setApiVersion('2');
-        $postTwitter = $connection->post("tweets", [
-            'text' => $content,
-//            'media' => array(
-//                'media_ids' => [$status->media_id_string,$status2->media_id_string]
-//            )
-        ], true);
-
-
-
-
+        $postTwitter = $connection->post("tweets", $body, true);
+        //dd($postTwitter,$imagesdIds);
         if (isset($postTwitter->data)) {
             $postdetail = new PostDetail();
             $postdetail->post_id = $post->id;
