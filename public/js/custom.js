@@ -729,8 +729,6 @@ $(document).ready(function () {
 
                               $('#file_error_youpost').addClass('d-none')
                           }
-
-
         var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
         <img name='image/*' id="teting" src="${file}"/>
          <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
@@ -872,12 +870,13 @@ $(document).ready(function () {
                     }else {
                         $('#file_error_twiiter').addClass('d-none')
                     }
-                }else if(socialicon == 'image_or_video_youpost'){
+                }
+                    
+                else if(socialicon == 'image_or_video_youpost'){
 
                      appendtoall(e.target.result,dimention,dimention_error,getRandomClass);
                 }
-
-
+               
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1286,10 +1285,10 @@ $(document).ready(function () {
                                 //  lastImg.after(spanElement);
                                  lastImg.wrap("<div class='div_in_div_tw'> </div>");
                                 //  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
-                                //    $(".div_in_div_link").after(newDiv);
-                                $(".div_in_div_tw").append(`<span id= 'my_value_tw' class='linkedin_counter'> <i class='fa-solid fa-plus plus_linkedin_icon'></i>${imgCount-5}</span> <div class='div_in_div_linkedin_bg'> </div>`);
+                                //    $(".div_in_div_link").after(newDiv);                 
+                                $(".div_in_div_tw").append(`<span id= 'my_value_tw' class='twitter_counter'> <i class='fa-solid fa-plus plus_twitter_icon'></i>${imgCount-5}</span> <div class='div_in_div_twitter_bg'> </div>`);
                             } else {
-                                        const iconElement = $('<i>').addClass('fa-solid fa-plus plus_linkedin_icon');
+                                        const iconElement = $('<i>').addClass('fa-solid fa-plus plus_twitter_icon');
                                         var spanElement = $('#my_value_tw');
                                         var currentValue = parseInt(spanElement.text());
                                         newValue =  currentValue + 1;
@@ -1303,26 +1302,54 @@ $(document).ready(function () {
                         $('.prv_div_tw .mobile_post_img_tw').last().css('background-image', 'url(' + src + ')');
                         }
                         if(add_imge3 == 1 || add_imge3 == 2){
-                            $('.prv_div_tw .mobile_post_img_tw').addClass('max_height_linkedin');
+                            $('.prv_div_tw .mobile_post_img_tw').addClass('max_height_twitter');
                          }else{
-                            $('.prv_div_tw .mobile_post_img_tw').removeClass('max_height_linkedin');
+                            $('.prv_div_tw .mobile_post_img_tw').removeClass('max_height_twitter');
 
                          }
 
                          if(add_imge3 == 3){
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('third_child_img1');
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(2)').addClass('third_child_img2');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img1');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(2)').addClass('fourth_child_img2');
                          }
                          else{
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('third_child_img1');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img1');
                          }
 
                          if(add_imge3 == 4){
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('third_child_img3');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img3');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img4');
                          }
                          else{
-                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('third_child_img3');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img3');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img4');
                          }
+                         if(add_imge3 >= 5){
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').addClass('fourth_child_img5');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img6');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').addClass('fourth_child_img6');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').addClass('fourth_child_img6');
+                         }
+                         else{
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(1)').removeClass('fourth_child_img5');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img6');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').removeClass('fourth_child_img6');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').removeClass('fourth_child_img6');
+
+                         }
+                         if(add_imge3 >= 6){
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').addClass('fourth_child_img7');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').addClass('fourth_child_img7');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').addClass('fourth_child_img7');
+                          
+                         }else{
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(3)').removeClass('fourth_child_img7');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(4)').removeClass('fourth_child_img7');
+                            $('.prv_div_tw .mobile_post_img_tw:nth-child(5)').removeClass('fourth_child_img7');
+                         }
+                        
+                       
+                        
 
                    });
                    $('#mediaContainervideo_twitter').html('');
@@ -1331,8 +1358,6 @@ $(document).ready(function () {
                     var video = $('<video controls class="video_preview_twitter w-100">').attr('src', 'content_media/'+path);
                       $('.prv_div_tw').html('');
                     $('#mediaContainervideo_twitter').html(video);
-
-
 
                 }else{
                    $('.prv_div_tw').html('');
@@ -1367,7 +1392,7 @@ $(document).ready(function () {
                         var mediaType = file.type.split('/')[0];
 
 
-
+                       
                         if (socialicon == 'image_or_videofb') {
 
                             $('#fb_video').val(response.path);
@@ -1378,6 +1403,7 @@ $(document).ready(function () {
                             $('.video_preview').removeClass('d-none');
                             $('.preview_image').addClass('d-none');
                             setPreview(socialicon,response.path);
+                            
 
 
                         } else if (socialicon == 'image_or_video_insta') {

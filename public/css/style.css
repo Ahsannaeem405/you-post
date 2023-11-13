@@ -756,11 +756,13 @@ button {
     scrollbar-width: none;
 
 }
-
-.fc-unthemed td.fc-today {
+.fc-agenda-view table tbody tr .fc-widget-content .fc-day-grid.fc-unselectable table tbody tr .fc-day.fc-widget-content{
     background: none !important;
 }
+#postManagerCalendar td.fc-day.fc-widget-content.fc-today{
+    background: none;
 
+}
 .fc-day-header.fc-widget-header.fc-today {
     /* background: #FFFCFC; */
     box-shadow: -0.8644444346427917px -0.8644444346427917px 0px 0px #E0E0E0 inset;
@@ -1497,6 +1499,92 @@ button {
 }
 
 /* ------- */
+/* ---11,10,23----- */
+/*  */
+.prv_div_tw {
+    column-count: 2;
+    column-gap: 10px;
+    margin: auto;
+}
+
+.mobile_post_img_tw {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.div_in_div_tw{
+    position: relative;
+}
+.div_in_div_tw .mobile_post_img_tw {
+    height: 73px !important;
+}
+/*  */
+
+
+.max_height_twitter{
+    height: 281px !important;
+}
+.prv_div_tw .mobile_post_img_tw{
+       /* height: 100px; */
+    height: 113px;
+    width: 70px;
+    /* position: relative; */
+    margin-bottom: 10px;
+    break-inside: avoid-column;
+    width: 100%;
+    display: block;
+   
+}
+.twitter_counter{
+    color: white;
+    position: absolute;
+    top: 29%;
+    left: 39%;
+    z-index: 1;
+}
+.div_in_div_twitter_bg{
+    position: absolute;
+    background: #0A0909;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 60%;
+}
+.plus_twitter_icon{
+    font-size: 12px;
+    cursor: pointer;
+}
+.fourth_child_img1{
+    height: 283px !important;
+}
+.fourth_child_img2{
+    height: 161px !important;
+}
+.fourth_child_img3{
+    height: 165px !important;
+}
+.fourth_child_img4{
+    height: 165px  !important;
+}
+.fourth_child_img5{
+    height: 168px !important;
+}
+.fourth_child_img6{
+    height: 90px !important;
+}
+.fourth_child_img7{
+    height: 99px !important;
+}
+#mediaContainervideo_twitter{
+height: 300px;
+}
+.video_preview_twitter{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+/* -------- */
 #mediaContainervideo_inst {
     height: 245px !important;
 }
@@ -1900,7 +1988,7 @@ button {
 
 .fc-content-skeleton table tbody tr td.fc-event-container .fc-day-grid-event .fc-content .fc-title::before {
     content: '';
-    background-image: url("../assets/images/eventlogo3.ico");
+    background-image: url("../assets/images/youlog.png");
     position: absolute;
     background-repeat: no-repeat;
     opacity: 1;
