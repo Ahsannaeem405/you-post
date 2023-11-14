@@ -2876,6 +2876,7 @@ $(document).ready(function() {
             $(".Today-post-detail").css('display', 'none');
 
             $(".sidebar_preview").css('display', 'none');
+            $(".Today-post-detail").css('display', 'none');
         });
         $(document).on('click', '.fb-post', function() {
            
