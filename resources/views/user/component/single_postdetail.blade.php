@@ -247,7 +247,7 @@
                     </div>
                 </div>
                 <div class="TagsSec">
-                    <a href="#">#BrownTechInt</a>
+                    <!-- <a href="#">#BrownTechInt</a> -->
                 </div>
                 <div class="ImgSec">
                     {{-- <img src="{{ asset('images/linkedinpost.jpg') }}" alt=""> --}}
@@ -540,7 +540,7 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{ asset('images/dots-25.png') }}" alt="">
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" disable>
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>

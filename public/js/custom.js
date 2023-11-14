@@ -887,7 +887,7 @@ $(document).ready(function () {
                         $('.' + getRandomClass).find('.uplaod-gif').remove();
 
                         if (socialicon == 'image_or_video_youpost') {
-                            var ids = ['image_or_video_youpost', 'image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin'];
+                            var ids = ['image_or_video_youpost', 'image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin','image_or_video_twiter'];
 
                             ids.forEach(function (socialicon) {
                                 setPreview(socialicon, response.path);
@@ -929,7 +929,6 @@ $(document).ready(function () {
         path = path || "DefaultParam2";
 
         if (socialicon == 'image_or_video_youpost') {
-
             var imgOrVideo = $('#media_type_youpost').val();
             //  var imgCount = $(".prv_div img").length;
             var imgCount = $(".prv_div_youpost .mobile_post_img").length;
@@ -1409,23 +1408,7 @@ $(document).ready(function () {
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
                             $('.video_preview_link').removeClass('d-none');
                             $('.preview_image_link').addClass('d-none');
-                            $('.prv_div_link').html('');
-
-                                //
-                                if (type === 'video') {
-                                    var getRandomID = getRandomClassName();
-                                    var newDiv = $('<div>').html(`<div class="video_post_prev cross_img_con  ${getRandomID}" id="remove_id">
-                                    <img name='image/*' id="teting" src="../assets/images/videopostplaybtn.webp" class="testing_imgvideo">
-                                    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
-                                                                   </div>`);
-                                    $('.sm_container').append(newDiv);
-                                }
-                                else{
-                                    $('.randomClass').css('display','none');
-                                }
-                                    // 
-
-
+                            $('.prv_div_link').html('');                            
                         
                          
 

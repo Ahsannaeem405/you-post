@@ -2080,7 +2080,7 @@
             <span class="croissant-icon"></span>
             <div class="l1">
                 <div class="navigation">
-                    <h1 class="date-day mt-5 mb-4">
+                <h1 class="date-day mt-5 mb-4">
                         {{\Carbon\Carbon::now()->format('l')}}
                     </h1>
 
@@ -2873,6 +2873,8 @@ $(document).ready(function() {
         var isDetailVisible = false; // Initialize a flag to track visibility
         // Add a click event handler to the todayEbents-list div
         $(document).on('click', '.fc-content', function() {
+            $(".Today-post-detail").css('display', 'none');
+
             $(".sidebar_preview").css('display', 'none');
         });
         $(document).on('click', '.fb-post', function() {
