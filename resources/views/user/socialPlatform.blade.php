@@ -300,93 +300,69 @@
                      if (message == 'Facebook') { 
 
                                 if(status =='on'){
-
                                          var closestLabel = currentclick.closest('label'); 
                                          closestLabel= closestLabel.parent().find('.fb-recont_btn');               
                                          var newHref = "{{ url('connect_to_facebook') }}";                    
                                          closestLabel.attr('href', newHref);  
-                                         closestLabel.removeClass('d-none').show();
-                                       
-                                }  else{                                     
-
-
+                                         closestLabel.removeClass('d-none').show();                                       
+                                }else{                                  
                                     var closestLabel = currentclick.closest('label'); 
                                     closestLabel_conne= closestLabel.parent().find('.fb-conect_btn'); 
-                                    closestLabel_conne.removeClass('show').hide();
-
-                                  
+                                    closestLabel_conne.removeClass('show').hide();                                  
                                     closestLabel= closestLabel.parent().find('.fb-recont_btn');  
-                                    closestLabel.removeClass('show').hide();
-                                       
+                                    closestLabel.removeClass('show').hide();                                       
                                 }             
                           
                         } else if (message == 'Twitter') {
 
                                 if(status =='on'){
-
                                          var closestLabel = currentclick.closest('label'); 
                                          closestLabel= closestLabel.parent().find('.T-recont_btn');               
                                          var newHref = "{{ url('connect_twitter') }}";                    
                                          closestLabel.attr('href', newHref);  
                                          closestLabel.removeClass('d-none').show();
                                                                              
-                                }  else{       
-
+                                }else{       
                                     var closestLabel = currentclick.closest('label'); 
                                     closestLabel_conne= closestLabel.parent().find('.T-conect_btn'); 
-                                    closestLabel_conne.removeClass('show').hide();
-
-                                  
+                                    closestLabel_conne.removeClass('show').hide();                                  
                                     closestLabel= closestLabel.parent().find('.instrecont_btn');  
                                     closestLabel.removeClass('show').hide();
                                 }  
 
 
                         } else if (message == 'Instagram') {
-
                                 if(status =='on'){
-
                                         var closestLabel = currentclick.closest('label'); 
                                          closestLabel= closestLabel.parent().find('.instrecont_btn');               
                                          var newHref = "{{ url('connect_to_instagram') }}";                    
                                          closestLabel.attr('href', newHref);  
-                                         closestLabel.removeClass('d-none').show();
-                                              
+                                         closestLabel.removeClass('d-none').show();                                              
                                       
-                                }  else{
+                                }else{
                                     var closestLabel = currentclick.closest('label'); 
                                     closestLabel_conne= closestLabel.parent().find('.instconect_btn'); 
-                                    closestLabel_conne.removeClass('show').hide();
-
-                                  
+                                    closestLabel_conne.removeClass('show').hide();                                  
                                     closestLabel= closestLabel.parent().find('.instrecont_btn');  
-                                    closestLabel.removeClass('show').hide();
-                                  
-
-                                 
+                                    closestLabel.removeClass('show').hide();                                                                  
                                 }  
 
                         } else if (message == 'Linkedin') {                          
                
                                 if(status =='on'){
-                                        var closestLabel = currentclick.closest('label'); 
-                                         closestLabel= closestLabel.parent().find('.l_recont_btn');               
+                                        var closestLabel = currentclick.parent();
+                                         closestLabel= closestLabel.siblings('.l_recont_btn');               
                                          var newHref = "{{ url('connect_to_linkedin') }}";                    
                                          closestLabel.attr('href', newHref);  
-                                         closestLabel.removeClass('d-none').show();
+                                         closestLabel.removeClass('d-none').css('display','block');
                                          
-                                }  else{
-
-                                   
+                                }else{                                   
                                          var closestLabel = currentclick.closest('label');                                       
                                          closestLabel_conne= closestLabel.parent().find('.l-conect_btn'); 
-                                         closestLabel_conne.removeClass('show').hide();
-                                         
+                                         closestLabel_conne.removeClass('show').hide();                                         
                                          closestLabel= closestLabel.parent().find('.l_recont_btn');
-                                        closestLabel.removeClass('show').hide(); 
-                                        
-                                       
-                                     
+                                         closestLabel.removeClass('show').hide();                                    
+                                                                            
                                 }  
 
                         }                              
