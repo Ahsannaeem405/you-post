@@ -326,7 +326,7 @@
                                     var closestLabel = currentclick.closest('label'); 
                                     closestLabel_conne= closestLabel.parent().find('.T-conect_btn'); 
                                     closestLabel_conne.removeClass('show').hide();                                  
-                                    closestLabel= closestLabel.parent().find('.instrecont_btn');  
+                                    closestLabel= closestLabel.parent().find('.T-recont_btn');  
                                     closestLabel.removeClass('show').hide();
                                 }  
 
