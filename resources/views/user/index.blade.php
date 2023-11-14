@@ -1336,7 +1336,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="icons_d d-none">
+                                        <div class="icons_d ">
                                             <span class="ellipses"><i class="fa-solid fa-ellipsis"></i></span>
                                             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
                                         </div>
@@ -1375,7 +1375,7 @@
                                         </div>
                                     </div>
                                     <hr style="color:gray;" class="m-0">
-                                    <div class="actions-buttons actions_buttons px-1 mt-3 d-none">
+                                    <div class="actions-buttons actions_buttons px-1 mt-3">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
@@ -1440,9 +1440,9 @@
                             <hr style="color:gray;" class="m-0">
                             <div class="the_preview">
                                 <div class="col-md-12 the_preview_card" style="height: 80px">
-                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1">
-                                        <div class="post_img_name">
-                                            <div class="post_img">
+                                    <div class="MainMobileview MainMobileview2 d-flex justify-content-between mt-1 youpost_prev">
+                                        <div class="post_img_name youpost_prev_name">
+                                            <div class="post_img youpost_prev_img">
                                                 <img src="{{auth()->user()->account->fb_image}}" class="img-fluid"
                                                     width="40" height="40" alt="">
                                             </div>
@@ -1754,9 +1754,9 @@
                                             </div>
                                             <div class="follwers">
                                                 <span>
-                                                    1,511 followers
+                                                    0 followers
                                                 </span><br>
-                                                <span class="">3d . <i class="fa-solid fa-earth-americas"></i></span>
+                                                <span class="">0d . <i class="fa-solid fa-earth-americas"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -2080,7 +2080,7 @@
             <span class="croissant-icon"></span>
             <div class="l1">
                 <div class="navigation">
-                    <h1 class="date-day mt-3 mb-3">
+                    <h1 class="date-day mt-5 mb-4">
                         {{\Carbon\Carbon::now()->format('l')}}
                     </h1>
 
@@ -2826,7 +2826,7 @@ function closeSidebar() {
     document.getElementById("mySidebar").style.display = "none";
     $('.calendar2').css('padding-left', '0px');
     $('.calender.calendar_overflo').addClass('with-transition');
-    $(".fb-post").css('display', 'block');
+    // $(".fb-post").css('display', 'block');
     $(".Today-post-detail").hide();
 
 
@@ -2835,7 +2835,7 @@ $(document).ready(function() {
     var isDetailVisible = false; // Initialize a flag to track visibility
 
     // Add a click event handler to the todayEbents-list div
-    $(document).on('click', '.fb-post', function() {
+    $(document).on('click', '.fb-post ', function() {
         var id = $(this).data('id');
 
         $.ajax({
@@ -2866,39 +2866,14 @@ $(document).ready(function() {
 
 
     });
-    // $(".fb-post").click(function() {
-    //     if (!isDetailVisible) {
-    //         // If the detail is not visible, show it and set the flag
-    //         var contentToAppend = $(".the_preview").html();
-    //         $(".Today-post-detail").html(contentToAppend).show();
-    //         isDetailVisible = true;
-    //     } else {
-    //         // If the detail is visible, hide it and reset the flag
-    //         $(".Today-post-detail").hide();
-    //         isDetailVisible = false;
-    //     }
-
-
-    // });
+    
 });
-var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
 
-$(document).on('mouseleave', '.calendar_overflo', function() {
-    if (mouseLeaveEnabled) {
-        $(this).addClass('close');
-        $(this).css('z-index', '2222');
-        $(".text").css('opacity', '1');
-        $(".todayEbents-list2").css('display', 'none');
-        // $(".Today-post-detail").css('display', 'none');
-
-
-    }
     $(document).ready(function() {
         var isDetailVisible = false; // Initialize a flag to track visibility
-
         // Add a click event handler to the todayEbents-list div
         $(document).on('click', '.fc-content', function() {
-            $(".the_preview_card").css('display', 'none');
+            $(".sidebar_preview").css('display', 'none');
         });
         $(document).on('click', '.fb-post', function() {
            
@@ -2925,7 +2900,7 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
                         } else if (platform == 'Instagram') {
                             $(".InstagramWrap").removeAttr('style');
                         }else if (platform == 'Linkedin') {
-                            $(".LinkedinWrap").css('display', 'block');    
+                            $(".LinkedinWrap").removeAttr('style');    
                         }else if (platform == 'Twitter') {
                             $(".TwitterWrap").removeAttr('style');
                         }
@@ -2941,43 +2916,10 @@ $(document).on('mouseleave', '.calendar_overflo', function() {
 
 
 
-
-        });
-        // $(".fb-post").click(function() {
-        //     if (!isDetailVisible) {
-        //         // If the detail is not visible, show it and set the flag
-        //         var contentToAppend = $(".the_preview").html();
-        //         $(".Today-post-detail").html(contentToAppend).show();
-        //         isDetailVisible = true;
-        //     } else {
-        //         // If the detail is visible, hide it and reset the flag
-        //         $(".Today-post-detail").hide();
-        //         isDetailVisible = false;
-        //     }
-
-
-        // });
     });
-    var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
+    
 
-    $(document).on('mouseleave', '.calendar_overflo', function() {
-        if (mouseLeaveEnabled) {
-            $(this).addClass('close');
-            $(this).css('z-index', '2222');
-            $(".text").css('opacity', '1');
-            $(".todayEbents-list2").css('display', 'none');
-            // $(".Today-post-detail").css('display', 'none');
-
-
-        }
-    });
-    $(document).on('mouseenter', '.calendar_overflo', function() {
-        $(".text").css('opacity', '1');
-        $(".todayEbents-list2").css('display', 'block');
-        // $(".Today-post-detail").css('display', 'block');
-        $(this).css('z-index', '9999');
-
-    });
+   
 
 });
 </script>

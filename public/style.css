@@ -2037,6 +2037,7 @@ width: 100%;
 }
 .post_img_name .post_img{
     width: 100%;
+   
 }
 .PostHeaderInner .d-flex{
 
@@ -2158,18 +2159,26 @@ width: 100%;
 .post_detailWrap .DetailText .d-flex{
     padding-bottom: 8px;
 }
-.post_detailWrap .DetailText .d-flex img{
+/* .post_detailWrap .DetailText .d-flex img{
     border-radius: 50%;
-}
-.post_detailWrap .DetailText .d-flex h5{
-    
-}
+} */
+
 .post_detailWrap .DetailText p{
     color: #000;
     font-size: 10px;
     font-weight: normal;
     text-align: left;
     font-family: 'Poppins', sans-serif;
+}
+.post_detailWrap .DetailText {
+    display: block;
+    display: -webkit-box;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 .post_detailWrap .DetailText .publishedpost {
     margin: unset;
@@ -3272,4 +3281,21 @@ z-index: 1;
 .post_img_name .youpost_prev_img{
     width: auto;
 }
+.TwitterWrap .post_img_name{
+    padding: 0 10px 0 0;
+}
+.TwitterWrap .post_img{
+    width: 85%;
+    margin: auto;
+}
+.TwitterWrap .DetailText{
+    padding-left: 0px !important;
+}
+.testing_imgvideo{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+
+
 

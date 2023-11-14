@@ -576,16 +576,13 @@ $(document).ready(function () {
             } else if (id_of_div == 'media_type_linkedin') {
                 $('#media_type_linkedin').val('');
                 $('.prv_div_link').html('');
-            }else if (id_of_div == 'media_type_twitter') {
-                $('#media_type_twitter').val('');
-                $('.prv_div_tw').html('');
             }
 
         }
 
         if(socialicon == 'image_or_video_youpost'){
 
-            var ids = ['image_or_video_youpost','image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin','image_or_video_twiter'];
+            var ids = ['image_or_video_youpost','image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin'];
             ids.forEach(function(socialicon) {
                 setPreview(socialicon);
             });
@@ -729,6 +726,8 @@ $(document).ready(function () {
 
                               $('#file_error_youpost').addClass('d-none')
                           }
+
+
         var img_con = `<div class=" cross_img_con  ${getRandomClass}" id="remove_id" data-div="${getRandomClass}">
         <img name='image/*' id="teting" src="${file}"/>
          <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
@@ -871,12 +870,12 @@ $(document).ready(function () {
                         $('#file_error_twiiter').addClass('d-none')
                     }
                 }
-                    
                 else if(socialicon == 'image_or_video_youpost'){
 
                      appendtoall(e.target.result,dimention,dimention_error,getRandomClass);
                 }
-               
+
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1392,7 +1391,7 @@ $(document).ready(function () {
                         var mediaType = file.type.split('/')[0];
 
 
-                       
+
                         if (socialicon == 'image_or_videofb') {
 
                             $('#fb_video').val(response.path);
@@ -1403,7 +1402,6 @@ $(document).ready(function () {
                             $('.video_preview').removeClass('d-none');
                             $('.preview_image').addClass('d-none');
                             setPreview(socialicon,response.path);
-                            
 
 
                         } else if (socialicon == 'image_or_video_insta') {
@@ -1434,12 +1432,13 @@ $(document).ready(function () {
                             $('#media_type_twitter').val('video');
                             $("#image_or_video_twiter").parent().find('.cross_img_con').remove();
 
-                            $('.video_preview_twitter').removeClass('d-none');
-                            $('.preview_image_twitter').addClass('d-none');
+                            $('.video_preview_link').removeClass('d-none');
+                            $('.preview_image_link').addClass('d-none');
                             setPreview(socialicon,response.path);
 
                         }
-                        else if (socialicon == 'image_or_video_youpost') {
+                        else if (socialicon == 'image_or_video_youpost') {  
+                                                     
 
                             $('#youpost_video').val(response.path);
                             $('#media_type_youpost').val('video');
@@ -1469,13 +1468,20 @@ $(document).ready(function () {
                             $('.preview_image_link').addClass('d-none');
                             $('.prv_div_link').html('');
 
+                                //
+                                if (type === 'video') {
+                                    var getRandomID = getRandomClassName();
+                                    var newDiv = $('<div>').html(`<div class="video_post_prev cross_img_con  ${getRandomID}" id="remove_id">
+                                    <img name='image/*' id="teting" src="../assets/images/videopostplaybtn.webp" class="testing_imgvideo">
+                                    <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark' id="${getRandomID}"></i></a>
+                                                                   </div>`);
+                                    $('.sm_container').append(newDiv);
+                                }
+                                else{
+                                    $('.randomClass').css('display','none');
+                                }
+                                    // 
 
-                            $('#twitter_video').val(response.path);
-                            $('#media_type_twitter').val('video');
-                            $("#image_or_video_twiter").parent().find('.cross_img_con').remove();
-                            $('.video_preview_twitter').removeClass('d-none');
-                            $('.preview_image_twitter').addClass('d-none');
-                            $('.prv_div_tw').html('');
 
                                 setPreview(socialicon,response.path);
 
