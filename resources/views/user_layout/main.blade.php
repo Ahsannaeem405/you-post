@@ -595,7 +595,7 @@
                 if (textareaAttr == 'youpost') {
                     
                     var formattedText = inputText.replace(/\n/g, '<br>');
-                   $("#mypostresult_youpost").html('<pre>' + formattedText + '</pre>');
+                   $("#mypostresult_youpost").html(formattedText);
    
 
                 }else if (textareaAttr == 'fb') {
@@ -604,7 +604,7 @@
                 var new_str= getString(selectedValues);
 
                 var formattedText = inputText.replace(/\n/g, '<br>');
-                   $("#mypostresult_fb").html('<pre>' + formattedText + '</pre>');
+                   $("#mypostresult_fb").html(formattedText );
                 // $("#mypostresult_fb").empty().append(inputText) ;
                  $("#mynameresult").empty().append(new_str) ;
 
@@ -613,7 +613,7 @@
             var selectedValues = $('#instagram_tag').val();
             var new_str= getString(selectedValues);
             var formattedText = inputText.replace(/\n/g, '<br>');
-                   $("#mypostresult_insta").html('<pre>' + formattedText + '</pre>');
+                   $("#mypostresult_insta").html( formattedText );
             //  $("#mypostresult_insta").empty().append(inputText) ;
                $("#mynameresult_insta").empty().append(new_str) ;
 
@@ -622,7 +622,7 @@
             var selectedValues = $('#twitter_tag').val();
             var new_str= getString(selectedValues);
             var formattedText = inputText.replace(/\n/g, '<br>');
-            $("#mypostresult_twitter").html('<pre>' + formattedText + '</pre>');
+            $("#mypostresult_twitter").html( formattedText );
             // $("#mypostresult_twitter").empty().append(inputText) ;
                $("#mynameresult_twitter").empty().append(new_str) ;
 
@@ -631,7 +631,7 @@
             var selectedValues = $('#linkedin_tag').val();
             var new_str= getString(selectedValues);
             var formattedText = inputText.replace(/\n/g, '<br>');
-            $("#mypostresult_linkedin").html('<pre>' + formattedText + '</pre>');
+            $("#mypostresult_linkedin").html( formattedText );
             // $("#mypostresult_linkedin").empty().append(inputText) ;
                $("#mynameresult_linkedin").empty().append(new_str) ;
           }
