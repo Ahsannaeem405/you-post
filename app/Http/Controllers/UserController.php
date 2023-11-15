@@ -39,12 +39,9 @@ class UserController extends Controller
     }
 
     public function dashbaord()
-    {
-        // dd(auth()->user()->account_id);
+    {       
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
-        // $posts = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->groupBy('group_id')->get();
-        // $posts = Post::select('*',DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'),DB::raw('COUNT(*) as post_count'))
         $posts = Post::select(
             DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'),
             DB::raw('COUNT(*) as total_count'),
@@ -60,24 +57,29 @@ class UserController extends Controller
         $allPosts = [];
      
         foreach ($posts as $post) {
+            $title = '';
+
+            if ($post->published_count > 0) {
+                $title .= $post->published_count . ' Published ';
+            }
+        
+            if ($post->not_published_count > 0) {
+                $title .= $post->not_published_count . ' Scheduled';
+            }
             $allPosts[] = [
-                'id' => $post->id,
-                // 'title' => $post->post_count . ' Published',
-                'title' => $post->published_count . ' Published <br>' . $post->not_published_count . ' Scheduled',
+                'id' => $post->id,               
+                'title' =>  $title,
                 'start' => $post->formatted_posted_at,
                 'event_date' => Carbon::parse($post->formatted_posted_at)->format('Y-m-d'),
-                'ac_id' => auth()->user()->account_id,
-                // 'formatted_posted_at' => Carbon::parse($post->formatted_posted_at)->format('h:i A'),
+                'ac_id' => auth()->user()->account_id,              
             ];
-        }
-      
-
+        }      
+    //   dd($allPosts);
         $response = $this->createPostService->InitilizeData();
         $stattistics = $this->createPostService->Statisics();
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
-
 
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
 
