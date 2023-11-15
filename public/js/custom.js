@@ -706,7 +706,6 @@ $(document).ready(function () {
         //**************************Appedn to all using youpot div ***********************
     }
     function appendtoall(file, dimention, dimention_error, getRandomClass) {
-        alert('video');
 
         var getRandomID = getRandomClassName();
 

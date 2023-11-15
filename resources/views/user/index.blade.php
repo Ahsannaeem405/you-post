@@ -2874,6 +2874,7 @@ $(document).ready(function() {
         // Add a click event handler to the todayEbents-list div
         $(document).on('click', '.fc-content', function() {
             $(".sidebar_preview").css('display', 'none');
+            $(".Today-post-detail").css('display', 'none');
         });
         $(document).on('click', '.fb-post', function() {
            
