@@ -1551,6 +1551,9 @@ button {
     bottom: 0;
     opacity: 60%;
 }
+.div_in_div_twitter_bg:hover {
+    opacity: 30%;
+}
 .plus_twitter_icon{
     font-size: 12px;
     cursor: pointer;
@@ -1679,54 +1682,59 @@ height: 300px;
 /*  */
 
 #mypostresult_fb {
-    display: block;
-    display: -webkit-box;
-    margin: 0 auto;
-    -webkit-line-clamp: 2;
+    display:inline-block;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
+    overflow-y:scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    height:49px;
+    width:100%;
 }
+#mypostresult_fb::-webkit-scrollbar {
+    display: none;
+} 
 
 #mypostresult_insta {
-    display: block;
-    display: -webkit-box;
-    margin: 0 auto;
-    -webkit-line-clamp: 1;
+    display:inline-block;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
+    overflow-y:scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    height:49px;
+    width:100%;
 }
-
+#mypostresult_insta::-webkit-scrollbar {
+    display: none;
+}
 #mypostresult_twitter {
     font-family: Arial, Helvetica, sans-serif;
     color: #e4e2e2;
     font-size: 12px;
     font-weight: 400;
     font-style: normal;
-    display: block;
-    display: -webkit-box;
-    margin: 0 auto;
-    -webkit-line-clamp: 2;
+    display:inline-block;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
+    overflow-y:scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    height:51px;
+    width:100%;
+}
+#mypostresult_twitter::-webkit-scrollbar {
+    display: none;
 }
 
 #mypostresult_linkedin {
-    display: block;
-    display: -webkit-box;
-    margin: 0 auto;
-    -webkit-line-clamp: 2;
+    display:inline-block;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 11px;
+    overflow-y:scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    height:51px;
+    width:100%;
+}
+#mypostresult_linkedin::-webkit-scrollbar {
+    display: none;
 }
 
 .twitter_prev {
