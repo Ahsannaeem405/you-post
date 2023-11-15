@@ -588,7 +588,7 @@ body.dark .home .text {
                                 @elseif(in_array("Linkedin", $platforms))
                                 <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle" alt="" width="45px" />
                                 @else
-                                <img src="{{asset('images/admin.png')}}" class="v_icon rounded-circle" alt="" width="45px" />
+                                <img src="{{asset('images/YouPost_Logo.png')}}" class="v_icon rounded-circle" alt="" width="45px" />
                                 @endif
 
                                 <span class="text nav-text text2"
@@ -603,8 +603,7 @@ body.dark .home .text {
                                         href="{{url("change_acount/".encrypt($account->id))}}"><i
                                             class="fa-solid fa-user"></i> {{$account->name}}</a></li>
                                 @endforeach
-                                <li><a class="dropdown-item" style="cursor: pointer" data-bs-toggle="modal"
-                                        data-bs-target="#addAccount">Add Account <i
+                                <li><a class="dropdown-item" style="cursor: pointer" href="{{ route('index') }}">Add Account <i
                                             class="fa-solid fa-plus text-success"></i></a></li>
                             </ul>
                         </div>
