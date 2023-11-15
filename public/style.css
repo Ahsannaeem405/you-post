@@ -672,7 +672,7 @@ body {
     background-size: 100% 100%;
     position: relative;
     /* padding: 47px 22px; */
-    padding: 44px 14px;
+    padding: 44px 14px 20px 14px;
 }
 
 
@@ -2760,6 +2760,8 @@ height: 100%;
     justify-content: space-between;
     align-items: center;
     padding-top: 6px;
+    height: 100%;
+    padding-top: 8px;
 }
 .insta_acc_bar_parent img{
     cursor: pointer;
@@ -2780,7 +2782,7 @@ height: 100%;
     background-position: top center;
     background-size: 100% 100%;
     position: relative;
-    padding: 44px 18px;
+    padding: 44px 14px 20px 14px
 }
 .indrive_icon{
     width: 40px;
@@ -3264,7 +3266,7 @@ z-index: 1;
 
 /* 11-23 */
 .twitter_preview{
-    padding-top: 50px;
+    padding-top: 36px;
 }
 .youpost_prev{
     background:none;
@@ -3295,6 +3297,18 @@ z-index: 1;
     height: 50px;
     width: 50px;
     object-fit: cover;
+}
+.dropdown-toggle.dropdown_btn{
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+.text2.custom_dropdown_set{
+    max-width: 120px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px !important;
 }
 
 

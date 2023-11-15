@@ -538,7 +538,7 @@ body.dark .home .text {
         justify-content: center;
         align-items: center;
     }
-    
+
 }
 </style>
 <!-- ------------------------------------------- offcanvas sidebar ----------------------------------------- -->
@@ -573,29 +573,40 @@ body.dark .home .text {
                             </div>
                         </a>
                         @php
-                            $platforms =auth()->user()->account->platforms;
-                            @endphp
+                        $platforms =auth()->user()->account->platforms;
+                        @endphp
                         <div class="dropdown">
-                            <button class="dropdown-toggle bg-transparent border-0" type="button"
+                            <button class="dropdown-toggle bg-transparent border-0 dropdown_btn" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if(in_array("Facebook", $platforms))
-                                <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle" alt="" width="45px" />
+
+                                <div>
+                                    <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle "
+                                        alt="" width="45px" />
+                                </div>
+
                                 @elseif(in_array("Instagram", $platforms))
-                                <img src="{{ auth()->user()->account->inst_image}}" class="v_icon rounded-circle" alt="" width="45px" />
+                                <img src="{{ auth()->user()->account->inst_image}}" class="v_icon rounded-circle" alt=""
+                                    width="45px" />
 
                                 @elseif(in_array("Twitter", $platforms))
-                                <img src="{{auth()->user()->account->twt_image}}" class="v_icon rounded-circle" alt="" width="45px" />
+                                <img src="{{auth()->user()->account->twt_image}}" class="v_icon rounded-circle" alt=""
+                                    width="45px" />
                                 @elseif(in_array("Linkedin", $platforms))
-                                <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle" alt="" width="45px" />
+                                <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle" alt=""
+                                    width="45px" />
                                 @else
-                                <img src="{{asset('images/admin.png')}}" class="v_icon rounded-circle" alt="" width="45px" />
+                                <img src="{{asset('images/admin.png')}}" class="v_icon rounded-circle" alt=""
+                                    width="45px" />
                                 @endif
+                                <div class="text nav-text text2 custom_dropdown_set" style="padding-left:10px;">
+                                    {{auth()->user()->account->name}}
+                                </div>
+                                <div>
+                                    <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
+                                        style="padding-left: 2rem;" />
+                                </div>
 
-                                <span class="text nav-text text2"
-                                    style="padding-left:7px;">{{auth()->user()->account->name}}</span>
-                                <!-- <i class="fa-solid fa-caret-down"style="padding-left:35px;"></i> -->
-                                <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
-                                    style="padding-left: 4rem;" />
                             </button>
                             <ul class="dropdown-menu mydropdown_menu" aria-labelledby="dropdownMenuButton1">
                                 @foreach($accounts as $account)
@@ -612,7 +623,8 @@ body.dark .home .text {
                     </div>
                 </li>
 
-                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span class="text nav-text">Add Accounts</span></a></li>
+                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span
+                            class="text nav-text">Add Accounts</span></a></li>
                 </li>
 
                 <!-- <li class="nav-link">

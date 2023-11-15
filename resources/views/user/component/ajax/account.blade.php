@@ -21,7 +21,8 @@
     border-radius: 50%;
     margin-top: 40px;
 }
-.rounded-circle2{
+
+.rounded-circle2 {
     object-fit: none;
     width: 100px;
     height: 100px;
@@ -87,17 +88,20 @@
 }
 
 .single_platform {
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.reconnect_platform{
-    color:blue;
+
+.reconnect_platform {
+    color: blue;
     border-bottom: 1px solid blue;
 }
-.reconnect_platform:active{
-    color:red;
+
+.reconnect_platform:active {
+    color: red;
     border-bottom: 1px solid red;
 }
 
@@ -109,7 +113,7 @@
 .T-recont_btn,
 .instconect_btn,
 .instrecont_btn {
-    margin-top: 10px;
+    margin-top: 18px;
     border-radius: 30px;
     border: none;
 }
@@ -117,40 +121,59 @@
 .delete_accountbtn {
     height: 45px;
 }
-.linkedbtnabc{
-    background:#0d6efd;
-    color:#fff;
-    padding:10px;
-    border-radius:30px;
+
+.linkedbtnabc {
+    background: #0d6efd;
+    color: #fff;
+    padding: 10px;
+    border-radius: 30px;
 }
-.r_btn{
-    text-decoration:none;
-    color:#000;
+
+.r_btn {
+    text-decoration: none;
+    color: #000;
 }
+
 /*  */
-.fb-reconect_btn, .l_recont_btn, .T-recont_btn, .instrecont_btn{
-  position: relative;
-  /* display: inline-block; */
-  /* border-bottom: 1px dotted black; */
+.fb-reconect_btn,
+.l_recont_btn,
+.T-recont_btn,
+.instrecont_btn {
+    position: relative;
+    /* display: inline-block; */
+    /* border-bottom: 1px dotted black; */
 }
 
- .tooltiptext_fb, .tooltiptext_inst ,.tooltiptext_tw ,.tooltiptext_link {
-  visibility: hidden;
-  width: 120px;
-  font-family: 'Poppins', sans-serif;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
+.tooltiptext_fb,
+.tooltiptext_inst,
+.tooltiptext_tw,
+.tooltiptext_link {
+    visibility: hidden;
+    width: 120px;
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
 
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
 }
 
-.fb-recont_btn:hover .tooltiptext_fb, .l_recont_btn:hover .tooltiptext_link, .T-recont_btn:hover .tooltiptext_tw, .instrecont_btn:hover .tooltiptext_inst{
-  visibility: visible;
+.fb-recont_btn:hover .tooltiptext_fb,
+.l_recont_btn:hover .tooltiptext_link,
+.T-recont_btn:hover .tooltiptext_tw,
+.instrecont_btn:hover .tooltiptext_inst {
+    visibility: visible;
+}
+.maxchar{
+    color:green;
+    font-weight:400;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 0;
+    font-size:14px;
 }
 /*  */
 /* main account file styling */
@@ -161,15 +184,30 @@
 }
 
 @media (min-width:320px) and (max-width:576px) {
-    .input_lb {
+    .account-info {
         display: flex;
         flex-direction: column;
     }
-
-    .account-detail {
+   .account_name{
+    width:100%;
+    margin-bottom:10px;
+   }
+   .btn-danger {
+    margin-left: 2px;
+}
+.all_social_platformWrp {
+        width: 93%;
+    }
+    .delete_accountbtn{
         width: 100% !important;
         margin-bottom: 20px;
     }
+    .showColorIcon{
+        margin-bottom:15px;
+    }
+    .platformBtn {
+    text-align: center;
+}
 }
 </style>
 @foreach($accounts as $key=>$account)
@@ -186,13 +224,13 @@
         @elseif(in_array("Linkedin", $account->platforms))
         <img src="{{ $account->link_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @else
-        <img src="{{asset('images/you-post.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
+        <img src="{{asset('images/YouPost_Logo.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
             <label for="" class="user_detail">Account Name</label>
             <div class="account-info" style="display:flex; justify-content:center;">
                 <input type="text" value="{{$account->name}}" data-account="{{$account->id}}" placeholder="Account Name"
-                    class="account-detail account_name">
+                    class="account-detail account_name" maxlength="15" oninput="countCharacters()">
                 <form action="{{ route('account-delete',$account->id) }}" method="POST">
                     @csrf
                     @method('Post')
@@ -201,6 +239,9 @@
                     </div>
                 </form>
             </div>
+            <div class="maxchar">
+                <p> max char: <span class="charCount">0/15</span></p>
+                </div>
         </div>
         <div class="switch_account">
             <span>Switch on & connect social platform for Facebook, Instagram, etc....</span>
@@ -230,17 +271,17 @@
                     <a class="fb-recont_btn {{ in_array('Facebook', $account->platforms) &&
                         $account->fb_access_token != null  ? '' : 'd-none' }} r_btn"
                         href="{{ url('connect_to_facebook') }}">
-                         <span class="reconnect_platform"> Reconnect</span>
-                         
-                        <span class="tooltiptext_fb">Click here to connect facebook account</span>
-                       
+                        <span class="reconnect_platform"> Reconnect</span>
+
+                        <span class="tooltiptext_fb">Click here to connect a facebook account</span>
+
 
                     </a>
 
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) &&
                         $account->fb_access_token == null  ? 'showColorIcon' : 'd-none' }}"
                         href="{{ url('connect_to_facebook') }}">
-                         <span class="linkedbtnabc"> Connect</span>
+                        <span class="linkedbtnabc"> Connect</span>
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
@@ -258,17 +299,19 @@
                         <span class="slider round"></span>
                     </label>
 
-                
+
                     <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) &&
-                        $account->insta_access_token != null  ? '' : 'd-none' }} r_btn" href="{{ url('connect_to_instagram') }}">
-                         <span class="reconnect_platform"> Reconnect</span>
-                       
-                        <span class="tooltiptext_inst">Click here to connect Instagram account</span>
-                       
+                        $account->insta_access_token != null  ? '' : 'd-none' }} r_btn"
+                        href="{{ url('connect_to_instagram') }}">
+                        <span class="reconnect_platform"> Reconnect</span>
+
+                        <span class="tooltiptext_inst">Click here to connect a Instagram account</span>
+
                     </a>
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) &&
-                        $account->insta_access_token == null  ? '' : 'd-none' }}" href="{{ url('connect_to_instagram') }}">
-                         <span class="linkedbtnabc"> Connect</span>
+                        $account->insta_access_token == null  ? '' : 'd-none' }}"
+                        href="{{ url('connect_to_instagram') }}">
+                        <span class="linkedbtnabc"> Connect</span>
                     </a>
 
                 </div>
@@ -284,21 +327,23 @@
                         <span class="slider round"></span>
                     </label>
 
-                   
+
 
                     <a class="T-recont_btn {{ 
                         in_array('Twitter', $account->platforms) &&
-                        $account->twiter_access_token != null  ? '' : 'd-none' }} r_btn" href="{{ url('connect_twitter') }}">
-                         <span class="reconnect_platform">
-                         Reconnect</span>
-                        
-                        <span class="tooltiptext_tw">Click here to connect Twitter account</span>
-                       
+                        $account->twiter_access_token != null  ? '' : 'd-none' }} r_btn"
+                        href="{{ url('connect_twitter') }}">
+                        <span class="reconnect_platform">
+                            Reconnect</span>
+
+                        <span class="tooltiptext_tw">Click here to connect a Twitter account</span>
+
                     </a>
 
                     <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) &&
-                        $account->twiter_access_token ==  null  ? '' : 'd-none' }}" href="{{ url('connect_twitter') }}">
-                         <span class="linkedbtnabc">
+                        $account->twiter_access_token ==  null  ? '' : 'd-none' }}"
+                        href="{{ url('connect_twitter') }}">
+                        <span class="linkedbtnabc">
                             Connect</span>
                     </a>
 
@@ -315,20 +360,21 @@
                             data-account="{{$account->id}}" name="plateform[{{$account->id}}]"
                             {{ in_array('Linkedin', $account->platforms) ? 'checked' : '' }}>
                         <span class="slider round"></span>
-                    </label>                   
+                    </label>
                     <a class="l_recont_btn {{
                         in_array('Linkedin', $account->platforms) &&
                         $account->linkedin_accesstoken != null &&
                         $account->linkedin_user_id != null
                         ? '' : 'd-none'
-                    }} r_btn" href="{{ url('connect_to_linkedin') }}">                      
-                       <span class="reconnect_platform" > Reconnect</span>                        
-                        <span class="tooltiptext_link">Click here to connect Linkedin account</span>                        
+                    }} r_btn" href="{{ url('connect_to_linkedin') }}">
+                        <span class="reconnect_platform"> Reconnect</span>
+                        <span class="tooltiptext_link">Click here to connect a Linkedin account</span>
                     </a>
                     <a class="l-conect_btn {{ 
                         in_array('Linkedin', $account->platforms)
                         && $account->linkedin_accesstoken == null
-                        &&  $account->linkedin_user_id == null ? '' : 'd-none' }}" href="{{ url('connect_to_linkedin') }}">
+                        &&  $account->linkedin_user_id == null ? '' : 'd-none' }}"
+                        href="{{ url('connect_to_linkedin') }}">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
@@ -344,7 +390,7 @@
                         <span class="slider round"></span>
                     </label>
 
-                </div> 
+                </div>
                 <!-- <div class="single_platform" style="">
                     <div class="social_icon" style="padding-bottom: 6px;">
                         <img src="{{asset('images/Telegram_Color.png')}}" class="color_icon" alt=""
@@ -366,3 +412,34 @@
 
 <!--  -->
 @endforeach
+<script>
+$(document).ready(function() {
+    // Get all elements with the class 'account_name'
+    var inputFields = document.querySelectorAll('.account_name');
+
+    // Iterate through each input field
+    inputFields.forEach(function(inputField) {
+        // Set up an event listener for input changes
+        inputField.addEventListener('input', function() {
+            countCharacters(inputField); // Pass the current input field to the function
+        });
+
+        // Initialize character count on page load
+        countCharacters(inputField);
+    });
+});
+
+function countCharacters(inputField) {
+    // Get the maximum allowed characters
+    var maxLength = 15;
+
+    // Update the character count for the specific input field
+    var charCount = inputField.value.length;
+    var parentDiv = inputField.parentElement;
+    var charCountElement = inputField.parentElement; // Assuming the counter element is a sibling
+    var charCountElement = parentDiv.nextElementSibling.querySelector('.maxchar .charCount');
+    // Update the character count and format "0/15"
+    charCountElement.innerText = charCount + "/" + maxLength;
+}
+
+</script>

@@ -34,6 +34,9 @@
             visibility: visible;
             opacity: 1;
         }
+        .loading_account{
+            opacity:0.3;
+        }
 </style>
 <div class="platformBtn">
             <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus">Dashboard</a>
@@ -88,7 +91,7 @@
 
         <div style="text-align:center; margin-top:
            30px"  class="addOtherAccountMain" id="addAccount">
-            <button class="btn btn-primary"><img src="{{asset('images/sum-icon.svg')}}" style="    padding-right: 5px; width: 17px;
+            <button class="btn btn-primary add_account"><img src="{{asset('images/sum-icon.svg')}}" style="    padding-right: 5px; width: 17px;
             height: 13px;;"  id="addAccount">Add New
                 Account</button>
 
@@ -207,17 +210,24 @@
 
         //creating new account
         $(document).on('click', '#addAccount', function () {
-
+            $(this).prop('disabled', true);
+            $('.add_account').addClass('loading_account');
+            var test=  $(this);
 
             $.ajax({
                 type: "post",
                 url: "{{ route('store-acount')}}",
-                success: function (response) {
+                success: function (response) { 
+                    setTimeout(function () {
+                        test.prop('disabled', false);
+                $('.add_account').removeClass('loading_account');
+            }, 500);
                     RefresehAccounts();
+                   
                 }
             });
         });
-
+   
         //refresh all accounts ui
         function RefresehAccounts() {
             $.ajax({

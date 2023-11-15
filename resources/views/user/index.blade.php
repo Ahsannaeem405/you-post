@@ -602,15 +602,17 @@
 }
 
 #mypostresult_youpost {
-    display: block;
-    display: -webkit-box;
-    margin: 0 auto;
-    -webkit-line-clamp: 2;
+    display:inline-block;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
+    overflow-y:scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+    height:49px;
+    width:100%;
 }
+#mypostresult_youpost::-webkit-scrollbar {
+    display: none;
+} 
 
 .wizard-fieldset_youpost {
     color: #171717;
@@ -1348,7 +1350,7 @@
                                     </div>
                                     <div id="selectedValues"></div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-4">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
                                             <div class="prv_div_youpost"> </div>
@@ -1359,7 +1361,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr style="color:gray; margin-top:41px !important;" class="m-0">
+                                    <hr style="color:gray; margin-top:45px !important;" class="m-0">
                                 </div>
                                 <div class="col-md-12">
                                     <div
@@ -1466,7 +1468,7 @@
                                     </div>
                                     <div id="selectedValues"></div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-3">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
                                             <div class="prv_div"> </div>
@@ -1493,7 +1495,7 @@
                                         </div>
                                     </div>
                                     <hr style="color:gray;" class="m-0">
-                                    <div class="actions-buttons actions_buttons px-1 mt-3">
+                                    <div class="actions-buttons actions_buttons px-1 mt-2">
                                         <ul class="actions-buttons-list d-flex p-0 justify-content-between">
                                             <li class="actions-buttons-item  d-flex align-item-center">
                                                 <!-- <i class="fa-regular fa-thumbs-up"></i> -->
@@ -1597,7 +1599,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-md-12" style="height:20px">
+                                    <div class="col-md-12" style="height:56px">
                                         <div class="Mobcart_title">
                                             <span id="mypostresult_insta" class="mypostresult" style="color:#000;">Write
                                                 your
@@ -1607,7 +1609,7 @@
                                         <div id="selectedValues"></div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="insta_pos_comm">
+                                        <div class="insta_pos_comm d-none">
                                             <p class="mb-0">
                                                 0 comments
                                             </p>
