@@ -214,6 +214,7 @@
                 url: "{{ route('store-acount')}}",
                 success: function (response) {
                     RefresehAccounts();
+                    
                 }
             });
         });
