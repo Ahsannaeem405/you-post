@@ -607,7 +607,7 @@
     overflow-y:scroll;
     -ms-overflow-style: none;
     scrollbar-width: none; 
-    height:49px;
+    height:50px;
     width:100%;
 }
 #mypostresult_youpost::-webkit-scrollbar {

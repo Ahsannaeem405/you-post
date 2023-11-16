@@ -160,4 +160,20 @@ class Post extends Model
       
     }
 
+    public function getPostImgSrc($post)
+    {                 
+        $imgSrc = '';
+        
+        if (empty($post->media_type)) {
+            $imgSrc = asset('images/tx_icon.png');
+        } elseif ($post->media_type == 'image') {
+            $Images = explode(',', $post->media);
+            $imgSrc = asset('content_media/' . $Images[0]);
+        } elseif ($post->media_type == 'video') {
+            $imgSrc = asset('images/tx_icon.png');
+        }
+    
+        return $imgSrc;
+    }
+
 }

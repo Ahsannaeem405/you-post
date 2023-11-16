@@ -373,11 +373,13 @@ $(document).ready(function () {
         settime();
     });
     $(document).on('click', '.post_now_btn', function () {
+     
         $('.posttime').val('now');
         apend_current_time();
 
     });
     $(document).on('click', '.post_later_now_btn', function () {
+       
         $('.posttime').val('later');
         //apend_current_time();
         $('#TimetoUploadPost').modal('hide');
@@ -407,7 +409,6 @@ $(document).ready(function () {
 
         $("#post_form").submit(function (event) {
             event.preventDefault();
-
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
@@ -437,6 +438,7 @@ $(document).ready(function () {
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
                 $(this).unbind('submit').submit();
+
             }
         });
     });
@@ -939,6 +941,13 @@ $(document).ready(function () {
                 }
 
                 else if (socialicon == 'image_or_video_youpost') {
+                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();   
+                    $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();      
+                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();                      
+                    $("#image_or_video_youpost").parent().find('.cross_img_con_video').remove();                      
+
+
                     appendtoall(e.target.result, dimention, dimention_error, getRandomClass);
                 }
 

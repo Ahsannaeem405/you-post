@@ -60,7 +60,7 @@ class UserController extends Controller
             $title = '';
 
             if ($post->published_count > 0) {
-                $title .= $post->published_count . ' Published ';
+                $title .= $post->published_count . ' Published <br> ';
             }
         
             if ($post->not_published_count > 0) {
@@ -159,17 +159,16 @@ class UserController extends Controller
                 $base64Image = $request->input('image');
 
                 // Decode the base64 image data and create an Intervention Image instance
-                $img = Image::make(base64_decode($base64Image));
-
-
-                // Define the desired aspect ratio (4:5)
-                $desiredAspectRatio = 4 / 5;
-
-                // Get the original image dimensions
+                $img = Image::make(base64_decode($base64Image));             
+                $desiredAspectRatioLandscape = 16 / 5;
+                $desiredAspectRatioPortrait = 4 / 5;              
                 $originalWidth = $img->width();
                 $originalHeight = $img->height();
-
-
+                if ($originalWidth > $originalHeight) {                  
+                    $desiredAspectRatio = $desiredAspectRatioLandscape;
+                } else {                  
+                    $desiredAspectRatio = $desiredAspectRatioPortrait;
+                }
                 if ($originalWidth / $originalHeight > $desiredAspectRatio) {
                     // Image is wider than 4:5, so we need to add padding to the top and bottom
                     $newHeight = $originalWidth / $desiredAspectRatio;
@@ -628,6 +627,11 @@ class UserController extends Controller
 
     public function connect_facebook_calback(Request $request)
     {
+        if ($request->has('error')) {
+            // User chose not to authorize the application
+            return redirect('/dashboard')->with('error', 'Facebook Authorization Declined.');
+        }
+
         $fb = new Facebook([
             'app_id' => env('app_id'),
             'app_secret' => env('app_secret'),
@@ -705,6 +709,12 @@ class UserController extends Controller
 
     public function connect_instagram_calback(Request $request)
     {
+        if ($request->has('error')) {
+            // User chose not to authorize the application
+            return redirect('/dashboard')->with('error', 'Instagram Authorization Declined.');
+        }
+
+
         $insta = config('services.instagram');
         $fb = new Facebook([
             'app_id' => $insta['client_id'],
@@ -717,12 +727,14 @@ class UserController extends Controller
         $user = Account::find(auth()->user()->account_id);
         $user->insta_access_token = $accessToken;
         $user->update();
+     
         return redirect('/index')->with('success', 'Instagram, Successfully Added');
 
     }
 
     public function get_page_for_instagram()
     {
+       
         $insta_access_token = auth()->user()->account->insta_access_token;
         $insta_user_id = auth()->user()->account->insta_user_id;
 
@@ -793,7 +805,7 @@ class UserController extends Controller
             $user = Account::find(auth()->user()->account_id);
             $user->inst_name = $instData['name'];
             $user->inst_page_name = $instData['username'];
-            $user->inst_image = $instData['profile_picture_url'];
+            $user->inst_image = $instData['local_profile_image_path'];
             $user->save();
             return back()->with('success', 'instagram Connected Successfully!');
         } else {
