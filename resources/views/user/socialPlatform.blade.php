@@ -239,6 +239,7 @@
             });
         }
 
+        
 
         $(document).on('click', '.plateform_btn', function () {           
            
