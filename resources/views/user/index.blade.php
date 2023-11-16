@@ -651,6 +651,12 @@
     top: 10px;
     left: 10px;
 }
+.sidebar_post{
+    background-repeat: no-repeat;
+   height: 62px;
+    background-size: contain;
+    width: 68px;
+}
 /* close btn sidebar */
 /* timepicker style */
 </style>

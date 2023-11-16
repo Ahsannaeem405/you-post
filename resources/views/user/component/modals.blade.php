@@ -131,16 +131,13 @@
                 <div class="modal-body">
                 <div id="loader_tst" style="display: none;">Loading...</div>
 
-                    <select required name="page" class="form-control instapage_selection" id="instaPageSelect">
+                    <select required name="page" class="form-control instapage_selection">
                         <option value="">-select--</option>
                         @foreach($all_pages_for_insta as $page)
                             <option value="{{$page->id}}">{{$page->name}}</option>
                         @endforeach
-                        <div id="modalLoader" style="display: none;">Loading...</div>
                     </select>
                 </div>
-              
-
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

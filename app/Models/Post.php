@@ -170,7 +170,7 @@ class Post extends Model
             $Images = explode(',', $post->media);
             $imgSrc = asset('content_media/' . $Images[0]);
         } elseif ($post->media_type == 'video') {
-            $imgSrc = asset('images/tx_icon.png');
+            $imgSrc = asset('images/video_icon.png');
         }
     
         return $imgSrc;

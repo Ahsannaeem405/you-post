@@ -154,61 +154,78 @@ class UserController extends Controller
             $videoPath = $filename;
             return response()->json(['path' => $videoPath]);
         } else {
-            if ($request->dimention == "false") {
+             if ($request->dimention == "false") {
 
                 $base64Image = $request->input('image');
 
                 // Decode the base64 image data and create an Intervention Image instance
                 $img = Image::make(base64_decode($base64Image));             
                 $desiredAspectRatioLandscape = 16 / 5;
-                $desiredAspectRatioPortrait = 4 / 5;              
+                $desiredAspectRatio = 4 / 5;              
                 $originalWidth = $img->width();
                 $originalHeight = $img->height();
-                if ($originalWidth > $originalHeight) {                  
-                    $desiredAspectRatio = $desiredAspectRatioLandscape;
-                } else {                  
-                    $desiredAspectRatio = $desiredAspectRatioPortrait;
-                }
-                if ($originalWidth / $originalHeight > $desiredAspectRatio) {
-                    // Image is wider than 4:5, so we need to add padding to the top and bottom
-                    $newHeight = $originalWidth / $desiredAspectRatio;
-                    $topPadding = ($originalHeight - $newHeight) / 2;
-                    $bottomPadding = $topPadding;
-                    $newWidth = $originalWidth;
-                } else {
-                    // Image is taller than 4:5, so we need to add padding to the left and right
-                    $newWidth = $originalHeight * $desiredAspectRatio;
-                    $leftPadding = ($originalWidth - $newWidth) / 2;
-                    $rightPadding = $leftPadding;
-                    $newHeight = $originalHeight;
-                }
 
-                // Resize the image
-                $img->resize($newWidth, $newHeight);
+                $minResolution = 0.8;
+                $maxResolution = 1.91;
+                $minWidth = 6000;
+                $minHeight = 6000;
 
-                // Generate a unique filename for the resized image
-                $filename = uniqid() . '.jpg';
+                    if ($originalWidth > $originalHeight) {                  
+                        $desiredAspectRatio = $desiredAspectRatioLandscape;
+                    } else {                  
+                        $desiredAspectRatio = $desiredAspectRatioPortrait;
+                    }
 
-                // Define the path where you want to save the resized image
-                $path = 'path_to_save_resized_image/' . $filename;
+            
+                    if (
+                        $originalWidth / $originalHeight < $minResolution ||
+                        $originalWidth / $originalHeight > $maxResolution ||
+                        $originalWidth >= $minWidth ||
+                        $originalHeight >= $minHeight
+                    ) {
+                        // Image meets the criteria, resize it
+                        if ($originalWidth / $originalHeight > $desiredAspectRatio) {
+                            $newHeight = $originalWidth / $desiredAspectRatio;
+                            $topPadding = ($originalHeight - $newHeight) / 2;
+                            $bottomPadding = $topPadding;
+                            $newWidth = $originalWidth;
+                        } else {
+                            $newWidth = $originalHeight * $desiredAspectRatio;
+                            $leftPadding = ($originalWidth - $newWidth) / 2;
+                            $rightPadding = $leftPadding;
+                            $newHeight = $originalHeight;
+                        }
 
-                // Save the resized image to the specified path
-                $img->save('content_media/' . $filename);
-                // \Storage::disk('public')->put($path, (string) $img->encode('jpg'));
-                $imagePath = $filename;
-            } else {
-                $base64Data = $request->input('image');
-                $filename = uniqid() . '.png';
-                $imageData = base64_decode($base64Data);
-                file_put_contents(public_path('content_media/' . $filename), $imageData);
-                $imagePath = $filename;
-            }
+                        // Resize the image
+                        $img->resize($newWidth, $newHeight);
 
-            return response()->json(['path' => $imagePath]);
+                        // Generate a unique filename for the resized image
+                        $filename = uniqid() . '.jpg';
 
+                        // Save the resized image to the specified path
+                        $img->save('content_media/' . $filename);
+
+                        return response()->json(['path' => $filename]);
+                    } else {
+                        // Image does not meet the criteria
+                        $base64Data = $request->input('image');
+                        $filename = uniqid() . '.png';
+                        $imageData = base64_decode($base64Data);
+                        file_put_contents(public_path('content_media/' . $filename), $imageData);
+                        $imagePath = $filename;
+
+                        return response()->json(['path' => $imagePath]);
+                    }
+               }else{
+                        $base64Data = $request->input('image');
+                        $filename = uniqid() . '.png';
+                        $imageData = base64_decode($base64Data);
+                        file_put_contents(public_path('content_media/' . $filename), $imageData);
+                        $imagePath = $filename;
+
+                        return response()->json(['path' => $imagePath]);
+               }
         }
-
-
     }
 
     public function getTimeDifference($post)
