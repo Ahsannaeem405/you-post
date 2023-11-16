@@ -568,7 +568,6 @@
 
 
             function updateDiv_other($obj) {
-
                    var inputText = $($obj).val();
                    var formattedText = inputText.replace(/\n/g, '<br>');
                    
@@ -590,13 +589,10 @@
                 // if(lart.trim() == ''){
                 //        return;
                 // }
-
-
                 if (textareaAttr == 'youpost') {
                     
                     var formattedText = inputText.replace(/\n/g, '<br>');
                    $("#mypostresult_youpost").html(formattedText);
-   
 
                 }else if (textareaAttr == 'fb') {
 
@@ -634,7 +630,7 @@
             $("#mypostresult_linkedin").html( formattedText );
             // $("#mypostresult_linkedin").empty().append(inputText) ;
                $("#mynameresult_linkedin").empty().append(new_str) ;
-          }
+          }       
         }
 
     function Namechangefun($obj) {

@@ -605,14 +605,26 @@
     display:inline-block;
     -webkit-box-orient: vertical;
     overflow-y:scroll;
+    overflow-x:hidden;
     -ms-overflow-style: none;
     scrollbar-width: none; 
     height:50px;
     width:100%;
 }
 #mypostresult_youpost::-webkit-scrollbar {
-    display: none;
+    width: 4px;
+  height: auto;
 } 
+#mypostresult_youpost::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+#mypostresult_youpost::-webkit-scrollbar-track{
+  background: #f1f1f1; 
+} 
+#mypostresult_youpost::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
 .wizard-fieldset_youpost {
     color: #171717;
@@ -657,6 +669,23 @@
     background-size: contain;
     width: 68px;
 }
+.video_play_head{
+    align-items: center;
+    display: flex;
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+
+}
+.video_play{
+color:#000;
+font-size:17px;
+display: flex !important;
+justify-content:center;
+width: 100%;
+}
+
 /* close btn sidebar */
 /* timepicker style */
 </style>
@@ -1160,7 +1189,7 @@
                                             </button>
 
                                             <button type="submit"
-                                                class="btn post_later_now_btn w-100 post_now_btn position-relative btn-danger">
+                                                class="btn post_later_now_btn w-100 post_now_btn position-relative btn-danger" id="posted_now">
                                                 <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
                                                     src="{{asset("images/newimages/loader.gif")}}" alt=""> Post Now
                                             </button>
@@ -1350,8 +1379,8 @@
                                         </div>
                                     </div>
                                     <p class="m-0"></p>
-                                    <div class="Mobcart_title">
-                                        <span id="mypostresult_youpost" class="mypostresult">Write your universal content...</span>
+                                    <div class="Mobcart_title mobprev_container">
+                                        <span id="mypostresult_youpost" class="mypostresult mob_prevcontent">Write your universal content...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1468,8 +1497,8 @@
                                         </div>
                                     </div>
                                     <p class="m-0"></p>
-                                    <div class="Mobcart_title">
-                                        <span id="mypostresult_fb" class="mypostresult">Write your post...</span>
+                                    <div class="Mobcart_title mobprev_container">
+                                        <span id="mypostresult_fb" class="mypostresult mob_prevcontent">Write your post...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1606,8 +1635,8 @@
 
                                     </div>
                                     <div class="col-md-12" style="height:56px">
-                                        <div class="Mobcart_title">
-                                            <span id="mypostresult_insta" class="mypostresult" style="color:#000;">Write
+                                        <div class="Mobcart_title mobprev_container">
+                                            <span id="mypostresult_insta" class="mypostresult mob_prevcontent" style="color:#000;">Write
                                                 your
                                                 post...</span>
                                             <span class="icon icon-privacy text-primary" id="mynameresult_insta"></span>
@@ -1668,8 +1697,8 @@
 
                                         </div>
                                     </div>
-                                    <div class="twitter_text pb-1">
-                                        <span id="mypostresult_twitter" class="mypostresult">Write your post...</span>
+                                    <div class="twitter_text pb-1 mobprev_container">
+                                        <span id="mypostresult_twitter" class="mypostresult mob_prevcontent">Write your post...</span>
                                         <span id="mynameresult_twitter" class="icon icon-privacy text-primary"></span>
 
                                     </div>
@@ -1775,8 +1804,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="linkedin_post">
-                                        <span id="mypostresult_linkedin" class="mypostresult">Write your post...</span>
+                                    <div class="linkedin_post mobprev_container">
+                                        <span id="mypostresult_linkedin" class="mypostresult mob_prevcontent">Write your post...</span>
                                         <span id="mynameresult_linkedin" class="icon icon-privacy text-primary"></span>
 
                                     </div>
