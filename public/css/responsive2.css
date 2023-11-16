@@ -1,3 +1,27 @@
+@media (min-width:1400px) and (max-width:2000px) {
+    .show-this-section-992 {
+        display: none;
+    }
+    .section5 i {
+        display: none;
+    }
+}
+
+/*18,9,23 */
+@media (min-width:1377px) and (max-width:1399px) {
+
+    .social_icon_posts {
+        gap: 16px 15px;
+    }
+
+    .create_preview_post .create_post .post_now_button .btn {
+        padding: 6px 11px !important;
+    }
+    .section5 i {
+        display: none;
+    }
+}
+/*18,9,23 */
 /* spear query */
 @media (min-width:992px) and (max-width:1376px) {
 
@@ -128,34 +152,6 @@
     }
 
 }
-
-/* spear query */
-
-@media (min-width:1400px) and (max-width:2000px) {
-    .show-this-section-992 {
-        display: none;
-    }
-    .section5 i {
-        display: none;
-    }
-}
-
-/*18,9,23 */
-@media (min-width:1377px) and (max-width:1399px) {
-
-    .social_icon_posts {
-        gap: 16px 15px;
-    }
-
-    .create_preview_post .create_post .post_now_button .btn {
-        padding: 6px 11px !important;
-    }
-    .section5 i {
-        display: none;
-    }
-}
-
-/*18,9,23 */
 
 /* salman small break point only for calendar start*/
 @media (min-width:1200px) and (max-width:1376px) {
@@ -628,7 +624,29 @@
        
         width:100%;;
       }
+      /*  */
     
+    .delete_input{
+        width:100%;
+    }
+    .delete_accountbtn{
+        width: 100%;
+        margin: 0;
+    }
+    .index_delete{
+        margin-top: 10px;
+        width: 100%;
+    }
+    .maxchar {
+        left: 80%;
+        top: 30%;
+    }
+    .user_detail {
+        left: 17%;
+        top: 30px;
+      
+    }
+  
 }
 
 
@@ -973,7 +991,7 @@
     .mybgcontainer { 
         width:100%;;
       }
-      
+   
 }
 
 /* media  query */

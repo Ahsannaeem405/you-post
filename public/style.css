@@ -8,6 +8,7 @@ body {
     /* background: #FFFFFF; */
     overflow-x: hidden;
     background: var(--grayColor);
+    /* background-color: red; */
 }
 
 @font-face {
@@ -3308,8 +3309,12 @@ z-index: 1;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    font-size: 14px !important;
+    font-size: 12px !important;
 }
+/* .account-info{
+    display:flex;
+     justify-content:center;
+} */
 
 
 

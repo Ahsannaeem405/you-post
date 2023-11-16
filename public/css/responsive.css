@@ -325,7 +325,10 @@
 		font-size: 13px;
 		padding-right: 5px;
 	}
-
+	.account-info{
+        display: flex !important;
+        flex-direction: column !important;
+      }
 	/* ============================== */
 
 }

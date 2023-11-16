@@ -407,7 +407,7 @@ $(document).ready(function () {
 
         $("#post_form").submit(function (event) {
             event.preventDefault();
-
+            $("#posted_now").prop("disabled", true);
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
@@ -433,10 +433,18 @@ $(document).ready(function () {
             if (error_input !== "") {
                 $('#file_error_all').removeClass('d-none').text(error_input);
                 $('#file_error_all').attr('data-id', data_id);
+                setTimeout(function () {
+                $("#posted_now").prop("disabled", false);
+                }, 500); 
             } else {
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
+                setTimeout(function () {
+                    $("#posted_now").prop("disabled", false);
+                    }, 500); 
                 $(this).unbind('submit').submit();
+               
+               
             }
         });
     });
@@ -1396,7 +1404,7 @@ $(document).ready(function () {
                 var getRandomClass = getRandomClassName();
                 var img_con = `<div class=" cross_img_con_video  ${getRandomClass}" id="remove_id">                   
                 <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark_video' id="${getRandomClass}"></i></a>
-                    <h1><i class="fa-sharp fa-solid fa-play"></i></h1>
+                    <h1 class="video_play_head"><i class="fa-sharp fa-solid fa-play video_play"></i></h1>
                 </div>`;
 
                 if (socialicon == 'image_or_video_youpost') {
