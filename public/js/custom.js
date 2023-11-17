@@ -415,6 +415,7 @@ $(document).ready(function () {
             var twitter_content = $("#twitter_content").val();
             var linkedin_content = $("#linkedin_content").val();
             var image_or_video_insta_file = $("#image_or_video_insta")[0];
+
             var data_id = "";
             var error_input = '';
 
@@ -422,6 +423,7 @@ $(document).ready(function () {
                 error_input = "Facebook content can not be empty";
                 data_id = "facebok_error";
             } else if ($("li[section='insta']").length > 0 && (instagram_content === "" || image_or_video_insta_file.length === 0)) {
+               
                 error_input = "Insta content and image can not be empty";
                 data_id = "insta_error";
             } else if ($("li[section='twitter']").length > 0 && twitter_content === "") {
@@ -734,7 +736,7 @@ $(document).ready(function () {
     }
 
     function validateFileImageVideo(file, socialicon) {
-
+     
         var file, img, imgwidh, imgheight;
         var file_size = file.size;
         var ext = file.type;
@@ -743,6 +745,8 @@ $(document).ready(function () {
         var mediaType = file.type.split('/')[0];
         var response = true;
         if (mediaType === 'image') {
+         
+            
 
             if (file_size >= 8000000) {
                 toastr.error('size should be less than 8MB.', 'Image', { timeOut: 5000 })
@@ -1591,14 +1595,51 @@ $(document).ready(function () {
 
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
+     
 
-        // *********************  Validate Size and Memes ************************
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var mediaType = file.type.split('/')[0];
-            validateFileImageVideo(file, socialicon);
-        };
-        reader.readAsDataURL(file);
+
+        function getImageDimensions(file) {
+            return new Promise((resolve) => {
+                var img = new Image();
+                var width = 0;
+                var height = 0;
+    
+                img.onload = function () {
+                    width = this.width;
+                    height = this.height;
+                    resolve({ width, height });
+                };
+    
+                img.src = URL.createObjectURL(file);
+            });
+        }
+
+        getImageDimensions(file)
+        .then(({ width, height }) => {           
+            if (width < 350 || height < 350) {               
+                toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
+                return;
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var mediaType = file.type.split('/')[0];
+                validateFileImageVideo(file, socialicon);
+            };
+            reader.readAsDataURL(file);
+        })
+        .catch(error => {
+            // Handle errors if any
+            console.error('Error getting image dimensions:', error);
+        });
+
+
+        var fileInput = $(this);
+
+        // Clear the value of the file input
+        fileInput.val('');
+    
+        // Set the value of the file input again
+        fileInput.val(fileInput.val());
     });
 
     $('.file_image_video_youpost').change(function (e) {
@@ -1606,13 +1647,50 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
-        // *********************  Validate Size and Memes ************************
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var mediaType = file.type.split('/')[0];
-            validateFileImageVideo(file, socialicon);
-        };
-        reader.readAsDataURL(file);
+
+        function getImageDimensions(file) {
+            return new Promise((resolve) => {
+                var img = new Image();
+                var width = 0;
+                var height = 0;
+    
+                img.onload = function () {
+                    width = this.width;
+                    height = this.height;
+                    resolve({ width, height });
+                };
+    
+                img.src = URL.createObjectURL(file);
+            });
+        }
+
+        getImageDimensions(file)
+        .then(({ width, height }) => {           
+            if (width < 350 || height < 350) {               
+                toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
+                return;
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var mediaType = file.type.split('/')[0];
+                validateFileImageVideo(file, socialicon);
+            };
+            reader.readAsDataURL(file);
+        })
+        .catch(error => {
+            // Handle errors if any
+            console.error('Error getting image dimensions:', error);
+        });
+      
+       
+        var fileInput = $(this);
+
+        // Clear the value of the file input
+        fileInput.val('');
+    
+        // Set the value of the file input again
+        fileInput.val(fileInput.val());
+       
     });
 
     $('.preview_div').click(function (e) {

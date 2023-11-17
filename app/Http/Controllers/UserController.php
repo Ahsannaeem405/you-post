@@ -84,7 +84,42 @@ class UserController extends Controller
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
 
     }
+    public function getUpdatedPosts()
+    {
+        $posts = Post::select(
+            DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'),
+            DB::raw('COUNT(*) as total_count'),
+            DB::raw('SUM(CASE WHEN posted_at_moment = "now" THEN 1 ELSE 0 END) as published_count'),
+            DB::raw('SUM(CASE WHEN posted_at_moment != "now" THEN 1 ELSE 0 END) as not_published_count')
+        )
+        ->where('user_id', auth()->id())
+        ->where('account_id', auth()->user()->account_id)      
+        ->groupBy(DB::raw('DATE(posted_at)'))
+        ->get();
+    
+        $updatedPosts = [];
+    
+        foreach ($posts as $post) {
+            $title = '';
 
+            if ($post->published_count > 0) {
+                $title .= $post->published_count . ' Published <br> ';
+            }
+        
+            if ($post->not_published_count > 0) {
+                $title .= $post->not_published_count . ' Scheduled';
+            }
+            $updatedPosts[] = [
+                'id' => $post->id,               
+                'title' =>  $title,
+                'start' => $post->formatted_posted_at,
+                'event_date' => Carbon::parse($post->formatted_posted_at)->format('Y-m-d'),
+                'ac_id' => auth()->user()->account_id,              
+            ];
+        } 
+    
+        return response()->json($updatedPosts);
+    }
     public function dashbaord2()
     {
 

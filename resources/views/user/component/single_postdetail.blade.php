@@ -282,14 +282,14 @@
             </div>
         </div>
         <div class="post_img_name">
-            <img src="{{auth()->user()->account->twt_image}}" class="img-fluid" width="40" height="40" alt="">
+            <img src="{{auth()->user()->account->twt_image}}" class="img-fluid Twitter_Profile" width="40" height="40" alt="">
             <div class="post_img">
                 <div class="PostHeaderInner d-flex justify-content-between align-items-center">
-                    <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="">
                         <h5 class="m-0">{{auth()->user()->account->tw_name}}</h5>
                         <div class="">
-                            <span>@Tang...</span>
-                            <span>Just Now</span>
+                            <span>@ {{auth()->user()->account->tw_user_name}}</span>
+                            <!-- <span>Just Now</span> -->
                         </div>
                     </div>
                 </div>
@@ -378,7 +378,7 @@
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
                 @if($post->plateform === 'Instagram')
-                <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1 ProfileIcon">
+                <img src="{{ asset('images/instapost.png') }}" alt="" class="mr-1 ProfileIcon">
                 @endif
                 Instagram
             </h5>

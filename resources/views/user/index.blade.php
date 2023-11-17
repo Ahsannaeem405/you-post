@@ -330,18 +330,18 @@
         border: 2px solid #0f74ce;
     }
 
-    .MainMobileview span {
-        font-size: 12px;
-        font-weight: 600 !important;
-        margin-left: 4px !important;
-    }
+.MainMobileview span {
+    font-size: 12px;
+    font-weight: 600 !important;
+    margin-left: 4px !important;
+}
 
-    .MainMobileview span.sponsored {
-        margin-left: 0 !important;
-        color: #888888;
-        font-weight: 400 !important;
-        font-size: 10px;
-    }
+.MainMobileview span.sponsored {
+    margin-left: 0 !important;
+    color: #888888;
+    font-weight: 400 !important;
+    font-size: 10px;
+}
 
     .MainMobileview span.sponsored i {
         font-size: 8px;
@@ -843,11 +843,11 @@
                                                         </div>
                                                     </label>
 
-                                                </div>
-                                                <p id="file_error_youpost">
-                                                </p>
-                                                <!-- append div waleed start -->
-                                                <!-- end my coed -->
+                                            </div>
+                                            <p id="file_error_youpost">
+                                            </p>
+                                            <!-- append div waleed start -->
+                                            <!-- end my coed -->
 
 
                                                 <div class="form-group clearfix clearfix2">
@@ -3017,13 +3017,9 @@
                 });
             });
 
-        });
+    });
 
-        $(document).on('click', '.BackBtnCS', function(){
-            $('.Today-post-detail').css('display', 'none');
-            $('.calendarmain .fb-post').css('display', 'block');
-            $('.BackBtnCS').addClass('d-none');
-        });
+});
 
         $(document).ready(function() {
             var isDetailVisible = false; // Initialize a flag to track visibility
@@ -3582,9 +3578,9 @@
         }
 
 
-        // Initial calendar generation
-        //generateCalendar();
-    </script>
+// Initial calendar generation
+//generateCalendar();
+</script>
 
 
     <script>
