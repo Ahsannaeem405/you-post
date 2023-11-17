@@ -335,7 +335,15 @@
     font-weight: 600 !important;
     margin-left: 4px !important;
 }
-
+.TwitterWrap .PostHeaderInner span{
+    margin: 0 !important;
+}
+.TwitterWrap .post_img_name .post_img .PostHeaderInner{
+    padding: 12px 12px 0 0 !important;
+}
+.TwitterWrap img.Twitter_Profile{
+    margin: 12px 0 0 6px;
+}
 .MainMobileview span.sponsored {
     margin-left: 0 !important;
     color: #888888;
@@ -818,8 +826,9 @@ width: 100%;
                                                 </label>
 
                                             </div>
-                                            <p id="file_error_youpost">
+                                            <p id="file_error_youpost" class=" p-2  w-100 d-none mt-2 erro_background">
                                             </p>
+                                           
                                             <!-- append div waleed start -->
                                             <!-- end my coed -->
 
@@ -2906,6 +2915,38 @@ $(document).ready(function() {
     
 });
 
+$(document).on('click', '.fb-post ', function() {
+        var id = $(this).data('id');
+
+        $.ajax({
+            type: "get",
+            url: "{{ url('get_single_detail') }}",
+            data: {
+                'id': id
+            },
+            success: function(response) {
+                if (!isDetailVisible) {
+                    // If the detail is not visible, show it and set the flag
+                    // var contentToAppend = $(".the_preview").html();
+                    $(".Today-post-detail").html('');
+                    $(".Today-post-detail").append(response);
+                    $(".Today-post-detail").show();
+
+                    $(".fb-post").css('display', 'none');
+                } else {
+                    // If the detail is visible, hide it and reset the flag
+                    $(".Today-post-detail").hide();
+                    $(".fb-post").css('display', 'block');
+                }
+            }
+        });
+
+
+
+
+
+    });
+
     $(document).ready(function() {
         var isDetailVisible = false; // Initialize a flag to track visibility
         // Add a click event handler to the todayEbents-list div
@@ -3465,6 +3506,27 @@ function openEventModal(year, month, day) {
 
 // Initial calendar generation
 //generateCalendar();
+
+
+function updateCalendar() {
+    $.ajax({
+        url: '/get-updated-posts',
+        method: 'GET',
+        success: function (data) {
+            // Update the FullCalendar events based on the fetched data
+            // For example, update the event source
+            $('#postManagerCalendar').fullCalendar('removeEvents');
+            $('#postManagerCalendar').fullCalendar('addEventSource', data);
+
+            console.log('Calendar updated successfully.');
+        },
+        error: function (error) {
+            console.error('Error updating calendar:', error);
+        }
+    });
+}
+setInterval(updateCalendar, 60000); // 60 seconds
+
 </script>
 
 

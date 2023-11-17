@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
     Route::get('dashboard2', [UserController::class, 'dashbaord2']);
 
+    Route::get('get-updated-posts', [UserController::class, 'getUpdatedPosts'])->name('get.updated.posts');
 
     //account page
     Route::get('index', [AccountController::class,'index'])->name('index');

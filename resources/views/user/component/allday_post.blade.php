@@ -1,8 +1,11 @@
+<input type="hidden" name="ac_id" id="ac_id" value ="{{$posts[0]->posted_at}}">
+<input type="hidden" name="date" id="date" value ="{{$posts[0]->account_id }}">
 @foreach ($posts as $post)
 
 @php
 $publishedAt = \Carbon\Carbon::parse($post->posted_at);
 @endphp
+
 
 
 <div class="fb-post mb-2" data-id="{{ $post->id }}" data-plateform="{{ $post->plateform === 'Facebook'

@@ -175,7 +175,7 @@
                                         <img src="{{ asset('images/facebook-15.png') }}" alt="" class="mr-2">Login with Facebook
                                     </a>
                                 </div>
-                                <span class="Login__Reg">Don’t have an account? <a href="{{ route('register') }}">Signup</a></span>
+                                <span class="Login__Reg">Don’t have an account? <a href="{{ route('register') }}">Sign up</a></span>
                             </form>
                         </div>
                     </div>
