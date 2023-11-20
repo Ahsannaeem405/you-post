@@ -373,13 +373,13 @@ $(document).ready(function () {
         settime();
     });
     $(document).on('click', '.post_now_btn', function () {
-     
+
         $('.posttime').val('now');
         apend_current_time();
 
     });
     $(document).on('click', '.post_later_now_btn', function () {
-       
+
         $('.posttime').val('later');
         //apend_current_time();
         $('#TimetoUploadPost').modal('hide');
@@ -423,7 +423,7 @@ $(document).ready(function () {
                 error_input = "Facebook content can not be empty";
                 data_id = "facebok_error";
             } else if ($("li[section='insta']").length > 0 && (instagram_content === "" || image_or_video_insta_file.length === 0)) {
-               
+
                 error_input = "Insta content and image can not be empty";
                 data_id = "insta_error";
             } else if ($("li[section='twitter']").length > 0 && twitter_content === "") {
@@ -439,16 +439,16 @@ $(document).ready(function () {
                 $('#file_error_all').attr('data-id', data_id);
                 setTimeout(function () {
                 $("#posted_now").prop("disabled", false);
-                }, 500); 
+                }, 500);
             } else {
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
                 setTimeout(function () {
                     $("#posted_now").prop("disabled", false);
-                    }, 500); 
+                    }, 500);
                 $(this).unbind('submit').submit();
-               
-               
+
+
 
             }
         });
@@ -554,7 +554,15 @@ $(document).ready(function () {
 
 
     $(document).on("click", ".cancel_mark", function () {
+        setTimeout(function() {
+            var columnCount = $('.Preview_ImagesSetup').css('column-count');
 
+            if (columnCount === '1') {
+                $('.mobile_post_img').addClass('SetUp_PreviewImg');
+            }else{
+                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
+            }
+        }, 500);
         var id = $(this).attr('id');
         $(this).closest(".create_preview_post").find('.' + id).remove();
         var length = $('.mobile_post_img').length;
@@ -598,13 +606,13 @@ $(document).ready(function () {
 
                     $('#media_type_fb').val('');
                     $('#fb_video').val('');
-                    
+
                     $('#media_type_insta').val('');
                     $('#inst_video').val('');
-                    
+
                     $('#media_type_twitter').val('');
                     $('#twitter_video' ).val('');
-                    
+
                     $('#media_type_linkedin').val('');
                     $('#link_video').val('');
             }
@@ -631,35 +639,35 @@ $(document).ready(function () {
     $(document).on("click", ".cancel_mark_video", function () {
 
         var id = $(this).attr('id');
-      
+
         var id_of_div = $(this).closest(".sm_container").find('input[type=hidden]:first').attr('id');
         var socialicon = $(this).closest(".sm_container").find('input[type=file]:first').attr('id');
-      
-        if (socialicon == 'image_or_video_youpost') {           
-       
+
+        if (socialicon == 'image_or_video_youpost') {
+
             $('#media_type_youpost').val('');
             $('#youpost_video').val('');
 
             $('#media_type_fb').val('');
             $('#fb_video').val('');
-            
+
             $('#media_type_insta').val('');
             $('#inst_video').val('');
-            
+
             $('#media_type_twitter').val('');
             $('#twitter_video' ).val('');
-            
+
             $('#media_type_linkedin').val('');
             $('#link_video').val('');
 
-            $(this).closest(".create_preview_post").find('.' + id).remove();  
+            $(this).closest(".create_preview_post").find('.' + id).remove();
             var ids = ['image_or_video_youpost', 'image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin', 'image_or_video_twiter'];
             ids.forEach(function (socialicon) {
                 setPreview(socialicon);
             });
 
         } else {
-            $(this).closest(".sm_container").find('.' + id).remove();  
+            $(this).closest(".sm_container").find('.' + id).remove();
             $(this).closest(".sm_container").find('input[type=hidden]').val('');
             setPreview(socialicon);
         }
@@ -736,7 +744,7 @@ $(document).ready(function () {
     }
 
     function validateFileImageVideo(file, socialicon) {
-     
+
         var file, img, imgwidh, imgheight;
         var file_size = file.size;
         var ext = file.type;
@@ -745,8 +753,8 @@ $(document).ready(function () {
         var mediaType = file.type.split('/')[0];
         var response = true;
         if (mediaType === 'image') {
-         
-            
+
+
 
             if (file_size >= 8000000) {
                 toastr.error('size should be less than 8MB.', 'Image', { timeOut: 5000 })
@@ -877,11 +885,11 @@ $(document).ready(function () {
                     <img class="uplaod-gif" src="images/newimages/loader.gif" alt="">
                     </div>`;
                     $("#image_or_videofb").parent().append(img_con);
-                    $('#media_type_fb').val('image');                    
-                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();                      
+                    $('#media_type_fb').val('image');
+                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();
                     $('#fb_video').val('');
 
-                    
+
 
                     if (!dimention) {
 
@@ -903,9 +911,9 @@ $(document).ready(function () {
                     </div>`;
                     $("#image_or_video_insta").parent().append(img_con_ins);
                     $('#media_type_insta').val('image');
-                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();      
+                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();
                     $('#inst_video').val('');
-      
+
 
 
                     if (!dimention) {
@@ -924,8 +932,8 @@ $(document).ready(function () {
                     $("#image_or_video_linkedin").parent().append(img_con_lin);
                     $('#media_type_linkedin').val('image');
 
-                            
-                         
+
+
                     $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove();
                     $('#link_video').val('');
 
@@ -944,7 +952,7 @@ $(document).ready(function () {
                     </div>`;
                     $("#image_or_video_twiter").parent().append(img_con_lin);
                     $('#media_type_twitter').val('image');
-                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();   
+                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();
                     $('#twitter_video').val('');
                     if (!dimention) {
                         $('#file_error_twiiter').removeClass('d-none').text(dimention_error)
@@ -954,11 +962,11 @@ $(document).ready(function () {
                 }
 
                 else if (socialicon == 'image_or_video_youpost') {
-                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();   
+                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();
                     $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove();
-                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();      
-                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();                      
-                    $("#image_or_video_youpost").parent().find('.cross_img_con_video').remove();                      
+                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_youpost").parent().find('.cross_img_con_video').remove();
 
 
                     appendtoall(e.target.result, dimention, dimention_error, getRandomClass);
@@ -999,7 +1007,7 @@ $(document).ready(function () {
 
     function handleVideoUpload(socialicon, path, imgOrVideo) {
         // Function to handle video upload within the 'setPreview' function
-       
+
         var videoPath = 'content_media/' + path;
         // Create new video elements for each platform and set their sources
         var video_youpost = $('<video controls class="w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
@@ -1014,7 +1022,7 @@ $(document).ready(function () {
         $('#mediaContainervideo_inst').html(video_inst);
         $('#mediaContainervideo_link').html(video_link);
         $('#mediaContainervideo_twitter').html(video_twitter);
-       
+
     }
 
 
@@ -1329,7 +1337,7 @@ $(document).ready(function () {
                             //  lastImg.after(spanElement);
                             lastImg.wrap("<div class='div_in_div_tw'> </div>");
                             //  var newDiv = $("<div class='div_in_div_linkedin_bg'></div>");
-                            //    $(".div_in_div_link").after(newDiv);                 
+                            //    $(".div_in_div_link").after(newDiv);
                             $(".div_in_div_tw").append(`<span id= 'my_value_tw' class='twitter_counter'> <i class='fa-solid fa-plus plus_twitter_icon'></i>${imgCount - 5}</span> <div class='div_in_div_twitter_bg'> </div>`);
                         } else {
                             const iconElement = $('<i>').addClass('fa-solid fa-plus plus_twitter_icon');
@@ -1405,7 +1413,7 @@ $(document).ready(function () {
             }
         }
     }
-    
+
     function appendVideo(file, socialicon) {
         if (file) {
             $('.uplaod-gif-video').removeClass('d-none');
@@ -1414,49 +1422,49 @@ $(document).ready(function () {
                 var base64Data = e.target.result.split(',')[1];
                 var type = "video";
 
-               
+
                 var getRandomClass = getRandomClassName();
-                var img_con = `<div class=" cross_img_con_video  ${getRandomClass}" id="remove_id">                   
+                var img_con = `<div class=" cross_img_con_video  ${getRandomClass}" id="remove_id">
                 <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark_video' id="${getRandomClass}"></i></a>
                     <h1 class="video_play_head"><i class="fa-sharp fa-solid fa-play video_play"></i></h1>
                 </div>`;
 
                 if (socialicon == 'image_or_video_youpost') {
-                  
-                    $("#image_or_video_youpost").parent().find('.cross_img_con_video').remove();                    
-                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();                    
-                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();                    
-                    $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove();                    
-                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();  
-                    
-                    $("#image_or_video_youpost").parent().find('.cross_img_con').remove();  
-                    $("#image_or_videofb").parent().find('.cross_img_con').remove();            
-                    $("#image_or_video_twiter").parent().find('.cross_img_con').remove();             
-                    $("#image_or_video_insta").parent().find('.cross_img_con').remove();             
-                    $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();             
+
+                    $("#image_or_video_youpost").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();
+
+                    $("#image_or_video_youpost").parent().find('.cross_img_con').remove();
+                    $("#image_or_videofb").parent().find('.cross_img_con').remove();
+                    $("#image_or_video_twiter").parent().find('.cross_img_con').remove();
+                    $("#image_or_video_insta").parent().find('.cross_img_con').remove();
+                    $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
 
 
-                    $("#image_or_video_youpost").parent().append(img_con);                    
-                    $("#image_or_video_twiter").parent().append(img_con); 
-                    $("#image_or_video_insta").parent().append(img_con); 
-                    $("#image_or_video_linkedin").parent().append(img_con); 
-                    $("#image_or_videofb").parent().append(img_con); 
+                    $("#image_or_video_youpost").parent().append(img_con);
+                    $("#image_or_video_twiter").parent().append(img_con);
+                    $("#image_or_video_insta").parent().append(img_con);
+                    $("#image_or_video_linkedin").parent().append(img_con);
+                    $("#image_or_videofb").parent().append(img_con);
 
-                }else if (socialicon == 'image_or_videofb') {               
-                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();      
-                    $("#image_or_videofb").parent().append(img_con); 
-                
+                }else if (socialicon == 'image_or_videofb') {
+                    $("#image_or_videofb").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_videofb").parent().append(img_con);
+
                 }else if (socialicon == 'image_or_video_insta') {
-                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();  
-                    $("#image_or_video_insta").parent().append(img_con); 
+                    $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_insta").parent().append(img_con);
 
                 }else if (socialicon == 'image_or_video_twiter') {
-                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove(); 
-                    $("#image_or_video_twiter").parent().append(img_con); 
+                    $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_twiter").parent().append(img_con);
 
                 }else if (socialicon == 'image_or_video_linkedin') {
-                    $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove(); 
-                    $("#image_or_video_linkedin").parent().append(img_con);  
+                    $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove();
+                    $("#image_or_video_linkedin").parent().append(img_con);
 
                 }
 
@@ -1519,10 +1527,10 @@ $(document).ready(function () {
                             setPreview(socialicon, response.path);
 
                         }
-                        else if (socialicon == 'image_or_video_youpost') {  
-                                                     
+                        else if (socialicon == 'image_or_video_youpost') {
 
-                            
+
+
 
                             $('#youpost_video').val(response.path);
                             $('#media_type_youpost').val('video');
@@ -1549,13 +1557,13 @@ $(document).ready(function () {
                             $("#image_or_video_linkedin").parent().find('.cross_img_con').remove();
                             $('.video_preview_link').removeClass('d-none');
                             $('.preview_image_link').addClass('d-none');
-                            $('.prv_div_link').html('');                            
-                        
-                       
+                            $('.prv_div_link').html('');
+
+
                             $('#twitter_video').val(response.path);
                             $('#media_type_twitter').val('video');
                             $("#image_or_video_twiter").parent().find('.cross_img_con').remove();
-                            $('.prv_div_tw').html('');     
+                            $('.prv_div_tw').html('');
 
                             setPreview(socialicon, response.path);
                         }
@@ -1595,28 +1603,36 @@ $(document).ready(function () {
 
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
-     
 
+        setTimeout(function() {
+            var columnCount = $('.Preview_ImagesSetup').css('column-count');
+
+            if (columnCount === '1') {
+                $('.mobile_post_img').addClass('SetUp_PreviewImg');
+            }else{
+                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
+            }
+        }, 500);
 
         function getImageDimensions(file) {
             return new Promise((resolve) => {
                 var img = new Image();
                 var width = 0;
                 var height = 0;
-    
+
                 img.onload = function () {
                     width = this.width;
                     height = this.height;
                     resolve({ width, height });
                 };
-    
+
                 img.src = URL.createObjectURL(file);
             });
         }
 
         getImageDimensions(file)
-        .then(({ width, height }) => {           
-            if (width < 350 || height < 350) {               
+        .then(({ width, height }) => {
+            if (width < 350 || height < 350) {
                 toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
                 return;
             }
@@ -1637,36 +1653,49 @@ $(document).ready(function () {
 
         // Clear the value of the file input
         fileInput.val('');
-    
+
         // Set the value of the file input again
         fileInput.val(fileInput.val());
     });
 
     $('.file_image_video_youpost').change(function (e) {
-
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
+         // var fileCount = $('.prv_div_youpost').css('style','column-count: 1');
+        // if(fileCount == css('style','column-count: 1')){
+        //     $('.mobile_post_img').addClass('xuyrh');
+        // }
+
+        setTimeout(function() {
+            var columnCount = $('.Preview_ImagesSetup').css('column-count');
+
+            if (columnCount === '1') {
+                $('.mobile_post_img').addClass('SetUp_PreviewImg');
+            }else{
+                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
+            }
+        }, 500);
 
         function getImageDimensions(file) {
             return new Promise((resolve) => {
                 var img = new Image();
                 var width = 0;
                 var height = 0;
-    
+
                 img.onload = function () {
                     width = this.width;
                     height = this.height;
                     resolve({ width, height });
                 };
-    
+
                 img.src = URL.createObjectURL(file);
             });
         }
 
         getImageDimensions(file)
-        .then(({ width, height }) => {           
-            if (width < 350 || height < 350) {               
+        .then(({ width, height }) => {
+            if (width < 350 || height < 350) {
                 toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
                 return;
             }
@@ -1681,16 +1710,16 @@ $(document).ready(function () {
             // Handle errors if any
             console.error('Error getting image dimensions:', error);
         });
-      
-       
+
+
         var fileInput = $(this);
 
         // Clear the value of the file input
         fileInput.val('');
-    
+
         // Set the value of the file input again
         fileInput.val(fileInput.val());
-       
+
     });
 
     $('.preview_div').click(function (e) {

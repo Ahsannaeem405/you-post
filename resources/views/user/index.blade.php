@@ -705,13 +705,17 @@
 
 }
 .video_play{
-color:#000;
-font-size:17px;
-display: flex !important;
-justify-content:center;
-width: 100%;
+    color:#000;
+    font-size:17px;
+    display: flex !important;
+    justify-content:center;
+    width: 100%;
 }
 
+.SetUp_PreviewImg,
+.InstaPreview_setup .mobile_post_img_inst{
+    background-size: 100% auto !important;
+}
 /* close btn sidebar */
 /* timepicker style */
 </style>
@@ -1415,7 +1419,7 @@ width: 100%;
                                 <div class="col-md-12 mt-4">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <div class="prv_div_youpost"> </div>
+                                            <div class="prv_div_youpost Preview_ImagesSetup"> </div>
                                             <div id="mediaContainervideo_youpost">
                                                 <!-- <video class="d-none video_preview_youpost" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1533,7 +1537,7 @@ width: 100%;
                                 <div class="col-md-12 mt-3">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <div class="prv_div"> </div>
+                                            <div class="prv_div Preview_ImagesSetup"> </div>
                                             <div id="mediaContainervideo_fb">
                                                 <!-- <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1616,7 +1620,7 @@ width: 100%;
                                 </div>
                                 <div class="col-12">
                                     <div class="insta_post_img_inner_con Insta_post_previnner">
-                                        <div class="prv_div_isnt">
+                                        <div class="prv_div_isnt InstaPreview_setup">
                                             <!-- <img src="" class="d-none preview_image_inst" alt=""> -->
                                         </div>
 
@@ -1733,7 +1737,7 @@ width: 100%;
                                 <div class="col-12">
                                     <div class="twitter_img_container ">
 
-                                        <div class="prv_div_tw twitter_preview" >
+                                        <div class="prv_div_tw twitter_preview Preview_ImagesSetup" >
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
                                         <div id="mediaContainervideo_twitter">
@@ -1841,7 +1845,7 @@ width: 100%;
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post_image">
-                                        <div class="prv_div_link">
+                                        <div class="prv_div_link Preview_ImagesSetup">
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
 

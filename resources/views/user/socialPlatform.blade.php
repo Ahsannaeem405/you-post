@@ -6,6 +6,7 @@
 @include('user.component.modals')
 <style>
 .account-info {
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -48,6 +49,7 @@
 @media (min-width:577px) and (max-width:767px) {
 
     .account-info {
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
@@ -57,15 +59,15 @@
     }
 
     .maxchar {
-        color: #959595;
-        font-weight: 400;
-        font-family: 'Poppins', sans-serif;
-        padding: 5px 0;
-        font-size: 14px;
-        left: 80% !important;
-        top: 35% !important;
-        position: absolute;
-    }
+    color: #959595;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 0;
+    font-size: 14px;
+    top: 47%;
+    position: absolute;
+    right: 110px;
+}
 
     .index_delete {
         width: 100%;
@@ -80,6 +82,7 @@
 
 @media(min-width:320px) and (max-width:576px) {
     .account-info {
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
@@ -112,7 +115,7 @@
     .all_social_platformWrp {
         width: unset !important;
     }
-   
+
 }
 </style>
 <div class="platformBtn">
@@ -336,10 +339,10 @@ $(document).on('click', '.plateform_btn', function() {
 
             if (response.conet_or_not == 'no') {
                 $('#' + response.message + 'btn').text('Disconnect');
-                toastr.success(`${response.message} connected successfully!                   
+                toastr.success(`${response.message} connected successfully!
                     `);
             } else {
-                toastr.success(`${response.message} Disconnected successfully!                   
+                toastr.success(`${response.message} Disconnected successfully!
                     `);
                 $('#' + response.message + 'btn').text('Reconncet');
             }
@@ -363,7 +366,7 @@ $(document).on('click', '.plateform', function() {
     var account_id = $(this).data('account');
     var plateform_val = $(this).val();
     //    alert(plateform_val);
-    // var all_plateform = $("input[name='plateform[" + account_id + "]']:checked");         
+    // var all_plateform = $("input[name='plateform[" + account_id + "]']:checked");
 
     // var plateform_val = [];
     // plateform_val.push($(this).val());

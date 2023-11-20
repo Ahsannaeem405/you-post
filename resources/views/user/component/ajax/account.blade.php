@@ -11,7 +11,7 @@
     border-radius: 10px;
     border: 0.5px solid #E0E0E0;
     background: #FFF;
-    box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10); 
+    box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
 }
 
 .rounded-circle {
@@ -41,16 +41,15 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     letter-spacing: 1.2px;
-    left: 27%;
+    left: 100px;
     position: absolute;
     top: 30px;
     background: #fff;
     padding-left: 5px;
     padding-right: 5px;
-
 }
 .delete_input{
-    width:400px;
+    width: 100%;
 }
 .account-detail {
     width: 100%;
@@ -311,7 +310,7 @@
 
 
 
-                    <a class="T-recont_btn {{ 
+                    <a class="T-recont_btn {{
                         in_array('Twitter', $account->platforms) &&
                         $account->twiter_access_token != null  ? '' : 'd-none' }} r_btn"
                         href="{{ url('connect_twitter') }}">
@@ -352,7 +351,7 @@
                         <span class="reconnect_platform"> Reconnect</span>
                         <span class="tooltiptext_link">Click here to connect a Linkedin account</span>
                     </a>
-                    <a class="l-conect_btn {{ 
+                    <a class="l-conect_btn {{
                         in_array('Linkedin', $account->platforms)
                         && $account->linkedin_accesstoken == null
                         &&  $account->linkedin_user_id == null ? '' : 'd-none' }}"

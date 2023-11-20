@@ -98,13 +98,13 @@ td {
 
 /* td.current-day {
      background: #3C3C3C;
-    
+
  } */
 
 /* th {
      background-color: red;
  }
- 
+
  tr:nth-child(even) {
      background-color: yellow ;
  }  */
@@ -482,7 +482,7 @@ button {
      top: 5px;
      left: 330px;
      position: absolute;
- 
+
  } */
 
 .date-details {
@@ -702,7 +702,7 @@ button {
      text-align: center;
      height: 43px;
  }
- 
+
  .fc-prev-button {
      background: #F4F4F5 !important;
      font-family: 'poppins', sans-serif !important;
@@ -1533,7 +1533,7 @@ button {
     break-inside: avoid-column;
     width: 100%;
     display: block;
-   
+
 }
 .twitter_counter{
     color: white;
@@ -1686,23 +1686,23 @@ height: 300px;
     -webkit-box-orient: vertical;
     overflow-y:scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     height:49px;
     width:100%;
 }
 #mypostresult_fb::-webkit-scrollbar {
     width: 4px;
   height: auto;
-} 
+}
 #mypostresult_fb::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 #mypostresult_fb::-webkit-scrollbar-track{
-  background: #f1f1f1; 
-} 
+  background: #f1f1f1;
+}
 #mypostresult_fb::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 #mypostresult_insta {
@@ -1710,23 +1710,23 @@ height: 300px;
     -webkit-box-orient: vertical;
     overflow-y:scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     height:49px;
     width:100%;
 }
 #mypostresult_insta::-webkit-scrollbar {
     width: 4px;
   height: auto;
-} 
+}
 #mypostresult_insta::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 #mypostresult_insta::-webkit-scrollbar-track{
-  background: #f1f1f1; 
-} 
+  background: #f1f1f1;
+}
 #mypostresult_insta::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 #mypostresult_twitter {
     font-family: Arial, Helvetica, sans-serif;
@@ -1738,23 +1738,23 @@ height: 300px;
     -webkit-box-orient: vertical;
     overflow-y:scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     height:51px;
     width:100%;
 }
 #mypostresult_twitter::-webkit-scrollbar {
     width: 4px;
   height: auto;
-} 
+}
 #mypostresult_twitter::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 #mypostresult_twitter::-webkit-scrollbar-track{
-  background: #f1f1f1; 
-} 
+  background: #f1f1f1;
+}
 #mypostresult_twitter::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 #mypostresult_linkedin {
@@ -1762,36 +1762,36 @@ height: 300px;
     -webkit-box-orient: vertical;
     overflow-y:scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     height:51px;
     width:100%;
 }
 #mypostresult_youpost::-webkit-scrollbar {
     width: 4px;
   height: auto;
-} 
+}
 #mypostresult_linkedin::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 #mypostresult_linkedin::-webkit-scrollbar-track{
-  background: #f1f1f1; 
-} 
+  background: #f1f1f1;
+}
 #mypostresult_linkedin::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }::-webkit-scrollbar {
     width: 4px;
   height: auto;
-} 
+}
 #mypostresult_youpost::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 #mypostresult_youpost::-webkit-scrollbar-track{
-  background: #f1f1f1; 
-} 
+  background: #f1f1f1;
+}
 #mypostresult_youpost::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .twitter_prev {
@@ -1816,7 +1816,7 @@ height: 300px;
 } */
 
 /*  */
-/* .MainMobileview .post_img_name .postname.fb-user{   
+/* .MainMobileview .post_img_name .postname.fb-user{
      display: flex;
     flex-wrap: wrap;
     padding-top: 3px;
@@ -1888,7 +1888,7 @@ height: 300px;
   } */
 /* .btn-close{
         background-image:url("../assets/images/crossbtnpost.png") !important;
-  
+
  } */
 /*calendar posts structure */
 .fb-post {
@@ -2065,7 +2065,22 @@ height: 300px;
     width: 100%;
     height: 100%;
     z-index: -1;
-
+}
+.fc-agendaWeek-view .fc-content,
+.fc-agendaDay-view .fc-content{
+    height: 65px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px;
+}
+.fc-agendaWeek-view .fc-content .fc-time,
+.fc-agendaDay-view .fc-content .fc-time {
+    background-image: url("../assets/images/youlog.png");
+    background-repeat: no-repeat;
+    height: 20px;
+    z-index: -1;
+    width: 20px;
 }
 
 .fc-content-skeleton table tbody tr td.fc-event-container .fc-day-grid-event .fc-content {
