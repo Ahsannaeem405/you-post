@@ -482,7 +482,7 @@
 
     $(document).ready(function () {
 
-      
+
         var authuser = "{{auth()->user()}}";
         if (authuser != null) {
             var insta_access_token = "{{auth()->user()->account->insta_access_token}}";
@@ -494,19 +494,12 @@
 
 
             if (insta_access_token != '' && insta_user_id == '') {
-               
-                var loadingModal = $('#loadingModal');
-                loadingModal.modal('show');
-
+                $('#instagram_pages_modal').modal('show');
 
                 $.ajax({
                     type: "get",
                     url: "{{ url('get_page_for_instagram')}}",
                     success: function (response) {
-
-                        loadingModal.modal('hide');
-                         $('#instagram_pages_modal').modal('show');
-
                         $('.instapage_selection').empty().append(response);
                     }
                 });
@@ -575,7 +568,6 @@
 
 
             function updateDiv_other($obj) {
-                $('#file_error_all').addClass('d-none');
 
                    var inputText = $($obj).val();
                    var formattedText = inputText.replace(/\n/g, '<br>');
@@ -592,18 +584,19 @@
                 }
 
             function updateDiv($obj) {
-                $('#file_error_all').addClass('d-none');
-
                 var textareaAttr = $($obj).attr("attr_of_text_area");
                 var inputText = $($obj).val();
                 var lart= inputText.slice(-1);
                 // if(lart.trim() == ''){
                 //        return;
                 // }
+
+
                 if (textareaAttr == 'youpost') {
                     
                     var formattedText = inputText.replace(/\n/g, '<br>');
                    $("#mypostresult_youpost").html(formattedText);
+   
 
                 }else if (textareaAttr == 'fb') {
 
@@ -641,7 +634,7 @@
             $("#mypostresult_linkedin").html( formattedText );
             // $("#mypostresult_linkedin").empty().append(inputText) ;
                $("#mynameresult_linkedin").empty().append(new_str) ;
-          }       
+          }
         }
 
     function Namechangefun($obj) {
