@@ -255,7 +255,7 @@
                         href="{{ url('connect_to_facebook') }}">
                         <span class="reconnect_platform"> Reconnect</span>
 
-                        <span class="tooltiptext_fb">Click here to connect a facebook account</span>
+                        <span class="tooltiptext_fb">Click here to connect a different facebook account</span>
 
 
                     </a>
@@ -287,7 +287,7 @@
                         href="{{ url('connect_to_instagram') }}">
                         <span class="reconnect_platform"> Reconnect</span>
 
-                        <span class="tooltiptext_inst">Click here to connect a Instagram account</span>
+                        <span class="tooltiptext_inst">Click here to connect a different Instagram account</span>
 
                     </a>
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) &&
@@ -318,7 +318,7 @@
                         <span class="reconnect_platform">
                             Reconnect</span>
 
-                        <span class="tooltiptext_tw">Click here to connect a Twitter account</span>
+                        <span class="tooltiptext_tw">Click here to connect a different Twitter account</span>
 
                     </a>
 
@@ -350,7 +350,7 @@
                         ? '' : 'd-none'
                     }} r_btn" href="{{ url('connect_to_linkedin') }}">
                         <span class="reconnect_platform"> Reconnect</span>
-                        <span class="tooltiptext_link">Click here to connect a Linkedin account</span>
+                        <span class="tooltiptext_link">Click here to connect a different Linkedin account</span>
                     </a>
                     <a class="l-conect_btn {{ 
                         in_array('Linkedin', $account->platforms)

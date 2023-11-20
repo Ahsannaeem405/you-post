@@ -414,7 +414,9 @@ $(document).ready(function () {
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
             var linkedin_content = $("#linkedin_content").val();
-            var image_or_video_insta_file = $("#image_or_video_insta")[0];
+            // var image_or_video_insta_file = $("#image_or_video_insta")[0];
+            var imgElement = $('#image_div_ins img');
+            imgElement.length
 
             var data_id = "";
             var error_input = '';
@@ -422,7 +424,7 @@ $(document).ready(function () {
             if ($("li[section='fb']").length > 0 && facebook_content === "") {
                 error_input = "Facebook content can not be empty";
                 data_id = "facebok_error";
-            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" || image_or_video_insta_file.length === 0)) {
+            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" ||imgElement.length <= 0)) {
                
                 error_input = "Insta content and image can not be empty";
                 data_id = "insta_error";
@@ -441,11 +443,12 @@ $(document).ready(function () {
                 $("#posted_now").prop("disabled", false);
                 }, 500); 
             } else {
+               
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
                 setTimeout(function () {
                     $("#posted_now").prop("disabled", false);
-                    }, 500); 
+                    }, 1000); 
                 $(this).unbind('submit').submit();
                
                
@@ -737,12 +740,14 @@ $(document).ready(function () {
 
     function validateFileImageVideo(file, socialicon) {
      
+     
         var file, img, imgwidh, imgheight;
         var file_size = file.size;
         var ext = file.type;
         ext = String(ext).split('/');
         ext = ext[1];
         var mediaType = file.type.split('/')[0];
+       
         var response = true;
         if (mediaType === 'image') {
          
@@ -1596,7 +1601,9 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
      
-
+        var mediaType = file.type.split('/')[0];    
+    
+        if (mediaType === 'image') {
 
         function getImageDimensions(file) {
             return new Promise((resolve) => {
@@ -1631,14 +1638,13 @@ $(document).ready(function () {
             // Handle errors if any
             console.error('Error getting image dimensions:', error);
         });
+    }else{
 
+        validateFileImageVideo(file, socialicon);
+    } 
 
-        var fileInput = $(this);
-
-        // Clear the value of the file input
-        fileInput.val('');
-    
-        // Set the value of the file input again
+        var fileInput = $(this);     
+        fileInput.val('');   
         fileInput.val(fileInput.val());
     });
 
@@ -1647,7 +1653,12 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
+        var mediaType = file.type.split('/')[0];    
+    
+        if (mediaType === 'image') {
 
+
+       
         function getImageDimensions(file) {
             return new Promise((resolve) => {
                 var img = new Image();
@@ -1663,7 +1674,6 @@ $(document).ready(function () {
                 img.src = URL.createObjectURL(file);
             });
         }
-
         getImageDimensions(file)
         .then(({ width, height }) => {           
             if (width < 350 || height < 350) {               
@@ -1680,17 +1690,15 @@ $(document).ready(function () {
         .catch(error => {
             // Handle errors if any
             console.error('Error getting image dimensions:', error);
-        });
-      
-       
-        var fileInput = $(this);
+        });   
+    }else{
 
-        // Clear the value of the file input
-        fileInput.val('');
-    
-        // Set the value of the file input again
+        validateFileImageVideo(file, socialicon);
+    }  
+        var fileInput = $(this);       
+        fileInput.val('');   
         fileInput.val(fileInput.val());
-       
+      
     });
 
     $('.preview_div').click(function (e) {

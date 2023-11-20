@@ -148,6 +148,16 @@
     </div>
 </div>
 
+<div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {{-- pages_modal for instagram --}}
 
