@@ -335,15 +335,7 @@
     font-weight: 600 !important;
     margin-left: 4px !important;
 }
-.TwitterWrap .PostHeaderInner span{
-    margin: 0 !important;
-}
-.TwitterWrap .post_img_name .post_img .PostHeaderInner{
-    padding: 12px 12px 0 0 !important;
-}
-.TwitterWrap img.Twitter_Profile{
-    margin: 12px 0 0 6px;
-}
+
 .MainMobileview span.sponsored {
     margin-left: 0 !important;
     color: #888888;
@@ -563,7 +555,7 @@
 /* close btn sidebar */
 .close-btn {
     position: absolute;
-    top: -6px;
+    top: 4px;
     left: 13px;
     font-size: 24px;
     cursor: pointer;
@@ -608,37 +600,19 @@
 .btn-close {
     background-image: url("");
 }
-.LinkedinWrap #mypostresult_youpost,
-    .FacebookWrap #mypostresult_youpost,
-    .TwitterWrap #mypostresult_youpost,
-    .InstagramWrap #mypostresult_youpost{
-        overflow-y: hidden;
-        height: auto;
-    }
+
 #mypostresult_youpost {
     display:inline-block;
     -webkit-box-orient: vertical;
     overflow-y:scroll;
-    overflow-x:hidden;
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: none; 
     height:50px;
     width:100%;
 }
 #mypostresult_youpost::-webkit-scrollbar {
-    width: 4px;
-  height: auto;
-}
-#mypostresult_youpost::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-#mypostresult_youpost::-webkit-scrollbar-track{
-  background: #f1f1f1;
-}
-#mypostresult_youpost::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+    display: none;
+} 
 
 .wizard-fieldset_youpost {
     color: #171717;
@@ -672,49 +646,10 @@
 #mySidebar{
     position: relative;
 }
-#mySidebar .CloseSidebar_Btn {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: auto;
-        width: 100%;
-    }
-.BackBtnCS{
-        background-color: #ddd;
-        border-radius: 5px;
-        padding: 6px;
-        font-weight: 600;
-        margin-right: 6%;
-        float: right;
-        cursor: pointer;
-    }
-.sidebar_post{
-    background-repeat: no-repeat;
-    height: 62px;
-    background-size: contain;
-    width: 68px;
-    background-position: center;
-}
-.video_play_head{
-    align-items: center;
-    display: flex;
-    border-radius: 30px;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #000;
-
-}
-.video_play{
-    color:#000;
-    font-size:17px;
-    display: flex !important;
-    justify-content:center;
-    width: 100%;
-}
-
-.SetUp_PreviewImg,
-.InstaPreview_setup .mobile_post_img_inst{
-    background-size: 100% auto !important;
+#mySidebar .CloseSidebar_Btn{
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 /* close btn sidebar */
 /* timepicker style */
@@ -848,9 +783,8 @@
                                                 </label>
 
                                             </div>
-                                            <p id="file_error_youpost" class=" p-2  w-100 d-none mt-2 erro_background">
+                                            <p id="file_error_youpost">
                                             </p>
-
                                             <!-- append div waleed start -->
                                             <!-- end my coed -->
 
@@ -1220,7 +1154,7 @@
                                             </button>
 
                                             <button type="submit"
-                                                class="btn post_later_now_btn w-100 post_now_btn position-relative btn-danger" id="posted_now">
+                                                class="btn post_later_now_btn w-100 post_now_btn position-relative btn-danger">
                                                 <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
                                                     src="{{asset("images/newimages/loader.gif")}}" alt=""> Post Now
                                             </button>
@@ -1410,8 +1344,8 @@
                                         </div>
                                     </div>
                                     <p class="m-0"></p>
-                                    <div class="Mobcart_title mobprev_container">
-                                        <span id="mypostresult_youpost" class="mypostresult mob_prevcontent">Write your universal content...</span>
+                                    <div class="Mobcart_title">
+                                        <span id="mypostresult_youpost" class="mypostresult">Write your universal content...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1419,7 +1353,7 @@
                                 <div class="col-md-12 mt-4">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <div class="prv_div_youpost Preview_ImagesSetup"> </div>
+                                            <div class="prv_div_youpost"> </div>
                                             <div id="mediaContainervideo_youpost">
                                                 <!-- <video class="d-none video_preview_youpost" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1528,8 +1462,8 @@
                                         </div>
                                     </div>
                                     <p class="m-0"></p>
-                                    <div class="Mobcart_title mobprev_container">
-                                        <span id="mypostresult_fb" class="mypostresult mob_prevcontent">Write your post...</span>
+                                    <div class="Mobcart_title">
+                                        <span id="mypostresult_fb" class="mypostresult">Write your post...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1537,7 +1471,7 @@
                                 <div class="col-md-12 mt-3">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <div class="prv_div Preview_ImagesSetup"> </div>
+                                            <div class="prv_div"> </div>
                                             <div id="mediaContainervideo_fb">
                                                 <!-- <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1620,7 +1554,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="insta_post_img_inner_con Insta_post_previnner">
-                                        <div class="prv_div_isnt InstaPreview_setup">
+                                        <div class="prv_div_isnt">
                                             <!-- <img src="" class="d-none preview_image_inst" alt=""> -->
                                         </div>
 
@@ -1666,8 +1600,8 @@
 
                                     </div>
                                     <div class="col-md-12" style="height:56px">
-                                        <div class="Mobcart_title mobprev_container">
-                                            <span id="mypostresult_insta" class="mypostresult mob_prevcontent" style="color:#000;">Write
+                                        <div class="Mobcart_title">
+                                            <span id="mypostresult_insta" class="mypostresult" style="color:#000;">Write
                                                 your
                                                 post...</span>
                                             <span class="icon icon-privacy text-primary" id="mynameresult_insta"></span>
@@ -1728,8 +1662,8 @@
 
                                         </div>
                                     </div>
-                                    <div class="twitter_text pb-1 mobprev_container">
-                                        <span id="mypostresult_twitter" class="mypostresult mob_prevcontent">Write your post...</span>
+                                    <div class="twitter_text pb-1">
+                                        <span id="mypostresult_twitter" class="mypostresult">Write your post...</span>
                                         <span id="mynameresult_twitter" class="icon icon-privacy text-primary"></span>
 
                                     </div>
@@ -1737,7 +1671,7 @@
                                 <div class="col-12">
                                     <div class="twitter_img_container ">
 
-                                        <div class="prv_div_tw twitter_preview Preview_ImagesSetup" >
+                                        <div class="prv_div_tw twitter_preview" >
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
                                         <div id="mediaContainervideo_twitter">
@@ -1835,8 +1769,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="linkedin_post mobprev_container">
-                                        <span id="mypostresult_linkedin" class="mypostresult mob_prevcontent">Write your post...</span>
+                                    <div class="linkedin_post">
+                                        <span id="mypostresult_linkedin" class="mypostresult">Write your post...</span>
                                         <span id="mynameresult_linkedin" class="icon icon-privacy text-primary"></span>
 
                                     </div>
@@ -1845,7 +1779,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post_image">
-                                        <div class="prv_div_link Preview_ImagesSetup">
+                                        <div class="prv_div_link">
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
 
@@ -2144,9 +2078,6 @@
         <div class="calender calendar_overflo container col-lg-12" style="width: 0; position: absolute;z-index: 2; display:none;" id="mySidebar">
             <div class="CloseSidebar_Btn" style="">
                 <span class="close-btn" onclick="closeSidebar()">&times;</span>
-                <span class="BackBtnCS d-none">
-                    <img src="{{ asset('images/back.png') }}" alt="" width="20">
-                </span>
             </div>
             <span class="croissant-icon"></span>
             <div class="l1">
@@ -2922,7 +2853,7 @@ $(document).ready(function() {
                     $(".Today-post-detail").html('');
                     $(".Today-post-detail").append(response);
                     $(".Today-post-detail").show();
-                    $('.BackBtnCS').removeClass('d-none');
+
                     $(".fb-post").css('display', 'none');
                 } else {
                     // If the detail is visible, hide it and reset the flag
@@ -2937,46 +2868,8 @@ $(document).ready(function() {
 
 
     });
-
+    
 });
-
-$(document).on('click', '.BackBtnCS', function(){
-            $('.Today-post-detail').css('display', 'none');
-            $('.calendarmain .fb-post').css('display', 'block');
-            $('.BackBtnCS').addClass('d-none');
-        });
-
-$(document).on('click', '.fb-post ', function() {
-        var id = $(this).data('id');
-
-        $.ajax({
-            type: "get",
-            url: "{{ url('get_single_detail') }}",
-            data: {
-                'id': id
-            },
-            success: function(response) {
-                if (!isDetailVisible) {
-                    // If the detail is not visible, show it and set the flag
-                    // var contentToAppend = $(".the_preview").html();
-                    $(".Today-post-detail").html('');
-                    $(".Today-post-detail").append(response);
-                    $(".Today-post-detail").show();
-
-                    $(".fb-post").css('display', 'none');
-                } else {
-                    // If the detail is visible, hide it and reset the flag
-                    $(".Today-post-detail").hide();
-                    $(".fb-post").css('display', 'block');
-                }
-            }
-        });
-
-
-
-
-
-    });
 
     $(document).ready(function() {
         var isDetailVisible = false; // Initialize a flag to track visibility
@@ -2988,10 +2881,10 @@ $(document).on('click', '.fb-post ', function() {
             $(".Today-post-detail").css('display', 'none');
         });
         $(document).on('click', '.fb-post', function() {
-
+           
             var id = $(this).data('id');
-            var platform = $(this).data('plateform');
-
+            var platform = $(this).data('plateform'); 
+                   
             $.ajax({
                 type: "get"
                 , url: "{{ url('get_single_detail') }}"
@@ -2999,7 +2892,7 @@ $(document).on('click', '.fb-post ', function() {
                     'id': id
                 }
                 , success: function(response) {
-
+                  
                     if (!isDetailVisible) {
                         // If the detail is not visible, show it and set the flag
                         // var contentToAppend = $(".the_preview").html();
@@ -3012,7 +2905,7 @@ $(document).on('click', '.fb-post ', function() {
                         } else if (platform == 'Instagram') {
                             $(".InstagramWrap").removeAttr('style');
                         }else if (platform == 'Linkedin') {
-                            $(".LinkedinWrap").removeAttr('style');
+                            $(".LinkedinWrap").removeAttr('style');    
                         }else if (platform == 'Twitter') {
                             $(".TwitterWrap").removeAttr('style');
                         }
@@ -3020,7 +2913,7 @@ $(document).on('click', '.fb-post ', function() {
                     } else {
                         // If the detail is visible, hide it and reset the flag
                         $(".Today-post-detail").hide();
-                        $(".fb-post").css('display', 'block');
+                        $(".fb-post").css('display', 'block');    
                     }
                 }
             });
@@ -3029,9 +2922,9 @@ $(document).on('click', '.fb-post ', function() {
 
 
     });
+    
 
-
-
+   
 
 });
 </script>
@@ -3537,27 +3430,6 @@ function openEventModal(year, month, day) {
 
 // Initial calendar generation
 //generateCalendar();
-
-
-function updateCalendar() {
-    $.ajax({
-        url: '/get-updated-posts',
-        method: 'GET',
-        success: function (data) {
-            // Update the FullCalendar events based on the fetched data
-            // For example, update the event source
-            $('#postManagerCalendar').fullCalendar('removeEvents');
-            $('#postManagerCalendar').fullCalendar('addEventSource', data);
-
-            console.log('Calendar updated successfully.');
-        },
-        error: function (error) {
-            console.error('Error updating calendar:', error);
-        }
-    });
-}
-setInterval(updateCalendar, 60000); // 60 seconds
-
 </script>
 
 

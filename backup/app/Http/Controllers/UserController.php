@@ -84,42 +84,7 @@ class UserController extends Controller
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
 
     }
-    public function getUpdatedPosts()
-    {
-        $posts = Post::select(
-            DB::raw('DATE_FORMAT(posted_at, "%Y-%m-%d %H:%i:%s") as formatted_posted_at'),
-            DB::raw('COUNT(*) as total_count'),
-            DB::raw('SUM(CASE WHEN posted_at_moment = "now" THEN 1 ELSE 0 END) as published_count'),
-            DB::raw('SUM(CASE WHEN posted_at_moment != "now" THEN 1 ELSE 0 END) as not_published_count')
-        )
-        ->where('user_id', auth()->id())
-        ->where('account_id', auth()->user()->account_id)
-        ->groupBy(DB::raw('DATE(posted_at)'))
-        ->get();
 
-        $updatedPosts = [];
-
-        foreach ($posts as $post) {
-            $title = '';
-
-            if ($post->published_count > 0) {
-                $title .= $post->published_count . ' Published <br> ';
-            }
-
-            if ($post->not_published_count > 0) {
-                $title .= $post->not_published_count . ' Scheduled';
-            }
-            $updatedPosts[] = [
-                'id' => $post->id,
-                'title' =>  $title,
-                'start' => $post->formatted_posted_at,
-                'event_date' => Carbon::parse($post->formatted_posted_at)->format('Y-m-d'),
-                'ac_id' => auth()->user()->account_id,
-            ];
-        }
-
-        return response()->json($updatedPosts);
-    }
     public function dashbaord2()
     {
 
@@ -189,78 +154,62 @@ class UserController extends Controller
             $videoPath = $filename;
             return response()->json(['path' => $videoPath]);
         } else {
-             if ($request->dimention == "false") {
+//            if ($request->dimention == "false") {
+//
+//                $base64Image = $request->input('image');
+//
+//                // Decode the base64 image data and create an Intervention Image instance
+//                $img = Image::make(base64_decode($base64Image));
+//                $desiredAspectRatioLandscape = 16 / 5;
+//                $desiredAspectRatioPortrait = 4 / 5;
+//                $originalWidth = $img->width();
+//                $originalHeight = $img->height();
+//                if ($originalWidth > $originalHeight) {
+//                    $desiredAspectRatio = $desiredAspectRatioLandscape;
+//                } else {
+//                    $desiredAspectRatio = $desiredAspectRatioPortrait;
+//                }
+//                if ($originalWidth / $originalHeight > $desiredAspectRatio) {
+//                    // Image is wider than 4:5, so we need to add padding to the top and bottom
+//                    $newHeight = $originalWidth / $desiredAspectRatio;
+//                    $topPadding = ($originalHeight - $newHeight) / 2;
+//                    $bottomPadding = $topPadding;
+//                    $newWidth = $originalWidth;
+//                } else {
+//                    // Image is taller than 4:5, so we need to add padding to the left and right
+//                    $newWidth = $originalHeight * $desiredAspectRatio;
+//                    $leftPadding = ($originalWidth - $newWidth) / 2;
+//                    $rightPadding = $leftPadding;
+//                    $newHeight = $originalHeight;
+//                }
+//
+//                // Resize the image
+//                $img->resize($newWidth, $newHeight);
+//
+//                // Generate a unique filename for the resized image
+//                $filename = uniqid() . '.jpg';
+//
+//                // Define the path where you want to save the resized image
+//                $path = 'path_to_save_resized_image/' . $filename;
+//
+//                // Save the resized image to the specified path
+//                $img->save('content_media/' . $filename);
+//                // \Storage::disk('public')->put($path, (string) $img->encode('jpg'));
+//                $imagePath = $filename;
+//            }
+//            else {
+                $base64Data = $request->input('image');
+                $filename = uniqid() . '.png';
+                $imageData = base64_decode($base64Data);
+                file_put_contents(public_path('content_media/' . $filename), $imageData);
+                $imagePath = $filename;
+           // }
 
-                $base64Image = $request->input('image');
+            return response()->json(['path' => $imagePath]);
 
-                // Decode the base64 image data and create an Intervention Image instance
-                $img = Image::make(base64_decode($base64Image));
-                $desiredAspectRatioLandscape = 16 / 5;
-                $desiredAspectRatio = 4 / 5;
-                $originalWidth = $img->width();
-                $originalHeight = $img->height();
-
-                $minResolution = 0.8;
-                $maxResolution = 1.91;
-                $minWidth = 6000;
-                $minHeight = 6000;
-
-                    if ($originalWidth > $originalHeight) {
-                        $desiredAspectRatio = $desiredAspectRatioLandscape;
-                    } else {
-                        $desiredAspectRatio = $desiredAspectRatioPortrait;
-                    }
-
-
-                    if (
-                        $originalWidth / $originalHeight < $minResolution ||
-                        $originalWidth / $originalHeight > $maxResolution ||
-                        $originalWidth >= $minWidth ||
-                        $originalHeight >= $minHeight
-                    ) {
-                        // Image meets the criteria, resize it
-                        if ($originalWidth / $originalHeight > $desiredAspectRatio) {
-                            $newHeight = $originalWidth / $desiredAspectRatio;
-                            $topPadding = ($originalHeight - $newHeight) / 2;
-                            $bottomPadding = $topPadding;
-                            $newWidth = $originalWidth;
-                        } else {
-                            $newWidth = $originalHeight * $desiredAspectRatio;
-                            $leftPadding = ($originalWidth - $newWidth) / 2;
-                            $rightPadding = $leftPadding;
-                            $newHeight = $originalHeight;
-                        }
-
-                        // Resize the image
-                        $img->resize($newWidth, $newHeight);
-
-                        // Generate a unique filename for the resized image
-                        $filename = uniqid() . '.jpg';
-
-                        // Save the resized image to the specified path
-                        $img->save('content_media/' . $filename);
-
-                        return response()->json(['path' => $filename]);
-                    } else {
-                        // Image does not meet the criteria
-                        $base64Data = $request->input('image');
-                        $filename = uniqid() . '.png';
-                        $imageData = base64_decode($base64Data);
-                        file_put_contents(public_path('content_media/' . $filename), $imageData);
-                        $imagePath = $filename;
-
-                        return response()->json(['path' => $imagePath]);
-                    }
-               }else{
-                        $base64Data = $request->input('image');
-                        $filename = uniqid() . '.png';
-                        $imageData = base64_decode($base64Data);
-                        file_put_contents(public_path('content_media/' . $filename), $imageData);
-                        $imagePath = $filename;
-
-                        return response()->json(['path' => $imagePath]);
-               }
         }
+
+
     }
 
     public function getTimeDifference($post)
@@ -421,27 +370,27 @@ class UserController extends Controller
             $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
 
             if ($timeDiffLessTennOneMnt) {
-                $platformServiceMap = [
-                    'Facebook' => '\App\Services\Facebookservice',
-                    'Instagram' => '\App\Services\Instagramservice',
-                    'Twitter' => '\App\Services\TwitterService',
-                    'Linkedin' => '\App\Services\Linkedinservice',
-                ];
+                // $platformServiceMap = [
+                //     'Facebook' => '\App\Services\Facebookservice',
+                //     'Instagram' => '\App\Services\Instagramservice',
+                //     'Twitter' => '\App\Services\TwitterService',
+                //     'Linkedin' => '\App\Services\Linkedinservice',
+                // ];
 
-                $platform = $platforms[$i];
+                // $platform = $platforms[$i];
 
 
-                if (array_key_exists($platform, $platformServiceMap)) {
-                    $serviceClassName = $platformServiceMap[$platform];
-                    $run = new $serviceClassName();
-                    $arr['post'] = $post;
-                    $result = $run->create_post($arr);
-                    if ($result['status'] == true) {
-                        $up = Post::find($post->id);
-                        $up->posted_at_moment = 'now';
-                        $up->update();
-                    }
-                }
+                // if (array_key_exists($platform, $platformServiceMap)) {
+                //     $serviceClassName = $platformServiceMap[$platform];
+                //     $run = new $serviceClassName();
+                //     $arr['post'] = $post;
+                //     $result = $run->create_post($arr);
+                //     if ($result['status'] == true) {
+                //         $up = Post::find($post->id);
+                //         $up->posted_at_moment = 'now';
+                //         $up->update();
+                //     }
+                // }
             } else {
                 $scheduled = 'yes';
                 session(['IsScheduled' => $scheduled]);
@@ -652,7 +601,6 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
-        
         $platform = auth()->user()->account->platforms;
         $valueToRemove = 'Facebook';
         foreach (array_keys($platform, $valueToRemove) as $key) {
@@ -968,7 +916,6 @@ class UserController extends Controller
 
         $run = new Linkedinservice();
         $imageUrl = $run->get_linkedin_image();
-
         $pageName = $run->get_linkedin_pageName();
         $user = auth()->user();
         $user->account->link_image = $imageUrl;
