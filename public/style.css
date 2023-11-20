@@ -2184,7 +2184,7 @@ width: 100%;
 .post_detailWrap .DetailText .publishedpost {
     margin: unset;
     border-radius: 5px;
-    width: 60%;
+    width: 40%;
     background: rgba(137, 197, 127, 0.62);
     display: flex;
     align-items: center;
