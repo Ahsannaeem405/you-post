@@ -1412,9 +1412,11 @@ $(document).ready(function () {
     }
     
     function appendVideo(file, socialicon) {
+        
         if (file) {
             $('.uplaod-gif-video').removeClass('d-none');
             var reader = new FileReader();
+
             reader.onload = function (e) {
                 var base64Data = e.target.result.split(',')[1];
                 var type = "video";
@@ -1478,6 +1480,7 @@ $(document).ready(function () {
                         type: type
                     },
                     success: function (response) {
+                      
                         $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
                         if (socialicon == 'image_or_videofb') {
