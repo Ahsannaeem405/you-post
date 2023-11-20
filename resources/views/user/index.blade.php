@@ -563,7 +563,7 @@
 /* close btn sidebar */
 .close-btn {
     position: absolute;
-    top: 4px;
+    top: -6px;
     left: 13px;
     font-size: 24px;
     cursor: pointer;
@@ -682,7 +682,7 @@
 .BackBtnCS{
         background-color: #ddd;
         border-radius: 5px;
-        padding: 4px;
+        padding: 6px;
         font-weight: 600;
         margin-right: 6%;
         float: right;
@@ -690,9 +690,10 @@
     }
 .sidebar_post{
     background-repeat: no-repeat;
-   height: 62px;
+    height: 62px;
     background-size: contain;
     width: 68px;
+    background-position: center;
 }
 .video_play_head{
     align-items: center;
@@ -2139,7 +2140,9 @@ width: 100%;
         <div class="calender calendar_overflo container col-lg-12" style="width: 0; position: absolute;z-index: 2; display:none;" id="mySidebar">
             <div class="CloseSidebar_Btn" style="">
                 <span class="close-btn" onclick="closeSidebar()">&times;</span>
-                <span class="BackBtnCS d-none">Back</span>
+                <span class="BackBtnCS d-none">
+                    <img src="{{ asset('images/back.png') }}" alt="" width="20">
+                </span>
             </div>
             <span class="croissant-icon"></span>
             <div class="l1">
