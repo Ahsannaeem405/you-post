@@ -231,11 +231,22 @@ class Linkedinservice
         ]);
 
         $responseData = json_decode($response->getBody(), true);
-        $imageUrl =$responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+        if (isset($responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'])) {
+            $imageUrl = $responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
+
+            // Check if the local image file already exists and delete it
+            $imagePath = 'content_media/linkedin_logo.jpg';
+             if (file_exists(public_path($imagePath))) {
+                    unlink(public_path($imagePath));
+                }          
+
+            $imageContents = file_get_contents($imageUrl); 
+            file_put_contents(public_path($imagePath), $imageContents);
+        }
    
       
        }
-       return $imageUrl;
+       return $imagePath;
     }
 
     public function get_linkedin_pageName()

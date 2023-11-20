@@ -10,17 +10,8 @@
             <h5 class="HeadingTop">
                 {{-- <img src="{{ asset('images/fbposticon.png') }}" alt="" class="mr-1">  --}}
                 @if ($post->plateform === 'Facebook')
-                    <img src="{{ auth()->user()->account->fb_image }}" class="img-fluid" width="40" height="40"
-                        alt="">
-                @elseif($post->plateform === 'Instagram')
-                    <img src="{{ auth()->user()->account->inst_image }}" class="img-fluid" width="40" height="40"
-                        alt="">
-                @elseif($post->plateform === 'Twitter')
-                    <img src="{{ auth()->user()->account->twt_image }}" class="img-fluid" width="40" height="40"
-                        alt="">
-                @elseif($post->plateform === 'Linkedin')
-                    <img src="{{ auth()->user()->account->link_image }}" class="img-fluid" width="40" height="40"
-                        alt="">
+                        <img src="{{ asset('images/fbposticon.png') }}" alt=""
+                            class="mr-1 ProfileIcon border-0">
                 @endif
                 Facebook
             </h5>
@@ -33,28 +24,6 @@
                             in live feed
                         @endif
                     </a>
-                @elseif($post->plateform === 'Instagram')
-                    <a href="{{ $newvar['inst_feed'] }}" target="_blank" style="font-size:12px;" class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Twitter')
-                    <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;" class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Linkedin')
-                    <a href="{{ $newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
                 @endif
             </div>
         </div>
@@ -62,8 +31,8 @@
             <div class="post_img">
                 <div class="PostHeaderInner d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-center align-items-start gap-1">
-                        <img src="{{ asset('images/fbposticon.png') }}" alt=""
-                            class="mr-1 ProfileIcon border-0">
+                    <img src="{{ auth()->user()->account->fb_image }}" class="img-fluid" width="40" height="40"
+                        alt="">
                         <div class="">
                             <h5 class="m-0">{{ auth()->user()->account->fb_page_name }}</h5>
                             <span>Just Now</span>
@@ -71,7 +40,7 @@
                     </div>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false" disabled>
                             <img src="{{ asset('images/dots-25.png') }}" alt="">
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -87,7 +56,7 @@
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                     </div>
                 </div>
-                <div class="TagsSec">
+                <div class="TagsSec d-none">
                     <a href="#">#BrownTechInt</a>
                 </div>
                 <div class="ImgSec">
@@ -166,48 +135,14 @@
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
                 {{-- <img src="{{ asset('images/linkedinlogo.png') }}" alt="" class="mr-1">  --}}
-                @if ($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
-                    <img src="{{ auth()->user()->account->fb_image }}" class="img-fluid" width="40"
-                        height="40" alt="">
-                @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
-                    <img src="{{ auth()->user()->account->inst_image }}" class="img-fluid" width="40"
-                        height="40" alt="">
-                @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
-                    <img src="{{ auth()->user()->account->twt_image }}" class="img-fluid" width="40"
-                        height="40" alt="">
-                @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
-                    <img src="{{ auth()->user()->account->link_image }}" class="img-fluid" width="40"
-                        height="40" alt="">
+                @if($post->plateform === 'Linkedin')
+                <img src="{{ asset('images/linkedinlogo.png') }}" alt="" class="mr-1">
                 @endif
                 LinkedIn
             </h5>
             <div class="postlink">
                 <!-- <a href="javascript:void(0);" class="visit_postsite">View post on Twitter </a> -->
-                @if ($post->plateform === 'Facebook')
-                    <a href="{{ $newvar['fb_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Instagram')
-                    <a href="{{ $newvar['inst_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Twitter')
-                    <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Linkedin')
+                @if($post->plateform === 'Linkedin')
                     <a href="{{ $newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"
                         class="visit_postsite">
                         @if ($post->posted_at_moment == 'now')
@@ -222,7 +157,8 @@
             <div class="post_img">
                 <div class="PostHeaderInner d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-center align-items-start gap-1">
-                        <img src="{{ asset('images/linkedinlogo.png') }}" alt="" class="mr-1">
+                        <img src="{{ auth()->user()->account->link_image }}" class="img-fluid" width="40"
+                        height="40" alt="">
                         <div class="">
                             <h5 class="m-0">{{ auth()->user()->account->link_page_name }}</h5>
                             <span>Just Now</span>
@@ -230,7 +166,7 @@
                     </div>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false" disabled>
                             <img src="{{ asset('images/dots-25.png') }}" alt="">
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -246,7 +182,7 @@
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                     </div>
                 </div>
-                <div class="TagsSec">
+                <div class="TagsSec d-none">
                     <!-- <a href="#">#BrownTechInt</a> -->
                 </div>
                 <div class="ImgSec">
@@ -327,49 +263,15 @@
     <div class="MainMobileview MainMobileview2 mt-1 TwitterWrap" style="display: none;">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
-                <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1">
-                @if ($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->fb_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->inst_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->twt_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->link_image}}" class="img-fluid" width="40" height="40" alt="">
+                @if($post->plateform === 'Twitter')
+                <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1 ProfileIcon">
                 @endif
                  Twitter
             </h5>
             <div class="postlink">
                 <!-- <a href="javascript:void(0);" class="visit_postsite">View post on Twitter </a> -->
-                @if ($post->plateform === 'Facebook')
-                    <a href="{{ $newvar['fb_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Instagram')
-                    <a href="{{ $newvar['inst_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Twitter')
+                @if($post->plateform === 'Twitter')
                     <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Linkedin')
-                    <a href="{{ $newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"
                         class="visit_postsite">
                         @if ($post->posted_at_moment == 'now')
                             <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
@@ -380,14 +282,14 @@
             </div>
         </div>
         <div class="post_img_name">
-            <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1 ProfileIcon">
+            <img src="{{auth()->user()->account->twt_image}}" class="img-fluid Twitter_Profile" width="40" height="40" alt="">
             <div class="post_img">
                 <div class="PostHeaderInner d-flex justify-content-between align-items-center">
-                    <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="">
                         <h5 class="m-0">{{auth()->user()->account->tw_name}}</h5>
                         <div class="">
-                            <span>@Tang...</span>
-                            <span>Just Now</span>
+                            <span>@ {{auth()->user()->account->tw_user_name}}</span>
+                            <!-- <span>Just Now</span> -->
                         </div>
                     </div>
                 </div>
@@ -475,49 +377,15 @@
     <div class="MainMobileview MainMobileview2 mt-1 InstagramWrap" style="display: none;">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
-                <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1">
-                @if ($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->fb_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->inst_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->twt_image}}" class="img-fluid" width="40" height="40" alt="">
-                @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account &&
-                auth()->user()->account->fb_image)
-                <img src="{{auth()->user()->account->link_image}}" class="img-fluid" width="40" height="40" alt="">
+                @if($post->plateform === 'Instagram')
+                <img src="{{ asset('images/instapost.png') }}" alt="" class="mr-1 ProfileIcon">
                 @endif
                 Instagram
             </h5>
             <div class="postlink">
                 <!-- <a href="javascript:void(0);" class="visit_postsite">View post on Twitter </a> -->
-                @if ($post->plateform === 'Facebook')
-                    <a href="{{ $newvar['fb_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Instagram')
+                @if($post->plateform === 'Instagram')
                     <a href="{{ $newvar['inst_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Twitter')
-                    <a href="{{ $newvar['tw_feed'] }}" target="_blank" style="font-size:12px;"
-                        class="visit_postsite">
-                        @if ($post->posted_at_moment == 'now')
-                            <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
-                            in live feed
-                        @endif
-                    </a>
-                @elseif($post->plateform === 'Linkedin')
-                    <a href="{{ $newvar['linkedin_feed'] }}" target="_blank" style="font-size:12px;"
                         class="visit_postsite">
                         @if ($post->posted_at_moment == 'now')
                             <img src="{{ asset('images/copy.png') }}" class="CopyIcon" alt="" /> View post
@@ -532,15 +400,15 @@
                 <div class="PostHeaderInner d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-2">
                         <div class="d-flex align-items-center gap-1">
-                            <img src="{{ asset('images/Twitter_Color.png') }}" alt="" class="mr-1 ProfileIcon">
+                        <img src="{{auth()->user()->account->inst_image}}" class="img-fluid" width="40" height="40" alt="">
                             <h5 class="m-0">{{auth()->user()->account->inst_page_name}}</h5>
                         </div>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                data-bs-toggle="dropdown" aria-expanded="false" disabled>
                                 <img src="{{ asset('images/dots-25.png') }}" alt="">
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" disable>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -623,7 +491,7 @@
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                     </div>
                 </div>
-                <div class="TagsSec">
+                <div class="TagsSec d-none">
                     <a href="#">#BrownTechInt</a>
                 </div>
                 @if ($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)

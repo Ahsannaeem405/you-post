@@ -409,18 +409,23 @@ $(document).ready(function () {
 
         $("#post_form").submit(function (event) {
             event.preventDefault();
+            $("#posted_now").prop("disabled", true);
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
             var linkedin_content = $("#linkedin_content").val();
-            var image_or_video_insta_file = $("#image_or_video_insta")[0];
+            // var image_or_video_insta_file = $("#image_or_video_insta")[0];
+            var imgElement = $('#image_div_ins img');
+            imgElement.length
+
             var data_id = "";
             var error_input = '';
 
             if ($("li[section='fb']").length > 0 && facebook_content === "") {
                 error_input = "Facebook content can not be empty";
                 data_id = "facebok_error";
-            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" || image_or_video_insta_file.length === 0)) {
+            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" ||imgElement.length <= 0)) {
+               
                 error_input = "Insta content and image can not be empty";
                 data_id = "insta_error";
             } else if ($("li[section='twitter']").length > 0 && twitter_content === "") {
@@ -434,10 +439,19 @@ $(document).ready(function () {
             if (error_input !== "") {
                 $('#file_error_all').removeClass('d-none').text(error_input);
                 $('#file_error_all').attr('data-id', data_id);
+                setTimeout(function () {
+                $("#posted_now").prop("disabled", false);
+                }, 500); 
             } else {
+               
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
+                setTimeout(function () {
+                    $("#posted_now").prop("disabled", false);
+                    }, 1000); 
                 $(this).unbind('submit').submit();
+               
+               
 
             }
         });
@@ -725,15 +739,19 @@ $(document).ready(function () {
     }
 
     function validateFileImageVideo(file, socialicon) {
-
+     
+     
         var file, img, imgwidh, imgheight;
         var file_size = file.size;
         var ext = file.type;
         ext = String(ext).split('/');
         ext = ext[1];
         var mediaType = file.type.split('/')[0];
+       
         var response = true;
         if (mediaType === 'image') {
+         
+            
 
             if (file_size >= 8000000) {
                 toastr.error('size should be less than 8MB.', 'Image', { timeOut: 5000 })
@@ -1394,9 +1412,11 @@ $(document).ready(function () {
     }
     
     function appendVideo(file, socialicon) {
+        
         if (file) {
             $('.uplaod-gif-video').removeClass('d-none');
             var reader = new FileReader();
+
             reader.onload = function (e) {
                 var base64Data = e.target.result.split(',')[1];
                 var type = "video";
@@ -1405,7 +1425,7 @@ $(document).ready(function () {
                 var getRandomClass = getRandomClassName();
                 var img_con = `<div class=" cross_img_con_video  ${getRandomClass}" id="remove_id">                   
                 <a href="javascript:void(0);" id='cnad'> <i class='fa-solid fa-xmark cancel_mark_video' id="${getRandomClass}"></i></a>
-                    <h1><i class="fa-sharp fa-solid fa-play"></i></h1>
+                    <h1 class="video_play_head"><i class="fa-sharp fa-solid fa-play video_play"></i></h1>
                 </div>`;
 
                 if (socialicon == 'image_or_video_youpost') {
@@ -1460,6 +1480,7 @@ $(document).ready(function () {
                         type: type
                     },
                     success: function (response) {
+                      
                         $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
                         if (socialicon == 'image_or_videofb') {
@@ -1582,14 +1603,52 @@ $(document).ready(function () {
 
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
+     
+        var mediaType = file.type.split('/')[0];    
+    
+        if (mediaType === 'image') {
 
-        // *********************  Validate Size and Memes ************************
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var mediaType = file.type.split('/')[0];
-            validateFileImageVideo(file, socialicon);
-        };
-        reader.readAsDataURL(file);
+        function getImageDimensions(file) {
+            return new Promise((resolve) => {
+                var img = new Image();
+                var width = 0;
+                var height = 0;
+    
+                img.onload = function () {
+                    width = this.width;
+                    height = this.height;
+                    resolve({ width, height });
+                };
+    
+                img.src = URL.createObjectURL(file);
+            });
+        }
+
+        getImageDimensions(file)
+        .then(({ width, height }) => {           
+            if (width < 350 || height < 350) {               
+                toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
+                return;
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var mediaType = file.type.split('/')[0];
+                validateFileImageVideo(file, socialicon);
+            };
+            reader.readAsDataURL(file);
+        })
+        .catch(error => {
+            // Handle errors if any
+            console.error('Error getting image dimensions:', error);
+        });
+    }else{
+
+        validateFileImageVideo(file, socialicon);
+    } 
+
+        var fileInput = $(this);     
+        fileInput.val('');   
+        fileInput.val(fileInput.val());
     });
 
     $('.file_image_video_youpost').change(function (e) {
@@ -1597,13 +1656,52 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
-        // *********************  Validate Size and Memes ************************
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var mediaType = file.type.split('/')[0];
-            validateFileImageVideo(file, socialicon);
-        };
-        reader.readAsDataURL(file);
+        var mediaType = file.type.split('/')[0];    
+    
+        if (mediaType === 'image') {
+
+
+       
+        function getImageDimensions(file) {
+            return new Promise((resolve) => {
+                var img = new Image();
+                var width = 0;
+                var height = 0;
+    
+                img.onload = function () {
+                    width = this.width;
+                    height = this.height;
+                    resolve({ width, height });
+                };
+    
+                img.src = URL.createObjectURL(file);
+            });
+        }
+        getImageDimensions(file)
+        .then(({ width, height }) => {           
+            if (width < 350 || height < 350) {               
+                toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
+                return;
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var mediaType = file.type.split('/')[0];
+                validateFileImageVideo(file, socialicon);
+            };
+            reader.readAsDataURL(file);
+        })
+        .catch(error => {
+            // Handle errors if any
+            console.error('Error getting image dimensions:', error);
+        });   
+    }else{
+
+        validateFileImageVideo(file, socialicon);
+    }  
+        var fileInput = $(this);       
+        fileInput.val('');   
+        fileInput.val(fileInput.val());
+      
     });
 
     $('.preview_div').click(function (e) {

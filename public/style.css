@@ -8,6 +8,7 @@ body {
     /* background: #FFFFFF; */
     overflow-x: hidden;
     background: var(--grayColor);
+    /* background-color: red; */
 }
 
 @font-face {
@@ -2183,7 +2184,7 @@ width: 100%;
 .post_detailWrap .DetailText .publishedpost {
     margin: unset;
     border-radius: 5px;
-    width: 60%;
+    width: 40%;
     background: rgba(137, 197, 127, 0.62);
     display: flex;
     align-items: center;
@@ -3308,8 +3309,12 @@ z-index: 1;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    font-size: 14px !important;
+    font-size: 12px !important;
 }
+/* .account-info{
+    display:flex;
+     justify-content:center;
+} */
 
 
 

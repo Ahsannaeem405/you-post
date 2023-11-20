@@ -11,7 +11,7 @@
     border-radius: 10px;
     border: 0.5px solid #E0E0E0;
     background: #FFF;
-    box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
+    box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10); 
 }
 
 .rounded-circle {
@@ -23,7 +23,7 @@
 }
 
 .rounded-circle2 {
-    object-fit: none;
+    object-fit: contain;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -49,9 +49,11 @@
     padding-right: 5px;
 
 }
-
+.delete_input{
+    width:400px;
+}
 .account-detail {
-    width: 50%;
+    width: 100%;
     padding: 10px 15px;
     outline: none;
     border-color: #D6D6D6;
@@ -140,8 +142,6 @@
 .T-recont_btn,
 .instrecont_btn {
     position: relative;
-    /* display: inline-block; */
-    /* border-bottom: 1px dotted black; */
 }
 
 .tooltiptext_fb,
@@ -168,13 +168,18 @@
 .instrecont_btn:hover .tooltiptext_inst {
     visibility: visible;
 }
-.maxchar{
-    color:green;
-    font-weight:400;
+
+.maxchar {
+    color: #959595;
+    font-weight: 400;
     font-family: 'Poppins', sans-serif;
     padding: 5px 0;
-    font-size:14px;
+    font-size: 14px;
+    left: 67%;
+    top: 48%;
+    position: absolute;
 }
+
 /*  */
 /* main account file styling */
 @media (max-width:992px) {
@@ -183,32 +188,6 @@
     }
 }
 
-@media (min-width:320px) and (max-width:576px) {
-    .account-info {
-        display: flex;
-        flex-direction: column;
-    }
-   .account_name{
-    width:100%;
-    margin-bottom:10px;
-   }
-   .btn-danger {
-    margin-left: 2px;
-}
-.all_social_platformWrp {
-        width: 93%;
-    }
-    .delete_accountbtn{
-        width: 100% !important;
-        margin-bottom: 20px;
-    }
-    .showColorIcon{
-        margin-bottom:15px;
-    }
-    .platformBtn {
-    text-align: center;
-}
-}
 </style>
 @foreach($accounts as $key=>$account)
 <!--24,,10,23,  -->
@@ -217,20 +196,23 @@
         @if(in_array("Facebook", $account->platforms))
         <img src="{{$account->fb_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Instagram", $account->platforms))
-        <img src="{{ $account->inst_image}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{asset('content_media/insta_profile.jpg')}}" class="v_icon rounded-circle mb-3" alt="" />
 
         @elseif(in_array("Twitter", $account->platforms))
         <img src="{{$account->twt_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Linkedin", $account->platforms))
-        <img src="{{ $account->link_image}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{asset('content_media/linkedin_logo.jpg')}}" class="v_icon rounded-circle mb-3" alt="" />
         @else
         <img src="{{asset('images/YouPost_Logo.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
-            <label for="" class="user_detail">Account Name</label>
-            <div class="account-info" style="display:flex; justify-content:center;">
-                <input type="text" value="{{$account->name}}" data-account="{{$account->id}}" placeholder="Account Name"
-                    class="account-detail account_name" maxlength="15" oninput="countCharacters()">
+            <div class="account-info">
+                <label for="" class="user_detail">Account Name</label>
+                <div class="delete_input">
+                    <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
+                        placeholder="Account Name" class="account-detail account_name" maxlength="18"
+                        oninput="countCharacters()">
+                </div>
                 <form action="{{ route('account-delete',$account->id) }}" method="POST">
                     @csrf
                     @method('Post')
@@ -240,8 +222,8 @@
                 </form>
             </div>
             <div class="maxchar">
-                <p> max char: <span class="charCount">0/15</span></p>
-                </div>
+                <p><span class="charCount">0/18</span></p>
+            </div>
         </div>
         <div class="switch_account">
             <span>Switch on & connect social platform for Facebook, Instagram, etc....</span>
@@ -273,7 +255,7 @@
                         href="{{ url('connect_to_facebook') }}">
                         <span class="reconnect_platform"> Reconnect</span>
 
-                        <span class="tooltiptext_fb">Click here to connect a facebook account</span>
+                        <span class="tooltiptext_fb">Click here to connect a different facebook account</span>
 
 
                     </a>
@@ -305,7 +287,7 @@
                         href="{{ url('connect_to_instagram') }}">
                         <span class="reconnect_platform"> Reconnect</span>
 
-                        <span class="tooltiptext_inst">Click here to connect a Instagram account</span>
+                        <span class="tooltiptext_inst">Click here to connect a different Instagram account</span>
 
                     </a>
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) &&
@@ -336,7 +318,7 @@
                         <span class="reconnect_platform">
                             Reconnect</span>
 
-                        <span class="tooltiptext_tw">Click here to connect a Twitter account</span>
+                        <span class="tooltiptext_tw">Click here to connect a different Twitter account</span>
 
                     </a>
 
@@ -368,7 +350,7 @@
                         ? '' : 'd-none'
                     }} r_btn" href="{{ url('connect_to_linkedin') }}">
                         <span class="reconnect_platform"> Reconnect</span>
-                        <span class="tooltiptext_link">Click here to connect a Linkedin account</span>
+                        <span class="tooltiptext_link">Click here to connect a different Linkedin account</span>
                     </a>
                     <a class="l-conect_btn {{ 
                         in_array('Linkedin', $account->platforms)
@@ -431,15 +413,14 @@ $(document).ready(function() {
 
 function countCharacters(inputField) {
     // Get the maximum allowed characters
-    var maxLength = 15;
+    var maxLength = 18;
 
     // Update the character count for the specific input field
     var charCount = inputField.value.length;
     var parentDiv = inputField.parentElement;
     var charCountElement = inputField.parentElement; // Assuming the counter element is a sibling
-    var charCountElement = parentDiv.nextElementSibling.querySelector('.maxchar .charCount');
+    var charCountElement = parentDiv.parentElement.nextElementSibling.querySelector('.maxchar .charCount');
     // Update the character count and format "0/15"
     charCountElement.innerText = charCount + "/" + maxLength;
 }
-
 </script>
