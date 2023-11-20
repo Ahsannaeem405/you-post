@@ -17,12 +17,12 @@ class AccountController extends Controller
     }
 
     public function index()
-    {
-      
+    { 
         $response = $this->createPostService->InitilizeData();
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
+      
         return view('user.socialPlatform', compact('instapages', 'all_pages', 'all_pages_for_insta'));
         
     }

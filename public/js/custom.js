@@ -416,6 +416,8 @@ $(document).ready(function () {
             var linkedin_content = $("#linkedin_content").val();
             // var image_or_video_insta_file = $("#image_or_video_insta")[0];
             var imgElement = $('#image_div_ins img');
+           var vidLen= $('#image_div_ins').find('.cross_img_con_video ').length;          
+
             imgElement.length
 
             var data_id = "";
@@ -424,7 +426,7 @@ $(document).ready(function () {
             if ($("li[section='fb']").length > 0 && facebook_content === "") {
                 error_input = "Facebook content can not be empty";
                 data_id = "facebok_error";
-            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" ||imgElement.length <= 0)) {
+            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" ||(imgElement.length <= 0  && vidLen <= 0 ))) {
                
                 error_input = "Insta content and image can not be empty";
                 data_id = "insta_error";
@@ -673,7 +675,9 @@ $(document).ready(function () {
     // validation  ********************************** ********************************* validation//
     function validateDimenstionImage(file, socialicon) {
 
-
+      
+            $("#posted_now").prop("disabled", true);
+          
 
         if (socialicon == 'image_or_videofb') {
             appendImage(file, socialicon, true);
@@ -703,6 +707,8 @@ $(document).ready(function () {
     }
 
     function validateDimenstionVideo(file, socialicon) {
+
+        $("#posted_now").prop("disabled", true);
 
         if (socialicon == 'image_or_videofb') {
             appendVideo(file, socialicon);
@@ -994,6 +1000,8 @@ $(document).ready(function () {
                         } else {
                             setPreview(socialicon, response.path);
                         }
+                        $("#posted_now").prop("disabled", false);
+
                     },
                 });
                 var mediaType = file.type.split('/')[0];
@@ -1567,10 +1575,13 @@ $(document).ready(function () {
 
                             setPreview(socialicon, response.path);
                         }
+                        $("#posted_now").prop("disabled", false);
+
                     },
                     error: function () {
                         alert('Error saving the video.');
                     }
+                    
                 });
             };
             reader.readAsDataURL(file);
@@ -1601,6 +1612,8 @@ $(document).ready(function () {
 
     $('.file_image_video').change(function (e) {
 
+
+        $('#file_error_all').addClass('d-none');
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
      
@@ -1652,7 +1665,7 @@ $(document).ready(function () {
     });
 
     $('.file_image_video_youpost').change(function (e) {
-
+        $('#file_error_all').addClass('d-none');
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 

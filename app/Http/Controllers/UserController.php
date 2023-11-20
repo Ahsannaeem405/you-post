@@ -421,27 +421,27 @@ class UserController extends Controller
             $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
 
             if ($timeDiffLessTennOneMnt) {
-                // $platformServiceMap = [
-                //     'Facebook' => '\App\Services\Facebookservice',
-                //     'Instagram' => '\App\Services\Instagramservice',
-                //     'Twitter' => '\App\Services\TwitterService',
-                //     'Linkedin' => '\App\Services\Linkedinservice',
-                // ];
+                $platformServiceMap = [
+                    'Facebook' => '\App\Services\Facebookservice',
+                    'Instagram' => '\App\Services\Instagramservice',
+                    'Twitter' => '\App\Services\TwitterService',
+                    'Linkedin' => '\App\Services\Linkedinservice',
+                ];
 
-                // $platform = $platforms[$i];
+                $platform = $platforms[$i];
 
 
-                // if (array_key_exists($platform, $platformServiceMap)) {
-                //     $serviceClassName = $platformServiceMap[$platform];
-                //     $run = new $serviceClassName();
-                //     $arr['post'] = $post;
-                //     $result = $run->create_post($arr);
-                //     if ($result['status'] == true) {
-                //         $up = Post::find($post->id);
-                //         $up->posted_at_moment = 'now';
-                //         $up->update();
-                //     }
-                // }
+                if (array_key_exists($platform, $platformServiceMap)) {
+                    $serviceClassName = $platformServiceMap[$platform];
+                    $run = new $serviceClassName();
+                    $arr['post'] = $post;
+                    $result = $run->create_post($arr);
+                    if ($result['status'] == true) {
+                        $up = Post::find($post->id);
+                        $up->posted_at_moment = 'now';
+                        $up->update();
+                    }
+                }
             } else {
                 $scheduled = 'yes';
                 session(['IsScheduled' => $scheduled]);
@@ -652,6 +652,7 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
+        
         $platform = auth()->user()->account->platforms;
         $valueToRemove = 'Facebook';
         foreach (array_keys($platform, $valueToRemove) as $key) {
