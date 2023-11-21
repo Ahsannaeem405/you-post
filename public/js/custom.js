@@ -1723,11 +1723,11 @@ $(document).ready(function () {
 
         var randomDelay = Math.floor(Math.random() * (5000 - 500 + 1)) + 500; // Random delay between 1 and 5 seconds
         setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetup').css('column-count');
+            var columnCount = $('.prv_div_youpost').css('column-count');
             if (columnCount === '1') {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').addClass('SetUp_PreviewImg');
+                $('.mobile_post_img').addClass('SetUp_PreviewImg');
             } else {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
+                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
             }
         }, randomDelay);
 
