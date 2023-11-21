@@ -189,21 +189,27 @@ class UserController extends Controller
             $videoPath = $filename;
             return response()->json(['path' => $videoPath]);
         } else {
-             if ($request->dimention == "false") {
-
+            // Get the base64-encoded image data from the request
                 $base64Image = $request->input('image');
 
                 // Decode the base64 image data and create an Intervention Image instance
                 $img = Image::make(base64_decode($base64Image));
+
+                // Define desired aspect ratios for landscape and portrait orientations
                 $desiredAspectRatioLandscape = 16 / 5;
                 $desiredAspectRatio = 4 / 5;
+
+                // Get the original width and height of the image
                 $originalWidth = $img->width();
                 $originalHeight = $img->height();
 
+                // Define minimum and maximum resolutions, as well as minimum width and height
                 $minResolution = 0.8;
                 $maxResolution = 1.91;
                 $minWidth = 6000;
                 $minHeight = 6000;
+
+                // Determine the desired aspect ratio based on the image orientation
 
                     if ($originalWidth > $originalHeight) {
                         $desiredAspectRatio = $desiredAspectRatioLandscape;
@@ -211,6 +217,7 @@ class UserController extends Controller
                         $desiredAspectRatio = $desiredAspectRatioPortrait;
                     }
 
+                // Check if the image meets certain criteria for resizing
 
                     if (
                         $originalWidth / $originalHeight < $minResolution ||
@@ -220,11 +227,14 @@ class UserController extends Controller
                     ) {
                         // Image meets the criteria, resize it
                         if ($originalWidth / $originalHeight > $desiredAspectRatio) {
+
+                            // Calculate new dimensions for landscape-oriented images
                             $newHeight = $originalWidth / $desiredAspectRatio;
                             $topPadding = ($originalHeight - $newHeight) / 2;
                             $bottomPadding = $topPadding;
                             $newWidth = $originalWidth;
                         } else {
+                            // Calculate new dimensions for portrait-oriented images
                             $newWidth = $originalHeight * $desiredAspectRatio;
                             $leftPadding = ($originalWidth - $newWidth) / 2;
                             $rightPadding = $leftPadding;
@@ -243,23 +253,25 @@ class UserController extends Controller
                         return response()->json(['path' => $filename]);
                     } else {
                         // Image does not meet the criteria
+
+                        // Get the base64-encoded image data from the request
+
                         $base64Data = $request->input('image');
+
+                        // Generate a unique filename for the original image
                         $filename = uniqid() . '.png';
+
+                        // Decode the base64 image data
                         $imageData = base64_decode($base64Data);
+
+                       // Save the original image to the specified path
                         file_put_contents(public_path('content_media/' . $filename), $imageData);
                         $imagePath = $filename;
 
+                      // Return the path to the original image in the response
                         return response()->json(['path' => $imagePath]);
                     }
-               }else{
-                        $base64Data = $request->input('image');
-                        $filename = uniqid() . '.png';
-                        $imageData = base64_decode($base64Data);
-                        file_put_contents(public_path('content_media/' . $filename), $imageData);
-                        $imagePath = $filename;
-
-                        return response()->json(['path' => $imagePath]);
-               }
+              
         }
     }
 
@@ -701,11 +713,12 @@ class UserController extends Controller
 
     public function set_page(Request $req)
     {
+        
         $req->validate([
             'page' => 'required',
         ]);
         $user = Account::find(auth()->user()->account_id);
-
+        // dd(auth()->user()->account_id);
         $platforms = $user->platforms;
 
         array_push($platforms, 'Facebook');

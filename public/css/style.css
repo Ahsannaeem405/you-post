@@ -1463,7 +1463,7 @@ button {
 /* ahmad farz */
 
 .max_height_linkedin {
-    height: 233px !important;
+    max-height: 233px !important;
 }
 
 /* Insta preview grid */
@@ -1516,7 +1516,7 @@ button {
     position: relative;
 }
 .div_in_div_tw .mobile_post_img_tw {
-    height: 73px !important;
+    max-height: 73px !important;
 }
 /*  */
 

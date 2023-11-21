@@ -348,6 +348,8 @@ function RefresehAccounts() {
         type: "post",
         url: "{{ route('refresh-accounts')}}",
         success: function(response) {
+
+            console.log(response);
             $('.account_result').empty().append(response);
         }
     });  
@@ -426,7 +428,7 @@ $(document).on('click', '.plateform', function() {
                 if (status == 'on') {
                     var closestLabel = currentclick.closest('label');
                     closestLabel = closestLabel.parent().find('.fb-recont_btn');
-                    var newHref = "{{ url('connect_to_facebook') }}";
+                    var newHref = "{{ url('connect_to_facebook') }}/"+ account_id;;
                     closestLabel.attr('href', newHref);
                     closestLabel.removeClass('d-none').show();
                 } else {
@@ -442,7 +444,7 @@ $(document).on('click', '.plateform', function() {
                 if (status == 'on') {
                     var closestLabel = currentclick.closest('label');
                     closestLabel = closestLabel.parent().find('.T-recont_btn');
-                    var newHref = "{{ url('connect_twitter') }}";
+                    var newHref = "{{ url('connect_twitter') }}/"+ account_id;;
                     closestLabel.attr('href', newHref);
                     closestLabel.removeClass('d-none').show();
 
@@ -459,7 +461,7 @@ $(document).on('click', '.plateform', function() {
                 if (status == 'on') {
                     var closestLabel = currentclick.closest('label');
                     closestLabel = closestLabel.parent().find('.instrecont_btn');
-                    var newHref = "{{ url('connect_to_instagram') }}";
+                    var newHref = "{{ url('connect_to_instagram') }}/"+ account_id;;
                     closestLabel.attr('href', newHref);
                     closestLabel.removeClass('d-none').show();
 
@@ -476,7 +478,7 @@ $(document).on('click', '.plateform', function() {
                 if (status == 'on') {
                     var closestLabel = currentclick.parent();
                     closestLabel = closestLabel.siblings('.l_recont_btn');
-                    var newHref = "{{ url('connect_to_linkedin') }}";
+                    var newHref = "{{ url('connect_to_linkedin') }}/"+ account_id;;
                     closestLabel.attr('href', newHref);
                     closestLabel.removeClass('d-none').css('display', 'block');
 
