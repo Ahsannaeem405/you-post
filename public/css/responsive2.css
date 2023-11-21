@@ -675,6 +675,9 @@
         flex-direction: column;
         display: flex !important;
     }
+    .DetailText p{
+        text-align: center;
+    }
     .post_detailWrap .DetailText .publishedpost{
         width: 100% !important;
     }
