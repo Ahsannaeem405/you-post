@@ -179,6 +179,7 @@
     position: absolute;
 }
 
+
 /*  */
 /* main account file styling */
 @media (max-width:992px) {
@@ -215,7 +216,7 @@
                 <form action="{{ route('account-delete',$account->id) }}" method="POST">
                     @csrf
                     @method('Post')
-                    <div class="index_delete"><button type="button" class="btn btn-danger delete_accountbtn"><img
+                    <div class="index_delete" id="deleteindex"><button type="button" class="btn btn-danger delete_accountbtn"><img
                                 src="{{asset('images/deletebuckit.png')}}" class="delete_account" /></button>
                     </div>
                 </form>
@@ -408,6 +409,7 @@ $(document).ready(function() {
         // Initialize character count on page load
         countCharacters(inputField);
     });
+    
 });
 
 function countCharacters(inputField) {
@@ -421,5 +423,9 @@ function countCharacters(inputField) {
     var charCountElement = parentDiv.parentElement.nextElementSibling.querySelector('.maxchar .charCount');
     // Update the character count and format "0/15"
     charCountElement.innerText = charCount + "/" + maxLength;
+
 }
 </script>
+
+
+

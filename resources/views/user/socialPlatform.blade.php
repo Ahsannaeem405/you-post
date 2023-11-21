@@ -45,7 +45,42 @@
 .loading_account {
     opacity: 0.3;
 }
-
+@media(max-width:2000px){
+    .maxchar {
+    color: #959595;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 0;
+    font-size: 14px;
+    left: 79% !important;
+    top: 48%;
+    position: absolute;
+}   
+}
+@media (min-width:1200px) and (max-width:1376px){
+    .maxchar {
+    color: #959595;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 0;
+    font-size: 14px;
+    left: 75% !important;
+    top: 48%;
+    position: absolute;
+}
+}
+@media (min-width:768px) and (max-width:1199px){
+    .maxchar {
+    color: #959595;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 0;
+    font-size: 14px;
+    left: 67% !important;
+    top: 48%;
+    position: absolute;
+}
+}
 @media (min-width:577px) and (max-width:767px) {
 
     .account-info {
@@ -64,9 +99,9 @@
     font-family: 'Poppins', sans-serif;
     padding: 5px 0;
     font-size: 14px;
-    top: 47%;
-    position: absolute;
-    right: 110px;
+    top: 32% !important;
+    position: absolute !important;
+    left: 70% !important;
 }
 
     .index_delete {
@@ -189,7 +224,6 @@
 <!-- Include SweetAlert CSS and JS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.all.min.js"></script>
-
 <script>
 $(document).ready(function() {
     $(document).on('click', '.checkAndFocus', function() {
@@ -255,7 +289,6 @@ $(document).ready(function() {
         }
 
     }
-
 });
 
 var checkboxes = document.querySelectorAll('.customCheckbox');
@@ -319,7 +352,7 @@ function RefresehAccounts() {
             console.log(response);
             $('.account_result').empty().append(response);
         }
-    });
+    });  
 }
 
 
@@ -567,8 +600,6 @@ $(document).on('click', '.plateform', function() {
             }
         }
     });
-
-
 });
 $(document).on('click', '.index_delete', function() {
     var $obj = $(this);
@@ -587,5 +618,4 @@ $(document).on('click', '.index_delete', function() {
     });
 })
 </script>
-
 @endsection
