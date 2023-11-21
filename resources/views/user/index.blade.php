@@ -2168,7 +2168,7 @@
 
 
             </div>
-            <div class="Today-post-detail" style="margin-top:30px;">
+            <div class="Today-post-detail" style="margin-top:30px;" id="inner_div">
 
             </div>
         </div>
@@ -3598,7 +3598,7 @@ function updateCalendar() {
 
            setInterval(() => {
                 updateCalendar();
-                checkSidebarAndPerformAction();
+                // checkSidebarAndPerformAction();
             }, 6000);
 
             
@@ -3608,7 +3608,8 @@ function updateCalendar() {
             }
 
             function isDivHidden() {
-                return $('.Today-post-detail').hasClass('d-none');
+                return $('#inner_div').css('display') === 'd-none';
+
             }
             // Function to perform an action based on the sidebar state
             function checkSidebarAndPerformAction() {
