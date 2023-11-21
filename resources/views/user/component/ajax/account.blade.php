@@ -251,7 +251,7 @@
 
                     <a class="fb-recont_btn {{ in_array('Facebook', $account->platforms) &&
                         $account->fb_access_token != null  ? '' : 'd-none' }} r_btn"
-                        href="{{ url('connect_to_facebook') }}">
+                        href="{{ url('connect_to_facebook', ['account' => $account->id]) }}">
                         <span class="reconnect_platform"> Reconnect</span>
 
                         <span class="tooltiptext_fb">Click here to connect a different facebook account</span>
@@ -261,7 +261,7 @@
 
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) &&
                         $account->fb_access_token == null  ? 'showColorIcon' : 'd-none' }}"
-                        href="{{ url('connect_to_facebook') }}">
+                        href="{{ url('connect_to_facebook', ['account' => $account->id]) }}">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
@@ -283,7 +283,7 @@
 
                     <a class="instrecont_btn   {{ in_array('Instagram', $account->platforms) &&
                         $account->insta_access_token != null  ? '' : 'd-none' }} r_btn"
-                        href="{{ url('connect_to_instagram') }}">
+                        href="{{ url('connect_to_instagram', ['account' => $account->id]) }}">
                         <span class="reconnect_platform"> Reconnect</span>
 
                         <span class="tooltiptext_inst">Click here to connect a different Instagram account</span>
@@ -291,7 +291,7 @@
                     </a>
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) &&
                         $account->insta_access_token == null  ? '' : 'd-none' }}"
-                        href="{{ url('connect_to_instagram') }}">
+                        href="{{ url('connect_to_instagram', ['account' => $account->id]) }}">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
 
@@ -313,7 +313,7 @@
                     <a class="T-recont_btn {{
                         in_array('Twitter', $account->platforms) &&
                         $account->twiter_access_token != null  ? '' : 'd-none' }} r_btn"
-                        href="{{ url('connect_twitter') }}">
+                        href="{{ url('connect_twitter', ['account' => $account->id]) }}">
                         <span class="reconnect_platform">
                             Reconnect</span>
 
@@ -323,7 +323,7 @@
 
                     <a class="T-conect_btn {{ in_array('Twitter', $account->platforms) &&
                         $account->twiter_access_token ==  null  ? '' : 'd-none' }}"
-                        href="{{ url('connect_twitter') }}">
+                        href="{{ url('connect_twitter', ['account' => $account->id]) }}">
                         <span class="linkedbtnabc">
                             Connect</span>
                     </a>
@@ -347,7 +347,7 @@
                         $account->linkedin_accesstoken != null &&
                         $account->linkedin_user_id != null
                         ? '' : 'd-none'
-                    }} r_btn" href="{{ url('connect_to_linkedin') }}">
+                    }} r_btn" href="{{ url('connect_to_linkedin', ['account' => $account->id]) }}">
                         <span class="reconnect_platform"> Reconnect</span>
                         <span class="tooltiptext_link">Click here to connect a different Linkedin account</span>
                     </a>
@@ -355,7 +355,7 @@
                         in_array('Linkedin', $account->platforms)
                         && $account->linkedin_accesstoken == null
                         &&  $account->linkedin_user_id == null ? '' : 'd-none' }}"
-                        href="{{ url('connect_to_linkedin') }}">
+                        href="{{ url('connect_to_linkedin', ['account' => $account->id]) }}">
                         <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>

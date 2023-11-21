@@ -567,7 +567,7 @@ $(document).ready(function () {
             }else{
                 $('.mobile_post_img').removeClass('SetUp_PreviewImg');
             }
-        }, 500);
+        }, 700);
         var id = $(this).attr('id');
         $(this).closest(".create_preview_post").find('.' + id).remove();
         var length = $('.mobile_post_img').length;
@@ -1626,6 +1626,19 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
+<<<<<<< Updated upstream
+=======
+        setTimeout(function() {
+            var columnCount = $('.Preview_ImagesSetup').css('column-count');
+
+            if (columnCount === '1') {
+                $('.mobile_post_img').addClass('SetUp_PreviewImg');
+            }else{
+                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
+            }
+        }, 700);
+
+>>>>>>> Stashed changes
         var mediaType = file.type.split('/')[0];
 
         if (mediaType === 'image') {
@@ -1686,8 +1699,12 @@ $(document).ready(function () {
             } else {
                 $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
             }
+<<<<<<< Updated upstream
         }, randomDelay);
 
+=======
+        }, 700);
+>>>>>>> Stashed changes
         var mediaType = file.type.split('/')[0];
 
         if (mediaType === 'image') {

@@ -3556,7 +3556,42 @@ function updateCalendar() {
         }
     });
 }
-setInterval(updateCalendar, 60000); // 60 seconds
+        //    setInterval(updateCalendar, 60000); // 60 seconds
+
+           setInterval(() => {
+                updateCalendar();
+                // checkSidebarAndPerformAction();
+            }, 6000);
+
+            
+            // Function to check if the sidebar is open
+            function isSidebarOpen() {
+                return $('#mySidebar').css('display') === 'block';
+            }
+
+            // Function to perform an action based on the sidebar state
+            function checkSidebarAndPerformAction() {
+                if (isSidebarOpen()) {
+                    // Sidebar is open, perform your action (e.g., call AJAX)
+                    $.ajax({
+                        url: '/get-updated-posts',
+                        type: 'GET',
+                        success: function(data) {
+                            // Handle the success response
+                            console.log('AJAX call successful:', data);
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle the error response
+                            console.error('AJAX call error:', error);
+                        }
+                    });
+                } else {
+                    // Sidebar is not open, perform other actions or skip
+                    console.log('Sidebar is not open');
+                }
+            }
+
+         
 
 </script>
 
