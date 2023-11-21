@@ -450,7 +450,7 @@ $(document).ready(function () {
                 $('.uplaod-gif-video').removeClass('d-none');
                 setTimeout(function () {
                     $("#posted_now").prop("disabled", false);
-                    }, 1000);
+                    }, 4000);
                 $(this).unbind('submit').submit();
 
 

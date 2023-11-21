@@ -2171,7 +2171,7 @@ width: 100%;
     text-align: left;
     font-family: 'Poppins', sans-serif;
 }
-.post_detailWrap .DetailText {
+.post_detailWrap .DetailText  p{
     display: block;
     display: -webkit-box;
     margin: 0 auto;
@@ -2182,15 +2182,16 @@ width: 100%;
     word-wrap: break-word;
 }
 .post_detailWrap .DetailText .publishedpost {
+    text-align: left;
     margin: unset;
     border-radius: 5px;
-    width: 40%;
+    /* width: 40%; */
     background: rgba(137, 197, 127, 0.62);
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     gap: 4px;
-    padding: 2px;
+    padding: 2px 2px 2px 5px;
 }
 .post_detailWrap .DetailText .publishedpost .approved{
     font-size: 10px;
