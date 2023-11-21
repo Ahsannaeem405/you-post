@@ -450,7 +450,7 @@ $(document).ready(function () {
                 $('.uplaod-gif-video').removeClass('d-none');
                 setTimeout(function () {
                     $("#posted_now").prop("disabled", false);
-                    }, 1000);
+                    }, 4000);
                 $(this).unbind('submit').submit();
 
 
@@ -567,7 +567,7 @@ $(document).ready(function () {
             }else{
                 $('.mobile_post_img').removeClass('SetUp_PreviewImg');
             }
-        }, 500);
+        }, 700);
         var id = $(this).attr('id');
         $(this).closest(".create_preview_post").find('.' + id).remove();
         var length = $('.mobile_post_img').length;
@@ -1616,7 +1616,7 @@ $(document).ready(function () {
         $('#file_error_all').addClass('d-none');
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
-
+        
         var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
         setTimeout(function() {
             var columnCount = $('.Preview_ImagesSetupFB').css('column-count');

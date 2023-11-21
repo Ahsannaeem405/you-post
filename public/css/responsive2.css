@@ -2,6 +2,7 @@
     .show-this-section-992 {
         display: none;
     }
+
     .section5 i {
         display: none;
     }
@@ -17,10 +18,12 @@
     .create_preview_post .create_post .post_now_button .btn {
         padding: 6px 11px !important;
     }
+
     .section5 i {
         display: none;
     }
 }
+
 /*18,9,23 */
 /* spear query */
 @media (min-width:992px) and (max-width:1376px) {
@@ -170,12 +173,14 @@
     .table>:not(caption)>*>* {
         padding: 7px 8px !important;
     }
+
     .section5 i {
         display: none;
     }
 
-   
+
 }
+
 /* salman small break point only for calendar end */
 
 @media (min-width:992px) and (max-width:1199px) {
@@ -183,6 +188,7 @@
         min-width: 114px !important;
         padding: 10px !important;
     }
+
     .section5 i {
         display: none;
     }
@@ -201,7 +207,7 @@
         top: 7%;
         left: 37%;
         width: 232px !important;
-        margin-top: 7px;       
+        margin-top: 7px;
     }
 
     .fc-left h2 {
@@ -432,12 +438,14 @@
     .section5 i {
         display: none;
     }
+
     /* .overlayimg{
         display: none;
     } */
-    .mybgcontainer{
+    .mybgcontainer {
         display: none;
     }
+
     /* razi card_media query end */
 }
 
@@ -607,46 +615,70 @@
         margin: auto;
 
     }
+
     .fc-left {
         position: absolute;
         top: 7%;
         left: 30%;
         width: 232px !important;
-        
+
     }
-    .fc-center{
+
+    .fc-center {
         margin-top: 11px;
     }
+
     .section5 i {
         display: none;
     }
+
     .mybgcontainer {
-       
-        width:100%;;
-      }
-      /*  */
-    
-    .delete_input{
-        width:100%;
+
+        width: 100%;
+        ;
     }
-    .delete_accountbtn{
+
+    /*  */
+
+    .delete_input {
+        width: 100%;
+    }
+
+    .delete_accountbtn {
         width: 100%;
         margin: 0;
     }
-    .index_delete{
+
+    .index_delete {
         margin-top: 10px;
         width: 100%;
     }
+
     .maxchar {
         left: 80%;
         top: 30%;
     }
+
     .user_detail {
         left: 17%;
         top: 30px;
-      
+
     }
-  
+
+    .post_detailWrap {
+        flex-direction: column;
+    }
+
+    .DetailText {
+        margin-top: 12px !important;
+        align-items: center;
+        flex-direction: column;
+        display: flex !important;
+    }
+    .post_detailWrap .DetailText .publishedpost{
+        width: 100% !important;
+    }
+
 }
 
 
@@ -975,6 +1007,7 @@
     .icon_text3 {
         font-size: 12px;
     }
+
     .fc-left {
         position: absolute;
         top: 7%;
@@ -982,16 +1015,32 @@
         width: 232px !important;
         /* float: right !important; */
     }
-    .fc-center{
-        margin-top:11px;
+
+    .fc-center {
+        margin-top: 11px;
     }
+
     .section5 i {
         display: none;
     }
-    .mybgcontainer { 
-        width:100%;;
-      }
-   
+
+    .mybgcontainer {
+        width: 100%;
+        ;
+    }
+
+    .post_detailWrap {
+        flex-direction: column;
+    }
+    .DetailText{
+        margin-top: 12px !important;
+        align-items: center;
+        flex-direction: column;
+        display: flex !important;
+    }
+    .post_detailWrap .DetailText .publishedpost{
+        width: 100% !important;
+    }
 }
 
 /* media  query */

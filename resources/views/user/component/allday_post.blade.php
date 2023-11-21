@@ -49,7 +49,7 @@ $publishedAt = \Carbon\Carbon::parse($post->posted_at);
                     <h5 class="m-0"> {{ auth()->user()->account->link_page_name }}</h5>
                     @endif
                 </div>
-                <p class="m-0">{{ $post->content }}</p>
+                <p class="m-0">{!! nl2br(e($post->content)) !!}</p>
                 <div class="publishedpost mt-2">
                     <span>
                         <img src="{{ asset('images/approvodpost2.png') }}" alt="">

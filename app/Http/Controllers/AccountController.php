@@ -67,7 +67,7 @@ class AccountController extends Controller
     {
        
         $accounts = \Auth::user()->accountList;
-       
+     
         return view('user.component.ajax.account', compact('accounts'));
     }
 }
