@@ -3560,7 +3560,7 @@ function updateCalendar() {
 
            setInterval(() => {
                 updateCalendar();
-                // checkSidebarAndPerformAction();
+                checkSidebarAndPerformAction();
             }, 6000);
 
             
@@ -3569,16 +3569,31 @@ function updateCalendar() {
                 return $('#mySidebar').css('display') === 'block';
             }
 
+            function isDivHidden() {
+                return $('.Today-post-detail').hasClass('d-none');
+            }
             // Function to perform an action based on the sidebar state
             function checkSidebarAndPerformAction() {
-                if (isSidebarOpen()) {
+                if (isSidebarOpen() && isDivHidden()) {
                     // Sidebar is open, perform your action (e.g., call AJAX)
+
+                    var a_id = $('#ac_id').val();
+                    var date = $('#date').val();
+
+
                     $.ajax({
-                        url: '/get-updated-posts',
+                        url: "{{ url('get_event_detail') }}",
                         type: 'GET',
+
+                        data: {
+                            'id': a_id,
+                            'date': date
+                        },
                         success: function(data) {
                             // Handle the success response
-                            console.log('AJAX call successful:', data);
+                            $('.calendarmain').empty().append(data);
+                            console.error('AJAX call success:');
+
                         },
                         error: function(xhr, status, error) {
                             // Handle the error response
