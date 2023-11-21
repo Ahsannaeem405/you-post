@@ -713,6 +713,11 @@
 }
 
 .mobile_post_img.SetUp_PreviewImg,
+.mobile_post_img_tw.SetUp_PreviewImg,
+.mobile_post_img_link.SetUp_PreviewImg{
+    max-height: 120px !important;
+}
+.mobile_post_img.SetUp_PreviewImg,
 .InstaPreview_setup .mobile_post_img_inst{
     background-size: 100% auto !important;
 }
@@ -2908,6 +2913,7 @@ $(document).ready(function() {
     // Add a click event handler to the todayEbents-list div
     $(document).on('click', '.fb-post ', function() {
         var id = $(this).data('id');
+        var $parentDiv = $(this).parent();
 
         $.ajax({
             type: "get",
@@ -2924,6 +2930,10 @@ $(document).ready(function() {
                     $(".Today-post-detail").show();
                     $('.BackBtnCS').removeClass('d-none');
                     $(".fb-post").css('display', 'none');
+
+                    $('html, body').animate({
+                        scrollTop: $parentDiv.offset().top
+                    }, 'slow');
                 } else {
                     // If the detail is visible, hide it and reset the flag
                     $(".Today-post-detail").hide();
@@ -2931,14 +2941,47 @@ $(document).ready(function() {
                 }
             }
         });
-
-
-
-
-
+        $(this).prependTo($parentDiv);
     });
 
 });
+
+
+// $(document).ready(function() {
+//     var isDetailVisible = false;
+
+//     $(document).on('click', '.fb-post', function() {
+//         var $parentDiv = $(this).closest('.calendar_overflo');
+//         var id = $(this).data('id');
+
+//         $.ajax({
+//             type: "get",
+//             url: "{{ url('get_single_detail') }}",
+//             data: {
+//                 'id': id
+//             },
+//             success: function(response) {
+//                 if (!isDetailVisible) {
+//                     $(".Today-post-detail").html('');
+//                     $(".Today-post-detail").append(response);
+//                     $(".Today-post-detail").show();
+//                     $('.BackBtnCS').removeClass('d-none');
+//                     $(".fb-post").css('display', 'none');
+
+//                     $('html, body').animate({
+//                         scrollTop: $parentDiv.offset().top
+//                     }, 'slow');
+//                 } else {
+//                     $(".Today-post-detail").hide();
+//                     $(".fb-post").css('display', 'block');
+//                 }
+//             }
+//         });
+
+//         $(this).prependTo($parentDiv); // Moves clicked element to the top of its parent
+//     });
+// });
+
 
 $(document).on('click', '.BackBtnCS', function(){
             $('.Today-post-detail').css('display', 'none');
@@ -2946,37 +2989,32 @@ $(document).on('click', '.BackBtnCS', function(){
             $('.BackBtnCS').addClass('d-none');
         });
 
-$(document).on('click', '.fb-post ', function() {
-        var id = $(this).data('id');
+// $(document).on('click', '.fb-post ', function() {
+//         var id = $(this).data('id');
 
-        $.ajax({
-            type: "get",
-            url: "{{ url('get_single_detail') }}",
-            data: {
-                'id': id
-            },
-            success: function(response) {
-                if (!isDetailVisible) {
-                    // If the detail is not visible, show it and set the flag
-                    // var contentToAppend = $(".the_preview").html();
-                    $(".Today-post-detail").html('');
-                    $(".Today-post-detail").append(response);
-                    $(".Today-post-detail").show();
+//         $.ajax({
+//             type: "get",
+//             url: "{{ url('get_single_detail') }}",
+//             data: {
+//                 'id': id
+//             },
+//             success: function(response) {
+//                 if (!isDetailVisible) {
+//                     // If the detail is not visible, show it and set the flag
+//                     // var contentToAppend = $(".the_preview").html();
+//                     $(".Today-post-detail").html('');
+//                     $(".Today-post-detail").append(response);
+//                     $(".Today-post-detail").show();
 
-                    $(".fb-post").css('display', 'none');
-                } else {
-                    // If the detail is visible, hide it and reset the flag
-                    $(".Today-post-detail").hide();
-                    $(".fb-post").css('display', 'block');
-                }
-            }
-        });
-
-
-
-
-
-    });
+//                     $(".fb-post").css('display', 'none');
+//                 } else {
+//                     // If the detail is visible, hide it and reset the flag
+//                     $(".Today-post-detail").hide();
+//                     $(".fb-post").css('display', 'block');
+//                 }
+//             }
+//         });
+//     });
 
     $(document).ready(function() {
         var isDetailVisible = false; // Initialize a flag to track visibility
@@ -3560,7 +3598,7 @@ function updateCalendar() {
 
            setInterval(() => {
                 updateCalendar();
-                // checkSidebarAndPerformAction();
+                checkSidebarAndPerformAction();
             }, 6000);
 
             
@@ -3569,16 +3607,31 @@ function updateCalendar() {
                 return $('#mySidebar').css('display') === 'block';
             }
 
+            function isDivHidden() {
+                return $('.Today-post-detail').hasClass('d-none');
+            }
             // Function to perform an action based on the sidebar state
             function checkSidebarAndPerformAction() {
-                if (isSidebarOpen()) {
+                if (isSidebarOpen() && isDivHidden()) {
                     // Sidebar is open, perform your action (e.g., call AJAX)
+
+                    var a_id = $('#ac_id').val();
+                    var date = $('#date').val();
+
+
                     $.ajax({
-                        url: '/get-updated-posts',
+                        url: "{{ url('get_event_detail') }}",
                         type: 'GET',
+
+                        data: {
+                            'id': a_id,
+                            'date': date
+                        },
                         success: function(data) {
                             // Handle the success response
-                            console.log('AJAX call successful:', data);
+                            $('.calendarmain').empty().append(data);
+                            console.error('AJAX call success:');
+
                         },
                         error: function(xhr, status, error) {
                             // Handle the error response

@@ -1,5 +1,5 @@
-<input type="hidden" name="ac_id" id="ac_id" value ="{{$posts[0]->posted_at}}">
-<input type="hidden" name="date" id="date" value ="{{$posts[0]->account_id }}">
+<input type="hidden" name="datge" id="date" value ="{{$posts[0]->posted_at}}">
+<input type="hidden" name="ac_id" id="ac_id" value ="{{$posts[0]->account_id }}">
 @foreach ($posts as $post)
 
 @php
@@ -17,6 +17,8 @@ $publishedAt = \Carbon\Carbon::parse($post->posted_at);
                     : ($post->plateform === 'Linkedin'
                         ? 'Linkedin'
                         : ''))) }}">
+                        <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
+                        src="{{asset("images/newimages/loader.gif")}}" alt="">
     <div style="border-radius:20px">
         <div class="d-flex post-detail post_detailWrap">
             <div class="sidebar_post" style="background-image: url('{{ $post->getPostImgSrc($post) }}');">

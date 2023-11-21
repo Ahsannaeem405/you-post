@@ -606,13 +606,13 @@
     -webkit-box-orient: vertical;
     overflow-y:scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none; 
+    scrollbar-width: none;
     height:50px;
     width:100%;
 }
 #mypostresult_youpost::-webkit-scrollbar {
     display: none;
-} 
+}
 
 .wizard-fieldset_youpost {
     color: #171717;
@@ -2868,7 +2868,7 @@ $(document).ready(function() {
 
 
     });
-    
+
 });
 
     $(document).ready(function() {
@@ -2881,10 +2881,10 @@ $(document).ready(function() {
             $(".Today-post-detail").css('display', 'none');
         });
         $(document).on('click', '.fb-post', function() {
-           
+
             var id = $(this).data('id');
-            var platform = $(this).data('plateform'); 
-                   
+            var platform = $(this).data('plateform');
+
             $.ajax({
                 type: "get"
                 , url: "{{ url('get_single_detail') }}"
@@ -2892,7 +2892,7 @@ $(document).ready(function() {
                     'id': id
                 }
                 , success: function(response) {
-                  
+
                     if (!isDetailVisible) {
                         // If the detail is not visible, show it and set the flag
                         // var contentToAppend = $(".the_preview").html();
@@ -2905,7 +2905,7 @@ $(document).ready(function() {
                         } else if (platform == 'Instagram') {
                             $(".InstagramWrap").removeAttr('style');
                         }else if (platform == 'Linkedin') {
-                            $(".LinkedinWrap").removeAttr('style');    
+                            $(".LinkedinWrap").removeAttr('style');
                         }else if (platform == 'Twitter') {
                             $(".TwitterWrap").removeAttr('style');
                         }
@@ -2913,7 +2913,7 @@ $(document).ready(function() {
                     } else {
                         // If the detail is visible, hide it and reset the flag
                         $(".Today-post-detail").hide();
-                        $(".fb-post").css('display', 'block');    
+                        $(".fb-post").css('display', 'block');
                     }
                 }
             });
@@ -2922,9 +2922,9 @@ $(document).ready(function() {
 
 
     });
-    
 
-   
+
+
 
 });
 </script>
