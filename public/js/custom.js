@@ -1418,15 +1418,6 @@ $(document).ready(function () {
 
             }
         }
-        var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetupFB, .Preview_ImagesSetupTwitter, .Preview_ImagesSetupLinkedin').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
     }
 
     function appendVideo(file, socialicon) {
@@ -1625,6 +1616,32 @@ $(document).ready(function () {
         $('#file_error_all').addClass('d-none');
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
+
+        var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
+        setTimeout(function() {
+            var columnCount = $('.Preview_ImagesSetupFB').css('column-count');
+            if (columnCount === '1') {
+                $('.mobile_post_img').addClass('SetUp_PreviewImg');
+            } else {
+                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
+            }
+        }, randomDelay);
+        setTimeout(function() {
+            var columnCount = $('.Preview_ImagesSetupTwitter').css('column-count');
+            if (columnCount === '1') {
+                $('.mobile_post_img_tw').addClass('SetUp_PreviewImg');
+            } else {
+                $('.mobile_post_img_tw').removeClass('SetUp_PreviewImg');
+            }
+        }, randomDelay);
+        setTimeout(function() {
+            var columnCount = $('.Preview_ImagesSetupLinkedin').css('column-count');
+            if (columnCount === '1') {
+                $('.mobile_post_img_link').addClass('SetUp_PreviewImg');
+            } else {
+                $('.mobile_post_img_link').removeClass('SetUp_PreviewImg');
+            }
+        }, randomDelay);
 
         var mediaType = file.type.split('/')[0];
 
