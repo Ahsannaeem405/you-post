@@ -712,7 +712,7 @@
     width: 100%;
 }
 
-.SetUp_PreviewImg,
+.mobile_post_img.SetUp_PreviewImg,
 .InstaPreview_setup .mobile_post_img_inst{
     background-size: 100% auto !important;
 }
@@ -1537,7 +1537,7 @@
                                 <div class="col-md-12 mt-3">
                                     <div class="MainMobileimg">
                                         <div class="media-container media_container">
-                                            <div class="prv_div Preview_ImagesSetup"> </div>
+                                            <div class="prv_div Preview_ImagesSetup Preview_ImagesSetupFB"> </div>
                                             <div id="mediaContainervideo_fb">
                                                 <!-- <video class="d-none video_preview" controls>
                                                     <source src="movie.mp4" type="video/*">
@@ -1737,13 +1737,13 @@
                                 <div class="col-12">
                                     <div class="twitter_img_container ">
 
-                                        <div class="prv_div_tw twitter_preview Preview_ImagesSetup" >
+                                        <div class="prv_div_tw twitter_preview Preview_ImagesSetup Preview_ImagesSetupTwitter" >
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
                                         <div id="mediaContainervideo_twitter">
                                             <!-- <video class="d-none video_preview_link" controls>
-         <source src="movie.mp4" type="video/*">
-     </video> -->
+                                                <source src="movie.mp4" type="video/*">
+                                                </video> -->
                                         </div>
 
                                         <!-- <img class="uploader_img" src="{{asset('')}}images/upload22.png" class="" alt="" /> -->
@@ -1845,7 +1845,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post_image">
-                                        <div class="prv_div_link Preview_ImagesSetup">
+                                        <div class="prv_div_link Preview_ImagesSetup Preview_ImagesSetupLinkedin">
                                             <!-- <img src="" class="d-none preview_image_link" alt=""> -->
                                         </div>
 
