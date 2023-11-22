@@ -671,7 +671,7 @@
 
     .DetailText {
         margin-top: 12px !important;
-        align-items: center;
+        /* align-items: center; */
         flex-direction: column;
         display: flex !important;
     }
@@ -1037,12 +1037,18 @@
     }
     .DetailText{
         margin-top: 12px !important;
-        align-items: center;
+        /* align-items: center; */
         flex-direction: column;
         display: flex !important;
     }
+    .DetailText p{
+        text-align: center;
+    }
     .post_detailWrap .DetailText .publishedpost{
         width: 100% !important;
+    }
+    .post_detailWrap {
+        padding: 0px 0px 5px 0px  !important;
     }
 }
 
