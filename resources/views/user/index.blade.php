@@ -2904,7 +2904,7 @@
                             <label for="message">Message:</label>
                             <textarea id="message" class="form-control" name="message"></textarea>
                         </div>
-                        <div class="">
+                        <div class="mt-2">
                             <input name="file1" type="file" class="dropify" data-height="100" />
                         </div>
                         {{-- <input type="file" name="image" accept="image/*"> --}}
@@ -2930,6 +2930,9 @@
 @section('js')
 <!-- sidebar close btn -->
 <!--  -->
+<script>
+    $('.dropify').dropify();
+</script>
 <script>
 var abc = 0;
 
