@@ -3598,7 +3598,7 @@ function updateCalendar() {
 
            setInterval(() => {
                 updateCalendar();
-                // checkSidebarAndPerformAction();
+                checkSidebarAndPerformAction();
             }, 6000);
 
             
@@ -3608,7 +3608,8 @@ function updateCalendar() {
             }
 
             function isDivHidden() {
-                return $('#inner_div').css('display') === 'd-none';
+              
+                return $('#inner_div').css('display') === 'none';
 
             }
             // Function to perform an action based on the sidebar state
@@ -3640,6 +3641,8 @@ function updateCalendar() {
                         }
                     });
                 } else {
+                    console.log(isDivHidden);
+
                     // Sidebar is not open, perform other actions or skip
                     console.log('Sidebar is not open');
                 }
