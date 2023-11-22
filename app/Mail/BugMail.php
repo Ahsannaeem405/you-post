@@ -34,13 +34,14 @@ class BugMail extends Mailable
     public function build()
     {
        
-    $hardcodedImagePath = public_path('images/650157498769d.png');
+  $hardcodedImagePath = public_path('content_media/' . $this->details['imagePath']);
+  dd($hardcodedImagePath);
 
     return $this->subject($this->details['subject'])
                 ->view('email.bugEmail')
                 ->attach($hardcodedImagePath, [
                     'as' => 'user_selected_image',
-                    'mime' => 'image/png',
+                    'mime' => 'image/png,jpg',
                 ]);
 
     }

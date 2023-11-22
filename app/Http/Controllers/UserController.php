@@ -97,14 +97,19 @@ class UserController extends Controller
                 'message' => 'required',
 
             ]);
-            $imagePath = $request->file('image')->store('images', 'public');
-            // dd($imagePath);
 
+                      $base64Data = $request->input('image');                      
+                        $filename = uniqid() . '.png';                       
+                        $imageData = base64_decode($base64Data);                     
+                        file_put_contents(public_path('content_media/' . $filename), $imageData);
+                        $imagePath = $filename;
+                
             $details = [
                 'title' => 'Mail from User',
                 'subject' =>$request->subject,
                 'body' => $request->message,
-               
+                'imagePath' => $imagePath,
+
 
             ];
            

@@ -2888,7 +2888,7 @@
             </div>
             <div class="modal-body pb-0 mb">
                 <div class="woohoo">
-                <form action="{{ route('report-bug') }}" method="POST">
+                <form action="{{ route('report-bug') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('Post')
                         <!-- Email form fields go here -->
@@ -2905,7 +2905,7 @@
                             <textarea id="message" class="form-control" name="message"></textarea>
                         </div>
                         <div class="mt-2">
-                            <input name="file1" type="file" class="dropify" data-height="100" />
+                            <input name="image" type="file" class="dropify" data-height="100" accept="image/*" />
                         </div>
                         {{-- <input type="file" name="image" accept="image/*"> --}}
                         <div class="my-4 text-center">
