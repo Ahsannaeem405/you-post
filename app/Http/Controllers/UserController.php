@@ -97,7 +97,8 @@ class UserController extends Controller
                 'message' => 'required',
 
             ]);
-          
+            $imagePath = $request->file('image')->store('images', 'public');
+            // dd($imagePath);
 
             $details = [
                 'title' => 'Mail from User',

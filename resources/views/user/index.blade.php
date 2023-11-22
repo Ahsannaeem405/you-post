@@ -2888,7 +2888,7 @@
             </div>
             <div class="modal-body pb-0 mb">
                 <div class="woohoo mt-5">
-                <form action="{{ route('report-bug') }}" method="POST">
+                <form action="{{ route('report-bug') }}" method="POST"  enctype="multipart/form-data"m>
                     @csrf
                     @method('Post')
                         <!-- Email form fields go here -->
