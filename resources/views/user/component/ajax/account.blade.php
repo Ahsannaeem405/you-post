@@ -179,6 +179,28 @@
     position: absolute;
 }
 
+.disabledBtn {
+    position: relative;
+    opacity: 0.5;
+}
+
+.disabledBtn span {
+    display: block; /* Display the span by default */
+    font-size: 10px;
+    background-color: #000;
+    position: absolute;
+    top: -26px;
+    left: -20px;
+    color: #fff;
+    width: 100px;
+    padding: 4px;
+    border-radius: 5px;
+    display: none;
+}
+
+.disabledBtn:hover span{
+    display: block;
+}
 
 /*  */
 /* main account file styling */
@@ -216,9 +238,23 @@
                 <form action="{{ route('account-delete',$account->id) }}" method="POST">
                     @csrf
                     @method('Post')
-                    <div class="index_delete" id="deleteindex"><button type="button" class="btn btn-danger delete_accountbtn"><img
-                                src="{{asset('images/deletebuckit.png')}}" class="delete_account" /></button>
-                    </div>
+
+                        @if(auth()->check() && auth()->user()->account_id == $account->id)
+                        <div class="">
+                        <button type="button" class="btn btn-danger disabledBtn">
+                            <img src="{{asset('images/deletebuckit.png')}}" class="" />
+                            <span>
+                                This is your primary account can't delete.
+                            </span>
+                        </button>
+                        </div>
+                        @else
+                        <div class="index_delete" id="deleteindex">
+                        <button type="button" class="btn btn-danger delete_accountbtn">
+                            <img src="{{asset('images/deletebuckit.png')}}" class="delete_account" />
+                        </button>
+                        </div>
+                        @endif
                 </form>
             </div>
             <div class="maxchar">
@@ -394,7 +430,13 @@
 
 <!--  -->
 @endforeach
+
 <script>
+$(document).ready(function() {
+    // Enable Bootstrap tooltips
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
 $(document).ready(function() {
     // Get all elements with the class 'account_name'
     var inputFields = document.querySelectorAll('.account_name');
@@ -409,7 +451,7 @@ $(document).ready(function() {
         // Initialize character count on page load
         countCharacters(inputField);
     });
-    
+
 });
 
 function countCharacters(inputField) {

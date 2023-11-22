@@ -79,7 +79,7 @@
             width: 100% !important;
         }
     </style>
-    
+
 </head>
 
 <body>
@@ -125,9 +125,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
-<
-
-
 <script>
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;
@@ -157,6 +154,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 {{-- toaster cdn --}}
 <script>
     $(document).ready(function () {
@@ -190,14 +188,10 @@
             allDay:true,
             slotDuration: '01:00',
             events: @json(collect($allPosts)),
-
-
             views: {
                 month: {
                     eventLimit: 2,
-
                 }
-
             },
             views: {
                 agendaWeek: {
@@ -207,11 +201,7 @@
                         'h A',
                     ],
                 }
-
             },
-            
-
-
             header: {
                 center: 'month,agendaWeek,timelineCustom,agendaDay,Year',
             },
@@ -250,11 +240,7 @@
                 });
                 $('#TimetoUploadPost').modal('show');
                 settime();
-
-
             },
-
-
             eventRender: function (event, element,view) {
                 var date = event.start.format('YYYY-MM-DD'); //for acieve full background on date event cell
                 // view.el.find('.fc-day[data-date="' + date + '"]').addClass('custom-event-bg');//for acieve full background on date event cell
@@ -319,10 +305,6 @@
         });
     }
 
-
-
-
-
     @if (Session::has('success'))
     toastr.success('{{ Session::get('success') }}');
     @endif
@@ -361,14 +343,14 @@
                 $('.calendarmain').empty().append(response);
 
                 // $('.fc-popover').css('display', 'none');
-              
+
                 // $('.calendar2').css({'padding-left': '29.8%',' transition':'all 0.5s ease'});
                 $('.calendar2').css({'transition': 'all 0.5s ease', 'padding-left': '29.8%'});
 
-               
+
                 $(".calendar_overflo").css('left', '0');
                 // $(".Today-post-detail").hide();
-            
+
                 $('.calendar_overflo').css({
                 'display': 'block','width':'29.8%'});
 
@@ -401,7 +383,7 @@
 
 
     $(document).on('click', '.plateform', function () {
-      
+
 
         var account_id = $(this).data('account');
         var all_plateform = $("input[name='plateform[]']:checked");
@@ -469,11 +451,7 @@
                 }
             }
         });
-
-
     });
-
-
 </script>
 <script>
     $(function () {
@@ -483,7 +461,7 @@
 
     $(document).ready(function () {
 
-      
+
         var authuser = "{{auth()->user()}}";
         if (authuser != null) {
             var insta_access_token = "{{auth()->user()->account->insta_access_token}}";
@@ -495,7 +473,7 @@
 
 
             if (insta_access_token != '' && insta_user_id == '') {
-               
+
                 var loadingModal = $('#loadingModal');
                 loadingModal.modal('show');
 
@@ -580,7 +558,7 @@
 
                    var inputText = $($obj).val();
                    var formattedText = inputText.replace(/\n/g, '<br>');
-                   
+
                     $("#mypostresult_fb").empty().html( formattedText );
                     $("#mypostresult_insta").empty().html(formattedText);
                     $("#mypostresult_twitter").empty().html( formattedText);
@@ -602,7 +580,7 @@
                 //        return;
                 // }
                 if (textareaAttr == 'youpost') {
-                    
+
                     var formattedText = inputText.replace(/\n/g, '<br>');
                    $("#mypostresult_youpost").html(formattedText);
 
@@ -642,7 +620,7 @@
             $("#mypostresult_linkedin").html( formattedText );
             // $("#mypostresult_linkedin").empty().append(inputText) ;
                $("#mynameresult_linkedin").empty().append(new_str) ;
-          }       
+          }
         }
 
     function Namechangefun($obj) {

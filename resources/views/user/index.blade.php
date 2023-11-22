@@ -712,10 +712,14 @@
     width: 100%;
 }
 
-.mobile_post_img.SetUp_PreviewImg,
-.mobile_post_img_tw.SetUp_PreviewImg,
-.mobile_post_img_link.SetUp_PreviewImg{
-    max-height: 120px !important;
+.SetUp_PreviewImg .mobile_post_img:first-child,
+.SetUp_PreviewImg .mobile_post_img_link:first-child,
+.SetUp_PreviewImg .mobile_post_img_tw:first-child{
+    background-size: 100% !important;
+}
+.AlignCenter{
+    display: grid;
+    align-content: center;
 }
 .mobile_post_img.SetUp_PreviewImg,
 .InstaPreview_setup .mobile_post_img_inst{
@@ -3601,7 +3605,7 @@ function updateCalendar() {
                 // checkSidebarAndPerformAction();
             }, 6000);
 
-            
+
             // Function to check if the sidebar is open
             function isSidebarOpen() {
                 return $('#mySidebar').css('display') === 'block';
@@ -3645,7 +3649,7 @@ function updateCalendar() {
                 }
             }
 
-         
+
 
 </script>
 
