@@ -789,6 +789,7 @@
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea mention" data-id="youpost_error"
                                                     placeholder="Write your universal content...">{{old('youpost_content')}}</textarea>
+                                                    <p id="youpost_char_count" class="charCount charCountYou"></p>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
@@ -882,6 +883,7 @@
                                                     class="form-control wizard-required emojiarea mention"
                                                     data-id="facebok_error"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
+                                                    <p id="fb_char_count" class="charCount charCountfb"></p>
                                                 <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
@@ -982,6 +984,7 @@
                                                     name="instagram_content" id="instagram_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea" data-id="insta_error"
                                                     placeholder="Write your post...">{{old('instagram_content')}}</textarea>
+                                                    <p id="insta_char_count" class="charCount charCountinst"></p>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
@@ -1063,6 +1066,7 @@
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
                                                     plt-name="fb">{{old('twitter_content')}}</textarea>
+                                                    <p id="twitter_char_count" class="charCount charCounttwt"></p>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
 
@@ -1147,6 +1151,7 @@
                                                     data-id="link_error"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
                                                     placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
+                                                    <p id="linkedin_char_count" class="charCount charCountlink"></p>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
                                             <div class="icon_buttons_tags mt-3">

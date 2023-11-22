@@ -577,10 +577,9 @@
 
             function updateDiv_other($obj) {
                 $('#file_error_all').addClass('d-none');
-
                    var inputText = $($obj).val();
                    var formattedText = inputText.replace(/\n/g, '<br>');
-                   
+      
                     $("#mypostresult_fb").empty().html( formattedText );
                     $("#mypostresult_insta").empty().html(formattedText);
                     $("#mypostresult_twitter").empty().html( formattedText);
@@ -588,35 +587,71 @@
 
 
                     $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
-                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);
-
+                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);               
                 }
 
             function updateDiv($obj) {
                 $('#file_error_all').addClass('d-none');
-
                 var textareaAttr = $($obj).attr("attr_of_text_area");
                 var inputText = $($obj).val();
+                var textareaId =$();
                 var lart= inputText.slice(-1);
                 // if(lart.trim() == ''){
                 //        return;
                 // }
+                //             var charCount = inputText.length;
+                // var charCountElement = $($obj).closest('.form-group').find('.charCount');
+                // charCountElement.text(charCount);
+                // var maxChars = 280;
+                // charCountElement.text(charCount + '/' + maxChars);
                 if (textareaAttr == 'youpost') {
-                    
+                    var charCount = inputText.length;
+                var charCountElement = $($obj).closest('.form-group').find('.charCountYou');
+                charCountElement.text(charCount);
+                var maxChars = 280;
+                charCountElement.text(charCount + '/' + maxChars);
                     var formattedText = inputText.replace(/\n/g, '<br>');
                    $("#mypostresult_youpost").html(formattedText);
-
+                    if(inputText.length > 280){
+                        showError("Your post content exceeds the character limit of 280 for youpost.");
+                   $("#posted_now").prop("disabled", true);
+                   return;
+                    } 
+                 else{
+                    $("#posted_now").prop("disabled", false);  
+                 }
                 }else if (textareaAttr == 'fb') {
-
-                var selectedValues = $('#facebook_tag').val();
-                var new_str= getString(selectedValues);
-
-                var formattedText = inputText.replace(/\n/g, '<br>');
+                    var charCount = inputText.length;
+                var charCountElement = $($obj).closest('.form-group').find('.charCountfb');
+                charCountElement.text(charCount);
+                var maxChars = 63206;
+                charCountElement.text(charCount + '/' + maxChars);
+                    var formattedText = inputText.replace(/\n/g, '<br>');
                    $("#mypostresult_fb").html(formattedText );
                 // $("#mypostresult_fb").empty().append(inputText) ;
                  $("#mynameresult").empty().append(new_str) ;
+                var selectedValues = $('#facebook_tag').val();
+                var new_str= getString(selectedValues);
+                if(inputText.length > 63206){
+                    showError("Your post content exceeds the character limit of 280 for Facebook.");
+                    $("#posted_now").prop("disabled", true);
+              return;
+                }
+                else{
+                    $("#posted_now").prop("disabled", false);   
+                }
+
+               
 
           }else if(textareaAttr == 'insta'){
+
+            var charCount = inputText.length;
+                var charCountElement = $($obj).closest('.form-group').find('.charCountinst');
+                charCountElement.text(charCount);
+                var maxChars = 2200;
+                charCountElement.text(charCount + '/' + maxChars);
+
+
 
             var selectedValues = $('#instagram_tag').val();
             var new_str= getString(selectedValues);
@@ -624,8 +659,24 @@
                    $("#mypostresult_insta").html( formattedText );
             //  $("#mypostresult_insta").empty().append(inputText) ;
                $("#mynameresult_insta").empty().append(new_str) ;
+               if(inputText.length > 2200){
+                showError("Your post content exceeds the character limit of 280 for Insta.");
+                    $("#posted_now").prop("disabled", true);
+              return;
+               }
+               else{
+                    $("#posted_now").prop("disabled", false);
+                }  
+              
 
           }else if(textareaAttr == 'twitter'){
+
+
+            var charCount = inputText.length;
+                var charCountElement = $($obj).closest('.form-group').find('.charCounttwt');
+                charCountElement.text(charCount);
+                var maxChars = 280;
+                charCountElement.text(charCount + '/' + maxChars);
 
             var selectedValues = $('#twitter_tag').val();
             var new_str= getString(selectedValues);
@@ -633,8 +684,24 @@
             $("#mypostresult_twitter").html( formattedText );
             // $("#mypostresult_twitter").empty().append(inputText) ;
                $("#mynameresult_twitter").empty().append(new_str) ;
+               if(inputText.length > 280){
+                showError("Your post content exceeds the character limit of 280 for Twitter.");
+                    $("#posted_now").prop("disabled", true);
+              return;
+               }
+               else{
+                    $("#posted_now").prop("disabled", false);
+                }  
 
           }else if(textareaAttr == 'linkedin'){
+
+
+            var charCount = inputText.length;
+                var charCountElement = $($obj).closest('.form-group').find('.charCountlink');
+                charCountElement.text(charCount);
+                var maxChars = 3000;
+                charCountElement.text(charCount + '/' + maxChars);
+
 
             var selectedValues = $('#linkedin_tag').val();
             var new_str= getString(selectedValues);
@@ -642,8 +709,23 @@
             $("#mypostresult_linkedin").html( formattedText );
             // $("#mypostresult_linkedin").empty().append(inputText) ;
                $("#mynameresult_linkedin").empty().append(new_str) ;
-          }       
+               if(inputText.length > 3000){
+                showError("Your post content exceeds the character limit of 280 for .Linkedin");
+                    $("#posted_now").prop("disabled", true);
+              return;
+               }
+               else{
+                    $("#posted_now").prop("disabled", false);
+                }  
+               
+          }   
         }
+ 
+    function showError(message) {
+        // You can display the error message to the user, for example:
+        alert(message);
+    }
+
 
     function Namechangefun($obj) {
         var inputText = $($obj).val();

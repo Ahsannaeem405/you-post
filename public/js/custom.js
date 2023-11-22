@@ -436,26 +436,11 @@ $(document).ready(function () {
             } else if ($("li[section='linkedin']").length > 0 && linkedin_content === "") {
                 error_input = "Linkedin content can not be empty";
                 data_id = "link_error";
-            }
-
-            if (error_input !== "") {
-                $('#file_error_all').removeClass('d-none').text(error_input);
-                $('#file_error_all').attr('data-id', data_id);
-                setTimeout(function () {
-                $("#posted_now").prop("disabled", false);
-                }, 500);
-            } 
-            else {
-
-                $('#file_error_all').addClass('d-none');
-                $('.uplaod-gif-video').removeClass('d-none');
-                setTimeout(function () {
-                    $("#posted_now").prop("disabled", false);
-                    }, 1000);
-                $(this).unbind('submit').submit();
-            }
-           
+            }  
+                $(this).unbind('submit').submit(); 
+                
         });
+        
     });
 
 
@@ -497,8 +482,6 @@ $(document).ready(function () {
 
                 $('#' + parentDiv).trigger('keyup');
             }
-
-
         });
     });
 
