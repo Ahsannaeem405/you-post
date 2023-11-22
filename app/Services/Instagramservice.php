@@ -91,7 +91,7 @@ class Instagramservice
 
                 $response = \Http::post("https://graph.facebook.com/v16.0/$insta_user_id/media", [
                     'video_url' => $path,
-                    'media_type' => 'VIDEO',
+                    'media_type' => 'REELS',
                     'caption' => $post->content . $tags,
                     'access_token' => $accesstoken
                 ])->json();

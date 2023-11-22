@@ -71,7 +71,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
     Route::get('dashboard2', [UserController::class, 'dashbaord2']);
-
+    Route::get('/show-email', function () {
+        return view('email.bugEmail'); // Assuming your view is located at resources/views/emails/bugEmail.blade.php
+    })->name('show.email');
     Route::get('get-updated-posts', [UserController::class, 'getUpdatedPosts'])->name('get.updated.posts');
 
     //account page
@@ -79,6 +81,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('update-account-name', [AccountController::class,'update_account_name'])->name('update-account-name');
     Route::post('refresh-accounts', [AccountController::class,'refresh_accounts'])->name('refresh-accounts');
     Route::post('/account/{id}', [AccountController::class,'delete'])->name('account-delete');
+    Route::post('/reportbug', [UserController::class,'report_bug'])->name('report-bug');
 
 
     //get instagram pages using ajax

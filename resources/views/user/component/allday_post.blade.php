@@ -4,6 +4,8 @@
 
 @php
 $publishedAt = \Carbon\Carbon::parse($post->posted_at);
+$timeOnly = $publishedAt->format('h:i A');
+
 @endphp
 
 
@@ -19,6 +21,8 @@ $publishedAt = \Carbon\Carbon::parse($post->posted_at);
                         : ''))) }}">
                         <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
                         src="{{asset("images/newimages/loader.gif")}}" alt="">
+                        <div>{{$timeOnly}}</div>
+
     <div style="border-radius:20px">
         <div class="d-flex post-detail post_detailWrap">
             <div class="sidebar_post" style="background-image: url('{{ $post->getPostImgSrc($post) }}');">

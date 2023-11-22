@@ -31,7 +31,7 @@
             <div class="post_img">
                 <div class="PostHeaderInner d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-center align-items-start gap-1">
-                    <img src="{{ auth()->user()->account->fb_image }}" class="img-fluid" width="40" height="40"
+                    <img src="{{ auth()->user()->account->fb_image }}" class="img-fluid " width="40" height="40"
                         alt="">
                         <div class="">
                             <h5 class="m-0">{{ auth()->user()->account->fb_page_name }}</h5>

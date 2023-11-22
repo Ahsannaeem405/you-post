@@ -541,41 +541,41 @@ $(document).ready(function () {
 
 
     $(document).on("click", ".cancel_mark", function () {
-        var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetup').css('column-count');
+        // var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
+        // setTimeout(function() {
+        //     var columnCount = $('.Preview_ImagesSetup').css('column-count');
 
-            if (columnCount === '1') {
-                $('.mobile_post_img').addClass('SetUp_PreviewImg');
-            }else{
-                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img').addClass('SetUp_PreviewImg');
+        //     }else{
+        //         $('.mobile_post_img').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
 
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetupFB').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetupTwitter').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img_tw').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img_tw').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetupLinkedin').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img_link').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img_link').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
+        // setTimeout(function() {
+        //     var columnCount = $('.Preview_ImagesSetupFB').css('column-count');
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').addClass('SetUp_PreviewImg');
+        //     } else {
+        //         $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
+        // setTimeout(function() {
+        //     var columnCount = $('.Preview_ImagesSetupTwitter').css('column-count');
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img_tw').addClass('SetUp_PreviewImg');
+        //     } else {
+        //         $('.mobile_post_img_tw').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
+        // setTimeout(function() {
+        //     var columnCount = $('.Preview_ImagesSetupLinkedin').css('column-count');
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img_link').addClass('SetUp_PreviewImg');
+        //     } else {
+        //         $('.mobile_post_img_link').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
         var id = $(this).attr('id');
         $(this).closest(".create_preview_post").find('.' + id).remove();
         var length = $('.mobile_post_img').length;
@@ -1041,20 +1041,20 @@ $(document).ready(function () {
 
 
     function setPreview(socialicon, path) {
-        //  alert("onetime");
         path = path || "DefaultParam2";
-
         if (socialicon == 'image_or_video_youpost') {
             var imgOrVideo = $('#media_type_youpost').val();
             //  var imgCount = $(".prv_div img").length;
             var imgCount = $(".prv_div_youpost .mobile_post_img").length;
             var add_imge = $('#image_div_youpost .cross_img_con').length;
             if (imgCount == 0 || add_imge == 1) {
-                $('.prv_div_youpost').css('column-count', '1');
+                $('.prv_div_youpost').css('column-count', '1').addClass('SetUp_PreviewImg');
+                // $('.Preview_ImagesSetupFB, .Preview_ImagesSetupTwitter, .Preview_ImagesSetupLinkedin').addClass('SetUp_PreviewImg');
             } else {
-                $('.prv_div_youpost').css('column-count', '2');
+                $('.prv_div_youpost').css('column-count', '2').removeClass('SetUp_PreviewImg');
             }
             if (imgOrVideo == 'image') {
+
                 $('.prv_div_youpost').empty();
                 var parentElement = $("#media_type_youpost").closest(".sm_container");
                 var img = parentElement.find("img");
@@ -1142,7 +1142,6 @@ $(document).ready(function () {
                 // $('#mediaContainervideo_youpost').html(video_youpost);
                 // $('#mediaContainervideo_inst').html(video_ins);
                 // $('#mediaContainervideo_twitter').html(video_youpost);
-
             } else {
                 $('.prv_div_youpost').html('');
                 $('#mediaContainervideo_youpost').html('');
@@ -1156,8 +1155,11 @@ $(document).ready(function () {
             var add_imge = $('#image_div .cross_img_con ').length;
             if (imgCount == 0 || add_imge == 1) {
                 $('.prv_div').css('column-count', '1');
+                $('.Preview_ImagesSetupFB').addClass('SetUp_PreviewImg');
+
             } else {
                 $('.prv_div').css('column-count', '2');
+                $('.Preview_ImagesSetupFB').removeClass('SetUp_PreviewImg');
             }
             if (imgOrVideo == 'image') {
                 $('.prv_div').empty();
@@ -1225,7 +1227,8 @@ $(document).ready(function () {
                 $('.prv_div').html('');
                 $('#mediaContainervideo_fb').html('');
             }
-        } else if (socialicon == 'image_or_video_insta') {
+        }
+        else if (socialicon == 'image_or_video_insta') {
 
             var imgOrVideo = $('#media_type_insta').val();
 
@@ -1251,7 +1254,8 @@ $(document).ready(function () {
                 $('.prv_div_isnt').html('');
                 $('#mediaContainervideo_inst').html('');
             }
-        } else if (socialicon == 'image_or_video_linkedin') {
+        }
+        else if (socialicon == 'image_or_video_linkedin') {
 
             var imgOrVideo = $('#media_type_linkedin').val();
             // var imgCount = $(".prv_div_link img").length;
@@ -1259,8 +1263,10 @@ $(document).ready(function () {
             var add_imge3 = $('#image_div_linked .cross_img_con ').length;
             if (imgCount == 0 || add_imge3 == 1) {
                 $('.prv_div_link').css('column-count', '1');
+                $('.Preview_ImagesSetupLinkedin').addClass('SetUp_PreviewImg');
             } else {
                 $('.prv_div_link').css('column-count', '2');
+                $('.Preview_ImagesSetupLinkedin').removeClass('SetUp_PreviewImg');
             }
             if (imgOrVideo == 'image') {
 
@@ -1332,8 +1338,10 @@ $(document).ready(function () {
             var add_imge3 = $('#image_div_twi .cross_img_con ').length;
             if (imgCount == 0 || add_imge3 == 1) {
                 $('.prv_div_tw').css('column-count', '1');
+                $('.Preview_ImagesSetupTwitter').addClass('SetUp_PreviewImg');
             } else {
                 $('.prv_div_tw').css('column-count', '2');
+                $('.Preview_ImagesSetupTwitter').removeClass('SetUp_PreviewImg');
             }
             if (imgOrVideo == 'image') {
 
@@ -1625,31 +1633,31 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
-        var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetupFB').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetupTwitter').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img_tw').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img_tw').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
-        setTimeout(function() {
-            var columnCount = $('.Preview_ImagesSetupLinkedin').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img_link').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img_link').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
+        // var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
+        // setTimeout(function() {
+        //     var columnCount = $('.Preview_ImagesSetupFB').css('column-count');
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').addClass('SetUp_PreviewImg');
+        //     } else {
+        //         $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
+        // setTimeout(function() {
+        //     var columnCount = $('.Preview_ImagesSetupTwitter').css('column-count');
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img_tw').addClass('SetUp_PreviewImg');
+        //     } else {
+        //         $('.mobile_post_img_tw').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
+        // setTimeout(function() {
+        //     var columnCount = $('.Preview_ImagesSetupLinkedin').css('column-count');
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img_link').addClass('SetUp_PreviewImg');
+        //     } else {
+        //         $('.mobile_post_img_link').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
 
         var mediaType = file.type.split('/')[0];
 
@@ -1703,15 +1711,15 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
 
-        var randomDelay = Math.floor(Math.random() * (5000 - 500 + 1)) + 500; // Random delay between 1 and 5 seconds
-        setTimeout(function() {
-            var columnCount = $('.prv_div_youpost').css('column-count');
-            if (columnCount === '1') {
-                $('.mobile_post_img').addClass('SetUp_PreviewImg');
-            } else {
-                $('.mobile_post_img').removeClass('SetUp_PreviewImg');
-            }
-        }, randomDelay);
+        // var randomDelay = Math.floor(Math.random() * (5000 - 500 + 1)) + 500; // Random delay between 1 and 5 seconds
+        // setTimeout(function() {
+        //     var columnCount = $('.prv_div_youpost').css('column-count');
+        //     if (columnCount === '1') {
+        //         $('.mobile_post_img').addClass('SetUp_PreviewImg');
+        //     } else {
+        //         $('.mobile_post_img').removeClass('SetUp_PreviewImg');
+        //     }
+        // }, randomDelay);
 
         var mediaType = file.type.split('/')[0];
         if (mediaType === 'image') {

@@ -712,10 +712,14 @@
     width: 100%;
 }
 
-.mobile_post_img.SetUp_PreviewImg,
-.mobile_post_img_tw.SetUp_PreviewImg,
-.mobile_post_img_link.SetUp_PreviewImg{
-    max-height: 120px !important;
+.SetUp_PreviewImg .mobile_post_img:first-child,
+.SetUp_PreviewImg .mobile_post_img_link:first-child,
+.SetUp_PreviewImg .mobile_post_img_tw:first-child{
+    background-size: 100% !important;
+}
+.AlignCenter{
+    display: grid;
+    align-content: center;
 }
 .mobile_post_img.SetUp_PreviewImg,
 .InstaPreview_setup .mobile_post_img_inst{
@@ -2878,6 +2882,52 @@
 
 <!-- modal test1 end -->
 
+<!-- modal for germ -->
+
+<div class="modal fade" id="BugModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header success_modal_header ">
+                <h3 class="modal-title" id="exampleModalLabel">Report A Bug</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pb-0 mb">
+                <div class="woohoo">
+                <form action="{{ route('report-bug') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('Post')
+                        <!-- Email form fields go here -->
+                        <div class="">
+                            <label for="recipient">Name:</label>
+                            <input type="text" id="name" class="form-control" name="name">
+                        </div>
+                        <div class="mt-2">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" class="form-control" name="subject">
+                        </div>
+                        <div class="mt-2">
+                            <label for="message">Message:</label>
+                            <textarea id="message" class="form-control" name="message"></textarea>
+                        </div>
+                        <div class="mt-2">
+                            <input name="image" type="file" class="dropify" data-height="100" accept="image/*" />
+                        </div>
+                        {{-- <input type="file" name="image" accept="image/*"> --}}
+                        <div class="my-4 text-center">
+                            <button type="submit" class="btn btn-primary">Send Email</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{-- <div class="modal-footer success_modal_footer pb-5">
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">GO BACK</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
+
+<!-- modal for germ end -->
+
 
 </div>
 @endsection
@@ -2885,6 +2935,9 @@
 @section('js')
 <!-- sidebar close btn -->
 <!--  -->
+<script>
+    $('.dropify').dropify();
+</script>
 <script>
 var abc = 0;
 
@@ -3603,17 +3656,18 @@ function updateCalendar() {
 
            setInterval(() => {
                 updateCalendar();
-                // checkSidebarAndPerformAction();
+                checkSidebarAndPerformAction();
             }, 6000);
 
-            
+
             // Function to check if the sidebar is open
             function isSidebarOpen() {
                 return $('#mySidebar').css('display') === 'block';
             }
 
             function isDivHidden() {
-                return $('#inner_div').css('display') === 'd-none';
+
+                return $('#inner_div').css('display') === 'none';
 
             }
             // Function to perform an action based on the sidebar state
@@ -3645,12 +3699,14 @@ function updateCalendar() {
                         }
                     });
                 } else {
+                    console.log(isDivHidden);
+
                     // Sidebar is not open, perform other actions or skip
                     console.log('Sidebar is not open');
                 }
             }
 
-         
+
 
 </script>
 

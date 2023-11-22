@@ -668,6 +668,9 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
+                <li><a href="javascript:void(0)" id="bugReportLink"><i <i class='bx bxs-bug icon'></i> </i> 
+                <span class="text nav-text">Report a bug</span></a></li>
+
 
                 <li>
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
