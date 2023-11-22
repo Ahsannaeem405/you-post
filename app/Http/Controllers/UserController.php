@@ -92,15 +92,19 @@ class UserController extends Controller
 
            
               $request->validate([
-                'recipient' => 'required|email',
+                'name' => 'required',
                 'subject' => 'required',
                 'message' => 'required',
+
             ]);
-    
-            
+          
+
             $details = [
-                'title' => 'Mail from ItSolutionStuff.com',
-                'body' => 'This is for testing email using smtp'
+                'title' => 'Mail from User',
+                'subject' =>$request->subject,
+                'body' => $request->message,
+               
+
             ];
            
             \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));    

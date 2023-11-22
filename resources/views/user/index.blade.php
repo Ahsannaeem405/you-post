@@ -2880,36 +2880,43 @@
 <!-- modal for germ -->
 
 <div class="modal fade" id="BugModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-lg">
-        <div class="modal-content success_modal_content">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header success_modal_header ">
-                <!-- <h5 class="modal-title" id="exampleModalLabel">New message</h5> -->
+                <h3 class="modal-title" id="exampleModalLabel">Report A Bug</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body pb-0 mb">
-                <div class="woohoo mt-5">
+                <div class="woohoo">
                 <form action="{{ route('report-bug') }}" method="POST">
                     @csrf
                     @method('Post')
                         <!-- Email form fields go here -->
-                        <label for="recipient">Recipient:</label>
-                        <input type="text" id="recipient" class="form-control" name="recipient">
-
-                        <label for="subject">Subject:</label>
-                        <input type="text" id="subject" class="form-control" name="subject">
-
-                        <label for="message">Message:</label>
-                        <textarea id="message" class="form-control" name="message"></textarea>
-
-                        <button type="submit" class="btn btn-success mt-3">Send Email</button>
+                        <div class="">
+                            <label for="recipient">Name:</label>
+                            <input type="text" id="name" class="form-control" name="name">
+                        </div>
+                        <div class="mt-2">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" class="form-control" name="subject">
+                        </div>
+                        <div class="mt-2">
+                            <label for="message">Message:</label>
+                            <textarea id="message" class="form-control" name="message"></textarea>
+                        </div>
+                        <div class="">
+                            <input name="file1" type="file" class="dropify" data-height="100" />
+                        </div>
+                        {{-- <input type="file" name="image" accept="image/*"> --}}
+                        <div class="my-4 text-center">
+                            <button type="submit" class="btn btn-primary">Send Email</button>
+                        </div>
                     </form>
                 </div>
-
             </div>
-            <div class="modal-footer success_modal_footer pb-5">
-                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">GO BACK
-                </button>
-            </div>
+            {{-- <div class="modal-footer success_modal_footer pb-5">
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">GO BACK</button>
+            </div> --}}
         </div>
     </div>
 </div>
