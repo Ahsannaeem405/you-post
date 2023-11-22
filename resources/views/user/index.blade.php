@@ -2893,15 +2893,15 @@
                     @method('Post')
                         <!-- Email form fields go here -->
                         <label for="recipient">Recipient:</label>
-                        <input type="text" id="recipient" name="recipient">
+                        <input type="text" id="recipient" class="form-control" name="recipient">
 
                         <label for="subject">Subject:</label>
-                        <input type="text" id="subject" name="subject">
+                        <input type="text" id="subject" class="form-control" name="subject">
 
                         <label for="message">Message:</label>
-                        <textarea id="message" name="message"></textarea>
+                        <textarea id="message" class="form-control" name="message"></textarea>
 
-                        <button type="submit">Send Email</button>
+                        <button type="submit" class="btn btn-success mt-3">Send Email</button>
                     </form>
                 </div>
 
@@ -3651,7 +3651,7 @@ function updateCalendar() {
             }
 
             function isDivHidden() {
-              
+
                 return $('#inner_div').css('display') === 'none';
 
             }
