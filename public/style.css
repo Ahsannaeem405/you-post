@@ -2038,6 +2038,7 @@ width: 100%;
 }
 .post_img_name .post_img{
     width: 100%;
+    height:fit-content;
    
 }
 .PostHeaderInner .d-flex{
@@ -3258,8 +3259,8 @@ z-index: 1;
 }
 .uplaod-gif.uploader_post{
     position: absolute;
-    top: -24px !important;
-    left: 14px !important;
+    top: -23px !important;
+    left: -40px !important;
 }
 .div_in_div_youpost{
     position: relative;
