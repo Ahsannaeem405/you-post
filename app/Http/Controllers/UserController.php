@@ -40,6 +40,7 @@ class UserController extends Controller
 
     public function dashbaord()
     {
+        
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         $posts = Post::select(
@@ -84,6 +85,33 @@ class UserController extends Controller
         return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
 
     }
+
+    public function report_bug(Request $request )
+    {
+              // Validate the form data
+
+           
+              $request->validate([
+                'recipient' => 'required|email',
+                'subject' => 'required',
+                'message' => 'required',
+            ]);
+    
+            
+            $details = [
+                'title' => 'Mail from ItSolutionStuff.com',
+                'body' => 'This is for testing email using smtp'
+            ];
+           
+            \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));    
+           
+    
+            return redirect()->back()->with('message', 'Email sent successfully!');
+
+        
+           
+    }
+
     public function getUpdatedPosts()
     {
         $posts = Post::select(
@@ -277,7 +305,6 @@ class UserController extends Controller
 
     public function getTimeDifference($post)
     {
-
         $currentTime = Carbon::now()->timezone($post->timezone);
         $timeAfter60Seconds = $currentTime->copy()->addSeconds(60);
         $postTime = Carbon::parse($post->posted_at, $post->timezone);
@@ -302,6 +329,7 @@ class UserController extends Controller
     {
         //    dd( $req->all());
         $platforms = auth()->user()->account->platforms;
+        // dd($platforms);
         if (count($platforms) == 0) {
             return back()->with('error', 'Please select platform to post.');
         }
@@ -380,7 +408,6 @@ class UserController extends Controller
 
             }
 
-
 //****************end twitter validation**************//
 
 
@@ -431,7 +458,6 @@ class UserController extends Controller
 
 
             $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
-
             if ($timeDiffLessTennOneMnt) {
                 $platformServiceMap = [
                     'Facebook' => '\App\Services\Facebookservice',

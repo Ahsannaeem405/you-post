@@ -483,6 +483,16 @@
 
     $(document).ready(function () {
 
+
+        
+        var link = $('#bugReportLink');    
+        link.click(function() {
+            $('#BugModal').modal('show')
+        });
+       
+
+        
+
       
         var authuser = "{{auth()->user()}}";
         if (authuser != null) {
@@ -593,6 +603,7 @@
                 }
 
             function updateDiv($obj) {
+              
                 $('#file_error_all').addClass('d-none');
 
                 var textareaAttr = $($obj).attr("attr_of_text_area");
