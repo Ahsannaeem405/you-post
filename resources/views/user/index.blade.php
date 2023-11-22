@@ -2888,14 +2888,17 @@
                     @csrf
                     @method('Post')
                         <!-- Email form fields go here -->
-                        <label for="recipient">Recipient:</label>
-                        <input type="text" id="recipient" name="recipient">
+                        <label for="recipient">Name:</label>
+                        <input type="text" id="name" name="name">
 
                         <label for="subject">Subject:</label>
                         <input type="text" id="subject" name="subject">
 
                         <label for="message">Message:</label>
                         <textarea id="message" name="message"></textarea>
+
+                        <input type="file" name="image" accept="image/*">
+
 
                         <button type="submit">Send Email</button>
                     </form>
