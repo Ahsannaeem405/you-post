@@ -488,23 +488,23 @@
                 {{-- <span id="show-button">See more</span> --}}
                 <div class="DetailText pt-0">
                     <div class="short_text Mobcart_title">
-                        <span id="mypostresult_youpost" class="mypostresult">{!! nl2br(e($post->content)) !!}</span>
-                        <span class="icon icon-privacy text-primary" id="mynameresult"></span>
+                        <!-- <span id="mypostresult_youpost" class="mypostresult">{!! nl2br(e($post->content)) !!}</span>
+                        <span class="icon icon-privacy text-primary" id="mynameresult"></span> -->
                     </div>
                 </div>
                 <div class="TagsSec d-none">
                     <a href="#">#BrownTechInt</a>
                 </div>
-                @if ($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
+                @if ($post->plateform === 'Facebook' && auth()->check() && auth()->user()->account)
                     <img src="{{ auth()->user()->account->fb_image }}" class="img-fluid" width="40" height="40"
                         alt="">
-                @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
-                    <img src="{{ auth()->user()->account->inst_image }}" class="img-fluid" width="40" height="40"
+                @elseif($post->plateform === 'Instagram' && auth()->check() && auth()->user()->account)
+                    <img src="{{ auth()->user()->account->inst_image }}" class="img-fluid d-none" width="40" height="40"
                         alt="">
-                @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
+                @elseif($post->plateform === 'Twitter' && auth()->check() && auth()->user()->account )
                     <img src="{{ auth()->user()->account->twt_image }}" class="img-fluid" width="40" height="40"
                         alt="">
-                @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account && auth()->user()->account->fb_image)
+                @elseif($post->plateform === 'Linkedin' && auth()->check() && auth()->user()->account)
                     <img src="{{ auth()->user()->account->link_image }}" class="img-fluid" width="40"
                         height="40" alt="">
                 @endif

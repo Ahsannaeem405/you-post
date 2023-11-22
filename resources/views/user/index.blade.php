@@ -5,7 +5,12 @@
     max-width: 270px;
     margin: auto;
 }
+.timer_style{
+text-align:right;
+font-size:12px;
+padding-right:10px;
 
+}
 #image_div_youpost {
     position: relative;
     max-width: 270px;
@@ -3652,7 +3657,7 @@ function updateCalendar() {
            setInterval(() => {
                 updateCalendar();
                 checkSidebarAndPerformAction();
-            }, 6000);
+            }, 60000);
 
 
             // Function to check if the sidebar is open

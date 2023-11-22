@@ -21,7 +21,7 @@ $timeOnly = $publishedAt->format('h:i A');
                         : ''))) }}">
                         <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
                         src="{{asset("images/newimages/loader.gif")}}" alt="">
-                        <div>{{$timeOnly}}</div>
+                        <div class= "timer_style">{{$timeOnly}}</div>
 
     <div style="border-radius:20px">
         <div class="d-flex post-detail post_detailWrap">

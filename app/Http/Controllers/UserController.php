@@ -98,22 +98,25 @@ class UserController extends Controller
 
             ]);
 
-                      $base64Data = $request->input('image');                      
-                        $filename = uniqid() . '.png';                       
-                        $imageData = base64_decode($base64Data);                     
-                        file_put_contents(public_path('content_media/' . $filename), $imageData);
-                        $imagePath = $filename;
+                    // $file = $request->file('image');
+                  
+                    // $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+
+                    // file_put_contents(public_path('images/' . $filename), $file);
+                    // $imagePath = $filename;        
+                                
+                                       
                 
             $details = [
                 'title' => 'Mail from User',
                 'subject' =>$request->subject,
                 'body' => $request->message,
-                'imagePath' => $imagePath,
+                // 'imagePath' => $imagePath,
 
 
             ];
            
-            \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));    
+            \Mail::to('umer@browntech.co')->send(new \App\Mail\BugMail($details));    
            
     
             return redirect()->back()->with('message', 'Email sent successfully!');
@@ -235,7 +238,7 @@ class UserController extends Controller
 
                 // Define desired aspect ratios for landscape and portrait orientations
                 $desiredAspectRatioLandscape = 16 / 5;
-                $desiredAspectRatio = 4 / 5;
+                $desiredAspectRatioPortrait = 4 / 5;
 
                 // Get the original width and height of the image
                 $originalWidth = $img->width();
