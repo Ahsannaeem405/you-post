@@ -7,17 +7,17 @@
     <table width="100%">
         <tr>
             <td>
-                <h1>{{ $details['title'] }}</h1>
+                <h1>tes</h1>
             </td>
         </tr>
         <tr>
             <td>
-                <h2>{{ $details['subject'] }}</h2>
+                <h2>xvdfg</h2>
             </td>
         </tr>
         <tr>
             <td>
-                <p>{{ $details['body'] }}</p>
+                <p>gfdgd</p>
             </td>
         </tr>
         <tr>

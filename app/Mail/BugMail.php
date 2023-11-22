@@ -35,7 +35,7 @@ class BugMail extends Mailable
     {
        
   $hardcodedImagePath = public_path('content_media/' . $this->details['imagePath']);
-  dd($hardcodedImagePath);
+//   dd($hardcodedImagePath);
 
     return $this->subject($this->details['subject'])
                 ->view('email.bugEmail')
