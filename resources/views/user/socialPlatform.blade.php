@@ -1,8 +1,5 @@
 @extends('user_layout.subMain')
-
-
 @section('content')
-
 @include('user.component.modals')
 <style>
 .account-info {
@@ -55,7 +52,7 @@
     left: 79% !important;
     top: 48%;
     position: absolute;
-}   
+}
 }
 @media (min-width:1200px) and (max-width:1376px){
     .maxchar {
@@ -352,7 +349,7 @@ function RefresehAccounts() {
             console.log(response);
             $('.account_result').empty().append(response);
         }
-    });  
+    });
 }
 
 
