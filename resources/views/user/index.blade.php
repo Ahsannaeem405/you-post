@@ -2877,6 +2877,45 @@
 
 <!-- modal test1 end -->
 
+<!-- modal for germ -->
+
+<div class="modal fade" id="BugModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content success_modal_content">
+            <div class="modal-header success_modal_header ">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">New message</h5> -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pb-0 mb">
+                <div class="woohoo mt-5">
+                <form action="{{ route('report-bug') }}" method="POST">
+                    @csrf
+                    @method('Post')
+                        <!-- Email form fields go here -->
+                        <label for="recipient">Recipient:</label>
+                        <input type="text" id="recipient" name="recipient">
+
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject">
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message"></textarea>
+
+                        <button type="submit">Send Email</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer success_modal_footer pb-5">
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-danger">GO BACK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal for germ end -->
+
 
 </div>
 @endsection
@@ -3602,7 +3641,7 @@ function updateCalendar() {
 
            setInterval(() => {
                 updateCalendar();
-                // checkSidebarAndPerformAction();
+                checkSidebarAndPerformAction();
             }, 6000);
 
 
@@ -3612,7 +3651,8 @@ function updateCalendar() {
             }
 
             function isDivHidden() {
-                return $('#inner_div').css('display') === 'd-none';
+              
+                return $('#inner_div').css('display') === 'none';
 
             }
             // Function to perform an action based on the sidebar state
@@ -3644,6 +3684,8 @@ function updateCalendar() {
                         }
                     });
                 } else {
+                    console.log(isDivHidden);
+
                     // Sidebar is not open, perform other actions or skip
                     console.log('Sidebar is not open');
                 }

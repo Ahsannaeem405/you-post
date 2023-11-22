@@ -444,7 +444,8 @@ $(document).ready(function () {
                 setTimeout(function () {
                 $("#posted_now").prop("disabled", false);
                 }, 500);
-            } else {
+            } 
+            else {
 
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
@@ -452,10 +453,8 @@ $(document).ready(function () {
                     $("#posted_now").prop("disabled", false);
                     }, 1000);
                 $(this).unbind('submit').submit();
-
-
-
             }
+           
         });
     });
 
