@@ -145,6 +145,79 @@
 </script>
 
 
+<script>
+    // var owl = $('.owl-carousel');
+    // var pignoseCalendar = null;
+    // $(function () {
+    //     pignoseCalendar = $('.calendar_reschedule').pignoseCalendar({
+    //         select: function (date, context) {
+    //             selectedDate = date;
+    //             // store selected date value in variable
+    //             settime();
+    //             //$('#TimetoUploadPost').modal('show');
+               
+    //         }
+    //     });
+    // });
+//     $('#SchedulePost').on('show.bs.modal', function (event) {
+       
+//         var button = $(event.relatedTarget); 
+//         var dataId = button.data('id');  
+//         var posted_at = button.data('posted_at'); 
+//         $("#post_id").val(dataId);
+//         var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');
+
+//        var datePart = dateTime.format('YYYY-MM-DD');
+// alert();
+// // Assuming 'posted_at' is in a valid date format, e.g., 'YYYY-MM-DD'
+//             var initialDate = new Date(datePart);
+
+//             // Initialize Pignose Calendar
+//             var pignoseCalendar = $('.calendar_reschedule').pignoseCalendar({
+//                 select: function (date, context) {
+//                     selectedDate = date;
+//                     // settime();
+//                     //$('#TimetoUploadPost').modal('show');
+//                 }
+//             });
+
+//             pignoseCalendar.setDate(initialDate);
+
+      
+//     });
+
+    function settime_reshceule(posted_at) {   
+
+          
+            $date = new DateTime($posted_at);
+
+            // Get components
+            $hour = $date->format('h');
+            $minutes = $date->format('i');
+            $amPm = $date->format('A');
+            $dateString = $date->format('Y-m-d');
+
+       alert( $hour);
+       alert( $minutes);
+       alert($amPm);
+
+    $('#hour_schedule').val($hour);
+    $('#minute_schedule').val($minutes);
+     $('#ampm_schedule').val($amPm); 
+
+    
+
+    
+
+   }
+
+
+   $(document).on('change', '.select_time_schedule', function () {
+        settime_schedule();
+    });
+</script>
+
+
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <!--Custom JavaScript-->
 
@@ -593,7 +666,28 @@
                     var charCount = inputText.length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCountYou');
                 charCountElement.text(charCount);
-                var maxChars = 280;
+                var maxChars = 0;
+
+            if ($("li[section='twitter']").length > 0) {
+                maxChars = 280;
+                $('#youpost_content').attr('maxlength', maxChars); 
+
+            } else if ($("li[section='insta']").length > 0 ) {
+                maxChars = 2200;
+                $('#youpost_content').attr('maxlength', maxChars); 
+
+               
+            } else if ($("li[section='linkedin']").length > 0 ) {
+                maxChars = 3000;
+                $('#youpost_content').attr('maxlength', maxChars); 
+
+            }else if ($("li[section='fb']").length > 0) {
+                maxChars = 63206;
+                $('#youpost_content').attr('maxlength', maxChars); 
+
+            } 
+               
+
                 charCountElement.text(charCount + '/' + maxChars);
                     var formattedText = inputText.replace(/\n/g, '<br>');
                    $("#mypostresult_youpost").html(formattedText);

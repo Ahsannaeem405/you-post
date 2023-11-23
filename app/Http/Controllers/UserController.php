@@ -38,6 +38,13 @@ class UserController extends Controller
         set_time_limit(8000000);
     }
 
+    public function privacyPolicy()
+    {
+        
+
+        return view('user.privacypolicy');
+
+    }
     public function dashbaord()
     {
         // dd(auth()->user()->email)
@@ -90,7 +97,7 @@ class UserController extends Controller
     public function report_bug(Request $request )
     {                     
               $request->validate([
-                'name' => 'required',
+              
                 'subject' => 'required',
                 'message' => 'required',
 

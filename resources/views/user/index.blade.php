@@ -795,7 +795,7 @@ padding-right:10px;
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
-                                                    name="youpost_content" id="youpost_content" cols="30" rows="10" maxlength="280"
+                                                    name="youpost_content" id="youpost_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea mention" data-id="youpost_error"
                                                     placeholder="Write your universal content...">{{old('youpost_content')}}</textarea>
                                                     <p id="youpost_char_count" class="charCount charCountYou"></p>
@@ -1352,16 +1352,22 @@ padding-right:10px;
                         </div>
                     </div>
                     <!-- salman popup end-->
+
+
+    
+
                 </form>
             </div>
 
-<!-- edit post schedule  -->
-<div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
+
+
+                    <!-- edit post schedule  --> 
+                    <div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Date & Time To Upload Post</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Reschedule your Post</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -1372,11 +1378,11 @@ padding-right:10px;
                                     <div class="time-picker time-picker_cls">
                                         <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
 
-                                        <select id="hour" class="select_time"
+                                        <select id="hour_schedule" class="select_time_schedule"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="minute" class="select_time"
+                                        <select id="minute_schedule" class="select_time_schedule"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="ampm" name="ampm" class="select_time"
+                                        <select id="ampm_schedule" name="ampm" class="select_time_schedule"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
                                             <option value="AM">AM</option>
                                             <option value="PM">PM</option>
@@ -1391,10 +1397,12 @@ padding-right:10px;
                                             <input type="hidden" class="browsertimeinput" name="time">
                                             <input type="hidden" class="posttime" value="now" name="posttime">
                                             <input type="hidden" name="timezone" class="timezone">
+                                            <input type="hidden" id="post_id">
+
 
                                         </div>
                                         <div class="pick_date_from_calendar">
-                                            <div class="calendar"></div>
+                                            <div class="calendar_reschedule"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1402,7 +1410,7 @@ padding-right:10px;
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
                                         id="cancelButton">Cancel
                                     </button>
-                                    <button type="submit" class="btn post_later_now_btn btn-success">Schedule Post
+                                    <button type="submit" class="btn  btn-success">Schedule Post
                                     </button>
                                 </div>
                             </div>
@@ -1410,8 +1418,6 @@ padding-right:10px;
                     </div>
 
 <!-- edit schedule -->
-
-
 
 
             <div

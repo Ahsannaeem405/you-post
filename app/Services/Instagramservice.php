@@ -145,8 +145,9 @@ class Instagramservice
             if(isset($pageData['id'])) {
                 $username = $pageData['username'];
                 $name = $pageData['name'];
+
                 $profile_picture_url = $pageData['profile_picture_url'] ?? asset('assets/images/insta-default-image.png');                                                
-                $imageName = "insta_profile.jpg";
+                $imageName = time() . '_' . uniqid();
                 $imagePath = "content_media/{$imageName}";
 
                  if (file_exists(public_path($imagePath))) {

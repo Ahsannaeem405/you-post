@@ -65,9 +65,11 @@ Route::group(['middleware' => ['auth','role']], function () {
 });
 
 
+Route::get('privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy.policy');
 
 
 Route::group(['middleware' => ['auth']], function () {
+   
 
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
     Route::get('dashboard2', [UserController::class, 'dashbaord2']);

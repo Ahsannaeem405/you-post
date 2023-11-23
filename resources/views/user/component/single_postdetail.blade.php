@@ -533,6 +533,23 @@
                                 Delete Post
                             </a>
                         </div>
+
+                        <!-- @if ($post->posted_at_moment != 'now')
+                        
+
+                        <a href="#" 
+                        class="text-decoration-none btn btn-danger"
+                         data-id="{{ $post->id }}" 
+                         data-posted_at="{{ $post->posted_at }}"                       
+                         data-bs-toggle="modal" 
+                         data-bs-target="#SchedulePost">
+                            Edit Post
+                        </a>
+
+                                    
+                        @endif -->
+                       
+
                     </div>
                 </div>
             </div>
@@ -552,4 +569,9 @@
                 });
             });
         });
+
+      
     </script>
+
+    
+
