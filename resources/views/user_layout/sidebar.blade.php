@@ -622,7 +622,7 @@ body.dark .home .text {
                 </li>
 
                 <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span
-                            class="text nav-text">Add Accounts</span></a></li>
+                            class="text nav-text">My Accounts</span></a></li>
                 </li>
 
                 <!-- <li class="nav-link">

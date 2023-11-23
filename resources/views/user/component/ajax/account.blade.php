@@ -245,12 +245,12 @@
         @if(in_array("Facebook", $account->platforms))
         <img src="{{$account->fb_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Instagram", $account->platforms))
-        <img src="{{asset('content_media/insta_profile.jpg')}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{$account->inst_image}}" class="v_icon rounded-circle mb-3" alt="" />
 
         @elseif(in_array("Twitter", $account->platforms))
         <img src="{{$account->twt_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Linkedin", $account->platforms))
-        <img src="{{asset('content_media/linkedin_logo.jpg')}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{$account->link_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @else
         <img src="{{asset('images/YouPost_Logo.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
         @endif

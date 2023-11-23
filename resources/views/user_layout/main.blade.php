@@ -486,8 +486,8 @@
 
             if (insta_access_token != '' && insta_user_id == '') {
 
-                var loadingModal = $('#loadingModal');
-                loadingModal.modal('show');
+                // var loadingModal = $('#loadingModal');
+                // loadingModal.modal('show');
 
 
                 $.ajax({
@@ -495,7 +495,7 @@
                     url: "{{ url('get_page_for_instagram')}}",
                     success: function (response) {
 
-                        loadingModal.modal('hide');
+                        // loadingModal.modal('hide');
                          $('#instagram_pages_modal').modal('show');
 
                         $('.instapage_selection').empty().append(response);

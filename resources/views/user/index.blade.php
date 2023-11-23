@@ -1355,6 +1355,64 @@ padding-right:10px;
                 </form>
             </div>
 
+<!-- edit post schedule  -->
+<div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Date & Time To Upload Post</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="Timeselect d-flex justify-content-between">
+                                    <label for="">Select Time:</label>
+                                    <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
+                                    <!--  -->
+                                    <div class="time-picker time-picker_cls">
+                                        <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
+
+                                        <select id="hour" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="minute" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="ampm" name="ampm" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
+                                        </select>
+                                    </div>
+                                    <!--  -->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="post_later">
+                                        <div class="tabs_type_heading_sm">
+                                            <span id="browsertime d-none"></span>
+                                            <input type="hidden" class="browsertimeinput" name="time">
+                                            <input type="hidden" class="posttime" value="now" name="posttime">
+                                            <input type="hidden" name="timezone" class="timezone">
+
+                                        </div>
+                                        <div class="pick_date_from_calendar">
+                                            <div class="calendar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                        id="cancelButton">Cancel
+                                    </button>
+                                    <button type="submit" class="btn post_later_now_btn btn-success">Schedule Post
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- edit schedule -->
+
+
+
 
             <div
                 class="create_preview_post_index_item create_preview_post_index_itemRight section2_rightcard mx-2 my-2 ">

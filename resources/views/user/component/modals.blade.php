@@ -131,9 +131,7 @@
                 <div class="modal-body">
                 
                     <select required name="page" class="form-control instapage_selection">
-                    <option value="loading" data-loader="true">  <div class="spinner-border"></div>
-</option>
-
+                        <option value="" >Loading...</option>
                         @foreach($all_pages_for_insta as $page)
                             <option value="{{$page->id}}">{{$page->name}}</option>
                         @endforeach
