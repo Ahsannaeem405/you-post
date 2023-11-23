@@ -129,10 +129,12 @@
             <form action="{{url('set_page_for_instagram')}}" method="post">
                 @csrf
                 <div class="modal-body">
-                <div id="loader_tst" style="display: none;">Loading...</div>
-
+                
                     <select required name="page" class="form-control instapage_selection">
-                        <option value="">-select--</option>
+                    <option value="loading" data-loader="true">      
+                          <img class="uplaod-gif uplaod-gif-video uploader_post" src="https://example.com/loader.gif" alt="Loading...">
+                   </option>
+
                         @foreach($all_pages_for_insta as $page)
                             <option value="{{$page->id}}">{{$page->name}}</option>
                         @endforeach

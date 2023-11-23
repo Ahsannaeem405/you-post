@@ -40,7 +40,8 @@ class UserController extends Controller
 
     public function dashbaord()
     {
-        
+        // dd(auth()->user()->email)
+       
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         $posts = Post::select(
@@ -87,43 +88,28 @@ class UserController extends Controller
     }
 
     public function report_bug(Request $request )
-    {
-              // Validate the form data
-
-           
+    {                     
               $request->validate([
                 'name' => 'required',
                 'subject' => 'required',
                 'message' => 'required',
 
             ]);
-
-                    // $file = $request->file('image');
-                  
-                    // $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-
-                    // file_put_contents(public_path('images/' . $filename), $file);
-                    // $imagePath = $filename;        
-                                
-                                       
-                
+            $file = $request->file('image');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();         
+            file_put_contents(public_path('images/' . $filename), file_get_contents($file));            
+            $imagePath = 'images/' . $filename;    
+            $logPath =   'images/YouPost_Logo.png';
             $details = [
                 'title' => 'Mail from User',
-                'subject' =>$request->subject,
+                'subject' => $request->subject,
                 'body' => $request->message,
-                // 'imagePath' => $imagePath,
-
-
-            ];
-           
-            \Mail::to('umer@browntech.co')->send(new \App\Mail\BugMail($details));    
-           
-    
-            return redirect()->back()->with('message', 'Email sent successfully!');
-
-        
-           
-    }
+                'imagePath' => $imagePath,
+                'logPath' => $logPath,
+            ];                       
+            \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));                
+            return redirect()->back()->with('message', 'Email sent successfully!');      
+        }
 
     public function getUpdatedPosts()
     {

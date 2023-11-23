@@ -408,6 +408,7 @@ $(document).ready(function () {
         });
 
         $("#post_form").submit(function (event) {
+           
             event.preventDefault();
             $("#posted_now").prop("disabled", true);
             var facebook_content = $("#facebook_content").val();
@@ -437,7 +438,20 @@ $(document).ready(function () {
                 error_input = "Linkedin content can not be empty";
                 data_id = "link_error";
             }  
-                $(this).unbind('submit').submit(); 
+            if (error_input !== "") {
+                $('#file_error_all').removeClass('d-none').text(error_input);
+                $('#file_error_all').attr('data-id', data_id);
+               
+            } else {
+               
+                $('#file_error_all').addClass('d-none');
+                $('.uplaod-gif-video').removeClass('d-none');
+              
+                $(this).unbind('submit').submit();
+               
+               
+
+            }
                 
         });
         
