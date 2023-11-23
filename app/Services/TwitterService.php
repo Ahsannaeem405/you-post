@@ -17,19 +17,25 @@ class TwitterService
 {
     public function delete_post($data)
     {
-        $this->twiter_refresh(auth()->user()->account);
+        //$this->twiter_refresh(auth()->user()->account);
         $postId = $data;
 
 
         // Create a new Guzzle HTTP client instance
 
         try {
-            auth()->user()->refresh();
-            $bearerToken = auth()->user()->account->twiter_access_token;
-
-            $response = Http::withToken($bearerToken)->delete('https://api.twitter.com/2/tweets/' . $postId);
-
-            if ($response->getStatusCode() == 200) {
+            //  auth()->user()->refresh();
+            $bearerToken = json_decode(auth()->user()->account->twiter_access_token);
+            $twitter = config('services.twitter');
+            $connection = new TwitterOAuth(
+                $twitter['client_id'],
+                $twitter['client_secret'],
+                $bearerToken->oauth_token,
+                $bearerToken->oauth_token_secret,
+            );
+             $connection->setApiVersion('2');
+             $response=$connection->delete("tweets/$postId");
+             if ($connection->getLastHttpCode() == 200) {
                 $msg = ['status' => true];
 
 
@@ -63,25 +69,24 @@ class TwitterService
             $bearerToken->oauth_token,
             $bearerToken->oauth_token_secret,
         );
-            $connection->setTimeouts(120,60);
-            $imagesdIds = [];
+        $connection->setTimeouts(120, 60);
+        $imagesdIds = [];
         if ($data['post']->media_type) {
             $images = explode(',', $post->media);
             foreach ($images as $image) {
                 $connection->setApiVersion('1.1');
-                $imagePath=public_path('content_media/' . $image);
+                $imagePath = public_path('content_media/' . $image);
 
-               // Map the file extension to a media type
-               $mediaType = \File::mimeType($imagePath);
-               if ($data['post']->media_type=='image'){
-                $status = $connection->upload("media/upload", ["media" => $imagePath]);
-                }
-                else{
-                $status = $connection->upload("media/upload", [
-                "media" => $imagePath,
-                'media_type' => $mediaType,
-                'media_category' => 'tweet_video'
-                ],true);
+                // Map the file extension to a media type
+                $mediaType = \File::mimeType($imagePath);
+                if ($data['post']->media_type == 'image') {
+                    $status = $connection->upload("media/upload", ["media" => $imagePath]);
+                } else {
+                    $status = $connection->upload("media/upload", [
+                        "media" => $imagePath,
+                        'media_type' => $mediaType,
+                        'media_category' => 'tweet_video'
+                    ], true);
 
                 }
 
