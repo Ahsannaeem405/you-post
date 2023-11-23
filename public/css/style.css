@@ -2131,6 +2131,9 @@ height: 300px;
 .charCountYou,.charCountfb,.charCountinst,.charCounttwt,.charCountlink{
     text-align: right;
     padding-right: 5px;
+    margin-bottom: 3px;
 }
-
+#linkedin_content,#twitter_content,#instagram_content,#facebook_content,#youpost_content{
+    resize: none;
+} 
 /*calendar posts structure */

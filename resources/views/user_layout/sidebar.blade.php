@@ -622,7 +622,7 @@ body.dark .home .text {
                 </li>
 
                 <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span
-                            class="text nav-text">Add Accounts</span></a></li>
+                            class="text nav-text">My Accounts</span></a></li>
                 </li>
 
                 <!-- <li class="nav-link">
@@ -640,7 +640,7 @@ body.dark .home .text {
                         <span class="text nav-text">Notifications</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)"><i class="fa-regular fa-file icon"></i><span
+                <li><a href="javascript:void(0)" id="privacyPolicy"><i class="fa-regular fa-file icon"></i><span
                             class="text nav-text">Privacy
                             Policy</span></a></li>
 
@@ -650,7 +650,7 @@ body.dark .home .text {
                         <span class="text nav-text">Analytics</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)"><i class='bx bx-pie-chart-alt icon'></i><span
+                <li><a href="javascript:void(0)" id="support"><i class='bx bx-pie-chart-alt icon'></i><span
                             class="text nav-text">Support</span></a></li>
 
                 <!-- <li class="nav-link">
@@ -659,7 +659,7 @@ body.dark .home .text {
                         <span class="text nav-text">Likes</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)"><i class='bx bx-heart icon'></i> <span class="text nav-text">Public
+                <li><a href="javascript:void(0)" id="connectSocial"><i class='bx bx-heart icon'></i> <span class="text nav-text">Public
                             Profile</span></a></li>
 
                 <!-- <li class="nav-link">
@@ -752,4 +752,34 @@ $(".toggle").click(function() {
     // Toggle the mouseLeaveEnabled flag
     mouseLeaveEnabled = !mouseLeaveEnabled;
 });
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+<script>
+    document.getElementById('connectSocial').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Connect Social',
+            text: 'Your custom message for Connect Social',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
+
+    document.getElementById('privacyPolicy').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Privacy Policy',
+            text: 'Your custom message for Privacy Policy',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
+
+    document.getElementById('support').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Support',
+            text: 'Your custom message for Support',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
 </script>

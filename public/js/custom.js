@@ -408,9 +408,8 @@ $(document).ready(function () {
         });
 
         $("#post_form").submit(function (event) {
-           
-            event.preventDefault();
             $("#posted_now").prop("disabled", true);
+            event.preventDefault();
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
@@ -439,6 +438,7 @@ $(document).ready(function () {
                 data_id = "link_error";
             }  
             if (error_input !== "") {
+                $("#posted_now").prop("disabled", false);
                 $('#file_error_all').removeClass('d-none').text(error_input);
                 $('#file_error_all').attr('data-id', data_id);
                

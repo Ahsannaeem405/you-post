@@ -795,11 +795,11 @@ padding-right:10px;
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
-                                                    name="youpost_content" id="youpost_content" cols="30" rows="10"
+                                                    name="youpost_content" id="youpost_content" cols="30" rows="10" maxlength="280"
                                                     class="form-control wizard-required emojiarea mention" data-id="youpost_error"
                                                     placeholder="Write your universal content...">{{old('youpost_content')}}</textarea>
                                                     <p id="youpost_char_count" class="charCount charCountYou"></p>
-                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
+                                                <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -888,12 +888,12 @@ padding-right:10px;
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="facebook_content" id="facebook_content" cols="30" rows="10"
+                                                    name="facebook_content" id="facebook_content" cols="30" rows="10" maxlength="63206"
                                                     class="form-control wizard-required emojiarea mention"
                                                     data-id="facebok_error"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                     <p id="fb_char_count" class="charCount charCountfb"></p>
-                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
+                                                <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -990,7 +990,7 @@ padding-right:10px;
 
                                             <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="instagram_content" id="instagram_content" cols="30" rows="10"
+                                                    name="instagram_content" id="instagram_content" cols="30" rows="10" maxlength="2200"
                                                     class="form-control wizard-required emojiarea" data-id="insta_error"
                                                     placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                     <p id="insta_char_count" class="charCount charCountinst"></p>
@@ -1070,7 +1070,7 @@ padding-right:10px;
                                                 class="wizard-fieldset_facebook">Twitter</span>
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
-                                                    onchange="suggested_text(this)" name="twitter_content"
+                                                    onchange="suggested_text(this)" name="twitter_content"  maxlength="280"
                                                     id="twitter_content" cols="30" rows="10" data-id="twitter_error"
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
@@ -1156,7 +1156,7 @@ padding-right:10px;
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10"
+                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10" maxlength="3000"
                                                     data-id="link_error"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
                                                     placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
@@ -1337,7 +1337,7 @@ padding-right:10px;
 
                                         </div>
                                         <div class="pick_date_from_calendar">
-                                            <div class="calendar"></div>
+                                            <div class="calendar" id="browsertimeinput"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1354,6 +1354,64 @@ padding-right:10px;
                     <!-- salman popup end-->
                 </form>
             </div>
+
+<!-- edit post schedule  -->
+<div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Date & Time To Upload Post</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="Timeselect d-flex justify-content-between">
+                                    <label for="">Select Time:</label>
+                                    <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
+                                    <!--  -->
+                                    <div class="time-picker time-picker_cls">
+                                        <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
+
+                                        <select id="hour" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="minute" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
+                                        <select id="ampm" name="ampm" class="select_time"
+                                            style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
+                                        </select>
+                                    </div>
+                                    <!--  -->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="post_later">
+                                        <div class="tabs_type_heading_sm">
+                                            <span id="browsertime d-none"></span>
+                                            <input type="hidden" class="browsertimeinput" name="time">
+                                            <input type="hidden" class="posttime" value="now" name="posttime">
+                                            <input type="hidden" name="timezone" class="timezone">
+
+                                        </div>
+                                        <div class="pick_date_from_calendar">
+                                            <div class="calendar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                        id="cancelButton">Cancel
+                                    </button>
+                                    <button type="submit" class="btn post_later_now_btn btn-success">Schedule Post
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- edit schedule -->
+
+
 
 
             <div
@@ -3744,5 +3802,50 @@ populateOptions("hour", 1, 12, 1);
 
 // Populate minute options (00 to 59)
 populateOptions("minute", 0, 59, 1);
+</script>
+<script>
+  $(document).ready(function() {
+    // Initialize Pignose Calendar
+    $('#browsertimeinput').pignoseCalendar({
+      initialize: false, // Initialize later to customize options
+      select: function(date, obj) {
+        // Disable past dates
+        var today = new Date();
+        if (date < today) {
+          obj.unselectable = true;
+          return false;
+        }
+      }
+    });
+
+    // Initialize Pignose Calendar after customization
+    $('#browsertimeinput').pignoseCalendar();
+
+    // Disable past times in the time picker
+    disablePastTimes();
+
+    // Update time picker when the date changes
+    $('#browsertimeinput').on('pignoseCalendarSelect', function() {
+      disablePastTimes();
+    });
+
+    function disablePastTimes() {
+      var selectedDate = $('#browsertimeinput').pignoseCalendar('getSelectedDate');
+      var currentDate = new Date();
+
+      // Check if the selected date is today
+      var isToday = selectedDate.getDate() === currentDate.getDate() &&
+        selectedDate.getMonth() === currentDate.getMonth() &&
+        selectedDate.getFullYear() === currentDate.getFullYear();
+
+      // Get the current hour and minute
+      var currentHour = currentDate.getHours();
+      var currentMinute = currentDate.getMinutes();
+
+      // Disable past times if the selected date is today
+      $('#hour option').prop('disabled', isToday && parseInt($('#hour').val()) < currentHour);
+      $('#minute option').prop('disabled', isToday && parseInt($('#minute').val()) < currentMinute);
+    }
+  });
 </script>
 @endsection

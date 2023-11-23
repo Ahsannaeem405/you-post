@@ -49,7 +49,7 @@
     font-family: 'Poppins', sans-serif;
     padding: 5px 0;
     font-size: 14px;
-    left: 79% !important;
+    left: 78% !important;
     top: 48%;
     position: absolute;
 }
@@ -61,7 +61,7 @@
     font-family: 'Poppins', sans-serif;
     padding: 5px 0;
     font-size: 14px;
-    left: 75% !important;
+    left: 73% !important;
     top: 48%;
     position: absolute;
 }
@@ -110,6 +110,14 @@
         margin: 0;
         margin-top: 10px
     }
+    .index_dltbtn{
+        width: 100%; 
+    }
+    .index_dltbtn button{
+        width: 100%;
+        margin: 0;
+        margin-top: 10px
+    }
 }
 
 @media(min-width:320px) and (max-width:576px) {
@@ -130,7 +138,7 @@
         padding: 5px 0;
         font-size: 14px;
         left: 71% !important;
-        top: 33% !important;
+        top: 30% !important;
         position: absolute;
     }
 
@@ -143,9 +151,20 @@
         margin: 0;
         margin-top: 10px
     }
+    .index_dltbtn{
+        width: 100%; 
+    }
+    .index_dltbtn button{
+        width: 100%;
+        margin: 0;
+        margin-top: 10px
+    }
 
     .all_social_platformWrp {
         width: unset !important;
+    }
+    .account-detail{
+        font-size:14px;
     }
 
 }

@@ -235,14 +235,26 @@ class Linkedinservice
             $imageUrl = $responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
 
             // Check if the local image file already exists and delete it
-            $imagePath = 'content_media/linkedin_logo.jpg';
-             if (file_exists(public_path($imagePath))) {
-                    unlink(public_path($imagePath));
-                }          
+            $uniqueFilename = time() . '_' . uniqid() . '.jpg';
 
-            $imageContents = file_get_contents($imageUrl); 
+            // Specify the directory where you want to save the image
+            $imageDirectory = 'content_media/';
+
+            // Combine the directory and filename to get the full path
+            $imagePath = $imageDirectory . $uniqueFilename;
+
+            // Check if the local image file already exists and delete it
+            if (file_exists(public_path($imagePath))) {
+                unlink(public_path($imagePath));
+            }
+
+            // Fetch the image contents
+            $imageContents = file_get_contents($imageUrl);
+
+            // Save the image with the unique filename
             file_put_contents(public_path($imagePath), $imageContents);
-        }
+       }
+        
    
       
        }
