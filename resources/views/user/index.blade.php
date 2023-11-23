@@ -795,11 +795,11 @@ padding-right:10px;
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
-                                                    name="youpost_content" id="youpost_content" cols="30" rows="10"
+                                                    name="youpost_content" id="youpost_content" cols="30" rows="10" maxlength="280"
                                                     class="form-control wizard-required emojiarea mention" data-id="youpost_error"
                                                     placeholder="Write your universal content...">{{old('youpost_content')}}</textarea>
                                                     <p id="youpost_char_count" class="charCount charCountYou"></p>
-                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
+                                                <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -888,12 +888,12 @@ padding-right:10px;
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="facebook_content" id="facebook_content" cols="30" rows="10"
+                                                    name="facebook_content" id="facebook_content" cols="30" rows="10" maxlength="63206"
                                                     class="form-control wizard-required emojiarea mention"
                                                     data-id="facebok_error"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                     <p id="fb_char_count" class="charCount charCountfb"></p>
-                                                <div class="expand_icon"><img src="{{asset('')}}images/Expand.png"
+                                                <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -990,7 +990,7 @@ padding-right:10px;
 
                                             <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="instagram_content" id="instagram_content" cols="30" rows="10"
+                                                    name="instagram_content" id="instagram_content" cols="30" rows="10" maxlength="2200"
                                                     class="form-control wizard-required emojiarea" data-id="insta_error"
                                                     placeholder="Write your post...">{{old('instagram_content')}}</textarea>
                                                     <p id="insta_char_count" class="charCount charCountinst"></p>
@@ -1070,7 +1070,7 @@ padding-right:10px;
                                                 class="wizard-fieldset_facebook">Twitter</span>
                                             <div class="form-group emoji_parent  emoji_parent2">
                                                 <textarea datatype="fsdf" onkeyup="updateDiv(this)"
-                                                    onchange="suggested_text(this)" name="twitter_content"
+                                                    onchange="suggested_text(this)" name="twitter_content"  maxlength="280"
                                                     id="twitter_content" cols="30" rows="10" data-id="twitter_error"
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
@@ -1156,7 +1156,7 @@ padding-right:10px;
 
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
-                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10"
+                                                    name="linkedin_content" id="linkedin_content" cols="30" rows="10" maxlength="3000"
                                                     data-id="link_error"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
                                                     placeholder="Write your post...">{{old('linkedin_content')}}</textarea>

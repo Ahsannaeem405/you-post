@@ -240,7 +240,7 @@
                     @method('Post')
 
                         @if(auth()->check() && auth()->user()->account_id == $account->id)
-                        <div class="">
+                        <div class="index_dltbtn">
                         <button type="button" class="btn btn-danger disabledBtn">
                             <img src="{{asset('images/deletebuckit.png')}}" class="" />
                             <span>

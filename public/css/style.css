@@ -2131,6 +2131,8 @@ height: 300px;
 .charCountYou,.charCountfb,.charCountinst,.charCounttwt,.charCountlink{
     text-align: right;
     padding-right: 5px;
+    position: absolute;
+    right: 0%;
 }
 
 /*calendar posts structure */
