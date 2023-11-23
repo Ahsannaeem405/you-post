@@ -140,10 +140,8 @@
                
             }
         });
-      
-        // $('.pignose-calendar-unit-active').removeClass('pignose-calendar-unit-active');
-
     });
+    
 </script>
 
 

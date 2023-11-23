@@ -1337,7 +1337,7 @@ padding-right:10px;
 
                                         </div>
                                         <div class="pick_date_from_calendar">
-                                            <div class="calendar"></div>
+                                            <div class="calendar" id="browsertimeinput"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -3802,5 +3802,50 @@ populateOptions("hour", 1, 12, 1);
 
 // Populate minute options (00 to 59)
 populateOptions("minute", 0, 59, 1);
+</script>
+<script>
+  $(document).ready(function() {
+    // Initialize Pignose Calendar
+    $('#browsertimeinput').pignoseCalendar({
+      initialize: false, // Initialize later to customize options
+      select: function(date, obj) {
+        // Disable past dates
+        var today = new Date();
+        if (date < today) {
+          obj.unselectable = true;
+          return false;
+        }
+      }
+    });
+
+    // Initialize Pignose Calendar after customization
+    $('#browsertimeinput').pignoseCalendar();
+
+    // Disable past times in the time picker
+    disablePastTimes();
+
+    // Update time picker when the date changes
+    $('#browsertimeinput').on('pignoseCalendarSelect', function() {
+      disablePastTimes();
+    });
+
+    function disablePastTimes() {
+      var selectedDate = $('#browsertimeinput').pignoseCalendar('getSelectedDate');
+      var currentDate = new Date();
+
+      // Check if the selected date is today
+      var isToday = selectedDate.getDate() === currentDate.getDate() &&
+        selectedDate.getMonth() === currentDate.getMonth() &&
+        selectedDate.getFullYear() === currentDate.getFullYear();
+
+      // Get the current hour and minute
+      var currentHour = currentDate.getHours();
+      var currentMinute = currentDate.getMinutes();
+
+      // Disable past times if the selected date is today
+      $('#hour option').prop('disabled', isToday && parseInt($('#hour').val()) < currentHour);
+      $('#minute option').prop('disabled', isToday && parseInt($('#minute').val()) < currentMinute);
+    }
+  });
 </script>
 @endsection

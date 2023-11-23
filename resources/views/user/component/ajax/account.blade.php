@@ -35,6 +35,24 @@
     margin-top: 40px
 }
 
+/* .user_detail {
+    color: #959595;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1.2px;
+    left: 100px;
+    position: absolute;
+    top: 30px;
+    background: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+} */
+/* .delete_input{
+    width: 100%;
+} */
+
+/* ahmad counter setting code */
 .user_detail {
     color: #959595;
     font-size: 12px;
@@ -47,10 +65,19 @@
     background: #fff;
     padding-left: 5px;
     padding-right: 5px;
+    z-index: 1;
 }
-.delete_input{
+.delete_input {
     width: 100%;
+    position: relative;
 }
+.counter_numeric {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+}
+/* ahmad counter setting code */
+
 .account-detail {
     width: 100%;
     padding: 10px 15px;
@@ -234,6 +261,9 @@
                     <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
                         placeholder="Account Name" class="account-detail account_name" maxlength="18"
                         oninput="countCharacters()">
+                        <div class="counter_numeric">
+                             <p><span class="charCount">0/18</span></p>
+                        </div>
                 </div>
                 <form action="{{ route('account-delete',$account->id) }}" method="POST">
                     @csrf
@@ -257,9 +287,9 @@
                         @endif
                 </form>
             </div>
-            <div class="maxchar">
+            <!-- <div class="maxchar">
                 <p><span class="charCount">0/18</span></p>
-            </div>
+            </div> -->
         </div>
         <div class="switch_account">
             <span>Switch on & connect social platform for Facebook, Instagram, etc....</span>
