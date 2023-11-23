@@ -1965,6 +1965,7 @@ body.dark .home .text{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     /* padding-left: 25px; */
 }
 .clearfix.clearfix2{
