@@ -463,6 +463,7 @@
                         </div>
                     @endif
                 </div>
+            
                 <div class="NavBtmSec">
                     <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between align-items-center">
                         <li class="actions-buttons-item  d-flex align-item-center">
@@ -485,6 +486,7 @@
                         </li>
                     </ul>
                 </div>
+                {{$post->content}}
                 {{-- <span id="show-button">See more</span> --}}
                 <div class="DetailText pt-0">
                     <div class="short_text Mobcart_title">
