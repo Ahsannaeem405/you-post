@@ -466,36 +466,29 @@ $(document).ready(function() {
     // Enable Bootstrap tooltips
     $('[data-toggle="tooltip"]').tooltip();
 });
-
 $(document).ready(function() {
     // Get all elements with the class 'account_name'
-    var inputFields = document.querySelectorAll('.account_name');
+    var inputFields = $('.account_name');
 
     // Iterate through each input field
-    inputFields.forEach(function(inputField) {
-        // Set up an event listener for input changes
-        inputField.addEventListener('input', function() {
-            countCharacters(inputField); // Pass the current input field to the function
-        });
-
-        // Initialize character count on page load
-        countCharacters(inputField);
+    inputFields.on('input', function() {
+        countCharacters($(this)); // Pass the current input field to the function
     });
 
+    // Initialize character count on page load
+    inputFields.each(function() {
+        countCharacters($(this));
+    });
 });
-
 function countCharacters(inputField) {
     // Get the maximum allowed characters
     var maxLength = 18;
 
     // Update the character count for the specific input field
-    var charCount = inputField.value.length;
-    var parentDiv = inputField.parentElement;
-    var charCountElement = inputField.parentElement; // Assuming the counter element is a sibling
-    var charCountElement = parentDiv.parentElement.nextElementSibling.querySelector('.maxchar .charCount');
-    // Update the character count and format "0/15"
-    charCountElement.innerText = charCount + "/" + maxLength;
+    var charCount = inputField.val().length;
 
+    // Update the character count and format "0/18"
+    inputField.closest('.delete_input').find('.counter_numeric .charCount').text(charCount + "/" + maxLength);
 }
 </script>
 
