@@ -233,26 +233,28 @@ class Linkedinservice
         $responseData = json_decode($response->getBody(), true);
         if (isset($responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'])) {
             $imageUrl = $responseData['logoV2']['original~']['elements'][0]['identifiers'][0]['identifier'];
-              // Generate a unique filename based on timestamp and random string
-                $uniqueFilename = time() . '_' . uniqid() . '.jpg';
 
-                // Specify the directory where you want to save the image
-                $imageDirectory = 'content_media/';
+            // Check if the local image file already exists and delete it
+            $uniqueFilename = time() . '_' . uniqid() . '.jpg';
 
-                // Combine the directory and filename to get the full path
-                $imagePath = $imageDirectory . $uniqueFilename;
+            // Specify the directory where you want to save the image
+            $imageDirectory = 'content_media/';
 
-                // Check if the local image file already exists and delete it
-                if (file_exists(public_path($imagePath))) {
-                    unlink(public_path($imagePath));
-                }
+            // Combine the directory and filename to get the full path
+            $imagePath = $imageDirectory . $uniqueFilename;
 
-                // Fetch the image contents
-                $imageContents = file_get_contents($imageUrl);
+            // Check if the local image file already exists and delete it
+            if (file_exists(public_path($imagePath))) {
+                unlink(public_path($imagePath));
+            }
 
-                // Save the image with the unique filename
-                file_put_contents(public_path($imagePath), $imageContents);
-        }
+            // Fetch the image contents
+            $imageContents = file_get_contents($imageUrl);
+
+            // Save the image with the unique filename
+            file_put_contents(public_path($imagePath), $imageContents);
+       }
+        
    
       
        }

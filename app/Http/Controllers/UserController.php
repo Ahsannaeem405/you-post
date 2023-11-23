@@ -1006,7 +1006,7 @@ class UserController extends Controller
 
         $run = new Linkedinservice();
         $imageUrl = $run->get_linkedin_image();
-
+        // dd($imageUrl);
         $pageName = $run->get_linkedin_pageName();
         $user = auth()->user();
         $user->account->link_image = $imageUrl;
