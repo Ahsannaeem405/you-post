@@ -261,6 +261,7 @@
             selectOverlap: false,
             allDay:true,
             slotDuration: '01:00',
+        
             events: @json(collect($allPosts)),
             views: {
                 month: {

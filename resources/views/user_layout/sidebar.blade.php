@@ -759,7 +759,7 @@ $(".toggle").click(function() {
     document.getElementById('connectSocial').addEventListener('click', function () {
         Swal.fire({
             title: 'Connect Social',
-            text: 'Your custom message for Connect Social',
+            text: 'Comming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });
@@ -768,7 +768,7 @@ $(".toggle").click(function() {
     document.getElementById('privacyPolicy').addEventListener('click', function () {
         Swal.fire({
             title: 'Privacy Policy',
-            text: 'Your custom message for Privacy Policy',
+            text: 'Comming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });
@@ -777,7 +777,7 @@ $(".toggle").click(function() {
     document.getElementById('support').addEventListener('click', function () {
         Swal.fire({
             title: 'Support',
-            text: 'Your custom message for Support',
+            text: 'Comming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });

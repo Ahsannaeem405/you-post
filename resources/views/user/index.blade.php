@@ -2966,7 +2966,7 @@ padding-right:10px;
                     @csrf
                     @method('Post')
                         <!-- Email form fields go here -->
-                        <div class="">
+                        <div class="d-none">
                             <label for="recipient">Name:</label>
                             <input type="text" id="name" class="form-control" name="name">
                         </div>
