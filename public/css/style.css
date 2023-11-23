@@ -2119,14 +2119,14 @@ height: 300px;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    /* line-height: normal; */
     cursor: pointer;
-    -webkit-box-orient: vertical;
+    /* -webkit-box-orient: vertical; */
     overflow: hidden;
     width: 100px;
     text-overflow: ellipsis;
-    word-wrap: break-word;
-    white-space:pre-wrap;
+    /* word-wrap: break-word; */
+    /* white-space:pre-wrap; */
 }
 .charCountYou,.charCountfb,.charCountinst,.charCounttwt,.charCountlink{
     text-align: right;

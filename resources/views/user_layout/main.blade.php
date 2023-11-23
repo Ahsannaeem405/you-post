@@ -667,7 +667,10 @@
  
     function showError(message) {
         // You can display the error message to the user, for example:
-        alert(message);
+        // alert(message);
+     
+        $('#file_error_youpost').text('test');
+
     }
 
 
