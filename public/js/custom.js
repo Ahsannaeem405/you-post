@@ -411,6 +411,7 @@ $(document).ready(function () {
            
             event.preventDefault();
             $("#posted_now").prop("disabled", true);
+            $(".uploader_post").removeClass("d-none");
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
