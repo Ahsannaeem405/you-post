@@ -410,6 +410,7 @@ $(document).ready(function () {
         $("#post_form").submit(function (event) {
             $("#posted_now").prop("disabled", true);
             event.preventDefault();
+            $(".uploader_post").removeClass("d-none");
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
