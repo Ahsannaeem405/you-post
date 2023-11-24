@@ -751,13 +751,12 @@ $(document).ready(function () {
                 var sixteenBynine = (16 / 9).toFixed(2);
 
 
-                if ((aspectRatio != fourByfive && aspectRatio != sixteenBynine)) {
-
-                    toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
-                    return false;
-                } else {
-
+                if ((aspectRatio >= fourByfive && aspectRatio <= sixteenBynine)) {
                     appendVideo(file, socialicon);
+                  
+                } else {
+                   toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
+                    return false;
 
                 }
 

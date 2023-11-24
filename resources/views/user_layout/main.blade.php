@@ -190,7 +190,23 @@ var today = moment(datePart).format('YYYY-MM-DD');
 
             $('#hour_schedule').val(now_time.getHours() > 12 ? now_time.getHours() - 12 : now_time.getHours());
             $('#minute_schedule').val(now_time.getMinutes());
-            $('#ampm_schedule').val(now_time.getHours() >= 12 ? 'PM' : 'AM');
+
+
+      // Assuming you have already set the value of #hour_schedule
+var isAfterNoon = now_time.getHours() >= 12;
+
+// Set the value of #ampm_schedule based on the 12-hour format
+$('#ampm_schedule').val(isAfterNoon ? 'PM' : 'AM');
+
+// Disable or enable the corresponding option based on the 12-hour format
+$('#ampm_schedule option[value="AM"]').prop('disabled', isAfterNoon);
+$('#ampm_schedule option[value="PM"]').prop('disabled', !isAfterNoon);
+
+// Enable both options if the date is in the future
+if (now_time > new Date()) {
+    $('#ampm_schedule option[value="AM"]').prop('disabled', false);
+    $('#ampm_schedule option[value="PM"]').prop('disabled', false);
+}
 
 
       }
