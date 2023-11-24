@@ -730,6 +730,10 @@ padding-right:10px;
 .InstaPreview_setup .mobile_post_img_inst{
     background-size: 100% auto !important;
 }
+/* .pick_date_from_calendar .calendar .pignose-calendar .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-date{
+      opacity: 0.5;
+      pointer-events: none;
+    } */
 /* close btn sidebar */
 /* timepicker style */
 </style>
@@ -1337,7 +1341,7 @@ padding-right:10px;
 
                                         </div>
                                         <div class="pick_date_from_calendar">
-                                            <div class="calendar" id="browsertimeinput"></div>
+                                            <div class="calendar"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -3797,7 +3801,13 @@ function openEventModal(year, month, day) {
 </script>
 <script>
 function populateOptions(selectId, start, end, step) {
+    
     const select = document.getElementById(selectId);
+    
+    while (select.options.length > 0) {
+    select.remove(0);
+}
+
     for (let i = start; i <= end; i += step) {
         const option = document.createElement("option");
         option.value = String(i).padStart(2, "0");
@@ -3807,55 +3817,24 @@ function populateOptions(selectId, start, end, step) {
 
 }
 // Populate hour options (01 to 12)
-populateOptions("hour", 1, 12, 1);
+
+var currentTime = new Date();
+var currentHour = currentTime.getHours();
+var currentMinute = currentTime.getMinutes();
+
+
+populateOptions("hour", (currentHour%12 || 12), 12, 1);
 
 
 // Populate minute options (00 to 59)
-populateOptions("minute", 0, 59, 1);
-</script>
-<script>
-  $(document).ready(function() {
-    // Initialize Pignose Calendar
-    $('#browsertimeinput').pignoseCalendar({
-      initialize: false, // Initialize later to customize options
-      select: function(date, obj) {
-        // Disable past dates
-        var today = new Date();
-        if (date < today) {
-          obj.unselectable = true;
-          return false;
-        }
-      }
-    });
-
-    // Initialize Pignose Calendar after customization
-    $('#browsertimeinput').pignoseCalendar();
-
-    // Disable past times in the time picker
-    disablePastTimes();
-
-    // Update time picker when the date changes
-    $('#browsertimeinput').on('pignoseCalendarSelect', function() {
-      disablePastTimes();
-    });
-
-    function disablePastTimes() {
-      var selectedDate = $('#browsertimeinput').pignoseCalendar('getSelectedDate');
-      var currentDate = new Date();
-
-      // Check if the selected date is today
-      var isToday = selectedDate.getDate() === currentDate.getDate() &&
-        selectedDate.getMonth() === currentDate.getMonth() &&
-        selectedDate.getFullYear() === currentDate.getFullYear();
-
-      // Get the current hour and minute
-      var currentHour = currentDate.getHours();
-      var currentMinute = currentDate.getMinutes();
-
-      // Disable past times if the selected date is today
-      $('#hour option').prop('disabled', isToday && parseInt($('#hour').val()) < currentHour);
-      $('#minute option').prop('disabled', isToday && parseInt($('#minute').val()) < currentMinute);
-    }
-  });
+populateOptions("minute", currentMinute, 59, 1);
+const amPmSelect = document.getElementById("ampm");
+if (currentHour < 12) {
+    amPmSelect.value = "AM";
+    amPmSelect.disabled = true;
+} else {
+    amPmSelect.value = "PM";
+    amPmSelect.disabled = true;
+}
 </script>
 @endsection

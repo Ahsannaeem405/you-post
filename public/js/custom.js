@@ -16,17 +16,15 @@ $(document).on('change', ".single_platform input[type=checkbox]", function () {
 
 // Initialize Pignose Calendar
 var selectedDate = new Date();
-
 function settime() {
     // var select_time = $('.select_time').val();
     // var hours = parseInt(select_time.split(':')[0]); // extract hours from custom time string
     // var minutes = parseInt(select_time.split(':')[1]); // extract minutes from custom time string
-
+   
 
     var selectedHour = $('#hour').val();
     var selectedMinute = $('#minute').val();
     var ampm = $('#ampm').val();
-
 
     // var ampm = selectedDate.getHours() >= 12 ? 'PM' : 'AM';
 
@@ -39,7 +37,6 @@ function settime() {
     new_date_time.setHours(hours, minutes)
 
     var formattedDateTime = formatDateTime(new_date_time, ampm);
-
     // new_date_time = new Date(new_date_time);
 
 
@@ -48,6 +45,8 @@ function settime() {
     $('#browsertime2').text(formattedDateTime);
     $('.browsertimeinput').val(formattedDateTime);
     $('.posttime').val('later');
+
+    
 }
 
 
