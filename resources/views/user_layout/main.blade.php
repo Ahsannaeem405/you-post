@@ -130,15 +130,44 @@
 <script>
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;
+    var today = moment().format('YYYY-MM-DD');
+    
     $(function () {
         pignoseCalendar = $('.calendar').pignoseCalendar({
             select: function (date, context) {
                 selectedDate = date;
                 // store selected date value in variable
                 settime();
+                let datew = new Date();
+                        
+
+                        let new_date_time = new Date(selectedDate);
+                        
+    if( datew.getDate()<new_date_time.getDate()){
+        
+    populateOptions("hour", 1, 12, 1);
+    populateOptions("minute", 0, 59, 1);
+    const amPmSelect = document.getElementById("ampm");
+    amPmSelect.disabled = false;
+    amPmSelect.disabled = false;
+    }
+    else{
+        var currentTime = new Date();
+var currentHour = currentTime.getHours();
+var currentMinute = currentTime.getMinutes();
+const amPmSelect = document.getElementById("ampm");
+    amPmSelect.disabled = true;
+    amPmSelect.disabled = true;
+
+populateOptions("hour", (currentHour%12 || 12), 12, 1);
+
+
+// Populate minute options (00 to 59)
+populateOptions("minute", currentMinute, 59, 1);
+    }
                 //$('#TimetoUploadPost').modal('show');
-               
-            }
+            },
+            minDate: today
         });
     });
     
@@ -261,7 +290,6 @@
             selectOverlap: false,
             allDay:true,
             slotDuration: '01:00',
-        
             events: @json(collect($allPosts)),
             views: {
                 month: {
@@ -309,8 +337,11 @@
                 pignoseCalendar.pignoseCalendar({
                     date: newDate,
                     select: function (date, context) {
-                        selectedDate = date; // store selected date value in variable
+                        selectedDate = date;
+                         // store selected date value in variable
                         settime();
+
+                        
                     }
                 });
                 $('#TimetoUploadPost').modal('show');
