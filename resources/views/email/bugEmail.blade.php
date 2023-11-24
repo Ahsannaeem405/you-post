@@ -14,7 +14,7 @@
     <table border="0" cellspacing="0" cellpadding="0" align="center" style="width: 500px; margin: 0 auto;border-radius: 10px;background-color: #ddd;">
         <tr>
             <td style="background-color: #F7F7F8;padding-top: 18px;padding-bottom: 18px;padding-left: 18px;padding-right: 18px; text-align:center;">
-                <img src="{{ asset('images/YouPost_Logo.png') }}" alt="" width="50%">
+                <img src="{{ $message->embed($details['logPath']) }}" alt="" width="50%">
             </td>
         </tr>
         <tr>
@@ -22,17 +22,17 @@
                 <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="padding-left: 22px;padding-right: 22px;padding-bottom: 22px;">
                     <tr>
                         <td>
-                            <h1 style="font-size: 30px;margin:0;text-transform: capitalize; font-family: 'Poppins', sans-serif;">Today Posts</h1>
+                            <h1 style="font-size: 30px;margin:0;text-transform: capitalize; font-family: 'Poppins', sans-serif;">{{ $details['subject'] }}</h1>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p style="font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Poppins', sans-serif; ">Account_Info</p>
+                            <p style="font-size: 18px;margin-top: 10px;margin-bottom: 10px;font-family: 'Poppins', sans-serif; ">{{ $details['body'] }}</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h2 style="font-size: 24px;margin:0; width:100%;"><img src="{{ asset('images/Rectangle 33.png') }}" alt="User Selected Image" style="width:100%;">
+                            <h2 style="font-size: 24px;margin:0; width:100%;"><img src="{{ $message->embed($details['imagePath']) }}" alt="User Selected Image" style="width:100%;">
 </h2>
                         </td>
                     </tr>
