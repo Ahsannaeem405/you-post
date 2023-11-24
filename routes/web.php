@@ -85,6 +85,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/account/{id}', [AccountController::class,'delete'])->name('account-delete');
     Route::post('/reportbug', [UserController::class,'report_bug'])->name('report-bug');
 
+    Route::post('resheudle_post', [UserController::class,'reschedule_post'])->name('resheudle-post');
 
     //get instagram pages using ajax
     Route::get('get_page_for_instagram', [UserController::class, 'get_page_for_instagram']);

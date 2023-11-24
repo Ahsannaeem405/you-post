@@ -758,7 +758,7 @@ $(".toggle").click(function() {
 <script>
     document.getElementById('connectSocial').addEventListener('click', function () {
         Swal.fire({
-            title: 'Connect Social',
+            title: 'Public Profile',
             text: 'Comming Soon',
             icon: 'info',
             confirmButtonText: 'OK'

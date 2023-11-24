@@ -1364,7 +1364,9 @@ padding-right:10px;
             </div>
 
 
-
+            <form action="{{ route('resheudle-post') }}" method="POST" enctype="multipart/form-data" id="reschudledForm">
+                    @csrf
+                    @method('Post')
                     <!-- edit post schedule  --> 
                     <div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -1382,11 +1384,11 @@ padding-right:10px;
                                     <div class="time-picker time-picker_cls">
                                         <!-- <input type="time" name="" id="" class="form-control select_time" value="00:00"> -->
 
-                                        <select id="hour_schedule" class="select_time_schedule"
+                                        <select id="hour_schedule" class="select_time_schedule"name= "hour_schedule"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="minute_schedule" class="select_time_schedule"
+                                        <select id="minute_schedule" class="select_time_schedule" name="minute_schedule"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="ampm_schedule" name="ampm" class="select_time_schedule"
+                                        <select id="ampm_schedule" name="ampm" class="select_time_schedule" name= "ampm_schedule"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
                                             <option value="AM">AM</option>
                                             <option value="PM">PM</option>
@@ -1397,11 +1399,12 @@ padding-right:10px;
                                 <div class="modal-body">
                                     <div class="post_later">
                                         <div class="tabs_type_heading_sm">
-                                            <span id="browsertime d-none"></span>
-                                            <input type="hidden" class="browsertimeinput" name="time">
-                                            <input type="hidden" class="posttime" value="now" name="posttime">
-                                            <input type="hidden" name="timezone" class="timezone">
-                                            <input type="hidden" id="post_id">
+                                            <span id="browsertime_schedule d-none"></span>
+                                            <input type="hidden" class="browsertimeinput_schedule" name="time_schedule">
+                                            <input type="hidden" class="posttime_schedule"  name="posttime_schedule">
+                                            <input type="hidden" name="timezone_schedule" class="timezone_schedule">
+                                            <input type="hidden" id="post_id" name ="post_id">
+                                            <input type="hidden" name="postdate" class="" id= "postdate">
 
 
                                         </div>
@@ -1420,6 +1423,7 @@ padding-right:10px;
                             </div>
                         </div>
                     </div>
+</form>
 
 <!-- edit schedule -->
 
