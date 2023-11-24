@@ -48,7 +48,7 @@ class UserController extends Controller
     public function dashbaord()
     {
         // dd(auth()->user()->email)
-
+       
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         $posts = Post::select(
@@ -95,17 +95,18 @@ class UserController extends Controller
     }
 
     public function report_bug(Request $request )
-    {
+    {                     
               $request->validate([
               
                 'subject' => 'required',
                 'message' => 'required',
 
             ]);
+            
             $file = $request->file('image');
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            file_put_contents(public_path('images/' . $filename), file_get_contents($file));
-            $imagePath = 'images/' . $filename;
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();         
+            file_put_contents(public_path('images/' . $filename), file_get_contents($file));            
+            $imagePath = 'images/' . $filename;    
             $logPath =   'images/YouPost_Logo.png';
             $details = [
                 'title' => 'Mail from User',
@@ -113,9 +114,9 @@ class UserController extends Controller
                 'body' => $request->message,
                 'imagePath' => $imagePath,
                 'logPath' => $logPath,
-            ];
-            \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));
-            return redirect()->back()->with('message', 'Email sent successfully!');
+            ];                       
+            \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));                
+            return redirect()->back()->with('message', 'Email sent successfully!');      
         }
 
     public function getUpdatedPosts()
@@ -305,7 +306,7 @@ class UserController extends Controller
                       // Return the path to the original image in the response
                         return response()->json(['path' => $imagePath]);
                     }
-
+              
         }
     }
 
@@ -498,7 +499,18 @@ class UserController extends Controller
         //****************end posting code****************//
 
     }
+    public function reschedule_post(Request $request)
+    {
+      
+            $combinedDateTime = Carbon::parse( $request->postdate . ' ' . ($request->ampm === "PM" && $request->hour_schedule !== "12" ? intval($request->hour_schedule) + 12 : $request->hour_schedule) . ':' . $request->minute_schedule);
+            $formattedDateTime = $combinedDateTime->format('Y-m-d H:i');
+            Post::where('id', $request->post_id)
+            ->update([
+                'posted_at' => $formattedDateTime,              
+            ]);
+            return redirect('/dashboard')->with('success', 'Post Rescheduled Successfully!');
 
+     }
 
     public function get_event_detail(Request $request)
     {
@@ -696,7 +708,7 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
-
+        
         $platform = auth()->user()->account->platforms;
         $valueToRemove = 'Facebook';
         foreach (array_keys($platform, $valueToRemove) as $key) {
@@ -745,7 +757,7 @@ class UserController extends Controller
 
     public function set_page(Request $req)
     {
-
+        
         $req->validate([
             'page' => 'required',
         ]);
@@ -798,7 +810,7 @@ class UserController extends Controller
             'default_graph_version' => 'v16.0',
         ]);
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['instagram_basic', 'publish_video', 'pages_show_list', 'ads_management','business_management', 'instagram_content_publish', 'pages_read_engagement'];
+        $permissions = ['instagram_basic', 'publish_video', 'pages_show_list', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement'];
         $helper->getPersistentDataHandler()->set('state', 'abcdef');
         $loginUrl = $helper->getLoginUrl($insta['redirect'], $permissions);
         return redirect()->away($loginUrl);

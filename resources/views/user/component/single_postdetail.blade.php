@@ -534,9 +534,7 @@
                                 href="{{ url('post_delete/' . encrypt($post->id)) }}">
                                 Delete Post
                             </a>
-                        </div>
-
-                        <!-- @if ($post->posted_at_moment != 'now')
+                            @if ($post->posted_at_moment != 'now')
                         
 
                         <a href="#" 
@@ -549,7 +547,10 @@
                         </a>
 
                                     
-                        @endif -->
+                        @endif
+                        </div>
+
+                       
                        
 
                     </div>

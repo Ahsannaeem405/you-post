@@ -146,75 +146,121 @@
 
 
 <script>
-    // var owl = $('.owl-carousel');
-    // var pignoseCalendar = null;
-    // $(function () {
-    //     pignoseCalendar = $('.calendar_reschedule').pignoseCalendar({
-    //         select: function (date, context) {
-    //             selectedDate = date;
-    //             // store selected date value in variable
-    //             settime();
-    //             //$('#TimetoUploadPost').modal('show');
-               
-    //         }
-    //     });
-    // });
-//     $('#SchedulePost').on('show.bs.modal', function (event) {
-       
-//         var button = $(event.relatedTarget); 
-//         var dataId = button.data('id');  
-//         var posted_at = button.data('posted_at'); 
-//         $("#post_id").val(dataId);
-//         var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');
+   
+   $('#SchedulePost').on('show.bs.modal', function (event) {      
+    var button = $(event.relatedTarget); 
+    var dataId = button.data('id');          
+    var posted_at = button.data('posted_at'); 
+    $("#post_id").val(dataId);
 
-//        var datePart = dateTime.format('YYYY-MM-DD');
-// alert();
-// // Assuming 'posted_at' is in a valid date format, e.g., 'YYYY-MM-DD'
-//             var initialDate = new Date(datePart);
+    // Parse the posted_at string using moment
+    var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');    
+    var datePart = dateTime.format('YYYY-MM-DD');
 
-//             // Initialize Pignose Calendar
-//             var pignoseCalendar = $('.calendar_reschedule').pignoseCalendar({
-//                 select: function (date, context) {
-//                     selectedDate = date;
-//                     // settime();
-//                     //$('#TimetoUploadPost').modal('show');
-//                 }
-//             });
+    // Set the initial value of the postdate input
+    $('#postdate').val(datePart);
+var today = moment(datePart).format('YYYY-MM-DD');
 
-//             pignoseCalendar.setDate(initialDate);
+    // Initialize pignoseCalendar
+    var pignoseCalendar_TEST = $('.calendar_reschedule').pignoseCalendar({
+        select: function (date, context) {
+            // Update the value of the postdate input when a date is selected
+            selectedDate = date;
+            var dateString = selectedDate;
+            var dateObject = new Date(dateString);
+            var formattedDate = moment(dateObject).format('YYYY-MM-DD');
+            $('#postdate').val(formattedDate);           
+            settime_reshedule(dateTime);
 
-      
+        },
+        minDate: today
+    });
+
+    // Call settime_reshedule once when the modal is shown
+    settime_reshedule(dateTime);
+});
+
+
+
+      function settime_reshedule(dateTime) {
+            const now_time = new Date(dateTime);
+            populateDropdown('hour_schedule', 1, 12); // Assuming 12-hour format
+            populateDropdown('minute_schedule', 0, 59);
+
+
+            $('#hour_schedule').val(now_time.getHours() > 12 ? now_time.getHours() - 12 : now_time.getHours());
+            $('#minute_schedule').val(now_time.getMinutes());
+            $('#ampm_schedule').val(now_time.getHours() >= 12 ? 'PM' : 'AM');
+
+
+      }
+
+
+      function populateDropdown(selectId, start, end) {
+    const selectElement = $('#' + selectId);
+    selectElement.empty();
+
+    for (let i = start; i <= end; i++) {
+        selectElement.append($('<option>', {
+            value: i,
+            text: i.toString().padStart(2, '0')
+        }));
+    }
+}
+
+function populateDropdownFromArray(selectId, optionsArray) {
+    const selectElement = $('#' + selectId);
+    selectElement.empty();
+
+    optionsArray.forEach((option, index) => {
+        selectElement.append($('<option>', {
+            value: index,
+            text: option
+        }));
+    });
+}
+
+
+// $(document).on('change', '.select_time_schedule', function () {
+//         settime();
 //     });
 
-    function settime_reshceule(posted_at) {   
 
+
+   
+
+    // var myForm = document.getElementById('reschudledForm'); // Assuming you have a form with the ID 'myForm'
+    
+    // myForm.addEventListener('submit', function (event) {
+    //     myForm.submit();
+    //     event.preventDefault();      
+    //        var hour=   $('#hour_schedule').val();
+    //        var mnts=  $('#minute_schedule').val();
+    //        var post_id =   $('#post_id').val();
+    //        var date = selectedDate_reshedule;
+           
+    //     $.ajaxSetup({
+    //                 headers: {
+    //                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //                 }
+    //             });
+    //        $.ajax({
+    //         type: "POST",
+    //         url: "{{ url('resheudle_post') }}",
+    //         data: {
+    //             'hour': hour,
+    //             'mnts': mnts,
+    //             'post_id': post_id,
+    //             'date': date
+    //         },
+    //         success: function (response) {
           
-            $date = new DateTime($posted_at);
+    //         }
+    //     });
+        
+    // });
 
-            // Get components
-            $hour = $date->format('h');
-            $minutes = $date->format('i');
-            $amPm = $date->format('A');
-            $dateString = $date->format('Y-m-d');
-
-       alert( $hour);
-       alert( $minutes);
-       alert($amPm);
-
-    $('#hour_schedule').val($hour);
-    $('#minute_schedule').val($minutes);
-     $('#ampm_schedule').val($amPm); 
-
-    
-
-    
-
-   }
-
-
-   $(document).on('change', '.select_time_schedule', function () {
-        settime_schedule();
-    });
+        
 </script>
 
 
