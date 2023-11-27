@@ -668,7 +668,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink"><i <i class='bx bxs-bug icon'></i> </i> 
+                <li><a href="javascript:void(0)" id="bugReportLink"><i <i class='bx bxs-bug icon'></i> </i>
                 <span class="text nav-text">Report a bug</span></a></li>
 
 
@@ -735,6 +735,7 @@ $(document).on('mouseleave', '.side_bar', function() {
         $(this).css('width', '88px');
         $(this).css('z-index', '1');
         $(".text").css('opacity', '1');
+        $('.dropdown_btn, .mydropdown_menu').removeClass('show');
     }
 });
 $(document).on('mouseenter', '.side_bar', function() {
