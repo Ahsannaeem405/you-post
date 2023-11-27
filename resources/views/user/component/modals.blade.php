@@ -68,10 +68,9 @@
     <div class="col-md-6 MDLsocial-iconmainWrp">
         <div class="MDLsocial-icon">
             <a class="" href="{{url('connect_twitter')}}">
-            <img src="http://127.0.0.1:8000/images/Twitter_Color.png" class="me-2" alt="" height="14">Connect with X</a>
+            <img src="{{asset('images/Twitter_Color.png')}}" class="me-2" alt="" height="14">Connect with X</a>
         </div>
     </div>
-
 </div>
 
 </div>
