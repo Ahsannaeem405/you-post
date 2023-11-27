@@ -1358,7 +1358,7 @@ padding-right:10px;
                     <!-- salman popup end-->
 
 
-
+    
 
                 </form>
             </div>
@@ -1367,7 +1367,7 @@ padding-right:10px;
             <form action="{{ route('resheudle-post') }}" method="POST" enctype="multipart/form-data" id="reschudledForm">
                     @csrf
                     @method('Post')
-                    <!-- edit post schedule  -->
+                    <!-- edit post schedule  --> 
                     <div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -2883,6 +2883,8 @@ padding-right:10px;
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -3046,8 +3048,7 @@ $(document).ready(function() {
     // Add a click event handler to the todayEbents-list div
     $(document).on('click', '.fb-post ', function() {
         var id = $(this).data('id');
-        var $parentDiv = $(this).parent().attr('class');;
-        alert($parentDiv);
+        var $parentDiv = $(this).parent();
 
         $.ajax({
             type: "get",
@@ -3800,9 +3801,9 @@ function openEventModal(year, month, day) {
 </script>
 <script>
 function populateOptions(selectId, start, end, step) {
-
+    
     const select = document.getElementById(selectId);
-
+    
     while (select.options.length > 0) {
     select.remove(0);
 }
@@ -3815,33 +3816,6 @@ function populateOptions(selectId, start, end, step) {
     }
 
 }
-$("#ampm").on("change", function() {
-        // Your existing code here, if any
-        // Get the selected value of am/pm
-    var ampmValue = $(this).val();
-
-// Get the current date in the format yyyy-mm-dd
-var currentDate = new Date();
-let start = 1;
-let currentHour = currentDate.getHours();
-if( currentHour >=0 && currentHour<12 ){
-    if( ampmValue ==='AM'){
-
-        start = (currentHour)%12||12;
-    }else{
-        start =1;
-    }
-}else{
-    start = currentHour%12||12;
-}
-populateOptions("hour", start, 12, 1);
-// Assuming you have a function to get pending hours based on am/pm and date
-// getPendingHours(ampmValue, currentDate);
-    });
-    function getPendingHours(ampm, date) {
-   
-}
-
 // Populate hour options (01 to 12)
 
 var currentTime = new Date();
@@ -3857,10 +3831,10 @@ populateOptions("minute", currentMinute, 59, 1);
 const amPmSelect = document.getElementById("ampm");
 if (currentHour < 12) {
     amPmSelect.value = "AM";
-    // amPmSelect.disabled = true;
+    amPmSelect.disabled = true;
 } else {
     amPmSelect.value = "PM";
-    // amPmSelect.disabled = true;
+    amPmSelect.disabled = true;
 }
 </script>
 @endsection

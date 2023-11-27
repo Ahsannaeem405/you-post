@@ -183,7 +183,7 @@
 
     // Set the initial value of the postdate input
     $('#postdate').val(datePart);
-var today = moment(datePart).format('YYYY-MM-DD');
+// var today = moment(datePart).format('YYYY-MM-DD');
 
     // Initialize pignoseCalendar
     var pignoseCalendar_TEST = $('.calendar_reschedule').pignoseCalendar({
@@ -196,7 +196,7 @@ var today = moment(datePart).format('YYYY-MM-DD');
             $('#postdate').val(formattedDate);
             settime_reshedule(dateTime);
         },
-        minDate: today
+        // minDate: today
     });
 
     // Call settime_reshedule once when the modal is shown
@@ -204,11 +204,7 @@ var today = moment(datePart).format('YYYY-MM-DD');
 });
 
 
-// Dsiable Edit Post Time
-function settime_reshedule(dateTime) {
-    const now_time = new Date(dateTime);
-    populateDropdown('hour_schedule', 1, 12); // Assuming 12-hour format
-    populateDropdown('minute_schedule', 0, 59);
+
 
 function settime_reshedule(dateTime) {
             const now_time = new Date(dateTime);
@@ -222,6 +218,7 @@ function settime_reshedule(dateTime) {
         // Populate minute options (00 to 59)
         populateDropdown('minute_schedule', currentMinute, 59);
 
+
                 var isAfterNoon = now_time.getHours() >= 12;
 
                 $('#ampm_schedule').val(isAfterNoon ? 'PM' : 'AM');
@@ -229,10 +226,8 @@ function settime_reshedule(dateTime) {
                 $('#ampm_schedule option[value="AM"]').prop('disabled', isAfterNoon);
                 $('#ampm_schedule option[value="PM"]').prop('disabled', !isAfterNoon);
 
-                if (now_time > new Date()) {
-                    $('#ampm_schedule option[value="AM"]').prop('disabled', false);
-                    $('#ampm_schedule option[value="PM"]').prop('disabled', false);
-                }
+              
+    } 
 
 function disablePastMinutesSchedule(currentMinute) {
     const minuteSelect = document.getElementById("minute_schedule");
