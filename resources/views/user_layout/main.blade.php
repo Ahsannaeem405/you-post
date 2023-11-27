@@ -138,33 +138,33 @@
                 selectedDate = date;
                 // store selected date value in variable
                 settime();
-                let datew = new Date();
+//                 let datew = new Date();
                         
 
-                        let new_date_time = new Date(selectedDate);
+//                         let new_date_time = new Date(selectedDate);
                         
-    if( datew.getDate()<new_date_time.getDate()){
+//     if( datew.getDate()<new_date_time.getDate()){
         
-    populateOptions("hour", 1, 12, 1);
-    populateOptions("minute", 0, 59, 1);
-    const amPmSelect = document.getElementById("ampm");
-    amPmSelect.disabled = false;
-    amPmSelect.disabled = false;
-    }
-    else{
-        var currentTime = new Date();
-var currentHour = currentTime.getHours();
-var currentMinute = currentTime.getMinutes();
-const amPmSelect = document.getElementById("ampm");
-    amPmSelect.disabled = true;
-    amPmSelect.disabled = true;
+//     populateOptions("hour", 1, 12, 1);
+//     populateOptions("minute", 0, 59, 1);
+//     const amPmSelect = document.getElementById("ampm");
+//     amPmSelect.disabled = false;
+//     amPmSelect.disabled = false;
+//     }
+//     else{
+//         var currentTime = new Date();
+// var currentHour = currentTime.getHours();
+// var currentMinute = currentTime.getMinutes();
+// const amPmSelect = document.getElementById("ampm");
+//     amPmSelect.disabled = true;
+//     amPmSelect.disabled = true;
 
-populateOptions("hour", (currentHour%12 || 12), 12, 1);
+// populateOptions("hour", (currentHour%12 || 12), 12, 1);
 
 
-// Populate minute options (00 to 59)
-populateOptions("minute", currentMinute, 59, 1);
-    }
+// // Populate minute options (00 to 59)
+// populateOptions("minute", currentMinute, 59, 1);
+//     }
                 //$('#TimetoUploadPost').modal('show');
             },
             minDate: today
@@ -172,8 +172,6 @@ populateOptions("minute", currentMinute, 59, 1);
     });
     
 </script>
-
-
 <script>
    
    $('#SchedulePost').on('show.bs.modal', function (event) {      
@@ -198,9 +196,9 @@ var today = moment(datePart).format('YYYY-MM-DD');
             var dateString = selectedDate;
             var dateObject = new Date(dateString);
             var formattedDate = moment(dateObject).format('YYYY-MM-DD');
-            $('#postdate').val(formattedDate);           
+            $('#postdate').val(formattedDate); 
+                 
             settime_reshedule(dateTime);
-
         },
         minDate: today
     });
@@ -210,36 +208,63 @@ var today = moment(datePart).format('YYYY-MM-DD');
 });
 
 
+// Dsiable Edit Post Time
+function settime_reshedule(dateTime) {
+    const now_time = new Date(dateTime);
+    populateDropdown('hour_schedule', 1, 12); // Assuming 12-hour format
+    populateDropdown('minute_schedule', 0, 59);
 
-      function settime_reshedule(dateTime) {
-            const now_time = new Date(dateTime);
-            populateDropdown('hour_schedule', 1, 12); // Assuming 12-hour format
-            populateDropdown('minute_schedule', 0, 59);
+    if (now_time <= new Date()) {
+        var currentHour = now_time.getHours();
+        var currentMinute = now_time.getMinutes();
 
 
-            $('#hour_schedule').val(now_time.getHours() > 12 ? now_time.getHours() - 12 : now_time.getHours());
-            $('#minute_schedule').val(now_time.getMinutes());
+        // Disable past hours
+        populateDropdown('hour_schedule', (currentHour % 12 || 12), 12, true);
 
+        // Populate minute options (00 to 59)
+        populateDropdown('minute_schedule', currentMinute, 59);
 
-      // Assuming you have already set the value of #hour_schedule
-var isAfterNoon = now_time.getHours() >= 12;
+        // Disable past minutes
+        disablePastMinutesSchedule(currentMinute);
 
-// Set the value of #ampm_schedule based on the 12-hour format
-$('#ampm_schedule').val(isAfterNoon ? 'PM' : 'AM');
+        // Disable past AM/PM options
+        disablePastAmPmOptions(currentHour);
+    } else {
+        $('#hour_schedule').val(now_time.getHours() > 12 ? now_time.getHours() - 12 : now_time.getHours());
+        $('#minute_schedule').val(now_time.getMinutes());
 
-// Disable or enable the corresponding option based on the 12-hour format
-$('#ampm_schedule option[value="AM"]').prop('disabled', isAfterNoon);
-$('#ampm_schedule option[value="PM"]').prop('disabled', !isAfterNoon);
-
-// Enable both options if the date is in the future
-if (now_time > new Date()) {
-    $('#ampm_schedule option[value="AM"]').prop('disabled', false);
-    $('#ampm_schedule option[value="PM"]').prop('disabled', false);
+        // Enable all AM/PM options for future dates
+        $('#ampm_schedule option[value="AM"]').prop('disabled', false);
+        $('#ampm_schedule option[value="PM"]').prop('disabled', false);
+    }
 }
 
+function disablePastMinutesSchedule(currentMinute) {
+    const minuteSelect = document.getElementById("minute_schedule");
+    for (let i = 0; i <= 59; i++) {
+        const option = minuteSelect.options[i];
+        if (i < currentMinute) {
+            option.disabled = true;
+        } else {
+            option.disabled = false;
+        }
+    }
+}
 
-      }
+function disablePastAmPmOptions(currentHour) {
+    const amPmSelect = document.getElementById("ampm_schedule");
+    const isAfterNoon = currentHour >= 12;
 
+    // Set the value of #ampm_schedule based on the 12-hour format
+    $('#ampm_schedule').val(isAfterNoon ? 'PM' : 'AM');
+
+    // Disable or enable the corresponding option based on the 12-hour format
+    $('#ampm_schedule option[value="AM"]').prop('disabled', isAfterNoon);
+    $('#ampm_schedule option[value="PM"]').prop('disabled', !isAfterNoon);
+}
+
+// Dsiable Edit Post Time
 
       function populateDropdown(selectId, start, end) {
     const selectElement = $('#' + selectId);
@@ -1003,7 +1028,6 @@ function populateDropdownFromArray(selectId, optionsArray) {
         searchBtn = body.querySelector(".search-box"),
         modeSwitch = body.querySelector(".toggle-switch"),
         modeText = body.querySelector(".mode-text");
-
 
     toggle.addEventListener("click", () => {
         sidebar.classList.toggle("close");
