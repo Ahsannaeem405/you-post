@@ -131,7 +131,6 @@
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;
     var today = moment().format('YYYY-MM-DD');
-    
     $(function () {
         pignoseCalendar = $('.calendar').pignoseCalendar({
             select: function (date, context) {
@@ -139,12 +138,9 @@
                 // store selected date value in variable
                 settime();
                 let datew = new Date();
-                        
 
                         let new_date_time = new Date(selectedDate);
-                        
     if( datew.getDate()<new_date_time.getDate()){
-        
     populateOptions("hour", 1, 12, 1);
     populateOptions("minute", 0, 59, 1);
     const amPmSelect = document.getElementById("ampm");
@@ -170,20 +166,18 @@ populateOptions("minute", currentMinute, 59, 1);
             minDate: today
         });
     });
-    
 </script>
 
 
 <script>
-   
-   $('#SchedulePost').on('show.bs.modal', function (event) {      
-    var button = $(event.relatedTarget); 
-    var dataId = button.data('id');          
-    var posted_at = button.data('posted_at'); 
+   $('#SchedulePost').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var dataId = button.data('id');
+    var posted_at = button.data('posted_at');
     $("#post_id").val(dataId);
 
     // Parse the posted_at string using moment
-    var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');    
+    var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');
     var datePart = dateTime.format('YYYY-MM-DD');
 
     // Set the initial value of the postdate input
@@ -198,7 +192,7 @@ var today = moment(datePart).format('YYYY-MM-DD');
             var dateString = selectedDate;
             var dateObject = new Date(dateString);
             var formattedDate = moment(dateObject).format('YYYY-MM-DD');
-            $('#postdate').val(formattedDate);           
+            $('#postdate').val(formattedDate);
             settime_reshedule(dateTime);
 
         },
@@ -272,18 +266,18 @@ function populateDropdownFromArray(selectId, optionsArray) {
 
 
 
-   
+
 
     // var myForm = document.getElementById('reschudledForm'); // Assuming you have a form with the ID 'myForm'
-    
+
     // myForm.addEventListener('submit', function (event) {
     //     myForm.submit();
-    //     event.preventDefault();      
+    //     event.preventDefault();
     //        var hour=   $('#hour_schedule').val();
     //        var mnts=  $('#minute_schedule').val();
     //        var post_id =   $('#post_id').val();
     //        var date = selectedDate_reshedule;
-           
+
     //     $.ajaxSetup({
     //                 headers: {
     //                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -299,13 +293,13 @@ function populateDropdownFromArray(selectId, optionsArray) {
     //             'date': date
     //         },
     //         success: function (response) {
-          
+
     //         }
     //     });
-        
+
     // });
 
-        
+
 </script>
 
 
@@ -403,7 +397,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                          // store selected date value in variable
                         settime();
 
-                        
+
                     }
                 });
                 $('#TimetoUploadPost').modal('show');
@@ -735,7 +729,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('#file_error_all').addClass('d-none');
                    var inputText = $($obj).val();
                    var formattedText = inputText.replace(/\n/g, '<br>');
-      
+
                     $("#mypostresult_fb").empty().html( formattedText );
                     $("#mypostresult_insta").empty().html(formattedText);
                     $("#mypostresult_twitter").empty().html( formattedText);
@@ -743,7 +737,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
 
 
                     $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
-                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);               
+                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);
                 }
 
             function updateDiv($obj) {
@@ -764,28 +758,28 @@ function populateDropdownFromArray(selectId, optionsArray) {
 
             if ($("li[section='twitter']").length > 0) {
                 maxChars = 280;
-                $('#youpost_content').attr('maxlength', maxChars); 
+                $('#youpost_content').attr('maxlength', maxChars);
 
             } else if ($("li[section='insta']").length > 0 ) {
                 maxChars = 2200;
-                $('#youpost_content').attr('maxlength', maxChars); 
+                $('#youpost_content').attr('maxlength', maxChars);
 
-               
+
             } else if ($("li[section='linkedin']").length > 0 ) {
                 maxChars = 3000;
-                $('#youpost_content').attr('maxlength', maxChars); 
+                $('#youpost_content').attr('maxlength', maxChars);
 
             }else if ($("li[section='fb']").length > 0) {
                 maxChars = 63206;
-                $('#youpost_content').attr('maxlength', maxChars); 
+                $('#youpost_content').attr('maxlength', maxChars);
 
-            } 
-               
+            }
+
 
                 charCountElement.text(charCount + '/' + maxChars);
                     var formattedText = inputText.replace(/\n/g, '<br>');
                    $("#mypostresult_youpost").html(formattedText);
-                
+
                 }else if (textareaAttr == 'fb') {
                     var charCount = inputText.length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCountfb');
@@ -814,7 +808,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                    $("#mypostresult_insta").html( formattedText );
             //  $("#mypostresult_insta").empty().append(inputText) ;
                $("#mynameresult_insta").empty().append(new_str) ;
-              
+
 
           }else if(textareaAttr == 'twitter'){
 
@@ -846,15 +840,15 @@ function populateDropdownFromArray(selectId, optionsArray) {
             var formattedText = inputText.replace(/\n/g, '<br>');
             $("#mypostresult_linkedin").html( formattedText );
             // $("#mypostresult_linkedin").empty().append(inputText) ;
-               $("#mynameresult_linkedin").empty().append(new_str) ; 
-               
-          }   
+               $("#mynameresult_linkedin").empty().append(new_str) ;
+
+          }
         }
- 
+
     function showError(message) {
         // You can display the error message to the user, for example:
         // alert(message);
-     
+
         $('#file_error_youpost').text('test');
 
     }
