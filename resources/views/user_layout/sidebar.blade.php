@@ -596,9 +596,9 @@ body.dark .home .text {
                                 <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle" alt=""
                                     width="45px" />
                                 @else
-                                <img src="{{asset('images/YouPost_Logo.png')}}" class="v_icon rounded-circle" alt="" width="45px" />
+                                <img src="{{asset('images/YouPost_Logo.png')}}" class="v_icon" alt="" width="45px" />
                                 @endif
-                                <div class="text nav-text text2 custom_dropdown_set" style="padding-left:10px;">
+                                <div class="text nav-text text2 custom_dropdown_set" style="padding-left:12px; width:113px;">
                                     {{auth()->user()->account->name}}
                                 </div>
                                 <div>
@@ -668,7 +668,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink"><i <i class='bx bxs-bug icon'></i> </i> 
+                <li><a href="javascript:void(0)" id="bugReportLink"><i class="fa-solid fa-virus bxs-bug icon"></i>
                 <span class="text nav-text">Report a bug</span></a></li>
 
 
@@ -735,6 +735,7 @@ $(document).on('mouseleave', '.side_bar', function() {
         $(this).css('width', '88px');
         $(this).css('z-index', '1');
         $(".text").css('opacity', '1');
+        $('.dropdown_btn, .mydropdown_menu').removeClass('show');
     }
 });
 $(document).on('mouseenter', '.side_bar', function() {
@@ -768,15 +769,6 @@ $(".toggle").click(function() {
     document.getElementById('privacyPolicy').addEventListener('click', function () {
         Swal.fire({
             title: 'Privacy Policy',
-            text: 'Comming Soon',
-            icon: 'info',
-            confirmButtonText: 'OK'
-        });
-    });
-
-    document.getElementById('support').addEventListener('click', function () {
-        Swal.fire({
-            title: 'Support',
             text: 'Comming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
