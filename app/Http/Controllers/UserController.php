@@ -479,6 +479,7 @@ class UserController extends Controller
                 if (array_key_exists($platform, $platformServiceMap)) {
                     $serviceClassName = $platformServiceMap[$platform];
                     $run = new $serviceClassName();
+                  
                     $arr['post'] = $post;
                     $result = $run->create_post($arr);
                     if ($result['status'] == true) {

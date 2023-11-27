@@ -221,7 +221,8 @@ class Linkedinservice
          $linkedinPage =auth()->user()->account->linkedin_page_id;
          $parts = explode(":", $linkedinPage);
          $numericPart = end($parts);
-         
+         $imagePath = ''; 
+
         if($accessToken){
         $client = new Client();
         $response = $client->get("https://api.linkedin.com/v2/organizations/{$numericPart}?projection=(id,logoV2(original~:playableStreams))", [
@@ -258,6 +259,11 @@ class Linkedinservice
    
       
        }
+
+       if (empty($imagePath)) {
+        $imagePath = 'images/linkpost.png'; // Replace with your default image path
+    }
+    
        return $imagePath;
     }
 

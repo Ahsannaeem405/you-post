@@ -3048,7 +3048,8 @@ $(document).ready(function() {
     // Add a click event handler to the todayEbents-list div
     $(document).on('click', '.fb-post ', function() {
         var id = $(this).data('id');
-        var $parentDiv = $(this).parent();
+        var $parentDiv = $(this).parent().attr('class');;
+        alert($parentDiv);
 
         $.ajax({
             type: "get",

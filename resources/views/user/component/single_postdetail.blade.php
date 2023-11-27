@@ -486,7 +486,7 @@
                         </li>
                     </ul>
                 </div>
-                {{$post->content}}
+                <span style="font-family:inherit; font-size: 12px;">{{$post->content}}</span>
                 {{-- <span id="show-button">See more</span> --}}
                 <div class="DetailText pt-0">
                     <div class="short_text Mobcart_title">

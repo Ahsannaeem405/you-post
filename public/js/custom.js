@@ -732,9 +732,7 @@ $(document).ready(function () {
 
         $("#posted_now").prop("disabled", true);
 
-        if (socialicon == 'image_or_videofb') {
-            appendVideo(file, socialicon);
-        } else {
+     
             var videoEl = document.createElement("video");
             videoEl.onloadedmetadata = event => {
                 window.URL.revokeObjectURL(videoEl.src);
@@ -743,18 +741,21 @@ $(document).ready(function () {
                 var { videoWidth, videoHeight } = videoEl;
 
                 var aspectRatio = (videoWidth / videoHeight).toFixed(2);
-
+                // alert(aspectRatio);
 
                 var fourByfive = (4 / 5).toFixed(2);
+// alert(fourByfive);
+
 
                 var sixteenBynine = (16 / 9).toFixed(2);
 
-
+                // alert(sixteenBynine);
                 if ((aspectRatio >= fourByfive && aspectRatio <= sixteenBynine)) {
+                 
                     appendVideo(file, socialicon);
                   
                 } else {
-                   toastr.error("Can't post video required 4:5 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
+                   toastr.error("Can't post video.Required in between 4:5 and 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
                     return false;
 
                 }
@@ -762,7 +763,7 @@ $(document).ready(function () {
             };
 
             videoEl.src = window.URL.createObjectURL(file);
-        }
+      
     }
 
     function validateFileImageVideo(file, socialicon) {
@@ -1517,6 +1518,7 @@ $(document).ready(function () {
                         type: type
                     },
                     success: function (response) {
+                        // alert(response.path);
 
                         $('.uplaod-gif-video').addClass('d-none');
                         var mediaType = file.type.split('/')[0];
@@ -1643,38 +1645,9 @@ $(document).ready(function () {
 
         $('#file_error_all').addClass('d-none');
         var socialicon = $(this).attr('id');
-        var file = e.target.files[0];
-
-        // var randomDelay = Math.floor(Math.random() * (5000 - 700 + 1)) + 700; // Random delay between 1 and 5 seconds
-        // setTimeout(function() {
-        //     var columnCount = $('.Preview_ImagesSetupFB').css('column-count');
-        //     if (columnCount === '1') {
-        //         $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').addClass('SetUp_PreviewImg');
-        //     } else {
-        //         $('.mobile_post_img, .mobile_post_img_link, .mobile_post_img_tw').removeClass('SetUp_PreviewImg');
-        //     }
-        // }, randomDelay);
-        // setTimeout(function() {
-        //     var columnCount = $('.Preview_ImagesSetupTwitter').css('column-count');
-        //     if (columnCount === '1') {
-        //         $('.mobile_post_img_tw').addClass('SetUp_PreviewImg');
-        //     } else {
-        //         $('.mobile_post_img_tw').removeClass('SetUp_PreviewImg');
-        //     }
-        // }, randomDelay);
-        // setTimeout(function() {
-        //     var columnCount = $('.Preview_ImagesSetupLinkedin').css('column-count');
-        //     if (columnCount === '1') {
-        //         $('.mobile_post_img_link').addClass('SetUp_PreviewImg');
-        //     } else {
-        //         $('.mobile_post_img_link').removeClass('SetUp_PreviewImg');
-        //     }
-        // }, randomDelay);
-
+        var file = e.target.files[0];    
         var mediaType = file.type.split('/')[0];
-
         if (mediaType === 'image') {
-
         function getImageDimensions(file) {
             return new Promise((resolve) => {
                 var img = new Image();
@@ -1686,11 +1659,9 @@ $(document).ready(function () {
                     height = this.height;
                     resolve({ width, height });
                 };
-
                 img.src = URL.createObjectURL(file);
             });
         }
-
         getImageDimensions(file)
         .then(({ width, height }) => {
             if (width < 350 || height < 350) {
