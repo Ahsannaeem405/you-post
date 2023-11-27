@@ -13,29 +13,6 @@ $(document).ready(function () {
 $(document).on('change', ".single_platform input[type=checkbox]", function () {
     $(this).parent().toggleClass('active_social');
 });
-$("#ampm").on("change", function() {
-    console.log("fdgfdfd");
-        // Your existing code here, if any
-        // Get the selected value of am/pm
-    var ampmValue = $(this).val();
-
-// Get the current date in the format yyyy-mm-dd
-var currentDate = new Date();
-let start = 1;
-let currentHour = currentDate.getHours();
-if( currentHour >=0 && currentHour<12 ){
-    if( ampmValue ==='AM'){
-
-        start = (currentHour)%12||12;
-    }else{
-        start =1;
-    }
-}else{
-    start = currentHour%12||12;
-}
-populateOptions("hour", start, 12, 1);
-
-    });
 
 // Initialize Pignose Calendar
 var selectedDate = new Date();
@@ -773,7 +750,7 @@ $(document).ready(function () {
                 var sixteenBynine = (16 / 9).toFixed(2);
 
                 // alert(sixteenBynine);
-                if ((aspectRatio >= fourByfive && aspectRatio <= sixteenBynine)) {
+                if ((aspectRatio == fourByfive || aspectRatio == sixteenBynine || aspectRatio =='1.00' )) {
                  
                     appendVideo(file, socialicon);
                   
