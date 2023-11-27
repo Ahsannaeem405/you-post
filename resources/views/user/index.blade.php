@@ -1358,7 +1358,7 @@ padding-right:10px;
                     <!-- salman popup end-->
 
 
-    
+
 
                 </form>
             </div>
@@ -1367,7 +1367,7 @@ padding-right:10px;
             <form action="{{ route('resheudle-post') }}" method="POST" enctype="multipart/form-data" id="reschudledForm">
                     @csrf
                     @method('Post')
-                    <!-- edit post schedule  --> 
+                    <!-- edit post schedule  -->
                     <div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -2883,8 +2883,6 @@ padding-right:10px;
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -3801,9 +3799,9 @@ function openEventModal(year, month, day) {
 </script>
 <script>
 function populateOptions(selectId, start, end, step) {
-    
+
     const select = document.getElementById(selectId);
-    
+
     while (select.options.length > 0) {
     select.remove(0);
 }

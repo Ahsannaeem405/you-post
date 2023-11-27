@@ -735,6 +735,7 @@ $(document).on('mouseleave', '.side_bar', function() {
         $(this).css('width', '88px');
         $(this).css('z-index', '1');
         $(".text").css('opacity', '1');
+        $('.dropdown_btn, .mydropdown_menu').removeClass('show');
     }
 });
 $(document).on('mouseenter', '.side_bar', function() {
