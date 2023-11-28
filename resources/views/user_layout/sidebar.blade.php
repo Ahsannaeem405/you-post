@@ -544,6 +544,166 @@ body.dark .home .text {
 <!-- ------------------------------------------- offcanvas sidebar ----------------------------------------- -->
 <i class="fa-solid fa-bars d-lg-none d-sm-block" id="offcanvas-btn" type="button" data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></i>
+    <div class="offcanvas offcanvas-start d-lg-none d-sm-block" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <div class="image-text image_text">
+            <a href="index.html"><img src="{{asset('')}}images/YouPost_Logo.png" class="img-fluid" alt="" /></a>
+
+        </div>
+        <!-- <i class='bx bx-chevron-right toggle '></i> -->
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="menu-bar">
+        <div class="menu">
+
+
+            <ul class="menu-links menu_links">
+                <li class="nav-link nav_link2" style="background-color:#E8E8E8; border-radius:7px;">
+                    <div class="user_info pl-1">
+                        <a href="javascript:void(0)">
+                            <div class="user_name grid_item">
+                                <div class="the_name">
+                                    {{--                                    <span><span class="color">{{auth()->user()->name}}</span></span>--}}
+                                </div>
+                            </div>
+                        </a>
+                        @php
+                        $platforms =auth()->user()->account->platforms;
+                        @endphp
+                        <div class="dropdown">
+                            <button class="dropdown-toggle bg-transparent border-0 dropdown_btn" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if(in_array("Facebook", $platforms))
+
+                                <div>
+                                    <img src="{{auth()->user()->account->fb_image}}" class="v_icon rounded-circle "
+                                        alt="" width="45px" />
+                                </div>
+
+                                @elseif(in_array("Instagram", $platforms))
+                                <img src="{{ auth()->user()->account->inst_image}}" class="v_icon rounded-circle" alt=""
+                                    width="45px" />
+
+                                @elseif(in_array("Twitter", $platforms))
+                                <img src="{{auth()->user()->account->twt_image}}" class="v_icon rounded-circle" alt=""
+                                    width="45px" />
+                                @elseif(in_array("Linkedin", $platforms))
+                                <img src="{{ auth()->user()->account->link_image}}" class="v_icon rounded-circle" alt=""
+                                    width="45px" />
+                                @else
+                                <img src="{{asset('images/YouPost_Logo.png')}}" class="v_icon" alt="" width="45px" />
+                                @endif
+                                <div class="text nav-text text2 custom_dropdown_set" style="padding-left:12px; width:113px;">
+                                    {{auth()->user()->account->name}}
+                                </div>
+                                <div>
+                                    <img src="{{asset('images/drop_arrow.png')}}" class="v_icon" alt=""
+                                        style="padding-left: 2rem;" />
+                                </div>
+
+                            </button>
+                            <ul class="dropdown-menu mydropdown_menu" aria-labelledby="dropdownMenuButton1">
+                                @foreach($accounts as $account)
+                                <li><a class="dropdown-item {{auth()->user()->account_id==$account->id ? 'active' : null}}"
+                                        href="{{url("change_acount/".encrypt($account->id))}}"><i
+                                            class="fa-solid fa-user"></i> {{$account->name}}</a></li>
+                                @endforeach
+                                <li><a class="dropdown-item" style="cursor: pointer" href="{{ route('index') }}">Add Account <i
+                                            class="fa-solid fa-plus text-success"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li><a href="{{ route('index') }}"><i class="fa-regular fa-user icon"></i> <span
+                            class="text nav-text">My Accounts</span></a></li>
+                </li>
+
+                <!-- <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bar-chart-alt-2 icon'></i>
+                        <span class="text nav-text">Revenue</span>
+                    </a>
+                </li> -->
+                <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
+                            class="text nav-text">Connect Social</span></a></li>
+
+                <!-- <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bell icon'></i>
+                        <span class="text nav-text">Notifications</span>
+                    </a>
+                </li> -->
+                <li><a href="javascript:void(0)" id="privacyPolicy"><i class="fa-regular fa-file icon"></i><span
+                            class="text nav-text">Privacy
+                            Policy</span></a></li>
+
+                <!-- <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-pie-chart-alt icon'></i>
+                        <span class="text nav-text">Analytics</span>
+                    </a>
+                </li> -->
+                <li><a href="javascript:void(0)" id="support"><i class='bx bx-pie-chart-alt icon'></i><span
+                            class="text nav-text">Support</span></a></li>
+
+                <!-- <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-heart icon'></i>
+                        <span class="text nav-text">Likes</span>
+                    </a>
+                </li> -->
+                <li><a href="javascript:void(0)" id="connectSocial"><i class='bx bx-heart icon'></i> <span class="text nav-text">Public
+                            Profile</span></a></li>
+
+                <!-- <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-wallet icon'></i>
+                        <span class="text nav-text">Wallets</span>
+                    </a>
+                </li> -->
+                <li><a href="javascript:void(0)" id="bugReportLink"><i class="fa-solid fa-virus bxs-bug icon"></i>
+                <span class="text nav-text">Report a bug</span></a></li>
+
+
+                <li>
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+        <div class="bottom-content">
+            {{--            <li class="">--}}
+            {{--                <a href="#">--}}
+            {{--                    <i class='bx bx-log-out icon'></i>--}}
+            {{--                    <span class="text nav-text">sample</span>--}}
+            {{--                </a>--}}
+            {{--            </li>--}}
+            <!-- <li class="mode">
+                <div class="sun-moon">
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
+                </div>
+                <span class="mode-text text">Dark mode</span>
+
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li> -->
+        </div>
+    </div>
+    <!-- </div> -->
+</div>
 
 <!-- ------------------------------------------- offcanvas sidebar end ----------------------------------------- -->
 

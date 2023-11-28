@@ -447,6 +447,12 @@
     }
 
     /* razi card_media query end */
+    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event  .fc-content{
+        flex-direction: column;
+     }
+     .publishedpost {
+        width: 100%;
+     }
 }
 
 @media (min-width:577px) and (max-width:767px) {
@@ -680,7 +686,15 @@
     .post_detailWrap .DetailText .publishedpost{
         width: 100% !important;
     }
-
+    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event  .fc-content{
+        flex-direction: column;
+     }
+     .fc-event-container .fc-day-grid-event .fc-content .fc-title{
+        overflow: auto !important;
+        font-size: 10px !important;
+        white-space: pre-wrap;
+        font-family: inherit !important;
+    }
 }
 
 
@@ -1048,6 +1062,21 @@
     }
     .post_detailWrap {
         padding: 0px 0px 5px 0px  !important;
+    }
+    .fc-view-container .fc-view table tbody tr .fc-widget-content .fc-day-grid-container {
+        margin: 0px !important;
+    }
+    .fc-content-skeleton table tbody tr td.fc-event-container .fc-day-grid-event .fc-content .fc-time::before{
+        margin: 0px;
+    }
+    .fc-event-container .fc-day-grid-event .fc-content .fc-title{
+        overflow: auto !important;
+        font-size: 10px !important;
+        white-space: pre-wrap;
+        font-family: inherit !important;
+    }
+    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event  .fc-content{
+       flex-direction: column;
     }
 }
 

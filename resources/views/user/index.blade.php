@@ -3641,17 +3641,19 @@ function populateOptions(selectId, start, end, step) {
 var currentTime = new Date();
 var currentHour = currentTime.getHours();
 var currentMinute = currentTime.getMinutes();
-
-
+// if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
 populateOptions("hour", (currentHour%12 || 12), 12, 1);
+// }else{
+    // populateOptions("hour",1,12, 1);
 
+// }
 
 // Populate minute options (00 to 59)
 populateOptions("minute", currentMinute, 59, 1);
 const amPmSelect = document.getElementById("ampm");
-if (currentHour < 12) {
+if (currentHour < 12 ) {
     amPmSelect.value = "AM";
-    amPmSelect.disabled = true;
+    // amPmSelect.disabled = true;
 } else {
     amPmSelect.value = "PM";
     amPmSelect.disabled = true;
