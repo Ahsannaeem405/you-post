@@ -582,10 +582,10 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');
                 checkScreenSize();
-                    // move by click event
-                    $('html, body').animate({
-                        scrollTop: $("#postManagerCalendar").offset().top
-                    }, 1000);
+                    // // move by click event
+                    // $('html, body').animate({
+                    //     scrollTop: $("#postManagerCalendar").offset().top
+                    // });
                 
             }
         });
