@@ -695,6 +695,12 @@ function populateDropdownFromArray(selectId, optionsArray) {
             $('#BugModal').modal('show')
         });
 
+        var link = $('#bugReportLink_test');
+        link.click(function() {
+            $('#BugModal').modal('show')
+        });
+
+
 
 
 

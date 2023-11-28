@@ -119,9 +119,15 @@ class UserController extends Controller
                 'imagePath' => $imagePath,
                 'logPath' => $logPath,
             ];  
-            
+            $recipients = [
+                
+                'michelle.mckay@tangent.com',
+                'michelle@roifirm.com',
+                'umer@browntech.co',
+                
+            ];
                                  
-            \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));                
+            \Mail::to($recipients)->send(new \App\Mail\BugMail($details));                
             return redirect()->back()->with('message', 'Email sent successfully!');      
         }
 

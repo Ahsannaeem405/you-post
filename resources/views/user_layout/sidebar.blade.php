@@ -565,7 +565,7 @@ body.dark .home .text {
                         <a href="javascript:void(0)">
                             <div class="user_name grid_item">
                                 <div class="the_name">
-                                    {{--                                    <span><span class="color">{{auth()->user()->name}}</span></span>--}}
+                                    {{-- <span><span class="color">{{auth()->user()->name}}</span></span>--}}
                                 </div>
                             </div>
                         </a>
@@ -574,7 +574,7 @@ body.dark .home .text {
                         @endphp
                         <div class="dropdown">
                             <button class="dropdown-toggle bg-transparent border-0 dropdown_btn" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                id="dropdownMenuButton1_test" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if(in_array("Facebook", $platforms))
 
                                 <div>
@@ -637,7 +637,7 @@ body.dark .home .text {
                         <span class="text nav-text">Notifications</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="privacyPolicy"><i class="fa-regular fa-file icon"></i><span
+                <li><a href="javascript:void(0)" id="privacyPolicy_test"><i class="fa-regular fa-file icon"></i><span
                             class="text nav-text">Privacy
                             Policy</span></a></li>
 
@@ -647,7 +647,7 @@ body.dark .home .text {
                         <span class="text nav-text">Analytics</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="support"><i class='bx bx-pie-chart-alt icon'></i><span
+                <li><a href="javascript:void(0)" id="support_test"><i class='bx bx-pie-chart-alt icon'></i><span
                             class="text nav-text">Support</span></a></li>
 
                 <!-- <li class="nav-link">
@@ -656,7 +656,7 @@ body.dark .home .text {
                         <span class="text nav-text">Likes</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="connectSocial"><i class='bx bx-heart icon'></i> <span class="text nav-text">Public
+                <li><a href="javascript:void(0)" id="connectSocial_test"><i class='bx bx-heart icon'></i> <span class="text nav-text">Public
                             Profile</span></a></li>
 
                 <!-- <li class="nav-link">
@@ -665,7 +665,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink"><i class="fa-solid fa-virus bxs-bug icon"></i>
+                <li><a href="javascript:void(0)" id="bugReportLink_test"><i class="fa-solid fa-virus bxs-bug icon"></i>
                 <span class="text nav-text">Report a bug</span></a></li>
 
 
@@ -929,6 +929,43 @@ $(".toggle").click(function() {
     document.getElementById('privacyPolicy').addEventListener('click', function () {
         Swal.fire({
             title: 'Privacy Policy',
+            text: 'Comming Soon',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
+
+    document.getElementById('connectSocial_test').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Public Profile',
+            text: 'Comming Soon',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
+
+    document.getElementById('privacyPolicy_test').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Privacy Policy',
+            text: 'Comming Soon',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
+
+
+    document.getElementById('support').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Support',
+            text: 'Comming Soon',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    });
+
+    document.getElementById('support_test').addEventListener('click', function () {
+        Swal.fire({
+            title: 'Support',
             text: 'Comming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
