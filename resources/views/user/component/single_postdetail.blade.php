@@ -233,7 +233,7 @@
                     @endif
                 </div>
                 <div class="NavBtmSec">
-                    <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between w-100">
+                    <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between w-100 flex_myicon">
                         <li class="actions-buttons-item d-flex align-item-center">
                             <img src="{{ asset('images/thumbs_up_black.png') }}" class="" alt=""
                                 height="20">
@@ -350,7 +350,7 @@
                     @endif
                 </div>
                 <div class="NavBtmSec">
-                    <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between w-100">
+                    <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between w-100 flex_myicon">
                         <li class="actions-buttons-item d-flex align-item-center">
                             <img src="{{ asset('images/icons/Comment-titter.svg') }}" class="" alt="" height="20">
                         </li>
