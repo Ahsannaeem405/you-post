@@ -3647,7 +3647,6 @@ populateOptions("hour", (currentHour%12 || 12), 12, 1);
     // populateOptions("hour",1,12, 1);
 
 // }
-
 // Populate minute options (00 to 59)
 populateOptions("minute", currentMinute, 59, 1);
 const amPmSelect = document.getElementById("ampm");

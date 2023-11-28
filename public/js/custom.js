@@ -19,8 +19,7 @@ $("#ampm").on("change", function() {
     var currentDate = new Date();
     let start = 1;
     let currentHour = currentDate.getHours();
-    
-    if( currentHour >=0 && currentHour<12 ){
+    if( currentHour >=0 && currentHour<12){
         if( ampmValue ==='AM'){
             start = (currentHour)%12||12;
         }else{
