@@ -730,6 +730,10 @@ padding-right:10px;
 .InstaPreview_setup .mobile_post_img_inst{
     background-size: 100% auto !important;
 }
+.flex_myicon{
+    flex-wrap:wrap;
+}
+
 /* .pick_date_from_calendar .calendar .pignose-calendar .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-date{
       opacity: 0.5;
       pointer-events: none;

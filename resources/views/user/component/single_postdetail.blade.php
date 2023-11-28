@@ -29,7 +29,7 @@
         </div>
         <div class="post_img_name">
             <div class="post_img">
-                <div class="PostHeaderInner d-flex justify-content-between align-items-center">
+                <div class="PostHeaderInner d-flex justify-content-between align-items-center flex-direct">
                     <div class="d-flex justify-content-center align-items-start gap-1">
                     <img src="{{ auth()->user()->account->fb_image }}" class="img-fluid " width="40" height="40"
                         alt="">
@@ -107,7 +107,7 @@
                     @endif
                 </div>
                 <div class="NavBtmSec">
-                    <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between w-100">
+                    <ul class="actions-buttons-list d-flex p-0 m-0 justify-content-between w-100 flex_myicon">
                         <li class="actions-buttons-item d-flex align-item-center">
                             <img src="{{ asset('images/thumbs_up_black.png') }}" class="" alt=""
                                 height="20">
@@ -156,7 +156,7 @@
         </div>
         <div class="post_img_name">
             <div class="post_img">
-                <div class="PostHeaderInner d-flex justify-content-between align-items-center">
+                <div class="PostHeaderInner d-flex justify-content-between align-items-center flex_myicon">
                     <div class="d-flex justify-content-center align-items-start gap-1">
                         <img src="{{ auth()->user()->account->link_image }}" class="img-fluid" width="40"
                         height="40" alt="">
@@ -285,7 +285,7 @@
         <div class="post_img_name">
             <img src="{{auth()->user()->account->twt_image}}" class="img-fluid Twitter_Profile" width="40" height="40" alt="">
             <div class="post_img">
-                <div class="PostHeaderInner d-flex justify-content-between align-items-center">
+                <div class="PostHeaderInner d-flex justify-content-between align-items-center flex_myicon">
                     <div class="">
                         <h5 class="m-0">{{auth()->user()->account->tw_name}}</h5>
                         <div class="">
@@ -398,7 +398,7 @@
         </div>
         <div class="post_img_name">
             <div class="post_img">
-                <div class="PostHeaderInner d-flex justify-content-between align-items-center">
+                <div class="PostHeaderInner d-flex justify-content-between align-items-center flex_myicon">
                     <div class="d-flex justify-content-between align-items-center w-100 mb-2">
                         <div class="d-flex align-items-center gap-1">
                         <img src="{{auth()->user()->account->inst_image}}" class="img-fluid" width="40" height="40" alt="">
@@ -528,7 +528,7 @@
             <div id="mediaContainervideo_youpost">
                 <div class="">
                     <div class="">
-                        <div class="deletepost_btn mydeltpostbtn">
+                        <div class="deletepost_btn mydeltpostbtn Editpost_btn">
                             <a class="text-decoration-none btn btn-danger"
                                 onclick="return confirm('Are you sure you want to delete this post?');"
                                 href="{{ url('post_delete/' . encrypt($post->id)) }}">
