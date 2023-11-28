@@ -16,7 +16,14 @@
         <tr>
             <td
                 style="background-color: #F7F7F8;padding-top: 18px;padding-bottom: 18px;padding-left: 18px;padding-right: 18px; text-align:center;">
+                
+                @if (!empty($details['logPath']))
                 <img src="{{ $message->embed($details['logPath']) }}" alt="" width="50%">
+                 @else
+                 <img src="{{ $message->embed(public_path('images/YouPost_Logo.png')) }}" alt="" width="50%">
+                @endif
+                
+                
             </td>
         </tr>
         <tr>
@@ -37,6 +44,7 @@
                                 {{ $details['body'] }}</p>
                         </td>
                     </tr>
+                    @if (!empty($details['imagePath']))
                     <tr>
                         <td>
                             <h2 style="font-size: 24px;margin:0; width:100%;"><img
@@ -45,6 +53,7 @@
                             </h2>
                         </td>
                     </tr>
+                    @endif
                     <tr>
                         <td>
                             <p

@@ -142,7 +142,7 @@ class Post extends Model
                 $pg_id = explode(":", $pg_id);
                 $pg_id = end($pg_id);
                 
-                $linki_feed = "https://www.linkedin.com/company/{$pg_id}/posts/{$live_post_id}/";}
+                $linki_feed = "https://www.linkedin.com/feed/update/urn:li:share:{$live_post_id}/";}
             }
         }
 

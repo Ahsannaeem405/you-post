@@ -55,6 +55,7 @@ class TwitterService
     public function create_post($data)
     {
 
+        try {
 
         $post = Post::find($data['post']->id);
         $tags = $post->tag ? " $post->tag" : '';
@@ -116,6 +117,13 @@ class TwitterService
             $post->delete();
 
         }
+    }catch (TwitterOAuthException $e) {
+        // Handle Twitter OAuth exceptions here
+        $msg = ['status' => false, 'error' => $e->getMessage()];
+    } catch (\Exception $e) {
+        // Handle other exceptions here
+        $msg = ['status' => false, 'error' => $e->getMessage()];
+    }
 
         return $msg;
     }
