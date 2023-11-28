@@ -102,19 +102,25 @@ class UserController extends Controller
                 'message' => 'required',
 
             ]);
-            
-            $file = $request->file('image');
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();         
-            file_put_contents(public_path('images/' . $filename), file_get_contents($file));            
-            $imagePath = 'images/' . $filename;    
-            $logPath =   'images/YouPost_Logo.png';
+            $imagePath ='';
+            $logPath = '';
+                if($request->file('image')){
+
+                    $file = $request->file('image');
+                    $filename = uniqid() . '.' . $file->getClientOriginalExtension();         
+                    file_put_contents(public_path('images/' . $filename), file_get_contents($file));            
+                    $imagePath = 'images/' . $filename;    
+                    $logPath =   'images/YouPost_Logo.png';
+                }
             $details = [
                 'title' => 'Mail from User',
                 'subject' => $request->subject,
                 'body' => $request->message,
                 'imagePath' => $imagePath,
                 'logPath' => $logPath,
-            ];                       
+            ];  
+            
+                                 
             \Mail::to('raja.waleed21@gmail.com')->send(new \App\Mail\BugMail($details));                
             return redirect()->back()->with('message', 'Email sent successfully!');      
         }
@@ -1074,6 +1080,7 @@ class UserController extends Controller
     public function connect_twitter_calback(Request $request)
     {
 
+       
 
         $twitter = config('services.twitter');
         $connection = new TwitterOAuth(
@@ -1082,9 +1089,9 @@ class UserController extends Controller
             session()->get('oauth_token'),
             session()->get('oauth_token_secret'),
         );
-        $accessToken = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->oauth_verifier]);
 
         try {
+            $accessToken = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->oauth_verifier]);
 
             $run = new TwitterService();
             $userData = $run->get_tw_data($accessToken);
@@ -1104,7 +1111,7 @@ class UserController extends Controller
             ]);
             return redirect('/index')->with('success', 'Twitter, Successfully Added');
         } catch (\Throwable $e) {
-            return redirect('/index')->with('error', $e->getMessage());
+            return redirect('/dashboard')->with('error', $e->getMessage());
         }
 
 

@@ -772,7 +772,7 @@ $(document).ready(function () {
                     appendVideo(file, socialicon);
                   
                 } else {
-                   toastr.error("Can't post video.Required in between 4:5 and 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
+                   toastr.error("Can't post video.Required 4:5 or 1:1 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
                     return false;
 
                 }
@@ -905,9 +905,25 @@ $(document).ready(function () {
 
     }
     //**************************Appedn to all using youpot div end **************************
+    function getPlatformName(socialicon) {
+        // Add cases for other social icons if needed
+        switch (socialicon) {
+            case 'image_or_videofb':
+                return 'Facbook';
+            case 'image_or_video_insta':
+                return 'Instagram';
+            case 'image_or_video_linkedin':
+                return 'LinkedIn';
+            case 'image_or_video_twiter':
+                return 'Twitter';
+            // Change this to the appropriate platform name
+            default:
+                return 'Unknown Platform';
+        }
+    }
     function appendImage(file, socialicon, dimention) {
 
-        var dimention_error = "Image resolution falls outside of Instagram’s preferred ratio 4:5 and 16:9. The image may be scaled by Instagram."
+        var dimention_error = `Image resolution falls outside of ${getPlatformName(socialicon)}’s preferred ratio 4:5 and 16:9. The image may be scaled by ${getPlatformName(socialicon)}.`;
 
         if (file) {
             var reader = new FileReader();
@@ -1662,6 +1678,19 @@ $(document).ready(function () {
 
         $('#file_error_all').addClass('d-none');
         var socialicon = $(this).attr('id');
+
+        var closestFieldset = $(this).closest('fieldset');
+        
+        var divsWithClass = closestFieldset.find('div.image_div_twi');
+    
+      
+        var imgCount = divsWithClass.find('img').length;
+        if (imgCount >= 4) {
+            // Display an error message
+            $('#file_error_twiiter').removeClass('d-none').text('Error: Image count exceeds the limit of twitter(4 or fewer allowed).');
+                       
+            return;
+        }        
         var file = e.target.files[0];    
         var mediaType = file.type.split('/')[0];
         if (mediaType === 'image') {
@@ -1710,6 +1739,18 @@ $(document).ready(function () {
         $('#file_error_all').addClass('d-none');
         var socialicon = $(this).attr('id');
         var file = e.target.files[0];
+
+
+            if ($("li[section='twitter']").length > 0) {
+                var imgCount = $('.image_div_twi').find('img').length;
+                if (imgCount >= 4) {
+                    // Display an error message
+                    $('#file_error_youpost').removeClass('d-none').text('Error: Image count exceeds the limit of twitter(4 or fewer allowed).');
+                     return;
+                }   
+
+               
+            }
 
         // var randomDelay = Math.floor(Math.random() * (5000 - 500 + 1)) + 500; // Random delay between 1 and 5 seconds
         // setTimeout(function() {
