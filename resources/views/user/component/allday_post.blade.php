@@ -19,8 +19,8 @@ $timeOnly = $publishedAt->format('h:i A');
                     : ($post->plateform === 'Linkedin'
                         ? 'Linkedin'
                         : ''))) }}">
-                        <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
-                        src="{{asset("images/newimages/loader.gif")}}" alt="">
+                        <!-- <img class="uplaod-gif uplaod-gif-video uploader_post d-none"
+                        src="{{asset("images/newimages/loader.gif")}}" alt=""> -->
                         <div class= "timer_style">{{$timeOnly}}</div>
 
     <div style="border-radius:20px">

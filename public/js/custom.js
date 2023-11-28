@@ -13,7 +13,24 @@ $(document).ready(function () {
 $(document).on('change', ".single_platform input[type=checkbox]", function () {
     $(this).parent().toggleClass('active_social');
 });
-
+// calendar time disable
+$("#ampm").on("change", function() {
+    var ampmValue = $(this).val();
+    var currentDate = new Date();
+    let start = 1;
+    let currentHour = currentDate.getHours();
+    if( currentHour >=0 && currentHour<12){
+        if( ampmValue ==='AM'){
+            start = (currentHour)%12||12;
+        }else{
+            start =1;
+        }
+    }else{
+        start = currentHour%12||12;
+    }
+    start=(selectedDate === currentDate)? start:1;
+    populateOptions("hour", start, 12, 1);
+});
 // Initialize Pignose Calendar
 var selectedDate = new Date();
 function settime() {

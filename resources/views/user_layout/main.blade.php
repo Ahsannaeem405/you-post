@@ -137,34 +137,71 @@
                 selectedDate = date;
                 // store selected date value in variable
                 settime();
-//                 let datew = new Date();
-                        
+                // let datew = new Date();
+                // let new_date_time = new Date(selectedDate);
 
-//                         let new_date_time = new Date(selectedDate);
-                        
-//     if( datew.getDate()<new_date_time.getDate()){
-        
-//     populateOptions("hour", 1, 12, 1);
-//     populateOptions("minute", 0, 59, 1);
-//     const amPmSelect = document.getElementById("ampm");
-//     amPmSelect.disabled = false;
-//     amPmSelect.disabled = false;
-//     }
-//     else{
-//         var currentTime = new Date();
-// var currentHour = currentTime.getHours();
-// var currentMinute = currentTime.getMinutes();
-// const amPmSelect = document.getElementById("ampm");
-//     amPmSelect.disabled = true;
-//     amPmSelect.disabled = true;
+                // if( datew.getDate() < new_date_time.getDate()){
 
-// populateOptions("hour", (currentHour%12 || 12), 12, 1);
+                //     populateOptions("hour", 1, 12, 1);
+                //     populateOptions("minute", 0, 59, 1);
+                //     const amPmSelect = document.getElementById("ampm");
+                //     amPmSelect.disabled = false;
+                // }else{
+                //     var currentTime = new Date();
+                //     var currentHour = currentTime.getHours();
+                //     var currentMinute = currentTime.getMinutes();
+                //     const amPmSelect = document.getElementById("ampm");
+                //     amPmSelect.disabled = true;
+                //     populateOptions("hour", (currentHour%12 || 12), 12, 1);
+                //     if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
+                //         $(amPmSelect).val('AM');
+                //         amPmSelect.disabled = false;
+                //     }else{
+                //         // populateOptions("hour",1,12, 1);
+                //         $(amPmSelect).val('PM');
+                //         amPmSelect.disabled = true;
+                //     }
 
+                //     populateOptions("minute", currentMinute, 59, 1);
+                //  }
+                // //$('#TimetoUploadPost').modal('show');
+                let datew = new Date();
+                let new_date_time = new Date(selectedDate);
 
-// // Populate minute options (00 to 59)
-// populateOptions("minute", currentMinute, 59, 1);
-//     }
-                //$('#TimetoUploadPost').modal('show');
+                if (datew < new_date_time) {
+                populateOptions("hour", 1, 12, 1);
+                populateOptions("minute", 0, 59, 1);
+                const amPmSelect = document.getElementById("ampm");
+                amPmSelect.disabled = false;
+                } else {
+                var currentTime = new Date();
+                var currentHour = currentTime.getHours();
+                var currentMinute = currentTime.getMinutes();
+                var currentMonth = currentTime.getMonth() + 1; // Adding 1 to get the actual month
+
+                const amPmSelect = document.getElementById("ampm");
+                amPmSelect.disabled = true;
+
+                // Check if the current month is less than the selected month
+                if (currentMonth < new_date_time.getMonth() + 1) {
+                populateOptions("hour", 1, 12, 1);
+                populateOptions("minute", 0, 59, 1);
+                amPmSelect.disabled = false;
+                } else {
+                populateOptions("hour", (currentHour % 12 || 12), 12, 1);
+
+                if (currentHour < 12 || (currentHour === 11 && currentMinute === 59)) {
+                $(amPmSelect).val('AM');
+                amPmSelect.disabled = false;
+                } else {
+                $(amPmSelect).val('PM');
+                amPmSelect.disabled = true;
+                }
+
+                populateOptions("minute", currentMinute, 59, 1);
+                }
+                }
+
             },
             minDate: today
         });
@@ -194,6 +231,7 @@
             var dateObject = new Date(dateString);
             var formattedDate = moment(dateObject).format('YYYY-MM-DD');
             $('#postdate').val(formattedDate);
+            
             settime_reshedule(dateTime);
         },
         // minDate: today
@@ -364,7 +402,10 @@ function populateDropdownFromArray(selectId, optionsArray) {
             schedulerLicenseKey: 'YOUR_LICENSE_KEY',
             dayMaxEvents: true,
             selectOverlap: false,
-            allDay:true,
+            minTime: "00:00",
+            maxTime: "24:00",
+            defaultTimedEventDuration: '01:00:00',
+            allDay:false,
             slotDuration: '01:00',
             events: @json(collect($allPosts)),
             views: {
@@ -529,7 +570,6 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 // $('.calendar2').css({'padding-left': '29.8%',' transition':'all 0.5s ease'});
                 $('.calendar2').css({'transition': 'all 0.5s ease', 'padding-left': '29.8%'});
 
-
                 $(".calendar_overflo").css('left', '0');
                 // $(".Today-post-detail").hide();
 
@@ -542,6 +582,11 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');
                 checkScreenSize();
+                    // move by click event
+                    $('html, body').animate({
+                        scrollTop: $("#postManagerCalendar").offset().top
+                    }, 1000);
+                
             }
         });
     }
