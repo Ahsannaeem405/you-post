@@ -19,17 +19,25 @@ $("#ampm").on("change", function() {
     var currentDate = new Date();
     let start = 1;
     let currentHour = currentDate.getHours();
+    let current_minutes = currentDate.getMinutes();
     if( currentHour >=0 && currentHour<12){
         if( ampmValue ==='AM'){
-            start = (currentHour)%12||12;
+            start = (currentHour)%12||12;  
         }else{
             start =1;
+            current_minutes =0;
         }
     }else{
         start = currentHour%12||12;
     }
-    start=(selectedDate === currentDate)? start:1;
+    if(selectedDate.getDate() !== currentDate.getDate()){
+        start=1;
+    }
+    
+    current_minutes=(selectedDate === currentDate)? current_minutes:0;
     populateOptions("hour", start, 12, 1);
+    populateOptions("minute",current_minutes ,59, 1);
+    
 });
 // Initialize Pignose Calendar
 var selectedDate = new Date();

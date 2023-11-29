@@ -209,6 +209,7 @@
 </script>
 <script>
    $('#SchedulePost').on('show.bs.modal', function (event) {
+   
     var button = $(event.relatedTarget);
     var dataId = button.data('id');
     var posted_at = button.data('posted_at');
@@ -217,10 +218,9 @@
     // Parse the posted_at string using moment
     var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');
     var datePart = dateTime.format('YYYY-MM-DD');
-
     // Set the initial value of the postdate input
     $('#postdate').val(datePart);
-// var today = moment(datePart).format('YYYY-MM-DD');
+var today = moment().format('YYYY-MM-DD');
 
     // Initialize pignoseCalendar
     var pignoseCalendar_TEST = $('.calendar_reschedule').pignoseCalendar({
@@ -233,8 +233,47 @@
             $('#postdate').val(formattedDate);
             
             settime_reshedule(dateTime);
+
+            // reshedule post edit
+            let datew = new Date();
+                let new_date_time = new Date(selectedDate);
+
+                if (datew < new_date_time) {
+                populateDropdown("hour_schedule", 1, 12, 1);
+                populateDropdown("minute_schedule", 0, 59, 1);
+                const amPmSelect = document.getElementById("ampm_schedule");
+                amPmSelect.disabled = false;
+                } else {
+                var currentTime = new Date();
+                var currentHour = currentTime.getHours();
+                var currentMinute = currentTime.getMinutes();
+                var currentMonth = currentTime.getMonth() + 1; // Adding 1 to get the actual month
+
+                const amPmSelect = document.getElementById("ampm_schedule");
+                amPmSelect.disabled = true;
+
+                // Check if the current month is less than the selected month
+                if (currentMonth < new_date_time.getMonth() + 1) {
+                populateDropdown("hour_schedule", 1, 12, 1);
+                populateDropdown("minute_schedule", 0, 59, 1);
+                amPmSelect.disabled = false;
+                } else {
+                    populateDropdown("hour_schedule", (currentHour % 12 || 12), 12, 1);
+
+                if (currentHour < 12 || (currentHour === 11 && currentMinute === 59)) {
+                $(amPmSelect).val('AM');
+                amPmSelect.disabled = false;
+                } else {
+                $(amPmSelect).val('PM');
+                amPmSelect.disabled = true;
+                }
+
+                populateDropdown("minute_schedule", currentMinute, 59, 1);
+                }
+                }
+            // reshedule post edit
         },
-        // minDate: today
+        minDate: today
     });
 
     // Call settime_reshedule once when the modal is shown
@@ -242,55 +281,58 @@
 });
 
 
-
-
 function settime_reshedule(dateTime) {
-            const now_time = new Date(dateTime);
-            populateDropdown('hour_schedule', 1, 12); // Assuming 12-hour format
-            populateDropdown('minute_schedule', 0, 59);
+    var currentTime = new Date();
+    var currentHour = currentTime.getHours();
+    var currentMinute = currentTime.getMinutes();
+    if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
+    populateDropdown("hour_schedule", (currentHour%12 || 12), 12, 1);
+    }else{
+    if ( currentHour>12){
+        populateDropdown("hour_schedule", (currentHour%12 || 12), 12, 1);
+    }
+    else{
+        populateDropdown("hour_schedule",1,12, 1);
 
+    }
 
-        // Disable past hours
-        populateDropdown('hour_schedule', (currentHour % 12 || 12), 12, true);
-
-        // Populate minute options (00 to 59)
-        populateDropdown('minute_schedule', currentMinute, 59);
-
-
-                var isAfterNoon = now_time.getHours() >= 12;
-
-                $('#ampm_schedule').val(isAfterNoon ? 'PM' : 'AM');
-
-                $('#ampm_schedule option[value="AM"]').prop('disabled', isAfterNoon);
-                $('#ampm_schedule option[value="PM"]').prop('disabled', !isAfterNoon);
+     }
+    populateDropdown("minute_schedule", currentMinute, 59, 1);
+    const amPmSelect = document.getElementById("ampm_schedule");
+    if (currentHour < 12 ) {
+        amPmSelect.value = "AM";
+        // amPmSelect.disabled = true;
+    } else {
+        amPmSelect.value = "PM";
+        amPmSelect.disabled = true;
+    }
 
               
-    } 
-
-function disablePastMinutesSchedule(currentMinute) {
-    const minuteSelect = document.getElementById("minute_schedule");
-    for (let i = 0; i <= 59; i++) {
-        const option = minuteSelect.options[i];
-        if (i < currentMinute) {
-            option.disabled = true;
-        } else {
-            option.disabled = false;
+} 
+$("#ampm_schedule").on("change", function() { 
+    var ampmValue = $(this).val();
+    var currentDate = new Date();
+    let start = 1;
+    let currentHour = currentDate.getHours();
+    let current_minutes = currentDate.getMinutes();
+    if( currentHour >=0 && currentHour<12){
+        if( ampmValue ==='AM'){
+            start = (currentHour)%12||12;
+        }else{
+            start =1;
+            current_minutes =0;
         }
+    }else{
+        start = currentHour%12||12;
     }
-}
-
-function disablePastAmPmOptions(currentHour) {
-    const amPmSelect = document.getElementById("ampm_schedule");
-    const isAfterNoon = currentHour >= 12;
-
-    // Set the value of #ampm_schedule based on the 12-hour format
-    $('#ampm_schedule').val(isAfterNoon ? 'PM' : 'AM');
-
-    // Disable or enable the corresponding option based on the 12-hour format
-    $('#ampm_schedule option[value="AM"]').prop('disabled', isAfterNoon);
-    $('#ampm_schedule option[value="PM"]').prop('disabled', !isAfterNoon);
-}
-
+    if(selectedDate.getDate() !== currentDate.getDate()){
+        start=1;
+    }
+    current_minutes=(selectedDate === currentDate)? current_minutes:0;
+    populateDropdown("hour_schedule", start, 12, 1);
+    populateDropdown("minute_schedule",current_minutes ,59, 1);
+    
+});
 // Dsiable Edit Post Time
 
 function populateDropdown(selectId, start, end) {

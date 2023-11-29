@@ -42,6 +42,12 @@
 .loading_account {
     opacity: 0.3;
 }
+.dashboard_direct{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 @media(max-width:2000px){
     .maxchar {
     color: #959595;
@@ -66,7 +72,7 @@
     position: absolute;
 }
 }
-@media (min-width:768px) and (max-width:1199px){
+@media (min-width:992px) and (max-width:1199px){
     .maxchar {
     color: #959595;
     font-weight: 400;
@@ -77,6 +83,28 @@
     top: 48%;
     position: absolute;
 }
+}
+@media (min-width:768px) and (max-width:991px){
+    .maxchar {
+    color: #959595;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 0;
+    font-size: 14px;
+    left: 67% !important;
+    top: 48%;
+    position: absolute;
+}
+.dashboard_direct{
+    margin: 0px !important;
+    box-shadow: 0 1px grey;
+    background: #f5f5f5f5;
+    z-index:9999;
+    }
+    .all_social_platformWrp {
+    padding-top:50px;
+    }
+
 }
 @media (min-width:577px) and (max-width:767px) {
 
@@ -117,6 +145,15 @@
         width: 100%;
         margin: 0;
         margin-top: 10px
+    }
+    .dashboard_direct{
+    margin: 0px !important;
+    box-shadow: 0 1px grey;
+    background: #f5f5f5f5;
+    z-index:9999;
+    }
+    .all_social_platformWrp {
+    padding-top:50px;
     }
 }
 
@@ -161,16 +198,23 @@
     }
 
     .all_social_platformWrp {
+        padding-top:50px;
         width: unset !important;
     }
     .account-detail{
         font-size:14px;
     }
+    .dashboard_direct{
+    margin: 0px !important;
+    box-shadow: 0 1px grey;
+    background: #f5f5f5f5;
+    z-index:9999;
+    }
 
 }
 </style>
 <div class="platformBtn">
-    <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus">Dashboard</a>
+    <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus dashboard_direct">Dashboard</a>
 </div>
 <section class="all_social_platformWrp">
     <div class="all_social_platformLogo">
