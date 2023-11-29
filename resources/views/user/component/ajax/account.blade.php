@@ -296,7 +296,7 @@
 
         </div>
         <div style="margin-top:40px; padding-bottom:20px">
-            <div class="all_social_platform justify-content-evenly flex-fill" style="gap: 0 23px; background:none;">
+            <div class="all_social_platform justify-content-evenly flex-fill platform_icongp" style="gap: 0 23px; background:none;">
                 <div class="single_platform  {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_fb">
                         <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt=""

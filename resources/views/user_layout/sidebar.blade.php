@@ -920,7 +920,7 @@ $(".toggle").click(function() {
     document.getElementById('connectSocial').addEventListener('click', function () {
         Swal.fire({
             title: 'Public Profile',
-            text: 'Comming Soon',
+            text: 'Coming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });
@@ -929,7 +929,7 @@ $(".toggle").click(function() {
     document.getElementById('privacyPolicy').addEventListener('click', function () {
         Swal.fire({
             title: 'Privacy Policy',
-            text: 'Comming Soon',
+            text: 'Coming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });
@@ -938,7 +938,7 @@ $(".toggle").click(function() {
     document.getElementById('connectSocial_test').addEventListener('click', function () {
         Swal.fire({
             title: 'Public Profile',
-            text: 'Comming Soon',
+            text: 'Coming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });
@@ -947,7 +947,7 @@ $(".toggle").click(function() {
     document.getElementById('privacyPolicy_test').addEventListener('click', function () {
         Swal.fire({
             title: 'Privacy Policy',
-            text: 'Comming Soon',
+            text: 'Coming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });
@@ -957,7 +957,7 @@ $(".toggle").click(function() {
     document.getElementById('support').addEventListener('click', function () {
         Swal.fire({
             title: 'Support',
-            text: 'Comming Soon',
+            text: 'Coming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });
@@ -966,7 +966,7 @@ $(".toggle").click(function() {
     document.getElementById('support_test').addEventListener('click', function () {
         Swal.fire({
             title: 'Support',
-            text: 'Comming Soon',
+            text: 'Coming Soon',
             icon: 'info',
             confirmButtonText: 'OK'
         });

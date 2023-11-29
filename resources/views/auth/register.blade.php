@@ -135,4 +135,10 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    const today = new Date().toISOString().split('T')[0];
+document.getElementById("date").setAttribute("max", today);
+});
+</script>
 @endsection
