@@ -1099,6 +1099,10 @@
      .flex-direct{
         flex-direction:column;
     }
+    .platform_selection{
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 /* media  query */
