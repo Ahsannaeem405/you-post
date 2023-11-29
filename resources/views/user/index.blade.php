@@ -3021,7 +3021,7 @@ padding-right:10px;
                         </div>
                         {{-- <input type="file" name="image" accept="image/*"> --}}
                         <div class="my-4 text-center">
-                            <button type="submit" class="btn btn-primary">Send Email</button>
+                            <button type="submit" class="btn btn-primary">Send Report</button>
                         </div>
                     </form>
                 </div>
