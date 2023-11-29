@@ -192,11 +192,7 @@ class Post extends Model
                 ]);
 
                 $searchResults = $response->json();
-
-
-                $names = collect($searchResults['data'])->pluck('name')->toArray();
-
-                // Process and return the search results as needed
+                $names = collect($searchResults['data'])->pluck('name')->toArray();               
                 return $names;
             } catch (\Exception $e) {
                 // Handle the exception, log the error, or return an error response.
