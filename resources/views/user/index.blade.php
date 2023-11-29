@@ -430,6 +430,15 @@ padding-right:10px;
     color: #fff;
     font-size: 12px;
 }
+.dropdown-content-search{
+    height: 300px;
+    overflow: scroll;
+    text-align: left;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #000;
+}
 
 @media screen and (max-width: 768px) {
     .create_preview_post_wrapInner {
