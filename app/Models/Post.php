@@ -78,12 +78,14 @@ class Post extends Model
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $url);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);                    
-                    $response = curl_exec($ch);                    
+                    $response = curl_exec($ch);    
+                                  
                     if (curl_errno($ch)) {
                         echo 'Error: ' . curl_error($ch);
                     }                    
                     curl_close($ch);                    
-                    $data = json_decode($response, true);                    
+                    $data = json_decode($response, true); 
+                    // dd($data['permalink_url']);                    
                     if (isset($data['permalink_url'])) {
                         $fb_feed = $data['permalink_url'];
                      
@@ -142,7 +144,8 @@ class Post extends Model
                 $pg_id = explode(":", $pg_id);
                 $pg_id = end($pg_id);
                 
-                $linki_feed = "https://www.linkedin.com/feed/update/urn:li:share:{$live_post_id}/";}
+                $linki_feed = "https://www.linkedin.com/feed/update/urn:li:share:{$live_post_id}/";
+            }
             }
         }
 
@@ -153,11 +156,7 @@ class Post extends Model
             'linkedin_feed' => $linki_feed,
         ];
 
-
-
-       
-
-      
+     
     }
 
     public function getPostImgSrc($post)
