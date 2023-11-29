@@ -210,6 +210,9 @@
     background: #f5f5f5f5;
     z-index:9999;
     }
+    .platform_icongp{
+        gap:23px !important;
+    }
 
 }
 </style>
