@@ -144,7 +144,12 @@ class Post extends Model
                 $pg_id = explode(":", $pg_id);
                 $pg_id = end($pg_id);
                 
-                $linki_feed = "https://www.linkedin.com/feed/update/urn:li:share:{$live_post_id}/";
+                if($post->media_type == 'video'){
+                    $linki_feed = "https://www.linkedin.com/feed/update/urn:li:ugcPost:{$live_post_id}/";
+                }else{
+                    $linki_feed = "https://www.linkedin.com/feed/update/urn:li:share:{$live_post_id}/";
+                }
+              
             }
             }
         }
@@ -174,5 +179,32 @@ class Post extends Model
     
         return $imgSrc;
     }
+
+    
+    public function getSuggestions($searchQuery)   
+     {                 
+                    $accessToken = auth()->user()->account->fb_access_token;
+            try {
+                $response = Http::get("https://graph.facebook.com/v13.0/pages/search", [
+                    'q' => $searchQuery,
+                    'fields' => 'id,name,location,link',
+                    'access_token' => $accessToken,
+                ]);
+
+                $searchResults = $response->json();
+
+               
+                $names = collect($searchResults['data'])->pluck('name')->toArray();             
+
+                // Process and return the search results as needed
+                return $names;
+            } catch (\Exception $e) {
+                // Handle the exception, log the error, or return an error response.
+                return $e->getMessage();
+            }
+    }
+
+
+    
 
 }

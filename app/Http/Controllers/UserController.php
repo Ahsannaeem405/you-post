@@ -560,6 +560,14 @@ class UserController extends Controller
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', $date)->groupBy('group_id')->get();
         return view('user.component.ajax.todayEvents', compact('todayPost'));
     }
+    public function get_suggestoins(Request $request)
+    {
+        $searchQuery = $request->input('searchQuery');
+        $post = new Post();
+        $suggestions = $post->getSuggestions($searchQuery);
+   
+        return response()->json(['suggestions' => $suggestions]);
+    }
 
     public function post_delete($id, Facebookservice $facebookservice, Instagramservice $Instagramservice, Linkedinservice $Linkedinservice, TwitterService $TwitterService)
     {

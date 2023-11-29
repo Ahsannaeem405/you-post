@@ -3246,25 +3246,35 @@ $(document).ready(function() {
         const dropdown = textarea.parent().find('.dropdown-content-search');
 
         textarea.on('input', function() {
-
             const text = textarea.val();
             const atIndex = text.lastIndexOf('@');
-
             if (atIndex !== -1) {
 
                 const searchString = text.slice(atIndex + 1);
-                const suggestions = getFriendSuggestions(
-                    searchString); // Replace with your friend suggestion logic
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
-
-                if (suggestions.length > 0) {
-                    const dropdownHTML = suggestions.map(suggestion =>
-                        `<div class="suggestion">${suggestion}</div>`).join('');
-                    dropdown.html(dropdownHTML);
-                    dropdown.css('display', 'block');
-                } else {
-                    dropdown.css('display', 'none');
+                $.ajax({
+                url: 'get-suggestion', // Replace with the actual URL
+                method: 'POST',
+                data: { searchQuery: searchString },
+                success: function(suggestions) {
+                    if (suggestions.length > 0) {
+                        const dropdownHTML = suggestions.map(suggestion =>
+                            `<div class="suggestion">${suggestion}</div>`).join('');
+                        dropdown.html(dropdownHTML);
+                        dropdown.css('display', 'block');
+                    } else {
+                        dropdown.css('display', 'none');
+                    }
+                },
+                error: function(error) {
+                    console.error(error);
                 }
+            });
             } else {
                 dropdown.css('display', 'none');
             }

@@ -112,6 +112,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('get-events', [UserController::class, 'get_events']);
+    Route::post('get-suggestion', [UserController::class, 'get_suggestoins']);
+
     //update account platforms
     Route::get('update_user_platforms', [UserController::class, 'update_user_platforms']);
     Route::get('update_user_platforms_accounts', [UserController::class, 'update_user_platforms_accounts']);
