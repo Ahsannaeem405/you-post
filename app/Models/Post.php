@@ -53,11 +53,11 @@ class Post extends Model
 
         return $content;
     }
-   
+
 
     public function getPostLiveLink($post)
     {
-       
+
        $groups = Post::where('group_id', $post->group_id)->get();
 
         $fb_feed = '';
@@ -69,29 +69,29 @@ class Post extends Model
             if ($group->plateform == 'Facebook'){
 
                 if($group->posted_at_moment=='now'){
-                    
+
                     $postId = $group->post_dt;
                     $postId = $postId->social_id;
                     $pageAccessToken = $post->account;
-                    $pageAccessToken = $pageAccessToken->fb_page_token;                                      
-                    $url = "https://graph.facebook.com/{$postId}?fields=permalink_url&access_token={$pageAccessToken}";                  
+                    $pageAccessToken = $pageAccessToken->fb_page_token;
+                    $url = "https://graph.facebook.com/{$postId}?fields=permalink_url&access_token={$pageAccessToken}";
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $url);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);                    
-                    $response = curl_exec($ch);    
-                                  
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                    $response = curl_exec($ch);
+
                     if (curl_errno($ch)) {
                         echo 'Error: ' . curl_error($ch);
-                    }                    
-                    curl_close($ch);                    
-                    $data = json_decode($response, true); 
-                    // dd($data['permalink_url']);                    
+                    }
+                    curl_close($ch);
+                    $data = json_decode($response, true);
+                    // dd($data['permalink_url']);
                     if (isset($data['permalink_url'])) {
                         $fb_feed = $data['permalink_url'];
-                     
-                    } 
 
-                  } 
+                    }
+
+                  }
 
                }
             if ($group->plateform == 'Instagram'){
@@ -100,8 +100,8 @@ class Post extends Model
                     $instagramPostId = $group->post_dt;
                     $instagramPostId = $instagramPostId->social_id;
                     $userAccessToken = $post->account;
-                    $userAccessToken = $userAccessToken->insta_access_token;  
-                    $url = "https://graph.facebook.com/v12.0/{$instagramPostId}?fields=permalink&access_token={$userAccessToken}";                  
+                    $userAccessToken = $userAccessToken->insta_access_token;
+                    $url = "https://graph.facebook.com/v12.0/{$instagramPostId}?fields=permalink&access_token={$userAccessToken}";
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $url);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -109,11 +109,11 @@ class Post extends Model
                     if (curl_errno($ch)) {
                         echo 'Error: ' . curl_error($ch);
                     }
-                    curl_close($ch);                        
-                    $data = json_decode($response, true);                 
-                    if (isset($data['permalink'])) {                    
-                        $inst_feed = $data['permalink'];                   
-                     } 
+                    curl_close($ch);
+                    $data = json_decode($response, true);
+                    if (isset($data['permalink'])) {
+                        $inst_feed = $data['permalink'];
+                     }
                  }
              }
 
@@ -125,8 +125,8 @@ class Post extends Model
 
                 $tw_feed = "https://twitter.com/{$live_post_id}/status/{$live_post_id}";
 
-                } 
-          
+                }
+
             }
           // for linkedin
             if ($group->plateform == 'Linkedin'){
@@ -143,8 +143,13 @@ class Post extends Model
                 $pg_id = $pg_id->linkedin_page_id;
                 $pg_id = explode(":", $pg_id);
                 $pg_id = end($pg_id);
-                
-                $linki_feed = "https://www.linkedin.com/feed/update/urn:li:share:{$live_post_id}/";
+
+                if($post->media_type == 'video'){
+                    $linki_feed = "https://www.linkedin.com/feed/update/urn:li:ugcPost:{$live_post_id}/";
+                }else{
+                    $linki_feed = "https://www.linkedin.com/feed/update/urn:li:share:{$live_post_id}/";
+                }
+
             }
             }
         }
@@ -156,13 +161,13 @@ class Post extends Model
             'linkedin_feed' => $linki_feed,
         ];
 
-     
+
     }
 
     public function getPostImgSrc($post)
-    {                 
+    {
         $imgSrc = '';
-        
+
         if (empty($post->media_type)) {
             $imgSrc = asset('images/tx_icon.png');
         } elseif ($post->media_type == 'image') {
@@ -171,8 +176,35 @@ class Post extends Model
         } elseif ($post->media_type == 'video') {
             $imgSrc = asset('images/video_icon.png');
         }
-    
+
         return $imgSrc;
     }
+
+
+    public function getSuggestions($searchQuery)
+     {
+                    $accessToken = auth()->user()->account->fb_access_token;
+            try {
+                $response = Http::get("https://graph.facebook.com/v13.0/pages/search", [
+                    'q' => $searchQuery,
+                    'fields' => 'id,name,location,link',
+                    'access_token' => $accessToken,
+                ]);
+
+                $searchResults = $response->json();
+
+
+                $names = collect($searchResults['data'])->pluck('name')->toArray();
+
+                // Process and return the search results as needed
+                return $names;
+            } catch (\Exception $e) {
+                // Handle the exception, log the error, or return an error response.
+                return $e->getMessage();
+            }
+    }
+
+
+
 
 }
