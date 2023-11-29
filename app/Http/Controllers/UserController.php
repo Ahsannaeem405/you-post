@@ -40,15 +40,16 @@ class UserController extends Controller
 
     public function privacyPolicy()
     {
-        
+
 
         return view('user.privacypolicy');
 
     }
+
     public function dashbaord()
     {
         // dd(auth()->user()->email)
-       
+
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
         $posts = Post::select(
@@ -57,10 +58,10 @@ class UserController extends Controller
             DB::raw('SUM(CASE WHEN posted_at_moment = "now" THEN 1 ELSE 0 END) as published_count'),
             DB::raw('SUM(CASE WHEN posted_at_moment != "now" THEN 1 ELSE 0 END) as not_published_count')
         )
-        ->where('user_id', auth()->id())
-        ->where('account_id', auth()->user()->account_id)
-        ->groupBy(DB::raw('DATE(posted_at)'))
-        ->get();
+            ->where('user_id', auth()->id())
+            ->where('account_id', auth()->user()->account_id)
+            ->groupBy(DB::raw('DATE(posted_at)'))
+            ->get();
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
@@ -77,13 +78,13 @@ class UserController extends Controller
             }
             $allPosts[] = [
                 'id' => $post->id,
-                'title' =>  $title,
+                'title' => $title,
                 'start' => $post->formatted_posted_at,
                 'event_date' => Carbon::parse($post->formatted_posted_at)->format('Y-m-d'),
                 'ac_id' => auth()->user()->account_id,
             ];
         }
-    //   dd($allPosts);
+        //   dd($allPosts);
         $response = $this->createPostService->InitilizeData();
         $stattistics = $this->createPostService->Statisics();
         $instapages = $response['linkedin'];
@@ -94,42 +95,42 @@ class UserController extends Controller
 
     }
 
-    public function report_bug(Request $request )
-    {                     
-              $request->validate([
-              
-                'subject' => 'required',
-                'message' => 'required',
+    public function report_bug(Request $request)
+    {
+        $request->validate([
 
-            ]);
-            $imagePath ='';
-            $logPath = '';
-                if($request->file('image')){
+            'subject' => 'required',
+            'message' => 'required',
 
-                    $file = $request->file('image');
-                    $filename = uniqid() . '.' . $file->getClientOriginalExtension();         
-                    file_put_contents(public_path('images/' . $filename), file_get_contents($file));            
-                    $imagePath = 'images/' . $filename;    
-                    $logPath =   'images/YouPost_Logo.png';
-                }
-            $details = [
-                'title' => 'Mail from User',
-                'subject' => $request->subject,
-                'body' => $request->message,
-                'imagePath' => $imagePath,
-                'logPath' => $logPath,
-            ];  
-            $recipients = [
-                
-                'michelle.mckay@tangent.com',
-                'michelle@roifirm.com',
-                'umer@browntech.co',
-                
-            ];
-                                 
-            \Mail::to($recipients)->send(new \App\Mail\BugMail($details));                
-            return redirect()->back()->with('message', 'Email sent successfully!');      
+        ]);
+        $imagePath = '';
+        $logPath = '';
+        if ($request->file('image')) {
+
+            $file = $request->file('image');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            file_put_contents(public_path('images/' . $filename), file_get_contents($file));
+            $imagePath = 'images/' . $filename;
+            $logPath = 'images/YouPost_Logo.png';
         }
+        $details = [
+            'title' => 'Mail from User',
+            'subject' => $request->subject,
+            'body' => $request->message,
+            'imagePath' => $imagePath,
+            'logPath' => $logPath,
+        ];
+        $recipients = [
+
+            'michelle.mckay@tangent.com',
+            'michelle@roifirm.com',
+            'umer@browntech.co',
+
+        ];
+
+        \Mail::to($recipients)->send(new \App\Mail\BugMail($details));
+        return redirect()->back()->with('message', 'Email sent successfully!');
+    }
 
     public function getUpdatedPosts()
     {
@@ -139,10 +140,10 @@ class UserController extends Controller
             DB::raw('SUM(CASE WHEN posted_at_moment = "now" THEN 1 ELSE 0 END) as published_count'),
             DB::raw('SUM(CASE WHEN posted_at_moment != "now" THEN 1 ELSE 0 END) as not_published_count')
         )
-        ->where('user_id', auth()->id())
-        ->where('account_id', auth()->user()->account_id)
-        ->groupBy(DB::raw('DATE(posted_at)'))
-        ->get();
+            ->where('user_id', auth()->id())
+            ->where('account_id', auth()->user()->account_id)
+            ->groupBy(DB::raw('DATE(posted_at)'))
+            ->get();
 
         $updatedPosts = [];
 
@@ -158,7 +159,7 @@ class UserController extends Controller
             }
             $updatedPosts[] = [
                 'id' => $post->id,
-                'title' =>  $title,
+                'title' => $title,
                 'start' => $post->formatted_posted_at,
                 'event_date' => Carbon::parse($post->formatted_posted_at)->format('Y-m-d'),
                 'ac_id' => auth()->user()->account_id,
@@ -167,6 +168,7 @@ class UserController extends Controller
 
         return response()->json($updatedPosts);
     }
+
     public function dashbaord2()
     {
 
@@ -237,88 +239,88 @@ class UserController extends Controller
             return response()->json(['path' => $videoPath]);
         } else {
             // Get the base64-encoded image data from the request
-                $base64Image = $request->input('image');
+            $base64Image = $request->input('image');
 
-                // Decode the base64 image data and create an Intervention Image instance
-                $img = Image::make(base64_decode($base64Image));
+            // Decode the base64 image data and create an Intervention Image instance
+            $img = Image::make(base64_decode($base64Image));
 
-                // Define desired aspect ratios for landscape and portrait orientations
-                $desiredAspectRatioLandscape = 16 / 5;
-                $desiredAspectRatioPortrait = 4 / 5;
+            // Define desired aspect ratios for landscape and portrait orientations
+            $desiredAspectRatioLandscape = 16 / 5;
+            $desiredAspectRatioPortrait = 4 / 5;
 
-                // Get the original width and height of the image
-                $originalWidth = $img->width();
-                $originalHeight = $img->height();
+            // Get the original width and height of the image
+            $originalWidth = $img->width();
+            $originalHeight = $img->height();
 
-                // Define minimum and maximum resolutions, as well as minimum width and height
-                $minResolution = 0.8;
-                $maxResolution = 1.91;
-                $minWidth = 6000;
-                $minHeight = 6000;
+            // Define minimum and maximum resolutions, as well as minimum width and height
+            $minResolution = 0.8;
+            $maxResolution = 1.91;
+            $minWidth = 6000;
+            $minHeight = 6000;
 
-                // Determine the desired aspect ratio based on the image orientation
+            // Determine the desired aspect ratio based on the image orientation
 
-                    if ($originalWidth > $originalHeight) {
-                        $desiredAspectRatio = $desiredAspectRatioLandscape;
-                    } else {
-                        $desiredAspectRatio = $desiredAspectRatioPortrait;
-                    }
+            if ($originalWidth > $originalHeight) {
+                $desiredAspectRatio = $desiredAspectRatioLandscape;
+            } else {
+                $desiredAspectRatio = $desiredAspectRatioPortrait;
+            }
 
-                // Check if the image meets certain criteria for resizing
+            // Check if the image meets certain criteria for resizing
 
-                    if (
-                        $originalWidth / $originalHeight < $minResolution ||
-                        $originalWidth / $originalHeight > $maxResolution ||
-                        $originalWidth >= $minWidth ||
-                        $originalHeight >= $minHeight
-                    ) {
-                        // Image meets the criteria, resize it
-                        if ($originalWidth / $originalHeight > $desiredAspectRatio) {
+            if (
+                $originalWidth / $originalHeight < $minResolution ||
+                $originalWidth / $originalHeight > $maxResolution ||
+                $originalWidth >= $minWidth ||
+                $originalHeight >= $minHeight
+            ) {
+                // Image meets the criteria, resize it
+                if ($originalWidth / $originalHeight > $desiredAspectRatio) {
 
-                            // Calculate new dimensions for landscape-oriented images
-                            $newHeight = $originalWidth / $desiredAspectRatio;
-                            $topPadding = ($originalHeight - $newHeight) / 2;
-                            $bottomPadding = $topPadding;
-                            $newWidth = $originalWidth;
-                        } else {
-                            // Calculate new dimensions for portrait-oriented images
-                            $newWidth = $originalHeight * $desiredAspectRatio;
-                            $leftPadding = ($originalWidth - $newWidth) / 2;
-                            $rightPadding = $leftPadding;
-                            $newHeight = $originalHeight;
-                        }
+                    // Calculate new dimensions for landscape-oriented images
+                    $newHeight = $originalWidth / $desiredAspectRatio;
+                    $topPadding = ($originalHeight - $newHeight) / 2;
+                    $bottomPadding = $topPadding;
+                    $newWidth = $originalWidth;
+                } else {
+                    // Calculate new dimensions for portrait-oriented images
+                    $newWidth = $originalHeight * $desiredAspectRatio;
+                    $leftPadding = ($originalWidth - $newWidth) / 2;
+                    $rightPadding = $leftPadding;
+                    $newHeight = $originalHeight;
+                }
 
-                        // Resize the image
-                        $img->resize($newWidth, $newHeight);
+                // Resize the image
+                $img->resize($newWidth, $newHeight);
 
-                        // Generate a unique filename for the resized image
-                        $filename = uniqid() . '.jpg';
+                // Generate a unique filename for the resized image
+                $filename = uniqid() . '.jpg';
 
-                        // Save the resized image to the specified path
-                        $img->save('content_media/' . $filename);
+                // Save the resized image to the specified path
+                $img->save('content_media/' . $filename);
 
-                        return response()->json(['path' => $filename]);
-                    } else {
-                        // Image does not meet the criteria
+                return response()->json(['path' => $filename]);
+            } else {
+                // Image does not meet the criteria
 
-                        // Get the base64-encoded image data from the request
+                // Get the base64-encoded image data from the request
 
-                        $base64Data = $request->input('image');
+                $base64Data = $request->input('image');
 
-                        // Generate a unique filename for the original image
-                        $filename = uniqid() . '.png';
+                // Generate a unique filename for the original image
+                $filename = uniqid() . '.png';
 
-                        // Decode the base64 image data
-                        $imageData = base64_decode($base64Data);
+                // Decode the base64 image data
+                $imageData = base64_decode($base64Data);
 
-                       // Save the original image to the specified path
-                        file_put_contents(public_path('content_media/' . $filename), $imageData);
-                        $imagePath = $filename;
+                // Save the original image to the specified path
+                file_put_contents(public_path('content_media/' . $filename), $imageData);
+                $imagePath = $filename;
 
-                      // Return the path to the original image in the response
-                        return response()->json(['path' => $imagePath]);
-                    }
-              
+                // Return the path to the original image in the response
+                return response()->json(['path' => $imagePath]);
+            }
+
         }
     }
 
@@ -409,28 +411,24 @@ class UserController extends Controller
         //****************end linkedin validation****************//
 
 
+        //*****************twitter validation******************//
 
-  //*****************twitter validation******************//
+        if (in_array('Twitter', $platforms)) {
+            if ($req->media_type_twitter == 'image') {
 
-            if (in_array('Twitter', $platforms)) {
-                if ($req->media_type_twitter == 'image') {
-
-                    foreach ($req->tw_image as $media) {
-                        $mediaDataTw[] = $media;
-                    }
-
-                } else if ($req->media_type_twitter == 'video') {
-
-                    $mediaDataTw[] = $req->twitter_video;
-
+                foreach ($req->tw_image as $media) {
+                    $mediaDataTw[] = $media;
                 }
+
+            } else if ($req->media_type_twitter == 'video') {
+
+                $mediaDataTw[] = $req->twitter_video;
 
             }
 
+        }
+
 //****************end twitter validation**************//
-
-
-
 
 
         //****************posting code****************//
@@ -491,7 +489,7 @@ class UserController extends Controller
                 if (array_key_exists($platform, $platformServiceMap)) {
                     $serviceClassName = $platformServiceMap[$platform];
                     $run = new $serviceClassName();
-                  
+
                     $arr['post'] = $post;
                     $result = $run->create_post($arr);
                     if ($result['status'] == true) {
@@ -512,18 +510,19 @@ class UserController extends Controller
         //****************end posting code****************//
 
     }
+
     public function reschedule_post(Request $request)
     {
-      
-            $combinedDateTime = Carbon::parse( $request->postdate . ' ' . ($request->ampm === "PM" && $request->hour_schedule !== "12" ? intval($request->hour_schedule) + 12 : $request->hour_schedule) . ':' . $request->minute_schedule);
-            $formattedDateTime = $combinedDateTime->format('Y-m-d H:i');
-            Post::where('id', $request->post_id)
-            ->update([
-                'posted_at' => $formattedDateTime,              
-            ]);
-            return redirect('/dashboard')->with('success', 'Post Rescheduled Successfully!');
 
-     }
+        $combinedDateTime = Carbon::parse($request->postdate . ' ' . ($request->ampm === "PM" && $request->hour_schedule !== "12" ? intval($request->hour_schedule) + 12 : $request->hour_schedule) . ':' . $request->minute_schedule);
+        $formattedDateTime = $combinedDateTime->format('Y-m-d H:i');
+        Post::where('id', $request->post_id)
+            ->update([
+                'posted_at' => $formattedDateTime,
+            ]);
+        return redirect('/dashboard')->with('success', 'Post Rescheduled Successfully!');
+
+    }
 
     public function get_event_detail(Request $request)
     {
@@ -664,7 +663,7 @@ class UserController extends Controller
         if ($req->plateform_val != null) {
             $platformsArray = $account->platforms;
             $valueToRemove = $req->plateform_val;
-               if (in_array($valueToRemove, $platformsArray)) {
+            if (in_array($valueToRemove, $platformsArray)) {
                 // if (($req->isChecked == 'false')) {
 
                 $platformsArray = array_diff($platformsArray, [$valueToRemove]);
@@ -676,7 +675,7 @@ class UserController extends Controller
                     'status' => 'off'
                 ];
                 return response()->json($response, 200);
-            }else{
+            } else {
                 $newValue = $req->plateform_val;
                 $platformsArray[] = $newValue;
                 $account->platforms = $platformsArray;
@@ -729,7 +728,7 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
-        
+
         $platform = auth()->user()->account->platforms;
         $valueToRemove = 'Facebook';
         foreach (array_keys($platform, $valueToRemove) as $key) {
@@ -778,7 +777,7 @@ class UserController extends Controller
 
     public function set_page(Request $req)
     {
-        
+
         $req->validate([
             'page' => 'required',
         ]);
@@ -1094,7 +1093,6 @@ class UserController extends Controller
     public function connect_twitter_calback(Request $request)
     {
 
-       
 
         $twitter = config('services.twitter');
         $connection = new TwitterOAuth(

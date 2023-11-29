@@ -993,17 +993,17 @@ padding-right:10px;
                                                  <img src="{{asset(auth()->user()->account->inst_image)}} "
                                                     class="rounded-circle" alt="" width="100" />
                                             </h3>
-                                               
+
                                             </div>
-                                            
+
                                         </div>
-                                      
+
                                       <div class="">
                                                 <h5 class="mb-0 ">Insta username : {{auth()->user()->account->inst_name}}
                                                 </h5>
                                             </div>
                                         <div class="">
-                                               
+
                                                <h5 class="mb-0 "> Insta name : {{auth()->user()->account->inst_page_name}}
                                                </h5>
                                            </div>
@@ -1388,7 +1388,7 @@ padding-right:10px;
                     <!-- salman popup end-->
 
 
-    
+
 
                 </form>
             </div>
@@ -1397,7 +1397,7 @@ padding-right:10px;
             <form action="{{ route('resheudle-post') }}" method="POST" enctype="multipart/form-data" id="reschudledForm">
                     @csrf
                     @method('Post')
-                    <!-- edit post schedule  --> 
+                    <!-- edit post schedule  -->
                     <div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -3841,9 +3841,9 @@ function openEventModal(year, month, day) {
 </script>
 <script>
 function populateOptions(selectId, start, end, step) {
-    
+
     const select = document.getElementById(selectId);
-    
+
     while (select.options.length > 0) {
     select.remove(0);
 }
