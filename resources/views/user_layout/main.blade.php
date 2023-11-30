@@ -14,10 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script> -->
 
     <!-- google_font_poppin -->
-
     <!-- google_font_poppin -->
-
-
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
     <!-- style.css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
@@ -107,7 +104,7 @@
 
 {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
 
-<script src="{{asset('js/inputEmoji.js')}}"></script>
+<!-- <script src="{{asset('js/inputEmoji.js')}}"></script> -->
 {{-- ------------------ --}}
 <script src="{{asset('js/slider/owl.carousel.js')}}"></script>
 {{-- ------------------ --}}
@@ -405,6 +402,9 @@ function populateDropdownFromArray(selectId, optionsArray) {
 
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <!--Custom JavaScript-->
+<!-- //  emoji link  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
 
 {{-- toaster cdn --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
@@ -725,6 +725,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
 <script>
     $(function () {
         $('.emojiarea').emoji({place: 'after'});
+
     });
 
 

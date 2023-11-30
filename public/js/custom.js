@@ -483,10 +483,26 @@ $(document).ready(function () {
 
 
     //
-
+    
     $(document).on('click', '.open_emoji', function () {
-        $('.emoji_parent > span').click();
-
+        // $('.emoji_parent > span').click(); 
+        if (!$(this).data('click-count')) {
+            $(this).data('click-count', 1);
+        $(".emoji_show").emojioneArea({
+            pickerPosition:"bottom"
+        });
+        }
+        else{
+            if ($(this).data('click-count') % 2 === 1) {
+                $(".emoji_show").css("display", "none");
+            }
+            else{
+                $(".emoji_show").emojioneArea({
+                    pickerPosition:"bottom"
+                }); 
+            }
+            $(this).data('click-count', $(this).data('click-count') + 1);
+        }
     });
 
 

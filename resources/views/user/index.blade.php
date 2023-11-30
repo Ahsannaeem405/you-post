@@ -757,6 +757,17 @@ padding-right:10px;
 .flex_myicon{
     flex-wrap:wrap;
 }
+.icon_buttons  ul .emojionearea {
+    position: absolute !important;
+    top: 22%;
+    right: 2%;
+    width: 32px;
+    border:none;
+    -webkit-box-shadow:none; 
+     box-shadow:none;
+     background:none;
+
+}
 
 /* .pick_date_from_calendar .calendar .pignose-calendar .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-date{
       opacity: 0.5;
@@ -860,11 +871,12 @@ padding-right:10px;
                                                             </a>
                                                         </li>
                                                         <li>
+                                                        <input type="hidden" class="emoji_show">
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
-                                                        </li>
+                                                        </li> 
                                                     </ul>
                                                 </div>
 
@@ -958,6 +970,7 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
+                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1082,6 +1095,7 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
+                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1168,6 +1182,7 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
+                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1251,6 +1266,7 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
+                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -3523,7 +3539,6 @@ $(document).ready(function() {
         $(".preview_post").find($('.prv_' + section)).addClass("show");
         $(".preview_post").find($('.prv_' + section)).removeClass("d-none");
     })
-
 });
 
 
