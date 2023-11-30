@@ -788,6 +788,8 @@ padding-right:10px;
                 <form action="{{url('create_post')}}" class="" method="post" enctype="multipart/form-data"
                     id="post_form">
                     @csrf
+                    <input type="hidden" name="suggestionsMap" id="suggestionsMapInput">
+
                     <section class="wizard-section" style="display: none">
                         <div class="row no-gutters">
 
@@ -839,7 +841,7 @@ padding-right:10px;
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
-                                                    class="form-control wizard-required emojiarea mention" data-id="youpost_error"
+                                                    class="form-control wizard-required emojiarea" data-id="youpost_error"
                                                     placeholder="Write your universal content...">{{old('youpost_content')}}</textarea>
                                                     <p id="youpost_char_count" class="charCount charCountYou"></p>
                                                 <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
@@ -3035,7 +3037,7 @@ padding-right:10px;
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header success_modal_header ">
-                <h3 class="modal-title" id="exampleModalLabel">Report A Bug</h3>
+                <h3 class="modal-title" id="exampleModalLabel">Give Feed Back</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body pb-0 mb">
@@ -3061,7 +3063,7 @@ padding-right:10px;
                         </div>
                         {{-- <input type="file" name="image" accept="image/*"> --}}
                         <div class="my-4 text-center">
-                            <button type="submit" class="btn btn-primary">Send Report</button>
+                            <button type="submit" class="btn btn-primary">Send Feed Back</button>
                         </div>
                     </form>
                 </div>
@@ -3283,10 +3285,12 @@ $(document).on('click', '.BackBtnCS', function(){
 $(document).ready(function() {
     $('.mention').each(function() {
         const textarea = $(this);
+       
         const dropdown = textarea.parent().find('.dropdown-content-search');
         let currentSearchString = '';
         var delayTimer;
         textarea.on('input', function() {
+            const textAreaid=   $(this).attr('id');
             const text = textarea.val();
             const atIndex = text.lastIndexOf('@');
            
@@ -3307,29 +3311,23 @@ $(document).ready(function() {
                 $.ajax({
                 url: 'get-suggestion', // Replace with the actual URL
                 method: 'POST',
-                data: { searchQuery: searchString },
+                data: { searchQuery: searchString,textAreaid:textAreaid },
                 success: function(response) {
                     
                     
-                    const suggestionsArray = response.suggestions;
+                    const suggestionsObject = response.suggestions;
 
-                        if (suggestionsArray && suggestionsArray.length > 0) {
-                            const dropdownHTML = suggestionsArray.map(suggestion =>
-                                `<div class="suggestion">${suggestion}</div>`).join('');
-                            dropdown.html(dropdownHTML);
-                             // Position the dropdown relative to the textarea's offset
-                             const textareaOffset = textarea.offset();
-                            dropdown.css({
-                                'display': 'block',
-                                'position': 'absolute',
-                                'top': textareaOffset.top + textarea.outerHeight(),
-                                'left': textareaOffset.left,
-                                'width': 'auto'
-                            });
-                        } else {
-                            dropdown.css('display', 'none');
-                        }
-                                    
+                    if (suggestionsObject && Object.keys(suggestionsObject).length > 0) {
+                        const dropdownHTML = Object.entries(suggestionsObject).map(([id, name]) =>
+                            `<div class="suggestion" data-id="${id}" data-type = "${textAreaid}">${name}</div>`).join('');
+                        dropdown.html(dropdownHTML);
+                        dropdown.css({
+                            'display': 'block',
+                        });
+                    } else {
+                        dropdown.css('display', 'none');
+                    }
+                                                        
                 },
                 error: function(error) {
                     console.error(error);
@@ -3361,16 +3359,24 @@ $(document).ready(function() {
     $('.dropdown-content-search').on('click', '.suggestion', function() {
 
         const suggestionText = $(this).text();
+        const suggestionId = $(this).data('id'); // Assuming you have set data-id attribute
+        const suggestionType = $(this).data('type'); // Assuming you have set data-id attribute
+
         const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
         const currentText = textarea.val();
         const atIndex = currentText.lastIndexOf('@');
 
-        const suggestionWithStyle = '<span style="color: blue;">' + suggestionText + '</span>';
-
-const newText = currentText.slice(0, atIndex) + suggestionWithStyle + ' ' + currentText.slice(
-    atIndex + suggestionText.length + 1);
+        const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(
+            atIndex + suggestionText.length + 1);
         textarea.val(newText);
         $(this).parent().css('display', 'none');
+        suggestionsMap[suggestionText] = {
+            id: suggestionId,
+            type: suggestionType
+        };      
+        // console.log(suggestionsMap);
+            
+
     });
 });
 </script>

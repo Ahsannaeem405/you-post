@@ -3,9 +3,16 @@
 @foreach ($posts as $post)
 
 @php
-$publishedAt = \Carbon\Carbon::parse($post->posted_at);
-$timeOnly = $publishedAt->format('h:i A');
+    $publishedAt = \Carbon\Carbon::parse($post->posted_at);
+    $timeOnly = $publishedAt->format('h:i A');
 
+    if ($post->suggestoins) {
+        $suggestionsMap = json_decode($post->suggestoins, true);
+
+        foreach ($suggestionsMap as $name => $data) {
+            $post->content = str_replace($name, "@[{$data['id']}]", $post->content);
+        }
+    }
 @endphp
 
 

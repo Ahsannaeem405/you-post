@@ -547,7 +547,7 @@
                          data-posted_at="{{ $post->posted_at }}"                       
                          data-bs-toggle="modal" 
                          data-bs-target="#SchedulePost">
-                            Edit Post
+                            Reschedule Post
                         </a>
 
                                     

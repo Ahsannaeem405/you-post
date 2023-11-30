@@ -348,7 +348,20 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-        //    dd( $req->all());
+        // dd($req->all());
+          
+        // $testConent = '';
+
+        //    $suggestionsMap = json_decode(request()->input('suggestionsMap'), true);
+        //    $youpostContent = $req->input('facebook_content');
+
+        //    foreach ($suggestionsMap as $name => $id) {
+        //     $youpostContent = str_replace($name, "@[$id]", $youpostContent);
+        // }
+    
+        // $testConent = $youpostContent;
+ 
+
         $platforms = auth()->user()->account->platforms;
         // dd($platforms);
         if (count($platforms) == 0) {
@@ -433,21 +446,39 @@ class UserController extends Controller
 
         //****************posting code****************//
         $group_id = Str::random(40);
+        $suggestionsMap = json_decode($req->input('suggestionsMap'), true);
+        // dd($suggestionsMap);
         foreach ($platforms as $i => $platform) {
-            $content = Str::lower($platforms[$i]) . '_content';
+
+            $content = Str::lower($platforms[$i]) . '_content';          
             $tag = Str::lower($platforms[$i]) . '_tag';
-
-
             $mediatype = 'media_type_' . Str::lower($platforms[$i]);
             $media = null;
-            if ($platforms[$i] == 'Facebook')
-                $media = implode(',', $mediaDatafb);
-            elseif ($platforms[$i] == 'Instagram')
+            if ($platforms[$i] == 'Facebook'){
+                $media = implode(',', $mediaDatafb);            
+                $content = $req->$content ;
+                if (!empty($suggestionsMap)) {
+                foreach ($suggestionsMap as $name => $data) {
+                    $id = $data['id'];
+                    $type = $data['type'];            
+                    if ($type === 'facebook_content') {                       
+                        $content = str_replace($name, "@[$id]", $content);
+                    }
+                }               
+            }
+         }
+            elseif ($platforms[$i] == 'Instagram'){
                 $media = implode(',', $mediaDataInsta);
-            elseif ($platforms[$i] == 'Linkedin')
+                $content = $req->$content ;
+            }
+            elseif ($platforms[$i] == 'Linkedin'){
                 $media = implode(',', $mediaDataLinkedin);
-            elseif ($platforms[$i] == 'Twitter')
+                $content = $req->$content ;
+            }
+            elseif ($platforms[$i] == 'Twitter'){
                 $media = implode(',', $mediaDataTw);
+                $content = $req->$content ;
+            }
 
             $post = new Post();
 
@@ -458,13 +489,14 @@ class UserController extends Controller
             }
             $post->account_id = auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
-            $post->content = $req->$content;
+            $post->content =$content;
             $post->tag = $req->$tag ? '#' . implode(' #', $req->$tag) : '';
             $post->posted_at_moment = $req->posttime;
             $post->posted_at = date_format(new DateTime($req->time), "Y-m-d H:i");
             $post->plateform = $platforms[$i];
             $post->timezone = $req->timezone;
             $post->media = $media;
+            $post->suggestoins =json_encode($suggestionsMap);
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
             // dd( $post->content);
@@ -561,9 +593,11 @@ class UserController extends Controller
     }
     public function get_suggestoins(Request $request)
     {
+       
         $searchQuery = $request->input('searchQuery');
+        $textAreaid = $request->input('textAreaid');
         $post = new Post();
-        $suggestions = $post->getSuggestions($searchQuery);
+        $suggestions = $post->getSuggestions($searchQuery,$textAreaid);
    
         return response()->json(['suggestions' => $suggestions]);
     }
