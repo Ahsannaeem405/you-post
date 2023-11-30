@@ -3326,10 +3326,8 @@ $(document).ready(function() {
         const currentText = textarea.val();
         const atIndex = currentText.lastIndexOf('@');
 
-        const suggestionWithStyle = '<span style="color: blue;">' + suggestionText + '</span>';
-
-const newText = currentText.slice(0, atIndex) + suggestionWithStyle + ' ' + currentText.slice(
-    atIndex + suggestionText.length + 1);
+        const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(
+            atIndex + suggestionText.length + 1);
         textarea.val(newText);
         $(this).parent().css('display', 'none');
     });
