@@ -3254,15 +3254,19 @@ $(document).ready(function() {
         const textarea = $(this);
         const dropdown = textarea.parent().find('.dropdown-content-search');
         let currentSearchString = '';
-
+        var delayTimer;
         textarea.on('input', function() {
             const text = textarea.val();
             const atIndex = text.lastIndexOf('@');
+           
+            clearTimeout(delayTimer);
+
+
             if (atIndex !== -1) {
 
                 const searchString = text.slice(atIndex + 1);
                 currentSearchString = searchString;
-
+                delayTimer = setTimeout(function() {
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -3292,6 +3296,7 @@ $(document).ready(function() {
                     console.error(error);
                 }
             });
+        }, 500);
             } else {
                 dropdown.css('display', 'none');
             }
@@ -3321,8 +3326,10 @@ $(document).ready(function() {
         const currentText = textarea.val();
         const atIndex = currentText.lastIndexOf('@');
 
-        const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(
-            atIndex + suggestionText.length + 1);
+        const suggestionWithStyle = '<span style="color: blue;">' + suggestionText + '</span>';
+
+const newText = currentText.slice(0, atIndex) + suggestionWithStyle + ' ' + currentText.slice(
+    atIndex + suggestionText.length + 1);
         textarea.val(newText);
         $(this).parent().css('display', 'none');
     });
