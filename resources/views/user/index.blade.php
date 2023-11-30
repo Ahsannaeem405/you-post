@@ -431,13 +431,28 @@ padding-right:10px;
     font-size: 12px;
 }
 .dropdown-content-search{
-    height: 300px;
+    height: fit-content;
     overflow: scroll;
     text-align: left;
-    padding: 10px;
     border-radius: 10px;
     width: 100%;
-    border: 1px solid #000;
+    border: 1px solid transparent;
+}
+.dropdown-content-search div{
+    font-size:16px;
+    font-weight:600;
+    color:#050505;
+    padding: 15px;
+    font-family:inherit;
+    letter-spacing:normal;
+    line-height:30px;
+}
+.dropdown-content-search div:hover{
+    border-radius:9px;
+    background:#f2f2f2;
+}
+.dropdown-content-search div:first-child {
+    background-color: #f2f2f2;
 }
 
 @media screen and (max-width: 768px) {
@@ -3286,7 +3301,15 @@ $(document).ready(function() {
                             const dropdownHTML = suggestionsArray.map(suggestion =>
                                 `<div class="suggestion">${suggestion}</div>`).join('');
                             dropdown.html(dropdownHTML);
-                            dropdown.css('display', 'block');
+                             // Position the dropdown relative to the textarea's offset
+                             const textareaOffset = textarea.offset();
+                            dropdown.css({
+                                'display': 'block',
+                                'position': 'absolute',
+                                'top': textareaOffset.top + textarea.outerHeight(),
+                                'left': textareaOffset.left,
+                                'width': 'auto'
+                            });
                         } else {
                             dropdown.css('display', 'none');
                         }
