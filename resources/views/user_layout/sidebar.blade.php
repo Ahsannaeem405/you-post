@@ -665,8 +665,8 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink_test"><i class="fa-solid fa-virus bxs-bug icon"></i>
-                <span class="text nav-text">Report a bug</span></a></li>
+                <li><a href="javascript:void(0)" id="bugReportLink_test"> <i class="fa-solid icon fa-bullhorn fa-2xl"></i>
+                     <span class="text nav-text">Give Feed Back</span></a></li>
 
 
                 <li>
@@ -814,7 +814,7 @@ body.dark .home .text {
                             class="text nav-text">Support</span></a></li>
 
                 <!-- <li class="nav-link">
-                    <a href="#">
+                    <a href="#"Fr>
                         <i class='bx bx-heart icon'></i>
                         <span class="text nav-text">Likes</span>
                     </a>
@@ -828,10 +828,10 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink"><i class="fa-solid fa-virus bxs-bug icon"></i>
-                <span class="text nav-text">Report a bug</span></a></li>
+                <li><a href="javascript:void(0)" id="bugReportLink"><i class="fa-solid icon fa-bullhorn fa-2xl"></i>
+                <span class="text nav-text">Give Feed Back</span></a></li>
 
-
+                <!-- <i class="fa-solid fa-virus bxs-bug icon"> -->
                 <li>
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">

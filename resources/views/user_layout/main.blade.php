@@ -128,6 +128,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
 <script>
+        const suggestionsMap = {}; 
+
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;
     var today = moment().format('YYYY-MM-DD');

@@ -181,9 +181,10 @@ class Post extends Model
     }
 
 
-    public function getSuggestions($searchQuery)
+    public function getSuggestions($searchQuery,$textAreaid)
      {
-                    $accessToken = auth()->user()->account->fb_access_token;
+        if($textAreaid == 'facebook_content'){
+            $accessToken = auth()->user()->account->fb_access_token;
             try {
                 $response = Http::get("https://graph.facebook.com/v13.0/pages/search", [
                     'q' => $searchQuery,
@@ -192,12 +193,13 @@ class Post extends Model
                 ]);
 
                 $searchResults = $response->json();
-                $names = collect($searchResults['data'])->pluck('name')->toArray();               
+                $names = collect($searchResults['data'])->pluck('name','id')->toArray();               
                 return $names;
             } catch (\Exception $e) {
                 // Handle the exception, log the error, or return an error response.
                 return $e->getMessage();
             }
+        }
     }
 
 

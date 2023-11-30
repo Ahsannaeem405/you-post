@@ -432,8 +432,14 @@ $(document).ready(function () {
         });
 
         $("#post_form").submit(function (event) {
+            console.log(suggestionsMap);
+            $('#suggestionsMapInput').val(JSON.stringify(suggestionsMap));
+
+
             $("#posted_now").prop("disabled", true);
             event.preventDefault();
+           
+
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
             var twitter_content = $("#twitter_content").val();
