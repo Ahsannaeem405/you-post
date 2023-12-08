@@ -760,6 +760,23 @@ padding-right:10px;
 .flex_myicon{
     flex-wrap:wrap;
 }
+.emoji_show.emojionearea-inline{
+    background:#b7e9ff;
+    border-radius:30px;
+    border:none;
+    box-shadow:none;
+}
+/* .icon_buttons  ul .emojionearea {
+    position: absolute !important;
+    top: 22%;
+    right: 2%;
+    width: 32px;
+    border:none;
+    -webkit-box-shadow:none; 
+     box-shadow:none;
+     background:none;
+
+} */
 
 /* .pick_date_from_calendar .calendar .pignose-calendar .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-date{
       opacity: 0.5;
