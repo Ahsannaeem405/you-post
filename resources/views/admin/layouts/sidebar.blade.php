@@ -209,7 +209,12 @@ button#removeStylesButton {
 
            <!-- <h2 style='padding: 10px 32px 0;font-weight: 900;'>Admin</h2> -->
             <li class=" nav-item @yield('dashboard')">
-                <a href="{{url('/')}}">
+                <a href="{{url('admin/dashboard')}}">
+                    <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
+                <span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+            </li>
+            <li class=" nav-item @yield('users')">
+                <a href="{{url('admin/users')}}">
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Users</span></a>
             </li>

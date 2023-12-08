@@ -314,7 +314,7 @@ div#exampleModal {
         <div class="navbar-container content">
             <div class="navbar-collapse" id="navbar-mobile">
                 <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
-                    <h1 class='project-heading' style='font-weight: 600;'>Users</h1>
+                    <h1 class='project-heading' style='font-weight: 600;'></h1>
                 </div>
                 <ul class="nav navbar-nav float-right">
 

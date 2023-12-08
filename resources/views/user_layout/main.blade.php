@@ -872,10 +872,11 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 }
 
             function updateDiv($obj) {
-
+// alert(element.innerHTML);
                 $('#file_error_all').addClass('d-none');
                 var textareaAttr = $($obj).attr("attr_of_text_area");
                 var inputText = $($obj).val();
+               
                 var textareaId =$();
                 var lart= inputText.slice(-1);
                 // if(lart.trim() == ''){
@@ -917,8 +918,25 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 charCountElement.text(charCount);
                 var maxChars = 63206;
                 charCountElement.text(charCount + '/' + maxChars);
+
                     var formattedText = inputText.replace(/\n/g, '<br>');
+
+                    for (var name in suggestionsMap) {
+                        if (suggestionsMap.hasOwnProperty(name)) {
+                            var data = suggestionsMap[name];
+                            var id = data.id;
+                            var type = data.type;
+
+                            if (type === 'myDiv') {
+                                // Replace matched text and change text color to blue
+                                formattedText = formattedText.replace(new RegExp(name, 'g'), '<span style="color: blue;">' + name + '</span>');
+                            }
+                        }
+                    }
+
                    $("#mypostresult_fb").html(formattedText );
+
+
                 // $("#mypostresult_fb").empty().append(inputText) ;
                  $("#mynameresult").empty().append(new_str) ;
                 var selectedValues = $('#facebook_tag').val();

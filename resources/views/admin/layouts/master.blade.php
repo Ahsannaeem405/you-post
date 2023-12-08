@@ -62,6 +62,11 @@
   <!-- Include jQuery UI library for draggable and resizable functionalities -->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+  <!-- new files -->
+  
+
+  <!-- end new files -->
+
 </head>
 <!-- END: Head-->
 

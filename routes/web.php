@@ -54,13 +54,17 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 // ///////////////////////social login/////////////////////////
 
 
-Route::group(['middleware' => ['auth','role']], function () {     
+Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {     
 
-    Route::get('admin/dashbaord', [AdminControoler::class, 'dashbaord'])->name('admin.dashboard');
-    Route::post('admin/adduser', [AdminControoler::class, 'addUser'])->name('admin.user');
-    Route::get('admin/deleteuser/{user}', [AdminControoler::class, 'deleteUser'])->name('admin.delete');
-    Route::get('admin/get-user/{id}', [AdminControoler::class, 'getUserdData'])->name('admin.get-user');
-    Route:: get('admin/update-user/', [AdminControoler::class, 'updateUser']);
+    Route::get('dashboard', [AdminControoler::class, 'dashbaord'])->name('admin.dashboard');
+    Route::get('users', [AdminControoler::class, 'show_users'])->name('admin.showusers');
+    Route::post('adduser', [AdminControoler::class, 'addUser'])->name('admin.user');
+    Route::get('deleteuser/{user}', [AdminControoler::class, 'deleteUser'])->name('admin.delete');
+    Route::get('get-user/{id}', [AdminControoler::class, 'getUserdData'])->name('admin.get-user');
+    Route::get('get-accounts/{id}', [AdminControoler::class, 'getUserAccounts'])->name('admin.get-accounts');
+    Route::get('get-posts/{id}', [AdminControoler::class, 'getAccountPosts'])->name('admin.get-posts');
+
+    Route:: get('update-user/', [AdminControoler::class, 'updateUser']);
 
 });
 

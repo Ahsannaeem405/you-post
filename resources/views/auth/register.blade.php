@@ -1,6 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+
+<!-- Add this script to detect and send the timezone -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the user's timezone
+        var userTimezone = moment.tz.guess();
+
+        // Set the timezone value in a hidden input field in your form
+        document.getElementById('timezone-input').value = userTimezone;
+    });
+</script>
+
 <div class="LoginWrap_Page RegisterPage_Wrap">
     <div class="container">
         <div class="row justify-content-center">
@@ -33,6 +47,8 @@
                             <img src="{{ asset('images/YouPost_Logo.png') }}" alt="" class="Reg_Logo">
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
+                                <input type="hidden" name="timezone" id="timezone-input" value="">
+
                                 <div class="">
                                     <h4 class="mb-1">Create account</h3>
                                     <p>For business, band or celebrity.</p>

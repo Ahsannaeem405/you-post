@@ -17,6 +17,9 @@ padding-right:10px;
     margin: auto;
 }
 
+.suggestion_clr {
+   color:blue;
+}
 #image_div_ins,
 #image_div_linked {
     max-width: 270px;
@@ -923,7 +926,7 @@ padding-right:10px;
                                             <div class="form-group emoji_parent emoji_parent2">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     name="facebook_content" id="facebook_content" cols="30" rows="10" maxlength="63206"
-                                                    class="form-control wizard-required emojiarea mention"
+                                                    class="form-control wizard-required emojiarea"
                                                     data-id="facebok_error"
                                                     placeholder="Write your post...">{{old('facebook_content')}}</textarea>
                                                     <p id="fb_char_count" class="charCount charCountfb"></p>
@@ -931,6 +934,8 @@ padding-right:10px;
                                                         class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
+                                                <!-- <div id="myDiv" class ="div_text testing_it" contenteditable="true"></div> -->
+
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
@@ -3266,7 +3271,90 @@ $(document).on('click', '.BackBtnCS', function(){
 </script>
 <!-- sidebar close btn -->
 <script>
-$(document).ready(function() {
+    $(document).ready(function(){
+            // Bind the input event on the div
+            $("#myDiv").on("input", function(){
+                // Get the current content of the div
+                var divContent = $(this).text();
+                
+                // Update the value of the textarea with the div content
+                // new code
+                // end new code
+                $("#facebook_content").val(divContent);
+                $("#facebook_content").trigger("keyup");
+               
+
+            });
+        
+
+
+
+        $('.div_text').each(function() {
+        const textarea = $(this);
+       
+        const dropdown = textarea.parent().find('.dropdown-content-search');
+        let currentSearchString = '';
+        var delayTimer;
+        textarea.on('input', function() {
+            const textAreaid=   $(this).attr('id');
+            const text = textarea.text();
+            const atIndex = text.lastIndexOf('@');
+            counter = true;
+            clearTimeout(delayTimer);
+
+
+            if (atIndex !== -1) {
+
+                const searchString = text.slice(atIndex + 1);
+                currentSearchString = searchString;
+                if (searchString.includes(' ')) {
+                counter = false;
+                dropdown.css('display', 'none');
+                return;
+            }
+                            delayTimer = setTimeout(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                url: 'get-suggestion', // Replace with the actual URL
+                method: 'POST',
+                data: { searchQuery: searchString,textAreaid:textAreaid },
+                success: function(response) {
+                    
+                    
+                    const suggestionsObject = response.suggestions;
+
+                    if (suggestionsObject && Object.keys(suggestionsObject).length > 0) {
+                        const dropdownHTML = Object.entries(suggestionsObject).map(([id, name]) =>
+                            `<div class="suggestion" data-id="${id}" data-type = "${textAreaid}">${name}</div>`).join('');
+                        dropdown.html(dropdownHTML);
+                        dropdown.css({
+                            'display': 'block',
+                        });
+                    } else {
+                        dropdown.css('display', 'none');
+                    }
+                                                        
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }, 500);
+            } else {
+                dropdown.css('display', 'none');
+            }
+        });
+
+        // Rest of your code...
+    });
+
+
+
     $('.mention').each(function() {
         const textarea = $(this);
        
@@ -3351,6 +3439,15 @@ $(document).ready(function() {
         const currentText = textarea.val();
         const atIndex = currentText.lastIndexOf('@');
         const coloredSuggestionText = `<span style='color: blue;'>${suggestionText}</span>`;
+        // new code
+        const textarea_div = $(this).closest('.emoji_parent').find('.testing_it');
+        const textArea_id_div= textarea_div.attr('id');
+        const currentText_div = textarea_div.text();
+        const atIndex_div = currentText_div.lastIndexOf('@');
+
+        
+
+        // new code end
 
         const newText = currentText.slice(0, atIndex) + coloredSuggestionText + ' ' + currentText.slice(
             atIndex + suggestionText.length + 1);            
@@ -3359,17 +3456,44 @@ $(document).ready(function() {
         // const coloredSuggestionText = `<span style='color: blue;'>${suggestionText}</span>`;
         $('#' + textArea_id).trigger('keyup');    
                     var currentValue = $('#' + textArea_id).val();
-
                     var updatedValue = currentValue.replace(/<span[^>]*>|<\/span>/g, '');
-
                     $('#' + textArea_id).val(updatedValue);
+
+
+                    
                             
                             $(this).parent().css('display', 'none');
                             suggestionsMap[suggestionText] = {
                                 id: suggestionId,
                                 type: suggestionType
                             };      
-                                
+                           console.log(suggestionsMap);     
+
+                        //    new cocde
+                const coloredSuggestionText_div = `<span class="suggestion suggestion_clr" >${suggestionText}</span>`;
+                const newText_div = currentText.slice(0, atIndex_div) + coloredSuggestionText_div + ' ' + currentText_div.slice(
+                    atIndex_div + suggestionText.length + 1);            
+                    textarea_div.html(newText_div);
+
+
+
+                           var formattedText =  textarea_div.text();
+
+                            for (var name in suggestionsMap) {
+                                if (suggestionsMap.hasOwnProperty(name)) {
+                                    var data = suggestionsMap[name];
+                                    var id = data.id;
+                                    var type = data.type;
+
+                                    if (type === 'myDiv') {
+                                        // Replace matched text and change text color to blue
+                                        formattedText = formattedText.replace(new RegExp(name, 'g'), '<span class="suggestion_clr" contenteditable=false>' + name + '</span>');
+                                    }
+                                }
+                            }
+                            textarea_div.html(formattedText);
+
+                        // new code ernd
 
                         });
 });

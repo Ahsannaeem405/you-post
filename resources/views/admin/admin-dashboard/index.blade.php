@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('dashboard')
+@section('users')
 active
 @endsection
 @section('Main-Container')
@@ -357,6 +357,85 @@ li a { text-decoration: none !important; }
     border: none;
 }
 </style>
+<style>
+    .post-card {
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+
+    .post-card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+    }
+
+    .timer-style {
+        font-size: 16px;
+    }
+
+    .profile-icon img {
+        height: 24px;
+        width: 24px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .post-content h5 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .post-content p {
+        margin: 10px 0;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .published-post {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .published-post img {
+        margin-right: 5px;
+    }
+
+    .approved {
+        margin-left: 5px;
+    }
+
+    .post-container {
+        max-height: 100px; /* Set a maximum height for the container */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    .post-card {
+        /* Existing styles for the post card */
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s;
+        cursor: pointer;
+        margin-bottom: 10px; /* Add margin between posts */
+    }
+</style>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
     <div class="content-wrapper">
@@ -368,7 +447,7 @@ li a { text-decoration: none !important; }
             <section id="dashboard-analytics">
                 <div class="row">
                     <div class="col-12 main-heading">
-                        <h2>Recent</h2>
+                        <!-- <h2>Recent</h2> -->
                     </div>
                 </div>
                 <div class="container">
@@ -383,6 +462,8 @@ li a { text-decoration: none !important; }
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Accounts</th>
+                                        <th>No of Accounts</th>
                                         <th>Action</th>
                                    </tr>
                                     @foreach($users as $user)
@@ -394,6 +475,13 @@ li a { text-decoration: none !important; }
 
                                             <td>
                                                 {{$user->email}}
+                                            </td>
+                                            <td>
+                                            <a href="#" class="dropdown-item show-link" data-toggle="modal" data-target="#acModal" data-record-id="{{ $user->id }}">
+                                                                                            Show</a>
+                                            </td>
+                                            <td>
+                                            {{ $user->account_list_count }}
                                             </td>
                                             <td>
                                                 <div class="dropdown">
@@ -501,6 +589,44 @@ li a { text-decoration: none !important; }
                     <!-- Add more form fields as needed -->
                     <button type="submit" class="btn btn-primary" id="udpatebtn">Update</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- show a.c modal -->
+<div class="modal fade acModal" id="acModal" tabindex="-1" role="dialog" aria-labelledby="acModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="acModalLabel">User Accounts</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body body-ac">
+             <p style="color:red" id="errorText"></p>
+
+                <!-- Form to edit the record -->
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- post view modal -->
+<div class="modal fade postModal" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="postModalLabel">Posts</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body body-post calendarmain">
+            <p style="color:red" id="errorText"></p>
+
+                <!-- Form to edit the record -->
+             
             </div>
         </div>
     </div>
@@ -617,6 +743,28 @@ Copy code
             }
         });
     });
+
+    $('.show-link').click(function(e) {      
+      
+        e.preventDefault();
+      
+        // Get the record ID from the data attribute
+        var recordId = $(this).data('record-id');
+
+        // Fetch record data using AJAX
+        $.ajax({
+            url: '/admin/get-accounts/' + recordId, // Define a route to fetch record data
+            method: 'GET',
+            success: function(data) {
+                $('.body-ac').empty().append(data);
+
+            }
+        });
+    });
+
+
+   
+
 
     // Handle form submission
     $('#editForm').submit(function(e) {

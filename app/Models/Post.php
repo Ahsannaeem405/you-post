@@ -183,7 +183,7 @@ class Post extends Model
 
     public function getSuggestions($searchQuery,$textAreaid)
      {
-        if($textAreaid == 'facebook_content'){
+        if($textAreaid == 'myDiv'){
             $accessToken = auth()->user()->account->fb_access_token;
             try {
                 $response = Http::get("https://graph.facebook.com/v13.0/pages/search", [

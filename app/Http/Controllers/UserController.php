@@ -131,6 +131,8 @@ class UserController extends Controller
         \Mail::to($recipients)->send(new \App\Mail\BugMail($details));
         return redirect()->back()->with('message', 'Email sent successfully!');
     }
+  
+   
 
     public function getUpdatedPosts()
     {
@@ -636,7 +638,7 @@ class UserController extends Controller
     }
     public function get_suggestoins(Request $request)
     {
-       
+    //    dd( $request->all());
         $searchQuery = $request->input('searchQuery');
         $textAreaid = $request->input('textAreaid');
         $post = new Post();

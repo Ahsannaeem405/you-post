@@ -25,7 +25,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TwitterService::class, function () {
             return new TwitterService();
         });
+        require_once app_path('Helpers/helpers.php');
+    
     }
+
+    
 
     /**
      * Bootstrap any application services.

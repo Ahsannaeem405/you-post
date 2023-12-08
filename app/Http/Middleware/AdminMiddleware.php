@@ -18,15 +18,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)    {
                           
-           
-        if (auth()->user()->role=='admin') {
-                
-             return $next($request);
-         }
-         else{
-            return redirect('login')->with('error','you are not allowed in admin section');
-        }
+        if (Auth::user() &&  Auth::user()->role == 'admin') {
+            return $next($request);
+       }
 
+       return redirect('home')->with('error','You have not admin access');
     
 }
 

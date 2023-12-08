@@ -6,6 +6,8 @@ use App\Http\Requests\AddUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Account;
+
 
 
 use Illuminate\Http\Request;
@@ -20,15 +22,30 @@ class AdminControoler extends Controller
     public function dashbaord()
     {
        
-        $users = $this->user->whereRole('user')->OrderBy('id', 'desc')->get();
+        // $users = $this->user->whereRole('user')->OrderBy('id', 'desc')->get();
        
+        return view('admin.admin-dashboard.dashboard');
+
+    }
+
+    public function show_users()
+    {
+       
+        $users = $this->user->whereRole('user')->withCount('accountList')->OrderBy('id', 'desc')->get();
+            //  dd($users);
         return view('admin.admin-dashboard.index',compact('users'));
 
     }
 
+
     public function addUser(AddUserRequest $request)
     {
         
+         $validator = Validator::make($request->all(), [
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -53,6 +70,45 @@ class AdminControoler extends Controller
        
 
     }
+
+
+    public function getUserAccounts($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+    
+        $accounts = $user->accountList()->withCount('posts')->get();; // Assuming you have a relationship named 'accounts'
+        $platformLogos = [
+            'Facebook' => 'fbposticon.png',
+            'Twitter' => 'twitterpost.png',
+            'Linkedin' => 'linkpost.png',
+            'Instagram' => 'instagram.png',           
+        ];
+    
+        return view('admin.ajax.get-accounts', compact('accounts','platformLogos'));
+       
+
+    }
+    public function getAccountPosts($id)
+    {
+       
+        $account = Account::find($id);
+       
+        if (!$account) {
+            return response()->json(['message' => 'Account not found'], 404);
+        }
+    
+        $posts = $account->posts; 
+     
+    
+        return view('admin.ajax.get-posts', compact('posts','account'));
+       
+
+    }
+
     public function updateUser(Request $request)
 {
    
