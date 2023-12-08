@@ -473,64 +473,26 @@ $(document).ready(function () {
                 $('#file_error_all').attr('data-id', data_id);
                
             } else {
-               
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
-              
                 $(this).unbind('submit').submit();
-               
-               
-
-            }
-                
-        });
-        
+            }           
+        });    
     });
-
-
-    //
-    
     $(document).on('click', '.open_emoji', function () {
-        // $('.emoji_parent > span').click(); 
-        if (!$(this).data('click-count')) {
-            $(this).data('click-count', 1);
-        $(".emoji_show").emojioneArea({
-            pickerPosition:"bottom"
-        });
-        }
-        else{
-            if ($(this).data('click-count') % 2 === 1) {
-                $(".emoji_show").css("display", "none");
-            }
-            else{
-                $(".emoji_show").emojioneArea({
-                    pickerPosition:"bottom"
-                }); 
-            }
-            $(this).data('click-count', $(this).data('click-count') + 1);
-        }
+        $('.emoji_parent > span').click();
     });
-
-
-
-
     $(document).ready(function () {
         $('.emoji_parent div span').on('click', function () {
-
             var parentDiv = $(this).closest('.emoji_parent').find('textarea').attr('id');
             var emoji = $(this).text();
-
             if (parentDiv == 'youpost_content') {
-
                 $('#' + parentDiv).trigger('keyup');
-
                 $("#mypostresult_fb").append(emoji);
                 $("#mypostresult_insta").append(emoji);
                 $("#mypostresult_twitter").append(emoji);
                 $("#mypostresult_linkedin").append(emoji);
-
                 var textareaIds = ['#facebook_content', '#instagram_content', '#twitter_content', '#linkedin_content'];
-
                 // Loop through the textarea IDs and append the emoji to their content
                 textareaIds.forEach(function (textareaId) {
                     var currentContent = $(textareaId).val();
@@ -544,7 +506,6 @@ $(document).ready(function () {
             }
         });
     });
-
     $(document).on('click', '.myaccounts', function () {
         $('#myaccounts_modal').modal('show');
     });

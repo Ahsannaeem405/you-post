@@ -757,7 +757,13 @@ padding-right:10px;
 .flex_myicon{
     flex-wrap:wrap;
 }
-.icon_buttons  ul .emojionearea {
+.emoji_show.emojionearea-inline{
+    background:#b7e9ff;
+    border-radius:30px;
+    border:none;
+    box-shadow:none;
+}
+/* .icon_buttons  ul .emojionearea {
     position: absolute !important;
     top: 22%;
     right: 2%;
@@ -767,7 +773,7 @@ padding-right:10px;
      box-shadow:none;
      background:none;
 
-}
+} */
 
 /* .pick_date_from_calendar .calendar .pignose-calendar .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-date{
       opacity: 0.5;
@@ -873,7 +879,7 @@ padding-right:10px;
                                                             </a>
                                                         </li>
                                                         <li>
-                                                        <input type="hidden" class="emoji_show">
+                                                        <input type="hidden" class="emoji_show" id="showemj">
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
