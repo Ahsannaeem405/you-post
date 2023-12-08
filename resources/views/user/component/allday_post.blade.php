@@ -6,13 +6,7 @@
     $publishedAt = \Carbon\Carbon::parse($post->posted_at);
     $timeOnly = $publishedAt->format('h:i A');
 
-    if ($post->suggestoins) {
-        $suggestionsMap = json_decode($post->suggestoins, true);
-
-        foreach ($suggestionsMap as $name => $data) {
-            $post->content = str_replace($name, "@[{$data['id']}]", $post->content);
-        }
-    }
+   
 @endphp
 
 
@@ -60,7 +54,9 @@
                     <h5 class="m-0"> {{ auth()->user()->account->link_page_name }}</h5>
                     @endif
                 </div>
-                <p class="m-0">{!! nl2br(e($post->content)) !!}</p>
+                <!-- <p class="m-0">{!! nl2br(e($post->content)) !!}</p> -->
+                                <p class="m-0">{!! nl2br($post->content) !!}</p>
+
                 <div class="publishedpost mt-2">
                     <span>
                         <img src="{{ asset('images/approvodpost2.png') }}" alt="">

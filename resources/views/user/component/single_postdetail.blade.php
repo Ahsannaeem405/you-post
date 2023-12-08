@@ -56,7 +56,7 @@
                 </div>
                 <div class="DetailText">
                     <div class="short_text Mobcart_title">
-                        <span id="mypostresult_youpost" class="mypostresult">{!! nl2br(e($post->content)) !!}
+                        <span id="mypostresult_youpost" class="mypostresult">{!! nl2br($post->content) !!}
 </span>
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                     </div>
@@ -183,7 +183,7 @@
                 </div>
                 <div class="DetailText">
                     <div class="short_text Mobcart_title">
-                        <span id="mypostresult_youpost" class="mypostresult">{!! nl2br(e($post->content)) !!}</span>
+                        <span id="mypostresult_youpost" class="mypostresult">{!! nl2br($post->content) !!}</span>
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                     </div>
                 </div>
@@ -300,7 +300,7 @@
                 </div>
                 <div class="DetailText pb-2 sidebar_preview">
                     <div class="short_text Mobcart_title">
-                        <span id="mypostresult_youpost" class="mypostresult">{!! nl2br(e($post->content)) !!}</span>
+                        <span id="mypostresult_youpost" class="mypostresult">{!! nl2br($post->content) !!}</span>
                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                     </div>
                 </div>
@@ -490,7 +490,7 @@
                         </li>
                     </ul>
                 </div>
-                <span style="font-family:inherit; font-size: 12px;">{{$post->content}}</span>
+                <span style="font-family:inherit; font-size: 12px;">{!! nl2br($post->content) !!}</span>
                 {{-- <span id="show-button">See more</span> --}}
                 <div class="DetailText pt-0">
                     <div class="short_text Mobcart_title">

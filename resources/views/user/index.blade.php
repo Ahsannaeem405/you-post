@@ -879,12 +879,11 @@ padding-right:10px;
                                                             </a>
                                                         </li>
                                                         <li>
-                                                        <input type="hidden" class="emoji_show" id="showemj">
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
-                                                        </li> 
+                                                        </li>
                                                     </ul>
                                                 </div>
 
@@ -978,7 +977,6 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
-                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1103,7 +1101,6 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
-                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1190,7 +1187,6 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
-                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1274,7 +1270,6 @@ padding-right:10px;
                                                                 <img src="{{asset('')}}images/Emoji_Icon.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
-                                                            <input type="hidden" class="emoji_show">
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -3369,21 +3364,31 @@ $(document).ready(function() {
         const suggestionType = $(this).data('type'); // Assuming you have set data-id attribute
 
         const textarea = $(this).closest('.emoji_parent').find('.emojiarea');
+        const textArea_id= textarea.attr('id');
         const currentText = textarea.val();
         const atIndex = currentText.lastIndexOf('@');
+        const coloredSuggestionText = `<span style='color: blue;'>${suggestionText}</span>`;
 
-        const newText = currentText.slice(0, atIndex) + suggestionText + ' ' + currentText.slice(
-            atIndex + suggestionText.length + 1);
+        const newText = currentText.slice(0, atIndex) + coloredSuggestionText + ' ' + currentText.slice(
+            atIndex + suggestionText.length + 1);            
         textarea.val(newText);
-        $(this).parent().css('display', 'none');
-        suggestionsMap[suggestionText] = {
-            id: suggestionId,
-            type: suggestionType
-        };      
-        // console.log(suggestionsMap);
-            
 
-    });
+        // const coloredSuggestionText = `<span style='color: blue;'>${suggestionText}</span>`;
+        $('#' + textArea_id).trigger('keyup');    
+                    var currentValue = $('#' + textArea_id).val();
+
+                    var updatedValue = currentValue.replace(/<span[^>]*>|<\/span>/g, '');
+
+                    $('#' + textArea_id).val(updatedValue);
+                            
+                            $(this).parent().css('display', 'none');
+                            suggestionsMap[suggestionText] = {
+                                id: suggestionId,
+                                type: suggestionType
+                            };      
+                                
+
+                        });
 });
 </script>
 <script>
@@ -3551,6 +3556,7 @@ $(document).ready(function() {
         $(".preview_post").find($('.prv_' + section)).addClass("show");
         $(".preview_post").find($('.prv_' + section)).removeClass("d-none");
     })
+
 });
 
 

@@ -565,14 +565,38 @@ class UserController extends Controller
 
 // dd($request->all());
         $parsedDate = Carbon::parse($request->date);
-
         $posts = Post::with('user')->where('account_id', '=', $request->id)->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
+       
+        foreach ($posts as $post) {
+            $suggestionsMap = json_decode($post->suggestoins, true);
+    
+            if (!empty($suggestionsMap)) {
+                foreach ($suggestionsMap as $name => $data) {
+                    $id = $data['id'];
+                    $type = $data['type'];
+                    $replacement = "<span style='color: blue;'>$name</span>";
 
-
+                    if ($this->isPlatformValid($post->plateform) && $type === 'facebook_content') {
+                        $post->content = str_replace("@[$id]", $replacement, $post->content);
+                    }elseif($this->isPlatformValid($post->plateform) && $type === 'instagram_content'){
+                        $post->content = str_replace("@[$id]", $replacement, $post->content);
+                    }elseif($this->isPlatformValid($post->plateform) && $type === 'twitter_content'){
+                        $post->content = str_replace("@[$id]", $replacement, $post->content);
+                    }elseif($this->isPlatformValid($post->plateform) && $type === 'linkedin_content'){
+                        $post->content = str_replace("@[$id]", $replacement, $post->content);
+                    }
+                }
+            }
+        }
+            // dd($posts);
         return view('user.component.allday_post', compact('posts'));
     }
 
-
+    private function isPlatformValid($platform)
+    {
+        $validPlatforms = ['Facebook', 'Instagram', 'Twitter', 'Linkedin'];
+        return in_array($platform, $validPlatforms);
+    }
     public function get_single_detail(Request $request)
     {
 
@@ -580,7 +604,26 @@ class UserController extends Controller
         // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         // $platformsName = $platforms->pluck('plateform')->toArray();
         // $platforms = $platforms->groupBy('plateform');
+        $suggestionsMap = json_decode($post->suggestoins, true);       
 
+     
+        if (!empty($suggestionsMap)) {
+            foreach ($suggestionsMap as $name => $data) {
+                $id = $data['id'];
+                $type = $data['type'];
+                $replacement = "<span style='color: blue !important;'>$name</span>";
+
+                if ($this->isPlatformValid($post->plateform) && $type === 'facebook_content') {
+                    $post->content = str_replace("@[$id]", $replacement, $post->content);
+                }elseif($this->isPlatformValid($post->plateform) && $type === 'instagram_content'){
+                    $post->content = str_replace("@[$id]", $replacement, $post->content);
+                }elseif($this->isPlatformValid($post->plateform) && $type === 'twitter_content'){
+                    $post->content = str_replace("@[$id]", $replacement, $post->content);
+                }elseif($this->isPlatformValid($post->plateform) && $type === 'linkedin_content'){
+                    $post->content = str_replace("@[$id]", $replacement, $post->content);
+                }
+            }
+        }
         return view('user.component.single_postdetail', compact('post'));
     }
 

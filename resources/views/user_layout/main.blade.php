@@ -609,6 +609,21 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('.event_detail_parent').empty().append(response);
                 $('.calendarmain').empty().append(response);
 
+
+    //             $('.calendarmain > .fb-post').each(function() {
+                   
+    //     // Find each p inside the current div
+    //     $(this).find('.DetailText p').each(function() {
+            
+
+    //         $(this).find('span').each(function() {
+    //             alert("HTML con p:", $(this).html());
+    //         // Replace the content of the current span
+    //         $(this).replaceWith('<span>waleed</span>');
+    //     });
+    //     });
+    // });
+
                 // $('.fc-popover').css('display', 'none');
 
                 // $('.calendar2').css({'padding-left': '29.8%',' transition':'all 0.5s ease'});
