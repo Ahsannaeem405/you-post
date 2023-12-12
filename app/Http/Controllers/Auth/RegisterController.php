@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
+
 
 class RegisterController extends Controller
 {
@@ -63,11 +65,41 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+            $otp = rand(1000, 9999);
+            $timezone =  $data['timezone'];           
+            $nowInUserTimezone = Carbon::now($timezone);
+            $expiryTime = $nowInUserTimezone->addMinutes(5);
+    
+           
+    
+        
+            
+        $user = User::create([
             'name' => $data['fname'].' '.$data['lname'],
             'email' => $data['email'],
             'dob' => $data['dob'],
             'password' => Hash::make($data['password']),
-        ]);
+            'otp' => $otp,
+            'otp_expiry' => $expiryTime,
+            'timezone' => $data['timezone'],
+
+        ]);       
+        
+
+        // Send the OTP via email
+        $this->sendOtpEmail($user->email, $otp);
+        // return redirect()->route('verification.notice'); 
+
+
+        return $user;
+    }
+    protected function sendOtpEmail($email, $otp)
+    {
+        $subject = 'Your OTP for Verification';
+        $message = "Your OTP is: $otp";
+
+        \Mail::raw($message, function ($m) use ($email, $subject) {
+            $m->to($email)->subject($subject);
+        });
     }
 }

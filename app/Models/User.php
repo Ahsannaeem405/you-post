@@ -38,8 +38,15 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'disabled' => 'boolean',
+        'otp_expiry' => 'datetime',
+
 
     ];
+    protected $dates = [
+        'otp_expiry',
+    ];
+  
 
     public function isRole($role)
     {

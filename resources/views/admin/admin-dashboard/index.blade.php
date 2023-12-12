@@ -465,6 +465,7 @@ li a { text-decoration: none !important; }
                                         <th>Accounts</th>
                                         <th>No of Accounts</th>
                                         <th>Action</th>
+                                        <th>Disable</th>
                                    </tr>
                                     @foreach($users as $user)
                                         <tr>
@@ -502,6 +503,7 @@ li a { text-decoration: none !important; }
                                                    </div>
                                                 </div>
                                             </td>
+                                            <td><input type="checkbox" class="js-switch disabled" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/></td>
                                         </tr>
                                     @endforeach
 
@@ -762,20 +764,11 @@ Copy code
         });
     });
 
-
-   
-
-
-    // Handle form submission
-    $('#editForm').submit(function(e) {
-       
-      
+      // Handle form submission
+    $('#editForm').submit(function(e) {      
         e.preventDefault();
-
         // Get form data
-        var formData = $(this).serialize();
-
-      
+        var formData = $(this).serialize();      
         $.ajax({
             url: 'update-user', 
             method: 'GET',
@@ -786,9 +779,7 @@ Copy code
                 // Reload the page after a delay (for the user to see the toast message)
                 setTimeout(function(){
                     location.reload();
-                }, 1000); 
-                
-
+                }, 1000);               
               
             },
             error: function(error) {
@@ -799,6 +790,35 @@ Copy code
             }
         });
     });
+
+
+    $('.disabled').click(function(e) {     
+                  
+        var isChecked = $(this).prop('checked');        
+        var recordId = $(this).data('record-id');
+
+
+            $.ajax({
+                url: '{{ route("disable-user") }}', // Use the named route
+                method: 'POST',
+                data: {
+                    isChecked: isChecked,
+                    recordId: recordId
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    // Handle the response from the server
+                    toastr.success(response.message);
+
+                },
+                error: function(error) {
+                    // Handle errors
+                    console.error(error);
+                }
+            });
+   });
 </script>
 
 

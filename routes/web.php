@@ -8,6 +8,8 @@ use App\Http\Controllers\GptController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AdminControoler;
+use App\Http\Controllers\OtpController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +65,7 @@ Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {
     Route::get('get-user/{id}', [AdminControoler::class, 'getUserdData'])->name('admin.get-user');
     Route::get('get-accounts/{id}', [AdminControoler::class, 'getUserAccounts'])->name('admin.get-accounts');
     Route::get('get-posts/{id}', [AdminControoler::class, 'getAccountPosts'])->name('admin.get-posts');
+    Route::post('disable_user', [AdminControoler::class, 'disable_user'])->name('disable-user');
 
     Route:: get('update-user/', [AdminControoler::class, 'updateUser']);
 
@@ -71,8 +74,13 @@ Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {
 
 Route::get('privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy.policy');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/otp-form', [OtpController::class, 'showOtpForm'])->name('verification.notice');
+    Route::post('/send-otp', [OtpController::class, 'sendOtp'])->name('send.otp');
+    Route::post('/verify-otp', [OtpController::class, 'verifyOtp'])->name('verification.verify');
+});
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','otp']], function () {
    
 
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');

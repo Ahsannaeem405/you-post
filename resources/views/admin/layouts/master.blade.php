@@ -64,7 +64,28 @@
 
   <!-- new files -->
   
+  <!-- <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}">
 
+    <!-- NProgress -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/nprogress/nprogress.css')}}">
+
+    <!-- iCheck -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/iCheck/skins/flat/green.css')}}">
+
+	
+    <!-- bootstrap-progressbar -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}">
+
+    <!-- JQVMap -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/jqvmap/dist/jqvmap.min.css')}}">
+
+    <!-- bootstrap-daterangepicker -->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}">
+
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" type="text/css" href="{{asset('build/css/custom.min.css')}}">
   <!-- end new files -->
 
 </head>

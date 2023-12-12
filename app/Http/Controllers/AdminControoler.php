@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Account;
+use App\Models\Post;
+
 
 
 
@@ -23,8 +25,40 @@ class AdminControoler extends Controller
     {
        
         // $users = $this->user->whereRole('user')->OrderBy('id', 'desc')->get();
-       
-        return view('admin.admin-dashboard.dashboard');
+        $totalUsersCount = User::whereRole('user')->count();
+        $totalDisabledUsersCount = User::whereRole('user')->where('disabled', true)->count();
+        $totalEnabledUsersCount = User::whereRole('user')->where('disabled', false)->count();
+        $totalPost = Post::all()->count();
+        $totalPostPosted = Post::where('posted_at_moment', 'now')->count();
+        $totalPostScheduled = Post::where('posted_at_moment', 'later')->count();
+        $totalAc = User::where('role', 'user')->withCount('accountList')->get()->sum('account_list_count');
+        $linkedInCount = Account::whereRaw('JSON_CONTAINS(platforms, \'["Linkedin"]\')')->count();
+        $facebookCount = Account::whereRaw('JSON_CONTAINS(platforms, \'["Facebook"]\')')->count();
+        $twitterCount = Account::whereRaw('JSON_CONTAINS(platforms, \'["Twitter"]\')')->count();
+        $instagramCount = Account::whereRaw('JSON_CONTAINS(platforms, \'["Instagram"]\')')->count();
+        $acWithoutPlateFormAttached = User::where('role', 'user')
+        ->with(['accountList' => function ($query) {
+            $query->whereRaw('platforms IS NULL OR JSON_LENGTH(platforms) = 0');
+        }])
+        ->get()
+        ->sum(function ($user) {
+            return $user->accountList->count();
+        });  
+      
+        return view('admin.admin-dashboard.dashboard',compact(
+            'totalUsersCount',
+            'totalDisabledUsersCount',
+            'totalEnabledUsersCount',
+            'totalPost',
+            'totalPostPosted',
+            'totalPostScheduled',
+            'totalAc',
+            'linkedInCount',
+            'facebookCount',
+            'twitterCount',
+            'instagramCount',
+            'acWithoutPlateFormAttached'
+        ));
 
     }
 
@@ -80,7 +114,11 @@ class AdminControoler extends Controller
             return response()->json(['message' => 'User not found'], 404);
         }
     
-        $accounts = $user->accountList()->withCount('posts')->get();; // Assuming you have a relationship named 'accounts'
+        // $accounts = $user->accountList()->withCount('posts')->get();; // Assuming you have a relationship named 'accounts'
+        $accounts = $user->accountList()->with(['posts' => function ($query) {
+            $query->where('posted_at_moment', '=', 'now')->orWhere('posted_at_moment', '=', 'later');
+        }])->get();
+        
         $platformLogos = [
             'Facebook' => 'fbposticon.png',
             'Twitter' => 'twitterpost.png',
@@ -90,6 +128,22 @@ class AdminControoler extends Controller
     
         return view('admin.ajax.get-accounts', compact('accounts','platformLogos'));
        
+
+    }
+    
+    public function disable_user(Request $request)
+    {
+            
+        $isChecked = filter_var($request->input('isChecked'), FILTER_VALIDATE_BOOLEAN);
+        $recordId = $request->input('recordId');
+       
+        try {
+            User::where('id', $recordId)->update(['disabled' => $isChecked]);
+                $message = $isChecked ? 'User disabled successfully' : 'User enabled successfully';      
+
+        } catch (\Exception $e) {
+        }        $message = $isChecked ? 'User disabled successfully' : 'User enabled successfully';      
+         return response()->json(['message' => $message]);       
 
     }
     public function getAccountPosts($id)

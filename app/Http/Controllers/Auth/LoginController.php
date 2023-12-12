@@ -55,10 +55,21 @@ class LoginController extends Controller
         ]);
         if (auth()->attempt(array('email'=>$request->input('email'),'password'=>$request->input('password')))) 
         {
+            $user = auth()->user();
+
+            if ($user->disabled) {
+                // Logout the user and redirect back with an error message
+                auth()->logout();
+        
+                return redirect()->back()->with('error', 'Your account is disabled. Please contact support.');
+            }
+
             if (auth()->user()->role=='admin') {
                
                 return redirect()->route('admin.dashboard')->with('message','Login Successful');  
-            } else{                   
+            } else{  
+                
+                
                 return redirect()->route('dashboard')->with('message','Login Successful'); 
             }
         }

@@ -9,9 +9,10 @@
                                     <tr>
                                         <th>Account Name</th>
                                         <th>Plateform Attached</th>
-                                        <th># Of Post</th>
+                                        <th># Of Schuduled Post</th>
+                                        <th># Of Posted Post</th>
                                         <th>View Posts</th>
-                                        <th>Action</th>
+                                        <!-- <th>Action</th> -->
                                        
                                    </tr>
                                     @foreach($accounts as $ac)
@@ -38,13 +39,15 @@
                                             @endif
 
                                           </td>
-                                            <th>{{ $ac->posts_count }}</th>
-                                            <td>  @if($ac->posts_count > 0)
+                                            <th>{{ $ac->posts->where('posted_at_moment', '=', 'later')->count() }}</th>
+                                            <th>{{ $ac->posts->where('posted_at_moment', '=', 'now')->count() }}</th>
+
+                                            <td>  @if( ($ac->posts->where('posted_at_moment', '=', 'now')->count()) > 0)
         <a href="#" class="dropdown-item post-link" data-toggle="modal" data-target="#postModal" data-record-id="{{ $ac->id }}">View Posts</a>
     @else
         <a href="#" class="dropdown-item post-link" disabled>View Posts</a>
     @endif</td>
-                                            <th>pending</th>
+                                            <!-- <th>pending</th> -->
 
 
                                           
