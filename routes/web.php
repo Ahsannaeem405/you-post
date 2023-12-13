@@ -34,6 +34,10 @@ Route::get('/cls', function () {
 Route::get('/', function () {
     return redirect('login');
 });
+Route::get('/seed', function () {
+    $run = Artisan::call('db:seed');
+    return 'Completed';
+});
 
 Auth::routes();
 Route::get('/migratefresh/seed', function () {
