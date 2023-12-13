@@ -45,13 +45,11 @@ active
 
         <div class="content-header row">
 @if(session('message'))
-    <div class="alert alert-success">
 
         <script>
             // Display toastr success message
             toastr.success("{{ session('message') }}");
         </script>
-    </div>
 @endif
   <body class="nav-md">
     <div class="container body">
