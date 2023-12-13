@@ -4,97 +4,240 @@ active
 @endsection
 @section('Main-Container')
 
+<style>
+  .title_stats_count-inner{
+    display:flex;
+    gap:10px;
+    padding: 20px 10px 20px 15px;
+    margin-bottom: 2.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+    min-height:115px;
+  }
+  .title_stats_count-inner h2{
+    font-size:16px;
+    margin-bottom:10px;
+  }
+  .title_stats_count-inner p{
+    font-size:20px;
+    font-weight:bold;
+  }
+  .title_stats_count-inner i.fa{
+    font-size:35px;
+  }
+  .title_stats_count-inner img{
+    width:25px;
+  }
+</style>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <!-- <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a> -->
-            </div>
-           </div>
+<div class="content-wrapper">
+
+        <div class="content-header row">
         </div>
+        <div class="content-body">
+            <!-- Dashboard Analytics Start -->
 
-      
+                <div class="container">
+                <!-- top tiles -->
+                <div class="row">
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                            <div class="title_stats_count-inner">
+                              <div class="count-icon"><i class="fa fa-user-group"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Total Users</h2>
+                                <p class='m-0'>{{$totalUsersCount}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                        <div class="count-icon"><i class="fa fa-user-tick"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Active User</h2>
+                                <p class='m-0'>{{$totalEnabledUsersCount}}</p>
+                              </div>
+</div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><i class="fa fa-user-slash"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Inactive User</h2>
+                                <p class='m-0'>{{$totalDisabledUsersCount}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Total Posts</h2>
+                                <p class='m-0'>{{$totalPost}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Scheduled Posts</h2>
+                                <p class='m-0'>{{$totalPostScheduled}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Posted Post</h2>
+                                <p class='m-0'>{{$totalPostPosted}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Total Accounts</h2>
+                                <p class='m-0'>{{$totalAc}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><img src="{{ asset('images/fbposticon.png' ) }}" alt=" Logo"></div>
+                              <div class="count-content">
+                                <h2 class=''>Facebook Accounts</h2>
+                                <p class='m-0'>{{$facebookCount}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><img src="{{ asset('images/instagram.png' ) }}" alt=" Logo"></div>
+                              <div class="count-content">
+                                <h2 class=''>Instagram Accounts</h2>
+                                <p class='m-0'>{{$instagramCount}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><img src="{{ asset('images/twitterpost.png' ) }}" alt=" Logo"></div>
+                              <div class="count-content">
+                                <h2 class=''>Twitter Accounts</h2>
+                                <p class='m-0'>{{$twitterCount}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><img src="{{ asset('images/linkpost.png' ) }}" alt=" Logo"></div>
+                              <div class="count-content">
+                                <h2 class=''>Linkedin Accounts</h2>
+                                <p class='m-0'>{{$linkedInCount}}</p>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                        <div class="title_stats_count-inner">
+                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-content">
+                                <h2 class=''>Accounts with no Platform Attached</h2>
+                                <p class='m-0'>{{$acWithoutPlateFormAttached}}</p>
+                              </div>
+</div>
+                        </div>
+                </div>
+                <!-- /top tiles -->
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <!-- top tiles -->
-          <div class="row" style="display: inline-block; margin-top: 50px" >
-          <div class="tile_count">
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">{{$totalUsersCount}}</div>
-              <span class="count_bottom"></span>
             </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Active User</span>
-              <div class="count">{{$totalEnabledUsersCount}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Inactive User</span>
-              <div class="count green">{{$totalDisabledUsersCount}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>Total Posts</span>
-              <div class="count">{{$totalPost}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i>Scheduled Posts</span>
-              <div class="count">{{$totalPostScheduled}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Posted Post</span>
-              <div class="count">{{$totalPostPosted}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Accounts</span>
-              <div class="count">{{$totalAc}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top">  <img src="{{ asset('images/fbposticon.png' ) }}" alt=" Logo"> Facebook Accounts </span>
-              <div class="count">{{$facebookCount}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><img src="{{ asset('images/instagram.png' ) }}" alt=" Logo"> Instagram Accounts </span>
-              <div class="count">{{$instagramCount}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><img src="{{ asset('images/twitterpost.png' ) }}" alt=" Logo"> Twitter Accounts </span>
-              <div class="count">{{$twitterCount}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><img src="{{ asset('images/linkpost.png' ) }}" alt=" Logo">Linkedin Accounts </span>
-              <div class="count">{{$linkedInCount}}</div>
-              <span class="count_bottom"></span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top">Accounts with no Platform Attached</span>
-              <div class="count">{{$acWithoutPlateFormAttached}}</div>
-              <span class="count_bottom"></span>
-            </div>
+            <!-- /page content -->
 
 
-          </div>
         </div>
-          <!-- /top tiles -->       
-         
-        </div>
-        <!-- /page content -->
-
-     
-      </div>
     </div>
 
-    @endsection()
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style='background:white'>
+                    <h5 class="modal-title" id="editModalLabel">Add User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="content-wrapper">
+                    <div class="add-new-data-sidebar request-form-s">
+                        <form method="POST" action="{{ route('admin.user') }}">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="name">{{ __('Name') }}</label>
+                                <input id="name" type="text"
+                                    class="name_field form-control @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+                            <div class="form-group">
+                                <label for="email">{{ __('Email Address') }}</label>
+
+
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">{{ __('Password') }}</label>
+
+
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    required autocomplete="new-password">
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+
+
+                                <input id="password-confirm" type="password" class="form-control"
+                                    name="password_confirmation" required autocomplete="new-password">
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <button type="submit" class="btn btn-primary sb_btn">
+                                    {{ __('Add User') }}
+                                </button>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @endsection()

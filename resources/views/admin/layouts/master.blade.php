@@ -63,7 +63,10 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
   <!-- new files -->
-  
+   <!-- data table -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    
   <!-- <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}">

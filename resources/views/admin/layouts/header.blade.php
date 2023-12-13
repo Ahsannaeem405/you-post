@@ -2,8 +2,8 @@
     .selected-book {
     border: 2px solid blue !important;
     }
-    
-   
+
+
 
     .header-navbar.floating-nav {
         margin: 0 !important;
@@ -336,7 +336,7 @@ div#exampleModal {
 
                             @else
                             <img class="round dropdown-toggle dropdown-user-link" data-toggle="dropdown"
-                            src="{{ asset('assets/images/writingapp/header-profile.png') }}" alt="avatar" style="margin-left: 20px; cursor: pointer;">
+                            src="{{ asset('assets/images/writingapp/user.png') }}" alt="avatar" style="margin-left: 20px; cursor: pointer; width: 45px;">
 
                         @endif
                         @endif
@@ -456,7 +456,7 @@ div#exampleModal {
                     @csrf
 
                     <div class="modal-main-sections">
-                       
+
                         <div class="modal-form-section">
                             <div class="data-items">
                                 <div class="data-fields px-2 mt-3">
@@ -492,10 +492,10 @@ div#exampleModal {
                                                 </span>
                                             @enderror
                                         </div>
-                                       
 
-                                      
-                                    
+
+
+
                                         <div class="col-sm-12">
                                             <div class="col-sm-12 data-field-col text-center">
                                                 <button type="submit" class="btn btn-primary">
@@ -513,8 +513,13 @@ div#exampleModal {
         </div>
     </div>
 </div>
+
+
+
+
+
 <script>
-   
+
 
         const backgroundSelect = document.getElementById('background_type');
         const colorPickerContainer = document.getElementById('colorPickerContainer');
@@ -522,33 +527,33 @@ div#exampleModal {
         const hiddenColorField_front = document.getElementById('hiddenColor_front');
 
         const colorPicker = document.getElementById('colorPicker');
-        $(('#colorPicker')).css('display', 'none'); 
+        $(('#colorPicker')).css('display', 'none');
         // Event listener for the select element
         backgroundSelect.addEventListener('change', function() {
             const selectedOption = backgroundSelect.value;
             colorPickerContainer.style.display = 'none';
-            if (selectedOption === 'plain') {       
-              
+            if (selectedOption === 'plain') {
+
                 colorPickerContainer.style.display = 'block';
-                $(('#colorPicker')).css('display', 'block'); 
+                $(('#colorPicker')).css('display', 'block');
 
-             }else if (selectedOption === 'chalboard') {            
-                       hiddenColorField.value = 'black';         
-                       hiddenColorField_front.value = 'green';          
+             }else if (selectedOption === 'chalboard') {
+                       hiddenColorField.value = 'black';
+                       hiddenColorField_front.value = 'green';
 
-            } else if (selectedOption === 'dry') {          
-                        hiddenColorField.value = 'white';  
+            } else if (selectedOption === 'dry') {
+                        hiddenColorField.value = 'white';
 
-            } else if (selectedOption === 'corkboard') { }  
+            } else if (selectedOption === 'corkboard') { }
         });
 
-        
+
         colorPicker.addEventListener('input', function() {
             var selectedColor = $(this).val();
             hiddenColorField.value = colorPicker.value;
-                                  
+
                 });
-               
+
 
 </script>
 <script>
