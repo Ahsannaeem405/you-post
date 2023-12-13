@@ -23,8 +23,8 @@ class AdminControoler extends Controller
     }
     public function dashbaord()
     {
-       
-        // $users = $this->user->whereRole('user')->OrderBy('id', 'desc')->get();
+      
+        // $user = $this->user->whereRole('user')->OrderBy('id', 'desc')->get();
         $totalUsersCount = User::whereRole('user')->count();
         $totalDisabledUsersCount = User::whereRole('user')->where('disabled', true)->count();
         $totalEnabledUsersCount = User::whereRole('user')->where('disabled', false)->count();
@@ -70,22 +70,43 @@ class AdminControoler extends Controller
         return view('admin.admin-dashboard.index',compact('users'));
 
     }
+    public function show_admins()
+    {
+       
+        // $users = $this->user->whereRole('admin')->withCount('accountList')->OrderBy('id', 'desc')->get();
+        $currentAdmin = Auth::user();
+
+        $admins = $this->user
+        ->whereRole('admin')
+        ->where('id', '!=', $currentAdmin->id)
+        ->withCount('accountList')
+        ->orderBy('id', 'desc')
+        ->get();
+        return view('admin.admin-dashboard.admins',compact('admins'));
+
+    }
 
 
     public function addUser(AddUserRequest $request)
     {
         
+        
          $validator = Validator::make($request->all(), [
             'password' => 'required|min:8|confirmed',
         ]);
 
-
-        User::create([
+// dd( $request->all());
+        $suer = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+            'role' => $request->input('role'),
+            'is_verified' =>true,
+            'type' => $request->input('type'),
         ]);
-        return redirect('/admin/dashbaord')->with('success', 'User Added Successfully!');
+        $userType = ucfirst($request->input('type'));
+        return redirect()->back()->with('message', "{$userType} Added Successfully!");
+
 
     }
 
@@ -165,14 +186,14 @@ class AdminControoler extends Controller
 
     public function updateUser(Request $request)
 {
-   
+    $user =$this->user::find($request->input('user_id'));
+
     $request->validate([
         'old_password' => 'required',
         'password' => 'required|min:8|confirmed',
-        'edit_email' => 'required|email|unique:users,email',
+        'edit_email' => 'required|email|unique:users,email,' . $user->id,
     ]);
 
-    $user =$this->user::find($request->input('user_id'));
 
     if (!Hash::check($request->input('old_password'), $user->password)) {
         return response()->json(['error' => 'The old password does not match.'], 401);

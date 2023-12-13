@@ -70,4 +70,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Account::class,'user_id');
     }
+
+    public function sendOtpEmail($email, $otp)
+    {
+        $logPath = 'images/YouPost_Logo.png';
+        $details = [           
+            'subject' => 'Your OTP for Verification',
+            'body' => "Your OTP is: $otp",          
+            'logPath' => $logPath,
+        ];       
+        \Mail::to($email)->send(new \App\Mail\MyOtpMail($details));
+    }
 }

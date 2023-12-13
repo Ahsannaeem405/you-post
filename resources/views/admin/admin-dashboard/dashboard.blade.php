@@ -4,7 +4,15 @@ active
 @endsection
 @section('Main-Container')
 
-
+@if(session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+        <script>
+            // Display toastr success message
+            toastr.success("{{ session('message') }}");
+        </script>
+    </div>
+@endif
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">

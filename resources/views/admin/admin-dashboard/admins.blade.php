@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('users')
+@section('admins')
 active
 @endsection
 @section('Main-Container')
@@ -472,13 +472,11 @@ li a { text-decoration: none !important; }
                                     <tbody>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Accounts</th>
-                                        <th>No of Accounts</th>
+                                        <th>Email</th>                                      
                                         <th>Action</th>
                                         <th>Disable</th>
                                    </tr>
-                                    @foreach($users as $user)
+                                    @foreach($admins as $user)
                                         <tr>
                                            
                                             <td class="font-weight-bold">
@@ -487,14 +485,8 @@ li a { text-decoration: none !important; }
 
                                             <td>
                                                 {{$user->email}}
-                                            </td>
-                                            <td>
-                                            <a href="#" class="dropdown-item show-link" data-toggle="modal" data-target="#acModal" data-record-id="{{ $user->id }}">
-                                                                                            Show</a>
-                                            </td>
-                                            <td>
-                                            {{ $user->account_list_count }}
-                                            </td>
+                                            </td>                                          
+                                           
                                             <td>
                                                 <div class="dropdown">
                                                     <i class="fas fa-ellipsis-v" class="dropdown-toggle"

@@ -34,7 +34,7 @@
                         <td>
                             <h1
                                 style="font-size: 30px;margin:0;text-transform: capitalize; font-family: 'Poppins', sans-serif;">
-                                {{ $details['subject'] }}</h1>
+                                <!-- {{ $details['subject'] }}</h1> -->
                         </td>
                     </tr>
                     <tr>
@@ -44,16 +44,7 @@
                                 {{ $details['body'] }}</p>
                         </td>
                     </tr>
-                    @if (!empty($details['imagePath']))
-                    <tr>
-                        <td>
-                            <h2 style="font-size: 24px;margin:0; width:100%;"><img
-                                    src="{{ $message->embed($details['imagePath']) }}" alt="User Selected Image"
-                                    style="width:100%;">
-                            </h2>
-                        </td>
-                    </tr>
-                    @endif
+                  
                     <tr>
                         <td>
                             <p

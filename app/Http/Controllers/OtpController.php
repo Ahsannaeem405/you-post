@@ -73,7 +73,7 @@ class OtpController extends Controller
         } else {
             $remainingTime_expire = false;
         }      
-        $this->sendOtpEmail($user->email, $otp);
+        $user->sendOtpEmail($user->email, $otp);
         return response()->json([
 
             'message' => 'Otp sent successfully', 
@@ -115,13 +115,6 @@ class OtpController extends Controller
         return $user->otp === $enteredOtp && now()->lt($user->otp_expiry);
     }
 
-    protected function sendOtpEmail($email, $otp)
-    {
-        $subject = 'Your OTP for Verification';
-        $message = "Your OTP is: $otp";
-        \Mail::raw($message, function ($m) use ($email, $subject) {
-            $m->to($email)->subject($subject);
-        });
-    }
+   
 
 }

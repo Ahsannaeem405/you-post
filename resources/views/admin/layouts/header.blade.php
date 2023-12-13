@@ -308,6 +308,9 @@ div#exampleModal {
     margin-top: 20px;
 }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
     <div class="navbar-wrapper">
@@ -321,6 +324,11 @@ div#exampleModal {
                     <li class="header-btn nav-item">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">+ New User</a>
                     </li>
+                    @if(auth()->user()->type=="superAdmin")
+                    <li class="header-btn nav-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#adminModal">+ New Admin</a>
+                    </li>
+                    @endif
                     <li class="dropdown dropdown-user nav-item">
                         <!-- <a class="dropdown-toggle nav-link dropdown-user-link" href="#" > -->
                         <div class="user-nav d-sm-flex">
@@ -444,72 +452,82 @@ div#exampleModal {
 </ul> -->
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 99999">
-    <div class="modal-dialog" style='max-width: 80% !important;'>
+<!-- Modal admin -->
+<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true" style="z-index: 99999">
+    <div class="modal-dialog" >
         <div class="modal-content">
             <!-- <div class="modal-header" style='background:white'>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div> -->
-            <div class="add-new-data-sidebar">
-                <form id="bookForm" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
-                    @csrf
-
-                    <div class="modal-main-sections">
-                       
-                        <div class="modal-form-section">
-                            <div class="data-items">
-                                <div class="data-fields px-2 mt-3">
-                                    <div class="row">
-                                        <div class="col-sm-12 data-field-col">
-                                            <label for="name">Board Name</label>
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                required>
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-sm-12 data-field-col">
-                                            <label for="description">Board Description:</label>
-                                            <textarea class="form-control" name="description" id="description" cols="10" rows="5" required></textarea>
-                                            @error('description')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-sm-12 data-field-col">
-                                            <!-- <img class='dropdown-img' src="{{ asset('assets/images/writingapp/dropdown-arrow.svg') }}" alt="card-img" > -->
-                                            <label for="notes"> Notes: <span
-                                                    style='font-size:14px'>(private)</span></label>
-                                            {{-- <p> <span class='add-notes'>Add Note</span></p> --}}
-                                            <textarea class="form-control" name="notes" id="notes" cols="10" rows="3"></textarea>
-                                            @error('notes')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                       
-
-                                      
-                                    
-                                        <div class="col-sm-12">
-                                            <div class="col-sm-12 data-field-col text-center">
-                                                <button type="submit" class="btn btn-primary">
-                                                    Create
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+            <div class="modal-header" style='background:white'>
+               <h5 class="modal-title" id="editModalLabel">Add Admin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="content-wrapper">
+       <div class="add-new-data-sidebar request-form-s">
+       <form method="POST" action="{{ route('admin.user') }}">
+                        @csrf
+                        <input type="hidden" value= "admin" name="role" id ="role"/>
+                        <input type="hidden" value= "admin" name="type" id ="type"/>
+
+
+                    <div class="form-group">
+                            <label for="name" >{{ __('Name') }}</label>
+                            <input id="name" type="text" class="name_field form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
+                    </div>
+                    <div class="form-group">
+                            <label for="email" >{{ __('Email Address') }}</label>
+
+                          
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                          
+                    </div>                      
+
+                    <div class="form-group">
+                            <label for="password" >{{ __('Password') }}</label>
+
+                        
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirm">{{ __('Confirm Password') }}</label>
+
+                           
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                          
+                        </div>
+
+                        <div class="form-group">
+                          
+                                <button type="submit" class="btn btn-primary sb_btn">
+                                    {{ __('Add Admin') }}
+                                </button>
+                           
+                        </div>
+                    </form>
+                
+       </div>
+     </div>
         </div>
     </div>
 </div>
