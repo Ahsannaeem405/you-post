@@ -622,30 +622,9 @@ div.dataTables_wrapper div.dataTables_length select {
                                 @foreach($users as $user)
                                             <tr>
 
-                                            <td>
-                                                {{$user->email}}
-                                            </td>
-                                            <td>
-                                            <a href="#" class="dropdown-item show-link" data-toggle="modal" data-target="#acModal" data-record-id="{{ $user->id }}">
-                                                                                            Show</a>
-                                            </td>
-                                            <td>
-                                            {{ $user->account_list_count }}
-                                            </td>
-                                            <!-- <td>
-                                            {{ $user->last_login_at }}
-                                            </td> -->
-                                            <td>
-                                                <div class="dropdown">
-                                                    <i class="fas fa-ellipsis-v" class="dropdown-toggle"
-                                                       id="dropdownMenuIconButton3" data-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false"></i>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3"
-                                                         x-placement="bottom-start"
-                                                         style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                        
-                                                            <a href="#" class="dropdown-item edit-link" data-toggle="modal" data-target="#editModal" data-record-id="{{ $user->id }}"><i class="fa fa-edit text-primary"
-                                                                                             aria-hidden="true"></i>Edit</a>
+                                                <td class="font-weight-bold">
+                                                    {{$user->name}}
+                                                </td>
 
                                                 <td>
                                                     {{$user->email}}
@@ -684,7 +663,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                                 </td>
                                                 <td>
                                                     <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/>
+                                                    <input class="form-check-input disabled" type="checkbox" role="switch" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/>
                                                     </div>
 
                                                     <!-- <input type="checkbox" class="js-switch disabled"

@@ -88,7 +88,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}">
 
     <!-- Custom Theme Style -->
-    <link rel="stylesheet" type="text/css" href="{{asset('build/css/custom.min.css')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{asset('build/css/custom.min.css')}}"> -->
   <!-- end new files -->
 
 </head>
