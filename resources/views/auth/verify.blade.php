@@ -58,7 +58,7 @@
                      <div class="card-2">
                       <div class="content d-flex justify-content-center align-items-center">
                          <span>Didn't get the code</span>
-                          <a href="#" class="text-decoration-none ms-3" id="resendButton">Resend(<span id = "seconds"></span>)</a> 
+                          <a href="#" class="text-decoration-none ms-3" id="resendButton">Resend<span id = "seconds">()</span></a> 
                         </div>
                      </div> 
                     </div>
@@ -90,18 +90,23 @@ function OTPInput() {
     function updateTimer() {
         var timerInterval = setInterval(function () {
             var seconds = remainingTime % 60;
-            secondsElement.innerHTML = seconds;
+            secondsElement.innerHTML = "(" + seconds + ")";
 
             remainingTime--;
 
             if (remainingTime < 0) {
                 clearInterval(timerInterval);
+                secondsElement.style.display = 'none';
+
                 // Optionally hide the resend button when the timer reaches 0
                 // resendButton.style.display = 'none';
-                resendButton.style.pointerEvents = 'auto';  // Enable the Resend link
+                resendButton.style.pointerEvents = 'auto'; 
+               
+
+                 // Enable the Resend link
 
             }else{
-
+                secondsElement.style.display = 'inline';
                 resendButton.style.pointerEvents = 'none';  // Disable the Resend link
 
             }
