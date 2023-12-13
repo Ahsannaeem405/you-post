@@ -1,5 +1,5 @@
 <style>
-    
+
 .brand-logo img {
     width: 75px;
     display: block;
@@ -25,8 +25,14 @@ box-shadow: 1px 0px 1px 0px rgba(0, 0, 0, 0.20);
     height: 100vh !important;
 }
 .side-search-bar {
-    padding: 18px 20px;
+    padding: 20px 22px 15px;
     border-bottom: 1px solid white;
+}
+.sidebar-logo{
+    width:200px;
+}
+.sidebar-img{
+    width:35px;
 }
 input[type="text"] {
     width: 100%;
@@ -171,7 +177,7 @@ button#removeStylesButton {
                     <span class="menu-title" data-i18n="Users">Chapters</span>
                     <img class='sidebar-drop' src="{{asset('assets/images/writingapp/sidebar-arrow.svg')}}" alt="card-img" >
                 </a>
-                
+
             </li> --}}
 
             <div class="drop">
@@ -183,8 +189,8 @@ button#removeStylesButton {
             <a href="#">Chapter# 5</a>
         </div>
         </div>
-            
-           
+
+
         </ul>
     </div>
 </div> -->
@@ -201,8 +207,7 @@ button#removeStylesButton {
 </button>
     <div class="main-menu-content">
         <div class="side-search-bar">
-        <input type="text" placeholder='Search users'>
-        <i class="feather icon-search "></i>
+        <img class='sidebar-logo' src="{{asset('assets/images/writingapp/YouPost_Logo.png')}}" alt="card-img" >
         </div>
 
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
@@ -210,7 +215,7 @@ button#removeStylesButton {
            <!-- <h2 style='padding: 10px 32px 0;font-weight: 900;'>Admin</h2> -->
             <li class=" nav-item @yield('dashboard')">
                 <a href="{{url('admin/dashboard')}}">
-                    <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
+                    <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/monitor.png')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
             <li class=" nav-item @yield('users')">
@@ -251,7 +256,7 @@ button#removeStylesButton {
                     <span class="menu-title" data-i18n="Users">Chapters</span>
                     <img class='sidebar-drop' src="{{asset('assets/images/writingapp/sidebar-arrow.svg')}}" alt="card-img" >
                 </a>
-                
+
             </li> --}}
 
             <div class="drop">
@@ -264,30 +269,30 @@ button#removeStylesButton {
             <a href="#">Chapter# 5</a>
         </div>
         </div>
-            
-           
+
+
         </ul>
-      
+
 
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <!-- <h2 style='padding: 10px 32px 0;font-weight: 900;'>Admin</h2> -->
       @if(request()->is('user/chapter-detail/*'))
-          
+
         @if(isset($relatedChapters))
            <p style="margin-top:10px; padding: 0 17px;"><img class='sidebar-img' src="{{asset('assets/images/connect.png')}}" alt="card-img" style="width: 40px;">Connected Chapters</p>
-      
-        @foreach ($relatedChapters as $chapter) 
-         <li class=" nav-item "> 
-         <a href="javascript:void(0)">       
+
+        @foreach ($relatedChapters as $chapter)
+         <li class=" nav-item ">
+         <a href="javascript:void(0)">
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/myconecticon.png')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">{{$chapter->name}} </span></a>
             </li>
-            
+
        @endforeach
        @endif
        @endif
        </ul>
-      
+
 
     </div>
 </div>
@@ -389,12 +394,12 @@ button#removeStylesButton {
       });
 
       // Check screen width on window resize
-     
+
     // });
 </script> -->
 
 <script>
-/* When the user clicks on the button, 
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDrop").classList.toggle("show");

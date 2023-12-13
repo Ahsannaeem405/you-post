@@ -2,8 +2,8 @@
     .selected-book {
     border: 2px solid blue !important;
     }
-    
-   
+
+
 
     .header-navbar.floating-nav {
         margin: 0 !important;
@@ -344,7 +344,7 @@ div#exampleModal {
 
                             @else
                             <img class="round dropdown-toggle dropdown-user-link" data-toggle="dropdown"
-                            src="{{ asset('assets/images/writingapp/header-profile.png') }}" alt="avatar" style="margin-left: 20px; cursor: pointer;">
+                            src="{{ asset('assets/images/writingapp/user.png') }}" alt="avatar" style="margin-left: 20px; cursor: pointer; width: 45px;">
 
                         @endif
                         @endif
@@ -479,12 +479,12 @@ div#exampleModal {
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            
+
                     </div>
                     <div class="form-group">
                             <label for="email" >{{ __('Email Address') }}</label>
 
-                          
+
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -492,13 +492,13 @@ div#exampleModal {
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                          
-                    </div>                      
+
+                    </div>
 
                     <div class="form-group">
                             <label for="password" >{{ __('Password') }}</label>
 
-                        
+
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -506,33 +506,38 @@ div#exampleModal {
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                           
+
                         </div>
 
                         <div class="form-group">
                             <label for="password-confirm">{{ __('Confirm Password') }}</label>
 
-                           
+
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                          
+
                         </div>
 
                         <div class="form-group">
-                          
+
                                 <button type="submit" class="btn btn-primary sb_btn">
                                     {{ __('Add Admin') }}
                                 </button>
-                           
+
                         </div>
                     </form>
-                
+
        </div>
      </div>
         </div>
     </div>
 </div>
+
+
+
+
+
 <script>
-   
+
 
         const backgroundSelect = document.getElementById('background_type');
         const colorPickerContainer = document.getElementById('colorPickerContainer');
@@ -540,33 +545,33 @@ div#exampleModal {
         const hiddenColorField_front = document.getElementById('hiddenColor_front');
 
         const colorPicker = document.getElementById('colorPicker');
-        $(('#colorPicker')).css('display', 'none'); 
+        $(('#colorPicker')).css('display', 'none');
         // Event listener for the select element
         backgroundSelect.addEventListener('change', function() {
             const selectedOption = backgroundSelect.value;
             colorPickerContainer.style.display = 'none';
-            if (selectedOption === 'plain') {       
-              
+            if (selectedOption === 'plain') {
+
                 colorPickerContainer.style.display = 'block';
-                $(('#colorPicker')).css('display', 'block'); 
+                $(('#colorPicker')).css('display', 'block');
 
-             }else if (selectedOption === 'chalboard') {            
-                       hiddenColorField.value = 'black';         
-                       hiddenColorField_front.value = 'green';          
+             }else if (selectedOption === 'chalboard') {
+                       hiddenColorField.value = 'black';
+                       hiddenColorField_front.value = 'green';
 
-            } else if (selectedOption === 'dry') {          
-                        hiddenColorField.value = 'white';  
+            } else if (selectedOption === 'dry') {
+                        hiddenColorField.value = 'white';
 
-            } else if (selectedOption === 'corkboard') { }  
+            } else if (selectedOption === 'corkboard') { }
         });
 
-        
+
         colorPicker.addEventListener('input', function() {
             var selectedColor = $(this).val();
             hiddenColorField.value = colorPicker.value;
-                                  
+
                 });
-               
+
 
 </script>
 <script>
