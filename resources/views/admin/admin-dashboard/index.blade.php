@@ -508,8 +508,19 @@ div.dataTables_wrapper div.dataTables_length select {
     cursor:pointer;
 }
 </style>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+@if(session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+        <script>
+            // Display toastr success message
+            toastr.success("{{ session('message') }}");
+        </script>
+    </div>
+@endif
+
 
 <div class="content-wrapper">
 
@@ -810,6 +821,21 @@ div.dataTables_wrapper div.dataTables_length select {
                 <div class="add-new-data-sidebar request-form-s">
                     <form method="POST" action="{{ route('admin.user') }}">
                         @csrf
+                       <input type="hidden" value= "user" name="role" id ="role"/>
+                       <input type="hidden" value= "user" name="type" id ="type"/>
+
+                    <div class="form-group">
+                            <label for="name" >{{ __('Name') }}</label>
+                            <input id="name" type="text" class="name_field form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            
+                    </div>
+                    <div class="form-group">
+                            <label for="email" >{{ __('Email Address') }}</label>
 
                         <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
@@ -887,6 +913,9 @@ div.dataTables_wrapper div.dataTables_length select {
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src='https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js'></script>
+
+<!-- color btn -->
+
 <script>
     new DataTable('#special1', {
 

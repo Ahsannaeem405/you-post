@@ -72,6 +72,11 @@
         background: #E74B37;
     } */
 </style>
+@if(session('error'))
+    <script>
+        toastr.error("{{ session('error') }}", "Error");
+    </script>
+@endif
 @section('content')
 <div class="LoginWrap_Page">
     <div class="container">

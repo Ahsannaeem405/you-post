@@ -87,20 +87,31 @@ class LoginController extends Controller
 
     public function handleGoogleCallback()
     {
+       
             try {
                 $user = Socialite::driver('google')->stateless()->user();
+             
                 // $finduser = User::where('email', $user->email)->first();
-                $finduser = User::where('google_id', $user->id)->first();
-                if($finduser){
+                // $finduser = User::where('google_id', $user->id)->first();
+               
+                $finduser = User::where('google_id', $user->id)->orWhere('email', $user->email)->first();
 
+                if($finduser){
+                   
+                    if ($finduser->disabled) {
+                        // User is disabled, redirect to login with a message
+                        auth()->logout();
+                        return redirect()->route('login')->with('error','Your account is disabled. Please contact support.');
+                    }
                     Auth::login($finduser);
                     return redirect('dashboard')->with('success', 'Login Successfully');
                 }else{
-
+                   
                     $newUser = User::updateOrCreate(['email' => $user->email],[
                         'name' => $user->name,
                         'google_id'=> $user->id,
-                        'password' => encrypt('123456dummy')
+                        'password' => encrypt('123456dummy'),
+                        'is_verified' => true
                     ]);
                     Auth::login($newUser);
                     return redirect('index')->with('success-register', 'Login Successfully');
@@ -133,7 +144,8 @@ class LoginController extends Controller
                 $newUser = User::updateOrCreate(['email' => $email],[
                     'name' => $user->name,
                     'facebook_id'=> $user->id,
-                    'password' => encrypt('123456dummy')
+                    'password' => encrypt('123456dummy'),
+                    'is_verified' => true
                 ]);
                 Auth::login($newUser);
                 return redirect('index')->with('success-register', 'Login Successfully');

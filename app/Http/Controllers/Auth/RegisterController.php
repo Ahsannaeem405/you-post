@@ -89,19 +89,8 @@ class RegisterController extends Controller
         
 
         // Send the OTP via email
-        $this->sendOtpEmail($user->email, $otp);
-        // return redirect()->route('verification.notice'); 
-
-
+        $user->sendOtpEmail($user->email, $otp);        
         return $user;
     }
-    protected function sendOtpEmail($email, $otp)
-    {
-        $subject = 'Your OTP for Verification';
-        $message = "Your OTP is: $otp";
-
-        \Mail::raw($message, function ($m) use ($email, $subject) {
-            $m->to($email)->subject($subject);
-        });
-    }
+  
 }

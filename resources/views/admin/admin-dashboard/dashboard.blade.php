@@ -34,6 +34,24 @@ active
 <div class="content-wrapper">
 
         <div class="content-header row">
+@if(session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+        <script>
+            // Display toastr success message
+            toastr.success("{{ session('message') }}");
+        </script>
+    </div>
+@endif
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <!-- <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a> -->
+            </div>
+           </div>
         </div>
         <div class="content-body">
             <!-- Dashboard Analytics Start -->

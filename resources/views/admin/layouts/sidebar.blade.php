@@ -223,6 +223,14 @@ button#removeStylesButton {
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Users</span></a>
             </li>
+            @if(auth()->user()->type=="superAdmin")
+
+            <li class=" nav-item @yield('admins')">
+                <a href="{{url('admin/admins')}}">
+                    <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
+                <span class="menu-title" data-i18n="Dashboard">Admins</span></a>
+            </li>
+            @endif
             <!-- <li class=" nav-item @yield('adminview')">
                 <a href="">
                 <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/draft-icon.svg')}}" alt="card-img" ></span>
