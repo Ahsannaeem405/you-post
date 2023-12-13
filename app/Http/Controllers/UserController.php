@@ -1159,7 +1159,7 @@ class UserController extends Controller
         $twitter = config('services.twitter');
         $connection = new TwitterOAuth(
             $twitter['client_id'],
-            $twitter['client_secret'],
+            $twitter['client_secret']   // myline in live
         );
         $token = $connection->oauth('oauth/request_token', ['oauth_callback' => $twitter['redirect']]);
         session()->put('oauth_token', $token['oauth_token']);

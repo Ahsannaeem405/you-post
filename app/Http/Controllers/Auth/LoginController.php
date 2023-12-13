@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Events\UserLoggedIn;
 
 class LoginController extends Controller
 {
@@ -59,6 +60,7 @@ class LoginController extends Controller
 
             if ($user->disabled) {
                 // Logout the user and redirect back with an error message
+                
                 auth()->logout();
         
                 return redirect()->back()->with('error', 'Your account is disabled. Please contact support.');
@@ -68,8 +70,8 @@ class LoginController extends Controller
                
                 return redirect()->route('admin.dashboard')->with('message','Login Successful');  
             } else{  
-                
-                
+
+                event(new UserLoggedIn($user));                
                 return redirect()->route('dashboard')->with('message','Login Successful'); 
             }
         }
@@ -103,6 +105,7 @@ class LoginController extends Controller
                         auth()->logout();
                         return redirect()->route('login')->with('error','Your account is disabled. Please contact support.');
                     }
+                    event(new UserLoggedIn($finduser));     
                     Auth::login($finduser);
                     return redirect('dashboard')->with('success', 'Login Successfully');
                 }else{

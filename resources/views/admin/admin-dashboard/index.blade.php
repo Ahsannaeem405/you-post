@@ -561,6 +561,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                         <th>Email</th>
                                         <th>Accounts</th>
                                         <th>No of Accounts</th>
+                                        <!-- <th>Last Logedin</th> -->
                                         <th>Action</th>
                                         <th>Disable</th>
                                     </tr>
@@ -610,7 +611,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                                 </td>
                                                 <td>
                                                     <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/>
+                                                    <input class="form-check-input disabled" type="checkbox" role="switch" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/>
                                                     </div>
 
                                                     <!-- <input type="checkbox" class="js-switch disabled"
