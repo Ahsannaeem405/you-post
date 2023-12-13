@@ -475,6 +475,7 @@ li a { text-decoration: none !important; }
                                         <th>Email</th>
                                         <th>Accounts</th>
                                         <th>No of Accounts</th>
+                                        <!-- <th>Last Logedin</th> -->
                                         <th>Action</th>
                                         <th>Disable</th>
                                    </tr>
@@ -495,6 +496,9 @@ li a { text-decoration: none !important; }
                                             <td>
                                             {{ $user->account_list_count }}
                                             </td>
+                                            <!-- <td>
+                                            {{ $user->last_login_at }}
+                                            </td> -->
                                             <td>
                                                 <div class="dropdown">
                                                     <i class="fas fa-ellipsis-v" class="dropdown-toggle"
