@@ -860,13 +860,13 @@ padding-right:10px;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
+                                                    <ul class="p-0 d-flex gap-1" >
                                                         <li>
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="image"
                                                                 social="youpost" fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    <img src="{{asset('')}}images/camera.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
@@ -876,14 +876,14 @@ padding-right:10px;
                                                                 class="image_or_video_youpost_all" typpe="video"
                                                                 social="youpost" fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
-                                                                    <img src="{{asset('')}}images/new_image.png"
+                                                                    <img src="{{asset('')}}images/video.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
@@ -956,13 +956,13 @@ padding-right:10px;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
+                                                    <ul class="p-0 d-flex gap-1">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="fb"
                                                                 fordata="image_or_videofb"><label
                                                                     for="image_or_videofb">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    <img src="{{asset('')}}images/camera.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
@@ -972,14 +972,14 @@ padding-right:10px;
                                                                 typpe="video" social="fb"
                                                                 fordata="image_or_videofb"><label
                                                                     for="image_or_videofb">
-                                                                    <img src="{{asset('')}}images/new_image.png"
+                                                                    <img src="{{asset('')}}images/video.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
@@ -1080,13 +1080,13 @@ padding-right:10px;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
+                                                    <ul class="p-0 d-flex gap-1">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
                                                                 fordata="image_or_video_insta"><label
                                                                     for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    <img src="{{asset('')}}images/camera.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
@@ -1096,14 +1096,14 @@ padding-right:10px;
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_insta"><label
                                                                     for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/new_image.png"
+                                                                    <img src="{{asset('')}}images/video.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
@@ -1164,13 +1164,13 @@ padding-right:10px;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
+                                                    <ul class="p-0 d-flex gap-1">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
                                                                 fordata="image_or_video_twiter"><label
                                                                     for="image_or_video_twiter">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    <img src="{{asset('')}}images/camera.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
@@ -1180,7 +1180,7 @@ padding-right:10px;
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_twiter"><label
                                                                     for="image_or_video_twiter">
-                                                                    <img src="{{asset('')}}images/new_image.png"
+                                                                    <img src="{{asset('')}}images/video.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
@@ -1189,7 +1189,7 @@ padding-right:10px;
 
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
                                                         </li>
@@ -1247,14 +1247,14 @@ padding-right:10px;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0">
+                                                    <ul class="p-0 d-flex gap-1">
                                                         <li>
 
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="linkedin"
                                                                 fordata="image_or_video_linkedin"><label
                                                                     for="image_or_video_linkedin">
-                                                                    <img src="{{asset('')}}images/Camera_Icon.png"
+                                                                    <img src="{{asset('')}}images/camera.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
@@ -1265,14 +1265,14 @@ padding-right:10px;
                                                                 fordata="image_or_video_linkedin"><label
                                                                     for="image_or_video_linkedin">
                                                                     <img style="border-radius:50px"
-                                                                        src="{{asset('')}}images/new_image.png"
+                                                                        src="{{asset('')}}images/video.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/Emoji_Icon.png"
+                                                                <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" />
                                                             </a>
                                                         </li>

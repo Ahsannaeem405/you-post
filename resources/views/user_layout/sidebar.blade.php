@@ -628,8 +628,8 @@ body.dark .home .text {
                         <span class="text nav-text">Revenue</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
-                            class="text nav-text">Connect Social</span></a></li>
+                <!-- <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
+                            class="text nav-text">Connect Social</span></a></li> -->
 
                 <!-- <li class="nav-link">
                     <a href="#">
@@ -665,8 +665,8 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink_test"> <i class="fa-solid icon fa-bullhorn fa-2xl"></i>
-                     <span class="text nav-text">Give Feed Back</span></a></li>
+                <li><a href="javascript:void(0)" id="bugReportLink"><img style="margin-left:20px;margin-right:18px"   src ="{{asset('images/bullhorn.png')}}" />
+                <span class="text nav-text">Give Feed Back</span></a></li>
 
 
                 <li>
@@ -791,8 +791,8 @@ body.dark .home .text {
                         <span class="text nav-text">Revenue</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
-                            class="text nav-text">Connect Social</span></a></li>
+                <!-- <li><a href="javascript:void(0)" class="myaccounts"> <i class="fa-regular fa-message icon"></i><span
+                            class="text nav-text">Connect Social</span></a></li> -->
 
                 <!-- <li class="nav-link">
                     <a href="#">
@@ -828,7 +828,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink"><i class="fa-solid icon fa-bullhorn fa-2xl"></i>
+                <li><a href="javascript:void(0)" id="bugReportLink"><img style="margin-left:20px;margin-right:18px"   src ="{{asset('images/bullhorn.png')}}" />
                 <span class="text nav-text">Give Feed Back</span></a></li>
 
                 <!-- <i class="fa-solid fa-virus bxs-bug icon"> -->

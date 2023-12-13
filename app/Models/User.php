@@ -40,11 +40,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'disabled' => 'boolean',
         'otp_expiry' => 'datetime',
+        'resend_time' => 'datetime',
+
 
 
     ];
     protected $dates = [
         'otp_expiry',
+        'resend_time',
+
     ];
   
 

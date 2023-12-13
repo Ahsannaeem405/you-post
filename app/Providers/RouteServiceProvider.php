@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/otp-form';
+    public const HOME = '/otp-verify';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

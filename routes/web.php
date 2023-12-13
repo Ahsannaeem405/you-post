@@ -75,7 +75,7 @@ Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {
 Route::get('privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy.policy');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/otp-form', [OtpController::class, 'showOtpForm'])->name('verification.notice');
+    Route::get('/otp-verify', [OtpController::class, 'showOtpForm'])->name('verification.notice');
     Route::post('/send-otp', [OtpController::class, 'sendOtp'])->name('send.otp');
     Route::post('/verify-otp', [OtpController::class, 'verifyOtp'])->name('verification.verify');
 });

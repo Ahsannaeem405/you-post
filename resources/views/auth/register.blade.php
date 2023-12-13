@@ -120,7 +120,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="agree" required id="agree">
                                             <label class="form-check-label" for="agree">
-                                                I agree to all the <a href="#" class="text-decoration-none">Terms</a> and <a href="{{ route('privacy.policy') }}" class="text-decoration-none">Privacy policy</a>
+                                                I agree to all the <a href="{{ route('privacy.policy') }}" class="text-decoration-none">Terms and Privacy policy</a>
                                             </label>
                                         </div>
                                     </div>

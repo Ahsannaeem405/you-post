@@ -69,7 +69,8 @@ class RegisterController extends Controller
             $timezone =  $data['timezone'];           
             $nowInUserTimezone = Carbon::now($timezone);
             $expiryTime = $nowInUserTimezone->addMinutes(5);
-    
+            $expiryTimeWithThirtySeconds =(Carbon::now($timezone))->addSeconds(35);
+
            
     
         
@@ -82,6 +83,7 @@ class RegisterController extends Controller
             'otp' => $otp,
             'otp_expiry' => $expiryTime,
             'timezone' => $data['timezone'],
+            'resend_time' => $expiryTimeWithThirtySeconds,
 
         ]);       
         
