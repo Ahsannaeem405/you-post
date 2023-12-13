@@ -66,7 +66,7 @@
    <!-- data table -->
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
-    
+
   <!-- <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}">
@@ -77,7 +77,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/iCheck/skins/flat/green.css')}}">
 
-	
+
     <!-- bootstrap-progressbar -->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}">
 
@@ -88,7 +88,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}">
 
     <!-- Custom Theme Style -->
-    <link rel="stylesheet" type="text/css" href="{{asset('build/css/custom.min.css')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{asset('build/css/custom.min.css')}}"> -->
   <!-- end new files -->
 
 </head>

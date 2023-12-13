@@ -434,6 +434,48 @@ li a { text-decoration: none !important; }
         cursor: pointer;
         margin-bottom: 10px; /* Add margin between posts */
     }
+    /*  */
+     /* ms */
+     #dashboard-analytics table tr th:first-child, #dashboard-analytics table tr td:first-child{
+        padding-left:1rem;
+    }
+    table.dataTable.display > tbody > tr.odd > .sorting_1 {
+    box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.023) !important;
+}
+table.dataTable  tr {
+    background-color: transparent !important;
+}
+div#specialdel1_wrapper {
+    border: none;
+    padding-top: 20px;
+}
+table.dataTable {
+    border: none !important;
+    padding-top:20px;
+}
+#dashboard-analytics table td {
+    padding: 0.75rem;
+    box-shadow: none !important;
+}
+#special2 .form-check {
+    padding-left: 3.25rem;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    padding: 5px 0.8rem;
+}
+.fa-ellipsis-v{
+    cursor:pointer;
+}
+.modal-dialog{
+    display:block;
+  }
+  .modal .modal-header{
+    padding: 1.5rem 2.3rem !important;
+  }
+  .modal-btn{
+    background: #648FFF;
+    color: white;
+  }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -450,7 +492,7 @@ li a { text-decoration: none !important; }
 
 
     <div class="content-wrapper">
-      
+
         <div class="content-header row">
         </div>
         <div class="content-body">
@@ -466,54 +508,63 @@ li a { text-decoration: none !important; }
                 <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                          
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>                                      
+                            <!--  -->
+                            <div class="table-wraper-1">
+
+<table id="special2" class="display nowrap" style="width:100%">
+    <thead class=''>
+        <tr>
+        <th>Name</th>
+                                        <th>Email</th>
                                         <th>Action</th>
                                         <th>Disable</th>
-                                   </tr>
-                                    @foreach($admins as $user)
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($admins as $user)
                                         <tr>
-                                           
+
                                             <td class="font-weight-bold">
                                                 {{$user->name}}
                                             </td>
 
                                             <td>
                                                 {{$user->email}}
-                                            </td>                                          
-                                           
+                                            </td>
+
                                             <td>
                                                 <div class="dropdown">
-                                                    <i class="fas fa-ellipsis-v" class="dropdown-toggle"
+                                                    <i class="fa fa-ellipsis-v" class="dropdown-toggle"
                                                        id="dropdownMenuIconButton3" data-toggle="dropdown"
                                                        aria-haspopup="true" aria-expanded="false"></i>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3"
                                                          x-placement="bottom-start"
                                                          style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                        
+
                                                             <a href="#" class="dropdown-item edit-link" data-toggle="modal" data-target="#editModal" data-record-id="{{ $user->id }}"><i class="fa fa-edit text-primary"
                                                                                              aria-hidden="true"></i>Edit</a>
 
-                                                            <a class="dropdown-item delete delete-item" 
+                                                            <a class="dropdown-item delete delete-item"
                                                         href="#" data-url="{{ route('admin.delete', ['user' => encrypt($user->id)]) }}">
                                                         <i class="fa fa-trash-o text-danger" aria-hidden="true"></i> Delete
                                                         </a>
                                                    </div>
                                                 </div>
                                             </td>
-                                            <td><input type="checkbox" class="js-switch disabled" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/></td>
+                                            <td>
+                                            <div class="form-check form-switch">
+                                                    <input class="form-check-input disabled" type="checkbox" role="switch" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/>
+                                                    </div>
+                                                <!-- <input type="checkbox" class="js-switch disabled" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/></td> -->
                                         </tr>
                                     @endforeach
+    </tbody>
+</table>
+</div>
+    <!--  -->
+                            <!--  -->
 
 
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -565,7 +616,7 @@ li a { text-decoration: none !important; }
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror                 
+                        @enderror
                        </div>
                     <div class="form-group">
                         <label for="field_name">Old Password </label>
@@ -575,7 +626,7 @@ li a { text-decoration: none !important; }
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror                  
+                        @enderror
                       </div>
                     <div class="form-group">
                         <label for="field_name">New Password</label>
@@ -585,14 +636,14 @@ li a { text-decoration: none !important; }
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror                   
+                    @enderror
                  </div>
                     <div class="form-group">
                         <label for="field_name">Confirm Password</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                                 </div>
                     <!-- Add more form fields as needed -->
-                    <button type="submit" class="btn btn-primary" id="udpatebtn">Update</button>
+                    <button type="submit" class="btn modal-btn" id="udpatebtn">Update</button>
                 </form>
             </div>
         </div>
@@ -612,7 +663,7 @@ li a { text-decoration: none !important; }
              <p style="color:red" id="errorText"></p>
 
                 <!-- Form to edit the record -->
-               
+
             </div>
         </div>
     </div>
@@ -631,7 +682,7 @@ li a { text-decoration: none !important; }
             <p style="color:red" id="errorText"></p>
 
                 <!-- Form to edit the record -->
-             
+
             </div>
         </div>
     </div>
@@ -644,7 +695,6 @@ li a { text-decoration: none !important; }
     <h5 class="modal-title" id="editModalLabel">Add User</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="content-wrapper">
        <div class="add-new-data-sidebar request-form-s">
        <form method="POST" action="{{ route('admin.user') }}">
                         @csrf
@@ -659,12 +709,12 @@ li a { text-decoration: none !important; }
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            
+
                     </div>
                     <div class="form-group">
                             <label for="email" >{{ __('Email Address') }}</label>
 
-                          
+
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -672,13 +722,13 @@ li a { text-decoration: none !important; }
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                          
-                    </div>                      
+
+                    </div>
 
                     <div class="form-group">
                             <label for="password" >{{ __('Password') }}</label>
 
-                        
+
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -686,28 +736,27 @@ li a { text-decoration: none !important; }
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                           
+
                         </div>
 
                         <div class="form-group">
                             <label for="password-confirm">{{ __('Confirm Password') }}</label>
 
-                           
+
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                          
+
                         </div>
 
                         <div class="form-group">
-                          
-                                <button type="submit" class="btn btn-primary sb_btn">
+
+                                <button type="submit" class="btn modal-btn sb_btn">
                                     {{ __('Add User') }}
                                 </button>
-                           
+
                         </div>
                     </form>
-                
+
        </div>
-     </div>
    </div>
  </div>
 
@@ -719,13 +768,22 @@ li a { text-decoration: none !important; }
 @endsection
 
 @section('js')
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src='https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js'></script>
+
+<script>
+    new DataTable('#special2', {
+
+    });
+</script>
 <!-- color btn -->
 
 <script>
     // Handle click event for the edit link
     $('.edit-link').click(function(e) {
-        
-      
+
+
 
         e.preventDefault();
         $('#errorText').text('');
@@ -739,20 +797,20 @@ li a { text-decoration: none !important; }
             url: '/admin/get-user/' + recordId, // Define a route to fetch record data
             method: 'GET',
             success: function(data) {
-                $('#edit_name').val(data.name); 
-                $('#edit_email').val(data.email); 
-                $('#old_password').val(data.password); 
-                $('#user_id').val(data.id); 
+                $('#edit_name').val(data.name);
+                $('#edit_email').val(data.email);
+                $('#old_password').val(data.password);
+                $('#user_id').val(data.id);
 
 
             }
         });
     });
 
-    $('.show-link').click(function(e) {      
-      
+    $('.show-link').click(function(e) {
+
         e.preventDefault();
-      
+
         // Get the record ID from the data attribute
         var recordId = $(this).data('record-id');
 
@@ -768,12 +826,12 @@ li a { text-decoration: none !important; }
     });
 
       // Handle form submission
-    $('#editForm').submit(function(e) {      
+    $('#editForm').submit(function(e) {
         e.preventDefault();
         // Get form data
-        var formData = $(this).serialize();      
+        var formData = $(this).serialize();
         $.ajax({
-            url: 'update-user', 
+            url: 'update-user',
             method: 'GET',
             data: formData,
             success: function(response) {
@@ -782,22 +840,22 @@ li a { text-decoration: none !important; }
                 // Reload the page after a delay (for the user to see the toast message)
                 setTimeout(function(){
                     location.reload();
-                }, 1000);               
-              
+                }, 1000);
+
             },
             error: function(error) {
                 // Handle error response here
-                var errorMessage = error.responseText; 
-                $('#errorText').text(errorMessage); 
-              
+                var errorMessage = error.responseText;
+                $('#errorText').text(errorMessage);
+
             }
         });
     });
 
 
-    $('.disabled').click(function(e) {     
-                  
-        var isChecked = $(this).prop('checked');        
+    $('.disabled').click(function(e) {
+
+        var isChecked = $(this).prop('checked');
         var recordId = $(this).data('record-id');
 
 

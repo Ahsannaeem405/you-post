@@ -15,7 +15,9 @@
         right: 0;
         padding: 0 20px;
     }
-
+    ul.nav.navbar-nav{
+        gap:10px;
+    }
     .header-navbar.navbar-shadow {
         box-shadow: none !important;
         border-bottom: 1px solid #C3C3C3;
@@ -195,11 +197,16 @@
         color: black;
     }
 
-    .modal-dialog {
-        display: flex;
-        align-items: center;
-        height: 96%;
-    }
+    .modal-dialog{
+    display:block;
+  }
+  .modal .modal-header{
+    padding: 1.5rem 2.3rem !important;
+  }
+  .modal-btn{
+    background: #648FFF;
+    color: white;
+  }
     .project-heading{
         padding-left: 259px;
     margin-bottom: 0;
@@ -463,7 +470,7 @@ div#exampleModal {
                <h5 class="modal-title" id="editModalLabel">Add Admin</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="content-wrapper">
+
        <div class="add-new-data-sidebar request-form-s">
        <form method="POST" action="{{ route('admin.user') }}">
                         @csrf
@@ -519,7 +526,7 @@ div#exampleModal {
 
                         <div class="form-group">
 
-                                <button type="submit" class="btn btn-primary sb_btn">
+                                <button type="submit" class="btn modal-btn sb_btn">
                                     {{ __('Add Admin') }}
                                 </button>
 
@@ -527,7 +534,6 @@ div#exampleModal {
                     </form>
 
        </div>
-     </div>
         </div>
     </div>
 </div>

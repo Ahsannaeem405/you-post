@@ -507,6 +507,16 @@ div.dataTables_wrapper div.dataTables_length select {
 .fa-ellipsis-v{
     cursor:pointer;
 }
+.modal-dialog{
+    display:block;
+  }
+  .modal .modal-header{
+    padding: 1.5rem 2.3rem !important;
+  }
+  .modal-btn{
+    background: #648FFF;
+    color: white;
+  }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -540,68 +550,6 @@ div.dataTables_wrapper div.dataTables_length select {
                         <div class="card">
                             <div class="card-body">
 
-                                <!-- <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Accounts</th>
-                                                <th>No of Accounts</th>
-                                                <th>Action</th>
-                                                <th>Disable</th>
-                                            </tr>
-                                            @foreach($users as $user)
-                                            <tr>
-
-                                                <td class="font-weight-bold">
-                                                    {{$user->name}}
-                                                </td>
-
-                                                <td>
-                                                    {{$user->email}}
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="dropdown-item show-link" data-toggle="modal"
-                                                        data-target="#acModal" data-record-id="{{ $user->id }}">
-                                                        <i class="fa fa-eye text-primary" aria-hidden="true"></i></a>
-                                                </td>
-                                                <td>
-                                                    {{ $user->account_list_count }}
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <i class="fa fa-ellipsis-v" class="dropdown-toggle"
-                                                            id="dropdownMenuIconButton3" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false"></i>
-                                                        <div class="dropdown-menu"
-                                                            aria-labelledby="dropdownMenuIconButton3"
-                                                            x-placement="bottom-start"
-                                                            style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-
-                                                            <a href="#" class="dropdown-item edit-link"
-                                                                data-toggle="modal" data-target="#editModal"
-                                                                data-record-id="{{ $user->id }}"><i
-                                                                    class="fa fa-edit text-primary"
-                                                                    aria-hidden="true"></i>Edit</a>
-
-                                                            <a class="dropdown-item delete delete-item" href="#"
-                                                                data-url="{{ route('admin.delete', ['user' => encrypt($user->id)]) }}">
-                                                                <i class="fa fa-trash-o text-danger" aria-hidden="true"></i> Delete
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><input type="checkbox" class="js-switch disabled"
-                                                        data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked'
-                                                    : '' }}/></td>
-                                            </tr>
-                                            @endforeach
-
-
-                                        </tbody>
-                                    </table>
-                                </div> -->
 
                                 <!--  -->
                                 <div class="table-wraper-1">
@@ -761,7 +709,7 @@ div.dataTables_wrapper div.dataTables_length select {
                             required autocomplete="new-password">
                     </div>
                     <!-- Add more form fields as needed -->
-                    <button type="submit" class="btn btn-primary" id="udpatebtn">Update</button>
+                    <button type="submit" class="btn modal-btn" id="udpatebtn">Update</button>
                 </form>
             </div>
         </div>
@@ -817,7 +765,6 @@ div.dataTables_wrapper div.dataTables_length select {
                 <h5 class="modal-title" id="editModalLabel">Add User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="content-wrapper">
                 <div class="add-new-data-sidebar request-form-s">
                     <form method="POST" action="{{ route('admin.user') }}">
                         @csrf
@@ -832,7 +779,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            
+
                     </div>
                     <div class="form-group">
                             <label for="email" >{{ __('Email Address') }}</label>
@@ -891,14 +838,12 @@ div.dataTables_wrapper div.dataTables_length select {
 
                         <div class="form-group">
 
-                            <button type="submit" class="btn btn-primary sb_btn">
+                            <button type="submit" class="btn modal-btn sb_btn">
                                 {{ __('Add User') }}
                             </button>
 
                         </div>
                     </form>
-
-                </div>
             </div>
         </div>
     </div>

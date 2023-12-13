@@ -17,10 +17,10 @@ active
   }
   .title_stats_count-inner h2{
     font-size:16px;
-    margin-bottom:10px;
+    margin-bottom:15px;
   }
   .title_stats_count-inner p{
-    font-size:20px;
+    font-size:40px;
     font-weight:bold;
   }
   .title_stats_count-inner i.fa{
@@ -29,6 +29,16 @@ active
   .title_stats_count-inner img{
     width:25px;
   }
+  .modal-dialog{
+    display:block;
+  }
+  .modal .modal-header{
+    padding: 1.5rem 2.3rem !important;
+  }
+  .modal-btn{
+    background: #648FFF;
+    color: white;
+  }
 </style>
 
 <div class="content-wrapper">
@@ -36,7 +46,7 @@ active
         <div class="content-header row">
 @if(session('message'))
     <div class="alert alert-success">
-        {{ session('message') }}
+
         <script>
             // Display toastr success message
             toastr.success("{{ session('message') }}");
@@ -61,7 +71,7 @@ active
                 <div class="row">
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                             <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user-group"></i></div>
+                              <div class="count-icon"><i class="fa fa-user"></i></div>
                               <div class="count-content">
                                 <h2 class=''>Total Users</h2>
                                 <p class='m-0'>{{$totalUsersCount}}</p>
@@ -70,7 +80,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                        <div class="count-icon"><i class="fa fa-user-tick"></i></div>
+                        <div class="count-icon"><i class="fa fa-user"></i></div>
                               <div class="count-content">
                                 <h2 class=''>Active User</h2>
                                 <p class='m-0'>{{$totalEnabledUsersCount}}</p>
@@ -79,7 +89,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user-slash"></i></div>
+                              <div class="count-icon"><i class="fa fa-user"></i></div>
                               <div class="count-content">
                                 <h2 class=''>Inactive User</h2>
                                 <p class='m-0'>{{$totalDisabledUsersCount}}</p>
@@ -187,7 +197,6 @@ active
                     <h5 class="modal-title" id="editModalLabel">Add User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="content-wrapper">
                     <div class="add-new-data-sidebar request-form-s">
                         <form method="POST" action="{{ route('admin.user') }}">
                             @csrf
@@ -246,7 +255,7 @@ active
 
                             <div class="form-group">
 
-                                <button type="submit" class="btn btn-primary sb_btn">
+                                <button type="submit" class="btn modal-btn sb_btn">
                                     {{ __('Add User') }}
                                 </button>
 
@@ -254,7 +263,6 @@ active
                         </form>
 
                     </div>
-                </div>
             </div>
         </div>
 
