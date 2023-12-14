@@ -132,7 +132,9 @@
     color: red;
     border-bottom: 1px solid red;
 }
-
+.fb-conect_btn{
+    text-decoration:none;
+}
 .fb-conect_btn,
 .fb-recont_btn,
 .l-conect_btn,
@@ -151,10 +153,10 @@
 }
 
 .linkedbtnabc {
-    background: #0d6efd;
-    color: #fff;
-    padding: 10px;
-    border-radius: 30px;
+    /* background: #0d6efd; */
+    color: #959595;
+    /* padding: 10px; */
+    border-bottom:2px solid #959595;
 }
 
 .r_btn {
@@ -230,6 +232,137 @@
 }
 
 /*  */
+.user_detail .fa-info-circle:before {
+    color: #0d6efd;
+}
+.pullee {
+  width: 12rem;
+  appearance: none;
+}
+.pullee:active::-webkit-slider-thumb {
+  appearance: none;
+  transform: scale(1.1);
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}
+.pullee:active::-moz-range-thumb {
+  border: 0;
+  transform: scale(1.1);
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}
+.pullee:active::-ms-thumb {
+  transform: scale(1.1);
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}
+.pullee:focus {
+  outline: none;
+}
+.pullee::-webkit-slider-thumb {
+  appearance: none;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  background: #FF3044;
+  background: #FF3044 url("{{asset('images/deletebuckit.png')}}") no-repeat top center;
+  transform-origin: 50% 50%;
+  transform: scale(1);
+  transition: transform ease-out 100ms;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+.pullee::-moz-range-thumb {
+  border: 0;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  background: #FF3044;
+  transform-origin: 50% 50%;
+  transform: scale(1);
+  transition: transform ease-out 100ms;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+.pullee::-ms-thumb {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  background: #FF3044;
+  transform-origin: 50% 50%;
+  transform: scale(1);
+  transition: transform ease-out 100ms;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+.pullee::-webkit-slider-runnable-track {
+  height: 2rem;
+  padding: 0.25rem;
+  box-sizing: content-box;
+  border-radius: 7px;
+  background-color: #fff;
+  box-shadow: inset 0px 2px 3px 3px rgba(0, 0, 0, 0.4);
+
+}
+.pullee::-moz-range-track {
+    height: 2rem;
+  padding: 0.25rem;
+  box-sizing: content-box;
+  border-radius: 7px;
+  background-color: #fff;
+  box-shadow: inset 0px 2px 3px 3px rgba(0, 0, 0, 0.4);
+/* Are you sure want to delete this?
+this action can not undo
+label
+input field  */
+}
+.pullee::-moz-focus-outer {
+  border: 0;
+}
+.pullee::-ms-track {
+  border: 0;
+  height: 2rem;
+  padding: 0.25rem;
+  box-sizing: content-box;
+  border-radius: 5px;
+  background-color: #DDE0E3;
+  color: transparent;
+}
+.pullee::-ms-fill-lower, .pullee::-ms-fill-upper {
+  background-color: transparent;
+}
+.pullee::-ms-tooltip {
+  display: none;
+}
+.range-wraper{
+    display:flex;
+    justify-content:end;
+    padding:10px;
+}
+.center-xy{
+    position: relative;
+    width: max-content;
+    opacity:.5;
+}
+.range-text{
+    font-size: 12px;
+    position: absolute;
+    left: 58px;
+    top: 11px;
+}
+.pullee:active + .range-text{
+    display:none;
+}
+/* .center-xy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
 /* main account file styling */
 @media (max-width:992px) {
     .all_social_platformWrp {
@@ -242,6 +375,16 @@
 <!--24,,10,23,  -->
 <div class="account_main mt-5">
     <div>
+        <div class="range-wraper">
+        <button type="button" class="btn btn-danger" data-bs-toggle='modal' data-bs-target='#delaccountModal'>
+                            <img src="{{asset('images/deletebuckit.png')}}" class="" />
+
+        </button>
+        <!-- <div class="center-xy">
+         <input type="range" value="0" class="pullee" />
+         <span class='range-text text-danger'>Slide to delete account</span>
+        </div> -->
+        </div>
         @if(in_array("Facebook", $account->platforms))
         <img src="{{$account->fb_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Instagram", $account->platforms))
@@ -256,7 +399,7 @@
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
             <div class="account-info">
-                <label for="" class="user_detail">Account Name</label>
+                <label for="" class="user_detail">Account Name <i class="fa fa-info-circle"></i></label>
                 <div class="delete_input">
                     <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
                         placeholder="Account Name" class="account-detail account_name" maxlength="18"
@@ -265,7 +408,7 @@
                              <p><span class="charCount">0/18</span></p>
                         </div>
                 </div>
-                <form action="{{ route('account-delete',$account->id) }}" method="POST">
+                <!-- <form action="{{ route('account-delete',$account->id) }}" method="POST">
                     @csrf
                     @method('Post')
 
@@ -285,7 +428,7 @@
                         </button>
                         </div>
                         @endif
-                </form>
+                </form> -->
             </div>
             <!-- <div class="maxchar">
                 <p><span class="charCount">0/18</span></p>
@@ -329,7 +472,7 @@
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) &&
                         $account->fb_access_token == null  ? 'showColorIcon' : 'd-none' }}"
                         href="{{ url('connect_to_facebook', ['account' => $account->id]) }}">
-                        <span class="linkedbtnabc"> Connect</span>
+                        <span class="linkedbtnabc"> Reconnect</span>
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
@@ -359,7 +502,7 @@
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) &&
                         $account->insta_access_token == null  ? '' : 'd-none' }}"
                         href="{{ url('connect_to_instagram', ['account' => $account->id]) }}">
-                        <span class="linkedbtnabc"> Connect</span>
+                        <span class="linkedbtnabc"> Reconnect</span>
                     </a>
 
                 </div>
@@ -392,7 +535,7 @@
                         $account->twiter_access_token ==  null  ? '' : 'd-none' }}"
                         href="{{ url('connect_twitter', ['account' => $account->id]) }}">
                         <span class="linkedbtnabc">
-                            Connect</span>
+                            Reconnect</span>
                     </a>
 
                 </div>
@@ -423,7 +566,7 @@
                         && $account->linkedin_accesstoken == null
                         &&  $account->linkedin_user_id == null ? '' : 'd-none' }}"
                         href="{{ url('connect_to_linkedin', ['account' => $account->id]) }}">
-                        <span class="linkedbtnabc"> Connect</span>
+                        <span class="linkedbtnabc"> Reconnect</span>
                     </a>
                 </div>
                 <div class="single_platform d-none" style="">
@@ -455,12 +598,51 @@
                 </div> -->
             </div>
         </div>
+
+        <button class="btn btn-primary mt-3 mb-4 fw-bold"><img src="{{asset('images/sum-icon.svg')}}" style=" padding-right: 5px; width: 22px;
+            height: 16px;">Create a post</button>
     </div>
 </div>
+<!-- modal -->
+<div class="modal fade delete" id="delaccountModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog del-account" role="document">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h5 class="modal-title">del</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div> -->
+            <div class="modal-body">
+            <h2>Are you sure want to delete this?</h2>
+    <label for="">This action can't be undone</label>
+    <input type="text" class='form-control' id='inputText'>
+    <button class="btn" data-dismiss="modal" aria-label="Close">Cancel</button>
+    <button class='btn bg-danger text-white' id='deleteBtn' disabled>Delete</button>
 
+
+            </div>
+        </div>
+    </div>
+</div>
 <!--  -->
 @endforeach
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+        // Use jQuery to handle the input and button
+        $(document).ready(function() {
+            // Get references to the input and delete button
+            const $inputText = $('#inputText');
+            const $deleteBtn = $('#deleteBtn');
 
+            // Add a keyup event listener to the text input
+            $inputText.on('keyup', function() {
+                // Enable or disable the delete button based on whether the input has text
+                $deleteBtn.prop('disabled', !$inputText.val().trim());
+            });
+        });
+    </script>
 <script>
 $(document).ready(function() {
     // Enable Bootstrap tooltips
@@ -491,6 +673,3 @@ function countCharacters(inputField) {
     inputField.closest('.delete_input').find('.counter_numeric .charCount').text(charCount + "/" + maxLength);
 }
 </script>
-
-
-
