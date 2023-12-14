@@ -48,6 +48,31 @@
     left: 0;
     right: 0;
 }
+/*  */
+.add-organization{
+    text-align: center;
+    border-radius: 10px;
+    border: 0.5px solid #E0E0E0;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.10);
+    padding:20px;
+    cursor: pointer;
+}
+.add-organization button{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+    border:none;
+    outline:none;
+    color:#959595;
+
+}
+.add-organization button:hover{
+    color:#959595;
+
+}
 @media(max-width:2000px){
     .maxchar {
     color: #959595;
@@ -139,7 +164,7 @@
         margin-top: 10px
     }
     .index_dltbtn{
-        width: 100%; 
+        width: 100%;
     }
     .index_dltbtn button{
         width: 100%;
@@ -189,7 +214,7 @@
         margin-top: 10px
     }
     .index_dltbtn{
-        width: 100%; 
+        width: 100%;
     }
     .index_dltbtn button{
         width: 100%;
@@ -276,11 +301,9 @@
 
 
 
-    <div style="text-align:center; margin-top:
+    <div class='add-organization' style="text-align:center; margin-top:
            30px" class="addOtherAccountMain" id="addAccount">
-        <button class="btn btn-primary add_account"><img src="{{asset('images/sum-icon.svg')}}" style="    padding-right: 5px; width: 17px;
-            height: 13px;;" id="addAccount">Add New
-            Account</button>
+        <button class="btn add_account fw-bold"><img src="{{asset('images/plus-mark.png')}}" id="addAccount">Add Organization</button>
 
     </div>
 

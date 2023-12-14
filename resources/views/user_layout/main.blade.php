@@ -30,7 +30,7 @@
     <!--Normalize v8.0.1 CSS FILE-->
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}"/>
     <!--Bootstrap v4.6.0 CSS FILE-->
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.min.css">
     <!--Fonts Are Loads From Here-->
     <link rel="stylesheet" href="{{asset('fonts/fonts.css')}}"/>
     <!--Pignose Calendar CSS File-->
@@ -125,7 +125,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
 <script>
-        const suggestionsMap = {}; 
+        const suggestionsMap = {};
 
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;
@@ -208,7 +208,7 @@
 </script>
 <script>
    $('#SchedulePost').on('show.bs.modal', function (event) {
-   
+
     var button = $(event.relatedTarget);
     var dataId = button.data('id');
     var posted_at = button.data('posted_at');
@@ -230,7 +230,7 @@ var today = moment().format('YYYY-MM-DD');
             var dateObject = new Date(dateString);
             var formattedDate = moment(dateObject).format('YYYY-MM-DD');
             $('#postdate').val(formattedDate);
-            
+
             settime_reshedule(dateTime);
 
             // reshedule post edit
@@ -306,9 +306,9 @@ function settime_reshedule(dateTime) {
         amPmSelect.disabled = true;
     }
 
-              
-} 
-$("#ampm_schedule").on("change", function() { 
+
+}
+$("#ampm_schedule").on("change", function() {
     var ampmValue = $(this).val();
     var currentDate = new Date();
     let start = 1;
@@ -330,7 +330,7 @@ $("#ampm_schedule").on("change", function() {
     current_minutes=(selectedDate === currentDate)? current_minutes:0;
     populateDropdown("hour_schedule", start, 12, 1);
     populateDropdown("minute_schedule",current_minutes ,59, 1);
-    
+
 });
 // Dsiable Edit Post Time
 
@@ -611,10 +611,10 @@ function populateDropdownFromArray(selectId, optionsArray) {
 
 
     //             $('.calendarmain > .fb-post').each(function() {
-                   
+
     //     // Find each p inside the current div
     //     $(this).find('.DetailText p').each(function() {
-            
+
 
     //         $(this).find('span').each(function() {
     //             alert("HTML con p:", $(this).html());
@@ -645,7 +645,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                     // $('html, body').animate({
                     //     scrollTop: $("#postManagerCalendar").offset().top
                     // });
-                
+
             }
         });
     }
@@ -876,7 +876,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('#file_error_all').addClass('d-none');
                 var textareaAttr = $($obj).attr("attr_of_text_area");
                 var inputText = $($obj).val();
-               
+
                 var textareaId =$();
                 var lart= inputText.slice(-1);
                 // if(lart.trim() == ''){

@@ -207,7 +207,7 @@ button#removeStylesButton {
 </button>
     <div class="main-menu-content">
         <div class="side-search-bar">
-        <img class='sidebar-logo' src="{{asset('assets/images/writingapp/YouPost_Logo.png')}}" alt="card-img" >
+        <img class='sidebar-logo' src="{{ asset('images/youpostlogo2.png' ) }}" alt="card-img" >
         </div>
 
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
