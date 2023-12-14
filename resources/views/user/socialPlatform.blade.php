@@ -349,12 +349,24 @@ $(document).ready(function() {
 
     var authuser = "{{auth()->user()}}";
     if (authuser != null) {
-        var insta_access_token = "{{auth()->user()->account->insta_access_token}}";
-        var insta_user_id = "{{auth()->user()->account->insta_user_id}}";
-        var fb_access_token = "{{auth()->user()->account->fb_access_token}}";
-        var fb_page_token = "{{auth()->user()->account->fb_page_token}}";
-        var linkedin = "{{auth()->user()->account->linkedin_page_id}}";
-        var linkedinAcces = "{{auth()->user()->account->linkedin_accesstoken}}";
+        @php
+            $instaAccessToken = optional(auth()->user()->account)->insta_access_token;
+            $insta_user_id = optional(auth()->user()->account)->insta_user_id;
+            $fb_access_token = optional(auth()->user()->account)->fb_access_token;
+            $fb_page_token = optional(auth()->user()->account)->fb_page_token;
+            $linkedin = optional(auth()->user()->account)->linkedin_page_id;
+            $linkedinAcces = optional(auth()->user()->account)->linkedin_accesstoken;
+           
+
+        @endphp
+        var insta_access_token = "{{ $instaAccessToken }}";
+        var insta_user_id = "{{ $insta_user_id }}";
+        var fb_access_token = "{{ $fb_access_token }}";
+        var fb_page_token = "{{ $fb_page_token }}";
+        var linkedin = "{{ $linkedin }}";
+        var linkedinAcces = "{{ $linkedinAcces }}";
+
+     
 
 
         if (insta_access_token != '' && insta_user_id == '') {
@@ -410,18 +422,21 @@ $(document).on('change', '.account_name', function() {
 
 //creating new account
 $(document).on('click', '#addAccount', function() {
+   
     $(this).prop('disabled', true);
     $('.add_account').addClass('loading_account');
     var test = $(this);
-
+   
     $.ajax({
         type: "post",
         url: "{{ route('store-acount')}}",
         success: function(response) {
+           
             setTimeout(function() {
                 test.prop('disabled', false);
                 $('.add_account').removeClass('loading_account');
             }, 500);
+           
             RefresehAccounts();
 
         }
@@ -430,10 +445,12 @@ $(document).on('click', '#addAccount', function() {
 
 //refresh all accounts ui
 function RefresehAccounts() {
+   
     $.ajax({
         type: "post",
         url: "{{ route('refresh-accounts')}}",
         success: function(response) {
+            
 
             console.log(response);
             $('.account_result').empty().append(response);

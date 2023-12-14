@@ -56,22 +56,22 @@ class LoginController extends Controller
         ]);
         if (auth()->attempt(array('email'=>$request->input('email'),'password'=>$request->input('password')))) 
         {
-            $user = auth()->user();
+            // $user = auth()->user();
 
-            if ($user->disabled) {
-                // Logout the user and redirect back with an error message
+            // if ($user->disabled) {
+            //     // Logout the user and redirect back with an error message
                 
-                auth()->logout();
+            //     auth()->logout();
         
-                return redirect()->back()->with('error', 'Your account is disabled. Please contact support.');
-            }
+            //     return redirect()->back()->with('error', 'Your account is disabled. Please contact support.');
+            // }
 
             if (auth()->user()->role=='admin') {
                
                 return redirect()->route('admin.dashboard')->with('message','Login Successful');  
             } else{  
 
-                event(new UserLoggedIn($user));                
+                // event(new UserLoggedIn($user));                
                 return redirect()->route('dashboard')->with('message','Login Successful'); 
             }
         }
@@ -94,17 +94,19 @@ class LoginController extends Controller
                 $user = Socialite::driver('google')->stateless()->user();
              
                 // $finduser = User::where('email', $user->email)->first();
-                // $finduser = User::where('google_id', $user->id)->first();
+                $finduser = User::where('google_id', $user->id)->first();
                
-                $finduser = User::where('google_id', $user->id)->orWhere('email', $user->email)->first();
+                // $finduser = User::where('google_id', $user->id)->orWhere('email', $user->email)->first();
 
                 if($finduser){
                    
-                    if ($finduser->disabled) {
-                        // User is disabled, redirect to login with a message
-                        auth()->logout();
-                        return redirect()->route('login')->with('error','Your account is disabled. Please contact support.');
-                    }
+                    // if ($finduser->disabled) {
+                    //     // User is disabled, redirect to login with a message
+                    //     auth()->logout();
+                    //     return redirect()->route('login')->with('error','Your account is disabled. Please contact support.');
+                    // }
+                    // $finduser->update(['disabled' => true]);
+
                     event(new UserLoggedIn($finduser));     
                     Auth::login($finduser);
                     return redirect('dashboard')->with('success', 'Login Successfully');

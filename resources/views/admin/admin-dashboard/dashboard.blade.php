@@ -75,7 +75,7 @@ active
                 <div class="row">
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                             <div class="title_stats_count-inner">
-                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/t-user.png')}}" alt="card-img" ></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/postusers.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Total Users</h2>
                                 <p class='m-0'>{{$totalUsersCount}}</p>
@@ -84,7 +84,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                        <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/active-user.png')}}" alt="card-img" ></div>
+                        <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/posttickmark.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Active User</h2>
                                 <p class='m-0'>{{$totalEnabledUsersCount}}</p>
@@ -93,7 +93,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/no-user.png')}}" alt="card-img" ></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/postchangeuser.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Inactive User</h2>
                                 <p class='m-0'>{{$totalDisabledUsersCount}}</p>
@@ -102,7 +102,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/post.png')}}" alt="card-img" ></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/potssview.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Total Posts</h2>
                                 <p class='m-0'>{{$totalPost}}</p>
@@ -111,7 +111,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/post.png')}}" alt="card-img" ></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/scheduleposts.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Scheduled Posts</h2>
                                 <p class='m-0'>{{$totalPostScheduled}}</p>
@@ -120,7 +120,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/post.png')}}" alt="card-img" ></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/postmail.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Posted Post</h2>
                                 <p class='m-0'>{{$totalPostPosted}}</p>
@@ -129,7 +129,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/accounts.png')}}" alt="card-img" ></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/webaccount.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Total Accounts</h2>
                                 <p class='m-0'>{{$totalAc}}</p>
@@ -138,7 +138,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img src="{{ asset('images/fbposticon.png' ) }}" alt=" Logo"></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/fbicon.png')}}" alt=" Logo"></div>
                               <div class="count-content">
                                 <h2 class=''>Facebook Accounts</h2>
                                 <p class='m-0'>{{$facebookCount}}</p>
@@ -147,7 +147,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img src="{{ asset('images/instagram.png' ) }}" alt=" Logo"></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/instaicon.png')}}" alt=" Logo"></div>
                               <div class="count-content">
                                 <h2 class=''>Instagram Accounts</h2>
                                 <p class='m-0'>{{$instagramCount}}</p>
@@ -156,7 +156,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img src="{{ asset('images/twitterpost.png' ) }}" alt=" Logo"></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/twiitericon.png')}}" alt=" Logo"></div>
                               <div class="count-content">
                                 <h2 class=''>Twitter Accounts</h2>
                                 <p class='m-0'>{{$twitterCount}}</p>
@@ -165,7 +165,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img src="{{ asset('images/linkpost.png' ) }}" alt=" Logo"></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/linkedinicon.png')}}" alt=" Logo"></div>
                               <div class="count-content">
                                 <h2 class=''>Linkedin Accounts</h2>
                                 <p class='m-0'>{{$linkedInCount}}</p>
@@ -174,7 +174,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                        <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/accountnoattach.png')}}" alt=" Logo"></div>
                               <div class="count-content">
                                 <h2 class=''>Accounts with no Platform Attached</h2>
                                 <p class='m-0'>{{$acWithoutPlateFormAttached}}</p>

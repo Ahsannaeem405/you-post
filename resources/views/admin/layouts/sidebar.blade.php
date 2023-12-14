@@ -207,26 +207,27 @@ button#removeStylesButton {
 </button>
     <div class="main-menu-content">
         <div class="side-search-bar">
-        <img class='sidebar-logo' src="{{asset('assets/images/writingapp/YouPost_Logo.png')}}" alt="card-img" >
+        <img class='sidebar-logo' src="{{ asset('images/youpostlogo2.png' ) }}" alt="card-img" >
         </div>
 
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
            <!-- <h2 style='padding: 10px 32px 0;font-weight: 900;'>Admin</h2> -->
             <li class=" nav-item @yield('dashboard')">
-                <a href="{{url('admin/dashboard')}}">
+                <a href="{{ route('admin.dashboard') }}">
+               
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/monitor.png')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
             <li class=" nav-item @yield('users')">
-                <a href="{{url('admin/users')}}">
+                <a href="{{ route('admin.showusers') }}">
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Users</span></a>
             </li>
             @if(auth()->user()->type=="superAdmin")
 
             <li class=" nav-item @yield('admins')">
-                <a href="{{url('admin/admins')}}">
+                <a href="{{ route('admin.showAdmins') }}">
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Admins</span></a>
             </li>

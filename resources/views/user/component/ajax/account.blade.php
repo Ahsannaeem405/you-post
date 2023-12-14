@@ -412,16 +412,7 @@ input field  */
                     @csrf
                     @method('Post')
 
-                        @if(auth()->check() && auth()->user()->account_id == $account->id)
-                        <div class="index_dltbtn">
-                        <button type="button" class="btn btn-danger disabledBtn">
-                            <img src="{{asset('images/deletebuckit.png')}}" class="" />
-                            <span>
-                                This is your primary account can't delete.
-                            </span>
-                        </button>
-                        </div>
-                        @else
+
                         <div class="index_delete" id="deleteindex">
                         <button type="button" class="btn btn-danger delete_accountbtn">
                             <img src="{{asset('images/deletebuckit.png')}}" class="delete_account" />
