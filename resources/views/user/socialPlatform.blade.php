@@ -216,6 +216,17 @@
 
 }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.all.min.js"></script>
+@if(session('message'))
+    <script>
+        Swal.fire({
+            icon: 'info',
+            title: '',
+            text: '{{ session('message') }}',
+        });
+    </script>
+@endif
 <div class="platformBtn">
     <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus dashboard_direct">Dashboard</a>
 </div>
@@ -285,8 +296,7 @@
 
 @section('js')
 <!-- Include SweetAlert CSS and JS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.all.min.js"></script>
+
 <script>
 $(document).ready(function() {
     $(document).on('click', '.checkAndFocus', function() {
