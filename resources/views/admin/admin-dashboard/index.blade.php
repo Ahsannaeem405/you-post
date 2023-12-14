@@ -517,6 +517,56 @@ div.dataTables_wrapper div.dataTables_length select {
     background: #648FFF;
     color: white;
   }
+  /*  */
+  .fb-post {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 0.5px solid #bfbfbf;
+    cursor: pointer;
+    margin: auto;
+    width: 98%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding:10px
+}
+.timer_style{
+    text-align:right;
+}
+.post_detailWrap{
+    padding:15px;
+    padding-top:20px;
+    gap:20px;
+}
+.sidebar_post{
+    display:flex;
+    align-items:center;
+
+}
+.sidebar_post img{
+    width: 68px;
+}
+.publishedpost {
+    margin: unset;
+    border-radius: 5px;
+    width: 65%;
+    background: rgba(137, 197, 127, 0.62);
+    display: flex;
+    align-items: center;
+}
+
+.approved {
+    color: #007b40;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+ .modal-dialog.post-h {
+    height: 92vh;
+    overflow: auto;
+    border-radius: 10px;
+}
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -739,7 +789,7 @@ div.dataTables_wrapper div.dataTables_length select {
 <!-- post view modal -->
 <div class="modal fade postModal" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog post-h" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="postModalLabel">Posts</h5>
