@@ -18,22 +18,51 @@ class AccountController extends Controller
 
     public function index()
     { 
-        $response = $this->createPostService->InitilizeData();
-        $instapages = $response['linkedin'];
-        $all_pages = $response['facebook'];
-        $all_pages_for_insta = [];
-      
-        return view('user.socialPlatform', compact('instapages', 'all_pages', 'all_pages_for_insta'));
+        $user = auth()->user();
+        // dd($user);
+        if ($user && !$user->account) {
+            
+            $nextAvailableAccount = Account::where('user_id', $user->id)->first();
+          
+        
+            if ($nextAvailableAccount) {
+                
+                $user->update(['account_id' => $nextAvailableAccount->id]); 
+                $response = $this->createPostService->InitilizeData();
+                $instapages = $response['linkedin'];
+                $all_pages = $response['facebook'];
+                $all_pages_for_insta = [];       
+              
+            } else {
+               
+                $user->update(['account_id' => null]);
+                $instapages = [];
+                $all_pages = [];
+                $all_pages_for_insta = [];
+
+            }
+        }else{
+            $response = $this->createPostService->InitilizeData();
+            $instapages = $response['linkedin'];
+            $all_pages = $response['facebook'];
+            $all_pages_for_insta = [];
+
+        } 
+      return view('user.socialPlatform', compact('instapages', 'all_pages', 'all_pages_for_insta'));
         
     }
 
     public function store(Request $request)
     {
-        Account::create([
+       $accountId= Account::create([
             'user_id' => auth()->id(),
             'name' => $request->name ?? '',
         ]);
-        return back()->with('success', 'Account Created Successfully.');
+
+        if (!auth()->user()->account_id) {
+            auth()->user()->update(['account_id' => $accountId->id]); 
+        }
+        return true;
     }
 
     public function delete($id)
