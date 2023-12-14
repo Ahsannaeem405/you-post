@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/verify-otp', [OtpController::class, 'verifyOtp'])->name('verification.verify');
 });
 
-Route::group(['middleware' => ['auth','otp']], function () {
+Route::group(['middleware' => ['auth','otp','disable']], function () {
    
 
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');

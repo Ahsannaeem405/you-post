@@ -49,6 +49,13 @@ class UserController extends Controller
     public function dashbaord()
     {
         // dd(auth()->user()->email)
+        $user = auth()->user();
+
+        if ($user && !$user->account) {
+            // return redirect()->route('index')->with('message', 'Please add account.');
+            return redirect()->back()->with('message', 'Please add account.');
+
+        }
 
         $platforms = session('platforms');
         $imageUrl = 'images/admin.png';
@@ -830,6 +837,7 @@ class UserController extends Controller
         $permissions = ['pages_read_engagement', 'pages_read_user_content', 'pages_manage_posts', 'read_insights', 'pages_show_list'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
+        
         return redirect()->away($loginUrl);
     }
 

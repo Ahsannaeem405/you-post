@@ -995,7 +995,7 @@ div.dataTables_wrapper div.dataTables_length select {
         });
 
 
-        $('.disabled').click(function (e) {
+        $(document).on('click', '.disabled',function (e) {
 
             var isChecked = $(this).prop('checked');
             var recordId = $(this).data('record-id');

@@ -88,9 +88,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Facebook Account
-                    {{auth()->user()->account->name}}</h5>
-
-            </div>
+                @if(auth()->user()->account)
+                    {{ auth()->user()->account->name }}
+                @endif
+                            </div>
             <form action="{{url('set_page')}}" method="post">
                 @csrf
                 <div class="modal-body">
@@ -122,7 +123,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Instagram Account
-                    {{auth()->user()->account->name}}</h5>
+                
+                    @if(auth()->user()->account)
+                    {{auth()->user()->account->name}}
+                      @endif
+                </h5>
+                    
 
             </div>
             <form action="{{url('set_page_for_instagram')}}" method="post">
@@ -166,7 +172,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Linkedin Account
-                    {{auth()->user()->account->name}} </h5>
+                @if(auth()->user()->account)
+   
+                {{auth()->user()->account->name}} 
+            @endif
+            </h5>
 
             </div>
             <form action="{{url('set_page_for_linkedin')}}" method="post">

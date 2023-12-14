@@ -65,6 +65,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \App\Http\Middleware\AdminMiddleware::class,
         'otp' => \App\Http\Middleware\VerifyOtp::class,
+        'disable' => \App\Http\Middleware\DisableMiddlewar::class,
+
 
 
     ];
