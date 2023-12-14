@@ -27,8 +27,14 @@ active
     font-size:35px;
   }
   .title_stats_count-inner img{
-    width:25px;
+    width:28px;
   }
+  .title_stats_count-inner .fa-user{
+    color:#648FFF;
+  }
+  .title_stats_count-inner img.dash-img {
+    width: 35px;
+}
   .modal-dialog{
     display:block;
   }
@@ -69,7 +75,7 @@ active
                 <div class="row">
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                             <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/t-user.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Total Users</h2>
                                 <p class='m-0'>{{$totalUsersCount}}</p>
@@ -78,7 +84,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                        <div class="count-icon"><i class="fa fa-user"></i></div>
+                        <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/active-user.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Active User</h2>
                                 <p class='m-0'>{{$totalEnabledUsersCount}}</p>
@@ -87,7 +93,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/no-user.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Inactive User</h2>
                                 <p class='m-0'>{{$totalDisabledUsersCount}}</p>
@@ -96,7 +102,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/post.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Total Posts</h2>
                                 <p class='m-0'>{{$totalPost}}</p>
@@ -105,7 +111,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/post.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Scheduled Posts</h2>
                                 <p class='m-0'>{{$totalPostScheduled}}</p>
@@ -114,7 +120,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/post.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Posted Post</h2>
                                 <p class='m-0'>{{$totalPostPosted}}</p>
@@ -123,7 +129,7 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><i class="fa fa-user"></i></div>
+                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/accounts.png')}}" alt="card-img" ></div>
                               <div class="count-content">
                                 <h2 class=''>Total Accounts</h2>
                                 <p class='m-0'>{{$totalAc}}</p>
