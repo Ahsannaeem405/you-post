@@ -113,8 +113,11 @@ class AdminControoler extends Controller
     public function deleteUser($id)
     {
         
-        $this->user->findOrFail(decrypt($id))->delete();
-        return redirect('/admin/dashbaord')->with('success', 'User Deleted Successfully!');
+        $user = User::findOrFail(decrypt($id));
+        $user->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'User Deleted Successfully!');
+
+        // return redirect('/admin/dashbaord')->with('success', 'User Deleted Successfully!');
 
     }
     public function getUserdData($id)

@@ -547,7 +547,7 @@ div.dataTables_wrapper div.dataTables_length select {
 .publishedpost {
     margin: unset;
     border-radius: 5px;
-    width: 65%;
+    /* width: 65%; */
     background: rgba(137, 197, 127, 0.62);
     display: flex;
     align-items: center;
@@ -1029,7 +1029,9 @@ div.dataTables_wrapper div.dataTables_length select {
 
     <script>
         document.querySelectorAll('.delete-item').forEach(deleteBtn => {
-            deleteBtn.addEventListener('click', function (event) {
+           
+                $(document).on('click', deleteBtn,function (e) {
+
                 event.preventDefault();
 
                 const deleteUrl = this.getAttribute('data-url');
