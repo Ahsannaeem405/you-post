@@ -55,7 +55,7 @@ $timeOnly = $publishedAt->format('h:i A');
 </div> -->
 
 <div class="fb-post mb-2">
-    <div class="timer_style">06:21 PM</div>
+    <div class="timer_style">{{ $timeOnly }}</div>
 
     <div style="border-radius:20px">
         <div class="d-flex post-detail post_detailWrap">
@@ -64,19 +64,47 @@ $timeOnly = $publishedAt->format('h:i A');
             </div>
             <div class="DetailText">
                 <div class="d-flex align-items-center gap-1 post_card_detail">
-                    <img src="{{ asset('images/linkpost.png') }}" alt="" class="mr-1 ProfileIcon">
+
+             @if ($post->plateform === 'Facebook')
+            <img src="{{ asset('images/fbposticon.png') }}" alt="" class="mr-1 ProfileIcon">
+
+            @elseif($post->plateform === 'Instagram')
+            <img src="{{ asset('images/instapost.png') }}" alt="" class="mr-1 ProfileIcon">
+
+            @elseif($post->plateform === 'Twitter')
+            <img src="{{ asset('images/twitterpost.png') }}" alt="" class="mr-1 ProfileIcon">
+
+            @elseif($post->plateform === 'Linkedin')
+            <img src="{{ asset('images/linkpost.png') }}" alt="" class="mr-1 ProfileIcon">
+            @endif
 
 
-                    <h5 class="m-0 postuser"> browntech-youpost</h5>
+
+
+
+                    <h5 class="m-0">  
+                 @if ($post->plateform === 'Facebook')
+                {{ $account->fb_page_name }}
+                @elseif($post->plateform === 'Instagram')
+                {{ $account->inst_name }}
+                @elseif($post->plateform === 'Twitter')
+                {{$account->tw_name }}
+                @elseif($post->plateform === 'Linkedin')
+                {{ $account->link_page_name }}
+                @endif</h5>
                 </div>
-                <p class="m-0 postcont">dfgfdg fgfd gdg fdgd d</p>
+                <p class="m-0">{!! nl2br($post->content) !!}</p>
 
                 <div class="publishedpost mt-2">
                     <span>
                         <img src="{{ asset('images/approvodpost2.png') }}" alt="">
                     </span>
                     <span class="approved">
+                    @if ($post->posted_at_moment == 'now')
                         Posted
+                        @else
+                        Scheduled
+                    @endif
                     </span>
                 </div>
             </div>

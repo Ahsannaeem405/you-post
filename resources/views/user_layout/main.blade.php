@@ -126,6 +126,7 @@
 
 <script>
         const suggestionsMap = {};
+        let  pathArray = [];
 
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;

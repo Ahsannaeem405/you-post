@@ -5,6 +5,7 @@ $(document).ready(function () {
             $(this).addClass('active_social');
         }
     });
+
 });
 
 
@@ -1055,24 +1056,236 @@ $(document).ready(function () {
             reader.readAsDataURL(file);
         }
     }
+    $('li[section="youpost"]').on('click', function() {
+    
+
+
+        var videoElement = $('#mediaContainervideo_youpost video');
+
+        if (videoElement.length > 0) {
+            var videoPathFromElement = videoElement.attr('src');
+            pathArray.push(videoPathFromElement);
+
+        }
+    });
+    $('li[section="fb"]').on('click', function() {
+        var videoElement = $('#mediaContainervideo_fb video');
+
+        if (videoElement.length > 0) {
+            var videoPathFromElement = videoElement.attr('src');
+            
+            // Check if the video source matches the one in pathArray
+            if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
+                // Run your code here if the conditions are met
+                var videoPath = videoPathFromElement;
+                var video = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_fb').html(video);
+               
+            }
+            else{
+           
+                var videoElement = $('#mediaContainervideo_fb video');
+                var videoPath = videoElement.attr('src');               
+                var video = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_fb').html('');
+
+                $('#mediaContainervideo_fb').html(video);
+                pathArray.length = 0;
+
+
+            }
+        }else{
+               
+            var videoElement = $('#mediaContainervideo_youpost video');
+    
+            if (videoElement.length > 0) {            
+                var videoPath = videoElement.attr('src');
+                pathArray.push(videoPath);
+    
+            } 
+            if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
+                // var videoPath = videoElement.attr('src');
+                var videoPath = pathArray[0];
+                var video = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_fb').html(video);            
+                pathArray.length = 0; 
+            }
+            
+        }
+     
+
+    });
+    $('li[section="insta"]').on('click', function() {
+
+        var videoElement = $('#mediaContainervideo_insta video');
+
+        if (videoElement.length > 0) {
+            var videoPathFromElement = videoElement.attr('src');
+            
+            // Check if the video source matches the one in pathArray
+            if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
+                // Run your code here if the conditions are met
+                var videoPath = videoPathFromElement;
+                var video = $('<video controls class="video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_insta').html(video);
+               
+            }
+            else{
+           
+                var videoElement = $('#mediaContainervideo_insta video');
+                var videoPath = videoElement.attr('src');               
+                var video = $('<video controls class="video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_insta').html('');
+
+                $('#mediaContainervideo_insta').html(video);
+                pathArray.length = 0;
+
+
+            }
+        }else{
+               
+            var videoElement = $('#mediaContainervideo_youpost video');
+    
+            if (videoElement.length > 0) {            
+                var videoPath = videoElement.attr('src');
+                pathArray.push(videoPath);
+    
+            } 
+            if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
+              
+                // var videoPath = videoElement.attr('src');
+                var videoPath = pathArray[0];
+                var video = $('<video controls class="video_preview_inst  w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_inst').html(video);            
+                pathArray.length = 0; 
+            }
+            
+        }
+
+    });
+
+    $('li[section="twitter"]').on('click', function() {
+
+        var videoElement = $('#mediaContainervideo_twitter video');
+
+        if (videoElement.length > 0) {
+            var videoPathFromElement = videoElement.attr('src');
+            
+            // Check if the video source matches the one in pathArray
+            if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
+                // Run your code here if the conditions are met
+                var videoPath = videoPathFromElement;
+                var video = $('<video controls class="video_preview_twitter w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_twitter').html(video);
+               
+            }
+            else{
+           
+                var videoElement = $('#mediaContainervideo_twitter video');
+                var videoPath = videoElement.attr('src');               
+                var video = $('<video controls class="video_preview_twitter w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_twitter').html('');
+
+                $('#mediaContainervideo_twitter').html(video);
+                pathArray.length = 0;
+
+
+            }
+        }else{
+               
+            var videoElement = $('#mediaContainervideo_youpost video');
+    
+            if (videoElement.length > 0) {            
+                var videoPath = videoElement.attr('src');
+                pathArray.push(videoPath);
+    
+            } 
+            if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
+              
+                // var videoPath = videoElement.attr('src');
+                var videoPath = pathArray[0];
+                var video = $('<video controls class="video_preview_twitter  w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_twitter').html(video);            
+                pathArray.length = 0; 
+            }
+            
+        }
+
+    });
+
+
+    $('li[section="linkedin"]').on('click', function() {
+
+        var videoElement = $('#mediaContainervideo_link video');
+
+        if (videoElement.length > 0) {
+            var videoPathFromElement = videoElement.attr('src');
+            
+            // Check if the video source matches the one in pathArray
+            if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
+                // Run your code here if the conditions are met
+                var videoPath = videoPathFromElement;
+                var video = $('<video controls class="video_preview_link w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_link').html(video);
+               
+            }
+            else{
+           
+                var videoElement = $('#mediaContainervideo_link video');
+                var videoPath = videoElement.attr('src');               
+                var video = $('<video controls class="video_preview_link w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_link').html('');
+
+                $('#mediaContainervideo_link').html(video);
+                pathArray.length = 0;
+
+
+            }
+        }else{
+               
+            var videoElement = $('#mediaContainervideo_youpost video');
+    
+            if (videoElement.length > 0) {            
+                var videoPath = videoElement.attr('src');
+                pathArray.push(videoPath);
+    
+            } 
+            if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
+              
+                // var videoPath = videoElement.attr('src');
+                var videoPath = pathArray[0];
+                var video = $('<video controls class="video_preview_link  w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+                $('#mediaContainervideo_link').html(video);            
+                pathArray.length = 0; 
+            }
+            
+        }
+
+    });
+
 
     function handleVideoUpload(socialicon, path, imgOrVideo) {
         // Function to handle video upload within the 'setPreview' function
+        $('#mediaContainervideo_youpost').html('');
 
         var videoPath = 'content_media/' + path;
+        pathArray.length = 0;
+        pathArray.push(videoPath);
+       
+
         // Create new video elements for each platform and set their sources
         var video_youpost = $('<video controls class="w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-        var video_fb = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-        var video_inst = $('<video controls class="video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-        var video_link = $('<video controls class="video_preview_link w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-        var video_twitter = $('<video controls class="video_preview_twitter w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        // var video_fb = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        // var video_inst = $('<video controls class="video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        // var video_link = $('<video controls class="video_preview_link w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
+        // var video_twitter = $('<video controls class="video_preview_twitter w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
 
         // Display the videos on different platform sections
         $('#mediaContainervideo_youpost').html(video_youpost);
-        $('#mediaContainervideo_fb').html(video_fb);
-        $('#mediaContainervideo_inst').html(video_inst);
-        $('#mediaContainervideo_link').html(video_link);
-        $('#mediaContainervideo_twitter').html(video_twitter);
+        $('#mediaContainervideo_fb').html('');
+        $('#mediaContainervideo_inst').html('');
+        $('#mediaContainervideo_link').html('');
+        $('#mediaContainervideo_twitter').html('');
 
     }
 

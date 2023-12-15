@@ -419,7 +419,6 @@ input field  */
                             <img src="{{asset('images/deletebuckit.png')}}" class="delete_account" />
                         </button>
                         </div>
-                    
                 </form> -->
             </div>
             <!-- <div class="maxchar">

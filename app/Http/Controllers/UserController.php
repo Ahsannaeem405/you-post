@@ -52,8 +52,9 @@ class UserController extends Controller
         $user = auth()->user();
 
         if ($user && !$user->account) {
-            // return redirect()->route('index')->with('message', 'Please add account.');
-            return redirect()->back()->with('message', 'Please add account.');
+           
+            return redirect()->route('index')->with('message', 'Please Add Account.');
+            // return redirect()->back()->with('message', 'Please add account.');
 
         }
 
