@@ -28,6 +28,7 @@
     height: 100px;
     border-radius: 50%;
     margin-top: 40px;
+    border:4px solid #52a2e3;
 }
 
 .input_lb {
@@ -399,7 +400,7 @@ input field  */
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
             <div class="account-info">
-                <label for="" class="user_detail">Account Name <i class="fa fa-info-circle"></i></label>
+                <label for="" class="user_detail">Account Name <img src="{{asset('images/infoinfoinfo.png')}}" class="delete_account" /></label>
                 <div class="delete_input">
                     <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
                         placeholder="Account Name" class="account-detail account_name" maxlength="18"
@@ -418,7 +419,7 @@ input field  */
                             <img src="{{asset('images/deletebuckit.png')}}" class="delete_account" />
                         </button>
                         </div>
-                        @endif
+                    
                 </form> -->
             </div>
             <!-- <div class="maxchar">
@@ -606,14 +607,15 @@ input field  */
                 </button>
             </div> -->
             <div class="modal-body">
-            <h2>Are you sure want to delete this?</h2>
-    <label for="">This action can't be undone</label>
-    <input type="text" class='form-control' id='inputText'>
-    <button class="btn" data-dismiss="modal" aria-label="Close">Cancel</button>
-    <button class='btn bg-danger text-white' id='deleteBtn' disabled>Delete</button>
+    <h2 class="text-danger">Are you sure you want to delete this?</h2>
+    <label class="text-muted">This action can't be undone</label>
+    <input type="text" class="form-control mt-3" id="inputText" placeholder="Reason for deletion">
+    <div class="mt-4">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger text-white ml-2" id="deleteBtn" disabled>Delete</button>
+    </div>
+</div>
 
-
-            </div>
         </div>
     </div>
 </div>
@@ -621,18 +623,20 @@ input field  */
 @endforeach
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-        // Use jQuery to handle the input and button
-        $(document).ready(function() {
-            // Get references to the input and delete button
-            const $inputText = $('#inputText');
-            const $deleteBtn = $('#deleteBtn');
+   $(document).ready(function() {
+    // Get references to the input and delete button
+    const $inputText = $('#inputText');
+    const $deleteBtn = $('#deleteBtn');
 
-            // Add a keyup event listener to the text input
-            $inputText.on('keyup', function() {
-                // Enable or disable the delete button based on whether the input has text
-                $deleteBtn.prop('disabled', !$inputText.val().trim());
-            });
-        });
+    // Add an input event listener to the text input
+    $inputText.on('input', function() {
+        // Check if the input value is exactly "YES" in uppercase
+        const isInputValid = $inputText.val().trim() === 'YES';
+
+        // Enable or disable the delete button based on the validation result
+        $deleteBtn.prop('disabled', !isInputValid);
+    });
+});
     </script>
 <script>
 $(document).ready(function() {

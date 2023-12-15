@@ -59,9 +59,7 @@ $timeOnly = $publishedAt->format('h:i A');
 
     <div style="border-radius:20px">
         <div class="d-flex post-detail post_detailWrap">
-            <div class="sidebar_post">
-
-            <img src="{{ asset('images/tx_icon.png') }}" alt="">
+            <div class="sidebar_post" style="background-image: url('{{ asset('images/tx_icon.png') }}');">
 
             </div>
             <div class="DetailText">
@@ -69,9 +67,9 @@ $timeOnly = $publishedAt->format('h:i A');
                     <img src="{{ asset('images/linkpost.png') }}" alt="" class="mr-1 ProfileIcon">
 
 
-                    <h5 class="m-0"> browntech-youpost</h5>
+                    <h5 class="m-0 postuser"> browntech-youpost</h5>
                 </div>
-                <p class="m-0">dfgfdg fgfd gdg fdgd d</p>
+                <p class="m-0 postcont">dfgfdg fgfd gdg fdgd d</p>
 
                 <div class="publishedpost mt-2">
                     <span>

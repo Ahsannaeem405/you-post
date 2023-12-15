@@ -43,8 +43,32 @@ active
   }
   .modal-btn{
     background: #648FFF;
-    color: white;
   }
+ /* Apply different background colors to each tile_stats_count */
+.tile_stats_count:nth-child(odd) .title_stats_count-inner {
+    background-color: #d7efff;  
+}
+
+.tile_stats_count:nth-child(even) .title_stats_count-inner {
+    background-color: #b1ffd2; 
+}
+
+.tile_stats_count:nth-child(3n) .title_stats_count-inner {
+    background-color: #ffc4c4; 
+}
+
+.tile_stats_count:nth-child(4n) .title_stats_count-inner {
+    background-color: #feffc7; 
+}
+
+
+
+.title_stats_count-inner:hover {
+  box-shadow: 5px 5px  lightblue;
+    transition: background-color 0.3s ease; 
+}
+
+
 </style>
 
 <div class="content-wrapper">

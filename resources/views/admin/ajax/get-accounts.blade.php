@@ -39,8 +39,18 @@
                                             @endif
 
                                           </td>
-                                            <th>{{ $ac->posts->where('posted_at_moment', '=', 'later')->count() }}</th>
-                                            <th>{{ $ac->posts->where('posted_at_moment', '=', 'now')->count() }}</th>
+                                            <th>
+                                            <div class="accounts-bgimg2">
+                                            <span class="posted_now">
+                                                            {{ $ac->posts->where('posted_at_moment', '=', 'later')->count() }}
+                                                        </span>
+                                               </th>
+                                            <th>
+                                            <div class="accounts-bgimg3">
+                                            <span class="scheduled_posts">
+                                                            {{ $ac->posts->where('posted_at_moment', '=', 'now')->count() }}
+                                                        </span>    
+                                            </th>
 
                                             <td>  @if( ($ac->posts->where('posted_at_moment', '=', 'now')->count()) > 0)
         <a href="#" class="dropdown-item post-link" data-toggle="modal" data-target="#postModal" data-record-id="{{ $ac->id }}">View Posts</a>

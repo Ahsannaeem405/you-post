@@ -328,11 +328,11 @@ div#exampleModal {
                 </div>
                 <ul class="nav navbar-nav float-right">
 
-                    <li class="header-btn nav-item">
+                    <li class="header-btn nav-item d-none">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">+ New User</a>
                     </li>
                     @if(auth()->user()->type=="superAdmin")
-                    <li class="header-btn nav-item">
+                    <li class="header-btn nav-item d-none">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#adminModal">+ New Admin</a>
                     </li>
                     @endif
@@ -351,7 +351,7 @@ div#exampleModal {
 
                             @else
                             <img class="round dropdown-toggle dropdown-user-link" data-toggle="dropdown"
-                            src="{{ asset('assets/images/writingapp/user.png') }}" alt="avatar" style="margin-left: 20px; cursor: pointer; width: 45px;">
+                            src="{{ asset('assets/images/writingapp/user.png') }}" alt="avatar" style="margin-left: 20px; cursor: pointer; width: 30px;">
 
                         @endif
                         @endif
@@ -363,6 +363,9 @@ div#exampleModal {
                             <div class="dropdown-menu dropdown-menu-right dropdown_mb">
                                 <!-- <a class="dropdown-item" href="{{ url('user/profile') }}"><i class="feather icon-user"></i>
                                     Edit Profile</a> -->
+                                    <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                                    {{ __('profile') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

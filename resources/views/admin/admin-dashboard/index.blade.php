@@ -4,521 +4,547 @@ active
 @endsection
 @section('Main-Container')
 <style>
-    .dashboard-card {
-        position: relative;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Playfair+Display&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Raleway:wght@200;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-    .dashboard-card .card-img {
-        /* border-radius: 7px;
+.dashboard-card {
+    position: relative;
+}
+
+.dashboard-card .card-img {
+    /* border-radius: 7px;
 box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.25); */
-        height: 223px;
-    }
+    height: 223px;
+}
 
-    .dashboard-card .card-img img {
-        width: 100%;
-        height: 100%;
-    }
+.dashboard-card .card-img img {
+    width: 100%;
+    height: 100%;
+}
 
-    .dashboard-card .card-content h3 {
-        display: flex;
-        align-items: center;
-        color: #000;
-        font-family: 'Sora', sans-serif;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+.dashboard-card .card-content h3 {
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 
-    .dashboard-card .card-content p {
-        color: #9B9B9B;
-        font-family: 'Sora', sans-serif;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+.dashboard-card .card-content p {
+    color: #9B9B9B;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 
-    .dashboard-card .card-content {
-        padding-left: 10px;
-        padding-top: 5px;
-    }
+.dashboard-card .card-content {
+    padding-left: 10px;
+    padding-top: 5px;
+}
 
-    .card-col {
-        padding: 10px 6px !important;
-    }
+.card-col {
+    padding: 10px 6px !important;
+}
 
-    .star-img {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
+.star-img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
-    .main-heading h2 {
-        color: #000;
-        font-family: 'Sora', sans-serif;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-        padding: 8px 16px;
-        border-radius: 31px;
-        background: #EFEFEF;
-        width: max-content;
-    }
+.main-heading h2 {
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding: 8px 16px;
+    border-radius: 31px;
+    background: #EFEFEF;
+    width: max-content;
+}
 
-    .modal-img {
-        height: 457px;
-    }
+.modal-img {
+    height: 457px;
+}
 
-    .modal-img img {
-        width: 100%;
-        height: 100%;
-    }
+.modal-img img {
+    width: 100%;
+    height: 100%;
+}
 
-    .modal-content-main {
-        display: flex;
-        justify-content: space-between;
-        padding: 7px;
-    }
+.modal-content-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+}
 
-    .modal-content-main .modal-btn a {
-        border-radius: 10px;
-        border: 0.5px solid #A4A4A4;
-        padding: 8px 30px;
-        color: #000;
-        font-family: 'Sora', sans-serif;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+.modal-content-main .modal-btn a {
+    border-radius: 10px;
+    border: 0.5px solid #A4A4A4;
+    padding: 8px 30px;
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 
-    .modal-content-main .modal-edit-btn {
-        background: #648FFF;
-        color: white !important;
-        margin-left: 8px;
-    }
+.modal-content-main .modal-edit-btn {
+    background: #648FFF;
+    color: white !important;
+    margin-left: 8px;
+}
 
-    .modal-btn {
-        align-self: center;
-    }
+.modal-btn {
+    align-self: center;
+}
 
-    /* second modal */
-    .modal-main-sections {
-        display: flex;
-    }
+/* second modal */
+.modal-main-sections {
+    display: flex;
+}
 
-    .modal-form-section {
-        width: 47%;
-        /* height:673px; */
-        border-radius: 0px 20px 20px 0px;
-        background: #FFF6F6;
-        box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.20);
-        padding: 42px;
-    }
+.modal-form-section {
+    width: 47%;
+    /* height:673px; */
+    border-radius: 0px 20px 20px 0px;
+    background: #FFF6F6;
+    box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.20);
+    padding: 42px;
+}
 
-    .modal-form-section label {
-        color: #676767;
-        font-family: 'Sora', sans-serif;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-    }
+.modal-form-section label {
+    color: #676767;
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
 
-    .modal-form-section .name {
-        border-radius: 0px 20px 20px 0px;
-        background: #FFF6F6;
-        box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.20);
-    }
+.modal-form-section .name {
+    border-radius: 0px 20px 20px 0px;
+    background: #FFF6F6;
+    box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.20);
+}
 
-    .form-control {
-        color: #5F5F5F;
-        background: transparent !important;
-    }
+.form-control {
+    color: #5F5F5F;
+    background: transparent !important;
+}
 
-    .add-notes {
-        color: #AAA;
-        font-family: 'Sora', sans-serif;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-        float: right;
-        display: inline-block;
-        margin-bottom: 3px;
-    }
+.add-notes {
+    color: #AAA;
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    float: right;
+    display: inline-block;
+    margin-bottom: 3px;
+}
 
-    .modal2-btn a {
-        color: #000;
-        font-family: 'Sora', sans-serif;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        border-radius: 10px;
-        border: 0.5px solid #A4A4A4;
-        padding: 8px 30px;
-    }
+.modal2-btn a {
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 10px;
+    border: 0.5px solid #A4A4A4;
+    padding: 8px 30px;
+}
 
-    .modal2-create-btn {
-        background: #648FFF;
-        color: white !important;
-        margin-left: 8px;
-    }
+.modal2-create-btn {
+    background: #648FFF;
+    color: white !important;
+    margin-left: 8px;
+}
 
-    .modal2-btn {
-        float: right;
-        padding-top: 102px;
-    }
+.modal2-btn {
+    float: right;
+    padding-top: 102px;
+}
 
-    .modal-thumbnails {
-        width: 53%;
-        text-align: center;
-        padding: 50px;
-    }
+.modal-thumbnails {
+    width: 53%;
+    text-align: center;
+    padding: 50px;
+}
 
-    .modal-thumbnails h3 {
-        color: #000;
-        font-family: 'Sora', sans-serif;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin-bottom: 50px;
-    }
+.modal-thumbnails h3 {
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 50px;
+}
 
-    .main-books {
-        display: flex;
-        justify-content: space-between;
-    }
+.main-books {
+    display: flex;
+    justify-content: space-between;
+}
 
-    .common-books {
-        width: 100%;
-    }
+.common-books {
+    width: 100%;
+}
 
-    .or-content {
-        color: #757575;
-        font-family: 'Sora', sans-serif;
-        font-size: 14.914px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin: 40px 0 50px;
-    }
+.or-content {
+    color: #757575;
+    font-family: 'Sora', sans-serif;
+    font-size: 14.914px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 40px 0 50px;
+}
 
-    .upload-file {
-        width: 404px;
-        margin: auto;
-        border-radius: 5px;
-        border: 0.5px solid #8F8F8F;
-    }
+.upload-file {
+    width: 404px;
+    margin: auto;
+    border-radius: 5px;
+    border: 0.5px solid #8F8F8F;
+}
 
-    .upload-file img {
-        width: 110px;
-        display: block;
-        margin: auto;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
+.upload-file img {
+    width: 110px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 
-    .dropdown-img {
-        position: absolute;
-        bottom: 15px;
-        right: 25px;
-    }
-
-
-    /* right click css */
-    li a {
-        text-decoration: none !important;
-    }
-
-    /* Thumbnail only */
-    .thumb {
-        /* margin-bottom: 30px; */
-        cursor: pointer;
-    }
-
-    .thumb:hover a,
-    .thumb:active a,
-    .thumb:focus a {
-        border: 1px solid purple;
-    }
-
-    /************** For Context menu ***********/
-    /* context menu */
-    li,
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .context-menu__item {
-        display: block;
-        margin-bottom: 4px;
-    }
-
-    .context-menu__link {
-        display: block;
-        padding: 4px 12px;
-        padding-left: 20px;
-        color: #000;
-        text-decoration: none;
-    }
-
-    .color-button {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin: 0 3px;
-        background: black;
-        border-radius: 50%;
-        cursor: pointer;
-        margin: 5px;
-        border: none;
-    }
-
-    .context-menu {
-        display: none;
-        position: absolute;
-        background-color: white;
-        padding: 12px 0;
-        width: 180px;
-        border-radius: 15px;
-        background: #FFF;
-        box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.35);
-    }
-
-    .context-menu__link:hover {
-        color: #000;
-        background: #F0F0F0;
-    }
-
-    .rightclick-arrow {
-        float: right;
-        display: inline-block;
-        margin-top: 4px;
-    }
-
-    a.context-menu__link {
-        color: black;
-        text-decoration: none;
-    }
-
-    .context-menu__item.has-submenu ul {
-        display: none;
-        position: absolute;
-        left: 100%;
-        top: 0;
-        background-color: white;
-        border: 1px solid #ccc;
-        padding: 5px;
-    }
-
-    .context-menu__item.has-submenu:hover ul {
-        display: block;
-    }
+.dropdown-img {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+}
 
 
-    .context-menu__items ul {
-        position: absolute;
-        white-space: nowrap;
-        z-index: 1;
-        left: -99999em;
-    }
+/* right click css */
+li a {
+    text-decoration: none !important;
+}
 
-    .context-menu__items>li:hover>ul {
-        left: auto;
-        padding-top: 5px;
-        min-width: 100%;
-    }
+/* Thumbnail only */
+.thumb {
+    /* margin-bottom: 30px; */
+    cursor: pointer;
+}
 
-    .context-menu__items>li li ul {
-        border-left: 1px solid #fff;
-    }
+.thumb:hover a,
+.thumb:active a,
+.thumb:focus a {
+    border: 1px solid purple;
+}
 
-    .context-menu__items>li li:hover>ul {
-        left: 100%;
-        top: -1px;
-    }
+/************** For Context menu ***********/
+/* context menu */
+li,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-    .context-menu__item ul {
-        background-color: #ffffff;
-        padding: 7px 0px;
-        list-style-type: none;
-        text-decoration: none;
-        margin-left: 180px;
-        width: 100px;
-        margin-top: -18px;
-        border-radius: 5px;
-        background: #FFF;
-        box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.30);
-    }
+.context-menu__item {
+    display: block;
+    margin-bottom: 4px;
+}
 
-    /*  */
-    .index-card1 {
-        background-image: url(assets/images/writingapp/card-img1.png);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+.context-menu__link {
+    display: block;
+    padding: 4px 12px;
+    padding-left: 20px;
+    color: #000;
+    text-decoration: none;
+}
 
-    .index-card2 {
-        background-image: url(assets/images/writingapp/card-img2.png);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+.color-button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 3px;
+    background: black;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 5px;
+    border: none;
+}
 
-    .index-card3 {
-        background-image: url(assets/images/writingapp/card-img3.png);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 12px 0;
+    width: 180px;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 0px 22px 1px rgba(0, 0, 0, 0.35);
+}
 
-    /* qa */
-    .modal-dialog .content-wrapper {
-        margin-top: 30px !important;
-        margin-bottom: 10px;
-    }
+.context-menu__link:hover {
+    color: #000;
+    background: #F0F0F0;
+}
 
-    .color-box {
-        width: 25px;
-        border-radius: 50%;
-        height: 25px;
-        margin: 5px;
-        display: inline-block;
-        outline: none;
-        border: none;
-    }
+.rightclick-arrow {
+    float: right;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+a.context-menu__link {
+    color: black;
+    text-decoration: none;
+}
+
+.context-menu__item.has-submenu ul {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.context-menu__item.has-submenu:hover ul {
+    display: block;
+}
+
+
+.context-menu__items ul {
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+    left: -99999em;
+}
+
+.context-menu__items>li:hover>ul {
+    left: auto;
+    padding-top: 5px;
+    min-width: 100%;
+}
+
+.context-menu__items>li li ul {
+    border-left: 1px solid #fff;
+}
+
+.context-menu__items>li li:hover>ul {
+    left: 100%;
+    top: -1px;
+}
+
+.context-menu__item ul {
+    background-color: #ffffff;
+    padding: 7px 0px;
+    list-style-type: none;
+    text-decoration: none;
+    margin-left: 180px;
+    width: 100px;
+    margin-top: -18px;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.30);
+}
+
+/*  */
+.index-card1 {
+    background-image: url(assets/images/writingapp/card-img1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.index-card2 {
+    background-image: url(assets/images/writingapp/card-img2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.index-card3 {
+    background-image: url(assets/images/writingapp/card-img3.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* qa */
+.modal-dialog .content-wrapper {
+    margin-top: 30px !important;
+    margin-bottom: 10px;
+}
+
+.color-box {
+    width: 25px;
+    border-radius: 50%;
+    height: 25px;
+    margin: 5px;
+    display: inline-block;
+    outline: none;
+    border: none;
+}
+
+.postcont {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 3px !important;
+
+}
+
+.postuser {
+    font-family: 'Poppins', sans-serif;
+}
 </style>
 <style>
-    .post-card {
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-        overflow: hidden;
-        transition: transform 0.3s;
-        cursor: pointer;
-    }
+.post-card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
 
-    .post-card:hover {
-        transform: scale(1.05);
-    }
+.post-card:hover {
+    transform: scale(1.05);
+}
 
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        background-color: #3498db;
-        color: #fff;
-    }
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+}
 
-    .timer-style {
-        font-size: 16px;
-    }
+.timer-style {
+    font-size: 16px;
+}
 
-    .profile-icon img {
-        height: 24px;
-        width: 24px;
-    }
+.profile-icon img {
+    height: 24px;
+    width: 24px;
+}
 
-    .card-body {
-        padding: 20px;
-    }
+.card-body {
+    padding: 20px;
+}
 
-    .post-content h5 {
-        margin: 0;
-        font-size: 18px;
-    }
+.post-content h5 {
+    margin: 0;
+    font-size: 18px;
+}
 
-    .post-content p {
-        margin: 10px 0;
-        font-size: 14px;
-        color: #333;
-    }
+.post-content p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+}
 
-    .published-post {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        color: #333;
-    }
+.published-post {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
 
-    .published-post img {
-        margin-right: 5px;
-    }
+.published-post img {
+    margin-right: 5px;
+}
 
-    .approved {
-        margin-left: 5px;
-    }
+.approved {
+    margin-left: 5px;
+}
 
-    .post-container {
-        max-height: 100px;
-        /* Set a maximum height for the container */
-        overflow-y: auto;
-        /* Enable vertical scrolling */
-    }
+.post-container {
+    max-height: 100px;
+    /* Set a maximum height for the container */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+}
 
-    .post-card {
-        /* Existing styles for the post card */
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-        overflow: hidden;
-        transition: transform 0.3s;
-        cursor: pointer;
-        margin-bottom: 10px;
-        /* Add margin between posts */
-    }
-    /* ms */
-    #dashboard-analytics table tr th:first-child, #dashboard-analytics table tr td:first-child{
-        padding-left:1rem;
-    }
-    table.dataTable.display > tbody > tr.odd > .sorting_1 {
+.post-card {
+    /* Existing styles for the post card */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer;
+    margin-bottom: 10px;
+    /* Add margin between posts */
+}
+
+/* ms */
+#dashboard-analytics table tr th:first-child,
+#dashboard-analytics table tr td:first-child {
+    padding-left: 1rem;
+}
+
+table.dataTable.display>tbody>tr.odd>.sorting_1 {
     box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.023) !important;
 }
-table.dataTable  tr {
+
+table.dataTable tr {
     background-color: transparent !important;
 }
+
 div#specialdel1_wrapper {
     border: none;
     padding-top: 20px;
 }
+
 table.dataTable {
     border: none !important;
-    padding-top:20px;
+    padding-top: 20px;
 }
+
 #dashboard-analytics table td {
     padding: 0.75rem;
     box-shadow: none !important;
 }
+
 #special1 .form-check {
     padding-left: 3.25rem;
 }
+
 div.dataTables_wrapper div.dataTables_length select {
     padding: 5px 0.8rem;
 }
-.fa-ellipsis-v{
-    cursor:pointer;
+
+.fa-ellipsis-v {
+    cursor: pointer;
 }
-.modal-dialog{
-    display:block;
-  }
-  .modal .modal-header{
+
+.modal-dialog {
+    display: block;
+}
+
+.modal .modal-header {
     padding: 1.5rem 2.3rem !important;
-  }
-  .modal-btn{
+}
+
+.modal-btn {
     background: #648FFF;
     color: white;
-  }
-  /*  */
-  .fb-post {
+}
+
+/*  */
+.fb-post {
     background-color: #fff;
     border-radius: 5px;
     border: 0.5px solid #bfbfbf;
@@ -526,24 +552,33 @@ div.dataTables_wrapper div.dataTables_length select {
     margin: auto;
     width: 98%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding:10px
+    padding: 10px
 }
-.timer_style{
-    text-align:right;
+
+.timer_style {
+    font-family: 'Poppins', sans-serif;
+    text-align: right;
 }
-.post_detailWrap{
-    padding:15px;
-    padding-top:20px;
-    gap:20px;
+
+.post_detailWrap {
+    padding: 15px;
+    padding-top: 20px;
+    gap: 20px;
 }
-.sidebar_post{
+
+/* .sidebar_post{
     display:flex;
     align-items:center;
 
-}
-.sidebar_post img{
+} */
+.sidebar_post {
+    background-repeat: no-repeat;
+    height: 86px;
+    background-size: contain;
     width: 68px;
+    background-position: center;
 }
+
 .publishedpost {
     margin: unset;
     border-radius: 5px;
@@ -561,24 +596,80 @@ div.dataTables_wrapper div.dataTables_length select {
     font-weight: 400;
     line-height: normal;
 }
- .modal-dialog.post-h {
+
+.modal-dialog.post-h {
     height: 92vh;
     overflow: auto;
     border-radius: 10px;
 }
 
+.modal-title {
+    font-family: 'Poppins', sans-serif;
+}
+.accounts-bgimg{
+    position: relative; 
+    background-repeat: no-repeat;
+    height: 20px;
+    background-image: url('{{ asset('images/usersusers1.png') }}'); 
+    background-size: contain;
+    background-position: left;
+}
+.user_accounts{
+    position: absolute; 
+    top: -13px;
+    left: 18px;
+    padding: 5px; 
+    color:green;
+}
+.accounts-bgimg2{
+    position: relative;
+    background-repeat: no-repeat;
+    height: 27px; 
+    background-image: url('{{ asset('images/postmail.png') }}'); 
+    background-size: contain;
+    background-position: left;
+}
+.posted_now{
+    position: absolute;
+    top: -13px;
+    left: 21px;
+    padding: 5px; 
+    color:red;
+}
+.accounts-bgimg3{
+    position: relative;
+    background-repeat: no-repeat;
+    height: 27px;
+    background-image: url('{{ asset('images/scheduleposts.png') }}');
+    background-size: contain;
+    background-position: left;
+}
+.scheduled_posts{
+    position: absolute;
+    top: -13px;
+    left: 23px;
+    padding: 5px;
+    color:green;
+
+}
+.table-wraper-1{
+    overflow-x:auto;
+}
+.card-body{
+    overflow-x:auto;
+}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 @if(session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-        <script>
-            // Display toastr success message
-            toastr.success("{{ session('message') }}");
-        </script>
-    </div>
+<div class="alert alert-success">
+    {{ session('message') }}
+    <script>
+    // Display toastr success message
+    toastr.success("{{ session('message') }}");
+    </script>
+</div>
 @endif
 
 
@@ -604,20 +695,20 @@ div.dataTables_wrapper div.dataTables_length select {
                                 <!--  -->
                                 <div class="table-wraper-1">
 
-                            <table id="special1" class="display nowrap" style="width:100%">
-                                <thead class=''>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Accounts</th>
-                                        <th>No of Accounts</th>
-                                        <!-- <th>Last Logedin</th> -->
-                                        <th>Action</th>
-                                        <th>Disable</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($users as $user)
+                                    <table id="special1" class="display nowrap" style="width:100%">
+                                        <thead class=''>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Accounts</th>
+                                                <th>No of Accounts</th>
+                                                <!-- <th>Last Logedin</th> -->
+                                                <th>Action</th>
+                                                <th>Disable</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($users as $user)
                                             <tr>
 
                                                 <td class="font-weight-bold">
@@ -628,16 +719,22 @@ div.dataTables_wrapper div.dataTables_length select {
                                                     {{$user->email}}
                                                 </td>
                                                 <td>
-                                                <a href="#" class="dropdown-item show-link" data-toggle="modal"
+                                                    <a href="#" class="dropdown-item show-link" data-toggle="modal"
                                                         data-target="#acModal" data-record-id="{{ $user->id }}">
                                                         <i class="fa fa-eye text-primary" aria-hidden="true"></i></a>
                                                 </td>
                                                 <td>
-                                                    {{ $user->account_list_count }}
+                                                    <div class="accounts-bgimg">
+                                                        <span class="user_accounts">
+                                                            {{ $user->account_list_count }}
+                                                        </span>
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">
-                                                        <i class="fa fa-ellipsis-v" class="dropdown-toggle"
+                                                        <span class="dropdown-toggle"
+                                                            id="dropdownMenuIconButton3" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">Actions</span>
+                                                        <i class="fa fa-ellipsis-v d-none" class="dropdown-toggle"
                                                             id="dropdownMenuIconButton3" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false"></i>
                                                         <div class="dropdown-menu"
@@ -661,17 +758,19 @@ div.dataTables_wrapper div.dataTables_length select {
                                                 </td>
                                                 <td>
                                                     <div class="form-check form-switch">
-                                                    <input class="form-check-input disabled" type="checkbox" role="switch" data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/>
+                                                        <input class="form-check-input disabled" type="checkbox"
+                                                            role="switch" data-record-id="{{ $user->id }}"
+                                                            {{ $user->disabled ? 'checked' : '' }} />
                                                     </div>
 
                                                     <!-- <input type="checkbox" class="js-switch disabled"
                                                         data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/> -->
-                                                    </td>
+                                                </td>
                                             </tr>
                                             @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!--  -->
                             </div>
                         </div>
@@ -816,24 +915,25 @@ div.dataTables_wrapper div.dataTables_length select {
                 <h5 class="modal-title" id="editModalLabel">Add User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <div class="add-new-data-sidebar request-form-s">
-                    <form method="POST" action="{{ route('admin.user') }}">
-                        @csrf
-                       <input type="hidden" value= "user" name="role" id ="role"/>
-                       <input type="hidden" value= "user" name="type" id ="type"/>
+            <div class="add-new-data-sidebar request-form-s">
+                <form method="POST" action="{{ route('admin.user') }}">
+                    @csrf
+                    <input type="hidden" value="user" name="role" id="role" />
+                    <input type="hidden" value="user" name="type" id="type" />
 
                     <div class="form-group">
-                            <label for="name" >{{ __('Name') }}</label>
-                            <input id="name" type="text" class="name_field form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <label for="name">{{ __('Name') }}</label>
+                        <input id="name" type="text" class="name_field form-control @error('name') is-invalid @enderror"
+                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
 
                     </div>
                     <div class="form-group">
-                            <label for="email" >{{ __('Email Address') }}</label>
+                        <label for="email">{{ __('Email Address') }}</label>
 
                         <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
@@ -894,7 +994,7 @@ div.dataTables_wrapper div.dataTables_length select {
                             </button>
 
                         </div>
-                    </form>
+                </form>
             </div>
         </div>
     </div>
@@ -907,149 +1007,149 @@ div.dataTables_wrapper div.dataTables_length select {
 
     @section('js')
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src='https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js'></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src='https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js'></script>
 
-<!-- color btn -->
+    <!-- color btn -->
 
-<script>
+    <script>
     new DataTable('#special1', {
 
     });
-</script>
+    </script>
     <!-- color btn -->
     Copy code
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
-        // Handle click event for the edit link
-        $('.edit-link').click(function (e) {
+    // Handle click event for the edit link
+    $('.edit-link').click(function(e) {
 
 
 
-            e.preventDefault();
-            $('#errorText').text('');
-            $('#udpatebtn').prop('disabled', false);
+        e.preventDefault();
+        $('#errorText').text('');
+        $('#udpatebtn').prop('disabled', false);
 
-            // Get the record ID from the data attribute
-            var recordId = $(this).data('record-id');
+        // Get the record ID from the data attribute
+        var recordId = $(this).data('record-id');
 
-            // Fetch record data using AJAX
-            $.ajax({
-                url: '/admin/get-user/' + recordId, // Define a route to fetch record data
-                method: 'GET',
-                success: function (data) {
-                    $('#edit_name').val(data.name);
-                    $('#edit_email').val(data.email);
-                    $('#old_password').val(data.password);
-                    $('#user_id').val(data.id);
+        // Fetch record data using AJAX
+        $.ajax({
+            url: '/admin/get-user/' + recordId, // Define a route to fetch record data
+            method: 'GET',
+            success: function(data) {
+                $('#edit_name').val(data.name);
+                $('#edit_email').val(data.email);
+                $('#old_password').val(data.password);
+                $('#user_id').val(data.id);
 
 
-                }
-            });
+            }
         });
+    });
 
-        $('.show-link').click(function (e) {
+    $('.show-link').click(function(e) {
 
-            e.preventDefault();
+        e.preventDefault();
 
-            // Get the record ID from the data attribute
-            var recordId = $(this).data('record-id');
+        // Get the record ID from the data attribute
+        var recordId = $(this).data('record-id');
 
-            // Fetch record data using AJAX
-            $.ajax({
-                url: '/admin/get-accounts/' + recordId, // Define a route to fetch record data
-                method: 'GET',
-                success: function (data) {
-                    $('.body-ac').empty().append(data);
+        // Fetch record data using AJAX
+        $.ajax({
+            url: '/admin/get-accounts/' + recordId, // Define a route to fetch record data
+            method: 'GET',
+            success: function(data) {
+                $('.body-ac').empty().append(data);
 
-                }
-            });
+            }
         });
+    });
 
-        // Handle form submission
-        $('#editForm').submit(function (e) {
-            e.preventDefault();
-            // Get form data
-            var formData = $(this).serialize();
-            $.ajax({
-                url: 'update-user',
-                method: 'GET',
-                data: formData,
-                success: function (response) {
-                    toastr.success('Record updated successfully');
+    // Handle form submission
+    $('#editForm').submit(function(e) {
+        e.preventDefault();
+        // Get form data
+        var formData = $(this).serialize();
+        $.ajax({
+            url: 'update-user',
+            method: 'GET',
+            data: formData,
+            success: function(response) {
+                toastr.success('Record updated successfully');
 
-                    // Reload the page after a delay (for the user to see the toast message)
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1000);
+                // Reload the page after a delay (for the user to see the toast message)
+                setTimeout(function() {
+                    location.reload();
+                }, 1000);
 
-                },
-                error: function (error) {
-                    // Handle error response here
-                    var errorMessage = error.responseText;
-                    $('#errorText').text(errorMessage);
+            },
+            error: function(error) {
+                // Handle error response here
+                var errorMessage = error.responseText;
+                $('#errorText').text(errorMessage);
 
-                }
-            });
+            }
         });
+    });
 
 
-        $(document).on('click', '.disabled',function (e) {
+    $(document).on('click', '.disabled', function(e) {
 
-            var isChecked = $(this).prop('checked');
-            var recordId = $(this).data('record-id');
+        var isChecked = $(this).prop('checked');
+        var recordId = $(this).data('record-id');
 
 
-            $.ajax({
-                url: '{{ route("disable-user") }}', // Use the named route
-                method: 'POST',
-                data: {
-                    isChecked: isChecked,
-                    recordId: recordId
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function (response) {
-                    // Handle the response from the server
-                    toastr.success(response.message);
+        $.ajax({
+            url: '{{ route("disable-user") }}', // Use the named route
+            method: 'POST',
+            data: {
+                isChecked: isChecked,
+                recordId: recordId
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                // Handle the response from the server
+                toastr.success(response.message);
 
-                },
-                error: function (error) {
-                    // Handle errors
-                    console.error(error);
-                }
-            });
+            },
+            error: function(error) {
+                // Handle errors
+                console.error(error);
+            }
         });
+    });
     </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        document.querySelectorAll('.delete-item').forEach(deleteBtn => {
-            deleteBtn.addEventListener('click', function (event) {
-                event.preventDefault();
+    document.querySelectorAll('.delete-item').forEach(deleteBtn => {
+        deleteBtn.addEventListener('click', function(event) {
+            event.preventDefault();
 
-                const deleteUrl = this.getAttribute('data-url');
+            const deleteUrl = this.getAttribute('data-url');
 
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'You won\'t be able to revert this!',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Redirect to the delete URL
-                        window.location.href = deleteUrl;
-                    }
-                });
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You won\'t be able to revert this!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to the delete URL
+                    window.location.href = deleteUrl;
+                }
             });
         });
+    });
     </script>
 
     @endsection()

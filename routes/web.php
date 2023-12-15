@@ -71,6 +71,9 @@ Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {
     Route::get('get-posts/{id}', [AdminControoler::class, 'getAccountPosts'])->name('admin.get-posts');
     Route::post('disable_user', [AdminControoler::class, 'disable_user'])->name('disable-user');
     Route::get('admins', [AdminControoler::class, 'show_admins'])->name('admin.showAdmins');
+    Route::get('addAdmin', [AdminControoler::class, 'list_admins'])->name('admin.addAdmin');
+    Route::get('addUser', [AdminControoler::class, 'list_users'])->name('admin.addUser');
+    Route::get('profile', [AdminControoler::class, 'show_profile'])->name('admin.profile');
 
     Route:: get('update-user/', [AdminControoler::class, 'updateUser']);
 

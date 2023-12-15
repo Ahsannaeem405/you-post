@@ -70,6 +70,13 @@ class AdminControoler extends Controller
         return view('admin.admin-dashboard.index',compact('users'));
 
     }
+    public function show_profile()
+    {
+       
+       
+        return view('admin.admin-dashboard.profile');
+
+    }
     public function show_admins()
     {
        
@@ -169,6 +176,7 @@ class AdminControoler extends Controller
     }
     public function getAccountPosts($id)
     {
+        
        
         $account = Account::find($id);
        
@@ -180,6 +188,22 @@ class AdminControoler extends Controller
      
     
         return view('admin.ajax.get-posts', compact('posts','account'));
+       
+
+    }
+    public function list_admins()
+    { 
+     
+    
+        return view('admin.admin-dashboard.newAdmin');
+       
+
+    }
+    public function list_users()
+    { 
+     
+    
+        return view('admin.admin-dashboard.newUser');
        
 
     }
