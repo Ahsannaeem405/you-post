@@ -333,6 +333,15 @@ class UserController extends Controller
 
         }
     }
+    public function account_post($id)
+    {     
+        $user = User::find(auth()->user()->id);
+        User::where('id', $user->id)
+            ->update([
+                'account_id' => $id,
+            ]);
+            return redirect()->route('dashboard');       
+    }
 
     public function getTimeDifference($post)
     {

@@ -364,7 +364,7 @@ div#exampleModal {
                                 <!-- <a class="dropdown-item" href="{{ url('user/profile') }}"><i class="feather icon-user"></i>
                                     Edit Profile</a> -->
                                     <a class="dropdown-item" href="{{ route('admin.profile') }}">
-                                    {{ __('profile') }}
+                                    {{ __('Profile') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

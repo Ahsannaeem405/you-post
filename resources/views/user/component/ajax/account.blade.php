@@ -410,7 +410,7 @@ padding-top: 10px;
 <div class="account_main mt-5">
     <div>
         <div class="range-wraper">
-        <button type="button" class="btn btn-danger" data-bs-toggle='modal' data-bs-target='#delaccountModal'>
+        <button type="button" class="btn btn-danger" data-bs-toggle='modal' data-bs-target='#delaccountModal' data-id-account= "{{$account->id}}">
                             <img src="{{asset('images/deletebuckit.png')}}" class="" />
 
         </button>
@@ -496,7 +496,7 @@ padding-top: 10px;
                     <a class="fb-conect_btn {{ in_array('Facebook', $account->platforms) &&
                         $account->fb_access_token == null  ? 'showColorIcon' : 'd-none' }}"
                         href="{{ url('connect_to_facebook', ['account' => $account->id]) }}">
-                        <span class="linkedbtnabc"> Reconnect</span>
+                        <span class="linkedbtnabc">Connect</span>
                     </a>
                     <!-- <button type="button" class="fb-conect_btn {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : 'd-none' }}">Connect</button> -->
                 </div>
@@ -526,7 +526,7 @@ padding-top: 10px;
                     <a class="instconect_btn {{ in_array('Instagram', $account->platforms) &&
                         $account->insta_access_token == null  ? '' : 'd-none' }}"
                         href="{{ url('connect_to_instagram', ['account' => $account->id]) }}">
-                        <span class="linkedbtnabc"> Reconnect</span>
+                        <span class="linkedbtnabc"> Connect</span>
                     </a>
 
                 </div>
@@ -559,7 +559,7 @@ padding-top: 10px;
                         $account->twiter_access_token ==  null  ? '' : 'd-none' }}"
                         href="{{ url('connect_twitter', ['account' => $account->id]) }}">
                         <span class="linkedbtnabc">
-                            Reconnect</span>
+                        Connect</span>
                     </a>
 
                 </div>
@@ -590,7 +590,7 @@ padding-top: 10px;
                         && $account->linkedin_accesstoken == null
                         &&  $account->linkedin_user_id == null ? '' : 'd-none' }}"
                         href="{{ url('connect_to_linkedin', ['account' => $account->id]) }}">
-                        <span class="linkedbtnabc"> Reconnect</span>
+                        <span class="linkedbtnabc"> Connect</span>
                     </a>
                 </div>
                 <div class="single_platform d-none" style="">
@@ -623,22 +623,17 @@ padding-top: 10px;
             </div>
         </div>
 
-        <button class="btn btn-primary mt-3 mb-4 fw-bold"><img src="{{asset('images/sum-icon.svg')}}" style=" padding-right: 5px; width: 22px;
-            height: 16px;">Create a post</button>
+        <button class="btn btn-primary mt-3 mb-4 fw-bold createPostBtn" data-account="{{$account->id}}"><img src="{{asset('images/sum-icon.svg')}}" style=" padding-right: 5px; width: 22px;
+            height: 16px;" id="createPostBtn" >Create a post</button>
     </div>
 </div>
 <!-- modal -->
 <div class="modal fade delete" id="delaccountModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
     aria-hidden="true">
     <div class="modal-dialog del-account" role="document">
-        <div class="modal-content">
-            <!-- <div class="modal-header">
-                <h5 class="modal-title">del</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div> -->
+        <div class="modal-content">           
             <div class="modal-body">
+                <input type="hidden" class="hidden_account_id" name= "hidden_account_id" id="hidden_account_id" value=''>
                 <div class="alert_generate">
                     <img src="{{asset('images/errrorpostsmsg.png')}}" alt="">
                 </div>
@@ -650,7 +645,7 @@ padding-top: 10px;
     
     <div class="mt-4 text-center">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn btn-primary text-white ml-2" id="deleteBtn" disabled>Confirm</button>
+        <button class="btn btn-primary text-white ml-2 deleteBtn" id="deleteBtn" disabled>Confirm</button>
     </div>
 </div>
 
@@ -659,7 +654,59 @@ padding-top: 10px;
 </div>
 <!--  -->
 @endforeach
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+$(document).ready(function () {
+$('[data-bs-target="#delaccountModal"]').click(function() {     
+      var accountId = $(this).data('id-account');
+      $('#hidden_account_id').val(accountId);        
+    });
+    $('.deleteBtn').click(function () {
+            // Get the account ID
+            var accountId = $(this).closest('.modal').find('.hidden_account_id').val();
+           
+            $('#delaccountModal').modal('hide');
+
+            $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+            $.ajax({
+                type: "post",
+                url: "{{ route('account-delete')}}",
+                data: {
+                    accountId: accountId
+                },
+                success: function (response) {
+                    
+                    RefresehAccounts();                
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your Organization has been deleted.',
+                        icon: 'success'
+                    });
+                   
+
+                    // Close the modal
+                },
+                error: function (error) {
+                    // Handle error if needed
+                    console.error('Error:', error);
+                    // Show error message in modal
+                    // $('.alert_generate').show();
+                }
+            });
+        });
+});
+
+        $('.createPostBtn').click(function() {
+            var accountId = $(this).data('account');
+            window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId', accountId);
+        });
+   
+</script>
 <script>
    $(document).ready(function() {
     // Get references to the input and delete button
@@ -703,17 +750,4 @@ function countCharacters(inputField) {
     // Update the character count and format "0/18"
     inputField.closest('.delete_input').find('.counter_numeric .charCount').text(charCount + "/" + maxLength);
 }
-</script>
-<script>
-    // Add a click event listener to the Confirm button
-    document.getElementById('deleteBtn').addEventListener('click', function () {
-        // Show a SweetAlert success message
-        Swal.fire({
-            title: 'Success!',
-            text: 'The Organiztion have been deleted.',
-            icon: 'success'
-        });
-        
-        // You can perform the delete action here if needed
-    })
 </script>
