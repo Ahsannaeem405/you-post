@@ -240,8 +240,14 @@
     }
     .text-delmsg {
     top: 35px;
+    font-size:9px;
 }
-.
+}
+@media(min-width:320px) and (max-width:440px) {
+    .text-delmsg {
+    top: 64px !important;
+    font-size:9px !important;
+}
 }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
@@ -305,8 +311,8 @@
 
 
     <div class='add-organization' style="text-align:center; margin-top:
-           30px" class="addOtherAccountMain" >
-        <button class="btn add_account fw-bold"><img src="{{asset('images/plus-mark.png')}}" id="addAccount">Add Organization</button>
+           30px" class="addOtherAccountMain" id="addAccount">
+        <button class="btn add_account fw-bold"><img src="{{asset('images/plus-mark.png')}}">Add Organization</button>
 
     </div>
 
@@ -439,11 +445,7 @@ $(document).on('click', '#addAccount', function() {
     $(this).prop('disabled', true);
     $('.add_account').addClass('loading_account');
     var test = $(this);
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+   
     $.ajax({
         type: "post",
         url: "{{ route('store-acount')}}",
