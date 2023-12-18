@@ -126,7 +126,8 @@
 
 .reconnect_platform {
     color: blue;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid #000;
+    text-decoration:none;
 }
 
 .reconnect_platform:active {
@@ -154,10 +155,11 @@
 }
 
 .linkedbtnabc {
-    /* background: #0d6efd; */
-    color: #959595;
-    /* padding: 10px; */
-    border-bottom:2px solid #959595;
+    border-radius:30px;
+    background: #0d6efd;
+    color: #fff;
+    padding: 10px;
+    text-decoration:none;
 }
 
 .r_btn {
@@ -375,12 +377,12 @@ padding-top: 10px;
     padding: 0px 5px 0px 5px;
     left: 35px;
     background: #fff;
-    top: 42px;
+    top: 41px;
     position: absolute;
     color: #959595;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 9px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -390,6 +392,9 @@ padding-top: 10px;
 }
 .form-control:focus {
     box-shadow: 0 0 0 0.1rem rgba(13,110,253,.25) !important;
+}
+.md-head{
+    border:none;
 }
 /* .center-xy {
   position: absolute;
@@ -630,8 +635,11 @@ padding-top: 10px;
 <!-- modal -->
 <div class="modal fade delete" id="delaccountModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog del-account" role="document">
-        <div class="modal-content">           
+    <div class="modal-dialog del-account modal-dialog-centered" role="document">
+        <div class="modal-content"> 
+        <div class="modal-header md-head">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>          
             <div class="modal-body">
                 <input type="hidden" class="hidden_account_id" name= "hidden_account_id" id="hidden_account_id" value=''>
                 <div class="alert_generate">

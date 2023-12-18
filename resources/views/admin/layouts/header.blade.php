@@ -212,7 +212,13 @@
     margin-bottom: 0;
     }
     /* modal end */
-
+    .header-navbar .navbar-container ul.nav li.dropdown-user .dropdown-menu-right .dropdown-item:hover, .header-navbar .navbar-container ul.nav li.dropdown-user .dropdown-menu-right .dropdown-item:active {
+    background:#7367f0 !important;;
+    color: #FFFFFF !important;
+}
+.header-navbar .navbar-container ul.nav li.dropdown-user .dropdown-menu-right{
+    padding: 5px 0px 5px 0px;
+}
 @media (max-width: 1200px) {/* For 1024 */
     .common-books img {
     height: 42px;
@@ -363,7 +369,7 @@ div#exampleModal {
                             <div class="dropdown-menu dropdown-menu-right dropdown_mb">
                                 <!-- <a class="dropdown-item" href="{{ url('user/profile') }}"><i class="feather icon-user"></i>
                                     Edit Profile</a> -->
-                                    <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                                    <a class="dropdown-item" href="{{ route('admin.profile') }}"> 
                                     {{ __('Profile') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"

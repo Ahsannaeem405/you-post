@@ -10,7 +10,7 @@
     <title>you-post</title>
 </head>
 
-<body>
+<body style="margin:0;padding:0;">
     <div style="margin:0;padding:0;background-color:#fffdfd">
 
         <table bgcolor="#fffdfd" cellpadding="0" cellspacing="0" role="presentation"
