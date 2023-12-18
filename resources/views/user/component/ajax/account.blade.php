@@ -358,6 +358,39 @@ input field  */
 .pullee:active + .range-text{
     display:none;
 }
+.alert_generate{
+    text-align:center;
+}
+.text-alert{
+color: #2F2F2F;
+text-align: center;
+font-family: 'Poppins', sans-serif;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding-top: 10px;
+}
+.text-delmsg{
+    padding: 0px 5px 0px 5px;
+    left: 35px;
+    background: #fff;
+    top: 42px;
+    position: absolute;
+    color: #959595;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+.inner_msg{
+    position:relative
+}
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem rgba(13,110,253,.25) !important;
+}
 /* .center-xy {
   position: absolute;
   top: 50%;
@@ -606,12 +639,18 @@ input field  */
                 </button>
             </div> -->
             <div class="modal-body">
-    <h2 class="text-danger">Are you sure you want to delete this?</h2>
-    <label class="text-muted">This action can't be undone</label>
-    <input type="text" class="form-control mt-3" id="inputText" placeholder="Reason for deletion">
-    <div class="mt-4">
+                <div class="alert_generate">
+                    <img src="{{asset('images/errrorpostsmsg.png')}}" alt="">
+                </div>
+                <div class="inner_msg">
+                <h2 class="text-alert">Are you sure you want to delete your Organization?<h2>
+    <label class="text-delmsg">Type the word 'YES' to confirm</label>
+    <input type="text" class="form-control mt-3" id="inputText">
+                </div>
+    
+    <div class="mt-4 text-center">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn btn-danger text-white ml-2" id="deleteBtn" disabled>Delete</button>
+        <button class="btn btn-primary text-white ml-2" id="deleteBtn" disabled>Confirm</button>
     </div>
 </div>
 
@@ -637,12 +676,10 @@ input field  */
     // Get references to the input and delete button
     const $inputText = $('#inputText');
     const $deleteBtn = $('#deleteBtn');
-
     // Add an input event listener to the text input
     $inputText.on('input', function() {
         // Check if the input value is exactly "YES" in uppercase
         const isInputValid = $inputText.val().trim() === 'YES';
-
         // Enable or disable the delete button based on the validation result
         $deleteBtn.prop('disabled', !isInputValid);
     });
@@ -677,4 +714,17 @@ function countCharacters(inputField) {
     // Update the character count and format "0/18"
     inputField.closest('.delete_input').find('.counter_numeric .charCount').text(charCount + "/" + maxLength);
 }
+</script>
+<script>
+    // Add a click event listener to the Confirm button
+    document.getElementById('deleteBtn').addEventListener('click', function () {
+        // Show a SweetAlert success message
+        Swal.fire({
+            title: 'Success!',
+            text: 'The Account have been deleted.',
+            icon: 'success'
+        });
+        
+        // You can perform the delete action here if needed
+    })
 </script>
