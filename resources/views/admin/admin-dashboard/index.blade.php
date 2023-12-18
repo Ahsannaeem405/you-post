@@ -606,57 +606,48 @@ div.dataTables_wrapper div.dataTables_length select {
 .modal-title {
     font-family: 'Poppins', sans-serif;
 }
-.accounts-bgimg{
-    position: relative; 
-    background-repeat: no-repeat;
-    height: 20px;
-    background-image: url('{{ asset('images/usersusers1.png') }}'); 
-    background-size: contain;
-    background-position: left;
-}
-.user_accounts{
-    position: absolute; 
-    top: -13px;
-    left: 18px;
-    padding: 5px; 
-    color:green;
-}
-.accounts-bgimg2{
-    position: relative;
-    background-repeat: no-repeat;
-    height: 27px; 
-    background-image: url('{{ asset('images/postmail.png') }}'); 
-    background-size: contain;
-    background-position: left;
-}
-.posted_now{
-    position: absolute;
-    top: -13px;
-    left: 21px;
-    padding: 5px; 
-    color:red;
-}
-.accounts-bgimg3{
-    position: relative;
-    background-repeat: no-repeat;
-    height: 27px;
-    background-image: url('{{ asset('images/scheduleposts.png') }}');
-    background-size: contain;
-    background-position: left;
-}
-.scheduled_posts{
-    position: absolute;
-    top: -13px;
-    left: 23px;
-    padding: 5px;
-    color:green;
 
+.accounts-bgimg {
+    position: relative;
+    background-repeat: no-repeat;
+    /* height: 28px; */
+    /* background-image: url('{{ asset('images/roundcount.png') }}'); */
+    background-size: contain;
+    background-position: left;
 }
-.table-wraper-1{
-    overflow-x:auto;
+
+.user_accounts {
+    /* font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    position: absolute;
+    top: -1px;
+    left: 6px;
+    padding: 5px;
+    color: green; */
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.card-body{
-    overflow-x:auto;
+
+.table-wraper-1 {
+    overflow-x: auto;
+}
+
+.card-body {
+    overflow-x: auto;
+}
+
+.show-link {
+    padding: 0px !important;
+}
+.counter_circle{
+    height: 40px;
+    width: 40px;
+    background: #e4e2e2;
+    border-radius: 50px;
+    padding-top: 10px;
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -700,8 +691,8 @@ div.dataTables_wrapper div.dataTables_length select {
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Accounts</th>
-                                                <th>No of Accounts</th>
+                                                <th>Organizations</th>
+                                                <th>No of Organizations</th>
                                                 <!-- <th>Last Logedin</th> -->
                                                 <th>Action</th>
                                                 <th>Disable</th>
@@ -721,69 +712,67 @@ div.dataTables_wrapper div.dataTables_length select {
                                                 <td>
                                                     <a href="#" class="dropdown-item show-link" data-toggle="modal"
                                                         data-target="#acModal" data-record-id="{{ $user->id }}">
-                                                        <i class="fa fa-eye text-primary" aria-hidden="true"></i></a>
+                                                        View Details</a>
                                                 </td>
                                                 <td>
                                                     <div class="accounts-bgimg">
-                                                        <span class="user_accounts">
-                                                            {{ $user->account_list_count }}
-                                                        </span>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <span class="dropdown-toggle"
-                                                            id="dropdownMenuIconButton3" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">Actions</span>
-                                                        <i class="fa fa-ellipsis-v d-none" class="dropdown-toggle"
-                                                            id="dropdownMenuIconButton3" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false"></i>
-                                                        <div class="dropdown-menu"
-                                                            aria-labelledby="dropdownMenuIconButton3"
-                                                            x-placement="bottom-start"
-                                                            style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-
-                                                            <a href="#" class="dropdown-item edit-link"
-                                                                data-toggle="modal" data-target="#editModal"
-                                                                data-record-id="{{ $user->id }}"><i
-                                                                    class="fa fa-edit text-primary"
-                                                                    aria-hidden="true"></i>Edit</a>
-
-                                                            <a class="dropdown-item delete delete-item" href="#"
-                                                                data-url="{{ route('admin.delete', ['user' => encrypt($user->id)]) }}">
-                                                                <i class="fa fa-trash-o text-danger"
-                                                                    aria-hidden="true"></i> Delete
-                                                            </a>
-                                                        </div>
+                                                        <div class="counter_circle">
+                                                            <span class="user_accounts">
+                                                                {{ $user->account_list_count }}
+                                                            </span>
+                                                         </div>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input disabled" type="checkbox"
-                                                            role="switch" data-record-id="{{ $user->id }}"
-                                                            {{ $user->disabled ? 'checked' : '' }} />
-                                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <span class="dropdown-toggle" id="dropdownMenuIconButton3"
+                                            data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">Actions</span>
+                                        <i class="fa fa-ellipsis-v d-none" class="dropdown-toggle"
+                                            id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false"></i>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3"
+                                            x-placement="bottom-start"
+                                            style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
 
-                                                    <!-- <input type="checkbox" class="js-switch disabled"
+                                            <a href="#" class="dropdown-item edit-link" data-toggle="modal"
+                                                data-target="#editModal" data-record-id="{{ $user->id }}"><i
+                                                    class="fa fa-edit text-primary" aria-hidden="true"></i>Edit</a>
+
+                                            <a class="dropdown-item delete delete-item" href="#"
+                                                data-url="{{ route('admin.delete', ['user' => encrypt($user->id)]) }}">
+                                                <i class="fa fa-trash-o text-danger" aria-hidden="true"></i> Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input disabled" type="checkbox" role="switch"
+                                            data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }} />
+                                    </div>
+
+                                    <!-- <input type="checkbox" class="js-switch disabled"
                                                         data-record-id="{{ $user->id }}" {{ $user->disabled ? 'checked' : '' }}/> -->
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--  -->
+                                </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                                </table>
                             </div>
+                            <!--  -->
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-        </section>
-        <!-- Dashboard Analytics end -->
-
     </div>
+
+
+
+    </section>
+    <!-- Dashboard Analytics end -->
+
+</div>
 </div>
 </div>
 
@@ -808,7 +797,7 @@ div.dataTables_wrapper div.dataTables_length select {
                     <div class="form-group">
                         <input id="user_id" type="hidden" name="user_id" value="">
                         <label for="edit_name"> Name</label>
-                        <input id="edit_name" type="text"
+                        <input id="edit_name" type="name"
                             class="name_field form-control @error('name') is-invalid @enderror" name="edit_name"
                             value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -1128,11 +1117,11 @@ div.dataTables_wrapper div.dataTables_length select {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        document.querySelectorAll('.delete-item').forEach(deleteBtn => {
-           
-                $(document).on('click', deleteBtn,function (e) {
+    document.querySelectorAll('.delete-item').forEach(deleteBtn => {
 
-                event.preventDefault();
+        $(document).on('click', deleteBtn, function(e) {
+
+            event.preventDefault();
 
             const deleteUrl = this.getAttribute('data-url');
 

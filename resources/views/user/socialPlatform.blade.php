@@ -240,11 +240,8 @@
     }
     .text-delmsg {
     top: 35px;
-  
 }
-}
-@media(min-width:320px) and (max-width:440px) {
-
+.
 }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
@@ -271,7 +268,7 @@
         <p
             style="color: #2F2F2F; text-align: center;font-size: 18px;font-style: normal;font-weight: 300;line-height: normal; margin-top:20px;">
             Thanks for signing up, <br>
-            Let’s add your first account and connect it’s social platforms
+            Let’s add your first Organization and connect it’s social platforms
         </p>
 
     </div>

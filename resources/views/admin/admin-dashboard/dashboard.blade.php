@@ -57,9 +57,9 @@ active
     background-color: #ffc4c4; 
 }
 
-.tile_stats_count:nth-child(4n) .title_stats_count-inner {
+/* .tile_stats_count:nth-child(4) .title_stats_count-inner {
     background-color: #feffc7; 
-}
+} */
 
 
 
@@ -155,7 +155,7 @@ active
                         <div class="title_stats_count-inner">
                               <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/webaccount.png')}}" alt="card-img" ></div>
                               <div class="count-content">
-                                <h2 class=''>Total Accounts</h2>
+                                <h2 class=''>Total Organizations</h2>
                                 <p class='m-0'>{{$totalAc}}</p>
                               </div>
                             </div>
@@ -200,7 +200,7 @@ active
                         <div class="title_stats_count-inner">
                         <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/accountnoattach.png')}}" alt=" Logo"></div>
                               <div class="count-content">
-                                <h2 class=''>Accounts with no Platform Attached</h2>
+                                <h2 class=''>Organizations with no Platform Attached</h2>
                                 <p class='m-0'>{{$acWithoutPlateFormAttached}}</p>
                               </div>
 </div>

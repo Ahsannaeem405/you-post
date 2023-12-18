@@ -433,7 +433,7 @@ padding-top: 10px;
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
             <div class="account-info">
-                <label for="" class="user_detail">Account Name <img src="{{asset('images/infoinfoinfo.png')}}" class="delete_account" /></label>
+                <label for="" class="user_detail">Organization Name <img src="{{asset('images/infoinfoinfo.png')}}" class="delete_account" /></label>
                 <div class="delete_input">
                     <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
                         placeholder="Account Name" class="account-detail account_name" maxlength="18"
@@ -710,7 +710,7 @@ function countCharacters(inputField) {
         // Show a SweetAlert success message
         Swal.fire({
             title: 'Success!',
-            text: 'The Account have been deleted.',
+            text: 'The Organiztion have been deleted.',
             icon: 'success'
         });
         
