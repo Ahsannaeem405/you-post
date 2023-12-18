@@ -65,13 +65,16 @@ class AccountController extends Controller
         return true;
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $acc = Account::find($id);
+        $acc = Account::find($request->accountId);
         $accname= $acc->name;
         $acc->delete();
-        return back()->with('success', 'Account Deleted Successfully.')->with('accname', $accname);
-
+        // return back()->with('success', 'Account Deleted Successfully.')->with('accname', $accname);
+        $response = [
+            'message' => 'Account Deleted Successfully.'          
+        ];
+        return response()->json($response, 200);
 
         // Redirect or return a response as needed
     }
