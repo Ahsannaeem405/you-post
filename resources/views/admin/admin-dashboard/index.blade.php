@@ -818,7 +818,7 @@ div.dataTables_wrapper div.dataTables_length select {
                         </span>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="field_name">Old Password </label>
                         <input id="old_password" type="password"
                             class="form-control @error('password') is-invalid @enderror" name="old_password"
@@ -829,7 +829,7 @@ div.dataTables_wrapper div.dataTables_length select {
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="field_name">New Password</label>
                         <input id="password" type="password"
@@ -847,9 +847,13 @@ div.dataTables_wrapper div.dataTables_length select {
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                             required autocomplete="new-password">
                     </div>
-                    <!-- Add more form fields as needed -->
+                    <div class="form-group">
+                        <!-- <a href="#" id="sendPasswordResetLink">Send Password Resend Link</a> -->
+                    </div>
+                                        <!-- Add more form fields as needed -->
                     <button type="submit" class="btn modal-btn" id="udpatebtn">Update</button>
                 </form>
+               
             </div>
         </div>
     </div>
@@ -1007,10 +1011,29 @@ div.dataTables_wrapper div.dataTables_length select {
     });
     </script>
     <!-- color btn -->
-    Copy code
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
+
+        $('#sendPasswordResetLink').click(function (e) {
+            e.preventDefault();
+            
+            // Get the value from the hidden input
+            var userId = $('#user_id').val();
+            
+
+            // Send an AJAX request
+            $.ajax({
+                url: "{{ route('password.sendlink', ':user_id') }}".replace(':user_id', userId),
+                type: 'GET',
+                success: function (response) {
+                    alert(response.message);
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseJSON.error);
+                }
+            });
+        });
     // Handle click event for the edit link
     $('.edit-link').click(function(e) {
 
@@ -1030,7 +1053,7 @@ div.dataTables_wrapper div.dataTables_length select {
             success: function(data) {
                 $('#edit_name').val(data.name);
                 $('#edit_email').val(data.email);
-                $('#old_password').val(data.password);
+                // $('#old_password').val(data.password);
                 $('#user_id').val(data.id);
 
 

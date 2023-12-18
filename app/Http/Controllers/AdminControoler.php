@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Account;
 use App\Models\Post;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+
+
 
 
 
@@ -16,6 +21,8 @@ use Illuminate\Http\Request;
 
 class AdminControoler extends Controller
 {
+    use SendsPasswordResetEmails;
+
     //
     public function __construct(User $user)
     {
@@ -70,6 +77,65 @@ class AdminControoler extends Controller
         return view('admin.admin-dashboard.index',compact('users'));
 
     }
+
+    public function sendlink($user_id)
+       {       
+            
+           $user = User::find($user_id);
+           if ($user) {
+            // Generate a password reset token for the user
+            $token = Password::getRepository()->create($user);
+
+            // Send the password reset email to the user
+            $user->sendPasswordResetNotification($token);
+
+            return response()->json(['message' => 'Password reset link sent successfully.']);
+        } else {
+            return response()->json(['error' => 'User not found.'], 404);
+        }
+    
+
+    }
+     public function showResetForm($token)
+    {
+           
+        return view('auth.passwords.reset', ['token' => $token]);
+       
+
+    }
+    
+    public function reset(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ], [
+            'token.required' => 'The token field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'password.required' => 'The password field is required.',
+            'password.confirmed' => 'The password confirmation does not match.',
+            'password.min' => 'The password must be at least 8 characters.',
+        ]);
+        // dd( $request->all());
+        // You can customize this part based on your requirements
+        $token = $request->token;
+
+        // You can customize this part based on your requirements
+        $response = $this->broker()->reset(
+            $this->credentials($request),
+            function ($admin, $password) use ($token) {
+                $this->resetPassword($admin, $password, 'admin.password.reset', $token);
+            }
+        );
+
+        // Check the response and redirect accordingly
+        return $response == Password::PASSWORD_RESET
+            ? $this->sendResetResponse($response)
+            : $this->sendResetFailedResponse($request, $response);
+    }
+    
     public function show_profile()
     {
        
@@ -163,7 +229,8 @@ class AdminControoler extends Controller
        
 
     }
-    
+
+   
     public function disable_user(Request $request)
     {
             
@@ -218,15 +285,15 @@ class AdminControoler extends Controller
     $user =$this->user::find($request->input('user_id'));
 
     $request->validate([
-        'old_password' => 'required',
+        // 'old_password' => 'required',
         'password' => 'required|min:8|confirmed',
         'edit_email' => 'required|email|unique:users,email,' . $user->id,
     ]);
 
 
-    if (!Hash::check($request->input('old_password'), $user->password)) {
-        return response()->json(['error' => 'The old password does not match.'], 401);
-    }
+    // if (!Hash::check($request->input('old_password'), $user->password)) {
+    //     return response()->json(['error' => 'The old password does not match.'], 401);
+    // }
 
     $user->name = $request->input('edit_name'); 
     $user->email = $request->input('edit_email'); 
