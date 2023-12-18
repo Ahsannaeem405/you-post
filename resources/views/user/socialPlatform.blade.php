@@ -238,6 +238,12 @@
     .platform_icongp{
         gap:23px !important;
     }
+    .text-delmsg {
+    top: 35px;
+  
+}
+}
+@media(min-width:320px) and (max-width:440px) {
 
 }
 </style>
