@@ -425,14 +425,14 @@ padding-top: 10px;
         </div> -->
         </div>
         @if(in_array("Facebook", $account->platforms))
-        <img src="{{$account->fb_image}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{$account->fb_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
         @elseif(in_array("Instagram", $account->platforms))
-        <img src="{{$account->inst_image}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{$account->inst_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
 
         @elseif(in_array("Twitter", $account->platforms))
-        <img src="{{$account->twt_image}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{$account->twt_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
         @elseif(in_array("Linkedin", $account->platforms))
-        <img src="{{$account->link_image}}" class="v_icon rounded-circle mb-3" alt="" />
+        <img src="{{$account->link_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
         @else
         <img src="{{asset('images/YouPost_Logo.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
         @endif
@@ -441,7 +441,7 @@ padding-top: 10px;
                 <label for="" class="user_detail">Organization Name <img src="{{asset('images/infoinfoinfo.png')}}" class="delete_account" /></label>
                 <div class="delete_input">
                     <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
-                        placeholder="Account Name" class="account-detail account_name" maxlength="18"
+                        placeholder="Organization Name" class="account-detail account_name" maxlength="18"
                         oninput="countCharacters()">
                         <div class="counter_numeric">
                              <p><span class="charCount">0/18</span></p>

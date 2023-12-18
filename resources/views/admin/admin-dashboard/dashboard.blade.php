@@ -200,7 +200,7 @@ active
                         <div class="title_stats_count-inner">
                         <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/accountnoattach.png')}}" alt=" Logo"></div>
                               <div class="count-content">
-                                <h2 class=''>Organizations with no Platform Attached</h2>
+                                <h2 class=''>Organizations With No Platform Attached</h2>
                                 <p class='m-0'>{{$acWithoutPlateFormAttached}}</p>
                               </div>
 </div>

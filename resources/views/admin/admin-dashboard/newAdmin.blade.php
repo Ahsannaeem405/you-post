@@ -3,6 +3,16 @@
 active
 @endsection
 @section('Main-Container')
+
+@if(session('message'))
+<div class="alert alert-success">
+    {{ session('message') }}
+    <script>
+    // Display toastr success message
+    toastr.success("{{ session('message') }}");
+    </script>
+</div>
+@endif
 <div class="content-wrapper">
 
     <div class="content-header row">
@@ -32,7 +42,7 @@ active
                         <input type="hidden" value= "admin" name="type" id ="type"/>
                     <div class="form-group">
                             <label for="name" >{{ __('Name') }}</label>
-                            <input id="name" type="text" class="name_field form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" type="name" class="name_field form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
