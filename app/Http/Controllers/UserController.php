@@ -333,6 +333,11 @@ class UserController extends Controller
 
         }
     }
+    public function account_post($id)
+    {
+        dd($id);
+
+    }
 
     public function getTimeDifference($post)
     {

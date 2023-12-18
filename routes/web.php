@@ -104,6 +104,7 @@ Route::group(['middleware' => ['auth','otp','disable']], function () {
     Route::post('refresh-accounts', [AccountController::class,'refresh_accounts'])->name('refresh-accounts');
     Route::post('/account/{id}', [AccountController::class,'delete'])->name('account-delete');
     Route::post('/reportbug', [UserController::class,'report_bug'])->name('report-bug');
+    Route::get('create-posts/{id}', [UserController::class, 'account_post'])->name('user.create-posts');
 
     Route::post('resheudle_post', [UserController::class,'reschedule_post'])->name('resheudle-post');
 

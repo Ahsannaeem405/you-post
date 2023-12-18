@@ -1128,13 +1128,13 @@ div.dataTables_wrapper div.dataTables_length select {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        document.querySelectorAll('.delete-item').forEach(deleteBtn => {
+        // document.querySelectorAll('.delete-item').forEach(deleteBtn => {
            
-                $(document).on('click', deleteBtn,function (e) {
+                $(document).on('click', '.delete-item',function (e) {
 
                 event.preventDefault();
 
-            const deleteUrl = this.getAttribute('data-url');
+            // const deleteUrl = this.getAttribute('data-url');
 
             Swal.fire({
                 title: 'Are you sure?',
@@ -1147,11 +1147,13 @@ div.dataTables_wrapper div.dataTables_length select {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Redirect to the delete URL
-                    window.location.href = deleteUrl;
+                    // window.location.href = deleteUrl;
+                    location.reload();
+
                 }
             });
         });
-    });
+    // });
     </script>
 
     @endsection()

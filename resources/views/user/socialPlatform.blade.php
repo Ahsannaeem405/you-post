@@ -302,7 +302,7 @@
 
 
     <div class='add-organization' style="text-align:center; margin-top:
-           30px" class="addOtherAccountMain" id="addAccount">
+           30px" class="addOtherAccountMain" >
         <button class="btn add_account fw-bold"><img src="{{asset('images/plus-mark.png')}}" id="addAccount">Add Organization</button>
 
     </div>
@@ -436,7 +436,11 @@ $(document).on('click', '#addAccount', function() {
     $(this).prop('disabled', true);
     $('.add_account').addClass('loading_account');
     var test = $(this);
-   
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $.ajax({
         type: "post",
         url: "{{ route('store-acount')}}",

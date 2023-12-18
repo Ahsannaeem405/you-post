@@ -73,8 +73,10 @@ class AdminControoler extends Controller
     public function show_profile()
     {
        
-       
-        return view('admin.admin-dashboard.profile');
+        $record = User::find(auth()->user()->id);
+        // dd($record);
+
+        return view('admin.admin-dashboard.profile',compact('record'));
 
     }
     public function show_admins()

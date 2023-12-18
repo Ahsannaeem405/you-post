@@ -591,7 +591,7 @@ input field  */
         </div>
 
         <button class="btn btn-primary mt-3 mb-4 fw-bold"><img src="{{asset('images/sum-icon.svg')}}" style=" padding-right: 5px; width: 22px;
-            height: 16px;">Create a post</button>
+            height: 16px;" id="createPostBtn" data-account_id="{{ $account->id }}">Create a post</button>
     </div>
 </div>
 <!-- modal -->
@@ -621,6 +621,17 @@ input field  */
 <!--  -->
 @endforeach
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#createPostBtn').click(function() {
+            var routeName = 'user.create-posts';
+            var accountId = $(this).attr('data-account_id');
+
+            // Redirect to the named route
+            window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId', accountId);
+        });
+    });
+</script>
 <script>
    $(document).ready(function() {
     // Get references to the input and delete button
