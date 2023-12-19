@@ -848,7 +848,7 @@ div.dataTables_wrapper div.dataTables_length select {
                             required autocomplete="new-password">
                     </div>
                     <div class="form-group">
-                        <!-- <a href="#" id="sendPasswordResetLink">Send Password Resend Link</a> -->
+                        <a href="#" id="sendPasswordResetLink">Send Password Resend Link</a>
                     </div>
                                         <!-- Add more form fields as needed -->
                     <button type="submit" class="btn modal-btn" id="udpatebtn">Update</button>

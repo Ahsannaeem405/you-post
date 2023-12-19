@@ -12,28 +12,29 @@ class OtpController extends Controller
 {
     public function showOtpForm()
     {
-        $user = Auth::user();
-        $timezone = $user->timezone;
-        $currentTime = now($timezone);
-        $resendExpire = Carbon::createFromFormat('Y-m-d H:i:s', $user->resend_time, $timezone);
-        if ($currentTime > $resendExpire) {          
-            $remainingTime = 0;
-        } else {           
-            $timeDifference = $resendExpire->diffInSeconds($currentTime);            
-            $remainingTime = $timeDifference;
-                }   
+        // $user = Auth::user();
+        // $timezone = $user->timezone;
+        // $currentTime = now($timezone);
+        // $resendExpire = Carbon::createFromFormat('Y-m-d H:i:s', $user->resend_time, $timezone);
+        // if ($currentTime > $resendExpire) {          
+        //     $remainingTime = 0;
+        // } else {           
+        //     $timeDifference = $resendExpire->diffInSeconds($currentTime);            
+        //     $remainingTime = $timeDifference;
+        //         }   
            
-        $otpExpiryTime = Carbon::createFromFormat('Y-m-d H:i:s', $user->otp_expiry, $timezone);
+        // $otpExpiryTime = Carbon::createFromFormat('Y-m-d H:i:s', $user->otp_expiry, $timezone);
         
-        if ($currentTime > $otpExpiryTime) {
-            $remainingTime_expire = true;
-        } else {
-            $remainingTime_expire = false;
-        }
-            return view('auth.verify', [
-            'remainingTime' => $remainingTime,
-            'remainingTime_expire' => $remainingTime_expire,
-        ]);
+        // if ($currentTime > $otpExpiryTime) {
+        //     $remainingTime_expire = true;
+        // } else {
+        //     $remainingTime_expire = false;
+        // }
+        //     return view('auth.verify', [
+        //     'remainingTime' => $remainingTime,
+        //     'remainingTime_expire' => $remainingTime_expire,
+        // ]);
+        return view('auth.verify');
        
     }
 
@@ -84,30 +85,19 @@ class OtpController extends Controller
     }
 
     public function verifyOtp(Request $request)
-    {
-       
-        $this->validate($request, [
-            'first' => 'required|numeric',
-            'second' => 'required|numeric',
-            'third' => 'required|numeric',
-            'fourth' => 'required|numeric',
+    {     
+        
+          // Assuming you have a user instance
+                    $user = Auth::user();
 
-        ]);
+          // Mark the user's email as verified
+          $user->markEmailAsVerified();
+  
+          // Redirect to a success page or wherever you want
+          return redirect()->route('dashboard')->with('message', 'OTP verified successfully.');
+     
         
-        $firstDigit = $request->input('first');
-        $secondDigit = $request->input('second');
-        $thirdDigit = $request->input('third');
-        $fourthDigit = $request->input('fourth');      
-        
-        $completeOtp = $firstDigit . $secondDigit . $thirdDigit . $fourthDigit;        
-        $user = Auth::user();
-        if ($this->isValidOtp($user, $completeOtp)) {            
-            $user->update(['is_verified' => true]);
-            return redirect()->route('dashboard')->with('message', 'OTP verified successfully.');
-        } else {
-            
-            return redirect()->route('verification.notice')->withErrors(['otp' => 'Invalid or expired OTP.']);
-        }
+      
     }
 
     protected function isValidOtp($user, $enteredOtp)

@@ -9,8 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -80,5 +82,11 @@ class User extends Authenticatable
             'logPath' => $logPath,
         ];       
         \Mail::to($email)->send(new \App\Mail\MyOtpMail($details));
+    }
+    public function markEmailAsVerified()
+    {
+        $this->forceFill([
+            'email_verified_at' => now(),
+        ])->save();
     }
 }

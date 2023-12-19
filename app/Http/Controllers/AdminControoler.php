@@ -11,6 +11,9 @@ use App\Models\Post;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
+
 
 
 
@@ -109,31 +112,25 @@ class AdminControoler extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:8',
-        ], [
-            'token.required' => 'The token field is required.',
-            'email.required' => 'The email field is required.',
-            'email.email' => 'Please enter a valid email address.',
-            'password.required' => 'The password field is required.',
-            'password.confirmed' => 'The password confirmation does not match.',
-            'password.min' => 'The password must be at least 8 characters.',
+            'password' => 'required|min:8|confirmed',
         ]);
-        // dd( $request->all());
-        // You can customize this part based on your requirements
-        $token = $request->token;
-
-        // You can customize this part based on your requirements
-        $response = $this->broker()->reset(
-            $this->credentials($request),
-            function ($admin, $password) use ($token) {
-                $this->resetPassword($admin, $password, 'admin.password.reset', $token);
+     
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function (User $user, string $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+     
+                $user->save();
+     
+                event(new PasswordReset($user));
             }
         );
-
         // Check the response and redirect accordingly
-        return $response == Password::PASSWORD_RESET
-            ? $this->sendResetResponse($response)
-            : $this->sendResetFailedResponse($request, $response);
+        return $status === Password::PASSWORD_RESET
+                ? redirect()->route('admin.showusers')->with('status', __($status))
+                : back()->withErrors(['email' => [__($status)]]);
     }
     
     public function show_profile()

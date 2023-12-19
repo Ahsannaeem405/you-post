@@ -40,6 +40,7 @@ Route::get('/seed', function () {
 });
 
 Auth::routes();
+
 Route::get('/migratefresh/seed', function () {
     $run = Artisan::call('migrate:fresh --seed');
     return 'Completedd';
@@ -90,10 +91,11 @@ Route::get('privacy-policy', [UserController::class, 'privacyPolicy'])->name('pr
 Route::middleware(['auth'])->group(function () {
     Route::get('/otp-verify', [OtpController::class, 'showOtpForm'])->name('verification.notice');
     Route::post('/send-otp', [OtpController::class, 'sendOtp'])->name('send.otp');
-    Route::post('/verify-otp', [OtpController::class, 'verifyOtp'])->name('verification.verify');
+    Route::get('/verify-otp', [OtpController::class, 'verifyOtp'])->name('verification.verify');
+    
 });
 
-Route::group(['middleware' => ['auth','otp','disable']], function () {
+Route::group(['middleware' => ['auth','disable','verified']], function () {
    
 
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
