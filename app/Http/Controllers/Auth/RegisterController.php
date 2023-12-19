@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
+
 
 
 class RegisterController extends Controller
@@ -75,21 +77,25 @@ class RegisterController extends Controller
     
         
             
-        $user = User::create([
+         $user = User::create([
             'name' => $data['fname'].' '.$data['lname'],
             'email' => $data['email'],
             'dob' => $data['dob'],
             'password' => Hash::make($data['password']),
-            'otp' => $otp,
-            'otp_expiry' => $expiryTime,
-            'timezone' => $data['timezone'],
-            'resend_time' => $expiryTimeWithThirtySeconds,
+            // 'otp' => $otp,
+            // 'otp_expiry' => $expiryTime,
+            // 'timezone' => $data['timezone'],
+            // 'resend_time' => $expiryTimeWithThirtySeconds,
 
         ]);       
         
+        event(new Registered($user));
 
-        // Send the OTP via email
-        $user->sendOtpEmail($user->email, $otp);        
+        if ($user instanceof MustVerifyEmail) {
+            $this->guard()->login($user);
+            $user->sendEmailVerificationNotification();
+        }
+
         return $user;
     }
   

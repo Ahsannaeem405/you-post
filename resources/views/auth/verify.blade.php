@@ -58,28 +58,7 @@
                 <div class="position-relative"> <div class="card p-2 text-center">
                     <h6>Please enter the otp <br> to verify your account</h6>
                     <div> <span>A otp has been sent to</span> <small>email</small> </div>
-                    <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
-                        <input required class="m-2 text-center form-control rounded" type="number" id="first" name ="first" maxlength="1" />
-                        <input required class="m-2 text-center form-control rounded" type="number" id="second" name ="second" maxlength="1" />
-                        <input required class="m-2 text-center form-control rounded" type="number" id="third" name ="third" maxlength="1" />
-                        <input required class="m-2 text-center form-control rounded" type="number" id="fourth" name ="fourth" maxlength="1" />
-
-                       </div>
-                        <div class="loader-p position-relative">
-                        <div id="loader" class="loader"></div>
-                        </div>
-                       <div class="mt-4">
-                       <button type="submit" class="btn  px-4 validate" id="validateButton" @if($remainingTime_expire) disabled @endif>Verify</button>
-                       </div>
-                     </div>
-                     <div class="card-2">
-                      <div class="content d-flex justify-content-center align-items-center">
-                         <span>Didn't get the code</span>
-                          <a href="#" class="text-decoration-none ms-3" id="resendButton">Resend<span id = "seconds">()</span></a>
-                        </div>
-                     </div>
-                    </div>
-                 </div>
+           
                    @error('verification_code')
                  <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -93,90 +72,5 @@
     </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(event) {
-function OTPInput() {
-            const inputs = document.querySelectorAll('#otp > *[id]');
-            for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput();
-    });
-    var remainingTime = {{ $remainingTime }};
-    var secondsElement = document.getElementById('seconds');
-    var validateButton = document.getElementById('validateButton');
-    var resendButton = document.getElementById('resendButton');
 
-    function updateTimer() {
-        var timerInterval = setInterval(function () {
-            var seconds = remainingTime % 60;
-            secondsElement.innerHTML = "(" + seconds + ")";
-
-            remainingTime--;
-
-            if (remainingTime < 0) {
-                clearInterval(timerInterval);
-                secondsElement.style.display = 'none';
-
-                // Optionally hide the resend button when the timer reaches 0
-                // resendButton.style.display = 'none';
-                resendButton.style.pointerEvents = 'auto';
-
-
-                 // Enable the Resend link
-
-            }else{
-                secondsElement.style.display = 'inline';
-                resendButton.style.pointerEvents = 'none';  // Disable the Resend link
-
-            }
-        }, 1000);
-    }
-
-    // Call the function to start the timer
-    updateTimer();
-
-</script>
-
-
-<script>
-    // Handle click event for the edit link
-    $('#resendButton').click(function(e) {
-
-              e.preventDefault();
-              var csrfToken = $('meta[name="csrf-token"]').attr('content');
-              var loader = $('#loader');  // Assuming you have an element with id 'loader'
-
-
-        $.ajax({
-            url: '/send-otp',
-            method: 'POST',
-            data: {_token: csrfToken},
-            beforeSend: function() {
-            // Show loader before sending the request
-            loader.show();
-            validateButton.disabled = true;
-            resendButton.style.pointerEvents = 'none';
-        },
-
-
-            success: function(data) {
-                // $('#resendButton').hide();
-                // $('#verifyButton').show();
-                 remainingTime = data.remainingTime;
-                 remainingTime_expire = data.remainingTime_expire;
-                 if (!remainingTime_expire) {
-                    validateButton.disabled = false;
-                } else {
-
-                    validateButton.disabled = true;
-                }
-
-                 updateTimer();
-                 loader.hide();
-
-
-            // window.location.reload();
-                toastr.success('OTP sent successfully');
-            }
-        });
-    });
-    </script>
 @endsection

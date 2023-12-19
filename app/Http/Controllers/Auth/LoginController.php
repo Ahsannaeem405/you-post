@@ -99,6 +99,10 @@ class LoginController extends Controller
                 // $finduser = User::where('google_id', $user->id)->orWhere('email', $user->email)->first();
 
                 if($finduser){
+                    if (!$finduser->hasVerifiedEmail()) {
+                        // Update the email_verified_at attribute in your application's database
+                        $finduser->markEmailAsVerified();
+                    }
                    
                     // if ($finduser->disabled) {
                     //     // User is disabled, redirect to login with a message
@@ -118,6 +122,10 @@ class LoginController extends Controller
                         'password' => encrypt('123456dummy'),
                         'is_verified' => true
                     ]);
+                    if (!$newUser->hasVerifiedEmail()) {
+                        // Update the email_verified_at attribute in your application's database
+                        $user->markEmailAsVerified();
+                    }
                     Auth::login($newUser);
                     return redirect('index')->with('success-register', 'Login Successfully');
                 }
