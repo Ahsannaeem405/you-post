@@ -101,7 +101,7 @@ Route::group(['middleware' => ['auth','disable','verified']], function () {
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
     Route::get('dashboard2', [UserController::class, 'dashbaord2']);
     Route::get('/show-email', function () {
-        return view('email.emailtemp'); // Assuming your view is located at resources/views/emails/bugEmail.blade.php
+        return view('show-email'); // Assuming your view is located at resources/views/emails/bugEmail.blade.php
     })->name('show.email');
     Route::get('get-updated-posts', [UserController::class, 'getUpdatedPosts'])->name('get.updated.posts');
 
