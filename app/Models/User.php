@@ -83,7 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ];       
         \Mail::to($email)->send(new \App\Mail\MyOtpMail($details));
     }
-    public function markEmailAsVerified()
+     public function markEmailAsVerified()
     {
         $this->forceFill([
             'email_verified_at' => now(),

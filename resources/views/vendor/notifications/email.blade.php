@@ -38,10 +38,10 @@
                                                     <div style="height:20px">&nbsp;</div>
                                                 </div>
                                                 <div align="center" style="padding-right:0px;padding-left:0px">
-                                                    <img align="center" alt="Image" border="0"
+                                                    <!-- <img align="center" alt="Image" border="0"
                                                         src="{{ asset('images/YouPost_Logo.png') }}"
                                                         style="text-decoration:none;border:0;height:auto;width:100%;max-width:149px;display:block"
-                                                        title="Image" width="149" class="CToWUd" data-bit="iit">
+                                                        title="Image" width="149" class="CToWUd" data-bit="iit"> -->
                                                     <div style="font-size:1px;line-height:25px">&nbsp;</div>
 
                                                 </div>
@@ -80,7 +80,7 @@
                                                         style="font-size:14px;line-height:1.5;font-family:'Roboto',Tahoma,Verdana,Segoe,sans-serif;color:#656565">
                                                         <div
                                                             style="font-size:24px;line-height:1.5;text-align:center;word-break:break-word;font-family:Roboto,Tahoma,Verdana,Segoe,sans-serif;margin:0px">
-                                                            <span style="font-size:24px"><span>Hi {{ $name }},
+                                                            <span style="font-size:24px"><span>Hi ,
                                                                     &nbsp;</span></span></div>
                                                     </div>
                                                 </div>

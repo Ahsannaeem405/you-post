@@ -49,6 +49,7 @@ class CustomVerifyEmail extends Notification
         ->line(__('Thank you for registering with YouPost!'))
         ->line(__('Please verify your email to complete the registration process.'))
         ->line(__('The verification link will expire in 72 hours.'))
+        ->action(__('Verify Email Address'), $this->verificationUrl($notifiable))
         ->markdown('vendor.notifications.email', ['name' => $this->name]); // Pass the user's name to the email template
  }
 
