@@ -130,10 +130,11 @@
                                     <label for="password"
                                         class="col-form-label text-md-end">{{ __('Password') }}</label>
 
-                                    <div class="">
+                                    <div class="user-box">
                                         <input id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror" name="password"
                                             required autocomplete="current-password">
+                                            <span class="password-toggle-icon"><i class="fa fa-eye"></i></span>
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">

@@ -248,6 +248,9 @@
     top: 64px !important;
     font-size:9px !important;
 }
+.user_detail{
+    left: 58px !important;
+}
 }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">

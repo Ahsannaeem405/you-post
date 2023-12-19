@@ -28,7 +28,7 @@
     height: 100px;
     border-radius: 50%;
     margin-top: 40px;
-    border:4px solid #52a2e3;
+    border: 4px solid #52a2e3;
 }
 
 .input_lb {
@@ -62,21 +62,24 @@
     letter-spacing: 1.2px;
     left: 100px;
     position: absolute;
-    top: 30px;
+    top: 28px;
     background: #fff;
     padding-left: 5px;
     padding-right: 5px;
     z-index: 1;
 }
+
 .delete_input {
     width: 100%;
     position: relative;
 }
+
 .counter_numeric {
     position: absolute;
     top: 13px;
     right: 10px;
 }
+
 /* ahmad counter setting code */
 
 .account-detail {
@@ -127,16 +130,18 @@
 .reconnect_platform {
     color: blue;
     border-bottom: 1px solid #000;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .reconnect_platform:active {
     color: red;
     border-bottom: 1px solid red;
 }
-.fb-conect_btn{
-    text-decoration:none;
+
+.fb-conect_btn {
+    text-decoration: none;
 }
+
 .fb-conect_btn,
 .fb-recont_btn,
 .l-conect_btn,
@@ -155,11 +160,11 @@
 }
 
 .linkedbtnabc {
-    border-radius:30px;
+    border-radius: 30px;
     background: #0d6efd;
     color: #fff;
     padding: 10px;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .r_btn {
@@ -217,7 +222,8 @@
 }
 
 .disabledBtn span {
-    display: block; /* Display the span by default */
+    display: block;
+    /* Display the span by default */
     font-size: 10px;
     background-color: #000;
     position: absolute;
@@ -230,7 +236,7 @@
     display: none;
 }
 
-.disabledBtn:hover span{
+.disabledBtn:hover span {
     display: block;
 }
 
@@ -238,142 +244,163 @@
 .user_detail .fa-info-circle:before {
     color: #0d6efd;
 }
+
 .pullee {
-  width: 12rem;
-  appearance: none;
+    width: 12rem;
+    appearance: none;
 }
+
 .pullee:active::-webkit-slider-thumb {
-  appearance: none;
-  transform: scale(1.1);
-  cursor: -webkit-grabbing;
-  cursor: -moz-grabbing;
+    appearance: none;
+    transform: scale(1.1);
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
 }
+
 .pullee:active::-moz-range-thumb {
-  border: 0;
-  transform: scale(1.1);
-  cursor: -webkit-grabbing;
-  cursor: -moz-grabbing;
+    border: 0;
+    transform: scale(1.1);
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
 }
+
 .pullee:active::-ms-thumb {
-  transform: scale(1.1);
-  cursor: -webkit-grabbing;
-  cursor: -moz-grabbing;
+    transform: scale(1.1);
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
 }
+
 .pullee:focus {
-  outline: none;
+    outline: none;
 }
+
 .pullee::-webkit-slider-thumb {
-  appearance: none;
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 5px;
-  background: #FF3044;
-  background: #FF3044 url("{{asset('images/deletebuckit.png')}}") no-repeat top center;
-  transform-origin: 50% 50%;
-  transform: scale(1);
-  transition: transform ease-out 100ms;
-  cursor: -webkit-grab;
-  cursor: -moz-grab;
+    appearance: none;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: #FF3044;
+    background: #FF3044 url("{{asset('images/deletebuckit.png')}}") no-repeat top center;
+    transform-origin: 50% 50%;
+    transform: scale(1);
+    transition: transform ease-out 100ms;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
 }
 
 .pullee::-moz-range-thumb {
-  border: 0;
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 5px;
-  background: #FF3044;
-  transform-origin: 50% 50%;
-  transform: scale(1);
-  transition: transform ease-out 100ms;
-  cursor: -webkit-grab;
-  cursor: -moz-grab;
+    border: 0;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: #FF3044;
+    transform-origin: 50% 50%;
+    transform: scale(1);
+    transition: transform ease-out 100ms;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
 }
+
 .pullee::-ms-thumb {
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 5px;
-  background: #FF3044;
-  transform-origin: 50% 50%;
-  transform: scale(1);
-  transition: transform ease-out 100ms;
-  cursor: -webkit-grab;
-  cursor: -moz-grab;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: #FF3044;
+    transform-origin: 50% 50%;
+    transform: scale(1);
+    transition: transform ease-out 100ms;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
 }
+
 .pullee::-webkit-slider-runnable-track {
-  height: 2rem;
-  padding: 0.25rem;
-  box-sizing: content-box;
-  border-radius: 7px;
-  background-color: #fff;
-  box-shadow: inset 0px 2px 3px 3px rgba(0, 0, 0, 0.4);
+    height: 2rem;
+    padding: 0.25rem;
+    box-sizing: content-box;
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: inset 0px 2px 3px 3px rgba(0, 0, 0, 0.4);
 
 }
+
 .pullee::-moz-range-track {
     height: 2rem;
-  padding: 0.25rem;
-  box-sizing: content-box;
-  border-radius: 7px;
-  background-color: #fff;
-  box-shadow: inset 0px 2px 3px 3px rgba(0, 0, 0, 0.4);
-/* Are you sure want to delete this?
+    padding: 0.25rem;
+    box-sizing: content-box;
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: inset 0px 2px 3px 3px rgba(0, 0, 0, 0.4);
+    /* Are you sure want to delete this?
 this action can not undo
 label
 input field  */
 }
+
 .pullee::-moz-focus-outer {
-  border: 0;
+    border: 0;
 }
+
 .pullee::-ms-track {
-  border: 0;
-  height: 2rem;
-  padding: 0.25rem;
-  box-sizing: content-box;
-  border-radius: 5px;
-  background-color: #DDE0E3;
-  color: transparent;
+    border: 0;
+    height: 2rem;
+    padding: 0.25rem;
+    box-sizing: content-box;
+    border-radius: 5px;
+    background-color: #DDE0E3;
+    color: transparent;
 }
-.pullee::-ms-fill-lower, .pullee::-ms-fill-upper {
-  background-color: transparent;
+
+.pullee::-ms-fill-lower,
+.pullee::-ms-fill-upper {
+    background-color: transparent;
 }
+
 .pullee::-ms-tooltip {
-  display: none;
+    display: none;
 }
-.range-wraper{
-    display:flex;
-    justify-content:end;
-    padding:10px;
+
+.range-wraper {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
 }
-.center-xy{
+
+.center-xy {
     position: relative;
     width: max-content;
-    opacity:.5;
+    opacity: .5;
 }
-.range-text{
+
+.range-text {
     font-size: 12px;
     position: absolute;
     left: 58px;
     top: 11px;
 }
-.pullee:active + .range-text{
-    display:none;
+
+.pullee:active+.range-text {
+    display: none;
 }
-.alert_generate{
-    text-align:center;
+
+.alert_generate {
+    text-align: center;
 }
-.text-alert{
-color: #2F2F2F;
-text-align: center;
-font-family: 'Poppins', sans-serif;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-padding-top: 10px;
+
+.text-alert {
+    color: #2F2F2F;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 10px;
 }
-.text-delmsg{
+
+.text-delmsg {
     padding: 0px 5px 0px 5px;
     left: 35px;
     background: #fff;
@@ -387,15 +414,19 @@ padding-top: 10px;
     font-weight: 300;
     line-height: normal;
 }
-.inner_msg{
-    position:relative
+
+.inner_msg {
+    position: relative
 }
+
 .form-control:focus {
-    box-shadow: 0 0 0 0.1rem rgba(13,110,253,.25) !important;
+    box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, .25) !important;
 }
-.md-head{
-    border:none;
+
+.md-head {
+    border: none;
 }
+
 /* .center-xy {
   position: absolute;
   top: 50%;
@@ -408,18 +439,18 @@ padding-top: 10px;
         width: 62%;
     }
 }
-
 </style>
 @foreach($accounts as $key=>$account)
 <!--24,,10,23,  -->
 <div class="account_main mt-5">
     <div>
         <div class="range-wraper">
-        <button type="button" class="btn btn-danger" data-bs-toggle='modal' data-bs-target='#delaccountModal' data-id-account= "{{$account->id}}">
-                            <img src="{{asset('images/deletebuckit.png')}}" class="" />
+            <button type="button" class="btn btn-danger" data-bs-toggle='modal' data-bs-target='#delaccountModal'
+                data-id-account="{{$account->id}}">
+                <img src="{{asset('images/deletebuckit.png')}}" class="" />
 
-        </button>
-        <!-- <div class="center-xy">
+            </button>
+            <!-- <div class="center-xy">
          <input type="range" value="0" class="pullee" />
          <span class='range-text text-danger'>Slide to delete account</span>
         </div> -->
@@ -438,14 +469,15 @@ padding-top: 10px;
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
             <div class="account-info">
-                <label for="" class="user_detail">Organization Name <img src="{{asset('images/infoinfoinfo.png')}}" class="delete_account" /></label>
+                <label for="" class="user_detail">Organization Name <img src="{{asset('images/infoinfoinfo.png')}}"
+                        class="delete_account" /></label>
                 <div class="delete_input">
                     <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
                         placeholder="Organization Name" class="account-detail account_name" maxlength="18"
                         oninput="countCharacters()">
-                        <div class="counter_numeric">
-                             <p><span class="charCount">0/18</span></p>
-                        </div>
+                    <div class="counter_numeric">
+                        <p><span class="charCount">0/18</span></p>
+                    </div>
                 </div>
                 <!-- <form action="{{ route('account-delete',$account->id) }}" method="POST">
                     @csrf
@@ -468,7 +500,8 @@ padding-top: 10px;
 
         </div>
         <div style="margin-top:40px; padding-bottom:20px">
-            <div class="all_social_platform justify-content-evenly flex-fill platform_icongp" style="gap: 0 23px; background:none;">
+            <div class="all_social_platform justify-content-evenly flex-fill platform_icongp"
+                style="gap: 0 23px; background:none;">
                 <div class="single_platform  {{ in_array('Facebook', $account->platforms) ? 'showColorIcon' : '' }}">
                     <div class="social_icon social_icon_fb">
                         <img src="{{asset('images/social-iconfb-clr.png')}}" class="color_icon " alt=""
@@ -564,7 +597,7 @@ padding-top: 10px;
                         $account->twiter_access_token ==  null  ? '' : 'd-none' }}"
                         href="{{ url('connect_twitter', ['account' => $account->id]) }}">
                         <span class="linkedbtnabc">
-                        Connect</span>
+                            Connect</span>
                     </a>
 
                 </div>
@@ -628,34 +661,35 @@ padding-top: 10px;
             </div>
         </div>
 
-        <button class="btn btn-primary mt-3 mb-4 fw-bold createPostBtn" data-account="{{$account->id}}"><img src="{{asset('images/sum-icon.svg')}}" style=" padding-right: 5px; width: 22px;
-            height: 16px;" id="createPostBtn" >Create a post</button>
+        <button class="btn btn-primary mt-3 mb-4 fw-bold createPostBtn" data-account="{{$account->id}}"><img
+                src="{{asset('images/sum-icon.svg')}}" style=" padding-right: 5px; width: 22px;
+            height: 16px;" id="createPostBtn">Create a post</button>
     </div>
 </div>
 <!-- modal -->
 <div class="modal fade delete" id="delaccountModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
     aria-hidden="true">
     <div class="modal-dialog del-account modal-dialog-centered" role="document">
-        <div class="modal-content"> 
-        <div class="modal-header md-head">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>          
+        <div class="modal-content">
+            <div class="modal-header md-head">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="modal-body">
-                <input type="hidden" class="hidden_account_id" name= "hidden_account_id" id="hidden_account_id" value=''>
+                <input type="hidden" class="hidden_account_id" name="hidden_account_id" id="hidden_account_id" value=''>
                 <div class="alert_generate">
                     <img src="{{asset('images/errrorpostsmsg.png')}}" alt="">
                 </div>
                 <div class="inner_msg">
-                <h2 class="text-alert">Are you sure you want to delete your Organization?<h2>
-    <label class="text-delmsg">Type the word 'YES' to confirm</label>
-    <input type="text" class="form-control mt-3" id="inputText">
+                    <h2 class="text-alert">Are you sure you want to delete your Organization?</h2>
+                            <label class="text-delmsg">Type the word 'YES' to confirm</label>
+                            <input type="text" class="form-control mt-3" id="inputText">
                 </div>
-    
-    <div class="mt-4 text-center">
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn btn-primary text-white ml-2 deleteBtn" id="deleteBtn" disabled>Confirm</button>
-    </div>
-</div>
+
+                <div class="mt-4 text-center">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary text-white ml-2 deleteBtn" id="deleteBtn" disabled>Confirm</button>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -664,59 +698,80 @@ padding-top: 10px;
 @endforeach
 
 <script>
-$(document).ready(function () {
-$('[data-bs-target="#delaccountModal"]').click(function() {     
-      var accountId = $(this).data('id-account');
-      $('#hidden_account_id').val(accountId);        
+$(document).ready(function() {
+    $('[data-bs-target="#delaccountModal"]').click(function() {
+        var accountId = $(this).data('id-account');
+        $('#hidden_account_id').val(accountId);
     });
-    $('.deleteBtn').click(function () {
-            // Get the account ID
-            var accountId = $(this).closest('.modal').find('.hidden_account_id').val();
-           
-            $('#delaccountModal').modal('hide');
+    $('.deleteBtn').click(function() {
+        // Get the account ID
+        var accountId = $(this).closest('.modal').find('.hidden_account_id').val();
 
-            $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+        $('#delaccountModal').modal('hide');
 
-            $.ajax({
-                type: "post",
-                url: "{{ route('account-delete')}}",
-                data: {
-                    accountId: accountId
-                },
-                success: function (response) {
-                    
-                    RefresehAccounts();                
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Your Organization has been deleted.',
-                        icon: 'success'
-                    });
-                   
-
-                    // Close the modal
-                },
-                error: function (error) {
-                    // Handle error if needed
-                    console.error('Error:', error);
-                    // Show error message in modal
-                    // $('.alert_generate').show();
-                }
-            });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
+
+        $.ajax({
+            type: "post",
+            url: "{{ route('account-delete')}}",
+            data: {
+                accountId: accountId
+            },
+            success: function(response) {
+
+                RefresehAccounts();
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your Organization has been deleted.',
+                    icon: 'success'
+                });
+
+
+                // Close the modal
+            },
+            error: function(error) {
+                // Handle error if needed
+                console.error('Error:', error);
+                // Show error message in modal
+                // $('.alert_generate').show();
+            }
+        });
+    });
 });
 
-        $('.createPostBtn').click(function() {
-            var accountId = $(this).data('account');
-            window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId', accountId);
+$('.createPostBtn').click(function() {
+    var accountId = $(this).data('account');
+    event.preventDefault();
+        var inputs = $(".all_social_platformCnt input");
+        var isEmpty = false;
+        inputs.each(function() {
+            var tooltip = this.nextElementSibling; // Get the tooltip span
+            if ($(this).val().trim() === "") {
+                isEmpty = true;
+                $(this).addClass("empty-input");
+            } else {
+                $(this).removeClass("empty-input");
+            }
         });
+        if (isEmpty) {
+            inputs.each(function() {
+                if ($(this).val().trim() === "") {
+                    $(this).focus();
+                    return false; // Stop after focusing on the first empty input
+                }
+            });
+        } else {
+            window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId',
+        accountId);        }
    
+});
 </script>
 <script>
-   $(document).ready(function() {
+$(document).ready(function() {
     // Get references to the input and delete button
     const $inputText = $('#inputText');
     const $deleteBtn = $('#deleteBtn');
@@ -728,7 +783,7 @@ $('[data-bs-target="#delaccountModal"]').click(function() {
         $deleteBtn.prop('disabled', !isInputValid);
     });
 });
-    </script>
+</script>
 <script>
 $(document).ready(function() {
     // Enable Bootstrap tooltips
@@ -748,6 +803,7 @@ $(document).ready(function() {
         countCharacters($(this));
     });
 });
+
 function countCharacters(inputField) {
     // Get the maximum allowed characters
     var maxLength = 18;
