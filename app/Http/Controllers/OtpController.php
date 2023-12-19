@@ -34,7 +34,7 @@ class OtpController extends Controller
         //     'remainingTime' => $remainingTime,
         //     'remainingTime_expire' => $remainingTime_expire,
         // ]);
-        return view('showOtpForm');
+        return view('auth.verify');
        
     }
 
@@ -108,10 +108,10 @@ class OtpController extends Controller
     public function resendVerificationEmail(Request $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect('/index');
+            return redirect('/home');
         }
 
-            $user->sendEmailVerificationNotification();
+        $request->user()->sendEmailVerificationNotification();
 
         return back()->with('resent', true);
     }
