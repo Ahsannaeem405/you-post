@@ -453,7 +453,6 @@ body.dark .home .text {
     transition: var(--tran-05);
 }
 
-
 /* ----------------------------------------end of .offcanvas-start ------------------------------------- */
 
 
@@ -828,7 +827,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink"><img style="margin-left:20px;margin-right:18px"   src ="{{asset('images/bullhorn.png')}}" />
+                <li><a href="javascript:void(0)" id="bugReportLink"><img style="margin-left:20px;margin-right:18px"  class="horn"  src ="{{asset('images/bullhorn.png')}}" />
                 <span class="text nav-text">Give Feedback</span></a></li>
 
                 <!-- <i class="fa-solid fa-virus bxs-bug icon"> -->
