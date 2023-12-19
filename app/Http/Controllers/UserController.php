@@ -130,7 +130,7 @@ class UserController extends Controller
         ];
         $recipients = [
 
-            'michelle.mckay@tangent.com',
+            'raja.waleed21@gmail.com',
             'michelle@roifirm.com',
             'umer@browntech.co',
 

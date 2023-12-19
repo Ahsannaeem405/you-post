@@ -122,7 +122,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="pages_modalLabel">Select Your Page To Post On Connected Instagram Account
+                <h5 class="modal-title" id="pages_modalLabel">Select Desired Instagram Page
                 
                     @if(auth()->user()->account)
                     {{auth()->user()->account->name}}

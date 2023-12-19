@@ -46,6 +46,21 @@
 <div class="container otp-container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+                                <!-- <a class="dropdown-item" href="{{ url('user/profile') }}"><i class="feather icon-user"></i>
+                                    Edit Profile</a> -->
+                                  
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                {{-- <div class="dropdown-divider"></div><a class="dropdown-item" href="auth-login.html"><i class="feather icon-power"></i> Logout</a> --}}
+
+
         <form method="POST" action="{{ route('verification.verify') }}">
                         @csrf
                         <div class="form-group row">
@@ -56,8 +71,10 @@
                                 <!-- <p id="otp-timer">Remaining Time: <span id="minutes"></span> minutes <span id="seconds"></span> seconds</p> -->
                                 <div class="container height-100 d-flex justify-content-center align-items-center">
                 <div class="position-relative"> <div class="card p-2 text-center">
-                    <h6>Please enter the otp <br> to verify your account</h6>
-                    <div> <span>A otp has been sent to</span> <small>email</small> </div>
+                    <h6>Thank you,  <br>for registering with YouPost!
+</h6>
+                    <div> <span>Please verify your email to complete the registration process.
+</span> <small>The verification link will expire in 72 hours.</small> </div>
            
                    @error('verification_code')
                  <span class="invalid-feedback" role="alert">
@@ -69,6 +86,10 @@
 
 
                     </form>
+                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        </form>
     </div>
 </div>
 

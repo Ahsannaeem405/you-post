@@ -72,7 +72,7 @@ class LoginController extends Controller
             } else{  
 
                 // event(new UserLoggedIn($user));                
-                return redirect()->route('dashboard')->with('message','Login Successful'); 
+                return redirect()->route('index')->with('message','Login Successful'); 
             }
         }
         else
@@ -113,7 +113,7 @@ class LoginController extends Controller
 
                     event(new UserLoggedIn($finduser));     
                     Auth::login($finduser);
-                    return redirect('dashboard')->with('success', 'Login Successfully');
+                    return redirect('index')->with('success', 'Login Successfully');
                 }else{
                    
                     $newUser = User::updateOrCreate(['email' => $user->email],[
@@ -151,7 +151,7 @@ class LoginController extends Controller
             $finduser = User::where('facebook_id', $user->id)->first();
             if($finduser){
                 Auth::login($finduser);
-                return redirect('dashboard')->with('success', 'Login Successfully');
+                return redirect('index')->with('success', 'Login Successfully');
             }else{
                 $user->email != null ? $email = $user->email : $email = "$user->id@gmail.com";
                 $newUser = User::updateOrCreate(['email' => $email],[

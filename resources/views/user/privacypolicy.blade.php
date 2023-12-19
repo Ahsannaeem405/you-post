@@ -31,7 +31,7 @@
     <h2>Privacy Policy</h2>
   </div>
 <div class="inner-content">
-<h3>Privacy Policy for YouPost?</h3>
+<h3>Privacy Policy for YouPost:</h3>
 <p>Effective Date : November 27, 2023</p>
 <p> <b>Introduction :<p> </b> 
 <p> Welcome to YouPost. Your privacy is critically important to us. This Privacy Policy outlines how we collect, use, and share information when you use our services.</p>

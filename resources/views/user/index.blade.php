@@ -844,14 +844,14 @@ padding-right:10px;
                                         <fieldset class="wizard-fieldset youpost ">
                                             <div class="ml-2">
                                                 <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_youpost">Universal Content</span>
+                                                    class="wizard-fieldset_youpost">All Platforms Content</span>
 
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea" data-id="youpost_error"
-                                                    placeholder="Write your universal content...">{{old('youpost_content')}}</textarea>
+                                                    placeholder="Write your content for all platforms...">{{old('youpost_content')}}</textarea>
                                                     <p id="youpost_char_count" class="charCount charCountYou"></p>
                                                 <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -1580,7 +1580,7 @@ padding-right:10px;
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title mobprev_container">
-                                        <span id="mypostresult_youpost" class="mypostresult mob_prevcontent">Write your universal content...</span>
+                                        <span id="mypostresult_youpost" class="mypostresult mob_prevcontent">Write your content for all platforms...</span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>

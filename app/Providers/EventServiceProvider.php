@@ -6,6 +6,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Notifications\CustomVerifyEmail;
+use Illuminate\Auth\Notifications\VerifyEmail;
+
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -20,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\UserLoggedIn' => [
             'App\Listeners\UpdateLastLoginTime',
+        ],
+        Verified::class => [
+            \App\Notifications\CustomVerifyEmail::class,
         ],
     ];
 

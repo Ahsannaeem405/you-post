@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\MustVerifyEmail; // Import this
+use App\Notifications\CustomVerifyEmail;
+
 
 
 
@@ -89,11 +92,11 @@ class RegisterController extends Controller
 
         ]);       
         
-        event(new Registered($user));
+        // event(new Registered($user));
 
         if ($user instanceof MustVerifyEmail) {
             $this->guard()->login($user);
-            $user->sendEmailVerificationNotification();
+            $user->notify(new CustomVerifyEmail($user->name)); // Pass the user instance to the notification
         }
 
         return $user;

@@ -265,7 +265,7 @@
     </script>
 @endif
 <div class="platformBtn">
-    <a href="{{ url('/dashboard') }}" id="checkAndFocus" class="checkAndFocus dashboard_direct">Dashboard</a>
+    <a href="{{ url('/dashboard') }}" id="" class=" dashboard_direct">Dashboard</a>
 </div>
 <section class="all_social_platformWrp">
     <div class="all_social_platformLogo">
@@ -277,7 +277,7 @@
         <p
             style="color: #2F2F2F; text-align: center;font-size: 18px;font-style: normal;font-weight: 300;line-height: normal; margin-top:20px;">
             Thanks for signing up, <br>
-            Let’s add your first Organization and connect it’s social platforms
+            Let’s add your first organization and connect it’s social platforms
         </p>
 
     </div>

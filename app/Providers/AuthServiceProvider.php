@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Providers;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use App\Notifications\CustomVerifyEmail;
+
+
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -24,6 +28,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        
+        VerifyEmail::toMailUsing(function ($notifiable) {
+            return new CustomVerifyEmail($notifiable);
+        });
 
         //
     }
