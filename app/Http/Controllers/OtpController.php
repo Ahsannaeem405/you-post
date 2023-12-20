@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use App\Notifications\CustomVerifyEmail;
-
 
 
 
@@ -109,15 +107,13 @@ class OtpController extends Controller
 
     public function resendVerificationEmail(Request $request)
     {
-        $user = $request->user(); // Retrieve the authenticated user
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect('/home');
+        }
 
-    if ($user->hasVerifiedEmail()) {
-        return redirect('/index');
-    }
+        $request->user()->sendEmailVerificationNotification();
 
-    $user->notify(new CustomVerifyEmail($user)); // Pass the user instance to the notification
-
-    return back()->with('resent', true);
+        return back()->with('resent', true);
     }
    
 
