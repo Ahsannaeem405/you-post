@@ -751,29 +751,29 @@ $(document).ready(function() {
 
 $('.createPostBtn').click(function() {
     var accountId = $(this).data('account');
-    // event.preventDefault();
-    //     var inputs = $(".all_social_platformCnt input");
-    //     var isEmpty = false;
-    //     inputs.each(function() {
-    //         var tooltip = this.nextElementSibling; // Get the tooltip span
-    //         if ($(this).val().trim() === "") {
-    //             isEmpty = true;
-    //             $(this).addClass("empty-input");
-    //         } else {
-    //             $(this).removeClass("empty-input");
-    //         }
-    //     });
-    //     if (isEmpty) {
-    //         inputs.each(function() {
-    //             if ($(this).val().trim() === "") {
-    //                 $(this).focus();
-    //                 return false; // Stop after focusing on the first empty input
-    //             }
-    //         });
-    //     } else {
+    event.preventDefault();
+        var inputs = $(".all_social_platformCnt input");
+        var isEmpty = false;
+        inputs.each(function() {
+            var tooltip = this.nextElementSibling; // Get the tooltip span
+            if ($(this).val().trim() === "") {
+                isEmpty = true;
+                $(this).addClass("empty-input");
+            } else {
+                $(this).removeClass("empty-input");
+            }
+        });
+        if (isEmpty) {
+            inputs.each(function() {
+                if ($(this).val().trim() === "") {
+                    $(this).focus();
+                    return false; // Stop after focusing on the first empty input
+                }
+            });
+        } else {
             window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId',
         accountId);        
-    // }
+    }
    
 });
 </script>

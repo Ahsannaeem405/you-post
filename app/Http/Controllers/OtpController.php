@@ -36,7 +36,7 @@ class OtpController extends Controller
         //     'remainingTime' => $remainingTime,
         //     'remainingTime_expire' => $remainingTime_expire,
         // ]);
-        return view('showOtpForm');
+        return view('auth.verify');
        
     }
 
