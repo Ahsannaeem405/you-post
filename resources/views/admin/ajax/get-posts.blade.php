@@ -3,6 +3,43 @@
 $publishedAt = \Carbon\Carbon::parse($post->posted_at);
 $timeOnly = $publishedAt->format('h:i A');
 @endphp
+<style>
+    .posts_content {
+    width: 400px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 2; 
+      text-overflow: ellipsis;
+    }
+    .publishedpost{
+        width:fit-content;
+    }
+    @media (min-width: 320px) and (max-width: 576px) {
+        .get_platform_posts{
+            overflow-x:auto;
+        }
+        .post_detailWrap{
+            flex-direction:column;
+        }
+    }
+    @media (min-width: 577px) and (max-width: 767px) {
+        .get_platform_posts{
+            overflow-x:auto;
+        }
+        .post_detailWrap{
+            flex-direction:column;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1000px) {
+        .get_platform_posts{
+            overflow-x:auto;
+        }
+        .post_detailWrap{
+            flex-direction:column;
+        }
+    }
+</style>
 
 <!-- <div class="post-card mb-2" data-id="{{ $post->id }}" data-platform="{{ $post->plateform }}">
     <div class="card-header">
@@ -54,7 +91,7 @@ $timeOnly = $publishedAt->format('h:i A');
     </div>
 </div> -->
 
-<div class="fb-post mb-2">
+<div class="fb-post mb-2 get_platform_posts">
     <div class="timer_style">{{ $timeOnly }}</div>
 
     <div style="border-radius:20px">
@@ -93,13 +130,13 @@ $timeOnly = $publishedAt->format('h:i A');
                 {{ $account->link_page_name }}
                 @endif</h5>
                 </div>
-                <p class="m-0">{!! nl2br($post->content) !!}</p>
+                <p class="mt-1 posts_content">{!! nl2br($post->content) !!}</p>
 
                 <div class="publishedpost mt-2">
                     <span>
                         <img src="{{ asset('images/approvodpost2.png') }}" alt="">
                     </span>
-                    <span class="approved">
+                    <span class="approved" style="padding-right: 45px;">
                     @if ($post->posted_at_moment == 'now')
                         Posted
                         @else

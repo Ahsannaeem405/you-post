@@ -4,34 +4,6 @@
 .index_delete {
     text-align: right !important;
 }
-.tooltip-container {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip {
-    visibility: hidden;
-    width: 120px;
-    background-color: #333;
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.tooltip-container:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-
-
 /* main account file styling */
 .account_main {
     text-align: center;
@@ -87,9 +59,9 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     letter-spacing: 1.2px;
-    left: 39px;
+    left: 100px;
     position: absolute;
-    top: -11px;
+    top: 28px;
     background: #fff;
     padding-left: 5px;
     padding-right: 5px;
@@ -453,7 +425,6 @@ input field  */
 .md-head {
     border: none;
 }
-
 /* .center-xy {
   position: absolute;
   top: 50%;
@@ -495,19 +466,8 @@ input field  */
         <img src="{{asset('images/YouPost_Logo.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
         @endif
         <div class="input_lb all_social_platformCnt" style=" background:none;">
-            <div class="account-info tooltip-container">
-                <label for="" class="user_detail">Organization Name <img src="{{asset('images/infoinfoinfo.png')}}"
-                        class="delete_account" /></label>
-                            <div class="tooltip" style="width:100%;" id="deleteAccountTooltip">'Organization Name' refers to how we categorize your social accounts for seamless organization.
-<br> <br>In your trial account, you can create up to 10 organizations, each capable of connecting to all four major social platforms.
-
-
-
-
-
-
-</div>
-
+            <div class="account-info">
+                <label for="" class="user_detail">Organization Name <img src="{{asset('images/infoinfoinfo.png')}}" class="delete_account" /></label>
                 <div class="delete_input">
                     <input type="text" value="{{$account->name}}" data-account="{{$account->id}}"
                         placeholder="Organization Name" class="account-detail account_name" maxlength="18"
@@ -733,7 +693,15 @@ input field  */
 </div>
 <!--  -->
 @endforeach
-
+<script>
+$(document).ready(function(){
+    $('.delete_account').tooltip({
+        title: 'Organization Name refers to how we categorize your social accounts for seamless organization.<br><br>In your trial account, you can create up to 10 organizations, each capable of connecting to all four major social platforms.',
+        html: true,
+        placement: 'top'
+    });
+});
+</script>
 <script>
 $(document).ready(function() {
     $('[data-bs-target="#delaccountModal"]').click(function() {

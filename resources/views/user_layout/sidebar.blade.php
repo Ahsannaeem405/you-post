@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 <style>
 *=====Sidebar=====*/
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
 
 * {
     margin: 0;
@@ -664,7 +666,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink_test"><img style="margin-left:20px;margin-right:18px"   src ="{{asset('images/bullhorn.png')}}" />
+                <li><a href="javascript:void(0)" id="bugReportLink_test"><i class="bi bi-megaphone icon"></i>
                 <span class="text nav-text">Give Feedback</span></a></li>
 
 
@@ -827,7 +829,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink"><img style="margin-left:20px;margin-right:18px"  class="horn"  src ="{{asset('images/bullhorn.png')}}" />
+                <li><a href="javascript:void(0)" id="bugReportLink"><i class="bi bi-megaphone icon"></i>
                 <span class="text nav-text">Give Feedback</span></a></li>
 
                 <!-- <i class="fa-solid fa-virus bxs-bug icon"> -->

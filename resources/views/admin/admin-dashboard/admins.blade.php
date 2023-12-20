@@ -439,6 +439,9 @@ li a { text-decoration: none !important; }
      #dashboard-analytics table tr th:first-child, #dashboard-analytics table tr td:first-child{
         padding-left:1rem;
     }
+    #dashboard-analytics table th {
+    padding-left: 16px;
+}
     table.dataTable.display > tbody > tr.odd > .sorting_1 {
     box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.023) !important;
 }

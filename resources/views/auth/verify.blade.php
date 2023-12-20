@@ -117,6 +117,11 @@ input[type=number]::-webkit-outer-spin-button {
 .link_logout2{
     width:fit-content;
 }
+.verfiy_link{
+    bottom: 69px;
+    position: absolute;
+    z-index: 999;
+}
 </style>
 @if($errors->has('otp'))
 <script>
@@ -168,7 +173,7 @@ toastr.error("Invalid or expired OTP.", "Error");
                     </div>
 
             </form>
-            <form class="d-inline text-center" method="POST" action="{{ route('verification.resend') }}">
+            <form class="d-inline text-center verfiy_link" method="POST" action="{{ route('verification.resend') }}">
                 @csrf
                 <button type="submit"
                     class="btn btn-link p-0 m-0 align-baseline ">{{ __('click here to request another') }}</button>.

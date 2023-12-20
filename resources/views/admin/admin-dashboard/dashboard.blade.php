@@ -45,27 +45,8 @@ active
     background: #648FFF;
   }
  /* Apply different background colors to each tile_stats_count */
-.tile_stats_count:nth-child(odd) .title_stats_count-inner {
-    background-color: #d7efff;  
-}
-
-.tile_stats_count:nth-child(even) .title_stats_count-inner {
-    background-color: #b1ffd2; 
-}
-
-.tile_stats_count:nth-child(3n) .title_stats_count-inner {
-    background-color: #ffc4c4; 
-}
-
-/* .tile_stats_count:nth-child(4) .title_stats_count-inner {
-    background-color: #feffc7; 
-} */
-
-
-
-.title_stats_count-inner:hover {
-  box-shadow: 5px 5px  lightblue;
-    transition: background-color 0.3s ease; 
+.tile_stats_count .title_stats_count-inner {
+  border: 1px solid #00CFE8;
 }
 
 

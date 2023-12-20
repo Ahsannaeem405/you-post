@@ -89,18 +89,21 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="mb-2 col-md-6">
+                                    <div class="mb-2 col-md-6 user-box">
                                         <label for="password">Password</label>
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        <span class="password-toggle-icon2" onclick="togglePasswordVisibility('password', 'icon-password')"><i id="icon-password" class="fa fa-eye"></i></span>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="mb-2 col-md-6">
+                                    <div class="mb-2 col-md-6 user-box">
                                         <label for="password-confirm">Confirm Password</label>
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <span class="password-toggle-icon3" onclick="togglePasswordVisibility('password-confirm', 'icon-confirm')"><i id="icon-confirm" class="fa fa-eye"></i></span>
+
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -156,5 +159,21 @@ $(document).ready(function() {
     const today = new Date().toISOString().split('T')[0];
 document.getElementById("date").setAttribute("max", today);
 });
+</script>
+<script>
+    function togglePasswordVisibility(inputId, iconId) {
+        var passwordInput = document.getElementById(inputId);
+        var passwordIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordIcon.classList.remove("fa-eye");
+            passwordIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            passwordIcon.classList.remove("fa-eye-slash");
+            passwordIcon.classList.add("fa-eye");
+        }
+    }
 </script>
 @endsection

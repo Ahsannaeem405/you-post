@@ -49,6 +49,31 @@
         position: relative;
         margin-bottom: 30px;
     }
+    .password-toggle-icon2,.password-toggle-icon3 {
+        position: absolute;
+        top: 85%;
+        right: 20px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+
+    .password-toggle-icon2 i,.password-toggle-icon3 i {
+        font-size: 18px;
+        line-height: 1;
+        color: #7763c5;
+        transition: color 0.3s ease-in-out;
+        margin-bottom: 20px;
+    }
+
+    .password-toggle-icon2 i:hover, .password-toggle-icon3 i:hover{
+        color: #2200a5;
+    }
+
+    .user-box {
+        position: relative;
+        margin-bottom: 30px;
+    }
     </style>
 </head>
 

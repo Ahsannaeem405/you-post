@@ -490,9 +490,15 @@ a.context-menu__link {
 }
 
 /* ms */
-#dashboard-analytics table tr th:first-child,
+/* #dashboard-analytics table tr th:first-child,
 #dashboard-analytics table tr td:first-child {
     padding-left: 1rem;
+} */
+#dashboard-analytics table tr th:first-child,
+#dashboard-analytics table tr td:first-child,
+#dashboard-analytics table tr th:first-child ~ th,
+#dashboard-analytics table tr td:first-child ~ td {
+    padding-left: 16px;
 }
 
 table.dataTable.display>tbody>tr.odd>.sorting_1 {
@@ -649,6 +655,113 @@ div.dataTables_wrapper div.dataTables_length select {
     border-radius: 50px;
     padding-top: 10px;
 }
+/* loader */
+.three-body {
+ --uib-size: 35px;
+ --uib-speed: 0.8s;
+ --uib-color: #5D3FD3;
+ position: relative;
+ position: absolute;
+ left: 67px;
+ display:none;
+ height: var(--uib-size);
+ width: var(--uib-size);
+ animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+}
+
+.three-body__dot {
+ position: absolute;
+ height: 100%;
+ width: 30%;
+}
+
+.three-body__dot:after {
+ content: '';
+ position: absolute;
+ height: 0%;
+ width: 100%;
+ padding-bottom: 100%;
+ background-color: var(--uib-color);
+ border-radius: 50%;
+}
+
+.three-body__dot:nth-child(1) {
+ bottom: 5%;
+ left: 0;
+ transform: rotate(60deg);
+ transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(1)::after {
+ bottom: 0;
+ left: 0;
+ animation: wobble1 var(--uib-speed) infinite ease-in-out;
+ animation-delay: calc(var(--uib-speed) * -0.3);
+}
+
+.three-body__dot:nth-child(2) {
+ bottom: 5%;
+ right: 0;
+ transform: rotate(-60deg);
+ transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(2)::after {
+ bottom: 0;
+ left: 0;
+ animation: wobble1 var(--uib-speed) infinite
+    calc(var(--uib-speed) * -0.15) ease-in-out;
+}
+
+.three-body__dot:nth-child(3) {
+ bottom: -5%;
+ left: 0;
+ transform: translateX(116.666%);
+}
+
+.three-body__dot:nth-child(3)::after {
+ top: 0;
+ left: 0;
+ animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+@keyframes spin78236 {
+ 0% {
+  transform: rotate(0deg);
+ }
+
+ 100% {
+  transform: rotate(360deg);
+ }
+}
+
+@keyframes wobble1 {
+ 0%,
+  100% {
+  transform: translateY(0%) scale(1);
+  opacity: 1;
+ }
+
+ 50% {
+  transform: translateY(-66%) scale(0.65);
+  opacity: 0.8;
+ }
+}
+
+@keyframes wobble2 {
+ 0%,
+  100% {
+  transform: translateY(0%) scale(1);
+  opacity: 1;
+ }
+
+ 50% {
+  transform: translateY(66%) scale(0.65);
+  opacity: 0.8;
+ }
+}
+
+/* loader */
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -848,7 +961,12 @@ div.dataTables_wrapper div.dataTables_length select {
                             required autocomplete="new-password">
                     </div>
                     <div class="form-group">
-                        <!-- <a href="#" id="sendPasswordResetLink">Send Password Resend Link</a> -->
+                    <div class="three-body" id="loader">
+                    <div class="three-body__dot"></div>
+                    <div class="three-body__dot"></div>
+                    <div class="three-body__dot"></div>
+                    </div>
+                        <a href="#" id="sendPasswordResetLink">Send Password Resend Link</a>
                     </div>
                                         <!-- Add more form fields as needed -->
                     <button type="submit" class="btn modal-btn" id="udpatebtn">Update</button>
@@ -1015,25 +1133,57 @@ div.dataTables_wrapper div.dataTables_length select {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
 
-        $('#sendPasswordResetLink').click(function (e) {
-            e.preventDefault();
+        // $('#sendPasswordResetLink').click(function (e) {
+        //     e.preventDefault();
             
-            // Get the value from the hidden input
-            var userId = $('#user_id').val();
+        //     // Get the value from the hidden input
+        //     var userId = $('#user_id').val();
             
 
-            // Send an AJAX request
-            $.ajax({
-                url: "{{ route('password.sendlink', ':user_id') }}".replace(':user_id', userId),
-                type: 'GET',
-                success: function (response) {
-                    alert(response.message);
-                },
-                error: function (error) {
-                    alert('Error: ' + error.responseJSON.error);
-                }
-            });
+        //     // Send an AJAX request
+        //     $.ajax({
+        //         url: "{{ route('password.sendlink', ':user_id') }}".replace(':user_id', userId),
+        //         type: 'GET',
+        //         success: function (response) {
+        //             alert(response.message);
+        //         },
+        //         error: function (error) {
+        //             alert('Error: ' + error.responseJSON.error);
+        //         }
+        //     });
+        // });
+    $('#sendPasswordResetLink').click(function (e) {
+        e.preventDefault();
+        
+        // Get the value from the hidden input
+        var userId = $('#user_id').val();
+
+        // Disable the button and show the loader
+        $(this).prop('disabled', true);
+        $('#loader').show();
+
+        // Send an AJAX request
+        $.ajax({
+            url: "{{ route('password.sendlink', ':user_id') }}".replace(':user_id', userId),
+            type: 'GET',
+            success: function (response) {
+                // Hide the loader and enable the button
+                $('#loader').hide();
+                $('#sendPasswordResetLink').prop('disabled', false);
+
+                // Show success message
+                alert(response.message);
+            },
+            error: function (error) {
+                // Hide the loader and enable the button
+                $('#loader').hide();
+                $('#sendPasswordResetLink').prop('disabled', false);
+
+                // Show error message
+                alert('Error: ' + error.responseJSON.error);
+            }
         });
+    });
     // Handle click event for the edit link
     $('.edit-link').click(function(e) {
 
