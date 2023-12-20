@@ -15,7 +15,7 @@
 .card {
     width: 400px;
     border: none;
-    height: 300px;
+    height: 350px;
     box-shadow: 0px 5px 20px 0px #d2dae3;
     z-index: 1;
     display: flex;
@@ -31,6 +31,9 @@
 .inputs input {
     width: 40px;
     height: 40px
+}
+.verfy_cont{
+    padding:10px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -118,9 +121,29 @@ input[type=number]::-webkit-outer-spin-button {
     width:fit-content;
 }
 .verfiy_link{
-    bottom: 69px;
+    bottom: 51px;
     position: absolute;
     z-index: 999;
+}
+.verfyemail_link{
+    text-decoration:none !important;
+    box-sizing: border-box;
+    min-width: 140px;
+    display: inline-block;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 10px;
+    width: auto;
+    font-weight:600;
+    padding:10px 10px 10px 10px !important;
+    font-family: 'Sora', sans-serif;
+    text-align: center;
+    word-break: keep-all;
+    font-size: 16px;
+}
+.verfyemail_link:hover{
+   background-color:#0d6efd;
+   color:#fff !important;
 }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
@@ -170,7 +193,7 @@ toastr.error("Invalid or expired OTP.", "Error");
                                 <div class="card p-2 text-center" style="width:100%">
                                     <h6>Thank you, <br>for registering with YouPost!
                                     </h6>
-                                    <div> <span>Please verify your email to complete the registration process.
+                                    <div class="verfy_cont"> <span>Please verify your email to complete the registration process.
                                         </span> <small>The verification link will expire in 72 hours.</small><br> {{auth()->user()->email}} </div>
 
                                     @error('verification_code')
@@ -186,11 +209,18 @@ toastr.error("Invalid or expired OTP.", "Error");
             </form>
             <form class="d-inline text-center verfiy_link" method="POST" action="{{ route('verification.resend') }}">
                 @csrf
-                <button type="submit"
-                    class="btn btn-link p-0 m-0 align-baseline ">{{ __('click here to request another') }}</button>.
+                <button type="submit disb_load" id="resendVerificationEmail"
+                    class="btn btn-link p-0 m-0 align-baseline verfyemail_link">{{ __('Resend Verification Email') }}</button>
             </form>
         </div>
     </div>
-
-
+<script>
+    $('#resendVerificationEmail').click(function (e) {
+    e.preventDefault();
+    $(this).prop('disabled', true);
+    setTimeout(function () {
+        $('#resendVerificationEmail').prop('disabled', false);
+    }, 10000);
+});
+</script>
     @endsection

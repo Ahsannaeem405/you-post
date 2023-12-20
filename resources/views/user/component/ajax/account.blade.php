@@ -19,6 +19,7 @@
     height: 100px;
     border-radius: 50%;
     margin-top: 40px;
+    border: 4px solid #52a2e3;
 }
 
 .rounded-circle2 {
@@ -454,14 +455,14 @@ input field  */
         </div> -->
         </div>
         @if(in_array("Facebook", $account->platforms))
-        <img src="{{$account->fb_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
+        <img src="{{$account->fb_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Instagram", $account->platforms))
-        <img src="{{$account->inst_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
+        <img src="{{$account->inst_image}}" class="v_icon rounded-circle mb-3" alt="" />
 
         @elseif(in_array("Twitter", $account->platforms))
-        <img src="{{$account->twt_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
+        <img src="{{$account->twt_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @elseif(in_array("Linkedin", $account->platforms))
-        <img src="{{$account->link_image}}" class="v_icon rounded-circle2 mb-3" alt="" />
+        <img src="{{$account->link_image}}" class="v_icon rounded-circle mb-3" alt="" />
         @else
         <img src="{{asset('images/YouPost_Logo.png')}}" class="rounded-circle2 mb-3  " alt="Avatar" />
         @endif
