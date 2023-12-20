@@ -760,6 +760,9 @@ div.dataTables_wrapper div.dataTables_length select {
   opacity: 0.8;
  }
 }
+.disable-click{
+    pointer-events:none  !important;
+}
 
 /* loader */
 </style>
@@ -1156,14 +1159,13 @@ div.dataTables_wrapper div.dataTables_length select {
         // });
     $('#sendPasswordResetLink').click(function (e) {
         e.preventDefault();
-        
         // Get the value from the hidden input
         var userId = $('#user_id').val();
         $('.disabledit').addClass('disabled').attr('aria-disabled', true);
 
 
         // Disable the button and show the loader
-        $(this).prop('disabled', true);
+        $(this).addClass("disable-click");
         $('#loader').show();
 
         // Send an AJAX request
@@ -1173,8 +1175,7 @@ div.dataTables_wrapper div.dataTables_length select {
             success: function (response) {
                 // Hide the loader and enable the button
                 $('#loader').hide();
-                $('.disabledit').removeClass('disabled').removeAttr('aria-disabled');
-
+                $('#sendPasswordResetLink').removeClass("disable-click");
 
                 // Show success message
                 alert(response.message);
@@ -1182,7 +1183,7 @@ div.dataTables_wrapper div.dataTables_length select {
             error: function (error) {
                 // Hide the loader and enable the button
                 $('#loader').hide();
-                $('.disabledit').removeClass('disabled').removeAttr('aria-disabled');
+                $('#sendPasswordResetLink').removeClass("disable-click");
 
                 // Show error message
                 alert('Error: ' + error.responseJSON.error);

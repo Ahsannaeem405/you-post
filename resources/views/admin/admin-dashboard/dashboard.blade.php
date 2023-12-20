@@ -13,7 +13,7 @@ active
     border: none;
     border-radius: 0.5rem;
     box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
-    min-height:115px;
+    min-height:135px;
   }
   .title_stats_count-inner h2{
     font-size:16px;
