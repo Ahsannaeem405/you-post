@@ -222,5 +222,5 @@ toastr.error("Invalid or expired OTP.", "Error");
         $('#resendVerificationEmail').prop('disabled', false);
     }, 10000);
 });
-</script>
+</script>    
     @endsection
