@@ -542,9 +542,9 @@ div.dataTables_wrapper div.dataTables_length select {
 
                                             <td>
                                                 <div class="dropdown">
-                                                    <i class="fa fa-ellipsis-v" class="dropdown-toggle"
-                                                       id="dropdownMenuIconButton3" data-toggle="dropdown"
-                                                       aria-haspopup="true" aria-expanded="false"></i>
+                                                <span class="dropdown-toggle" id="dropdownMenuIconButton3"
+                                            data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">Actions</span>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3"
                                                          x-placement="bottom-start"
                                                          style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">

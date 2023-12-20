@@ -125,11 +125,13 @@ class AdminControoler extends Controller
                 $user->save();
      
                 event(new PasswordReset($user));
+                Auth::login($user);
+
             }
         );
         // Check the response and redirect accordingly
         return $status === Password::PASSWORD_RESET
-                ? redirect()->route('admin.showusers')->with('status', __($status))
+                ? redirect()->route('index')->with('status', __($status))
                 : back()->withErrors(['email' => [__($status)]]);
     }
     

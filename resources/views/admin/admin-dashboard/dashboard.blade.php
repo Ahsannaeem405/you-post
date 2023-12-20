@@ -91,7 +91,7 @@ active
                         <div class="title_stats_count-inner">
                         <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/posttickmark.png')}}" alt="card-img" ></div>
                               <div class="count-content">
-                                <h2 class=''>Active User</h2>
+                                <h2 class=''>Active Users</h2>
                                 <p class='m-0'>{{$totalEnabledUsersCount}}</p>
                               </div>
 </div>
@@ -100,7 +100,7 @@ active
                         <div class="title_stats_count-inner">
                               <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/postchangeuser.png')}}" alt="card-img" ></div>
                               <div class="count-content">
-                                <h2 class=''>Inactive User</h2>
+                                <h2 class=''>Inactive Users</h2>
                                 <p class='m-0'>{{$totalDisabledUsersCount}}</p>
                               </div>
                             </div>

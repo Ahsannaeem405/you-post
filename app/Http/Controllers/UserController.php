@@ -825,16 +825,19 @@ class UserController extends Controller
             ]);
         }
 
-        $platform = auth()->user()->account->platforms;
+        $platforms = auth()->user()->account->platforms;
         $valueToRemove = 'Facebook';
-        foreach (array_keys($platform, $valueToRemove) as $key) {
-            unset($platform[$key]);
-        }
+        // foreach (array_keys($platform, $valueToRemove) as $key) {
+        //     unset($platform[$key]);
+        // }
+        $platforms = array_values(array_filter($platforms, function ($platform) use ($valueToRemove) {
+            return $platform !== $valueToRemove;
+        }));
 
         auth()->user()->account()->update([
             'fb_access_token' => null,
             'fb_page_token' => null,
-            'platforms' => $platform
+            'platforms' => $platforms
         ]);
 
         $fb = new Facebook([
@@ -908,16 +911,19 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
-        $platform = auth()->user()->account->platforms;
+        $platforms = auth()->user()->account->platforms;
         $valueToRemove = 'Instagram';
-        foreach (array_keys($platform, $valueToRemove) as $key) {
-            unset($platform[$key]);
-        }
+        // foreach (array_keys($platform, $valueToRemove) as $key) {
+        //     unset($platform[$key]);
+        // }
+        $platforms = array_values(array_filter($platforms, function ($platform) use ($valueToRemove) {
+            return $platform !== $valueToRemove;
+        }));
 
         auth()->user()->account()->update([
             'insta_access_token' => null,
             'insta_user_id' => null,
-            'platforms' => $platform
+            'platforms' => $platforms
         ]);
         $insta = config('services.instagram');
 
@@ -1049,18 +1055,24 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
-        $platform = auth()->user()->account->platforms;
+        $platforms = auth()->user()->account->platforms;
         $valueToRemove = 'Linkedin';
-        foreach (array_keys($platform, $valueToRemove) as $key) {
-            unset($platform[$key]);
-        }
+      
 
+        // foreach (array_keys($platform, $valueToRemove) as $key) {
+        //     unset($platform[$key]);
+        // }
+        $platforms = array_values(array_filter($platforms, function ($platform) use ($valueToRemove) {
+            return $platform !== $valueToRemove;
+        }));
+      
         auth()->user()->account()->update([
             'linkedin_accesstoken' => null,
             'linkedin_user_id' => null,
             'linkedin_page_id' => null,
-            'platforms' => $platform
+            'platforms' => $platforms
         ]);
+        
         try {
             $linkedin = config('services.linkedin');
             $client_id = $linkedin['client_id'];
@@ -1161,16 +1173,19 @@ class UserController extends Controller
                 'account_id' => $account
             ]);
         }
-        $platform = auth()->user()->account->platforms;
+        $platforms = auth()->user()->account->platforms;
         $valueToRemove = 'Twitter';
-        foreach (array_keys($platform, $valueToRemove) as $key) {
-            unset($platform[$key]);
-        }
+        // foreach (array_keys($platform, $valueToRemove) as $key) {
+        //     unset($platform[$key]);
+        // }
+          $platforms = array_values(array_filter($platforms, function ($platform) use ($valueToRemove) {
+            return $platform !== $valueToRemove;
+        }));
 
         auth()->user()->account()->update([
             'twiter_access_token' => null,
             'twiter_refresh_token' => null,
-            'platforms' => $platform
+            'platforms' => $platforms
         ]);
 
 

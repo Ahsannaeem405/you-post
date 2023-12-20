@@ -966,7 +966,9 @@ div.dataTables_wrapper div.dataTables_length select {
                     <div class="three-body__dot"></div>
                     <div class="three-body__dot"></div>
                     </div>
+                    <div class="disabledit">
                         <a href="#" id="sendPasswordResetLink">Send Password Resend Link</a>
+                    </div>
                     </div>
                                         <!-- Add more form fields as needed -->
                     <button type="submit" class="btn modal-btn" id="udpatebtn">Update</button>
@@ -1157,6 +1159,8 @@ div.dataTables_wrapper div.dataTables_length select {
         
         // Get the value from the hidden input
         var userId = $('#user_id').val();
+        $('.disabledit').addClass('disabled').attr('aria-disabled', true);
+
 
         // Disable the button and show the loader
         $(this).prop('disabled', true);
@@ -1169,7 +1173,8 @@ div.dataTables_wrapper div.dataTables_length select {
             success: function (response) {
                 // Hide the loader and enable the button
                 $('#loader').hide();
-                $('#sendPasswordResetLink').prop('disabled', false);
+                $('.disabledit').removeClass('disabled').removeAttr('aria-disabled');
+
 
                 // Show success message
                 alert(response.message);
@@ -1177,7 +1182,7 @@ div.dataTables_wrapper div.dataTables_length select {
             error: function (error) {
                 // Hide the loader and enable the button
                 $('#loader').hide();
-                $('#sendPasswordResetLink').prop('disabled', false);
+                $('.disabledit').removeClass('disabled').removeAttr('aria-disabled');
 
                 // Show error message
                 alert('Error: ' + error.responseJSON.error);
