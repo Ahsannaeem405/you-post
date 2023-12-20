@@ -80,7 +80,7 @@
                                                         style="font-size:14px;line-height:1.5;font-family:'Roboto',Tahoma,Verdana,Segoe,sans-serif;color:#656565">
                                                         <div
                                                             style="font-size:24px;line-height:1.5;text-align:center;word-break:break-word;font-family:Roboto,Tahoma,Verdana,Segoe,sans-serif;margin:0px">
-                                                            <span style="font-size:24px"><span>Hi ,
+                                                            <span style="font-size:24px"><span>Hi {{ $subject }} ,
                                                                     &nbsp;</span></span></div>
                                                     </div>
                                                 </div>

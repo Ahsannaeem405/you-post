@@ -288,7 +288,7 @@
         <div class="all_social_platformMain">
 
             <div class="all_social_platformCnt successFullyAdded">
-                <h4>{{Session::get('success')}}: <span>“{{ session('accname') }}” </span></h4>
+                <h4>{{Session::get('success')}}</span></h4>
                 <div>
                     <i class="fa-solid fa-check"></i>
                 </div>

@@ -118,10 +118,21 @@ input[type=number]::-webkit-outer-spin-button {
     width:fit-content;
 }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.all.min.js"></script>
 @if($errors->has('otp'))
 <script>
 toastr.error("Invalid or expired OTP.", "Error");
 </script>
+@endif
+@if(session('message'))
+    <script>
+        Swal.fire({
+            icon: 'info',
+            title: '',
+            text: '{{ session('message') }}',
+        });
+    </script>
 @endif
 <div class="container otp-container">
     <div class="row justify-content-center">
@@ -155,7 +166,7 @@ toastr.error("Invalid or expired OTP.", "Error");
                                     <h6>Thank you, <br>for registering with YouPost!
                                     </h6>
                                     <div> <span>Please verify your email to complete the registration process.
-                                        </span> <small>The verification link will expire in 72 hours.</small> </div>
+                                        </span> <small>The verification link will expire in 72 hours.</small><br> {{auth()->user()->email}} </div>
 
                                     @error('verification_code')
                                     <span class="invalid-feedback" role="alert">
