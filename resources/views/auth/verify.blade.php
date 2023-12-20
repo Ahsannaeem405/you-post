@@ -214,13 +214,15 @@ toastr.error("Invalid or expired OTP.", "Error");
             </form>
         </div>
     </div>
-<script>
+<!-- <script>
     $('#resendVerificationEmail').click(function (e) {
     e.preventDefault();
     $(this).prop('disabled', true);
     setTimeout(function () {
         $('#resendVerificationEmail').prop('disabled', false);
+        $('.verfiy_link').submit();
+
     }, 10000);
 });
-</script>    
+</script>     -->
     @endsection

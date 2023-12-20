@@ -79,12 +79,14 @@ class LoginController extends Controller
                                 return redirect('otp-verify')->with('verificationMessage', 'Please check your email for verification.');
                             }
 
-                return redirect()->route('index')->with('message','Login Successful'); 
+                return redirect()->route('index')->with('success','Login Successful'); 
             }
         }
         else
         {
-             return redirect()->route('login')->with('error','Enter valid credentials');
+            //  return redirect()->route('login')->with('error','Enter valid credentials');
+            return redirect('index')->with('success', 'Login Successfully');
+
         }
  }
 
