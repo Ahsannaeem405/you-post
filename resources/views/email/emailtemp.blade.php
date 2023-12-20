@@ -9,10 +9,11 @@
 <head>
     <title>you-post</title>
 </head>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.all.min.js"></script>
 <body style="margin:0;padding:0;">
     <div style="margin:0;padding:0;background-color:#fffdfd">
-
+ 
         <table bgcolor="#fffdfd" cellpadding="0" cellspacing="0" role="presentation"
             style="table-layout:fixed;vertical-align:top;min-width:320px;Margin:0 auto;border-spacing:0;border-collapse:collapse;background-color:#fffdfd;width:100%"
             valign="top" width="100%">
@@ -39,7 +40,7 @@
                                                 </div>
                                                 <div align="center" style="padding-right:0px;padding-left:0px">
                                                     <img align="center" alt="Image" border="0"
-                                                        src="{{ asset('images/YouPost_Logo.png') }}"
+                                                        src="{{ $message->embed(public_path('images/YouPost_Logo.png')) }}"
                                                         style="text-decoration:none;border:0;height:auto;width:100%;max-width:149px;display:block"
                                                         title="Image" width="149" class="CToWUd" data-bit="iit">
                                                     <div style="font-size:1px;line-height:25px">&nbsp;</div>
@@ -80,7 +81,7 @@
                                                         style="font-size:14px;line-height:1.5;font-family:'Roboto',Tahoma,Verdana,Segoe,sans-serif;color:#656565">
                                                         <div
                                                             style="font-size:24px;line-height:1.5;text-align:center;word-break:break-word;font-family:Roboto,Tahoma,Verdana,Segoe,sans-serif;margin:0px">
-                                                            <span style="font-size:24px"><span>Hi Michelle McKay,
+                                                            <span style="font-size:24px"><span>Hi {{ $user->name }},
                                                                     &nbsp;</span></span></div>
                                                     </div>
                                                 </div>
@@ -111,10 +112,10 @@
                                                         <br>
                                                         <div align="center"
                                                             style="display:block;text-align:center;margin:auto">
-                                                            <a href="https://app.powerdmarc.com/en/auth/verify/25284/ff250b572b8fd072fd9d85e9f4767afc6b785f92?expires=1691859849&amp;signature=bf161f450bba650d456ab91ea765117fc4386c30ea75e03535ee4419a7863b99"
+                                                            <a href="{{ url('/verify/' . $user->id . '/' . $user->token) }}"
                                                                 style="min-width:140px;text-decoration:none;display:inline-block;color:#595d6e;background-color:#e2e5ec;border-radius:10px;width:auto;border:1px solid #e2e5ec;padding-top:10px;padding-bottom:10px;font-family:'Roboto',Tahoma,Verdana,Segoe,sans-serif;text-align:center;word-break:keep-all;font-size:16px"
                                                                 target="_blank"
-                                                                data-saferedirecturl="https://www.google.com/url?q=https://app.powerdmarc.com/en/auth/verify/25284/ff250b572b8fd072fd9d85e9f4767afc6b785f92?expires%3D1691859849%26signature%3Dbf161f450bba650d456ab91ea765117fc4386c30ea75e03535ee4419a7863b99&amp;source=gmail&amp;ust=1702981280908000&amp;usg=AOvVaw1xLDaLf2cezEvlJ5r-_CN5">Verify
+                                                                >Verify
                                                                 Email</a>
                                                         </div>
                                                         <br>
@@ -143,9 +144,11 @@
                                                     style="color:#656565;font-size:12px;font-family:'Roboto',Tahoma,Verdana,Segoe,sans-serif;line-height:1.5;padding-top:0px;padding-right:60px;padding-bottom:25px;padding-left:60px">
                                                     If you’re having trouble clicking the "Verify Email" button, copy
                                                     and paste the URL below into your web browser:
-                                                    <a href="https://app.powerdmarc.com/en/auth/verify/25284/ff250b572b8fd072fd9d85e9f4767afc6b785f92?expires=1691859849&amp;signature=bf161f450bba650d456ab91ea765117fc4386c30ea75e03535ee4419a7863b99"
+                                                    {{ url('/verify/' . $user->id . '/' . $user->token) }}
+
+                                                    <a href="{{ url('/verify/' . $user->id . '/' . $user->token) }}"
                                                         target="_blank"
-                                                        data-saferedirecturl="https://www.google.com/url?q=https://app.powerdmarc.com/en/auth/verify/25284/ff250b572b8fd072fd9d85e9f4767afc6b785f92?expires%3D1691859849%26signature%3Dbf161f450bba650d456ab91ea765117fc4386c30ea75e03535ee4419a7863b99&amp;source=gmail&amp;ust=1702981280908000&amp;usg=AOvVaw1xLDaLf2cezEvlJ5r-_CN5">https://app.powerdmarc.com/en/<wbr>auth/verify/25284/<wbr>ff250b572b8fd072fd9d85e9f4767a<wbr>fc6b785f92?expires=1691859849&amp;<wbr>signature=<wbr>bf161f450bba650d456ab91ea76511<wbr>7fc4386c30ea75e03535ee4419a786<wbr>3b99</a><br>
+                                                        ></a><br>
                                                     To report any issues, please contact <a
                                                         href="mailto:support@powerdmarc.com"
                                                         target="_blank">support@youpost.</a>social

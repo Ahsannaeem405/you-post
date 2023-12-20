@@ -71,7 +71,14 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard')->with('message','Login Successful');  
             } else{  
 
-                // event(new UserLoggedIn($user));                
+                // event(new UserLoggedIn($user));          
+                            $user = auth()->user();
+
+                            if ($user && !$user->isEmailVerified()) {
+                                $this->guard()->logout();
+                                return redirect('otp-verify')->with('verificationMessage', 'Please check your email for verification.');
+                            }
+
                 return redirect()->route('index')->with('message','Login Successful'); 
             }
         }

@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 
 class VerifyOtp
 {
@@ -16,8 +18,11 @@ class VerifyOtp
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user() && !auth()->user()->is_verified) {
-            return redirect()->route('verification.notice')->with('message', 'Please verify OTP to access this page.');
+        $user = $request->user();
+
+        // Check if the user's email is verified using your custom logic
+        if ($user && !$user->isEmailVerified()) {
+            return redirect('otp-verify')->with('message', 'Please check your email for verification.');
         }
 
         return $next($request);

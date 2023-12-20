@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
+use App\Mail\VerifyEmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
+
 
 
 
@@ -67,6 +72,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        // $verificationUrl = route('verification.verify', $this->verificationUrl($notifiable));
+
             $otp = rand(1000, 9999);
             $timezone =  $data['timezone'];           
             $nowInUserTimezone = Carbon::now($timezone);
@@ -82,6 +90,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'dob' => $data['dob'],
             'password' => Hash::make($data['password']),
+            'token' => Str::random(40), // Generate a verification token
+
             // 'otp' => $otp,
             // 'otp_expiry' => $expiryTime,
             // 'timezone' => $data['timezone'],
@@ -89,14 +99,27 @@ class RegisterController extends Controller
 
         ]);       
         
-        event(new Registered($user));
+           event(new Registered($user));
+        //     $subject = 'Verify test';
+   
+        //     $this->guard()->login($user);
+        //     Mail::to($user->email)->send(new VerifyEmail($user, $subject));
+     
 
-        if ($user instanceof MustVerifyEmail) {
-            $this->guard()->login($user);
-            $user->sendEmailVerificationNotification();
-        }
+        $this->sendVerificationEmail($user->id, $user->verification_token);
 
         return $user;
+    }
+    protected function sendVerificationEmail($userId, $token)
+    {
+        $user = User::find($userId);
+
+        if (!$user) {
+            abort(404); // Handle user not found
+        }
+
+        // Send the verification email
+        Mail::to($user->email)->send(new VerifyEmail($user));
     }
   
 }

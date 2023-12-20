@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -88,5 +88,13 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->forceFill([
             'email_verified_at' => now(),
         ])->save();
+    }
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
+    public function isEmailVerified()
+    {
+        return $this->email_verified_at !== null;
     }
 }

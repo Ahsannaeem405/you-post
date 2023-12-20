@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\VerifyEmail;
+
+
 
 
 
@@ -107,14 +112,38 @@ class OtpController extends Controller
 
     public function resendVerificationEmail(Request $request)
     {
-        if ($request->user()->hasVerifiedEmail()) {
-            return redirect('/home');
-        }
+        
+             // dd(Auth::User()->id);
+    //     $request->user()->sendEmailVerificationNotification();
+    //     return back()->with('resent', true);
+            $user = User::find(Auth::User()->id);
+            if (!$user) {
+                abort(404); 
+            }            
+            Mail::to($user->email)->send(new VerifyEmail($user));
+            return redirect()->route('verification.notice')->with('message', 'Email Sent successfully.');
 
-        $request->user()->sendEmailVerificationNotification();
-
-        return back()->with('resent', true);
     }
+
+    // app/Http/Controllers/VerificationController.php
+
+public function verifyEmail($userId, $token)
+{
+    $user = User::find($userId);
+
+    if (!$user || $user->token !== $token) {
+        abort(404); // Handle invalid verification link
+    }
+
+    // Mark the user as verified and clear the verification token
+    $user->email_verified_at = now();
+    $user->token = null;
+    $user->save();
+
+    // Redirect or respond as needed
+    return redirect()->route('index')->with('message', 'Email verified successfully.');
+}
+
    
 
 }

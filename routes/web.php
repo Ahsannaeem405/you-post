@@ -92,10 +92,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/otp-verify', [OtpController::class, 'showOtpForm'])->name('verification.notice');
     Route::post('/send-otp', [OtpController::class, 'resendVerificationEmail'])->name('verification.resend');
     Route::get('/verify-otp', [OtpController::class, 'verifyOtp'])->name('verification.verify');
+    Route::get('/verify/{userId}/{token}', [OtpController::class, 'verifyEmail']);
+
 
 });
 
-Route::group(['middleware' => ['auth','disable','verified']], function () {
+Route::group(['middleware' => ['auth','disable','otp']], function () {
    
 
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
