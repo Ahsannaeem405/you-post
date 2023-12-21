@@ -54,6 +54,7 @@ class LoginController extends Controller
             'password'=>'required',
  
         ]);
+        // dd($request->all());
         if (auth()->attempt(array('email'=>$request->input('email'),'password'=>$request->input('password')))) 
         {
             // $user = auth()->user();
@@ -70,11 +71,11 @@ class LoginController extends Controller
                
                 return redirect()->route('admin.dashboard')->with('message','Login Successful');  
             } else{  
-
                 // event(new UserLoggedIn($user));          
                             $user = auth()->user();
 
                             if ($user && !$user->isEmailVerified()) {
+                                dd("fsd");
                                 $this->guard()->logout();
                                 return redirect('otp-verify')->with('verificationMessage', 'Please check your email for verification.');
                             }

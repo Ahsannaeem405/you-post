@@ -177,6 +177,8 @@ class AdminControoler extends Controller
             'role' => $request->input('role'),
             'is_verified' =>true,
             'type' => $request->input('type'),
+             'email_verified_at' => now(),
+
         ]);
         $userType = ucfirst($request->input('type'));
         return redirect()->back()->with('message', "{$userType} Added Successfully!");
