@@ -149,7 +149,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     {{-- toaster cdn --}}
-    <script>
+    <!-- <script>
     @if(Session::has('success'))
     toastr.success('{{ Session::get('
         success ') }}');
@@ -157,6 +157,30 @@
     toastr.error('{{ Session::get('
         error ') }}');
     @endif
+    </script> -->
+    {{-- Afaq's toaster --}}
+    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+    <script>
+        @if (Session::has('success'))
+            toastr.success("{{ Session::get('success') }}", '', {
+                toastClass: 'custom-success-toast'
+            });
+        @endif
+        @if (Session::has('info'))
+            toastr.info("{{ Session::get('info') }}");
+        @endif
+        @if (Session::has('warning'))
+            toastr.warning("{{ Session::get('warning') }}");
+        @endif
+        @if (Session::has('message'))
+            toastr.success("{{ Session::get('success') }}");
+        @endif
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}", '', {
+                toastClass: 'custom-warning-toast'
+            });
+        @endif
     </script>
     <script>
     var rev = $('.rev_slider');

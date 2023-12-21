@@ -844,7 +844,7 @@ padding-right:10px;
                                         <fieldset class="wizard-fieldset youpost ">
                                             <div class="ml-2">
                                                 <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_youpost">All Platforms Content</span>
+                                                    class="wizard-fieldset_youpost">All Platform Content</span>
 
                                             </div>
                                             <div class="form-group emoji_parent emoji_parent2" data-emoji='youpost'>

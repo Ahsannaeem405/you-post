@@ -84,8 +84,8 @@ class LoginController extends Controller
         }
         else
         {
-            //  return redirect()->route('login')->with('error','Enter valid credentials');
-            return redirect('index')->with('success', 'Login Successfully');
+            return redirect()->route('login')->with('error','Enter valid credentials');
+            // return redirect('index')->with('success', 'Login Successfully');
 
         }
  }

@@ -141,7 +141,7 @@ public function verifyEmail($userId, $token)
     $user->save();
 
     // Redirect or respond as needed
-    return redirect()->route('index')->with('message', 'Email verified successfully.');
+    return redirect()->route('index')->with('message', 'Email successfully verified.');
 }
 
    

@@ -608,7 +608,7 @@ div.dataTables_wrapper div.dataTables_length select {
                     <div class="form-group">
                       <input id="user_id" type="hidden"  name="user_id" value="">
                         <label for="edit_name"> Name</label>
-                        <input id="edit_name" type="text" class="name_field form-control @error('name') is-invalid @enderror" name="edit_name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input id="edit_name" type="name" class="name_field form-control @error('name') is-invalid @enderror" name="edit_name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">

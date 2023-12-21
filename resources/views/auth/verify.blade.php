@@ -145,6 +145,9 @@ input[type=number]::-webkit-outer-spin-button {
    background-color:#0d6efd;
    color:#fff !important;
 }
+.disabled_btn{
+    pointer-events:none;
+}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.3/dist/sweetalert2.all.min.js"></script>
@@ -214,15 +217,17 @@ toastr.error("Invalid or expired OTP.", "Error");
             </form>
         </div>
     </div>
-<!-- <script>
+<script>
     $('#resendVerificationEmail').click(function (e) {
     e.preventDefault();
-    $(this).prop('disabled', true);
+    $(this).addClass('disabled_btn');
     setTimeout(function () {
-        $('#resendVerificationEmail').prop('disabled', false);
         $('.verfiy_link').submit();
+        $('#resendVerificationEmail').removeClass('disabled_btn');
 
-    }, 10000);
+    }, 3500);
 });
-</script>     -->
+</script>    
+
+
     @endsection
