@@ -36,22 +36,6 @@
     margin-top: 40px
 }
 
-/* .user_detail {
-    color: #959595;
-    font-size: 12px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    letter-spacing: 1.2px;
-    left: 100px;
-    position: absolute;
-    top: 30px;
-    background: #fff;
-    padding-left: 5px;
-    padding-right: 5px;
-} */
-/* .delete_input{
-    width: 100%;
-} */
 
 /* ahmad counter setting code */
 .user_detail {
@@ -385,38 +369,6 @@ input field  */
     display: none;
 }
 
-.alert_generate {
-    text-align: center;
-}
-
-.text-alert {
-    color: #2F2F2F;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    padding-top: 10px;
-}
-
-.text-delmsg {
-    padding: 0px 5px 0px 5px;
-    left: 35px;
-    background: #fff;
-    top: 41px;
-    position: absolute;
-    color: #959595;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-}
-
-.inner_msg {
-    position: relative
 }
 
 .form-control:focus {
@@ -778,9 +730,9 @@ $('.createPostBtn').click(function() {
     //         });
     //     } else {
             window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId',
-        accountId);        
+        accountId);
     // }
-   
+
 });
 </script>
 <script>

@@ -13,6 +13,7 @@ use Facebook\Facebook;
 use GuzzleHttp\Client;
 use HttpClient;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Provider\LinkedIn;
@@ -52,7 +53,7 @@ class UserController extends Controller
         $user = auth()->user();
 
         if ($user && !$user->account) {
-           
+
             return redirect()->route('index')->with('message', 'Please Add Account.');
             // return redirect()->back()->with('message', 'Please add account.');
 
@@ -70,6 +71,7 @@ class UserController extends Controller
             ->where('account_id', auth()->user()->account_id)
             ->groupBy(DB::raw('DATE(posted_at)'))
             ->get();
+
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', Carbon::now())->groupBy('group_id')->get();
         $accounts = Account::where('user_id', auth()->id())->get();
         $allPosts = [];
@@ -139,8 +141,8 @@ class UserController extends Controller
         \Mail::to($recipients)->send(new \App\Mail\BugMail($details));
         return redirect()->back()->with('message', 'Email sent successfully!');
     }
-  
-   
+
+
 
     public function getUpdatedPosts()
     {
@@ -334,13 +336,13 @@ class UserController extends Controller
         }
     }
     public function account_post($id)
-    {     
+    {
         $user = User::find(auth()->user()->id);
         User::where('id', $user->id)
             ->update([
                 'account_id' => $id,
             ]);
-            return redirect()->route('dashboard');       
+            return redirect()->route('dashboard');
     }
 
     public function getTimeDifference($post)
@@ -367,19 +369,6 @@ class UserController extends Controller
 
     public function create_post(Request $req)
     {
-        // dd($req->all());
-          
-        // $testConent = '';
-
-        //    $suggestionsMap = json_decode(request()->input('suggestionsMap'), true);
-        //    $youpostContent = $req->input('facebook_content');
-
-        //    foreach ($suggestionsMap as $name => $id) {
-        //     $youpostContent = str_replace($name, "@[$id]", $youpostContent);
-        // }
-    
-        // $testConent = $youpostContent;
- 
 
         $platforms = auth()->user()->account->platforms;
         // dd($platforms);
@@ -404,8 +393,6 @@ class UserController extends Controller
             }
 
         }
-
-
         //****************end facebook validation**************//
 
         //****************instagram validation****************//
@@ -415,13 +402,9 @@ class UserController extends Controller
                     $mediaDataInsta[] = $media;
                 }
 
-            } else if ($req->media_type_instagram == 'video') {
-
+            } else if($req->media_type_instagram == 'video') {
                 $mediaDataInsta[] = $req->inst_video;
-
             }
-
-
         }
 
 
@@ -469,21 +452,21 @@ class UserController extends Controller
         // dd($suggestionsMap);
         foreach ($platforms as $i => $platform) {
 
-            $content = Str::lower($platforms[$i]) . '_content';          
+            $content = Str::lower($platforms[$i]) . '_content';
             $tag = Str::lower($platforms[$i]) . '_tag';
             $mediatype = 'media_type_' . Str::lower($platforms[$i]);
             $media = null;
             if ($platforms[$i] == 'Facebook'){
-                $media = implode(',', $mediaDatafb);            
+                $media = implode(',', $mediaDatafb);
                 $content = $req->$content ;
                 if (!empty($suggestionsMap)) {
                 foreach ($suggestionsMap as $name => $data) {
                     $id = $data['id'];
-                    $type = $data['type'];            
-                    if ($type === 'facebook_content') {                       
+                    $type = $data['type'];
+                    if ($type === 'facebook_content') {
                         $content = str_replace($name, "@[$id]", $content);
                     }
-                }               
+                }
             }
          }
             elseif ($platforms[$i] == 'Instagram'){
@@ -518,13 +501,10 @@ class UserController extends Controller
             $post->suggestoins =json_encode($suggestionsMap);
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
-            // dd( $post->content);
             $post->save();
 
 
             //****************get time difference in seconds ****************//
-
-
             $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
             if ($timeDiffLessTennOneMnt) {
                 $platformServiceMap = [
@@ -585,10 +565,10 @@ class UserController extends Controller
 // dd($request->all());
         $parsedDate = Carbon::parse($request->date);
         $posts = Post::with('user')->where('account_id', '=', $request->id)->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
-       
+
         foreach ($posts as $post) {
             $suggestionsMap = json_decode($post->suggestoins, true);
-    
+
             if (!empty($suggestionsMap)) {
                 foreach ($suggestionsMap as $name => $data) {
                     $id = $data['id'];
@@ -623,9 +603,9 @@ class UserController extends Controller
         // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
         // $platformsName = $platforms->pluck('plateform')->toArray();
         // $platforms = $platforms->groupBy('plateform');
-        $suggestionsMap = json_decode($post->suggestoins, true);       
+        $suggestionsMap = json_decode($post->suggestoins, true);
 
-     
+
         if (!empty($suggestionsMap)) {
             foreach ($suggestionsMap as $name => $data) {
                 $id = $data['id'];
@@ -660,7 +640,7 @@ class UserController extends Controller
         $textAreaid = $request->input('textAreaid');
         $post = new Post();
         $suggestions = $post->getSuggestions($searchQuery,$textAreaid);
-   
+
         return response()->json(['suggestions' => $suggestions]);
     }
 
@@ -850,7 +830,7 @@ class UserController extends Controller
         $permissions = ['pages_read_engagement', 'pages_read_user_content', 'pages_manage_posts', 'read_insights', 'pages_show_list'];
         $helper->getPersistentDataHandler()->set('state', 'abcdefsss');
         $loginUrl = $helper->getLoginUrl(url('connect_facebook/calback'), $permissions);
-        
+
         return redirect()->away($loginUrl);
     }
 
@@ -1057,7 +1037,7 @@ class UserController extends Controller
         }
         $platforms = auth()->user()->account->platforms;
         $valueToRemove = 'Linkedin';
-      
+
 
         // foreach (array_keys($platform, $valueToRemove) as $key) {
         //     unset($platform[$key]);
@@ -1065,14 +1045,14 @@ class UserController extends Controller
         $platforms = array_values(array_filter($platforms, function ($platform) use ($valueToRemove) {
             return $platform !== $valueToRemove;
         }));
-      
+
         auth()->user()->account()->update([
             'linkedin_accesstoken' => null,
             'linkedin_user_id' => null,
             'linkedin_page_id' => null,
             'platforms' => $platforms
         ]);
-        
+
         try {
             $linkedin = config('services.linkedin');
             $client_id = $linkedin['client_id'];
@@ -1240,6 +1220,11 @@ class UserController extends Controller
 
 
     }
+    public function deletePermanently()
+    {
+   Auth::user()->delete();
+   return redirect('/');
+    }
 
     public function get_facebook_likes(Facebookservice $facebookservice, Instagramservice $instagramservice, TwitterService $twitterService)
     {
@@ -1256,7 +1241,6 @@ class UserController extends Controller
             elseif ($post->plateform == 'Linkedin')
                 true;// $twitterService->stats($post);
         }
-
-
     }
+
 }

@@ -23,10 +23,6 @@ use App\Http\Controllers\OtpController;
 */
 Route::get('/cls', function () {
     $run = Artisan::call('optimize:clear');
-    // $run = Artisan::call('config:clear');
-    // $run = Artisan::call('cache:clear');
-    // $run = Artisan::call('config:cache');
-    // $run = Artisan::call('view:clear');
     Session::flush();
     return 'FINISHED';
 });
@@ -61,7 +57,7 @@ Route::get('auth/facebook/callback', [LoginController::class, 'handleFacebookCal
 // ///////////////////////social login/////////////////////////
 
 
-Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {     
+Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {
 
     Route::get('dashboard', [AdminControoler::class, 'dashbaord'])->name('admin.dashboard');
     Route::get('users', [AdminControoler::class, 'show_users'])->name('admin.showusers');
@@ -75,13 +71,13 @@ Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {
     Route::get('addAdmin', [AdminControoler::class, 'list_admins'])->name('admin.addAdmin');
     Route::get('addUser', [AdminControoler::class, 'list_users'])->name('admin.addUser');
     Route::get('profile', [AdminControoler::class, 'show_profile'])->name('admin.profile');
-    Route:: get('update-user/', [AdminControoler::class, 'updateUser']);
+    Route:: get('update-user/', [AdminControoler::class, 'updateUser'])->name('update-user');
 
     Route::get('sendlink/{user_id}', [AdminControoler::class, 'sendlink'])->name('password.sendlink');
     Route::get('/reset-password/{token}', [AdminControoler::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [AdminControoler::class, 'reset'])->name('password.update');
 
-    
+
 
 });
 
@@ -98,10 +94,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::group(['middleware' => ['auth','disable','otp']], function () {
-   
+
 
     Route::get('dashboard', [UserController::class, 'dashbaord'])->name('dashboard');
     Route::get('dashboard2', [UserController::class, 'dashbaord2']);
+    Route::get('delete-permanently',[UserController::class,'deletePermanently']);
     Route::get('/show-email', function () {
         return view('show-email'); // Assuming your view is located at resources/views/emails/bugEmail.blade.php
     })->name('show.email');

@@ -2101,5 +2101,52 @@ button {
 #youpost_content {
     resize: none;
 }
+.font-size-small span{
+font-size: 15px !important;
+text-decoration: underline;
+}
+.font-size-small:hover{
+background-color: transparent !important;
+}
+
+
+
+
+/*account css*/
+
+.alert_generate {
+    text-align: center;
+}
+
+.text-alert {
+    color: #2F2F2F;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 10px;
+}
+
+.text-delmsg {
+    padding: 0px 5px 0px 5px;
+    left: 35px;
+    background: #fff;
+    top: 41px;
+    position: absolute;
+    color: #959595;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.inner_msg {
+    position: relative
+
+
 
 /*calendar posts structure */

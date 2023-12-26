@@ -934,22 +934,11 @@ div.dataTables_wrapper div.dataTables_length select {
                         </span>
                         @enderror
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="field_name">Old Password </label>
-                        <input id="old_password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="old_password"
-                            value="{{ old('password') }}" required autocomplete="password">
 
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div> -->
                     <div class="form-group">
                         <label for="field_name">New Password</label>
                         <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
+                            class="form-control @error('password') is-invalid @enderror" name="password"
                             autocomplete="new-password">
 
                         @error('password')
@@ -961,7 +950,7 @@ div.dataTables_wrapper div.dataTables_length select {
                     <div class="form-group">
                         <label for="field_name">Confirm Password</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
+                             autocomplete="new-password">
                     </div>
                     <div class="form-group">
                     <div class="three-body" id="loader">
@@ -976,7 +965,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                         <!-- Add more form fields as needed -->
                     <button type="submit" class="btn modal-btn" id="udpatebtn">Update</button>
                 </form>
-               
+
             </div>
         </div>
     </div>
@@ -1140,10 +1129,10 @@ div.dataTables_wrapper div.dataTables_length select {
 
         // $('#sendPasswordResetLink').click(function (e) {
         //     e.preventDefault();
-            
+
         //     // Get the value from the hidden input
         //     var userId = $('#user_id').val();
-            
+
 
         //     // Send an AJAX request
         //     $.ajax({
@@ -1241,7 +1230,7 @@ div.dataTables_wrapper div.dataTables_length select {
         // Get form data
         var formData = $(this).serialize();
         $.ajax({
-            url: 'update-user',
+            url: '{{route('update-user')}}',
             method: 'GET',
             data: formData,
             success: function(response) {
@@ -1255,8 +1244,8 @@ div.dataTables_wrapper div.dataTables_length select {
             },
             error: function(error) {
                 // Handle error response here
-                var errorMessage = error.responseText;
-                $('#errorText').text(errorMessage);
+                var errorMessage = error.responseJSON;
+                $('#errorText').text(errorMessage.message);
 
             }
         });
@@ -1297,7 +1286,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
     <script>
         // document.querySelectorAll('.delete-item').forEach(deleteBtn => {
-           
+
             $('.delete-item').on('click', function (event) {
             event.preventDefault();
 

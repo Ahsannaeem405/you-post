@@ -42,36 +42,36 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-       
+
         $this->middleware('guest')->except('logout');
     }
 
     public function login(Request $request){
-      
-           
+
+
         $request->validate([
             'email'=>'required',
             'password'=>'required',
- 
+
         ]);
         // dd($request->all());
-        if (auth()->attempt(array('email'=>$request->input('email'),'password'=>$request->input('password')))) 
+        if (auth()->attempt(array('email'=>$request->input('email'),'password'=>$request->input('password'))))
         {
             // $user = auth()->user();
 
             // if ($user->disabled) {
             //     // Logout the user and redirect back with an error message
-                
+
             //     auth()->logout();
-        
+
             //     return redirect()->back()->with('error', 'Your account is disabled. Please contact support.');
             // }
 
             if (auth()->user()->role=='admin') {
-               
-                return redirect()->route('admin.dashboard')->with('message','Login Successful');  
-            } else{  
-                // event(new UserLoggedIn($user));          
+
+                return redirect()->route('admin.dashboard')->with('message','Login Successful');
+            } else{
+                // event(new UserLoggedIn($user));
                             $user = auth()->user();
 
                             if ($user && !$user->isEmailVerified()) {
@@ -80,7 +80,7 @@ class LoginController extends Controller
                                 return redirect('otp-verify')->with('verificationMessage', 'Please check your email for verification.');
                             }
 
-                return redirect()->route('index')->with('success','Login Successful'); 
+                return redirect()->route('index')->with('success','Login Successful');
             }
         }
         else
@@ -99,13 +99,13 @@ class LoginController extends Controller
 
     public function handleGoogleCallback()
     {
-       
+
             try {
                 $user = Socialite::driver('google')->stateless()->user();
-             
+
                 // $finduser = User::where('email', $user->email)->first();
                 $finduser = User::where('google_id', $user->id)->first();
-               
+
                 // $finduser = User::where('google_id', $user->id)->orWhere('email', $user->email)->first();
 
                 if($finduser){
@@ -113,19 +113,11 @@ class LoginController extends Controller
                         // Update the email_verified_at attribute in your application's database
                         $finduser->markEmailAsVerified();
                     }
-                   
-                    // if ($finduser->disabled) {
-                    //     // User is disabled, redirect to login with a message
-                    //     auth()->logout();
-                    //     return redirect()->route('login')->with('error','Your account is disabled. Please contact support.');
-                    // }
-                    // $finduser->update(['disabled' => true]);
-
-                    event(new UserLoggedIn($finduser));     
+                    event(new UserLoggedIn($finduser));
                     Auth::login($finduser);
                     return redirect('index')->with('success', 'Login Successfully');
                 }else{
-                   
+
                     $newUser = User::updateOrCreate(['email' => $user->email],[
                         'name' => $user->name,
                         'google_id'=> $user->id,
@@ -134,7 +126,7 @@ class LoginController extends Controller
                     ]);
                     if (!$newUser->hasVerifiedEmail()) {
                         // Update the email_verified_at attribute in your application's database
-                        $user->markEmailAsVerified();
+                        $newUser->markEmailAsVerified();
                     }
                     Auth::login($newUser);
                     return redirect('index')->with('success-register', 'Login Successfully');
@@ -170,6 +162,10 @@ class LoginController extends Controller
                     'password' => encrypt('123456dummy'),
                     'is_verified' => true
                 ]);
+                  if (!$newUser->hasVerifiedEmail()) {
+                        // Update the email_verified_at attribute in your application's database
+                        $newUser->markEmailAsVerified();
+                    }
                 Auth::login($newUser);
                 return redirect('index')->with('success-register', 'Login Successfully');
             }
