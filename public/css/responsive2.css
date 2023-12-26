@@ -206,7 +206,7 @@
     /* emojionerea */
     
      .icon_buttons  ul .emojionearea {
-        top: 21%;
+        top: 0%;
     }
     .emojionearea-picker{
         width: 250px !important;
@@ -226,6 +226,12 @@
  /* emojionarea */
  .emojionearea-picker{
     left: -24px;
+}
+.emojionearea .emojionearea-picker.emojionearea-picker-position-top{
+    left: -96px;
+}
+li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
+    height: 145px;
 }
 }
 
@@ -494,7 +500,7 @@
      }
      /* emojionearea */
      .icon_buttons  ul .emojionearea {
-        top: 28%;
+        top: 0%;
     }
     .emojionearea-picker{
         width: 182px !important;
@@ -514,6 +520,9 @@
      /* emojionarea */
  .emojionearea-picker{
     left: -100px;
+}
+li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
+    height: 145px;
 }
 }
 
@@ -769,6 +778,9 @@
  .emojionearea-picker{
     left: -100px;
     width: 100%;
+}
+.emojionearea.emojionearea-inline {
+    height: 28px !important; 
 }
     
 }
@@ -1186,6 +1198,12 @@
 }
 .emojionearea-tones{
     padding-top: 5px !important;
+}
+li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
+    height: 145px;
+}
+.emojionearea.emojionearea-inline {
+    height: 28px !important;
 }
     
 }

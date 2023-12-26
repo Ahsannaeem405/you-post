@@ -104,7 +104,7 @@
 
 {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
 
-<script src="{{asset('js/inputEmoji.js')}}"></script>
+<!-- <script src="{{asset('js/inputEmoji.js')}}"></script> -->
 {{-- ------------------ --}}
 <script src="{{asset('js/slider/owl.carousel.js')}}"></script>
 {{-- ------------------ --}}
@@ -406,8 +406,8 @@ function populateDropdownFromArray(selectId, optionsArray) {
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <!--Custom JavaScript-->
 <!-- //  emoji link  -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
 
 {{-- toaster cdn --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
@@ -747,6 +747,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
     });
 
 
+
     $(document).ready(function () {
 
 
@@ -863,7 +864,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                    var formattedText = inputText.replace(/\n/g, '<br>');
 
                     $("#mypostresult_fb").empty().html( formattedText );
-                    $("#mypostresult_insta").empty().html(formattedText);
+                    $("#mypostresult_insta").empty().html( formattedText);
                     $("#mypostresult_twitter").empty().html( formattedText);
                     $("#mypostresult_linkedin").empty().html( formattedText);
 
@@ -874,6 +875,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
 
             function updateDiv($obj) {
 // alert(element.innerHTML);
+
                 $('#file_error_all').addClass('d-none');
                 var textareaAttr = $($obj).attr("attr_of_text_area");
                 var inputText = $($obj).val();
@@ -943,7 +945,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 var selectedValues = $('#facebook_tag').val();
                 var new_str= getString(selectedValues);
           }else if(textareaAttr == 'insta'){
-
+          
             var charCount = inputText.length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCountinst');
                 charCountElement.text(charCount);

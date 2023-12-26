@@ -479,33 +479,26 @@ $(document).ready(function () {
                 $(this).unbind('submit').submit();
             }           
         });    
-    });
-    $(document).on('click', '.open_emoji', function () {
-        $('.emoji_parent > span').click();
-    });
-    $(document).ready(function () {
-        $('.emoji_parent div span').on('click', function () {
-            var parentDiv = $(this).closest('.emoji_parent').find('textarea').attr('id');
-            var emoji = $(this).text();
-            if (parentDiv == 'youpost_content') {
-                $('#' + parentDiv).trigger('keyup');
-                $("#mypostresult_fb").append(emoji);
-                $("#mypostresult_insta").append(emoji);
-                $("#mypostresult_twitter").append(emoji);
-                $("#mypostresult_linkedin").append(emoji);
-                var textareaIds = ['#facebook_content', '#instagram_content', '#twitter_content', '#linkedin_content'];
-                // Loop through the textarea IDs and append the emoji to their content
-                textareaIds.forEach(function (textareaId) {
-                    var currentContent = $(textareaId).val();
-                    var updatedContent = currentContent + emoji;
-                    $(textareaId).val(updatedContent);
-                });
-
-            } else {
-
-                $('#' + parentDiv).trigger('keyup');
-            }
+        $('.emoji_show').emojioneArea({
+            pickerPosition: "top"
         });
+        $('.emoji_show').on('change', function () {
+            var selectedEmoji = $(this).val();
+            // Get the current content of the textarea
+            var currenttextarea=$(this).parent().parent().parent().parent().parent().siblings('.emoji_parent').find('.wizard-required');
+            var currentContent = currenttextarea.val();
+            var updatedContent = currentContent + selectedEmoji;
+            console.log(currenttextarea);  // Log the element to the console
+
+            currenttextarea.val(updatedContent);
+            var selectedTextarea =currenttextarea.attr('id');
+            $('#'+selectedTextarea).trigger('keyup');
+            $('#'+selectedTextarea).trigger('change');
+          
+          $('.emoji_show').val('');
+
+        });
+
     });
     $(document).on('click', '.myaccounts', function () {
         $('#myaccounts_modal').modal('show');
