@@ -1152,8 +1152,10 @@ div.dataTables_wrapper div.dataTables_length select {
         // });
     $('#sendPasswordResetLink').click(function (e) {
         e.preventDefault();
+        
         // Get the value from the hidden input
         var userId = $('#user_id').val();
+       
         $('.disabledit').addClass('disabled').attr('aria-disabled', true);
 
 

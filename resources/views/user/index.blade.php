@@ -766,6 +766,18 @@ padding-right:10px;
     border:none;
     box-shadow:none;
 }
+.emojionearea, .emojionearea.form-control {
+padding:16px !important;
+}
+.emojionearea .emojionearea-button{
+    opacity: 1 !important;
+} 
+.emojionearea.emoji_show  .emojionearea-button>div, .emojionearea .emojionearea-picker .emojionearea-wrapper:after{
+background-image:url('{{ asset('images/emo.png') }}') !important;
+background-size:cover;
+background-repeat: no-repeat;
+background-position:100% 100% !important;
+}
 /* .icon_buttons  ul .emojionearea {
     position: absolute !important;
     top: 22%;
@@ -857,7 +869,7 @@ padding-right:10px;
                                                         class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
-                                            </div>
+                                            </div>    
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0 d-flex gap-1" >
@@ -883,8 +895,9 @@ padding-right:10px;
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/emo.png"
-                                                                    class="img-fluid" alt="" />
+                                                                <!-- <img src="{{asset('')}}images/emo.png"
+                                                                    class="img-fluid" alt="" /> -->
+                                                                    <input type="hidden" class="emoji_show">
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -979,9 +992,10 @@ padding-right:10px;
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/emo.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </a>
+                                                                <!-- <img src="{{asset('')}}images/emo.png"
+                                                                    class="img-fluid" alt="" /> -->
+                                                                    <input type="hidden" class="emoji_show">
+                                                            </a>                                                            
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1103,9 +1117,10 @@ padding-right:10px;
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/emo.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </a>
+                                                                <!-- <img src="{{asset('')}}images/emo.png"
+                                                                    class="img-fluid" alt="" /> -->
+                                                                    <input type="hidden" class="emoji_show">
+                                                            </a>                                                           
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1189,9 +1204,10 @@ padding-right:10px;
 
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/emo.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </a>
+                                                                <!-- <img src="{{asset('')}}images/emo.png"
+                                                                    class="img-fluid" alt="" /> -->
+                                                                    <input type="hidden" class="emoji_show">
+                                                            </a>                                                            
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1272,9 +1288,10 @@ padding-right:10px;
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="open_emoji">
-                                                                <img src="{{asset('')}}images/emo.png"
-                                                                    class="img-fluid" alt="" />
-                                                            </a>
+                                                                <!-- <img src="{{asset('')}}images/emo.png"
+                                                                    class="img-fluid" alt="" /> -->
+                                                                    <input type="hidden" class="emoji_show">
+                                                            </a>                                                            
                                                         </li>
                                                     </ul>
                                                 </div>

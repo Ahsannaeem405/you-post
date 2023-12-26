@@ -31,8 +31,7 @@
                                             </div>
                                             <div align="center" style="padding-right:0px;padding-left:0px">
                                             <img align="center" alt="Image" border="0"
-                                                    src="{{ $message->embed(asset('images/YouPost_Logo.png')) }}"
-                                                    style="text-decoration:none;border:0;height:auto;width:100%;max-width:149px;display:block"
+                                                    src=""
                                                     title="Image" width="149" class="CToWUd" data-bit="iit">
                                                 <div style="font-size:1px;line-height:25px">&nbsp;</div>
 

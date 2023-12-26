@@ -82,7 +82,7 @@ class AdminControoler extends Controller
         if ($user) {
             // Generate a password reset token for the user
             $token = Password::getRepository()->create($user);
-
+            // dd([$token, $user]);
             // Send the password reset email to the user
             $user->sendPasswordResetNotification($token);
 
