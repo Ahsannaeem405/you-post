@@ -792,7 +792,7 @@ div.dataTables_wrapper div.dataTables_length select {
                     <!-- <h2>Recent</h2> -->
                 </div>
             </div>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 grid-margin">
                         <div class="card">
@@ -809,7 +809,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                                 <th>Email</th>
                                                 <th>Organization</th>
                                                 <th>No of Organizations</th>
-                                                <!-- <th>Last Logedin</th> -->
+                                                 <th>Joining Date</th>
                                                 <th>Action</th>
                                                 <th>Disable</th>
                                             </tr>
@@ -839,6 +839,9 @@ div.dataTables_wrapper div.dataTables_length select {
                                                          </div>
                                                     </div>
                                 </td>
+                                 <td>
+                                    {{$user->created_at->format('Y-m-d')}}
+                                </td>
                                 <td>
                                     <div class="dropdown">
                                         <span class="dropdown-toggle" id="dropdownMenuIconButton3"
@@ -862,6 +865,7 @@ div.dataTables_wrapper div.dataTables_length select {
                                         </div>
                                     </div>
                                 </td>
+
                                 <td>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input disabled" type="checkbox" role="switch"

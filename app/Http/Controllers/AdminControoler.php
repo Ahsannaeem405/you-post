@@ -148,7 +148,7 @@ class AdminControoler extends Controller
 
         $admins = $this->user
             ->whereRole('admin')
-            ->where('id', '!=', $currentAdmin->id)
+         //   ->where('id', '!=', $currentAdmin->id)
             ->withCount('accountList')
             ->orderBy('id', 'desc')
             ->get();
