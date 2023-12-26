@@ -34,8 +34,14 @@ class AccountController extends Controller
                 $all_pages_for_insta = [];       
               
             } else {
+
+                $accountId= Account::create([
+                    'user_id' => auth()->id(),
+                    'name' => auth()->name ?? '',
+                ]);
+        
                
-                $user->update(['account_id' => null]);
+                $user->update(['account_id' => $accountId->id]);
                 $instapages = [];
                 $all_pages = [];
                 $all_pages_for_insta = [];

@@ -367,11 +367,10 @@ div#exampleModal {
 
                             <!-- </a> -->
                             <div class="dropdown-menu dropdown-menu-right dropdown_mb">
-                                <!-- <a class="dropdown-item" href="{{ url('user/profile') }}"><i class="feather icon-user"></i>
-                                    Edit Profile</a> -->
-                                    <a class="dropdown-item" href="{{ route('admin.profile') }}"> 
-                                    {{ __('Profile') }}
-                                </a>
+
+{{--                                    <a class="dropdown-item" href="{{ route('admin.profile') }}"> --}}
+{{--                                    {{ __('Profile') }}--}}
+{{--                                </a>--}}
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

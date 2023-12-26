@@ -215,7 +215,7 @@ button#removeStylesButton {
            <!-- <h2 style='padding: 10px 32px 0;font-weight: 900;'>Admin</h2> -->
             <li class=" nav-item @yield('dashboard')">
                 <a href="{{ route('admin.dashboard') }}">
-               
+
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/postdashboard.png')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
             </li>
@@ -241,7 +241,7 @@ button#removeStylesButton {
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/adminadd2.png')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Add Admin</span></a>
             </li>
-            
+
             @endif
             <!-- <li class=" nav-item @yield('adminview')">
                 <a href="">
