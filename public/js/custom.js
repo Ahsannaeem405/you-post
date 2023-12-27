@@ -481,6 +481,7 @@ $(document).ready(function () {
         });
         $('.emoji_show').emojioneArea({
             pickerPosition: "top",
+
         
         });
         $('.emoji_show').on('change', function () {
@@ -497,10 +498,13 @@ $(document).ready(function () {
             $('#' + selectedTextarea).trigger('change');
             $('.emoji_show').val('');
         });
-        // $(document).on('click', '.emojibtn', function () {
-        //     var emoji = $(this).closest('.emoji_show');
-        //     emoji.trigger('change');
-        // })
+        $(document).on('click', '.emojibtn', function () {
+            // alert("asas");
+            var emoji = $(this).closest('.emoji_show');
+            // $(".emojionearea-button-close").trigger('click');
+            $(".wizard-required").trigger('focus');
+
+        })
     });
     $(document).on('click', '.myaccounts', function () {
         $('#myaccounts_modal').modal('show');
