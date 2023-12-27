@@ -35,7 +35,7 @@ class AccountController extends Controller
               
             } else {
 
-                $accountId= Account::create([
+                $accountId= Account::create([ 
                     'user_id' => auth()->id(),
                     'name' => auth()->name ?? '',
                 ]);

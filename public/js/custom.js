@@ -15,30 +15,30 @@ $(document).on('change', ".single_platform input[type=checkbox]", function () {
     $(this).parent().toggleClass('active_social');
 });
 // calendar time disable
-$("#ampm").on("change", function() {
+$("#ampm").on("change", function () {
     var ampmValue = $(this).val();
     var currentDate = new Date();
     let start = 1;
     let currentHour = currentDate.getHours();
     let current_minutes = currentDate.getMinutes();
-    if( currentHour >=0 && currentHour<12){
-        if( ampmValue ==='AM'){
-            start = (currentHour)%12||12;  
-        }else{
-            start =1;
-            current_minutes =0;
+    if (currentHour >= 0 && currentHour < 12) {
+        if (ampmValue === 'AM') {
+            start = (currentHour) % 12 || 12;
+        } else {
+            start = 1;
+            current_minutes = 0;
         }
-    }else{
-        start = currentHour%12||12;
+    } else {
+        start = currentHour % 12 || 12;
     }
-    if(selectedDate.getDate() !== currentDate.getDate()){
-        start=1;
+    if (selectedDate.getDate() !== currentDate.getDate()) {
+        start = 1;
     }
-    
-    current_minutes=(selectedDate === currentDate)? current_minutes:0;
+
+    current_minutes = (selectedDate === currentDate) ? current_minutes : 0;
     populateOptions("hour", start, 12, 1);
-    populateOptions("minute",current_minutes ,59, 1);
-    
+    populateOptions("minute", current_minutes, 59, 1);
+
 });
 // Initialize Pignose Calendar
 var selectedDate = new Date();
@@ -46,7 +46,7 @@ function settime() {
     // var select_time = $('.select_time').val();
     // var hours = parseInt(select_time.split(':')[0]); // extract hours from custom time string
     // var minutes = parseInt(select_time.split(':')[1]); // extract minutes from custom time string
-   
+
 
     var selectedHour = $('#hour').val();
     var selectedMinute = $('#minute').val();
@@ -72,7 +72,7 @@ function settime() {
     $('.browsertimeinput').val(formattedDateTime);
     $('.posttime').val('later');
 
-    
+
 }
 
 
@@ -439,7 +439,7 @@ $(document).ready(function () {
 
             $("#posted_now").prop("disabled", true);
             event.preventDefault();
-           
+
 
             var facebook_content = $("#facebook_content").val();
             var instagram_content = $("#instagram_content").val();
@@ -447,7 +447,7 @@ $(document).ready(function () {
             var linkedin_content = $("#linkedin_content").val();
             // var image_or_video_insta_file = $("#image_or_video_insta")[0];
             var imgElement = $('#image_div_ins img');
-           var vidLen= $('#image_div_ins').find('.cross_img_con_video ').length;
+            var vidLen = $('#image_div_ins').find('.cross_img_con_video ').length;
 
             imgElement.length
 
@@ -457,7 +457,7 @@ $(document).ready(function () {
             if ($("li[section='fb']").length > 0 && facebook_content === "") {
                 error_input = "Facebook content can not be empty";
                 data_id = "facebok_error";
-            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" ||(imgElement.length <= 0  && vidLen <= 0 ))) {
+            } else if ($("li[section='insta']").length > 0 && (instagram_content === "" || (imgElement.length <= 0 && vidLen <= 0))) {
 
                 error_input = "Insta content and image can not be empty";
                 data_id = "insta_error";
@@ -467,38 +467,39 @@ $(document).ready(function () {
             } else if ($("li[section='linkedin']").length > 0 && linkedin_content === "") {
                 error_input = "Linkedin content can not be empty";
                 data_id = "link_error";
-            }  
+            }
             if (error_input !== "") {
                 $("#posted_now").prop("disabled", false);
                 $('#file_error_all').removeClass('d-none').text(error_input);
                 $('#file_error_all').attr('data-id', data_id);
-               
+
             } else {
                 $('#file_error_all').addClass('d-none');
                 $('.uplaod-gif-video').removeClass('d-none');
                 $(this).unbind('submit').submit();
-            }           
-        });    
+            }
+        });
         $('.emoji_show').emojioneArea({
-            pickerPosition: "top"
+            pickerPosition: "top",
         });
         $('.emoji_show').on('change', function () {
             var selectedEmoji = $(this).val();
             // Get the current content of the textarea
-            var currenttextarea=$(this).parent().parent().parent().parent().parent().siblings('.emoji_parent').find('.wizard-required');
+            var currenttextarea = $(this).parent().parent().parent().parent().parent().siblings('.emoji_parent').find('.wizard-required');
             var currentContent = currenttextarea.val();
             var updatedContent = currentContent + selectedEmoji;
-            console.log(currenttextarea);  // Log the element to the console
-
             currenttextarea.val(updatedContent);
-            var selectedTextarea =currenttextarea.attr('id');
-            $('#'+selectedTextarea).trigger('keyup');
-            $('#'+selectedTextarea).trigger('change');
-          
-          $('.emoji_show').val('');
-
+            var selectedTextarea = currenttextarea.attr('id');
+            $('.emojionearea-picker').addClass('hidden');
+            $('.emojionearea-button').removeClass('active');
+            $('#' + selectedTextarea).trigger('keyup');
+            $('#' + selectedTextarea).trigger('change');
+            $('.emoji_show').val('');
         });
-
+        // $(document).on('click', '.emojibtn', function () {
+        //     var emoji = $(this).closest('.emoji_show');
+        //     emoji.trigger('change');
+        // })
     });
     $(document).on('click', '.myaccounts', function () {
         $('#myaccounts_modal').modal('show');
@@ -625,21 +626,21 @@ $(document).ready(function () {
             } else if (id_of_div == 'media_type_twitter') {
                 $('#media_type_twitter').val('');
                 $('.prv_div_tw').html('');
-            }else if (id_of_div == 'media_type_youpost') {
-                   $('#media_type_youpost').val('');
-                    $('#youpost_video').val('');
+            } else if (id_of_div == 'media_type_youpost') {
+                $('#media_type_youpost').val('');
+                $('#youpost_video').val('');
 
-                    $('#media_type_fb').val('');
-                    $('#fb_video').val('');
+                $('#media_type_fb').val('');
+                $('#fb_video').val('');
 
-                    $('#media_type_insta').val('');
-                    $('#inst_video').val('');
+                $('#media_type_insta').val('');
+                $('#inst_video').val('');
 
-                    $('#media_type_twitter').val('');
-                    $('#twitter_video' ).val('');
+                $('#media_type_twitter').val('');
+                $('#twitter_video').val('');
 
-                    $('#media_type_linkedin').val('');
-                    $('#link_video').val('');
+                $('#media_type_linkedin').val('');
+                $('#link_video').val('');
             }
 
         }
@@ -676,7 +677,7 @@ $(document).ready(function () {
             $('#inst_video').val('');
 
             $('#media_type_twitter').val('');
-            $('#twitter_video' ).val('');
+            $('#twitter_video').val('');
 
             $('#media_type_linkedin').val('');
             $('#link_video').val('');
@@ -700,7 +701,7 @@ $(document).ready(function () {
     function validateDimenstionImage(file, socialicon) {
 
 
-            $("#posted_now").prop("disabled", true);
+        $("#posted_now").prop("disabled", true);
 
 
         if (socialicon == 'image_or_videofb') {
@@ -734,38 +735,38 @@ $(document).ready(function () {
 
         $("#posted_now").prop("disabled", true);
 
-     
-            var videoEl = document.createElement("video");
-            videoEl.onloadedmetadata = event => {
-                window.URL.revokeObjectURL(videoEl.src);
-                var { name, type } = file;
 
-                var { videoWidth, videoHeight } = videoEl;
+        var videoEl = document.createElement("video");
+        videoEl.onloadedmetadata = event => {
+            window.URL.revokeObjectURL(videoEl.src);
+            var { name, type } = file;
 
-                var aspectRatio = (videoWidth / videoHeight).toFixed(2);
-                // alert(aspectRatio);
+            var { videoWidth, videoHeight } = videoEl;
 
-                var fourByfive = (4 / 5).toFixed(2);
-// alert(fourByfive);
+            var aspectRatio = (videoWidth / videoHeight).toFixed(2);
+            // alert(aspectRatio);
+
+            var fourByfive = (4 / 5).toFixed(2);
+            // alert(fourByfive);
 
 
-                var sixteenBynine = (16 / 9).toFixed(2);
+            var sixteenBynine = (16 / 9).toFixed(2);
 
-                // alert(sixteenBynine);
-                if ((aspectRatio == fourByfive || aspectRatio == sixteenBynine || aspectRatio =='1.00' )) {
-                 
-                    appendVideo(file, socialicon);
-                  
-                } else {
-                   toastr.error("Can't post video.Required 4:5 or 1:1 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
-                    return false;
+            // alert(sixteenBynine);
+            if ((aspectRatio == fourByfive || aspectRatio == sixteenBynine || aspectRatio == '1.00')) {
 
-                }
+                appendVideo(file, socialicon);
 
-            };
+            } else {
+                toastr.error("Can't post video.Required 4:5 or 1:1 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
+                return false;
 
-            videoEl.src = window.URL.createObjectURL(file);
-      
+            }
+
+        };
+
+        videoEl.src = window.URL.createObjectURL(file);
+
     }
 
     function validateFileImageVideo(file, socialicon) {
@@ -1032,7 +1033,7 @@ $(document).ready(function () {
                         $('.' + getRandomClass).find('.uplaod-gif').remove();
 
                         if (socialicon == 'image_or_video_youpost') {
-                            var ids = ['image_or_video_youpost', 'image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin','image_or_video_twiter'];
+                            var ids = ['image_or_video_youpost', 'image_or_videofb', 'image_or_video_insta', 'image_or_video_linkedin', 'image_or_video_twiter'];
 
                             ids.forEach(function (socialicon) {
                                 setPreview(socialicon, response.path);
@@ -1049,8 +1050,8 @@ $(document).ready(function () {
             reader.readAsDataURL(file);
         }
     }
-    $('li[section="youpost"]').on('click', function() {
-    
+    $('li[section="youpost"]').on('click', function () {
+
 
 
         var videoElement = $('#mediaContainervideo_youpost video');
@@ -1061,24 +1062,24 @@ $(document).ready(function () {
 
         }
     });
-    $('li[section="fb"]').on('click', function() {
+    $('li[section="fb"]').on('click', function () {
         var videoElement = $('#mediaContainervideo_fb video');
 
         if (videoElement.length > 0) {
             var videoPathFromElement = videoElement.attr('src');
-            
+
             // Check if the video source matches the one in pathArray
             if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
                 // Run your code here if the conditions are met
                 var videoPath = videoPathFromElement;
                 var video = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_fb').html(video);
-               
+
             }
-            else{
-           
+            else {
+
                 var videoElement = $('#mediaContainervideo_fb video');
-                var videoPath = videoElement.attr('src');               
+                var videoPath = videoElement.attr('src');
                 var video = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_fb').html('');
 
@@ -1087,46 +1088,46 @@ $(document).ready(function () {
 
 
             }
-        }else{
-               
+        } else {
+
             var videoElement = $('#mediaContainervideo_youpost video');
-    
-            if (videoElement.length > 0) {            
+
+            if (videoElement.length > 0) {
                 var videoPath = videoElement.attr('src');
                 pathArray.push(videoPath);
-    
-            } 
+
+            }
             if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
                 // var videoPath = videoElement.attr('src');
                 var videoPath = pathArray[0];
                 var video = $('<video controls class="video_preview w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-                $('#mediaContainervideo_fb').html(video);            
-                pathArray.length = 0; 
+                $('#mediaContainervideo_fb').html(video);
+                pathArray.length = 0;
             }
-            
+
         }
-     
+
 
     });
-    $('li[section="insta"]').on('click', function() {
+    $('li[section="insta"]').on('click', function () {
 
         var videoElement = $('#mediaContainervideo_insta video');
 
         if (videoElement.length > 0) {
             var videoPathFromElement = videoElement.attr('src');
-            
+
             // Check if the video source matches the one in pathArray
             if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
                 // Run your code here if the conditions are met
                 var videoPath = videoPathFromElement;
                 var video = $('<video controls class="video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_insta').html(video);
-               
+
             }
-            else{
-           
+            else {
+
                 var videoElement = $('#mediaContainervideo_insta video');
-                var videoPath = videoElement.attr('src');               
+                var videoPath = videoElement.attr('src');
                 var video = $('<video controls class="video_preview_inst w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_insta').html('');
 
@@ -1135,47 +1136,47 @@ $(document).ready(function () {
 
 
             }
-        }else{
-               
+        } else {
+
             var videoElement = $('#mediaContainervideo_youpost video');
-    
-            if (videoElement.length > 0) {            
+
+            if (videoElement.length > 0) {
                 var videoPath = videoElement.attr('src');
                 pathArray.push(videoPath);
-    
-            } 
+
+            }
             if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
-              
+
                 // var videoPath = videoElement.attr('src');
                 var videoPath = pathArray[0];
                 var video = $('<video controls class="video_preview_inst  w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-                $('#mediaContainervideo_inst').html(video);            
-                pathArray.length = 0; 
+                $('#mediaContainervideo_inst').html(video);
+                pathArray.length = 0;
             }
-            
+
         }
 
     });
 
-    $('li[section="twitter"]').on('click', function() {
+    $('li[section="twitter"]').on('click', function () {
 
         var videoElement = $('#mediaContainervideo_twitter video');
 
         if (videoElement.length > 0) {
             var videoPathFromElement = videoElement.attr('src');
-            
+
             // Check if the video source matches the one in pathArray
             if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
                 // Run your code here if the conditions are met
                 var videoPath = videoPathFromElement;
                 var video = $('<video controls class="video_preview_twitter w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_twitter').html(video);
-               
+
             }
-            else{
-           
+            else {
+
                 var videoElement = $('#mediaContainervideo_twitter video');
-                var videoPath = videoElement.attr('src');               
+                var videoPath = videoElement.attr('src');
                 var video = $('<video controls class="video_preview_twitter w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_twitter').html('');
 
@@ -1184,48 +1185,48 @@ $(document).ready(function () {
 
 
             }
-        }else{
-               
+        } else {
+
             var videoElement = $('#mediaContainervideo_youpost video');
-    
-            if (videoElement.length > 0) {            
+
+            if (videoElement.length > 0) {
                 var videoPath = videoElement.attr('src');
                 pathArray.push(videoPath);
-    
-            } 
+
+            }
             if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
-              
+
                 // var videoPath = videoElement.attr('src');
                 var videoPath = pathArray[0];
                 var video = $('<video controls class="video_preview_twitter  w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-                $('#mediaContainervideo_twitter').html(video);            
-                pathArray.length = 0; 
+                $('#mediaContainervideo_twitter').html(video);
+                pathArray.length = 0;
             }
-            
+
         }
 
     });
 
 
-    $('li[section="linkedin"]').on('click', function() {
+    $('li[section="linkedin"]').on('click', function () {
 
         var videoElement = $('#mediaContainervideo_link video');
 
         if (videoElement.length > 0) {
             var videoPathFromElement = videoElement.attr('src');
-            
+
             // Check if the video source matches the one in pathArray
             if (pathArray && pathArray.length > 0 && videoPathFromElement === pathArray[0]) {
                 // Run your code here if the conditions are met
                 var videoPath = videoPathFromElement;
                 var video = $('<video controls class="video_preview_link w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_link').html(video);
-               
+
             }
-            else{
-           
+            else {
+
                 var videoElement = $('#mediaContainervideo_link video');
-                var videoPath = videoElement.attr('src');               
+                var videoPath = videoElement.attr('src');
                 var video = $('<video controls class="video_preview_link w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
                 $('#mediaContainervideo_link').html('');
 
@@ -1234,24 +1235,24 @@ $(document).ready(function () {
 
 
             }
-        }else{
-               
+        } else {
+
             var videoElement = $('#mediaContainervideo_youpost video');
-    
-            if (videoElement.length > 0) {            
+
+            if (videoElement.length > 0) {
                 var videoPath = videoElement.attr('src');
                 pathArray.push(videoPath);
-    
-            } 
+
+            }
             if (pathArray && pathArray.length > 0 && videoElement.length > 0) {
-              
+
                 // var videoPath = videoElement.attr('src');
                 var videoPath = pathArray[0];
                 var video = $('<video controls class="video_preview_link  w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
-                $('#mediaContainervideo_link').html(video);            
-                pathArray.length = 0; 
+                $('#mediaContainervideo_link').html(video);
+                pathArray.length = 0;
             }
-            
+
         }
 
     });
@@ -1264,7 +1265,7 @@ $(document).ready(function () {
         var videoPath = 'content_media/' + path;
         pathArray.length = 0;
         pathArray.push(videoPath);
-       
+
 
         // Create new video elements for each platform and set their sources
         var video_youpost = $('<video controls class="w-100" loading="lazy" autoplay="autoplay">').attr('src', videoPath);
@@ -1717,19 +1718,19 @@ $(document).ready(function () {
                     $("#image_or_video_linkedin").parent().append(img_con);
                     $("#image_or_videofb").parent().append(img_con);
 
-                }else if (socialicon == 'image_or_videofb') {
+                } else if (socialicon == 'image_or_videofb') {
                     $("#image_or_videofb").parent().find('.cross_img_con_video').remove();
                     $("#image_or_videofb").parent().append(img_con);
 
-                }else if (socialicon == 'image_or_video_insta') {
+                } else if (socialicon == 'image_or_video_insta') {
                     $("#image_or_video_insta").parent().find('.cross_img_con_video').remove();
                     $("#image_or_video_insta").parent().append(img_con);
 
-                }else if (socialicon == 'image_or_video_twiter') {
+                } else if (socialicon == 'image_or_video_twiter') {
                     $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();
                     $("#image_or_video_twiter").parent().append(img_con);
 
-                }else if (socialicon == 'image_or_video_linkedin') {
+                } else if (socialicon == 'image_or_video_linkedin') {
                     $("#image_or_video_linkedin").parent().find('.cross_img_con_video').remove();
                     $("#image_or_video_linkedin").parent().append(img_con);
 
@@ -1877,55 +1878,55 @@ $(document).ready(function () {
         var socialicon = $(this).attr('id');
 
         var closestFieldset = $(this).closest('fieldset');
-        
+
         var divsWithClass = closestFieldset.find('div.image_div_twi');
-    
-      
+
+
         var imgCount = divsWithClass.find('img').length;
         if (imgCount >= 4) {
             // Display an error message
             $('#file_error_twiiter').removeClass('d-none').text('Error: Image count exceeds the limit of twitter(4 or fewer allowed).');
-                       
+
             return;
-        }        
-        var file = e.target.files[0];    
+        }
+        var file = e.target.files[0];
         var mediaType = file.type.split('/')[0];
         if (mediaType === 'image') {
-        function getImageDimensions(file) {
-            return new Promise((resolve) => {
-                var img = new Image();
-                var width = 0;
-                var height = 0;
+            function getImageDimensions(file) {
+                return new Promise((resolve) => {
+                    var img = new Image();
+                    var width = 0;
+                    var height = 0;
 
-                img.onload = function () {
-                    width = this.width;
-                    height = this.height;
-                    resolve({ width, height });
-                };
-                img.src = URL.createObjectURL(file);
-            });
-        }
-        getImageDimensions(file)
-        .then(({ width, height }) => {
-            if (width < 350 || height < 350) {
-                toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
-                return;
+                    img.onload = function () {
+                        width = this.width;
+                        height = this.height;
+                        resolve({ width, height });
+                    };
+                    img.src = URL.createObjectURL(file);
+                });
             }
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var mediaType = file.type.split('/')[0];
-                validateFileImageVideo(file, socialicon);
-            };
-            reader.readAsDataURL(file);
-        })
-        .catch(error => {
-            // Handle errors if any
-            console.error('Error getting image dimensions:', error);
-        });
-    }else{
+            getImageDimensions(file)
+                .then(({ width, height }) => {
+                    if (width < 350 || height < 350) {
+                        toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
+                        return;
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var mediaType = file.type.split('/')[0];
+                        validateFileImageVideo(file, socialicon);
+                    };
+                    reader.readAsDataURL(file);
+                })
+                .catch(error => {
+                    // Handle errors if any
+                    console.error('Error getting image dimensions:', error);
+                });
+        } else {
 
-        validateFileImageVideo(file, socialicon);
-    }
+            validateFileImageVideo(file, socialicon);
+        }
 
         var fileInput = $(this);
         fileInput.val('');
@@ -1938,16 +1939,16 @@ $(document).ready(function () {
         var file = e.target.files[0];
 
 
-            if ($("li[section='twitter']").length > 0) {
-                var imgCount = $('.image_div_twi').find('img').length;
-                if (imgCount >= 4) {
-                    // Display an error message
-                    $('#file_error_youpost').removeClass('d-none').text('Error: Image count exceeds the limit of twitter(4 or fewer allowed).');
-                     return;
-                }   
-
-               
+        if ($("li[section='twitter']").length > 0) {
+            var imgCount = $('.image_div_twi').find('img').length;
+            if (imgCount >= 4) {
+                // Display an error message
+                $('#file_error_youpost').removeClass('d-none').text('Error: Image count exceeds the limit of twitter(4 or fewer allowed).');
+                return;
             }
+
+
+        }
 
         // var randomDelay = Math.floor(Math.random() * (5000 - 500 + 1)) + 500; // Random delay between 1 and 5 seconds
         // setTimeout(function() {
@@ -1961,39 +1962,39 @@ $(document).ready(function () {
 
         var mediaType = file.type.split('/')[0];
         if (mediaType === 'image') {
-        function getImageDimensions(file) {
-            return new Promise((resolve) => {
-                var img = new Image();
-                var width = 0;
-                var height = 0;
-                img.onload = function () {
-                    width = this.width;
-                    height = this.height;
-                    resolve({ width, height });
-                };
-                img.src = URL.createObjectURL(file);
-            });
-        }
-        getImageDimensions(file)
-        .then(({ width, height }) => {
-            if (width < 350 || height < 350) {
-                toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
-                return;
+            function getImageDimensions(file) {
+                return new Promise((resolve) => {
+                    var img = new Image();
+                    var width = 0;
+                    var height = 0;
+                    img.onload = function () {
+                        width = this.width;
+                        height = this.height;
+                        resolve({ width, height });
+                    };
+                    img.src = URL.createObjectURL(file);
+                });
             }
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var mediaType = file.type.split('/')[0];
-                validateFileImageVideo(file, socialicon);
-            };
-            reader.readAsDataURL(file);
-        })
-        .catch(error => {
-            // Handle errors if any
-            console.error('Error getting image dimensions:', error);
-        });
-    }else{
-        validateFileImageVideo(file, socialicon);
-    }
+            getImageDimensions(file)
+                .then(({ width, height }) => {
+                    if (width < 350 || height < 350) {
+                        toastr.error('The media you have selected has very low resolution. Please choose media greater than 350px.', { timeOut: 5000 })
+                        return;
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var mediaType = file.type.split('/')[0];
+                        validateFileImageVideo(file, socialicon);
+                    };
+                    reader.readAsDataURL(file);
+                })
+                .catch(error => {
+                    // Handle errors if any
+                    console.error('Error getting image dimensions:', error);
+                });
+        } else {
+            validateFileImageVideo(file, socialicon);
+        }
         var fileInput = $(this);
         fileInput.val('');
         fileInput.val(fileInput.val());

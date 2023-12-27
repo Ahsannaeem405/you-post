@@ -312,7 +312,6 @@
     </div>
 
 
-
     <div class='add-organization' style="text-align:center; margin-top:
            30px" class="addOtherAccountMain" id="addAccount">
         <button class="btn add_account fw-bold"><img src="{{asset('images/plus-mark.png')}}">Add Organization</button>
@@ -333,7 +332,12 @@
 <!-- Include SweetAlert CSS and JS -->
 
 <script>
+
 $(document).ready(function() {
+        var message = "{{ session('new_user') }}";
+        if (message) {
+            localStorage.setItem('new_user', true);
+        }
     $(document).on('click', '.checkAndFocus', function() {
         event.preventDefault();
         var inputs = $(".all_social_platformCnt input");

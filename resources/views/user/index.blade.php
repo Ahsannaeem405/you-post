@@ -897,7 +897,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
-                                                                    <input type="hidden" class="emoji_show">
+                                                                    <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -994,7 +994,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
-                                                                    <input type="hidden" class="emoji_show">
+                                                                    <input type="hidden" class="emoji_show show_emoji">
                                                             </a>                                                            
                                                         </li>
                                                     </ul>
@@ -1119,7 +1119,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
-                                                                    <input type="hidden" class="emoji_show">
+                                                                    <input type="hidden" class="emoji_show show_emoji">
                                                             </a>                                                           
                                                         </li>
                                                     </ul>
@@ -1206,7 +1206,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
-                                                                    <input type="hidden" class="emoji_show">
+                                                                    <input type="hidden" class="emoji_show show_emoji">
                                                             </a>                                                            
                                                         </li>
                                                     </ul>
@@ -1290,7 +1290,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
-                                                                    <input type="hidden" class="emoji_show">
+                                                                    <input type="hidden" class="emoji_show show_emoji">
                                                             </a>                                                            
                                                         </li>
                                                     </ul>
