@@ -2147,6 +2147,77 @@ background-color: transparent !important;
 .inner_msg {
     position: relative
 
+}
+/*---------------------------------------------------- feddback div  sidebar------------------------------- */
+.FeedTool {
+    z-index: 9999;
+    left: 7%;
+    top: 42%;
+    position: fixed;
+    width: 25%;
+    background: #fff;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.Tool-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #ededed;
+}
+
+.Tool-body {
+    padding: 10px;
+}
+
+.setCancel {
+    display: block;
+    width: 100px;
+    padding: 10px;
+    text-align: center;
+    background: #aa94ff;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    float: right;
+    margin-top: 35px;
+}
+
+.setCancel:hover {
+    background: #856de1;
+}
+
+.closeicon {
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    height: 30px;
+    width: 30px;
+}
+.Tool-header::before {
+    content: "";
+    position: absolute;
+    left: -14px;
+    top: 101px;
+    border-top: 15px solid transparent;
+    border-right: 15px solid #fff;
+    border-left: none;
+    border-bottom: 15px solid transparent;
+}
+.head-cont{
+    display:flex;
+    gap:10px;
+}
+.head-cont img{
+    width: 22px;
+    height: 22px;
+}
+.Tool-content img{
+    width: 22px;
+    height: 22px;
+}
+/*------------------------------------------------ feddback div end  sidebar------------------------------- */
 
 
 /*calendar posts structure */

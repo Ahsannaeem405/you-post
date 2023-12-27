@@ -886,7 +886,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 //        return;
                 // }
                 if (textareaAttr == 'youpost') {
-                    var charCount = inputText.length;
+                    var charCount = Array.from(inputText).length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCountYou');
                 charCountElement.text(charCount);
                 var maxChars = 0;
@@ -916,7 +916,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                    $("#mypostresult_youpost").html(formattedText);
 
                 }else if (textareaAttr == 'fb') {
-                    var charCount = inputText.length;
+                    var charCount = Array.from(inputText).length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCountfb');
                 charCountElement.text(charCount);
                 var maxChars = 63206;
@@ -946,7 +946,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 var new_str= getString(selectedValues);
           }else if(textareaAttr == 'insta'){
           
-            var charCount = inputText.length;
+            var charCount = Array.from(inputText).length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCountinst');
                 charCountElement.text(charCount);
                 var maxChars = 2200;
@@ -965,7 +965,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
           }else if(textareaAttr == 'twitter'){
 
 
-            var charCount = inputText.length;
+            var charCount = Array.from(inputText).length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCounttwt');
                 charCountElement.text(charCount);
                 var maxChars = 280;
@@ -980,7 +980,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
           }else if(textareaAttr == 'linkedin'){
 
 
-            var charCount = inputText.length;
+            var charCount = Array.from(inputText).length;
                 var charCountElement = $($obj).closest('.form-group').find('.charCountlink');
                 charCountElement.text(charCount);
                 var maxChars = 3000;
