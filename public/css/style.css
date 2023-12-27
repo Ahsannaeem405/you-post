@@ -2151,7 +2151,7 @@ background-color: transparent !important;
 /*---------------------------------------------------- feddback div  sidebar------------------------------- */
 .FeedTool {
     z-index: 9999;
-    left: 7%;
+    left: 100px;
     top: 42%;
     position: fixed;
     width: 25%;

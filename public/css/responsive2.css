@@ -9,7 +9,12 @@
     li a .emojionearea.show_emoji  .emojionearea-picker.emojionearea-picker-position-top {
         right: -200px !important;
     }
-    
+          /*--------sidebar Feedback----- */
+   .FeedTool {
+    top: 25%;
+    width: 400px;
+    left:100px;
+}
 }
 
 
@@ -26,6 +31,12 @@
     li a .emojionearea.show_emoji  .emojionearea-picker.emojionearea-picker-position-top {
         right: -200px !important;
     }
+          /*--------sidebar Feedback----- */
+   .FeedTool {
+    top: 30%;
+    width: 400px;
+    left:100px;
+}
     
 }
 
@@ -67,6 +78,12 @@
     .emojionearea.emojionearea-inline {
         height: 28px !important;
     }
+       /*--------sidebar Feedback----- */
+   .FeedTool {
+    top: 35%;
+    width: 400px;
+    left:100px;
+}
 }
 
 /*18,9,23 */
@@ -198,6 +215,12 @@
     .create_preview_post .create_post .post_now_button .btn {
         font-size: 12px !important;
     }
+       /*--------sidebar Feedback----- */
+   .FeedTool {
+    top: 35%;
+    width: 400px;
+    left:100px;
+}
 
 }
 
@@ -288,6 +311,12 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 }
 li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
     height: 145px;
+}
+   /*--------sidebar Feedback----- */
+   .FeedTool {
+    top: 35%;
+    width: 400px;
+    left:100px;
 }
 }
 
@@ -580,6 +609,12 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
     height: 145px;
 }
+   /*--------sidebar Feedback----- */
+   .FeedTool {
+    top: 45%;
+    width: 300px !important;
+    left:100px;
+}
 }
 
 @media (min-width:577px) and (max-width:767px) {
@@ -837,6 +872,12 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 }
 .emojionearea.emojionearea-inline {
     height: 28px !important; 
+}
+   /*--------sidebar Feedback----- */
+   .FeedTool {
+    top: 42%;
+    width: 300px !important;
+    left:30px;
 }
     
 }
@@ -1261,7 +1302,12 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 .emojionearea.emojionearea-inline {
     height: 28px !important;
 }
-    
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+    top: 42%;
+    width: 272px !important;
+    left:30px;
+}
 }
 
 /* media  query */

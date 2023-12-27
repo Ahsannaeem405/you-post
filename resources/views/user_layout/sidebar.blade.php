@@ -959,7 +959,8 @@ $(document).on('mouseleave', '.side_bar', function() {
         $(".text").css('opacity', '1');
         $('.dropdown_btn, .mydropdown_menu').removeClass('show');
         $(this).find(".del_organize").addClass("d-none");
-        $(".FeedTool").css({"left": "7%", "transition": "0.5s ease"});
+
+        $(".FeedTool").css({"left": "100px", "transition": "0.5s ease"});
     }
 });
 $(document).on('mouseenter', '.side_bar', function() {
@@ -968,7 +969,7 @@ $(document).on('mouseenter', '.side_bar', function() {
     $(".text").css('opacity', '1');
     $(this).css('z-index', '9999');
     $(this).find(".del_organize").removeClass("d-none");
-    $(".FeedTool").css({"left":"17%", "transition": "0.5s ease"});
+    $(".FeedTool").css({"left":"270px", "transition": "0.5s ease"});
 });
 
 $(".toggle").click(function() {
