@@ -729,8 +729,7 @@ $('.createPostBtn').click(function() {
     //             }
     //         });
     //     } else {
-            window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId',
-        accountId);
+            window.location.href = "{{ route('user.create-posts', ['id' => ':accountId']) }}".replace(':accountId', accountId);
     // }
 
 });

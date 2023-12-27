@@ -143,7 +143,6 @@ class UserController extends Controller
     }
 
 
-
     public function getUpdatedPosts()
     {
         $posts = Post::select(
@@ -335,6 +334,7 @@ class UserController extends Controller
 
         }
     }
+
     public function account_post($id)
     {
         $user = User::find(auth()->user()->id);
@@ -342,7 +342,7 @@ class UserController extends Controller
             ->update([
                 'account_id' => $id,
             ]);
-            return redirect()->route('dashboard');
+        return redirect()->route('dashboard');
     }
 
     public function getTimeDifference($post)
@@ -402,7 +402,7 @@ class UserController extends Controller
                     $mediaDataInsta[] = $media;
                 }
 
-            } else if($req->media_type_instagram == 'video') {
+            } else if ($req->media_type_instagram == 'video') {
                 $mediaDataInsta[] = $req->inst_video;
             }
         }
@@ -456,34 +456,30 @@ class UserController extends Controller
             $tag = Str::lower($platforms[$i]) . '_tag';
             $mediatype = 'media_type_' . Str::lower($platforms[$i]);
             $media = null;
-            if ($platforms[$i] == 'Facebook'){
+            if ($platforms[$i] == 'Facebook') {
                 $media = implode(',', $mediaDatafb);
-                $content = $req->$content ;
+                $content = $req->$content;
                 if (!empty($suggestionsMap)) {
-                foreach ($suggestionsMap as $name => $data) {
-                    $id = $data['id'];
-                    $type = $data['type'];
-                    if ($type === 'facebook_content') {
-                        $content = str_replace($name, "@[$id]", $content);
+                    foreach ($suggestionsMap as $name => $data) {
+                        $id = $data['id'];
+                        $type = $data['type'];
+                        if ($type === 'facebook_content') {
+                            $content = str_replace($name, "@[$id]", $content);
+                        }
                     }
                 }
-            }
-         }
-            elseif ($platforms[$i] == 'Instagram'){
+            } elseif ($platforms[$i] == 'Instagram') {
                 $media = implode(',', $mediaDataInsta);
-                $content = $req->$content ;
-            }
-            elseif ($platforms[$i] == 'Linkedin'){
+                $content = $req->$content;
+            } elseif ($platforms[$i] == 'Linkedin') {
                 $media = implode(',', $mediaDataLinkedin);
-                $content = $req->$content ;
-            }
-            elseif ($platforms[$i] == 'Twitter'){
+                $content = $req->$content;
+            } elseif ($platforms[$i] == 'Twitter') {
                 $media = implode(',', $mediaDataTw);
-                $content = $req->$content ;
+                $content = $req->$content;
             }
 
             $post = new Post();
-
             $firstPostOrNot = Post::where('user_id', auth()->user()->id)->count();
             $scheduled = 'no';
             if ($firstPostOrNot > 0) {
@@ -491,16 +487,17 @@ class UserController extends Controller
             }
             $post->account_id = auth()->user()->account_id;
             $post->user_id = auth()->user()->id;
-            $post->content =$content;
+            $post->content = $content;
             $post->tag = $req->$tag ? '#' . implode(' #', $req->$tag) : '';
             $post->posted_at_moment = $req->posttime;
             $post->posted_at = date_format(new DateTime($req->time), "Y-m-d H:i");
             $post->plateform = $platforms[$i];
             $post->timezone = $req->timezone;
             $post->media = $media;
-            $post->suggestoins =json_encode($suggestionsMap);
+            $post->suggestoins = json_encode($suggestionsMap);
             $post->media_type = $req->$mediatype;
             $post->group_id = $group_id;
+            $post->account_info = Auth::user()->account;
             $post->save();
 
 
@@ -557,12 +554,7 @@ class UserController extends Controller
 
     public function get_event_detail(Request $request)
     {
-        // $post = Post::find($request->id);
-        // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
-        // $platformsName = $platforms->pluck('plateform')->toArray();
-        // $platforms = $platforms->groupBy('plateform');
 
-// dd($request->all());
         $parsedDate = Carbon::parse($request->date);
         $posts = Post::with('user')->where('account_id', '=', $request->id)->whereDate('posted_at', '=', $parsedDate->toDateString())->get();
 
@@ -577,17 +569,17 @@ class UserController extends Controller
 
                     if ($this->isPlatformValid($post->plateform) && $type === 'facebook_content') {
                         $post->content = str_replace("@[$id]", $replacement, $post->content);
-                    }elseif($this->isPlatformValid($post->plateform) && $type === 'instagram_content'){
+                    } elseif ($this->isPlatformValid($post->plateform) && $type === 'instagram_content') {
                         $post->content = str_replace("@[$id]", $replacement, $post->content);
-                    }elseif($this->isPlatformValid($post->plateform) && $type === 'twitter_content'){
+                    } elseif ($this->isPlatformValid($post->plateform) && $type === 'twitter_content') {
                         $post->content = str_replace("@[$id]", $replacement, $post->content);
-                    }elseif($this->isPlatformValid($post->plateform) && $type === 'linkedin_content'){
+                    } elseif ($this->isPlatformValid($post->plateform) && $type === 'linkedin_content') {
                         $post->content = str_replace("@[$id]", $replacement, $post->content);
                     }
                 }
             }
         }
-            // dd($posts);
+        // dd($posts);
         return view('user.component.allday_post', compact('posts'));
     }
 
@@ -596,16 +588,12 @@ class UserController extends Controller
         $validPlatforms = ['Facebook', 'Instagram', 'Twitter', 'Linkedin'];
         return in_array($platform, $validPlatforms);
     }
+
     public function get_single_detail(Request $request)
     {
 
         $post = Post::find($request->id);
-        // $platforms = Post::with('user')->where('group_id', $post->group_id)->get();
-        // $platformsName = $platforms->pluck('plateform')->toArray();
-        // $platforms = $platforms->groupBy('plateform');
         $suggestionsMap = json_decode($post->suggestoins, true);
-
-
         if (!empty($suggestionsMap)) {
             foreach ($suggestionsMap as $name => $data) {
                 $id = $data['id'];
@@ -614,11 +602,11 @@ class UserController extends Controller
 
                 if ($this->isPlatformValid($post->plateform) && $type === 'facebook_content') {
                     $post->content = str_replace("@[$id]", $replacement, $post->content);
-                }elseif($this->isPlatformValid($post->plateform) && $type === 'instagram_content'){
+                } elseif ($this->isPlatformValid($post->plateform) && $type === 'instagram_content') {
                     $post->content = str_replace("@[$id]", $replacement, $post->content);
-                }elseif($this->isPlatformValid($post->plateform) && $type === 'twitter_content'){
+                } elseif ($this->isPlatformValid($post->plateform) && $type === 'twitter_content') {
                     $post->content = str_replace("@[$id]", $replacement, $post->content);
-                }elseif($this->isPlatformValid($post->plateform) && $type === 'linkedin_content'){
+                } elseif ($this->isPlatformValid($post->plateform) && $type === 'linkedin_content') {
                     $post->content = str_replace("@[$id]", $replacement, $post->content);
                 }
             }
@@ -633,13 +621,14 @@ class UserController extends Controller
         $todayPost = Post::select('*')->where('user_id', auth()->id())->where('account_id', auth()->user()->account_id)->whereDate('posted_at', $date)->groupBy('group_id')->get();
         return view('user.component.ajax.todayEvents', compact('todayPost'));
     }
+
     public function get_suggestoins(Request $request)
     {
-    //    dd( $request->all());
+        //    dd( $request->all());
         $searchQuery = $request->input('searchQuery');
         $textAreaid = $request->input('textAreaid');
         $post = new Post();
-        $suggestions = $post->getSuggestions($searchQuery,$textAreaid);
+        $suggestions = $post->getSuggestions($searchQuery, $textAreaid);
 
         return response()->json(['suggestions' => $suggestions]);
     }
@@ -849,6 +838,7 @@ class UserController extends Controller
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, url('connect_facebook/calback'));
         $token = $accessToken->getValue();
 
+
         $account = Account::find(auth()->user()->account_id);
         $account->fb_access_token = $token;
         $account->update();
@@ -935,6 +925,7 @@ class UserController extends Controller
             'default_graph_version' => 'v12.0',
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
+
 
 
         $user = Account::find(auth()->user()->account_id);
@@ -1158,7 +1149,7 @@ class UserController extends Controller
         // foreach (array_keys($platform, $valueToRemove) as $key) {
         //     unset($platform[$key]);
         // }
-          $platforms = array_values(array_filter($platforms, function ($platform) use ($valueToRemove) {
+        $platforms = array_values(array_filter($platforms, function ($platform) use ($valueToRemove) {
             return $platform !== $valueToRemove;
         }));
 
@@ -1220,10 +1211,11 @@ class UserController extends Controller
 
 
     }
+
     public function deletePermanently()
     {
-   Auth::user()->delete();
-   return redirect('/');
+        Auth::user()->delete();
+        return redirect('/');
     }
 
     public function get_facebook_likes(Facebookservice $facebookservice, Instagramservice $instagramservice, TwitterService $twitterService)

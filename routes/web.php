@@ -73,7 +73,7 @@ Route::group(['middleware' => ['role'] ,'prefix' => 'admin'], function () {
     Route::get('profile', [AdminControoler::class, 'show_profile'])->name('admin.profile');
     Route:: get('update-user/', [AdminControoler::class, 'updateUser'])->name('update-user');
 
-    Route::get('sendlink/{user_id}', [AdminControoler::class, 'sendlink'])->name('password.sendlink');
+    Route::post('sendlink', [AdminControoler::class, 'sendlink'])->name('password.sendlink');
     Route::get('/reset-password/{token}', [AdminControoler::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [AdminControoler::class, 'reset'])->name('password.update');
 

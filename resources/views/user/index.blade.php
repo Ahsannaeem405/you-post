@@ -771,7 +771,7 @@ padding:16px !important;
 }
 .emojionearea .emojionearea-button{
     opacity: 1 !important;
-} 
+}
 .emojionearea.emoji_show  .emojionearea-button>div, .emojionearea .emojionearea-picker .emojionearea-wrapper:after{
 background-image:url('{{ asset('images/emo.png') }}') !important;
 background-size:cover;
@@ -784,7 +784,7 @@ background-position:100% 100% !important;
     right: 2%;
     width: 32px;
     border:none;
-    -webkit-box-shadow:none; 
+    -webkit-box-shadow:none;
      box-shadow:none;
      background:none;
 
@@ -869,7 +869,7 @@ background-position:100% 100% !important;
                                                         class="img-fluid" alt="" /></div>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
-                                            </div>    
+                                            </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
                                                     <ul class="p-0 d-flex gap-1" >
@@ -995,7 +995,7 @@ background-position:100% 100% !important;
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show">
-                                                            </a>                                                            
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1055,17 +1055,17 @@ background-position:100% 100% !important;
                                                  <img src="{{asset(auth()->user()->account->inst_image)}} "
                                                     class="rounded-circle" alt="" width="100" />
                                             </h3>
-                                               
+
                                             </div>
-                                            
+
                                         </div>
-                                      
+
                                       <div class="">
                                                 <h5 class="mb-0 ">Insta username : {{auth()->user()->account->inst_name}}
                                                 </h5>
                                             </div>
                                         <div class="">
-                                               
+
                                                <h5 class="mb-0 "> Insta name : {{auth()->user()->account->inst_page_name}}
                                                </h5>
                                            </div>
@@ -1120,7 +1120,7 @@ background-position:100% 100% !important;
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show">
-                                                            </a>                                                           
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1207,7 +1207,7 @@ background-position:100% 100% !important;
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show">
-                                                            </a>                                                            
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1291,7 +1291,7 @@ background-position:100% 100% !important;
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show">
-                                                            </a>                                                            
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1453,7 +1453,7 @@ background-position:100% 100% !important;
                     <!-- salman popup end-->
 
 
-    
+
 
                 </form>
             </div>
@@ -1462,7 +1462,7 @@ background-position:100% 100% !important;
             <form action="{{ route('resheudle-post') }}" method="POST" enctype="multipart/form-data" id="reschudledForm">
                     @csrf
                     @method('Post')
-                    <!-- edit post schedule  --> 
+                    <!-- edit post schedule  -->
                     <div class="modal fade" id="SchedulePost" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
@@ -3060,7 +3060,7 @@ background-position:100% 100% !important;
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header success_modal_header ">
-                <h3 class="modal-title" id="exampleModalLabel">Give Feed Back</h3>
+                <h3 class="modal-title" id="exampleModalLabel">Give Feedback</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body pb-0 mb">
@@ -3086,7 +3086,7 @@ background-position:100% 100% !important;
                         </div>
                         {{-- <input type="file" name="image" accept="image/*"> --}}
                         <div class="my-4 text-center">
-                            <button type="submit" class="btn btn-primary">Send Feed Back</button>
+                            <button type="submit" class="btn btn-primary">Send Feedback</button>
                         </div>
                     </form>
                 </div>
@@ -3137,80 +3137,9 @@ function closeSidebar() {
 
 
 }
-$(document).ready(function() {
-    var isDetailVisible = false; // Initialize a flag to track visibility
-
-    // Add a click event handler to the todayEbents-list div
-    $(document).on('click', '.fb-post ', function() {
-        var id = $(this).data('id');
-        var $parentDiv = $(this).parent();
-
-        $.ajax({
-            type: "get",
-            url: "{{ url('get_single_detail') }}",
-            data: {
-                'id': id
-            },
-            success: function(response) {
-                if (!isDetailVisible) {
-                    // If the detail is not visible, show it and set the flag
-                    // var contentToAppend = $(".the_preview").html();
-                    $(".Today-post-detail").html('');
-                    $(".Today-post-detail").append(response);
-                    $(".Today-post-detail").show();
-                    $('.BackBtnCS').removeClass('d-none');
-                    $(".fb-post").css('display', 'none');
-
-                    $('html, body').animate({
-                        scrollTop: $parentDiv.offset().top
-                    }, 'slow');
-                } else {
-                    // If the detail is visible, hide it and reset the flag
-                    $(".Today-post-detail").hide();
-                    $(".fb-post").css('display', 'block');
-                }
-            }
-        });
-        // $(this).prependTo($parentDiv);
-    });
-
-});
 
 
-// $(document).ready(function() {
-//     var isDetailVisible = false;
 
-//     $(document).on('click', '.fb-post', function() {
-//         var $parentDiv = $(this).closest('.calendar_overflo');
-//         var id = $(this).data('id');
-
-//         $.ajax({
-//             type: "get",
-//             url: "{{ url('get_single_detail') }}",
-//             data: {
-//                 'id': id
-//             },
-//             success: function(response) {
-//                 if (!isDetailVisible) {
-//                     $(".Today-post-detail").html('');
-//                     $(".Today-post-detail").append(response);
-//                     $(".Today-post-detail").show();
-//                     $('.BackBtnCS').removeClass('d-none');
-//                     $(".fb-post").css('display', 'none');
-
-//                     $('html, body').animate({
-//                         scrollTop: $parentDiv.offset().top
-//                     }, 'slow');
-//                 } else {
-//                     $(".Today-post-detail").hide();
-//                     $(".fb-post").css('display', 'block');
-//                 }
-//             }
-//         });
-
-//         $(this).prependTo($parentDiv); // Moves clicked element to the top of its parent
-//     });
-// });
 
 
 $(document).on('click', '.BackBtnCS', function(){
@@ -3219,32 +3148,6 @@ $(document).on('click', '.BackBtnCS', function(){
             $('.BackBtnCS').addClass('d-none');
         });
 
-// $(document).on('click', '.fb-post ', function() {
-//         var id = $(this).data('id');
-
-//         $.ajax({
-//             type: "get",
-//             url: "{{ url('get_single_detail') }}",
-//             data: {
-//                 'id': id
-//             },
-//             success: function(response) {
-//                 if (!isDetailVisible) {
-//                     // If the detail is not visible, show it and set the flag
-//                     // var contentToAppend = $(".the_preview").html();
-//                     $(".Today-post-detail").html('');
-//                     $(".Today-post-detail").append(response);
-//                     $(".Today-post-detail").show();
-
-//                     $(".fb-post").css('display', 'none');
-//                 } else {
-//                     // If the detail is visible, hide it and reset the flag
-//                     $(".Today-post-detail").hide();
-//                     $(".fb-post").css('display', 'block');
-//                 }
-//             }
-//         });
-//     });
 
     $(document).ready(function() {
         var isDetailVisible = false; // Initialize a flag to track visibility
@@ -3310,22 +3213,22 @@ $(document).on('click', '.BackBtnCS', function(){
             $("#myDiv").on("input", function(){
                 // Get the current content of the div
                 var divContent = $(this).text();
-                
+
                 // Update the value of the textarea with the div content
                 // new code
                 // end new code
                 $("#facebook_content").val(divContent);
                 $("#facebook_content").trigger("keyup");
-               
+
 
             });
-        
+
 
 
 
         $('.div_text').each(function() {
         const textarea = $(this);
-       
+
         const dropdown = textarea.parent().find('.dropdown-content-search');
         let currentSearchString = '';
         var delayTimer;
@@ -3358,8 +3261,8 @@ $(document).on('click', '.BackBtnCS', function(){
                 method: 'POST',
                 data: { searchQuery: searchString,textAreaid:textAreaid },
                 success: function(response) {
-                    
-                    
+
+
                     const suggestionsObject = response.suggestions;
 
                     if (suggestionsObject && Object.keys(suggestionsObject).length > 0) {
@@ -3372,7 +3275,7 @@ $(document).on('click', '.BackBtnCS', function(){
                     } else {
                         dropdown.css('display', 'none');
                     }
-                                                        
+
                 },
                 error: function(error) {
                     console.error(error);
@@ -3391,7 +3294,7 @@ $(document).on('click', '.BackBtnCS', function(){
 
     $('.mention').each(function() {
         const textarea = $(this);
-       
+
         const dropdown = textarea.parent().find('.dropdown-content-search');
         let currentSearchString = '';
         var delayTimer;
@@ -3399,7 +3302,7 @@ $(document).on('click', '.BackBtnCS', function(){
             const textAreaid=   $(this).attr('id');
             const text = textarea.val();
             const atIndex = text.lastIndexOf('@');
-           
+
             clearTimeout(delayTimer);
 
 
@@ -3419,8 +3322,8 @@ $(document).on('click', '.BackBtnCS', function(){
                 method: 'POST',
                 data: { searchQuery: searchString,textAreaid:textAreaid },
                 success: function(response) {
-                    
-                    
+
+
                     const suggestionsObject = response.suggestions;
 
                     if (suggestionsObject && Object.keys(suggestionsObject).length > 0) {
@@ -3433,7 +3336,7 @@ $(document).on('click', '.BackBtnCS', function(){
                     } else {
                         dropdown.css('display', 'none');
                     }
-                                                        
+
                 },
                 error: function(error) {
                     console.error(error);
@@ -3479,34 +3382,34 @@ $(document).on('click', '.BackBtnCS', function(){
         const currentText_div = textarea_div.text();
         const atIndex_div = currentText_div.lastIndexOf('@');
 
-        
+
 
         // new code end
 
         const newText = currentText.slice(0, atIndex) + coloredSuggestionText + ' ' + currentText.slice(
-            atIndex + suggestionText.length + 1);            
+            atIndex + suggestionText.length + 1);
         textarea.val(newText);
 
         // const coloredSuggestionText = `<span style='color: blue;'>${suggestionText}</span>`;
-        $('#' + textArea_id).trigger('keyup');    
+        $('#' + textArea_id).trigger('keyup');
                     var currentValue = $('#' + textArea_id).val();
                     var updatedValue = currentValue.replace(/<span[^>]*>|<\/span>/g, '');
                     $('#' + textArea_id).val(updatedValue);
 
 
-                    
-                            
+
+
                             $(this).parent().css('display', 'none');
                             suggestionsMap[suggestionText] = {
                                 id: suggestionId,
                                 type: suggestionType
-                            };      
-                           console.log(suggestionsMap);     
+                            };
+                           console.log(suggestionsMap);
 
                         //    new cocde
                 const coloredSuggestionText_div = `<span class="suggestion suggestion_clr" >${suggestionText}</span>`;
                 const newText_div = currentText.slice(0, atIndex_div) + coloredSuggestionText_div + ' ' + currentText_div.slice(
-                    atIndex_div + suggestionText.length + 1);            
+                    atIndex_div + suggestionText.length + 1);
                     textarea_div.html(newText_div);
 
 
@@ -4062,9 +3965,9 @@ function openEventModal(year, month, day) {
 </script>
 <script>
 function populateOptions(selectId, start, end, step) {
-    
+
     const select = document.getElementById(selectId);
-    
+
     while (select.options.length > 0) {
     select.remove(0);
 }
@@ -4092,7 +3995,7 @@ populateOptions("hour", (currentHour%12 || 12), 12, 1);
         populateOptions("hour",1,12, 1);
 
     }
-    
+
 }
 // Populate minute options (00 to 59)
 populateOptions("minute", currentMinute, 59, 1);

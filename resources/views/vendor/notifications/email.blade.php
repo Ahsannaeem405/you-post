@@ -31,7 +31,7 @@
                                             </div>
                                             <div align="center" style="padding-right:0px;padding-left:0px">
                                             <img align="center" alt="Image" border="0"
-                                                    src=""
+                                                    src="{{asset('images/YouPost_Logo.png')}}"
                                                     title="Image" width="149" class="CToWUd" data-bit="iit">
                                                 <div style="font-size:1px;line-height:25px">&nbsp;</div>
 

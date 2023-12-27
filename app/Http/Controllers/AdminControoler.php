@@ -75,17 +75,13 @@ class AdminControoler extends Controller
 
     }
 
-    public function sendlink($user_id)
+    public function sendlink(Request $request)
     {
 
-        $user = User::find($user_id);
+        $user = User::find($request->user_id);
         if ($user) {
-            // Generate a password reset token for the user
             $token = Password::getRepository()->create($user);
-            // dd([$token, $user]);
-            // Send the password reset email to the user
             $user->sendPasswordResetNotification($token);
-
             return response()->json(['message' => 'Password reset link sent successfully.']);
         } else {
             return response()->json(['error' => 'User not found.'], 404);
