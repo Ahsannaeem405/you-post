@@ -481,6 +481,9 @@ $(document).ready(function () {
         });
         $('.emoji_show').emojioneArea({
             pickerPosition: "top",
+            click: function (editor, event) {
+               
+                },
         });
         $('.emoji_show').on('change', function () {
             var selectedEmoji = $(this).val();

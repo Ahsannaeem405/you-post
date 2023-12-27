@@ -864,7 +864,7 @@ body.dark .home .text {
 
 </nav>
 <!-- end large screen side bar -->
-<div class="FeedTool ">
+<div class="FeedTool d-none">
     <div class="InnerTool">
         <div class="Tool-header">
             <div class="head-cont"> <img src="{{asset('images/staricon.png')}}" class=""/><h5 class="Tool-title">FeedBack Zone</h5><img src="{{asset('images/staricon.png')}}" class=""/></div>
