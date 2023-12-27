@@ -481,7 +481,13 @@ $(document).ready(function () {
         });
         $('.emoji_show').emojioneArea({
             pickerPosition: "top",
+<<<<<<< Updated upstream
         
+=======
+            click: function (editor, event) {
+
+                },
+>>>>>>> Stashed changes
         });
         $('.emoji_show').on('change', function () {
             var selectedEmoji = $(this).val();
@@ -759,7 +765,7 @@ $(document).ready(function () {
                 appendVideo(file, socialicon);
 
             } else {
-                toastr.error("Can't post video.Required 4:5 or 1:1 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 })
+                toastr.error("Can't post video.Required 4:5 or 1:1 or 16:9 ratio video.", 'Sorry', { timeOut: 5000 });
                 return false;
 
             }
