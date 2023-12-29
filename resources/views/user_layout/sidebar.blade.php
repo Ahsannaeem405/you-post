@@ -867,7 +867,7 @@ body.dark .home .text {
 <div class="FeedTool d-none">
     <div class="InnerTool">
         <div class="Tool-header">
-            <div class="head-cont"> <img src="{{asset('images/staricon.png')}}" class=""/><h5 class="Tool-title">FeedBack Zone</h5><img src="{{asset('images/staricon.png')}}" class=""/></div>
+            <div class="head-cont"> <img src="{{asset('images/staricon.png')}}" class=""/><h5 class="Tool-title">Feedback Zone</h5><img src="{{asset('images/staricon.png')}}" class=""/></div>
             <button type="button" class="close closeicon" data-dismiss="FeedTool" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -904,7 +904,7 @@ body.dark .home .text {
                     <img src="{{asset('images/errrorpostsmsg.png')}}" alt="">
                 </div>
                 <div class="inner_msg">
-                    <h2 class="text-alert">Are you sure you want to delete your Organization?</h2>
+                    <h2 class="text-alert">Are you sure you want to delete your account?</h2>
                     <label class="text-delmsg">Type the word 'YES' to confirm</label>
                     <input type="text" class="form-control mt-3" id="inputText" autocomplete="off">
                 </div>

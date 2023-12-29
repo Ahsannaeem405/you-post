@@ -12,7 +12,7 @@ active
     margin-bottom: 2.2rem;
     border: none;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1); */
     min-height:135px;
   }
   .title_stats_count-inner h2{
@@ -45,10 +45,53 @@ active
     background: #648FFF;
   }
  /* Apply different background colors to each tile_stats_count */
-.tile_stats_count .title_stats_count-inner {
-  border: 1px solid #00CFE8;
+/* .title-wrap-s{
+  border:1px solid #000;
+  border-radius:10px;
+}
+.title-wrap-s .tile_stats_count:nth-child(1){
+border-right: 1px solid #000;
+border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(2){
+border-right: 1px solid #000;
+border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(3){
+border-right: 1px solid #000;
+border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(4){
+  border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(5){
+border-right: 1px solid #000;
+border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(6){
+border-right: 1px solid #000;
+border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(7){
+border-right: 1px solid #000;
+border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(8){
+  border-bottom: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(9){
+border-right: 1px solid #000;
 }
 
+.title-wrap-s .tile_stats_count:nth-child(10){
+border-right: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(11){
+border-right: 1px solid #000;
+}
+.title-wrap-s .tile_stats_count:nth-child(12){
+
+} */
 
 </style>
 
@@ -77,8 +120,8 @@ active
 
                 <div class="container">
                 <!-- top tiles -->
-                <div class="row">
-                        <div class="col-md-3 col-sm-6  tile_stats_count">
+                <div class="row title-wrap-s">
+                        <div class="col-md-3 col-sm-6  tile_stats_count ">
                             <div class="title_stats_count-inner">
                               <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/postusers.png')}}" alt="card-img" ></div>
                               <div class="count-content">

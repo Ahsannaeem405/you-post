@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@200;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -369,8 +378,6 @@ input field  */
     display: none;
 }
 
-}
-
 .form-control:focus {
     box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, .25) !important;
 }
@@ -378,6 +385,43 @@ input field  */
 .md-head {
     border: none;
 }
+/* -------modal style------ */
+
+.alert_generate {
+    text-align: center;
+}
+
+.text-alert {
+    color: #2F2F2F;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 10px;
+}
+
+.text-delmsg {
+    padding: 0px 5px 0px 5px;
+    left: 35px;
+    background: #fff;
+    top: 41px;
+    position: absolute;
+    color: #959595;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.inner_msg {
+    position: relative
+
+}
+/* -------modal style------ */
 /* .center-xy {
   position: absolute;
   top: 50%;
