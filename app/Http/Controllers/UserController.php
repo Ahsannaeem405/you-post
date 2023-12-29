@@ -133,7 +133,7 @@ class UserController extends Controller
         ];
 
         \Mail::to($recipients)->send(new \App\Mail\BugMail($details));
-        return redirect()->back()->with('message', 'Email sent successfully!');
+        return redirect()->back()->with('success', 'Email sent successfully!');
     }
 
 
