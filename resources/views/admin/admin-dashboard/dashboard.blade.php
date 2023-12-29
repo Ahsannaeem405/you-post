@@ -3,7 +3,7 @@
 active
 @endsection
 @section('Main-Container')
-
+<link rel="stylesheet" href="{{ asset('css/adminstyle.css') }}">
 <style>
   .title_stats_count-inner{
     display:flex;
@@ -44,54 +44,8 @@ active
   .modal-btn{
     background: #648FFF;
   }
- /* Apply different background colors to each tile_stats_count */
-/* .title-wrap-s{
-  border:1px solid #000;
-  border-radius:10px;
-}
-.title-wrap-s .tile_stats_count:nth-child(1){
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(2){
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(3){
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(4){
-  border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(5){
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(6){
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(7){
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(8){
-  border-bottom: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(9){
-border-right: 1px solid #000;
-}
 
-.title-wrap-s .tile_stats_count:nth-child(10){
-border-right: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(11){
-border-right: 1px solid #000;
-}
-.title-wrap-s .tile_stats_count:nth-child(12){
 
-} */
 
 </style>
 
