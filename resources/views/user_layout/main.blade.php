@@ -890,7 +890,10 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 var charCountElement = $($obj).closest('.form-group').find('.charCountYou');
                 charCountElement.text(charCount);
                 var maxChars = 0;
+                //             if (charCount === 0) {
+                //     $('.charCountfb, .charCountinst, .charCounttwt, .charCountlink').text(charCount + '/' + maxChars);
 
+                // }
             if ($("li[section='twitter']").length > 0) {
                 maxChars = 280;
                 $('#youpost_content').attr('maxlength', maxChars);

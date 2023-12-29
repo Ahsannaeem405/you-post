@@ -11,7 +11,7 @@
     }
           /*--------sidebar Feedback----- */
    .FeedTool {
-    top: 25%;
+    top: 315px;
     width: 400px;
     left:100px;
 }
@@ -33,7 +33,7 @@
     }
           /*--------sidebar Feedback----- */
    .FeedTool {
-    top: 30%;
+    top: 310px;
     width: 400px;
     left:100px;
 }
@@ -80,7 +80,7 @@
     }
        /*--------sidebar Feedback----- */
    .FeedTool {
-    top: 35%;
+    top: 310px;
     width: 400px;
     left:100px;
 }
@@ -215,12 +215,6 @@
     .create_preview_post .create_post .post_now_button .btn {
         font-size: 12px !important;
     }
-       /*--------sidebar Feedback----- */
-   .FeedTool {
-    top: 35%;
-    width: 400px;
-    left:100px;
-}
 
 }
 
@@ -268,7 +262,11 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 .emojionearea.emojionearea-inline {
     height: 28px !important;
 }
-
+.FeedTool {
+    top: 305px;
+    width: 400px;
+    left:100px;
+}
 }
 
 /* salman small break point only for calendar end */
@@ -314,7 +312,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 }
    /*--------sidebar Feedback----- */
    .FeedTool {
-    top: 35%;
+    top: 305px;
     width: 400px;
     left:100px;
 }
@@ -611,7 +609,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 }
    /*--------sidebar Feedback----- */
    .FeedTool {
-    top: 45%;
+    top: 305px;
     width: 300px !important;
     left:100px;
 }
@@ -875,7 +873,8 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 }
    /*--------sidebar Feedback----- */
    .FeedTool {
-    top: 42%;
+    display:none;
+    top: 305px;
     width: 300px !important;
     left:30px;
 }
@@ -1304,7 +1303,8 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 }
     /*--------sidebar Feedback----- */
     .FeedTool {
-    top: 42%;
+    display:none;
+    top: 305px;
     width: 272px !important;
     left:30px;
 }
