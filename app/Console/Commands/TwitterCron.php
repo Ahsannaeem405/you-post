@@ -30,27 +30,21 @@ class TwitterCron extends Command
      */
     public function handle()
     {
-
-
-        $get_post=Post::where('posted_at_moment','later')->where('plateform','Twitter')->get();
-
-        foreach($get_post as $row)
-        {
-            $now=now()->timezone($row->timezone);
-            $time=$now->format('Y-m-d H:i');
-            if($time>=$row->posted_at){
-                $run=new TwitterService();
-                $arr['post']=$row;
-                $result=$run->create_post($arr);
-                if($result['status']==true)
-                {
-                    $up=Post::find($row->id);
-                    $up->posted_at_moment='now';
+        $get_post = Post::where('posted_at_moment', 'later')->where('plateform', 'Twitter')->get();
+        foreach ($get_post as $row) {
+            $now = now()->timezone($row->timezone);
+            $time = $now->format('Y-m-d H:i');
+            if ($time >= $row->posted_at) {
+                $run = new TwitterService();
+                $arr['post'] = $row;
+                $result = $run->create_post($arr);
+                if ($result['status'] == true) {
+                    $up = Post::find($row->id);
+                    $up->posted_at_moment = 'now';
+                    $up->account_info = $up->account;
                     $up->update();
                 }
             }
-
-
         }
 
         return Command::SUCCESS;

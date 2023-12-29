@@ -22,7 +22,7 @@ class VerifyOtp
 
         // Check if the user's email is verified using your custom logic
         if ($user && !$user->isEmailVerified()) {
-            return redirect('otp-verify')->with('message', 'Please check your email for verification.');
+            return redirect('otp-verify')->with('error', 'Please check your email for verification.');
         }
 
         return $next($request);

@@ -182,8 +182,6 @@ class UserController extends Controller
 
     public function dashbaord2()
     {
-
-
         //linked in search user
 //        $accesstoken = auth()->user()->account->linkedin_accesstoken;
 //        $linkedin = Http::withHeaders([
@@ -290,14 +288,10 @@ class UserController extends Controller
 
                     // Calculate new dimensions for landscape-oriented images
                     $newHeight = $originalWidth / $desiredAspectRatio;
-                    $topPadding = ($originalHeight - $newHeight) / 2;
-                    $bottomPadding = $topPadding;
                     $newWidth = $originalWidth;
                 } else {
                     // Calculate new dimensions for portrait-oriented images
                     $newWidth = $originalHeight * $desiredAspectRatio;
-                    $leftPadding = ($originalWidth - $newWidth) / 2;
-                    $rightPadding = $leftPadding;
                     $newHeight = $originalHeight;
                 }
 
