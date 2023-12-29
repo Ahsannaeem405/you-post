@@ -1150,6 +1150,7 @@
                         },
                        data: {'user_id': userId},
                         success: function (response) {
+                        $('#editModal').modal('hide');
                          toastr.success(response.message);
                         },
                         error: function (error) {
@@ -1159,7 +1160,7 @@
                 });
 
                 // Handle click event for the edit link
-                $('.edit-link').click(function (e) {
+                $(document).on('click','.edit-link',function (e) {
                     e.preventDefault();
                     $('#errorText').text('');
                     $('#udpatebtn').prop('disabled', false);
@@ -1182,7 +1183,7 @@
                     });
                 });
 
-                $('.show-link').click(function (e) {
+                $(document).on('click','.show-link',function (e) {
 
                     e.preventDefault();
 
@@ -1258,59 +1259,5 @@
             </script>
 
 
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-            <script>
-                // document.querySelectorAll('.delete-item').forEach(deleteBtn => {
-
-                $('.delete-item').on('click', function (event) {
-                    event.preventDefault();
-
-                    // Get the delete URL from data-url attribute
-                    var deleteUrl = $(this).data('url');
-
-                    // Confirm deletion with SweetAlert
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: 'You won\'t be able to revert this!',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#3085d6',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then(function (result) {
-                        if (result.isConfirmed) {
-                            // If confirmed, make an AJAX request to delete the user
-                            $.ajax({
-                                url: deleteUrl,
-                                type: 'GET',
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                success: function (data) {
-                                    // Handle success, e.g., show success message
-                                    Swal.fire({
-                                        title: 'Deleted!',
-                                        text: 'User has been deleted.',
-                                        icon: 'success'
-                                    }).then(function () {
-                                        // Optionally, you can reload the page or update the UI
-                                        location.reload();
-                                    });
-                                },
-                                error: function (xhr, status, error) {
-                                    // Handle error, e.g., show error message
-                                    Swal.fire({
-                                        title: 'Error!',
-                                        text: 'Unable to delete user.',
-                                        icon: 'error'
-                                    });
-                                }
-                            });
-                        }
-                    });
-                });
-                // });
-            </script>
 
 @endsection

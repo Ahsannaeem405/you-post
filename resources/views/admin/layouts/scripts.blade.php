@@ -56,7 +56,7 @@
 <script>
   var quill = new Quill('#editor', {
     theme: 'snow',
-    
+
   });
 // var quill = new Quill('#editor', {
 //   modules: {
@@ -127,5 +127,61 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+            <script>
+
+
+                $(document).on('click','.delete-item', function (event) {
+                    event.preventDefault();
+
+                    // Get the delete URL from data-url attribute
+                    var deleteUrl = $(this).data('url');
+
+                    // Confirm deletion with SweetAlert
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: 'You won\'t be able to revert this!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then(function (result) {
+                        if (result.isConfirmed) {
+                            // If confirmed, make an AJAX request to delete the user
+                            $.ajax({
+                                url: deleteUrl,
+                                type: 'GET',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function (data) {
+                                    // Handle success, e.g., show success message
+                                    Swal.fire({
+                                        title: 'Deleted!',
+                                        text: 'User has been deleted.',
+                                        icon: 'success'
+                                    }).then(function () {
+                                        // Optionally, you can reload the page or update the UI
+                                        location.reload();
+                                    });
+                                },
+                                error: function (xhr, status, error) {
+                                    // Handle error, e.g., show error message
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Unable to delete user.',
+                                        icon: 'error'
+                                    });
+                                }
+                            });
+                        }
+                    });
+                });
+
+            </script>
 
 

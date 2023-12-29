@@ -904,7 +904,7 @@ body.dark .home .text {
                     <img src="{{asset('images/errrorpostsmsg.png')}}" alt="">
                 </div>
                 <div class="inner_msg">
-                    <h2 class="text-alert">Are you sure you want to delete your Organization?</h2>
+                    <h2 class="text-alert">Are you sure you want to delete your Account?</h2>
                     <label class="text-delmsg">Type the word 'YES' to confirm</label>
                     <input type="text" class="form-control mt-3" id="inputText" autocomplete="off">
                 </div>

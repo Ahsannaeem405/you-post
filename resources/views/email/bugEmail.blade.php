@@ -16,14 +16,12 @@
         <tr>
             <td
                 style="background-color: #F7F7F8;padding-top: 18px;padding-bottom: 18px;padding-left: 18px;padding-right: 18px; text-align:center;">
-                
-                @if (!empty($details['logPath']))
+
+
                 <img src="{{ $message->embed($details['logPath']) }}" alt="" width="50%">
-                 @else
-                 <img src="{{ $message->embed(public_path('images/YouPost_Logo.png')) }}" alt="" width="50%">
-                @endif
-                
-                
+
+
+
             </td>
         </tr>
         <tr>

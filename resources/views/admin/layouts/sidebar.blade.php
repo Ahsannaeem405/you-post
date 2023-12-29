@@ -142,58 +142,7 @@ button#removeStylesButton {
 }
 </style>
 
-<!-- <button id="open-sidebar">Open Sidebar</button>
-    <div id="sidebar mobile-sidebar">
-        <button id="close-sidebar">Close</button>
-        <div class="main-menu-content">
-        <div class="side-search-bar">
-        <input type="search" placeholder='Search files, Boards'>
-        <i class="feather icon-search"></i>
-        </div>
 
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-
-            <li class=" nav-item @yield('dashboard')">
-                <a href="{{url('/')}}">
-                    <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/project-icon.svg')}}" alt="card-img" ></span>
-                <span class="menu-title" data-i18n="Dashboard">Your Projects</span></a>
-            </li>
-            <li class=" nav-item @yield('adminview')">
-                <a href="">
-                <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/draft-icon.svg')}}" alt="card-img" ></span>
-                    <span class="menu-title" data-i18n="Admin">Drafts</span></a>
-            </li>
-            <li class=" nav-item @yield('trash')">
-                <a href="">
-                <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/draft-icon.svg')}}" alt="card-img" ></span>
-                    <span class="menu-title" data-i18n="Admin">Trash</span></a>
-            </li>
-            <li style='border-bottom: 1px solid white'>
-           </li>
-
-            {{-- <li class=" nav-item drop-btn" onclick="myFunction()">
-                <a href="#" >
-                <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/chapter-icon.svg')}}" alt="card-img" ></span>
-                    <span class="menu-title" data-i18n="Users">Chapters</span>
-                    <img class='sidebar-drop' src="{{asset('assets/images/writingapp/sidebar-arrow.svg')}}" alt="card-img" >
-                </a>
-
-            </li> --}}
-
-            <div class="drop">
-        <div id="myDrop" class="drop-content">
-            <a href="{{url('chapters')}}">Chapter# 1</a>
-            <a href="#">Chapter# 2</a>
-            <a href="#">Chapter# 3</a>
-            <a href="#">Chapter# 4</a>
-            <a href="#">Chapter# 5</a>
-        </div>
-        </div>
-
-
-        </ul>
-    </div>
-</div> -->
 
 
 
@@ -224,7 +173,7 @@ button#removeStylesButton {
                     <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/postmember.png')}}" alt="card-img" ></span>
                 <span class="menu-title" data-i18n="Dashboard">Users</span></a>
             </li>
-            @if(auth()->user()->type=="superAdmin")
+
 
             <li class=" nav-item @yield('admins')">
                 <a href="{{ route('admin.showAdmins') }}">
@@ -242,34 +191,8 @@ button#removeStylesButton {
                 <span class="menu-title" data-i18n="Dashboard">Add Admin</span></a>
             </li>
 
-            @endif
-            <!-- <li class=" nav-item @yield('adminview')">
-                <a href="">
-                <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/draft-icon.svg')}}" alt="card-img" ></span>
-                    <span class="menu-title" data-i18n="Admin">Drafts</span></a>
-            </li> -->
-            <!-- <li class=" nav-item @yield('trash')">
-                <a href="">
-                <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/draft-icon.svg')}}" alt="card-img" ></span>
-                    <span class="menu-title" data-i18n="Admin">Trash</span></a>
-            </li> -->
-            <!-- <li style='border-bottom: 1px solid white'> -->
-                <!-- <a href="{{url('employes')}}"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Admin">Drafts</span></a> -->
-            <!-- </li> -->
-            <!-- <li class=" nav-item @yield('employes')">
-                <a href="{{url('employes')}}">
-                <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/board-icon.svg')}}" alt="card-img" ></span>
-                    <span class="menu-title" data-i18n="Roles">Boards</span></a>
-            </li> -->
 
-            {{-- <li class=" nav-item drop-btn" onclick="myFunction()">
-                <a href="#" >
-                <span style='margin: 0 15px;'><img class='sidebar-img' src="{{asset('assets/images/writingapp/chapter-icon.svg')}}" alt="card-img" ></span>
-                    <span class="menu-title" data-i18n="Users">Chapters</span>
-                    <img class='sidebar-drop' src="{{asset('assets/images/writingapp/sidebar-arrow.svg')}}" alt="card-img" >
-                </a>
 
-            </li> --}}
 
             <div class="drop">
             <!-- <button onclick="myFunction()" class="drop-btn">Dropdown</button> -->
