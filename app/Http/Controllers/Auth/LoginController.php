@@ -48,7 +48,7 @@ class LoginController extends Controller
 
     public function login(Request $request){
 
-
+ 
         $request->validate([
             'email'=>'required',
             'password'=>'required',
@@ -129,7 +129,7 @@ class LoginController extends Controller
                         $newUser->markEmailAsVerified();
                     }
                     Auth::login($newUser);
-                    return redirect('index')->with('success-register', 'Login Successfully');
+                    return redirect('index')->with(['success-register' => 'Login Successfully', 'new_user' => $newUser->wasRecentlyCreated]);
                 }
             } catch (\Throwable $e) {
                 return redirect()->intended('/login')->with('error', $e->getMessage()) ;
@@ -167,7 +167,7 @@ class LoginController extends Controller
                         $newUser->markEmailAsVerified();
                     }
                 Auth::login($newUser);
-                return redirect('index')->with('success-register', 'Login Successfully');
+                return redirect('index')->with(['success-register' => 'Login Successfully', 'new_user' => $newUser->wasRecentlyCreated]);
             }
         } catch (\Throwable $e) {
 

@@ -861,21 +861,18 @@ function populateDropdownFromArray(selectId, optionsArray) {
             function updateDiv_other($obj) {
                 $('#file_error_all').addClass('d-none');
                    var inputText = $($obj).val();
-                   var formattedText = inputText.replace(/\n/g, '<br>');
-
+                   var formattedText = inputText.replace(/\n/g, '<br>'); 
                     $("#mypostresult_fb").empty().html( formattedText );
                     $("#mypostresult_insta").empty().html( formattedText);
                     $("#mypostresult_twitter").empty().html( formattedText);
                     $("#mypostresult_linkedin").empty().html( formattedText);
-
-
                     $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
                     $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);
+                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").trigger('keyup');
                 }
 
             function updateDiv($obj) {
 // alert(element.innerHTML);
-
                 $('#file_error_all').addClass('d-none');
                 var textareaAttr = $($obj).attr("attr_of_text_area");
                 var inputText = $($obj).val();
@@ -890,7 +887,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 var charCountElement = $($obj).closest('.form-group').find('.charCountYou');
                 charCountElement.text(charCount);
                 var maxChars = 0;
-
+        
             if ($("li[section='twitter']").length > 0) {
                 maxChars = 280;
                 $('#youpost_content').attr('maxlength', maxChars);

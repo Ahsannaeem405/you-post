@@ -435,7 +435,7 @@ padding-right:10px;
 }
 .dropdown-content-search{
     height: fit-content;
-    overflow: scroll;
+    /* overflow: scroll; */
     text-align: left;
     border-radius: 10px;
     width: 100%;
