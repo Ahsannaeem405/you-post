@@ -143,7 +143,7 @@ class AdminControoler extends Controller
         $currentAdmin = Auth::user();
 
         $admins = $this->user
-            ->whereRole('user')
+            ->whereRole('admin')
             ->where('id', '!=', $currentAdmin->id)
             ->withCount('accountList')
             ->orderBy('id', 'desc')
