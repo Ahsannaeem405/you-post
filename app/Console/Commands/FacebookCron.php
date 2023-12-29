@@ -49,6 +49,7 @@ class FacebookCron extends Command
                 {
                     $up=Post::find($row->id);
                     $up->posted_at_moment='now';
+                    $up->account_info=$up->account;
                     $up->update();
                 }
             }

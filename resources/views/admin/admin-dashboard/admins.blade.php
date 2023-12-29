@@ -848,9 +848,7 @@
 
             <script>
                 // Handle click event for the edit link
-                $('.edit-link').click(function (e) {
-
-
+                $(document).on('click','.edit-link',function (e) {
                     e.preventDefault();
                     $('#errorText').text('');
                     $('#udpatebtn').prop('disabled', false);
@@ -867,29 +865,11 @@
                             $('#edit_email').val(data.email);
                             $('#old_password').val(data.password);
                             $('#user_id').val(data.id);
-
-
                         }
                     });
                 });
 
-                $('.show-link').click(function (e) {
 
-                    e.preventDefault();
-
-                    // Get the record ID from the data attribute
-                    var recordId = $(this).data('record-id');
-
-                    // Fetch record data using AJAX
-                    $.ajax({
-                        url: '/admin/get-accounts/' + recordId, // Define a route to fetch record data
-                        method: 'GET',
-                        success: function (data) {
-                            $('.body-ac').empty().append(data);
-
-                        }
-                    });
-                });
 
                 // Handle form submission
                 $('#editForm').submit(function (e) {
@@ -947,33 +927,4 @@
                     });
                 });
             </script>
-
-
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-            <script>
-                document.querySelectorAll('.delete-item').forEach(deleteBtn => {
-                    deleteBtn.addEventListener('click', function (event) {
-                        event.preventDefault();
-
-                        const deleteUrl = this.getAttribute('data-url');
-
-                        Swal.fire({
-                            title: 'Are you sure?',
-                            text: 'You won\'t be able to revert this!',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#d33',
-                            cancelButtonColor: '#3085d6',
-                            confirmButtonText: 'Yes, delete it!'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Redirect to the delete URL
-                                window.location.href = deleteUrl;
-                            }
-                        });
-                    });
-                });
-            </script>
-
-@endsection()
+@endsection

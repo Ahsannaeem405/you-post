@@ -108,20 +108,16 @@ class UserController extends Controller
     public function report_bug(Request $request)
     {
         $request->validate([
-
             'subject' => 'required',
             'message' => 'required',
-
         ]);
         $imagePath = '';
-        $logPath = '';
+        $logPath = 'images/YouPost_Logo.png';
         if ($request->file('image')) {
-
             $file = $request->file('image');
             $filename = uniqid() . '.' . $file->getClientOriginalExtension();
             file_put_contents(public_path('images/' . $filename), file_get_contents($file));
             $imagePath = 'images/' . $filename;
-            $logPath = 'images/YouPost_Logo.png';
         }
         $details = [
             'title' => 'Mail from User',
@@ -131,11 +127,9 @@ class UserController extends Controller
             'logPath' => $logPath,
         ];
         $recipients = [
-
-            'raja.waleed21@gmail.com',
+            'rehmanahmad101@gmail.com',
             'michelle@roifirm.com',
             'umer@browntech.co',
-
         ];
 
         \Mail::to($recipients)->send(new \App\Mail\BugMail($details));
@@ -182,8 +176,6 @@ class UserController extends Controller
 
     public function dashbaord2()
     {
-
-
         //linked in search user
 //        $accesstoken = auth()->user()->account->linkedin_accesstoken;
 //        $linkedin = Http::withHeaders([
@@ -290,14 +282,10 @@ class UserController extends Controller
 
                     // Calculate new dimensions for landscape-oriented images
                     $newHeight = $originalWidth / $desiredAspectRatio;
-                    $topPadding = ($originalHeight - $newHeight) / 2;
-                    $bottomPadding = $topPadding;
                     $newWidth = $originalWidth;
                 } else {
                     // Calculate new dimensions for portrait-oriented images
                     $newWidth = $originalHeight * $desiredAspectRatio;
-                    $leftPadding = ($originalWidth - $newWidth) / 2;
-                    $rightPadding = $leftPadding;
                     $newHeight = $originalHeight;
                 }
 
@@ -925,7 +913,6 @@ class UserController extends Controller
             'default_graph_version' => 'v12.0',
         ]);
         $accessToken = $fb->getOAuth2Client()->getAccessTokenFromCode($request->code, $insta['redirect']);
-
 
 
         $user = Account::find(auth()->user()->account_id);

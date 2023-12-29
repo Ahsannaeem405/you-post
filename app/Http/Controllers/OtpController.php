@@ -8,9 +8,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerifyEmail;
-
-
-
+use Illuminate\Support\Str;
 
 
 class OtpController extends Controller
@@ -25,31 +23,31 @@ class OtpController extends Controller
 
         $user = Auth::user();
         $otp = rand(1000, 9999);
-        $timezone =  $user->timezone;
+        $timezone = $user->timezone;
         $nowInUserTimezone = Carbon::now($timezone);
         $otpExpiryTime = Carbon::createFromFormat('Y-m-d H:i:s', $user->otp_expiry, $timezone);
 
         if ($nowInUserTimezone < $otpExpiryTime) {
-            $expiryTimeWithThirtySeconds =(Carbon::now($timezone))->addSeconds(35);
+            $expiryTimeWithThirtySeconds = (Carbon::now($timezone))->addSeconds(35);
             $expiryTime = $user->otp_expiry;
         } else {
-                   $expiryTime = $nowInUserTimezone->addMinutes(5);
-                   $expiryTimeWithThirtySeconds =(Carbon::now($timezone))->addSeconds(35);
+            $expiryTime = $nowInUserTimezone->addMinutes(5);
+            $expiryTimeWithThirtySeconds = (Carbon::now($timezone))->addSeconds(35);
 
-                }
-         $user->update([
+        }
+        $user->update([
             'otp' => $otp,
             'otp_expiry' => $expiryTime,
             'resend_time' => $expiryTimeWithThirtySeconds,
         ]);
         $currentTime = now($timezone);
         $resendExpire = Carbon::createFromFormat('Y-m-d H:i:s', $user->resend_time, $timezone);
-       if ($currentTime > $resendExpire) {
+        if ($currentTime > $resendExpire) {
             $remainingTime = 0;
         } else {
             $timeDifference = $resendExpire->diffInSeconds($currentTime);
             $remainingTime = $timeDifference;
-                }
+        }
         $otpExpiryTime = Carbon::createFromFormat('Y-m-d H:i:s', $user->otp_expiry, $timezone);
         if ($currentTime > $otpExpiryTime) {
             $remainingTime_expire = true;
@@ -69,15 +67,14 @@ class OtpController extends Controller
     public function verifyOtp(Request $request)
     {
 
-          // Assuming you have a user instance
-                    $user = Auth::user();
+        // Assuming you have a user instance
+        $user = Auth::user();
 
-          // Mark the user's email as verified
-          $user->markEmailAsVerified();
+        // Mark the user's email as verified
+        $user->markEmailAsVerified();
 
-          // Redirect to a success page or wherever you want
-          return redirect()->route('dashboard')->with('message', 'OTP verified successfully.');
-
+        // Redirect to a success page or wherever you want
+        return redirect()->route('dashboard')->with('message', 'OTP verified successfully.');
 
 
     }
@@ -90,34 +87,34 @@ class OtpController extends Controller
     public function resendVerificationEmail(Request $request)
     {
 
-            $user = User::find(Auth::User()->id);
-            if (!$user) {
-                abort(404);
-            }
-            Mail::to($user->email)->send(new VerifyEmail($user));
-            return redirect()->route('verification.notice')->with('success', 'Email Sent successfully.');
+        $user = User::find(Auth::User()->id);
+        $user->token=Str::random(40);
+        if (!$user) {
+            abort(404);
+        }
+        Mail::to($user->email)->send(new VerifyEmail($user));
+        return redirect()->route('verification.notice')->with('success', 'Email Sent successfully.');
 
     }
 
     // app/Http/Controllers/VerificationController.php
 
-public function verifyEmail($userId, $token)
-{
-    $user = User::find($userId);
+    public function verifyEmail($userId, $token)
+    {
+        $user = User::find($userId);
 
-    if (!$user || $user->token !== $token) {
-        abort(404); // Handle invalid verification link
+        if (!$user || $user->token !== $token) {
+            abort(403); // Handle invalid verification link
+        }
+
+        // Mark the user as verified and clear the verification token
+        $user->email_verified_at = now();
+        $user->token = null;
+        $user->save();
+
+        // Redirect or respond as needed
+        return redirect()->route('index')->with(['message' => 'Email successfully verified.', 'new_user' => true]);
     }
-
-    // Mark the user as verified and clear the verification token
-    $user->email_verified_at = now();
-    $user->token = null;
-    $user->save();
-
-    // Redirect or respond as needed
-    return redirect()->route('index')->with(['message'=> 'Email successfully verified.','new_user'=>true]);
-}
-
 
 
 }

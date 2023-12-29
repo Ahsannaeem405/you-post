@@ -11,7 +11,7 @@
     }
           /*--------sidebar Feedback----- */
    .FeedTool {
-    top: 315px;
+    top: 296px;
     width: 400px;
     left:100px;
 }
@@ -37,7 +37,7 @@
     width: 400px;
     left:100px;
 }
-    
+
 }
 
 
@@ -281,7 +281,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
         display: none;
     }
     /* emojionerea */
-    
+
      .icon_buttons  ul .emojionearea {
         top: 0%;
     }
@@ -869,7 +869,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     width: 100%;
 }
 .emojionearea.emojionearea-inline {
-    height: 28px !important; 
+    height: 28px !important;
 }
    /*--------sidebar Feedback----- */
    .FeedTool {
@@ -878,7 +878,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     width: 300px !important;
     left:30px;
 }
-    
+
 }
 
 

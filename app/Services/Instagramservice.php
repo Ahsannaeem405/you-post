@@ -146,20 +146,20 @@ class Instagramservice
                 $username = $pageData['username'];
                 $name = $pageData['name'];
 
-                $profile_picture_url = $pageData['profile_picture_url'] ?? asset('assets/images/insta-default-image.png');                                                
+                $profile_picture_url = $pageData['profile_picture_url'] ?? asset('assets/images/insta-default-image.png');
                 $imageName = time() . '_' . uniqid();
                 $imagePath = "content_media/{$imageName}";
 
                  if (file_exists(public_path($imagePath))) {
                     unlink(public_path($imagePath));
                 }
-                $imageContents = file_get_contents($profile_picture_url); 
+                $imageContents = file_get_contents($profile_picture_url);
                 file_put_contents(public_path($imagePath), $imageContents);
                 return [
                     'username' => $username,
                     'name' => $name,
                     'profile_picture_url' => $profile_picture_url,
-                    'local_profile_image_path' => $imagePath, 
+                    'local_profile_image_path' => $imagePath,
                 ];
             } else {
                 return null; // Handle the case where the page is not found or other errors.
