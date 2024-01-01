@@ -329,7 +329,7 @@ body.dark .switch::before {
     width: calc(100% - 88px);
 }
 
-` .sideWidth {
+ .sideWidth {
     width: 250px !important;
     */ background-color: red;
 }
@@ -455,8 +455,39 @@ body.dark .home .text {
     transition: var(--tran-05);
 }
 /* ----------------------------------------end of .offcanvas-start ------------------------------------- */
+/* Feedback icon*/
+.thumb-up{
+    position:absolute;
+    top:10px;
+}
+.icon{
+    position:relative;
+}
+.disblenav{
+    opacity: 0.9; 
+    pointer-events: none; 
 
+}
+.stylelist{
+    color:#fff !important;
+}
+@keyframes colorAnimation {
+    0% {
+        background-color: var(--primary-color);
+    }
+    50% {
+        background-color: #856de1;
+    }
+    100% {
+        background-color: var(--primary-color);
+    }
+}
 
+.colorAnimation {
+    animation: colorAnimation infinite;
+    animation-duration: 3s; /* You can adjust the duration as needed */
+}
+/* Feedback icon*/
 @media (max-width: 768px) {
     .content {
         width: 100%;
@@ -540,6 +571,7 @@ body.dark .home .text {
     }
 
 }
+
 </style>
 <!-- ------------------------------------------- offcanvas sidebar ----------------------------------------- -->
 <i class="fa-solid fa-bars d-lg-none d-sm-block" id="offcanvas-btn" type="button" data-bs-toggle="offcanvas"
@@ -669,7 +701,7 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink_test"><i class="bi bi-megaphone icon"></i>
+                <li><a href="javascript:void(0)" id="bugReportLink_test"><i class="bi bi-chat-square-dots icon"></i>
                         <span class="text nav-text">Give Feedback</span></a></li>
 
 
@@ -834,9 +866,8 @@ body.dark .home .text {
                             Profile</span></a></li>
 
 
-                <li class="feedbacklist"><a href="javascript:void(0)" id="bugReportLink"><i
-                            class="bi bi-megaphone icon"></i>
-                        <span class="text nav-text">Give Feedback</span></a>
+                <li class="feedbacklist"><a href="javascript:void(0)" id="bugReportLink"><i class="bi bi-chat-square-dots icon feedbackuser"></i>
+                        <span class="text nav-text feedbackuser">Give Feedback</span></a>
                 </li>
 
                 <!-- <i class="fa-solid fa-virus bxs-bug icon"> -->
@@ -925,12 +956,23 @@ body.dark .home .text {
 $(document).ready(function() {
     var new_user = localStorage.getItem('new_user');
     if(new_user){
-        $('.FeedTool').removeClass('d-none');
+        $('.FeedTool').removeClass('d-none').css({"left":"270px", "transition": "0.5s ease"});
         localStorage.removeItem('new_user');
+        $(".side_bar").addClass('sideWidth').removeClass('close');
+        $(".feedbacklist").addClass("colorAnimation");
+        $("#bugReportLink .feedbackuser").addClass("stylelist");
+        $('.toggle').addClass('disblenav');
+
+        
     }
     // Close the FeedTool when the close button is clicked
     $('.FeedTool .close').on('click', function() {
-        $('.FeedTool').hide();
+        $('.FeedTool').addClass('d-none');
+        $(".side_bar").toggleClass('close').css({"width": "88px", "z-index": "1"});
+        $(".side_bar").removeClass('sideWidth');
+        $(".feedbacklist").removeClass("colorAnimation");
+        $("#bugReportLink .feedbackuser").removeClass("stylelist");
+        $('.toggle').removeClass('disblenav');
     });
 });
 </script>
@@ -959,6 +1001,10 @@ var mouseLeaveEnabled = true; // Flag to enable/disable mouseleave function
 
 $(document).on('mouseleave', '.side_bar', function() {
     if (mouseLeaveEnabled) {
+        if ($('.FeedTool').hasClass('d-none')) {
+}else{
+    return;
+}
         $(this).addClass('close');
         $(this).css('width', '88px');
         $(this).css('z-index', '1');
@@ -970,7 +1016,10 @@ $(document).on('mouseleave', '.side_bar', function() {
     }
 });
 $(document).on('mouseenter', '.side_bar', function() {
-
+    if ($('.FeedTool').hasClass('d-none')) {
+} else{
+    return;
+}
     $(this).css('width', '250px');
     $(".text").css('opacity', '1');
     $(this).css('z-index', '9999');
@@ -981,7 +1030,6 @@ $(document).on('mouseenter', '.side_bar', function() {
 $(".toggle").click(function() {
     $(".side_bar").toggleClass('sideWidth');
     $(".test_con").toggleClass('test_con1');
-
     // Toggle the mouseLeaveEnabled flag
     mouseLeaveEnabled = !mouseLeaveEnabled;
 });
