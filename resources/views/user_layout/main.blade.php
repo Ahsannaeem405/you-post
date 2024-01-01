@@ -24,7 +24,7 @@
     <!--FontAwesome CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-          <link href="https://fonts.cdnfonts.com/css/arial" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/arial" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <!--Normalize v8.0.1 CSS FILE-->
@@ -125,8 +125,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
 <script>
-        const suggestionsMap = {};
-        let  pathArray = [];
+    const suggestionsMap = {};
+    let pathArray = [];
 
     var owl = $('.owl-carousel');
     var pignoseCalendar = null;
@@ -169,37 +169,37 @@
                 let new_date_time = new Date(selectedDate);
 
                 if (datew < new_date_time) {
-                populateOptions("hour", 1, 12, 1);
-                populateOptions("minute", 0, 59, 1);
-                const amPmSelect = document.getElementById("ampm");
-                amPmSelect.disabled = false;
+                    populateOptions("hour", 1, 12, 1);
+                    populateOptions("minute", 0, 59, 1);
+                    const amPmSelect = document.getElementById("ampm");
+                    amPmSelect.disabled = false;
                 } else {
-                var currentTime = new Date();
-                var currentHour = currentTime.getHours();
-                var currentMinute = currentTime.getMinutes();
-                var currentMonth = currentTime.getMonth() + 1; // Adding 1 to get the actual month
+                    var currentTime = new Date();
+                    var currentHour = currentTime.getHours();
+                    var currentMinute = currentTime.getMinutes();
+                    var currentMonth = currentTime.getMonth() + 1; // Adding 1 to get the actual month
 
-                const amPmSelect = document.getElementById("ampm");
-                amPmSelect.disabled = true;
+                    const amPmSelect = document.getElementById("ampm");
+                    amPmSelect.disabled = true;
 
-                // Check if the current month is less than the selected month
-                if (currentMonth < new_date_time.getMonth() + 1) {
-                populateOptions("hour", 1, 12, 1);
-                populateOptions("minute", 0, 59, 1);
-                amPmSelect.disabled = false;
-                } else {
-                populateOptions("hour", (currentHour % 12 || 12), 12, 1);
+                    // Check if the current month is less than the selected month
+                    if (currentMonth < new_date_time.getMonth() + 1) {
+                        populateOptions("hour", 1, 12, 1);
+                        populateOptions("minute", 0, 59, 1);
+                        amPmSelect.disabled = false;
+                    } else {
+                        populateOptions("hour", (currentHour % 12 || 12), 12, 1);
 
-                if (currentHour < 12 || (currentHour === 11 && currentMinute === 59)) {
-                $(amPmSelect).val('AM');
-                amPmSelect.disabled = false;
-                } else {
-                $(amPmSelect).val('PM');
-                amPmSelect.disabled = true;
-                }
+                        if (currentHour < 12 || (currentHour === 11 && currentMinute === 59)) {
+                            $(amPmSelect).val('AM');
+                            amPmSelect.disabled = false;
+                        } else {
+                            $(amPmSelect).val('PM');
+                            amPmSelect.disabled = true;
+                        }
 
-                populateOptions("minute", currentMinute, 59, 1);
-                }
+                        populateOptions("minute", currentMinute, 59, 1);
+                    }
                 }
 
             },
@@ -208,164 +208,162 @@
     });
 </script>
 <script>
-   $('#SchedulePost').on('show.bs.modal', function (event) {
+    $('#SchedulePost').on('show.bs.modal', function (event) {
 
-    var button = $(event.relatedTarget);
-    var dataId = button.data('id');
-    var posted_at = button.data('posted_at');
-    $("#post_id").val(dataId);
+        var button = $(event.relatedTarget);
+        var dataId = button.data('id');
+        var posted_at = button.data('posted_at');
+        $("#post_id").val(dataId);
 
-    // Parse the posted_at string using moment
-    var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');
-    var datePart = dateTime.format('YYYY-MM-DD');
-    // Set the initial value of the postdate input
-    $('#postdate').val(datePart);
-var today = moment().format('YYYY-MM-DD');
+        // Parse the posted_at string using moment
+        var dateTime = moment(posted_at, 'YYYY-MM-DD HH:mm:ss');
+        var datePart = dateTime.format('YYYY-MM-DD');
+        // Set the initial value of the postdate input
+        $('#postdate').val(datePart);
+        var today = moment().format('YYYY-MM-DD');
 
-    // Initialize pignoseCalendar
-    var pignoseCalendar_TEST = $('.calendar_reschedule').pignoseCalendar({
-        select: function (date, context) {
-            // Update the value of the postdate input when a date is selected
-            selectedDate = date;
-            var dateString = selectedDate;
-            var dateObject = new Date(dateString);
-            var formattedDate = moment(dateObject).format('YYYY-MM-DD');
-            $('#postdate').val(formattedDate);
+        // Initialize pignoseCalendar
+        var pignoseCalendar_TEST = $('.calendar_reschedule').pignoseCalendar({
+            select: function (date, context) {
+                // Update the value of the postdate input when a date is selected
+                selectedDate = date;
+                var dateString = selectedDate;
+                var dateObject = new Date(dateString);
+                var formattedDate = moment(dateObject).format('YYYY-MM-DD');
+                $('#postdate').val(formattedDate);
 
-            settime_reshedule(dateTime);
+                settime_reshedule(dateTime);
 
-            // reshedule post edit
-            let datew = new Date();
+                // reshedule post edit
+                let datew = new Date();
                 let new_date_time = new Date(selectedDate);
 
                 if (datew < new_date_time) {
-                populateDropdown("hour_schedule", 1, 12, 1);
-                populateDropdown("minute_schedule", 0, 59, 1);
-                const amPmSelect = document.getElementById("ampm_schedule");
-                amPmSelect.disabled = false;
+                    populateDropdown("hour_schedule", 1, 12, 1);
+                    populateDropdown("minute_schedule", 0, 59, 1);
+                    const amPmSelect = document.getElementById("ampm_schedule");
+                    amPmSelect.disabled = false;
                 } else {
-                var currentTime = new Date();
-                var currentHour = currentTime.getHours();
-                var currentMinute = currentTime.getMinutes();
-                var currentMonth = currentTime.getMonth() + 1; // Adding 1 to get the actual month
+                    var currentTime = new Date();
+                    var currentHour = currentTime.getHours();
+                    var currentMinute = currentTime.getMinutes();
+                    var currentMonth = currentTime.getMonth() + 1; // Adding 1 to get the actual month
 
-                const amPmSelect = document.getElementById("ampm_schedule");
-                amPmSelect.disabled = true;
+                    const amPmSelect = document.getElementById("ampm_schedule");
+                    amPmSelect.disabled = true;
 
-                // Check if the current month is less than the selected month
-                if (currentMonth < new_date_time.getMonth() + 1) {
-                populateDropdown("hour_schedule", 1, 12, 1);
-                populateDropdown("minute_schedule", 0, 59, 1);
-                amPmSelect.disabled = false;
-                } else {
-                    populateDropdown("hour_schedule", (currentHour % 12 || 12), 12, 1);
+                    // Check if the current month is less than the selected month
+                    if (currentMonth < new_date_time.getMonth() + 1) {
+                        populateDropdown("hour_schedule", 1, 12, 1);
+                        populateDropdown("minute_schedule", 0, 59, 1);
+                        amPmSelect.disabled = false;
+                    } else {
+                        populateDropdown("hour_schedule", (currentHour % 12 || 12), 12, 1);
 
-                if (currentHour < 12 || (currentHour === 11 && currentMinute === 59)) {
-                $(amPmSelect).val('AM');
-                amPmSelect.disabled = false;
-                } else {
-                $(amPmSelect).val('PM');
-                amPmSelect.disabled = true;
+                        if (currentHour < 12 || (currentHour === 11 && currentMinute === 59)) {
+                            $(amPmSelect).val('AM');
+                            amPmSelect.disabled = false;
+                        } else {
+                            $(amPmSelect).val('PM');
+                            amPmSelect.disabled = true;
+                        }
+
+                        populateDropdown("minute_schedule", currentMinute, 59, 1);
+                    }
                 }
+                // reshedule post edit
+            },
+            minDate: today
+        });
 
-                populateDropdown("minute_schedule", currentMinute, 59, 1);
-                }
-                }
-            // reshedule post edit
-        },
-        minDate: today
+        // Call settime_reshedule once when the modal is shown
+        settime_reshedule(dateTime);
     });
 
-    // Call settime_reshedule once when the modal is shown
-    settime_reshedule(dateTime);
-});
 
+    function settime_reshedule(dateTime) {
+        var currentTime = new Date();
+        var currentHour = currentTime.getHours();
+        var currentMinute = currentTime.getMinutes();
+        if (currentHour < 12 || (currentHour === 11 && currentMinute === 59)) {
+            populateDropdown("hour_schedule", (currentHour % 12 || 12), 12, 1);
+        } else {
+            if (currentHour > 12) {
+                populateDropdown("hour_schedule", (currentHour % 12 || 12), 12, 1);
+            } else {
+                populateDropdown("hour_schedule", 1, 12, 1);
 
-function settime_reshedule(dateTime) {
-    var currentTime = new Date();
-    var currentHour = currentTime.getHours();
-    var currentMinute = currentTime.getMinutes();
-    if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
-    populateDropdown("hour_schedule", (currentHour%12 || 12), 12, 1);
-    }else{
-    if ( currentHour>12){
-        populateDropdown("hour_schedule", (currentHour%12 || 12), 12, 1);
-    }
-    else{
-        populateDropdown("hour_schedule",1,12, 1);
+            }
 
-    }
-
-     }
-    populateDropdown("minute_schedule", currentMinute, 59, 1);
-    const amPmSelect = document.getElementById("ampm_schedule");
-    if (currentHour < 12 ) {
-        amPmSelect.value = "AM";
-        // amPmSelect.disabled = true;
-    } else {
-        amPmSelect.value = "PM";
-        amPmSelect.disabled = true;
-    }
-
-
-}
-$("#ampm_schedule").on("change", function() {
-    var ampmValue = $(this).val();
-    var currentDate = new Date();
-    let start = 1;
-    let currentHour = currentDate.getHours();
-    let current_minutes = currentDate.getMinutes();
-    if( currentHour >=0 && currentHour<12){
-        if( ampmValue ==='AM'){
-            start = (currentHour)%12||12;
-        }else{
-            start =1;
-            current_minutes =0;
         }
-    }else{
-        start = currentHour%12||12;
+        populateDropdown("minute_schedule", currentMinute, 59, 1);
+        const amPmSelect = document.getElementById("ampm_schedule");
+        if (currentHour < 12) {
+            amPmSelect.value = "AM";
+            // amPmSelect.disabled = true;
+        } else {
+            amPmSelect.value = "PM";
+            amPmSelect.disabled = true;
+        }
+
+
     }
-    if(selectedDate.getDate() !== currentDate.getDate()){
-        start=1;
-    }
-    current_minutes=(selectedDate === currentDate)? current_minutes:0;
-    populateDropdown("hour_schedule", start, 12, 1);
-    populateDropdown("minute_schedule",current_minutes ,59, 1);
 
-});
-// Dsiable Edit Post Time
+    $("#ampm_schedule").on("change", function () {
+        var ampmValue = $(this).val();
+        var currentDate = new Date();
+        let start = 1;
+        let currentHour = currentDate.getHours();
+        let current_minutes = currentDate.getMinutes();
+        if (currentHour >= 0 && currentHour < 12) {
+            if (ampmValue === 'AM') {
+                start = (currentHour) % 12 || 12;
+            } else {
+                start = 1;
+                current_minutes = 0;
+            }
+        } else {
+            start = currentHour % 12 || 12;
+        }
+        if (selectedDate.getDate() !== currentDate.getDate()) {
+            start = 1;
+        }
+        current_minutes = (selectedDate === currentDate) ? current_minutes : 0;
+        populateDropdown("hour_schedule", start, 12, 1);
+        populateDropdown("minute_schedule", current_minutes, 59, 1);
 
-function populateDropdown(selectId, start, end) {
-    const selectElement = $('#' + selectId);
-    selectElement.empty();
-
-    for (let i = start; i <= end; i++) {
-        selectElement.append($('<option>', {
-            value: i,
-            text: i.toString().padStart(2, '0')
-        }));
-    }
-}
-
-function populateDropdownFromArray(selectId, optionsArray) {
-    const selectElement = $('#' + selectId);
-    selectElement.empty();
-
-    optionsArray.forEach((option, index) => {
-        selectElement.append($('<option>', {
-            value: index,
-            text: option
-        }));
     });
-}
+
+    // Dsiable Edit Post Time
+
+    function populateDropdown(selectId, start, end) {
+        const selectElement = $('#' + selectId);
+        selectElement.empty();
+
+        for (let i = start; i <= end; i++) {
+            selectElement.append($('<option>', {
+                value: i,
+                text: i.toString().padStart(2, '0')
+            }));
+        }
+    }
+
+    function populateDropdownFromArray(selectId, optionsArray) {
+        const selectElement = $('#' + selectId);
+        selectElement.empty();
+
+        optionsArray.forEach((option, index) => {
+            selectElement.append($('<option>', {
+                value: index,
+                text: option
+            }));
+        });
+    }
 
 
-// $(document).on('change', '.select_time_schedule', function () {
-//         settime();
-//     });
-
-
-
+    // $(document).on('change', '.select_time_schedule', function () {
+    //         settime();
+    //     });
 
 
     // var myForm = document.getElementById('reschudledForm'); // Assuming you have a form with the ID 'myForm'
@@ -450,7 +448,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
             minTime: "00:00",
             maxTime: "24:00",
             defaultTimedEventDuration: '01:00:00',
-            allDay:false,
+            allDay: false,
             slotDuration: '01:00',
             events: @json(collect($allPosts)),
             views: {
@@ -460,7 +458,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
             },
             views: {
                 agendaWeek: {
-                    columnFormat: 'ddd\nD' ,
+                    columnFormat: 'ddd\nD',
                     slotLabelFormat: [
                         'h A',
                         'h A',
@@ -477,7 +475,16 @@ function populateDropdownFromArray(selectId, optionsArray) {
             eventClick: function (event, jsEvent, view) {
                 var id = event.ac_id;
                 var date = event.event_date;
-                get_detail(date,id);
+                var dateObject = new Date(date);
+                var dayOfWeek = dateObject.getDay();
+
+                // Define an array of days to map the numeric day to its name
+                var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+                // Get the day name from the array using the dayOfWeek value
+                var dayName = daysOfWeek[dayOfWeek];
+                $('.date-day').text(dayName);
+                get_detail(date, id);
 
             },
             dayRender: function (date, cell) {
@@ -500,7 +507,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                     date: newDate,
                     select: function (date, context) {
                         selectedDate = date;
-                         // store selected date value in variable
+                        // store selected date value in variable
                         settime();
 
 
@@ -509,16 +516,16 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('#TimetoUploadPost').modal('show');
                 settime();
             },
-            eventRender: function (event, element,view) {
+            eventRender: function (event, element, view) {
                 var date = event.start.format('YYYY-MM-DD'); //for acieve full background on date event cell
                 // view.el.find('.fc-day[data-date="' + date + '"]').addClass('custom-event-bg');//for acieve full background on date event cell
                 if (view.type === 'month') {
-        // Apply the background color only in the month view
-        view.el.find('.fc-day[data-date="' + date + '"]').addClass('custom-event-bg');
-    } else {
-        // Remove the background color in other views
-        view.el.find('.fc-day[data-date="' + date + '"]').removeClass('custom-event-bg');
-    }
+                    // Apply the background color only in the month view
+                    view.el.find('.fc-day[data-date="' + date + '"]').addClass('custom-event-bg');
+                } else {
+                    // Remove the background color in other views
+                    view.el.find('.fc-day[data-date="' + date + '"]').removeClass('custom-event-bg');
+                }
                 element.find('.fc-title').html(event.title);
                 element.find('.fc-time').text(''); // remove start time
                 if (event.imageUrl) {
@@ -583,7 +590,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
     $(document).ready(function () {
         setTimeout(function () {
             $('#postSuccessModal').modal('show')
-        },1500)
+        }, 1500)
 
     })
     @endif
@@ -598,7 +605,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
     @endforeach
     @endif
 
-    function get_detail(date,id) {
+    function get_detail(date, id) {
         $.ajax({
             type: "get",
             url: "{{ url('get_event_detail') }}",
@@ -611,19 +618,19 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('.calendarmain').empty().append(response);
 
 
-    //             $('.calendarmain > .fb-post').each(function() {
+                //             $('.calendarmain > .fb-post').each(function() {
 
-    //     // Find each p inside the current div
-    //     $(this).find('.DetailText p').each(function() {
+                //     // Find each p inside the current div
+                //     $(this).find('.DetailText p').each(function() {
 
 
-    //         $(this).find('span').each(function() {
-    //             alert("HTML con p:", $(this).html());
-    //         // Replace the content of the current span
-    //         $(this).replaceWith('<span>waleed</span>');
-    //     });
-    //     });
-    // });
+                //         $(this).find('span').each(function() {
+                //             alert("HTML con p:", $(this).html());
+                //         // Replace the content of the current span
+                //         $(this).replaceWith('<span>waleed</span>');
+                //     });
+                //     });
+                // });
 
                 // $('.fc-popover').css('display', 'none');
 
@@ -634,7 +641,8 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 // $(".Today-post-detail").hide();
 
                 $('.calendar_overflo').css({
-                'display': 'block','width':'29.8%'});
+                    'display': 'block', 'width': '29.8%'
+                });
 
                 // for sidebar show calendar
 
@@ -642,14 +650,15 @@ function populateDropdownFromArray(selectId, optionsArray) {
                 $('.post-detail-tab li:first-child').find('a').addClass('active mytabactive');
                 $('.post-detail-tab-content div:first-child').addClass('show active');
                 checkScreenSize();
-                    // // move by click event
-                    // $('html, body').animate({
-                    //     scrollTop: $("#postManagerCalendar").offset().top
-                    // });
+                // // move by click event
+                // $('html, body').animate({
+                //     scrollTop: $("#postManagerCalendar").offset().top
+                // });
 
             }
         });
     }
+
     var isSidebarVisible = false; // Initialize a flag to track sidebar visibility
 
     // Check the screen size and show/hide the sidebar button
@@ -747,24 +756,18 @@ function populateDropdownFromArray(selectId, optionsArray) {
     });
 
 
-
     $(document).ready(function () {
 
 
-
         var link = $('#bugReportLink');
-        link.click(function() {
+        link.click(function () {
             $('#BugModal').modal('show')
         });
 
         var link = $('#bugReportLink_test');
-        link.click(function() {
+        link.click(function () {
             $('#BugModal').modal('show')
         });
-
-
-
-
 
 
         var authuser = "{{auth()->user()}}";
@@ -789,7 +792,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
                     success: function (response) {
 
                         // loadingModal.modal('hide');
-                         $('#instagram_pages_modal').modal('show');
+                        $('#instagram_pages_modal').modal('show');
 
                         $('.instapage_selection').empty().append(response);
                     }
@@ -816,183 +819,174 @@ function populateDropdownFromArray(selectId, optionsArray) {
 
 
 <script>
-        function getString($val){
+    function getString($val) {
 
         const colors = ['blue'];
-        var ne_va ="";
+        var ne_va = "";
         var selectedString = "";
 
-            if ($val) {
-                $.each($val, function(index, value) {
-                            selectedString += " #";
-                            selectedString += value;
-                           });
+        if ($val) {
+            $.each($val, function (index, value) {
+                selectedString += " #";
+                selectedString += value;
+            });
 
-            }
+        }
 
-            return ne_va =  selectedString;
-
-
-      }
-
-      function updatePreview_And_textArea(inputText,textareaAttr, existingTextFB) {
+        return ne_va = selectedString;
 
 
+    }
+
+    function updatePreview_And_textArea(inputText, textareaAttr, existingTextFB) {
 
 
-                if (textareaAttr === 'youpost') {
+        if (textareaAttr === 'youpost') {
 
-                var updatedText_fb =  existingTextFB +inputText ;
-
-
+            var updatedText_fb = existingTextFB + inputText;
 
 
-                $("#facebook_content").val(updatedText_fb);
-            }
+            $("#facebook_content").val(updatedText_fb);
+        }
 
 
+    }
 
 
+    function updateDiv_other($obj) {
+        $('#file_error_all').addClass('d-none');
+        var inputText = $($obj).val();
+        var formattedText = inputText.replace(/\n/g, '<br>');
+        $("#mypostresult_fb").empty().html(formattedText);
+        $("#mypostresult_insta").empty().html(formattedText);
+        $("#mypostresult_twitter").empty().html(formattedText);
+        $("#mypostresult_linkedin").empty().html(formattedText);
+        $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
+        $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);
+        $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").trigger('keyup');
+    }
 
-
-            }
-
-
-            function updateDiv_other($obj) {
-                $('#file_error_all').addClass('d-none');
-                   var inputText = $($obj).val();
-                   var formattedText = inputText.replace(/\n/g, '<br>'); 
-                    $("#mypostresult_fb").empty().html( formattedText );
-                    $("#mypostresult_insta").empty().html( formattedText);
-                    $("#mypostresult_twitter").empty().html( formattedText);
-                    $("#mypostresult_linkedin").empty().html( formattedText);
-                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val('');
-                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").val(inputText);
-                    $("#facebook_content, #instagram_content, #twitter_content, #linkedin_content").trigger('keyup');
-                }
-
-            function updateDiv($obj) {
+    function updateDiv($obj) {
 // alert(element.innerHTML);
-                $('#file_error_all').addClass('d-none');
-                var textareaAttr = $($obj).attr("attr_of_text_area");
-                var inputText = $($obj).val();
+        $('#file_error_all').addClass('d-none');
+        var textareaAttr = $($obj).attr("attr_of_text_area");
+        var inputText = $($obj).val();
 
-                var textareaId =$();
-                var lart= inputText.slice(-1);
-                // if(lart.trim() == ''){
-                //        return;
-                // }
-                if (textareaAttr == 'youpost') {
-                    var charCount = Array.from(inputText).length;
-                var charCountElement = $($obj).closest('.form-group').find('.charCountYou');
-                charCountElement.text(charCount);
-                var maxChars = 0;
-        
+        var textareaId = $();
+        var lart = inputText.slice(-1);
+        // if(lart.trim() == ''){
+        //        return;
+        // }
+        if (textareaAttr == 'youpost') {
+            var charCount = Array.from(inputText).length;
+            var charCountElement = $($obj).closest('.form-group').find('.charCountYou');
+            charCountElement.text(charCount);
+            var maxChars = 0;
+
             if ($("li[section='twitter']").length > 0) {
                 maxChars = 280;
                 $('#youpost_content').attr('maxlength', maxChars);
 
-            } else if ($("li[section='insta']").length > 0 ) {
+            } else if ($("li[section='insta']").length > 0) {
                 maxChars = 2200;
                 $('#youpost_content').attr('maxlength', maxChars);
 
 
-            } else if ($("li[section='linkedin']").length > 0 ) {
+            } else if ($("li[section='linkedin']").length > 0) {
                 maxChars = 3000;
                 $('#youpost_content').attr('maxlength', maxChars);
 
-            }else if ($("li[section='fb']").length > 0) {
+            } else if ($("li[section='fb']").length > 0) {
                 maxChars = 63206;
                 $('#youpost_content').attr('maxlength', maxChars);
 
             }
 
 
-                charCountElement.text(charCount + '/' + maxChars);
-                    var formattedText = inputText.replace(/\n/g, '<br>');
-                   $("#mypostresult_youpost").html(formattedText);
+            charCountElement.text(charCount + '/' + maxChars);
+            var formattedText = inputText.replace(/\n/g, '<br>');
+            $("#mypostresult_youpost").html(formattedText);
 
-                }else if (textareaAttr == 'fb') {
-                    var charCount = Array.from(inputText).length;
-                var charCountElement = $($obj).closest('.form-group').find('.charCountfb');
-                charCountElement.text(charCount);
-                var maxChars = 63206;
-                charCountElement.text(charCount + '/' + maxChars);
-
-                    var formattedText = inputText.replace(/\n/g, '<br>');
-
-                    for (var name in suggestionsMap) {
-                        if (suggestionsMap.hasOwnProperty(name)) {
-                            var data = suggestionsMap[name];
-                            var id = data.id;
-                            var type = data.type;
-
-                            if (type === 'myDiv') {
-                                // Replace matched text and change text color to blue
-                                formattedText = formattedText.replace(new RegExp(name, 'g'), '<span style="color: blue;">' + name + '</span>');
-                            }
-                        }
-                    }
-
-                   $("#mypostresult_fb").html(formattedText );
-
-
-                // $("#mypostresult_fb").empty().append(inputText) ;
-                 $("#mynameresult").empty().append(new_str) ;
-                var selectedValues = $('#facebook_tag').val();
-                var new_str= getString(selectedValues);
-          }else if(textareaAttr == 'insta'){
-          
+        } else if (textareaAttr == 'fb') {
             var charCount = Array.from(inputText).length;
-                var charCountElement = $($obj).closest('.form-group').find('.charCountinst');
-                charCountElement.text(charCount);
-                var maxChars = 2200;
-                charCountElement.text(charCount + '/' + maxChars);
+            var charCountElement = $($obj).closest('.form-group').find('.charCountfb');
+            charCountElement.text(charCount);
+            var maxChars = 63206;
+            charCountElement.text(charCount + '/' + maxChars);
 
+            var formattedText = inputText.replace(/\n/g, '<br>');
+
+            for (var name in suggestionsMap) {
+                if (suggestionsMap.hasOwnProperty(name)) {
+                    var data = suggestionsMap[name];
+                    var id = data.id;
+                    var type = data.type;
+
+                    if (type === 'myDiv') {
+                        // Replace matched text and change text color to blue
+                        formattedText = formattedText.replace(new RegExp(name, 'g'), '<span style="color: blue;">' + name + '</span>');
+                    }
+                }
+            }
+
+            $("#mypostresult_fb").html(formattedText);
+
+
+            // $("#mypostresult_fb").empty().append(inputText) ;
+            $("#mynameresult").empty().append(new_str);
+            var selectedValues = $('#facebook_tag').val();
+            var new_str = getString(selectedValues);
+        } else if (textareaAttr == 'insta') {
+
+            var charCount = Array.from(inputText).length;
+            var charCountElement = $($obj).closest('.form-group').find('.charCountinst');
+            charCountElement.text(charCount);
+            var maxChars = 2200;
+            charCountElement.text(charCount + '/' + maxChars);
 
 
             var selectedValues = $('#instagram_tag').val();
-            var new_str= getString(selectedValues);
+            var new_str = getString(selectedValues);
             var formattedText = inputText.replace(/\n/g, '<br>');
-                   $("#mypostresult_insta").html( formattedText );
+            $("#mypostresult_insta").html(formattedText);
             //  $("#mypostresult_insta").empty().append(inputText) ;
-               $("#mynameresult_insta").empty().append(new_str) ;
+            $("#mynameresult_insta").empty().append(new_str);
 
 
-          }else if(textareaAttr == 'twitter'){
+        } else if (textareaAttr == 'twitter') {
 
 
             var charCount = Array.from(inputText).length;
-                var charCountElement = $($obj).closest('.form-group').find('.charCounttwt');
-                charCountElement.text(charCount);
-                var maxChars = 280;
-                charCountElement.text(charCount + '/' + maxChars);
+            var charCountElement = $($obj).closest('.form-group').find('.charCounttwt');
+            charCountElement.text(charCount);
+            var maxChars = 280;
+            charCountElement.text(charCount + '/' + maxChars);
 
             var selectedValues = $('#twitter_tag').val();
-            var new_str= getString(selectedValues);
+            var new_str = getString(selectedValues);
             var formattedText = inputText.replace(/\n/g, '<br>');
-            $("#mypostresult_twitter").html( formattedText );
+            $("#mypostresult_twitter").html(formattedText);
             // $("#mypostresult_twitter").empty().append(inputText) ;
-               $("#mynameresult_twitter").empty().append(new_str) ;
-          }else if(textareaAttr == 'linkedin'){
+            $("#mynameresult_twitter").empty().append(new_str);
+        } else if (textareaAttr == 'linkedin') {
 
 
             var charCount = Array.from(inputText).length;
-                var charCountElement = $($obj).closest('.form-group').find('.charCountlink');
-                charCountElement.text(charCount);
-                var maxChars = 3000;
-                charCountElement.text(charCount + '/' + maxChars);
+            var charCountElement = $($obj).closest('.form-group').find('.charCountlink');
+            charCountElement.text(charCount);
+            var maxChars = 3000;
+            charCountElement.text(charCount + '/' + maxChars);
 
 
             var selectedValues = $('#linkedin_tag').val();
-            var new_str= getString(selectedValues);
+            var new_str = getString(selectedValues);
             var formattedText = inputText.replace(/\n/g, '<br>');
-            $("#mypostresult_linkedin").html( formattedText );
+            $("#mypostresult_linkedin").html(formattedText);
             // $("#mypostresult_linkedin").empty().append(inputText) ;
-               $("#mynameresult_linkedin").empty().append(new_str) ;
+            $("#mynameresult_linkedin").empty().append(new_str);
 
-          }
         }
+    }
 
     function showError(message) {
         // You can display the error message to the user, for example:
@@ -1067,6 +1061,7 @@ function populateDropdownFromArray(selectId, optionsArray) {
         });
 
     }
+
     // for facebook
 
     $('.selectmultiple1').change(function () {
@@ -1076,19 +1071,19 @@ function populateDropdownFromArray(selectId, optionsArray) {
         var selectedString = "";
 
         if (selectedValues) {
-            $.each(selectedValues, function(index, value) {
-                        selectedString += " #";
-                        selectedString += value;
-                    });
+            $.each(selectedValues, function (index, value) {
+                selectedString += " #";
+                selectedString += value;
+            });
             if (selectid == 'facebook_tag') {
 
 
-                var tex_cont= $('#facebook_content').val();
+                var tex_cont = $('#facebook_content').val();
                 // var new_cont= tex_cont +  selectedString;
-               $("#mypostresult_fb").empty().append(tex_cont) ;
-               $("#mynameresult").empty().append(selectedString) ;
-             }
-         }
+                $("#mypostresult_fb").empty().append(tex_cont);
+                $("#mynameresult").empty().append(selectedString);
+            }
+        }
 
     });
 
@@ -1098,39 +1093,38 @@ function populateDropdownFromArray(selectId, optionsArray) {
         var selectedValues = $(this).val();
         var selectedString = "";
 
-    if (selectedValues) {
+        if (selectedValues) {
 
-    $.each(selectedValues, function(index, value) {
+            $.each(selectedValues, function (index, value) {
                 selectedString += " #";
                 selectedString += value;
             });
 
-          if (selectid == 'instagram_tag') {
+            if (selectid == 'instagram_tag') {
 
-            var tex_cont= $('#instagram_content').val();
+                var tex_cont = $('#instagram_content').val();
 
-                $("#mypostresult_insta").empty().append(tex_cont) ;
-               $("#mynameresult_insta").empty().append(selectedString) ;
+                $("#mypostresult_insta").empty().append(tex_cont);
+                $("#mynameresult_insta").empty().append(selectedString);
 
 
+            } else if (selectid == 'twitter_tag') {
 
-          }else if (selectid == 'twitter_tag') {
+                var tex_cont = $('#twitter_content').val();
 
-            var tex_cont= $('#twitter_content').val();
+                $("#mypostresult_twitter").empty().append(tex_cont);
+                $("#mynameresult_twitter").empty().append(selectedString);
 
-                $("#mypostresult_twitter").empty().append(tex_cont) ;
-               $("#mynameresult_twitter").empty().append(selectedString) ;
+            } else if (selectid == 'linkedin_tag') {
+                var tex_cont = $('#linkedin_content').val();
 
-          }else  if (selectid == 'linkedin_tag') {
-            var tex_cont= $('#linkedin_content').val();
+                $("#mypostresult_linkedin").empty().append(tex_cont);
+                $("#mynameresult_linkedin").empty().append(selectedString);
+            }
 
-                $("#mypostresult_linkedin").empty().append(tex_cont) ;
-               $("#mynameresult_linkedin").empty().append(selectedString) ;
-          }
+        }
 
-}
-
-});
+    });
 
     $('.save_prompt').click(function () {
         var obj = $('.edit_promotedtext');
