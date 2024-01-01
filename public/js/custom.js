@@ -1037,7 +1037,6 @@ $(document).ready(function () {
         if (videoElement.length > 0) {
             var videoPathFromElement = videoElement.attr('src');
             pathArray.push(videoPathFromElement);
-
         }
     });
     $('li[section="fb"]').on('click', function () {

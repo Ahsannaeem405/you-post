@@ -790,6 +790,12 @@ $(document).ready(function() {
         // Enable or disable the delete button based on the validation result
         $deleteBtn.prop('disabled', !isInputValid);
     });
+    $('#delaccountModal').on('shown.bs.modal', function () {
+            // Set the input value to null when the modal is shown
+            $inputText.val(null);
+            // Disable the delete button initially when the modal is shown
+            $deleteBtn.prop('disabled', true);
+        });
 });
 </script>
 <script>

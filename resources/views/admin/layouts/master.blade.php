@@ -39,6 +39,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/pages/data-list-view.css')}}" type="text/css">
+   
 
     {{-- Users Table --}}
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/tables/ag-grid/ag-grid.css')}}">
