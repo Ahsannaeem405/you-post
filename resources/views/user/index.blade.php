@@ -1044,45 +1044,10 @@ background-position:100% 100% !important;
                                         @if(in_array(('Instagram'),auth()->user()->account->platforms))
                                         <fieldset class="wizard-fieldset insta">
                                         <div class="ml-2">
-                                        <span class="wizard-fieldset_edit">Edit</span> : <span
-                                                    class="wizard-fieldset_youpost">Instagram Content</span>
-
-                                            </div>
-                                    <!-- <div class="col-10">
-                                        <div class="d-flex show active gap-1 px-1">
-                                            <div class="show active">
-                                              <h3 class="mb-0 ">Profile Image
-                                                 <img src="{{asset(auth()->user()->account->inst_image)}} "
-                                                    class="rounded-circle" alt="" width="100" />
-                                            </h3>
+                                        <span class="wizard-fieldset_edit">Edit</span> : <span class="wizard-fieldset_youpost">Instagram</span>
 
                                             </div>
 
-                                        </div>
-
-                                      <div class="">
-                                                <h5 class="mb-0 ">Insta username : {{auth()->user()->account->inst_name}}
-                                                </h5>
-                                            </div>
-                                        <div class="">
-
-                                               <h5 class="mb-0 "> Insta name : {{auth()->user()->account->inst_page_name}}
-                                               </h5>
-                                           </div>
-                                    </div> -->
-
-                                            <!-- <div class="IG_social_main must_add_image ">
-                                                <div class="IG_main_card">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="IG_card_title">
-                                                            <p class="Inst_Media">Instagram is selected you must upload an
-                                                                media</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                            </div> -->
 
                                             <div class="form-group emoji_parent emoji_parent2 ">
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
@@ -1541,7 +1506,7 @@ background-position:100% 100% !important;
                             <div class="col-md-12">
                                 <div class="Mobcompny-title">
                                     <div class="w-50">
-                                        <h6 class="text-light">You Post</h6>
+                                        <h6 class="text-light">YouPost</h6>
                                     </div>
                                     <div class="w-50 Mobsocial-icon Mobsocial_icon d-none">
                                         <div><i class="fa-solid fa-plus text-light i_one"></i></div>

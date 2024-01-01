@@ -69,10 +69,8 @@ class AdminControoler extends Controller
 
     public function show_users()
     {
-
         $users = $this->user->whereRole('user')->withCount('accountList')->OrderBy('id', 'desc')->get();
         return view('admin.admin-dashboard.index', compact('users'));
-
     }
 
     public function sendlink(Request $request)

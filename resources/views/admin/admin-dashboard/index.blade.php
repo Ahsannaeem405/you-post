@@ -843,7 +843,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        {{$user->created_at->format('Y-m-d')}}
+                                                        {{$user->created_at->format('m-d-Y')}}
                                                     </td>
                                                     <td>
                                                         <div class="dropdown">
