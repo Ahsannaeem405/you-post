@@ -91,8 +91,10 @@
                                 <div class="row">
                                     <div class="mb-2 col-md-6 user-box">
                                         <label for="password">Password</label>
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                        <span class="password-toggle-icon2" onclick="togglePasswordVisibility('password', 'icon-password')"><i id="icon-password" class="fa fa-eye"></i></span>
+                                        <input id="password" type="password" class="form-control password_input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        <span class="password-toggle-icon2" onclick="togglePasswordVisibility('password', 'icon-password')">
+                                       <i id="icon-password " class="fa fa-eye pass-hid {{ $errors->has('password') ? 'd-none' : '' }}"></i>
+                                       </span>  
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -102,8 +104,8 @@
                                     <div class="mb-2 col-md-6 user-box">
                                         <label for="password-confirm">Confirm Password</label>
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                        <span class="password-toggle-icon3" onclick="togglePasswordVisibility('password-confirm', 'icon-confirm')"><i id="icon-confirm" class="fa fa-eye"></i></span>
-
+                                        <span class="password-toggle-icon3" onclick="togglePasswordVisibility('password-confirm', 'icon-confirm')"><i id="icon-confirm" class="fa fa-eye pass-hid2 {{ $errors->has('password') ? 'd-none' : '' }}"></i></span>
+                                     
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -175,5 +177,16 @@ document.getElementById("date").setAttribute("max", today);
             passwordIcon.classList.add("fa-eye");
         }
     }
+</script>
+<script>
+$(document).ready(function() {
+$('#password').on('input', function() {
+$(this).removeClass('is-invalid');
+$(this).parent('.user-box').find('.password-toggle-icon2 .pass-hid').removeClass('d-none');
+// $(this).parent('.user-box').find('.pass-hid2').removeClass('d-none');
+$(this).parent('.user-box').siblings('.user-box').find('.pass-hid2').removeClass('d-none');
+
+});
+});
 </script>
 @endsection

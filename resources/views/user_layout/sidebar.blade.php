@@ -944,6 +944,12 @@ $inputText.on('input', function() {
     const isInputValid = $inputText.val().trim() === 'YES';
     // Enable or disable the delete button based on the validation result
     $deleteBtn.prop('disabled', !isInputValid);
+      $('#delPermanentAccModal').on('shown.bs.modal', function () {
+            // Set the input value to null when the modal is shown
+            $inputText.val(null);
+            // Disable the delete button initially when the modal is shown
+            $deleteBtn.prop('disabled', true);
+        });
 });
 $deleteBtn.on('click', function() {
     window.location.href = $(this).data('url');
