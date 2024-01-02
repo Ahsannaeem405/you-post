@@ -493,7 +493,7 @@ body {
 } */
 .create_preview_post .create_post .icon_buttons_tags {
    display: flex;
-   justify-content: space-around;
+   justify-content: start;
 }
 
 .create_preview_post .create_post .icon_buttons_tags ul {
@@ -512,7 +512,7 @@ body {
 }
 
 .create_preview_post .create_post .icon_buttons_tags ul li img {
-    max-width: 36px;
+    max-width: 40px;
 }
 
 .create_preview_post .create_post .icon_buttons_tags .form-control {

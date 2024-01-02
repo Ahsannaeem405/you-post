@@ -7,7 +7,7 @@
         display: none;
     }
     li a .emojionearea.show_emoji  .emojionearea-picker.emojionearea-picker-position-top {
-        right: -200px !important;
+        right: -150px !important;
     }
           /*--------sidebar Feedback----- */
    .FeedTool {
@@ -29,7 +29,7 @@
         display: none;
     }
     li a .emojionearea.show_emoji  .emojionearea-picker.emojionearea-picker-position-top {
-        right: -200px !important;
+        right: -150px !important;
     }
           /*--------sidebar Feedback----- */
    .FeedTool {
@@ -65,9 +65,6 @@
     }
     .emojionearea-search-panel{
         margin-top: 40px;
-    }
-    .emojionearea-scroll-area{
-        padding-top: 50px !important;
     }
     .emojionearea-tones{
         padding-top: 5px !important;
@@ -250,9 +247,6 @@
 .emojionearea-search-panel{
     margin-top: 40px;
 }
-.emojionearea-scroll-area{
-    padding-top: 50px !important;
-}
 .emojionearea-tones{
     padding-top: 5px !important;
 }
@@ -294,9 +288,6 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     .emojionearea-search-panel{
         margin-top: 40px;
     }
-    .emojionearea-scroll-area{
-        padding-top: 50px !important;
-    }
     .emojionearea-tones{
         padding-top: 9px !important;
     }
@@ -305,7 +296,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     left: -24px;
 }
 .emojionearea .emojionearea-picker.emojionearea-picker-position-top{
-    left: -96px;
+    left: -177px;
 }
 li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
     height: 145px;
@@ -594,15 +585,12 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     .emojionearea-search-panel{
         margin-top: 40px;
     }
-    .emojionearea-scroll-area{
-        padding-top: 50px !important;
-    }
     .emojionearea-tones{
         padding-top: 5px !important;
     }
      /* emojionarea */
  .emojionearea-picker{
-    left: -100px;
+    left: -140px;
 }
 li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
     height: 145px;
@@ -1280,7 +1268,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     } */
     /* emojionarea */
  .emojionearea-picker{
-    left: -4px;
+    left: -134px;
     width: 182px !important;
 }
 .emojionearea-wrapper{
@@ -1288,9 +1276,6 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 }
 .emojionearea-search-panel{
     margin-top: 40px;
-}
-.emojionearea-scroll-area{
-    padding-top: 50px !important;
 }
 .emojionearea-tones{
     padding-top: 5px !important;

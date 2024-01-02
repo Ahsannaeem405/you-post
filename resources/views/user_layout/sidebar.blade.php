@@ -455,22 +455,6 @@ body.dark .home .text {
     transition: var(--tran-05);
 }
 /* ----------------------------------------end of .offcanvas-start ------------------------------------- */
-/* Feedback icon*/
-.thumb-up{
-    position:absolute;
-    top:10px;
-}
-.icon{
-    position:relative;
-}
-.disblenav{
-    opacity: 0.9; 
-    pointer-events: none; 
-
-}
-.stylelist{
-    color:#fff !important;
-}
 @keyframes colorAnimation {
     0% {
         background-color: var(--primary-color);
@@ -701,7 +685,12 @@ body.dark .home .text {
                         <span class="text nav-text">Wallets</span>
                     </a>
                 </li> -->
-                <li><a href="javascript:void(0)" id="bugReportLink_test"><i class="bi bi-chat-square-dots icon"></i>
+                <li class="feedbacklist"><a href="javascript:void(0)" id="bugReportLink_test">
+                    <!-- <i class="bi bi-chat-square-dots icon"></i> -->
+                    <i class="iconfeeed">
+                    <img src="{{asset('images/commentdashbar.png')}}" alt="">
+                    </i>
+                    
                         <span class="text nav-text">Give Feedback</span></a></li>
 
 
@@ -866,7 +855,11 @@ body.dark .home .text {
                             Profile</span></a></li>
 
 
-                <li class="feedbacklist"><a href="javascript:void(0)" id="bugReportLink"><i class="bi bi-chat-square-dots icon feedbackuser"></i>
+                <li class="feedbacklist"><a href="javascript:void(0)" id="bugReportLink">
+                    <!-- <i class="bi bi-chat-square-dots icon feedbackuser"></i> -->
+                    <i class="iconfeeed">
+                    <img  class="feedbackuser" src="{{asset('images/commentdashbar.png')}}" alt="">
+                    </i>
                         <span class="text nav-text feedbackuser">Give Feedback</span></a>
                 </li>
 
@@ -960,7 +953,8 @@ $(document).ready(function() {
         localStorage.removeItem('new_user');
         $(".side_bar").addClass('sideWidth').removeClass('close');
         $(".feedbacklist").addClass("colorAnimation");
-        $("#bugReportLink .feedbackuser").addClass("stylelist");
+        $("#bugReportLink .iconfeeed img").addClass("stylelist");
+        $("#bugReportLink  .feedbackuser").css("color","#fff");
         $('.toggle').addClass('disblenav');
 
         
@@ -971,7 +965,8 @@ $(document).ready(function() {
         $(".side_bar").toggleClass('close').css({"width": "88px", "z-index": "1"});
         $(".side_bar").removeClass('sideWidth');
         $(".feedbacklist").removeClass("colorAnimation");
-        $("#bugReportLink .feedbackuser").removeClass("stylelist");
+        $("#bugReportLink .iconfeeed img").removeClass("stylelist");
+        $("#bugReportLink .feedbackuser").css("color","#000");
         $('.toggle').removeClass('disblenav');
     });
 });

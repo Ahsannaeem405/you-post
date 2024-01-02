@@ -761,7 +761,7 @@ padding-right:10px;
     flex-wrap:wrap;
 }
 .emoji_show.emojionearea-inline{
-    background:#b7e9ff;
+    background:transparent;
     border-radius:30px;
     border:none;
     box-shadow:none;
@@ -773,7 +773,7 @@ padding:16px !important;
     opacity: 1 !important;
 }
 .emojionearea.emoji_show  .emojionearea-button>div, .emojionearea .emojionearea-picker .emojionearea-wrapper:after{
-background-image:url('{{ asset('images/emo.png') }}') !important;
+background-image:url('{{ asset('images/addemoji2.png') }}') !important;
 background-size:cover;
 background-repeat: no-repeat;
 background-position:100% 100% !important;
@@ -872,38 +872,41 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-1" >
+                                                    <ul class="p-0 d-flex gap-2" >
                                                         <li>
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="image"
                                                                 social="youpost" fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
-                                                                    <img src="{{asset('')}}images/camera.png"
-                                                                        class="img-fluid" alt="" />
+                                                                    <img src="{{asset('')}}images/addimages3.png"
+                                                                        class="img-fluid" alt="" />       
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="video"
                                                                 social="youpost" fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost">
-                                                                    <img src="{{asset('')}}images/video.png"
-                                                                        class="img-fluid" alt="" />
+                                                                    <img src="{{asset('')}}images/addvideos1.png"
+                                                                        class="img-fluid" alt="" />      
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
+                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
-                                                                    <input type="hidden" class="emoji_show show_emoji">
+                                                                    <input type="hidden" class="emoji_show show_emoji">                                             
                                                             </a>
+                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
 
-                                                <div class="tags_input_wrap grid_item tags_hash">
+                                                <div class="tags_input_wrap grid_item tags_hash d-none">
                                                     <!-- <div class="tags_input">
                                                         <select name="facebook_tag[]"
                                                             class="form-control selectmultiple1" multiple
@@ -969,38 +972,41 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-1">
+                                                    <ul class="p-0 d-flex gap-2">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="fb"
                                                                 fordata="image_or_videofb"><label
                                                                     for="image_or_videofb">
-                                                                    <img src="{{asset('')}}images/camera.png"
+                                                                    <img src="{{asset('')}}images/addimages3.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="fb"
                                                                 fordata="image_or_videofb"><label
                                                                     for="image_or_videofb">
-                                                                    <img src="{{asset('')}}images/video.png"
+                                                                    <img src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
+                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
+                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
 
-                                                <div class="tags_input_wrap grid_item tags_hash">
+                                                <div class="tags_input_wrap grid_item tags_hash d-none">
                                                     <!-- <div class="tags_input">
                                                         <select name="facebook_tag[]"
                                                             class="form-control selectmultiple1" multiple
@@ -1059,37 +1065,40 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-1">
+                                                    <ul class="p-0 d-flex gap-2">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
                                                                 fordata="image_or_video_insta"><label
                                                                     for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/camera.png"
+                                                                    <img src="{{asset('')}}images/addimages3.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_insta"><label
                                                                     for="image_or_video_insta">
-                                                                    <img src="{{asset('')}}images/video.png"
+                                                                    <img src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
+                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
+                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="tags_input_wrap grid_item tags_input_insta">
+                                                <div class="tags_input_wrap grid_item tags_input_insta d-none">
                                                     <!-- <div class="tags_input">
                                                         <select name="instagram_tag[]"
                                                             class="form-control selectmultiple" multiple
@@ -1144,41 +1153,44 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-1">
+                                                    <ul class="p-0 d-flex gap-2">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
                                                                 fordata="image_or_video_twiter"><label
                                                                     for="image_or_video_twiter">
-                                                                    <img src="{{asset('')}}images/camera.png"
+                                                                    <img src="{{asset('')}}images/addimages3.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_twiter"><label
                                                                     for="image_or_video_twiter">
-                                                                    <img src="{{asset('')}}images/video.png"
+                                                                    <img src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
 
 
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
+                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
+                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
 
 
-                                                <div class="tags_input_wrap grid_item tags_input_insta">
+                                                <div class="tags_input_wrap grid_item tags_input_insta d-none">
                                                     <!-- <div class="tags_input">
                                                         <select name="twitter_tag[]" class="form-control selectmultiple"
                                                             multiple id="twitter_tag">
@@ -1228,17 +1240,18 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-1">
+                                                    <ul class="p-0 d-flex gap-2">
                                                         <li>
 
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="linkedin"
                                                                 fordata="image_or_video_linkedin"><label
                                                                     for="image_or_video_linkedin">
-                                                                    <img src="{{asset('')}}images/camera.png"
+                                                                    <img src="{{asset('')}}images/addimages3.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
@@ -1246,23 +1259,25 @@ background-position:100% 100% !important;
                                                                 fordata="image_or_video_linkedin"><label
                                                                     for="image_or_video_linkedin">
                                                                     <img style="border-radius:50px"
-                                                                        src="{{asset('')}}images/video.png"
+                                                                        src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
+                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
+                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
+                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
 
 
-                                                <div class="tags_input_wrap grid_item tags_input_insta">
+                                                <div class="tags_input_wrap grid_item tags_input_insta d-none">
                                                     <!-- <div class="tags_input">
                                                         <select name="linkedin_tag[]"
                                                             class="form-control selectmultiple" multiple
