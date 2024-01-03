@@ -2287,6 +2287,9 @@ background-color: transparent !important;
     width: 20px;
 
 }
+.open_emoji{
+height:34px;
+}
 .wizard-fieldset .icon_buttons_tags .icon_buttons ul li{
     text-align: center;
 }

@@ -1293,6 +1293,9 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     width: 272px !important;
     left:30px;
 }
+.open_emoji{
+    height:23px;
+    }
 }
 
 /* media  query */
