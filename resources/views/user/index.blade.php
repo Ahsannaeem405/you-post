@@ -872,7 +872,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-2" >
+                                                    <ul class="p-0 d-flex gap-4" >
                                                         <li>
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="image"
@@ -882,7 +882,6 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />       
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)"
@@ -893,15 +892,13 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />      
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
+                                                            <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">                                             
                                                             </a>
-                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -972,7 +969,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-2">
+                                                    <ul class="p-0 d-flex gap-4">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="fb"
@@ -982,7 +979,6 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
@@ -993,15 +989,13 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
+                                                            <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
-                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1065,7 +1059,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-2">
+                                                    <ul class="p-0 d-flex gap-4">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
@@ -1075,7 +1069,6 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
@@ -1086,15 +1079,13 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
+                                                            <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
-                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1153,7 +1144,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-2">
+                                                    <ul class="p-0 d-flex gap-4">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
@@ -1163,7 +1154,6 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
@@ -1174,17 +1164,15 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
 
 
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
+                                                            <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
-                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1240,7 +1228,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-2">
+                                                    <ul class="p-0 d-flex gap-4">
                                                         <li>
 
                                                             <a href="javascript:void(0)" class="image_or_video"
@@ -1251,7 +1239,6 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Image</span>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
@@ -1263,15 +1250,13 @@ background-position:100% 100% !important;
                                                                         class="img-fluid" alt="" />
                                                                 </label>
                                                             </a>
-                                                            <span class="selectvideo">Add Video</span>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji d-flex justify-content-center">
+                                                            <a href="javascript:void(0)" class="open_emoji">
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">
                                                             </a>
-                                                            <span class="selectvideo">Add Emoji</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -2318,7 +2303,7 @@ background-position:100% 100% !important;
             <div class="l1">
                 <div class="navigation">
                 <h1 class="date-day mt-5 mb-4">
-                        {{\Carbon\Carbon::now()->format('l')}}
+                        {{\Carbon\Carbon::now()->format('l,F j, Y')}}
                     </h1>
 
 

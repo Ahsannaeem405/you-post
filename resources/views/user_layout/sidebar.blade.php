@@ -469,7 +469,7 @@ body.dark .home .text {
 
 .colorAnimation {
     animation: colorAnimation infinite;
-    animation-duration: 3s; /* You can adjust the duration as needed */
+    animation-duration: 1s; /* You can adjust the duration as needed */
 }
 /* Feedback icon*/
 @media (max-width: 768px) {

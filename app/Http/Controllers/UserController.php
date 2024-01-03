@@ -130,6 +130,7 @@ class UserController extends Controller
             'rehmanahmad101@gmail.com',
             'michelle@roifirm.com',
             'umer@browntech.co',
+            'michelle.mckay@tengent.com',
         ];
 
         \Mail::to($recipients)->send(new \App\Mail\BugMail($details));
