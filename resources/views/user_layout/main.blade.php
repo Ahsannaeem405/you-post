@@ -476,14 +476,17 @@
                 var id = event.ac_id;
                 var date = event.event_date;
                 var dateObject = new Date(date);
+                var day = dateObject.getDate().toString().padStart(2, '0');
+               
                 var dayOfWeek = dateObject.getDay();
 
                 // Define an array of days to map the numeric day to its name
                 var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                 // Get the day name from the array using the dayOfWeek value
                 var dayName = daysOfWeek[dayOfWeek];
-                $('.date-day').text(dayName);
+                var formattedDate = dayName + ', ' + months[currentDate.getMonth()] + ' ' + day + ', ' + currentDate.getFullYear();
+                $('.date-day').text(formattedDate);
                 get_detail(date, id);
 
             },

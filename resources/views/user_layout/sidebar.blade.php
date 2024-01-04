@@ -955,6 +955,7 @@ $(document).ready(function() {
         $(".feedbacklist").addClass("colorAnimation");
         $("#bugReportLink .iconfeeed img").addClass("stylelist");
         $("#bugReportLink  .feedbackuser").css("color","#fff");
+        $(".feedbacklist ").css("border-radius", "6px");
         $('.toggle').addClass('disblenav');
 
         
