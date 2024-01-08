@@ -319,6 +319,7 @@
         if (currentHour >= 0 && currentHour < 12) {
             if (ampmValue === 'AM') {
                 start = (currentHour) % 12 || 12;
+                current_minutes = currentDate.getMinutes();
             } else {
                 start = 1;
                 current_minutes = 0;
@@ -326,10 +327,10 @@
         } else {
             start = currentHour % 12 || 12;
         }
-        if (selectedDate.getDate() !== currentDate.getDate()) {
+        if (selectedDate.toDateString()!== currentDate.toDateString()) {
             start = 1;
         }
-        current_minutes = (selectedDate === currentDate) ? current_minutes : 0;
+        current_minutes = (selectedDate.toDateString() === currentDate.toDateString()) ? current_minutes : 0;
         populateDropdown("hour_schedule", start, 12, 1);
         populateDropdown("minute_schedule", current_minutes, 59, 1);
 
