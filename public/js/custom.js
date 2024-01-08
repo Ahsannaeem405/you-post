@@ -12,6 +12,8 @@ $(document).ready(function () {
 $(document).on('change', ".single_platform input[type=checkbox]", function () {
     $(this).parent().toggleClass('active_social');
 });
+var selectedDate = new Date();
+
 // calendar time disable
 $("#ampm").on("change", function () {
     var ampmValue = $(this).val();
@@ -22,6 +24,7 @@ $("#ampm").on("change", function () {
     if (currentHour >= 0 && currentHour < 12) {
         if (ampmValue === 'AM') {
             start = (currentHour) % 12 || 12;
+           
         } else {
             start = 1;
             current_minutes = 0;
@@ -39,7 +42,6 @@ $("#ampm").on("change", function () {
 
 });
 // Initialize Pignose Calendar
-var selectedDate = new Date();
 
 function settime() {
     // var select_time = $('.select_time').val();
