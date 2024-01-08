@@ -2293,5 +2293,20 @@ height:34px;
 .wizard-fieldset .icon_buttons_tags .icon_buttons ul li{
     text-align: center;
 }
+.calendarmain{
+    margin-top: 34px;
+}
+.label_each{
+    height:30px;
+}
+.label_each img{
+    height:100%;
+    margin-top: 2px;
+}
+.nav_navigation{
+    height: 119px;
+    width: 90%;
+    margin: auto;
+}
 /*------------------------------------------------ feddback div end  sidebar------------------------------- */
 /*calendar posts structure */

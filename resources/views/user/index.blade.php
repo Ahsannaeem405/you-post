@@ -872,7 +872,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-4" >
+                                                    <ul class="p-0 d-flex gap-4 align-items-center" >
                                                         <li>
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="image"
@@ -887,7 +887,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="video"
                                                                 social="youpost" fordata="image_or_video_youpost"><label
-                                                                    for="image_or_video_youpost">
+                                                                    for="image_or_video_youpost" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />      
                                                                 </label>
@@ -969,7 +969,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-4">
+                                                    <ul class="p-0 d-flex gap-4 align-items-center">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="fb"
@@ -984,7 +984,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="fb"
                                                                 fordata="image_or_videofb"><label
-                                                                    for="image_or_videofb">
+                                                                    for="image_or_videofb" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
@@ -1059,7 +1059,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-4">
+                                                    <ul class="p-0 d-flex gap-4 align-items-center">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
@@ -1074,7 +1074,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_insta"><label
-                                                                    for="image_or_video_insta">
+                                                                    for="image_or_video_insta" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
@@ -1144,7 +1144,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-4">
+                                                    <ul class="p-0 d-flex gap-4 align-items-center">
                                                         <li>
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
@@ -1159,7 +1159,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_twiter"><label
-                                                                    for="image_or_video_twiter">
+                                                                    for="image_or_video_twiter" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
@@ -1228,7 +1228,7 @@ background-position:100% 100% !important;
                                             </div>
                                             <div class="icon_buttons_tags mt-3">
                                                 <div class="icon_buttons grid_item">
-                                                    <ul class="p-0 d-flex gap-4">
+                                                    <ul class="p-0 d-flex gap-4 align-items-center">
                                                         <li>
 
                                                             <a href="javascript:void(0)" class="image_or_video"
@@ -1244,8 +1244,8 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="linkedin"
                                                                 fordata="image_or_video_linkedin"><label
-                                                                    for="image_or_video_linkedin">
-                                                                    <img style="border-radius:50px"
+                                                                    for="image_or_video_linkedin" class="label_each">
+                                                                    <img 
                                                                         src="{{asset('')}}images/addvideos1.png"
                                                                         class="img-fluid" alt="" />
                                                                 </label>
@@ -2301,7 +2301,7 @@ background-position:100% 100% !important;
             </div>
             <span class="croissant-icon"></span>
             <div class="l1">
-                <div class="navigation">
+                <div class="navigation nav_navigation">
                 <h1 class="date-day mt-5 mb-4">
                         {{\Carbon\Carbon::now()->format('l,F j, Y')}}
                     </h1>

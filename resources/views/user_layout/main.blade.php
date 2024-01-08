@@ -311,6 +311,7 @@
 
     $("#ampm_schedule").on("change", function () {
         var ampmValue = $(this).val();
+        selectedDate = new Date(selectedDate);
         var currentDate = new Date();
         let start = 1;
         let currentHour = currentDate.getHours();
@@ -476,17 +477,19 @@
                 var id = event.ac_id;
                 var date = event.event_date;
                 var dateObject = new Date(date);
-                var day = dateObject.getDate().toString().padStart(2, '0');
+                var day = dateObject.getDate().toString();
                
                 var dayOfWeek = dateObject.getDay();
-
+                
                 // Define an array of days to map the numeric day to its name
-                var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 // Get the day name from the array using the dayOfWeek value
+                var month = months[dateObject.getMonth()];
                 var dayName = daysOfWeek[dayOfWeek];
-                var formattedDate = dayName + ', ' + months[currentDate.getMonth()] + ' ' + day + ', ' + currentDate.getFullYear();
-                $('.date-day').text(formattedDate);
+                // var formattedDate = dayName + ', ' + month + ' ' + day + ', ' + dateObject.getFullYear();
+                var formattedDate = "<span style='font-weight:200;font-size: 18px;'>"+dayName +"</span>" + '<br>' + month + ' ' + day;
+                $('.date-day').html(formattedDate);
                 get_detail(date, id);
 
             },
