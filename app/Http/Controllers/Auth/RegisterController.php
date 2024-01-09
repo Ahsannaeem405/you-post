@@ -91,6 +91,8 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
             'password' => Hash::make($data['password']),
             'token' => Str::random(40), // Generate a verification token
+            'otp_expiry' => now()->addHours(72), // Token expiration set to 72 hours from now
+
 
             // 'otp' => $otp,
             // 'otp_expiry' => $expiryTime,

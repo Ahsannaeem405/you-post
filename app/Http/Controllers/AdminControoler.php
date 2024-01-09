@@ -92,17 +92,19 @@ class AdminControoler extends Controller
 
     }
 
+
     public function showResetForm($token)
     {
-        $user = DB::table('users')->where('token', $token)->first();
-
-        return view('auth.passwords.reset', ['email' => $user->email,'token' => $token]);
+        $email = request()->query('email');      
+        // $user = DB::table('users')->where('token', $token)->first();
+        return view('auth.passwords.reset', ['email' =>$email,'token' => $token]);
 
 
     }
 
     public function reset(Request $request)
     {
+      
         $request->validate([
             'token' => 'required',
             // 'email' => 'required|email',

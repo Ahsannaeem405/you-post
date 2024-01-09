@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+@if($errors->has('token'))
+    <script>
+        toastr.error("{{ $errors->first('token') }}");
+    </script>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

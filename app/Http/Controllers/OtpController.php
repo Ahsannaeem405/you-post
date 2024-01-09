@@ -102,8 +102,9 @@ class OtpController extends Controller
     public function verifyEmail($userId, $token)
     {
         $user = User::find($userId);
-
-        if (!$user || $user->token !== $token) {
+      
+        
+        if (!$user || $user->token !== $token || now()->gt($user->token_expiry)) {
             abort(403); // Handle invalid verification link
         }
 

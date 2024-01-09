@@ -75,8 +75,9 @@ class LoginController extends Controller
                             $user = auth()->user();
 
                             if ($user && !$user->isEmailVerified()) {
-                                dd("fsd");
-                                $this->guard()->logout();
+                                
+                                // $this->guard()->logout();
+                                
                                 return redirect('otp-verify')->with('verificationMessage', 'Please check your email for verification.');
                             }
 
