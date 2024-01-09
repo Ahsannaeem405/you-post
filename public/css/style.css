@@ -2294,14 +2294,15 @@ height:34px;
     text-align: center;
 }
 .calendarmain{
-    margin-top: 29px;
+    margin-top: 34px;
 }
 .label_each{
-    height:30px;
+    width: 36px;
+    height: 36px;
 }
 .label_each img{
     height:100%;
-    margin-top: 2px;
+    width: 100%;
 }
 .nav_navigation{
     height: 119px;
@@ -2314,8 +2315,17 @@ height:34px;
 
 }
 .open_emoji .emojionearea-button-open,.open_emoji .emojionearea-button-close{
-    width: 28px !important;
-    height: 28px !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.open_emoji .emojionearea-button{
+    width: 30px !important;
+    height: 30px !important;
+    top:0px !important;
+}
+.post_img_name .ImgSec .image_main_container  .style_forone{
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 /*------------------------------------------------ feddback div end  sidebar------------------------------- */
 /*calendar posts structure */
