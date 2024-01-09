@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\DB;
 
 
 use Illuminate\Http\Request;
@@ -79,6 +80,9 @@ class AdminControoler extends Controller
         $user = User::find($request->user_id);
         if ($user) {
             $token = Password::getRepository()->create($user);
+            $user->update([
+                'token' => $token,
+            ]);
             $user->sendPasswordResetNotification($token);
             return response()->json(['message' => 'Password reset link sent successfully.']);
         } else {
@@ -90,8 +94,9 @@ class AdminControoler extends Controller
 
     public function showResetForm($token)
     {
+        $user = DB::table('users')->where('token', $token)->first();
 
-        return view('auth.passwords.reset', ['token' => $token]);
+        return view('auth.passwords.reset', ['email' => $user->email,'token' => $token]);
 
 
     }
@@ -100,7 +105,7 @@ class AdminControoler extends Controller
     {
         $request->validate([
             'token' => 'required',
-            'email' => 'required|email',
+            // 'email' => 'required|email',
             'password' => 'required|min:8|confirmed',
         ]);
 
@@ -108,7 +113,8 @@ class AdminControoler extends Controller
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, string $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
+                    'token' => null,
                 ])->setRememberToken(Str::random(60));
 
                 $user->save();

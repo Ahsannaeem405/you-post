@@ -13,6 +13,9 @@ $(document).ready(function () {
 $(document).on('change', ".single_platform input[type=checkbox]", function () {
     $(this).parent().toggleClass('active_social');
 });
+var selectedDate = new Date();
+
+// calendar time disable
 $("#ampm").on("change", function () {
     var ampmValue = $(this).val();
     selectedDate = new Date(selectedDate);
@@ -43,7 +46,6 @@ $("#ampm").on("change", function () {
 
 });
 // Initialize Pignose Calendar
-
 
 function settime() {
     // var select_time = $('.select_time').val();
