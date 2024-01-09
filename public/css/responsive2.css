@@ -261,6 +261,9 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     width: 400px;
     left:100px;
 }
+.calendarmain {
+    margin-top: 29px;
+}
 }
 
 /* salman small break point only for calendar end */
@@ -306,6 +309,14 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     top: 332px;
     width: 400px;
     left:100px;
+}
+.calendarmain {
+    margin-top: 29px;
+}
+.deletepost_btn.mydeltpostbtn{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 }
 
@@ -601,6 +612,20 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     width: 300px !important;
     left:100px;
 }
+.Today-post-detail .NavBtmSec ul{
+flex-wrap: wrap;
+}
+.deletepost_btn.mydeltpostbtn{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.calendar_overflo .Today-post-detail{
+    margin-top: -4px !important;
+}
+.calendarmain {
+    margin-top: 31px;
+}
 }
 
 @media (min-width:577px) and (max-width:767px) {
@@ -866,7 +891,26 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     width: 300px !important;
     left:30px;
 }
-
+.calendar_overflo .Today-post-detail{
+    margin-top: 16px !important;
+}
+.calendarmain {
+    margin-top: 24px;
+}
+.Today-post-detail .NavBtmSec ul{
+    flex-direction: column;
+}
+.Today-post-detail .NavBtmSec li{
+   width: 20px;
+}
+.Today-post-detail .PostHeaderInner :nth-child(1){
+    flex-direction: column;
+}
+.deletepost_btn.mydeltpostbtn{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
 }
 
 
@@ -1296,6 +1340,26 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
 .open_emoji{
     height:23px;
     }
+    .calendarmain {
+        margin-top: 16px;
+    }
+    .post_detailWrap .sidebar_post{
+        width: 55px;
+    }
+    .calendarmain .post_detailWrap .DetailText{
+       padding-left: 0px;
+    }
+    .Today-post-detail .NavBtmSec ul{
+        flex-wrap: wrap;
+        }
+        .deletepost_btn.mydeltpostbtn{
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .calendar_overflo .Today-post-detail{
+            margin-top: 17px !important;
+        }
 }
 
 /* media  query */

@@ -2308,5 +2308,14 @@ height:34px;
     width: 90%;
     margin: auto;
 }
+.open_emoji .emojionearea.focused{
+    border-color:none !important;
+    box-shadow: none !important;
+
+}
+.open_emoji .emojionearea-button-open,.open_emoji .emojionearea-button-close{
+    width: 28px !important;
+    height: 28px !important;
+}
 /*------------------------------------------------ feddback div end  sidebar------------------------------- */
 /*calendar posts structure */
