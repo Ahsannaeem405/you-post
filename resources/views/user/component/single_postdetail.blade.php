@@ -69,7 +69,7 @@
                         <div class="image_main_container  {{ count($Images) == 1 ? 'single_image' : '' }}">
                             @foreach ($Images as $image)
                                 @if ($loop->index <= 3)
-                                    <div class=" post_modal_con"
+                                    <div class=" post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}"
                                          style="background-image: url({{ asset('content_media/' . $image) }})">
 
                                     </div>

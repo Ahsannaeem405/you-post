@@ -877,9 +877,9 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="image"
                                                                 social="youpost" fordata="image_or_video_youpost"><label
-                                                                    for="image_or_video_youpost">
+                                                                    for="image_or_video_youpost" class="label_each">
                                                                     <img src="{{asset('')}}images/addimages3.png"
-                                                                        class="img-fluid" alt="" />       
+                                                                         alt="" />       
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -889,12 +889,12 @@ background-position:100% 100% !important;
                                                                 social="youpost" fordata="image_or_video_youpost"><label
                                                                     for="image_or_video_youpost" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
-                                                                        class="img-fluid" alt="" />      
+                                                                         alt="" />      
                                                                 </label>
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:void(0)" class="open_emoji">
+                                                            <a href="javascript:void(0)" class="open_emoji">     
                                                                 <!-- <img src="{{asset('')}}images/emo.png"
                                                                     class="img-fluid" alt="" /> -->
                                                                     <input type="hidden" class="emoji_show show_emoji">                                             
@@ -974,9 +974,9 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="fb"
                                                                 fordata="image_or_videofb"><label
-                                                                    for="image_or_videofb">
+                                                                    for="image_or_videofb" class="label_each">
                                                                     <img src="{{asset('')}}images/addimages3.png"
-                                                                        class="img-fluid" alt="" />
+                                                                         alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -986,7 +986,7 @@ background-position:100% 100% !important;
                                                                 fordata="image_or_videofb"><label
                                                                     for="image_or_videofb" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
-                                                                        class="img-fluid" alt="" />
+                                                                         alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -1064,9 +1064,9 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
                                                                 fordata="image_or_video_insta"><label
-                                                                    for="image_or_video_insta">
+                                                                    for="image_or_video_insta" class="label_each">
                                                                     <img src="{{asset('')}}images/addimages3.png"
-                                                                        class="img-fluid" alt="" />
+                                                                        alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -1076,7 +1076,7 @@ background-position:100% 100% !important;
                                                                 fordata="image_or_video_insta"><label
                                                                     for="image_or_video_insta" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
-                                                                        class="img-fluid" alt="" />
+                                                                       alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -1149,9 +1149,9 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="insta"
                                                                 fordata="image_or_video_twiter"><label
-                                                                    for="image_or_video_twiter">
+                                                                    for="image_or_video_twiter" class="label_each">
                                                                     <img src="{{asset('')}}images/addimages3.png"
-                                                                        class="img-fluid" alt="" />
+                                                                         alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -1161,7 +1161,7 @@ background-position:100% 100% !important;
                                                                 fordata="image_or_video_twiter"><label
                                                                     for="image_or_video_twiter" class="label_each">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
-                                                                        class="img-fluid" alt="" />
+                                                                        alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -1234,9 +1234,9 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="image" social="linkedin"
                                                                 fordata="image_or_video_linkedin"><label
-                                                                    for="image_or_video_linkedin">
+                                                                    for="image_or_video_linkedin" class="label_each">
                                                                     <img src="{{asset('')}}images/addimages3.png"
-                                                                        class="img-fluid" alt="" />
+                                                                         alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -1247,7 +1247,7 @@ background-position:100% 100% !important;
                                                                     for="image_or_video_linkedin" class="label_each">
                                                                     <img 
                                                                         src="{{asset('')}}images/addvideos1.png"
-                                                                        class="img-fluid" alt="" />
+                                                                         alt="" />
                                                                 </label>
                                                             </a>
                                                         </li>
@@ -1381,7 +1381,7 @@ background-position:100% 100% !important;
 
                                         <select id="hour" class="select_time"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
-                                        <select id="minute" class="select_time"
+                                        <select id="minute" class="select_time schedule_time_time"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;"></select>
                                         <select id="ampm" name="ampm" class="select_time"
                                             style="height: 42px; width: 69px; appearance: none; background-image:url('{{asset('images/down-arrow.png')}}'); background-repeat: no-repeat;background-size: 19px;background-position: 41px;">
@@ -3158,6 +3158,7 @@ $(document).on('click', '.BackBtnCS', function(){
                         $(".Today-post-detail").hide();
                         $(".fb-post").css('display', 'block');
                     }
+                    $('.BackBtnCS').removeClass('d-none');
                 }
             });
 
