@@ -975,6 +975,8 @@
                             </div>
                             <div class="disabledit">
                                 <a href="#" id="sendPasswordResetLink">Send Password Reset Link</a>
+                                <span id="timer" style="display:none;"></span>
+
                             </div>
                         </div>
                         <!-- Add more form fields as needed -->
@@ -1138,26 +1140,76 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
             <script>
+  $(document).ready(function() {
+    function startTimer(duration, callback) {
+        var timer = duration;
+        var countdown = setInterval(function () {
+            if (timer > 0) {
+                $('#sendPasswordResetLink').text('Resend link in ' + timer + ' seconds');
+                localStorage.setItem('timer', timer); // Save remaining time in localStorage
+                timer--;
+            } else {
+                clearInterval(countdown);
+                $('#sendPasswordResetLink').text('Send Password Reset Link').removeAttr('disabled').css('pointer-events', 'auto');
+                localStorage.removeItem('timer'); // Remove timer from localStorage when it reaches 0
+                localStorage.removeItem('disabled'); // Remove disabled state from localStorage
+                if (callback) callback();
+            }
+        }, 1000);
+    }
 
-                $('#sendPasswordResetLink').click(function (e) {
-                    e.preventDefault();
-                    var userId = $('#user_id').val();
-                    $.ajax({
-                        url: "{{route('password.sendlink')}}",
-                        type: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                       data: {'user_id': userId},
-                        success: function (response) {
-                        $('#editModal').modal('hide');
-                         toastr.success(response.message);
-                        },
-                        error: function (error) {
-                         toastr.error(error.responseJSON.error);
-                        }
-                    });
+    $('#sendPasswordResetLink').on('click', function (e) {
+                        e.preventDefault();
+                        var userId = $('#user_id').val();
+                        var link = $(this);                       
+                        var storedTimer = localStorage.getItem('timer');
+                    if (storedTimer) {
+                        // Resume the timer from the stored value
+                        startTimer(parseInt(storedTimer), function () {
+                            // Additional callback logic if needed
+                        });
+                    }  else {
+                // Start a new timer
+                link.attr('disabled', true).css('pointer-events', 'none');
+                localStorage.setItem('disabled', true); // Save disabled state in localStorage
+                startTimer(60, function () {
+                    link.removeAttr('disabled').css('pointer-events', 'auto');
                 });
+            }
+
+                        $.ajax({
+                            url: "{{ route('password.sendlink') }}",
+                            type: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data: { 'user_id': userId },
+                            beforeSend: function () {
+                                // Additional code if needed before sending the AJAX request
+                            },
+                            success: function (response) {
+                                $('#editModal').modal('hide');
+                                toastr.success(response.message);
+                            },
+                            error: function (error) {
+                                toastr.error(error.responseJSON.error);
+                                link.data('disabled', false);
+                                link.removeClass('disabled');
+                                $('#timer').hide();
+                            }
+                        });
+                      });
+                      var storedTimer = localStorage.getItem('timer');
+                      var isDisabled = localStorage.getItem('disabled');
+                    if (storedTimer && isDisabled) {
+                        // Resume the timer and set the disabled state on page load
+                        $('#sendPasswordResetLink').attr('disabled', true).css('pointer-events', 'none');
+                        startTimer(parseInt(storedTimer), function () {
+                            // Additional callback logic if needed
+                        });
+                    }
+                  });
+
 
                 // Handle click event for the edit link
                 $(document).on('click','.edit-link',function (e) {
