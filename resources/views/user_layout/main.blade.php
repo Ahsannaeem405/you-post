@@ -404,6 +404,8 @@
 
 
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+<script src="{{ asset('js/moment.js') }}"></script>
+<script src="{{ asset('js/moment-timezone-with-data-10-year-range.js') }}"></script>
 <!--Custom JavaScript-->
 <!-- //  emoji link  -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"/>
@@ -475,12 +477,34 @@
             contentHeight: 850,
             // salman new code calendar 7/9/23
 
+            // eventClick: function (event, jsEvent, view) {
+            //     var id = event.ac_id;
+            //     var date = event.event_date;
+            //     var dateObject = new Date(date);
+            //     var day = dateObject.getDate().toString();
+               
+            //     var dayOfWeek = dateObject.getDay();
+                
+            //     // Define an array of days to map the numeric day to its name
+            //     var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            //     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            //     // Get the day name from the array using the dayOfWeek value
+            //     var month = months[dateObject.getMonth()];
+            //     var dayName = daysOfWeek[dayOfWeek];
+            //     // var formattedDate = dayName + ', ' + month + ' ' + day + ', ' + dateObject.getFullYear();
+            //     var formattedDate = "<span style='font-weight:200;font-size: 18px;'>"+dayName +"</span>" + '<br>' + month + ' ' + day;
+            //     $('.date-day').html(formattedDate);
+            //     get_detail(date, id);
+
+            // },
+
             eventClick: function (event, jsEvent, view) {
+               
                 var id = event.ac_id;
                 var date = event.event_date;
-                var dateObject = new Date(date);
+                var dateObject = new Date(date + 'T00:00:00');
                 var day = dateObject.getDate().toString();
-               
+            //alert(dateObject);
                 var dayOfWeek = dateObject.getDay();
                 
                 // Define an array of days to map the numeric day to its name
@@ -489,11 +513,15 @@
                 // Get the day name from the array using the dayOfWeek value
                 var month = months[dateObject.getMonth()];
                 var dayName = daysOfWeek[dayOfWeek];
-                // var formattedDate = dayName + ', ' + month + ' ' + day + ', ' + dateObject.getFullYear();
-                var formattedDate = "<span style='font-weight:200;font-size: 18px;'>"+dayName +"</span>" + '<br>' + month + ' ' + day;
+                
+                // Construct the formatted date string
+                var formattedDate = "<span style='font-weight:200;font-size: 18px;'>" + dayName + "</span>" + '<br>' + month + ' ' + day;
+                
+                // Display the formatted date in the designated element with class '.date-day'
                 $('.date-day').html(formattedDate);
+            // alert(date);
+                // Call the 'get_detail' function with date and id
                 get_detail(date, id);
-
             },
 
 
@@ -507,6 +535,7 @@
                     }
                 }
             },
+
 
             dayClick: function (date, jsEvent, view) {
                 $('html, body').animate({scrollTop: 0}, 'slow');

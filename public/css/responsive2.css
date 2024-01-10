@@ -6,7 +6,8 @@
     .section5 i {
         display: none;
     }
-    li a .emojionearea.show_emoji  .emojionearea-picker.emojionearea-picker-position-top {
+
+    li a .emojionearea.show_emoji .emojionearea-picker.emojionearea-picker-position-top {
         right: -150px !important;
     }
           /*--------sidebar Feedback----- */
@@ -31,8 +32,16 @@
     .section5 i {
         display: none;
     }
-    li a .emojionearea.show_emoji  .emojionearea-picker.emojionearea-picker-position-top {
-        right: -193px!important;
+
+    li a .emojionearea.show_emoji .emojionearea-picker.emojionearea-picker-position-top {
+        right: -193px !important;
+    }
+
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+        top: 333px;
+        width: 400px;
+        left: 100px;
     }
           /*--------sidebar Feedback----- */
    .FeedTool {
@@ -61,23 +70,29 @@
     .section5 i {
         display: none;
     }
-     /* emojionarea */
-     .emojionearea-picker{
+
+    /* emojionarea */
+    .emojionearea-picker {
         left: -77px;
         width: 182px !important;
     }
-    .emojionearea-wrapper{
+
+    .emojionearea-wrapper {
         width: 100% !important;
     }
-    .emojionearea-search-panel{
+
+    .emojionearea-search-panel {
         margin-top: 40px;
     }
-    .emojionearea-tones{
+
+    .emojionearea-tones {
         padding-top: 5px !important;
     }
+
     li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
         height: 145px;
     }
+
     .emojionearea.emojionearea-inline {
         height: 28px !important;
     }
@@ -263,7 +278,7 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     height: 145px;
 }
 .emojionearea.emojionearea-inline {
-    height: 28px !important;
+    height: 35px !important;
 }
 .FeedTool {
     top: 331px;
@@ -295,21 +310,26 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     .section5 i {
         display: none;
     }
+
     /* emojionerea */
 
-     .icon_buttons  ul .emojionearea {
+    .icon_buttons ul .emojionearea {
         top: 0%;
     }
-    .emojionearea-picker{
+
+    .emojionearea-picker {
         width: 250px !important;
     }
-    .emojionearea-wrapper{
+
+    .emojionearea-wrapper {
         width: 100% !important;
     }
-    .emojionearea-search-panel{
+
+    .emojionearea-search-panel {
         margin-top: 40px;
     }
-    .emojionearea-tones{
+
+    .emojionearea-tones {
         padding-top: 9px !important;
     }
  /* emojionarea */
@@ -599,31 +619,38 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     }
 
     /* razi card_media query end */
-    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event  .fc-content{
+    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event .fc-content {
         flex-direction: column;
-     }
-     .publishedpost {
+    }
+
+    .publishedpost {
         width: 100%;
-     }
-     .Editpost_btn{
+    }
+
+    .Editpost_btn {
         display: flex;
         flex-direction: column;
         gap: 10px;
-     }
-     /* emojionearea */
-     .icon_buttons  ul .emojionearea {
+    }
+
+    /* emojionearea */
+    .icon_buttons ul .emojionearea {
         top: 0%;
     }
-    .emojionearea-picker{
+
+    .emojionearea-picker {
         width: 182px !important;
     }
-    .emojionearea-wrapper{
+
+    .emojionearea-wrapper {
         width: 100% !important;
     }
-    .emojionearea-search-panel{
+
+    .emojionearea-search-panel {
         margin-top: 40px;
     }
-    .emojionearea-tones{
+
+    .emojionearea-tones {
         padding-top: 5px !important;
     }
      /* emojionarea */
@@ -879,6 +906,7 @@ flex-wrap: wrap;
         margin-top: 10px;
         width: 100%;
     }
+
     .maxchar {
         left: 80%;
         top: 30%;
@@ -900,28 +928,30 @@ flex-wrap: wrap;
         flex-direction: column;
         display: flex !important;
     }
-    .DetailText p{
+
+    .DetailText p {
         text-align: center;
     }
-    .post_detailWrap .DetailText .publishedpost{
+
+    .post_detailWrap .DetailText .publishedpost {
         width: 100% !important;
     }
-    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event  .fc-content{
+
+    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event .fc-content {
         flex-direction: column;
-     }
-     .fc-event-container .fc-day-grid-event .fc-content .fc-title{
+    }
+
+    .fc-event-container .fc-day-grid-event .fc-content .fc-title {
         overflow: auto !important;
         font-size: 10px !important;
         white-space: pre-wrap;
         font-family: inherit !important;
     }
-    .Editpost_btn{
+
+    .Editpost_btn {
         display: flex;
         flex-direction: column;
         gap: 10px;
-     }
-     .flex-direct{
-        flex-direction:column;
     }
         /* emojionarea */
  .emojionearea-picker{
@@ -1336,92 +1366,115 @@ flex-wrap: wrap;
     .post_detailWrap {
         flex-direction: column;
     }
-    .DetailText{
+
+    .DetailText {
         margin-top: 12px !important;
         /* align-items: center; */
         flex-direction: column;
         display: flex !important;
     }
-    .DetailText p{
+
+    .DetailText p {
         text-align: center;
     }
-    .post_detailWrap .DetailText .publishedpost{
+
+    .post_detailWrap .DetailText .publishedpost {
         width: 100% !important;
     }
+
     .post_detailWrap {
-        padding: 0px 0px 5px 0px  !important;
+        padding: 0px 0px 5px 0px !important;
     }
+
     .fc-view-container .fc-view table tbody tr .fc-widget-content .fc-day-grid-container {
         margin: 0px !important;
     }
-    .fc-content-skeleton table tbody tr td.fc-event-container .fc-day-grid-event .fc-content .fc-time::before{
+
+    .fc-content-skeleton table tbody tr td.fc-event-container .fc-day-grid-event .fc-content .fc-time::before {
         margin: 0px;
     }
-    .fc-event-container .fc-day-grid-event .fc-content .fc-title{
+
+    .fc-event-container .fc-day-grid-event .fc-content .fc-title {
         overflow: auto !important;
         font-size: 10px !important;
         white-space: pre-wrap;
         font-family: inherit !important;
     }
-    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event  .fc-content{
-       flex-direction: column;
+
+    .fc-content-skeleton table tbody tr td .fc-content-col .fc-event-container .fc-time-grid-event .fc-content {
+        flex-direction: column;
     }
-    .Editpost_btn{
+
+    .Editpost_btn {
         display: flex;
         flex-direction: column;
         gap: 10px;
-     }
-     .flex-direct{
-        flex-direction:column;
     }
-    .platform_selection{
+
+    .flex-direct {
+        flex-direction: column;
+    }
+
+    .platform_selection {
         display: flex;
         justify-content: space-between;
     }
+
     /* emojionearea */
     /* .icon_buttons  ul .emojionearea {
         top: 110px;
     } */
     /* emojionarea */
- .emojionearea-picker{
-    left: -134px;
-    width: 182px !important;
-}
-.emojionearea-wrapper{
-    width: 100% !important;
-}
-.emojionearea-search-panel{
-    margin-top: 40px;
-}
-.emojionearea-tones{
-    padding-top: 5px !important;
-}
-li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
-    height: 145px;
-}
-.emojionearea.emojionearea-inline {
-    height: 28px !important;
-}
+    .emojionearea-picker {
+        left: -134px;
+        width: 182px !important;
+    }
+
+    .emojionearea-wrapper {
+        width: 100% !important;
+    }
+
+    .emojionearea-search-panel {
+        margin-top: 40px;
+    }
+
+    .emojionearea-tones {
+        padding-top: 5px !important;
+    }
+
+    li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
+        height: 145px;
+    }
+
+    .emojionearea.emojionearea-inline {
+        height: 28px !important;
+    }
+
     /*--------sidebar Feedback----- */
     .FeedTool {
-    display:none;
-    top: 305px;
-    width: 272px !important;
-    left:30px;
-}
-.open_emoji{
-    height:23px;
+        display: none;
+        top: 305px;
+        width: 272px !important;
+        left: 30px;
     }
+
+    .open_emoji {
+        height: 23px;
+    }
+
     .calendarmain {
         margin-top: 16px;
     }
-    .post_detailWrap .sidebar_post{
+
+    .post_detailWrap .sidebar_post {
         width: 55px;
     }
-    .calendarmain .post_detailWrap .DetailText{
-       padding-left: 0px;
+
+    .calendarmain .post_detailWrap .DetailText {
+        padding-left: 0px;
     }
-    .Today-post-detail .NavBtmSec ul{
+
+    .Today-post-detail .NavBtmSec ul {
         flex-wrap: wrap;
         }
         .deletepost_btn.mydeltpostbtn{

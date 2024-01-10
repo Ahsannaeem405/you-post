@@ -2302,10 +2302,8 @@ background-position:100% 100% !important;
             <div class="l1">
                 <div class="navigation nav_navigation">
                 <h1 class="date-day mt-5 mb-4">
-                        {{\Carbon\Carbon::now()->format('l,F j, Y')}}
+                      
                     </h1>
-
-
                 </div>
             </div>
             <div class="calendarmain">
