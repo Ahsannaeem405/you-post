@@ -69,13 +69,16 @@
                         <div class="image_main_container  {{ count($Images) == 1 ? 'single_image' : '' }}">
                             @foreach ($Images as $image)
                                 @if ($loop->index <= 3)
-                                    <div class="post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}"
+                                    {{-- <div class="post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}"
                                          style="background-image: url({{ asset('content_media/' . $image) }})">
+                                    </div> --}}
+                                    <div class="post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}">
+                                        <img src="{{ asset('content_media/' . $image) }}" alt="">
                                     </div>
                                 @elseif($loop->index == 4)
-                                    <div class="post_modal_con"
-                                         style="background-image: url({{ asset('content_media/' . $image) }})">
-
+                                    <div class="post_modal_con">
+                                         {{-- style="background-image: url({{ asset('content_media/' . $image) }})"> --}}
+                                         <img src="{{ asset('content_media/' . $image) }}" alt="">
                                         <div class="fb_remain_img_counter">
                                             <span>
                                                 <span><i class="fa-solid fa-plus"></i></span>
@@ -194,14 +197,16 @@
                         <div class="image_main_container  {{ count($Images) == 1 ? 'single_image' : '' }}">
                             @foreach ($Images as $image)
                                 @if ($loop->index <= 3)
-                                    <div class="post_modal_con xxxx {{ count($Images) == 1 ? 'style_forone' : '' }}"
+                                    {{-- <div class="post_modal_con xxxx {{ count($Images) == 1 ? 'style_forone' : '' }}"
                                          style="background-image: url({{ asset('content_media/' . $image) }})">
-
+                                    </div> --}}
+                                    <div class="post_modal_con xxxx {{ count($Images) == 1 ? 'style_forone' : '' }}">
+                                        <img src="{{ asset('content_media/' . $image) }}" alt="">
                                     </div>
                                 @elseif($loop->index == 4)
-                                    <div class="post_modal_con"
-                                         style="background-image: url({{ asset('content_media/' . $image) }})">
-
+                                    <div class="post_modal_con">
+                                         {{-- style="background-image: url({{ asset('content_media/' . $image) }})"> --}}
+                                         <img src="{{ asset('content_media/' . $image) }}" alt="">
                                         <div class="fb_remain_img_counter">
                                             <span>
                                                 <span><i class="fa-solid fa-plus"></i></span>
@@ -312,14 +317,16 @@
                         <div class="image_main_container  {{ count($Images) == 1 ? 'single_image' : '' }}">
                             @foreach ($Images as $image)
                                 @if ($loop->index <= 3)
-                                    <div class=" post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}"
+                                    {{-- <div class=" post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}"
                                          style="background-image: url({{ asset('content_media/' . $image) }})">
-
+                                    </div> --}}
+                                    <div class=" post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}">
+                                        <img src="{{ asset('content_media/' . $image) }}" alt="">
                                     </div>
                                 @elseif($loop->index == 4)
-                                    <div class="post_modal_con"
-                                         style="background-image: url({{ asset('content_media/' . $image) }})">
-
+                                    <div class="post_modal_con">
+                                         {{-- style="background-image: url({{ asset('content_media/' . $image) }})"> --}}
+                                        <img src="{{ asset('content_media/' . $image) }}" alt="">
                                         <div class="fb_remain_img_counter">
                                             <span>
                                                 <span><i class="fa-solid fa-plus"></i></span>
@@ -430,7 +437,6 @@
                                 @if ($loop->index <= 3)
                                     <div class=" post_modal_con {{ count($Images) == 1 ? 'style_forone' : '' }}"
                                          style="background-image: url({{ asset('content_media/' . $image) }})">
-
                                     </div>
                                 @elseif($loop->index == 4)
                                     <div class="post_modal_con"
@@ -443,7 +449,6 @@
                                             </span>
                                         </div>
                                         <div class="image_shade"></div>
-
                                     </div>
                                 @endif
                             @endforeach

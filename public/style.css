@@ -2886,7 +2886,7 @@ cursor: pointer;
 }
 .post_modal_con img{
     width: 100% !important;
-    height: 100% !important ;
+    /* height: 100% !important; */
 }
 .fb_remain_img_counter{
     position: absolute;
