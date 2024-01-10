@@ -126,11 +126,12 @@ class AdminControoler extends Controller
 
             }
         );
+       
         // Check the response and redirect accordingly
         return $status === Password::PASSWORD_RESET
             ? redirect()->route('index')->with('status', __($status))
-            : back()->withErrors(['email' => [__($status)]]);
-    }
+            : back()->withErrors(['email' => [__($status)]])->with('errorToastr', true);
+        }
 
     public function show_profile()
     {

@@ -16,7 +16,9 @@ class  Facebookservice
 {
     public function create_post($data)
     {
+        try {
         $post = Post::find($data['post']->id);
+       
         $media_path = public_path("content_media/$post->media");
         $accessToken = $post->account->fb_page_token;
 
@@ -71,7 +73,7 @@ class  Facebookservice
         }
 
 
-        try {
+       
 
             if ($data['post']->media_type == 'image') {
                 $response = Http::post("https://graph.facebook.com/v13.0/me/feed", [
@@ -95,6 +97,7 @@ class  Facebookservice
             $msg = ['status' => true];
         } catch (\Throwable $e) {
             // Handles Guzzle HTTP errors
+         
             $post->delete();
             $msg = ['status' => false, 'error' => $e->getMessage()];
         }

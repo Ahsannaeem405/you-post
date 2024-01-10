@@ -488,7 +488,6 @@ class UserController extends Controller
             $post->account_info = Auth::user()->account;
             $post->save();
 
-
             //****************get time difference in seconds ****************//
             $timeDiffLessTennOneMnt = $this->getTimeDifference($post);
             if ($timeDiffLessTennOneMnt) {
