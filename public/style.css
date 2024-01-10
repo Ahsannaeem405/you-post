@@ -512,7 +512,8 @@ body {
 }
 
 .create_preview_post .create_post .icon_buttons_tags ul li img {
-    max-width: 40px;
+    width: 40px;
+    height: 35px;
 }
 
 .create_preview_post .create_post .icon_buttons_tags .form-control {
