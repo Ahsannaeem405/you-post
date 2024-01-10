@@ -2300,7 +2300,11 @@ height:34px;
     width: 36px;
     height: 36px;
 }
-.label_each img{
+.label_each2{
+    width: 40px;
+    height: 34px;
+}
+.label_each img,.label_each2 img{
     height:100%;
     width: 100%;
 }
@@ -2319,13 +2323,50 @@ height:34px;
     height: 100% !important;
 }
 .open_emoji .emojionearea-button{
-    width: 30px !important;
-    height: 30px !important;
+    width: 34px !important;
+    height: 34px !important;
     top:0px !important;
 }
-.post_img_name .ImgSec .image_main_container .style_forone{
+.post_img_name .ImgSec .image_main_container  .style_forone{
     background-repeat: no-repeat;
     background-size: contain;
+}
+#postManagerCalendar .fc-header-toolbar .fc-left{
+    position: absolute;
+    left: 54%;
+    top: 80px;
+    transform: translate(-50%, -50%);
+}
+#postManagerCalendar .fc-header-toolbar .fc-center{
+    position: absolute;
+    left: 50%;
+    top: 34px;
+    transform: translate(-50%, -50%);
+}
+#postManagerCalendar .fc-view-container .fc-agendaDay-view .fc-axis.fc-widget-header{
+    display: none;
+}
+#postManagerCalendar .fc-view-container .fc-content-skeleton .fc-today span{
+    align-items: center;
+    display: flex;
+    width: 20px;
+    margin: 7px;
+    height: 20px;
+    justify-content: center;
+    background: #838383e8;
+    border-radius: 30px;
+    color: #fff;
+}
+/* #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+   padding-top:5px;
+} */
+#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-head .fc-today span{
+    background: #838383e8;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    display: inline-block;
 }
 /*------------------------------------------------ feddback div end  sidebar------------------------------- */
 /*calendar posts structure */
