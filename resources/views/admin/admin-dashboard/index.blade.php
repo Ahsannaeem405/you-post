@@ -974,7 +974,7 @@
                                 <div class="three-body__dot"></div>
                             </div>
                             <div class="disabledit">
-                                <a href="#" id="sendPasswordResetLink">Send Password Resend Link</a>
+                                <a href="#" id="sendPasswordResetLink">Send Password Reset Link</a>
                             </div>
                         </div>
                         <!-- Add more form fields as needed -->

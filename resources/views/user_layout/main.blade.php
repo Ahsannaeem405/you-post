@@ -418,6 +418,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 {{-- toaster cdn --}}
+
 <script>
     $(document).ready(function () {
         $('.selectmultiple').select2({
@@ -494,6 +495,8 @@
                 get_detail(date, id);
 
             },
+
+
             dayRender: function (date, cell) {
                 var today = moment().startOf('day');
                 var currentDay = moment(date).startOf('day');

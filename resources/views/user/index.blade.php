@@ -887,7 +887,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)"
                                                                 class="image_or_video_youpost_all" typpe="video"
                                                                 social="youpost" fordata="image_or_video_youpost"><label
-                                                                    for="image_or_video_youpost" class="label_each">
+                                                                    for="image_or_video_youpost" class="label_each2">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                          alt="" />      
                                                                 </label>
@@ -930,7 +930,7 @@ background-position:100% 100% !important;
                                                 </label>
 
                                             </div>
-                                            <p id="file_error_youpost" class=" p-2  w-100 d-none mt-2 erro_background">
+                                            <p id="file_error_youpost d-none" class=" p-2  w-100 d-none mt-2 erro_background">
                                             </p>
 
                                             <!-- append div waleed start -->
@@ -984,7 +984,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="fb"
                                                                 fordata="image_or_videofb"><label
-                                                                    for="image_or_videofb" class="label_each">
+                                                                    for="image_or_videofb" class="label_each2">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                          alt="" />
                                                                 </label>
@@ -1074,7 +1074,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_insta"><label
-                                                                    for="image_or_video_insta" class="label_each">
+                                                                    for="image_or_video_insta" class="label_each2">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                        alt="" />
                                                                 </label>
@@ -1159,7 +1159,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="insta"
                                                                 fordata="image_or_video_twiter"><label
-                                                                    for="image_or_video_twiter" class="label_each">
+                                                                    for="image_or_video_twiter" class="label_each2">
                                                                     <img src="{{asset('')}}images/addvideos1.png"
                                                                         alt="" />
                                                                 </label>
@@ -1244,7 +1244,7 @@ background-position:100% 100% !important;
                                                             <a href="javascript:void(0)" class="image_or_video"
                                                                 typpe="video" social="linkedin"
                                                                 fordata="image_or_video_linkedin"><label
-                                                                    for="image_or_video_linkedin" class="label_each">
+                                                                    for="image_or_video_linkedin" class="label_each2">
                                                                     <img 
                                                                         src="{{asset('')}}images/addvideos1.png"
                                                                          alt="" />
@@ -2288,7 +2288,6 @@ background-position:100% 100% !important;
         </div>
     </div>
 </section>
-
 <!-- =======Calender========= -->
 <section class="position-relative">
     <div class=" container section5">
