@@ -930,7 +930,7 @@ background-position:100% 100% !important;
                                                 </label>
 
                                             </div>
-                                            <p id="file_error_youpost d-none" class=" p-2  w-100 d-none mt-2 erro_background">
+                                            <p id="file_error_youpost" class=" p-2  w-100 d-none mt-2 erro_background">
                                             </p>
 
                                             <!-- append div waleed start -->
@@ -2302,8 +2302,10 @@ background-position:100% 100% !important;
             <div class="l1">
                 <div class="navigation nav_navigation">
                 <h1 class="date-day mt-5 mb-4">
-                      
+                        {{\Carbon\Carbon::now()->format('l,F j, Y')}}
                     </h1>
+
+
                 </div>
             </div>
             <div class="calendarmain">
@@ -3934,7 +3936,7 @@ function populateOptions(selectId, start, end, step) {
     while (select.options.length > 0) {
     select.remove(0);
 }
-
+     
     for (let i = start; i <= end; i += step) {
         const option = document.createElement("option");
         option.value = String(i).padStart(2, "0");
@@ -3948,11 +3950,14 @@ function populateOptions(selectId, start, end, step) {
 var currentTime = new Date();
 var currentHour = currentTime.getHours();
 var currentMinute = currentTime.getMinutes();
-if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
-populateOptions("hour", (currentHour%12 || 12), 12, 1);
-}else{
+
+ if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
+        populateOptions("hour", (currentHour%12 || 12), 12, 1);
+
+ }else{
     if ( currentHour>12){
         populateOptions("hour", (currentHour%12 || 12), 12, 1);
+
     }
     else{
         populateOptions("hour",1,12, 1);
@@ -3960,6 +3965,7 @@ populateOptions("hour", (currentHour%12 || 12), 12, 1);
     }
 
 }
+
 // Populate minute options (00 to 59)
 populateOptions("minute", currentMinute, 59, 1);
 const amPmSelect = document.getElementById("ampm");
@@ -3968,7 +3974,23 @@ if (currentHour < 12 ) {
     // amPmSelect.disabled = true;
 } else {
     amPmSelect.value = "PM";
-    amPmSelect.disabled = true;
+    amPmSelect.disabled = true; 
 }
+</script>
+<script>
+    $(document).ready(function () {
+    $(document).on('click', '.fc-agendaWeek-button', function () {
+        $('.calendarmain').addClass('weeksideview');
+        $('.Today-post-detail').addClass('todtresp');
+    });
+    $(document).on('click', '.fc-month-button', function () {
+        $('.calendarmain').removeClass('weeksideview');
+        $('.Today-post-detail').removeClass('todtresp');
+    });
+    $(document).on('click', '.fc-agendaDay-button', function () {
+        $('.calendarmain').removeClass('weeksideview');
+        $('.Today-post-detail').removeClass('todtresp');
+    });
+});
 </script>
 @endsection
