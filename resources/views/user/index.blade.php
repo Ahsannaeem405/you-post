@@ -930,7 +930,7 @@ background-position:100% 100% !important;
                                                 </label>
 
                                             </div>
-                                            <p id="file_error_youpost d-none" class=" p-2  w-100 d-none mt-2 erro_background">
+                                            <p id="file_error_youpost" class=" p-2  w-100 d-none mt-2 erro_background">
                                             </p>
 
                                             <!-- append div waleed start -->
