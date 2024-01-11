@@ -10,15 +10,17 @@
     li a .emojionearea.show_emoji .emojionearea-picker.emojionearea-picker-position-top {
         right: -150px !important;
     }
-          /*--------sidebar Feedback----- */
-   .FeedTool {
-    top: 331px;
-    width: 400px;
-    left:100px;
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-    padding-top:10px;
- }
+
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+        top: 331px;
+        width: 400px;
+        left: 100px;
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 10px;
+    }
 }
 
 
@@ -43,15 +45,17 @@
         width: 400px;
         left: 100px;
     }
-          /*--------sidebar Feedback----- */
-   .FeedTool {
-    top:333px;
-    width: 400px;
-    left:100px;
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-    padding-top:10px;
- }
+
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+        top: 333px;
+        width: 400px;
+        left: 100px;
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 10px;
+    }
 
 }
 
@@ -96,15 +100,17 @@
     .emojionearea.emojionearea-inline {
         height: 28px !important;
     }
-       /*--------sidebar Feedback----- */
-   .FeedTool {
-    top: 330px;
-    width: 400px;
-    left:100px;
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-    padding-top:7px;
- }
+
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+        top: 330px;
+        width: 400px;
+        left: 100px;
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 7px;
+    }
 }
 
 /*18,9,23 */
@@ -260,43 +266,56 @@
     .section5 i {
         display: none;
     }
- /* emojionarea */
- .emojionearea-picker{
-    left: -77px;
-    width: 182px !important;
-}
-.emojionearea-wrapper{
-    width: 100% !important;
-}
-.emojionearea-search-panel{
-    margin-top: 40px;
-}
-.emojionearea-tones{
-    padding-top: 5px !important;
-}
-li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
-    height: 145px;
-}
-.emojionearea.emojionearea-inline {
-    height: 35px !important;
-}
-.FeedTool {
-    top: 331px;
-    width: 400px;
-    left:100px;
-}
-.calendarmain {
-    margin-top: 29px;
-}
-#postManagerCalendar .fc-header-toolbar .fc-left {
-    position: absolute;
-    left: 50%;
-    top: 74px;
-    transform: translate(-50%, -50%);
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-    padding-top:7px;
- }
+
+    /* emojionarea */
+    .emojionearea-picker {
+        left: -77px;
+        width: 182px !important;
+    }
+
+    .emojionearea-wrapper {
+        width: 100% !important;
+    }
+
+    .emojionearea-search-panel {
+        margin-top: 40px;
+    }
+
+    .emojionearea-tones {
+        padding-top: 5px !important;
+    }
+
+    li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
+        height: 145px;
+    }
+
+    .emojionearea.emojionearea-inline {
+        height: 35px !important;
+    }
+
+    .FeedTool {
+        top: 331px;
+        width: 400px;
+        left: 100px;
+    }
+
+    .calendarmain {
+        margin-top: 29px;
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-left {
+        position: absolute;
+        left: 50%;
+        top: 74px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 7px;
+    }
+    .weeksideview {
+        margin-top: 72px;
+    }
 }
 
 /* salman small break point only for calendar end */
@@ -332,39 +351,50 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     .emojionearea-tones {
         padding-top: 9px !important;
     }
- /* emojionarea */
- .emojionearea-picker{
-    left: -24px;
-}
-.emojionearea .emojionearea-picker.emojionearea-picker-position-top{
-    left: -144px;
-}
-li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
-    height: 145px;
-}
-   /*--------sidebar Feedback----- */
-   .FeedTool {
-    top: 332px;
-    width: 400px;
-    left:100px;
-}
-.calendarmain {
-    margin-top: 29px;
-}
-.deletepost_btn.mydeltpostbtn{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-#postManagerCalendar .fc-header-toolbar .fc-left {
-    position: absolute;
-    left: 50%;
-    top: 74px;
-    transform: translate(-50%, -50%);
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-    padding-top:7px;
- }
+
+    /* emojionarea */
+    .emojionearea-picker {
+        left: -24px;
+    }
+
+    .emojionearea .emojionearea-picker.emojionearea-picker-position-top {
+        left: -144px;
+    }
+
+    li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
+        height: 145px;
+    }
+
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+        top: 332px;
+        width: 400px;
+        left: 100px;
+    }
+
+    .calendarmain {
+        margin-top: 29px;
+    }
+
+    .deletepost_btn.mydeltpostbtn {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-left {
+        position: absolute;
+        left: 50%;
+        top: 74px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 7px;
+    }
+    .weeksideview {
+        margin-top: 73px;
+    }
 }
 
 @media (min-width:768px) and (max-width:991px) {
@@ -653,53 +683,67 @@ li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-s
     .emojionearea-tones {
         padding-top: 5px !important;
     }
-     /* emojionarea */
- .emojionearea-picker{
-    left: -140px;
-}
-li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
-    height: 145px;
-}
-   /*--------sidebar Feedback----- */
-   .FeedTool {
-    top: 332px;
-    width: 300px !important;
-    left:100px;
-}
-.Today-post-detail .NavBtmSec ul{
-flex-wrap: wrap;
-}
-.deletepost_btn.mydeltpostbtn{
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-}
-.calendar_overflo .Today-post-detail{
-    margin-top: -4px !important;
-}
-.calendarmain {
-    margin-top: 31px;
-}
-#postManagerCalendar .fc-header-toolbar .fc-center {
-    position: absolute;
-    left: 51%;
-    top: 35px;
-    transform: translate(-50%, -50%);
-}
-#postManagerCalendar .fc-header-toolbar .fc-left {
-    position: absolute;
-    left: 41%;
-    top: 70px;
-    transform: translate(-50%, -50%);
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-head .fc-today span {
-    width: 50px;
-    height: 50px;
-    padding: 7px;
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-    padding-top:10px;
- }
+
+    /* emojionarea */
+    .emojionearea-picker {
+        left: -140px;
+    }
+
+    li .emojionearea .emojionearea-picker .emojionearea-search-panel+.emojionearea-scroll-area {
+        height: 145px;
+    }
+
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+        top: 332px;
+        width: 300px !important;
+        left: 100px;
+    }
+
+    .Today-post-detail .NavBtmSec ul {
+        flex-wrap: wrap;
+    }
+
+    .deletepost_btn.mydeltpostbtn {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calendar_overflo .Today-post-detail {
+        margin-top: -4px !important;
+    }
+
+    .calendarmain {
+        margin-top: 31px;
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-center {
+        position: absolute;
+        left: 51%;
+        top: 35px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-left {
+        position: absolute;
+        left: 41%;
+        top: 70px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-head .fc-today span {
+        width: 50px;
+        height: 50px;
+        padding: 7px;
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 10px;
+    }
+    .weeksideview {
+        margin-top: 60px;
+    }
 }
 
 @media (min-width:577px) and (max-width:767px) {
@@ -953,66 +997,84 @@ flex-wrap: wrap;
         flex-direction: column;
         gap: 10px;
     }
-        /* emojionarea */
- .emojionearea-picker{
-    left: -100px;
-    width: 100%;
-}
-.emojionearea.emojionearea-inline {
-    height: 28px !important;
-}
-   /*--------sidebar Feedback----- */
-   .FeedTool {
-    display:none;
-    top: 305px;
-    width: 300px !important;
-    left:30px;
-}
-.calendar_overflo .Today-post-detail{
-    margin-top: 16px !important;
-}
-.calendarmain {
-    margin-top: 24px;
-}
-.Today-post-detail .NavBtmSec ul{
-    flex-direction: column;
-}
-.Today-post-detail .NavBtmSec li{
-   width: 20px;
-}
-.Today-post-detail .PostHeaderInner :nth-child(1){
-    flex-direction: column;
-}
-.deletepost_btn.mydeltpostbtn{
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-}
-#postManagerCalendar .fc-header-toolbar .fc-left {
-    position: absolute;
-    left: 50%;
-    top: 113px;
-    transform: translate(-50%, -50%);
-}
-#postManagerCalendar .fc-header-toolbar .fc-center {
-    position: absolute;
-    left: 50%;
-    top: 65px;
-    transform: translate(-50%, -50%);
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-head .fc-today span {
-    width: 40px;
-    height: 38px;
-    padding: 6px; 
-}
-#postManagerCalendar .fc-view-container .fc-content-skeleton .fc-today span {
-    width: 15px;
-    margin: 5px;
-    height: 15px;
-}
-#postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-    padding-top:11px;
- }
+
+    /* emojionarea */
+    .emojionearea-picker {
+        left: -100px;
+        width: 100%;
+    }
+
+    .emojionearea.emojionearea-inline {
+        height: 28px !important;
+    }
+
+    /*--------sidebar Feedback----- */
+    .FeedTool {
+        display: none;
+        top: 305px;
+        width: 300px !important;
+        left: 30px;
+    }
+
+    .calendar_overflo .Today-post-detail {
+        margin-top: 16px !important;
+    }
+
+    .calendarmain {
+        margin-top: 24px;
+    }
+
+    .Today-post-detail .NavBtmSec ul {
+        flex-direction: column;
+    }
+
+    .Today-post-detail .NavBtmSec li {
+        width: 20px;
+    }
+
+    .Today-post-detail .PostHeaderInner :nth-child(1) {
+        flex-direction: column;
+    }
+
+    .deletepost_btn.mydeltpostbtn {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-left {
+        position: absolute;
+        left: 50%;
+        top: 113px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-center {
+        position: absolute;
+        left: 50%;
+        top: 65px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-head .fc-today span {
+        width: 40px;
+        height: 38px;
+        padding: 6px;
+    }
+
+    #postManagerCalendar .fc-view-container .fc-content-skeleton .fc-today span {
+        width: 15px;
+        margin: 5px;
+        height: 15px;
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 11px;
+    }
+
+    .weeksideview {
+        margin-top: 48px !important;
+    }
 }
 
 
@@ -1476,41 +1538,56 @@ flex-wrap: wrap;
 
     .Today-post-detail .NavBtmSec ul {
         flex-wrap: wrap;
-        }
-        .deletepost_btn.mydeltpostbtn{
-            gap: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-        .calendar_overflo .Today-post-detail{
-            margin-top: 17px !important;
-        }
-        #postManagerCalendar .fc-header-toolbar .fc-left {
-            position: absolute;
-            left: 50%;
-            top: 113px;
-            transform: translate(-50%, -50%);
-        }
-        #postManagerCalendar .fc-header-toolbar .fc-center {
-            position: absolute;
-            left: 50%;
-            top: 66px;
-            transform: translate(-50%, -50%);
-        }
-        #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-head .fc-today span {
-            width: 23px;
-            height: 23px;
-            padding: 6px;
-        }
-        #postManagerCalendar .fc-view-container .fc-content-skeleton .fc-today span {
-            width: 10px;
-            margin: 3px;
-            height: 10px;
-       
-        }
-        #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
-            padding-top:10px;
-         }
+    }
+
+    .deletepost_btn.mydeltpostbtn {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calendar_overflo .Today-post-detail {
+        margin-top: 17px !important;
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-left {
+        position: absolute;
+        left: 50%;
+        top: 113px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-header-toolbar .fc-center {
+        position: absolute;
+        left: 50%;
+        top: 66px;
+        transform: translate(-50%, -50%);
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-head .fc-today span {
+        width: 23px;
+        height: 23px;
+        padding: 6px;
+    }
+
+    #postManagerCalendar .fc-view-container .fc-content-skeleton .fc-today span {
+        width: 10px;
+        margin: 3px;
+        height: 10px;
+
+    }
+
+    #postManagerCalendar .fc-view-container .fc-agendaWeek-view .fc-today {
+        padding-top: 10px;
+    }
+
+    .weeksideview {
+        margin-top: 31px;
+    }
+
+    .calendar_overflo .todtresp {
+        margin-top: 33px !important;
+    }
 }
 
 /* media  query */

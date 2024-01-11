@@ -243,7 +243,8 @@
                     populateDropdown("minute_schedule", 0, 59, 1);
                     const amPmSelect = document.getElementById("ampm_schedule");
                     amPmSelect.disabled = false;
-                } else {
+                } 
+                else {
                     var currentTime = new Date();
                     var currentHour = currentTime.getHours();
                     var currentMinute = currentTime.getMinutes();
