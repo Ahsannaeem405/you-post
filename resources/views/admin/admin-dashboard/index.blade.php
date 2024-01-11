@@ -1140,56 +1140,45 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
             <script>
-  $(document).ready(function() {
-    function startTimer(duration, callback) {
-        var timer = duration;
-        var countdown = setInterval(function () {
-            if (timer > 0) {
-                $('#sendPasswordResetLink').text('Resend link in ' + timer + ' seconds');
-                localStorage.setItem('timer', timer); // Save remaining time in localStorage
-                timer--;
-            } else {
-                clearInterval(countdown);
-                $('#sendPasswordResetLink').text('Send Password Reset Link').removeAttr('disabled').css('pointer-events', 'auto');
-                localStorage.removeItem('timer'); // Remove timer from localStorage when it reaches 0
-                localStorage.removeItem('disabled'); // Remove disabled state from localStorage
-                if (callback) callback();
-            }
-        }, 1000);
-    }
+$(document).ready(function() {
+    $("#sendPasswordResetLink").on("click", function() {
+        sendPasswordResetLink();
+    });
+});
 
-    $('#sendPasswordResetLink').on('click', function (e) {
-                        e.preventDefault();
-                        var userId = $('#user_id').val();
-                        var link = $(this);                       
-                        var storedTimer = localStorage.getItem('timer');
-                    if (storedTimer) {
-                        // Resume the timer from the stored value
-                        startTimer(parseInt(storedTimer), function () {
-                            // Additional callback logic if needed
-                        });
-                    }  else {
-                // Start a new timer
-                link.attr('disabled', true).css('pointer-events', 'none');
-                localStorage.setItem('disabled', true); // Save disabled state in localStorage
-                startTimer(60, function () {
-                    link.removeAttr('disabled').css('pointer-events', 'auto');
-                });
-            }
+function sendPasswordResetLink() {   
+    $("#sendPasswordResetLink").attr('disabled', true).css('pointer-events', 'none');    
+    // $("#timer").show();  
+    // startTimer(120,'send');
 
-                        $.ajax({
+    saveTimeInDatabase();   
+   
+}
+
+function saveTimeInDatabase() {   
+    var userId = $('#user_id').val();
+    var currentTime = new Date();
+        var formattedTime = currentTime.toLocaleTimeString();
+                    $.ajax({
                             url: "{{ route('password.sendlink') }}",
                             type: 'POST',
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
-                            data: { 'user_id': userId },
+                            data: { 
+                                'user_id': userId,
+                                // 'formattedTime': formattedTime,
+
+                               
+                            },
                             beforeSend: function () {
                                 // Additional code if needed before sending the AJAX request
                             },
                             success: function (response) {
                                 $('#editModal').modal('hide');
-                                toastr.success(response.message);
+                                 response.resend_time; 
+                                
+                                 toastr.success(response.message);
                             },
                             error: function (error) {
                                 toastr.error(error.responseJSON.error);
@@ -1197,18 +1186,11 @@
                                 link.removeClass('disabled');
                                 $('#timer').hide();
                             }
-                        });
+                       
                       });
-                      var storedTimer = localStorage.getItem('timer');
-                      var isDisabled = localStorage.getItem('disabled');
-                    if (storedTimer && isDisabled) {
-                        // Resume the timer and set the disabled state on page load
-                        $('#sendPasswordResetLink').attr('disabled', true).css('pointer-events', 'none');
-                        startTimer(parseInt(storedTimer), function () {
-                            // Additional callback logic if needed
-                        });
-                    }
-                  });
+}
+
+
 
 
                 // Handle click event for the edit link
@@ -1226,22 +1208,60 @@
                         method: 'GET',
                         success: function (data) {
                             $('#edit_name').val(data.name);
-                            $('#edit_email').val(data.email);
-                            // $('#old_password').val(data.password);
+                            $('#edit_email').val(data.email);                           
                             $('#user_id').val(data.id);
+
+                            var currentTime = new Date();
+                            var utcTimeString = currentTime.toUTCString();
+                            var dbTimeString = data.resend_time;                         
+                            var dateObject = new Date(dbTimeString);
+                            var utcString = dateObject.toUTCString();   
+                            var time1 = new Date(utcTimeString);
+                            var time2 = new Date(utcString);
+                            var timeDifferenceInSeconds = Math.abs((time2 - time1) / 1000); 
+                            // alert(timeDifferenceInSeconds);
+                            if (timeDifferenceInSeconds < 60) {
+                                // $('#timer').text('Resend link available in ' + timeDifferenceInSeconds + ' seconds');
+                                $("#timer").show();
+                                $("#sendPasswordResetLink").attr('disabled', true).css('pointer-events', 'none');    
+                                startTimer(timeDifferenceInSeconds,'edit');
+                            } else {
+                               
+                                // startTimer(timeDifferenceInSeconds,'edit');
+                                $("#sendPasswordResetLink").attr('disabled', false).css('pointer-events', 'auto');    
+
+
+                            }
 
 
                         }
                     });
                 });
 
-                $(document).on('click','.show-link',function (e) {
+    function startTimer(duration, text) {       
+        // var timer =  0 ;
+                //   if(text == 'edit'){
+                //      timer =   duration ;
+                //   }else{
+                     timer =  duration - 60 ;
+                //   }        
+    //  alert(timer);
+        var countdown = setInterval(function () {
+            if (timer > 0 && timer<= 60) {
+                $('#sendPasswordResetLink').text('Resend link in ' + timer + ' seconds');               
+                timer--;
+            } else {               
+                $('#sendPasswordResetLink').text('Send Password Reset Link').removeAttr('disabled').css('pointer-events', 'auto');
+                $("#timer").hide();
+                // clearInterval(countdown);  // Clear the interval when timer exceeds 60 seconds
+            }
+        }, 1000);
+    }
 
+     $(document).on('click','.show-link',function (e) {
                     e.preventDefault();
-
                     // Get the record ID from the data attribute
                     var recordId = $(this).data('record-id');
-
                     // Fetch record data using AJAX
                     $.ajax({
                         url: '/admin/get-accounts/' + recordId, // Define a route to fetch record data
