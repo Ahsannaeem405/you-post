@@ -3954,7 +3954,7 @@ var currentMinute = currentTime.getMinutes();
  if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
     if(currentHour === 0){
         populateOptions("hour", 1, 12, 1);
-        alert("sd");
+        // alert("sd");
     //     $("#hour option[value='12']").prop('selected', true);
     // $("#hour").val('12');
     //     $("#hour").trigger("change");
@@ -3990,7 +3990,7 @@ if (currentHour < 12 ) {
 </script>
 <script>
     $(document).ready(function () {
-        alert()
+        // alert()
     $(document).on('click', '.fc-agendaWeek-button', function () {
         $('.calendarmain').addClass('weeksideview');
         $('.Today-post-detail').addClass('todtresp');
