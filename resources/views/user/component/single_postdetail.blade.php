@@ -6,7 +6,7 @@
 
 @endphp
 <div class="col-md-12 the_preview_card ">
-    <div class="MainMobileview MainMobileview2 mt-1 FacebookWrap" style="display: none;">
+    <div class="MainMobileview MainMobileview2 mt-1 FacebookWrap innerprev_sidebar" style="display: none;">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
                 {{-- <img src="{{ asset('images/fbposticon.png') }}" alt="" class="mr-1">  --}}
