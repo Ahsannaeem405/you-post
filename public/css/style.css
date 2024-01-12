@@ -1832,7 +1832,7 @@ button {
     border: 0.5px solid #bfbfbf;
     cursor: pointer;
     margin: auto;
-    width: 90%;
+    width: 100%;
 }
 
 .publishedpost {
@@ -2370,6 +2370,9 @@ height:34px;
 }
 .weeksideview{
     margin-top: 75px;
+}
+.innerprev_sidebar{
+    border-radius: 5px;
 }
 /*------------------------------------------------ feddback div end  sidebar------------------------------- */
 /*calendar posts structure */
