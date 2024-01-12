@@ -3929,6 +3929,7 @@ function openEventModal(year, month, day) {
 }
 </script>
 <script>
+  
 function populateOptions(selectId, start, end, step) {
 
     const select = document.getElementById(selectId);
@@ -3946,18 +3947,24 @@ function populateOptions(selectId, start, end, step) {
 
 }
 // Populate hour options (01 to 12)
-
+$(document).ready(function () {
 var currentTime = new Date();
 var currentHour = currentTime.getHours();
 var currentMinute = currentTime.getMinutes();
 
  if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
     if(currentHour === 0){
+        // alert();
         populateOptions("hour", 1, 12, 1);
-        // alert("sd");
-    //     $("#hour option[value='12']").prop('selected', true);
-    // $("#hour").val('12');
-    //     $("#hour").trigger("change");
+        var min = document.getElementById('hour');
+    console.log('----' + min.value);
+    min.value = '11';
+    console.log(min.value);
+
+    $("#hour").val('12');
+    $("#hour").trigger("change")
+
+
     }
     else{
         populateOptions("hour", (currentHour%12 || 12), 12, 1);
@@ -3987,6 +3994,7 @@ if (currentHour < 12 ) {
     amPmSelect.value = "PM";
     amPmSelect.disabled = true; 
 }
+});
 </script>
 <script>
     $(document).ready(function () {

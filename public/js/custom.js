@@ -29,16 +29,17 @@ $("#ampm").on("change", function () {
            
             start = (currentHour) % 12 || 12;
             if(currentHour===0){
-                // alert(currentHour);
-                start = 0;
-                ("#hour option[value='12']").prop('selected', true);
-                populateOptions("minute",current_minutes,current_minutes,1);
-               
+                start = 1;
+                populateOptions("minute",current_minutes,59,1);
+                populateOptions("hour", (currentHour % 12 || 12) ,12, 1); 
+
+              
             }
             
             current_minutes = currentDate.getMinutes();
             
-        } else {
+        } 
+        else {
             start = 1;
             current_minutes = 0;
         }
@@ -83,8 +84,9 @@ $("#hour").on("change", function () {
         populateOptions("minute", 0, 59, 1);
     }
     else{
-        if(valampm === ampmValue && selectedDate.toDateString() === currentDate.toDateString()){;
-        populateOptions("minute", current_minutes, 59, 1);
+        if(valampm === ampmValue && selectedDate.toDateString() === currentDate.toDateString()){
+            populateOptions("minute", (currentHour === selectedHour)?current_minutes:0, 59, 1);
+        // populateOptions("minute", current_minutes, 59, 1);
         }else{
         populateOptions("minute", 0, 59, 1);
         }
@@ -551,7 +553,6 @@ $(document).ready(function () {
             $('.emoji_show').val('');
         });
         $(document).on('click', '.emojibtn', function () {
-            // alert("asas");
             var emoji = $(this).closest('.emoji_show');
             // $(".emojionearea-button-close").trigger('click');
             $(".wizard-required").trigger('focus');

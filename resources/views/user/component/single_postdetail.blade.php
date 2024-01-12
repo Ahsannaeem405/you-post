@@ -134,7 +134,7 @@
             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
         </div>
     </div>
-    <div class="MainMobileview MainMobileview2 mt-1 LinkedinWrap" style="display: none;">
+    <div class="MainMobileview MainMobileview2 mt-1 LinkedinWrap innerprev_sidebar" style="display: none;">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
                 {{-- <img src="{{ asset('images/linkedinlogo.png') }}" alt="" class="mr-1">  --}}
@@ -265,7 +265,7 @@
             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
         </div>
     </div>
-    <div class="MainMobileview MainMobileview2 mt-1 TwitterWrap" style="display: none;">
+    <div class="MainMobileview MainMobileview2 mt-1 TwitterWrap innerprev_sidebar" style="display: none;">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
                 @if($post->plateform === 'Twitter')
@@ -383,7 +383,7 @@
             <span class="xmark"><i class="fa-solid fa-xmark"></i></span>
         </div>
     </div>
-    <div class="MainMobileview MainMobileview2 mt-1 InstagramWrap" style="display: none;">
+    <div class="MainMobileview MainMobileview2 mt-1 InstagramWrap innerprev_sidebar" style="display: none;">
         <div class="PostHeader d-flex justify-content-between align-items-center">
             <h5 class="HeadingTop">
                 @if($post->plateform === 'Instagram')
