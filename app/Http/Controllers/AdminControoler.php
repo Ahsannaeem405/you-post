@@ -78,13 +78,20 @@ class AdminControoler extends Controller
     {
 
         $user = User::find($request->user_id);
+        $currentTime = now(); 
         if ($user) {
             $token = Password::getRepository()->create($user);
             $user->update([
                 'token' => $token,
+                'resend_time' => $currentTime,
             ]);
             $user->sendPasswordResetNotification($token);
-            return response()->json(['message' => 'Password reset link sent successfully.']);
+            return response()->json(
+                [
+                'message' => 'Password reset link sent successfully.',
+                'resend_time' => $currentTime,
+
+            ]);
         } else {
             return response()->json(['error' => 'User not found.'], 404);
         }
