@@ -1149,7 +1149,7 @@ $(document).ready(function() {
 function sendPasswordResetLink() {   
     $("#sendPasswordResetLink").attr('disabled', true).css('pointer-events', 'none');    
     // $("#timer").show();  
-    // startTimer(120,'send');
+    startTimer(120,'send');
 
     saveTimeInDatabase();   
    
@@ -1218,42 +1218,39 @@ function saveTimeInDatabase() {
                             var utcString = dateObject.toUTCString();   
                             var time1 = new Date(utcTimeString);
                             var time2 = new Date(utcString);
-                            var timeDifferenceInSeconds = Math.abs((time2 - time1) / 1000); 
-                            // alert(timeDifferenceInSeconds);
+                            var timeDifferenceInSeconds = Math.abs((time2 - time1) / 1000);   
+                            // alert(timeDifferenceInSeconds);                         
                             if (timeDifferenceInSeconds < 60) {
-                                // $('#timer').text('Resend link available in ' + timeDifferenceInSeconds + ' seconds');
                                 $("#timer").show();
                                 $("#sendPasswordResetLink").attr('disabled', true).css('pointer-events', 'none');    
                                 startTimer(timeDifferenceInSeconds,'edit');
-                            } else {
-                               
-                                // startTimer(timeDifferenceInSeconds,'edit');
+                            } else {                               
+                                startTimer(timeDifferenceInSeconds,'edit');
                                 $("#sendPasswordResetLink").attr('disabled', false).css('pointer-events', 'auto');    
-
-
                             }
-
-
                         }
                     });
                 });
 
-    function startTimer(duration, text) {       
-        // var timer =  0 ;
-                //   if(text == 'edit'){
-                //      timer =   duration ;
-                //   }else{
+     var countdown; 
+    function startTimer(duration, text) {        
+         var timer =  0 ;
+                 if(text == 'edit'){
+                      timer =  60 - duration ;
+                   }else{
                      timer =  duration - 60 ;
-                //   }        
-    //  alert(timer);
-        var countdown = setInterval(function () {
+                  }       
+     
+     clearInterval(countdown);  
+        $("#timer").show();
+         countdown = setInterval(function () {
             if (timer > 0 && timer<= 60) {
                 $('#sendPasswordResetLink').text('Resend link in ' + timer + ' seconds');               
                 timer--;
             } else {               
                 $('#sendPasswordResetLink').text('Send Password Reset Link').removeAttr('disabled').css('pointer-events', 'auto');
                 $("#timer").hide();
-                // clearInterval(countdown);  // Clear the interval when timer exceeds 60 seconds
+                clearInterval(countdown);  
             }
         }, 1000);
     }
