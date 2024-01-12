@@ -3952,11 +3952,22 @@ var currentHour = currentTime.getHours();
 var currentMinute = currentTime.getMinutes();
 
  if ( currentHour<12 || (currentHour === 11 &&  currentMinute === 59)) {
+    if(currentHour === 0){
+        populateOptions("hour", 1, 12, 1);
+        alert("sd");
+    //     $("#hour option[value='12']").prop('selected', true);
+    // $("#hour").val('12');
+    //     $("#hour").trigger("change");
+    }
+    else{
         populateOptions("hour", (currentHour%12 || 12), 12, 1);
+    }
 
- }else{
+ }
+ 
+else{
     if ( currentHour>12){
-        populateOptions("hour", (currentHour%12 || 12), 12, 1);
+        populateOptions("hour", (currentHour%12 || 12), 11, 1);
 
     }
     else{
@@ -3979,6 +3990,7 @@ if (currentHour < 12 ) {
 </script>
 <script>
     $(document).ready(function () {
+        alert()
     $(document).on('click', '.fc-agendaWeek-button', function () {
         $('.calendarmain').addClass('weeksideview');
         $('.Today-post-detail').addClass('todtresp');
