@@ -36,7 +36,7 @@ class BugMail extends Mailable
         // $path = $this->details['imagePath'];
         // $hardcodedImagePath = public_path($path);
         
-        return $this->from(auth()->user()->email, auth()->user()->name)
+        return $this->from('support@youpost.social','Youpost')
         ->subject($this->details['subject'])
         ->view('email.bugEmail');
           
