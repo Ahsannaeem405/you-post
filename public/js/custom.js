@@ -22,10 +22,20 @@ $("#ampm").on("change", function () {
     var currentDate = new Date();
     let start = 1;
     let currentHour = currentDate.getHours();
+   
     let current_minutes = currentDate.getMinutes();
     if (currentHour >= 0 && currentHour < 12) {
         if (ampmValue === 'AM') {
+           
             start = (currentHour) % 12 || 12;
+            if(currentHour===0){
+                // alert(currentHour);
+                start = 0;
+                ("#hour option[value='12']").prop('selected', true);
+                populateOptions("minute",current_minutes,current_minutes,1);
+               
+            }
+            
             current_minutes = currentDate.getMinutes();
             
         } else {
@@ -48,11 +58,12 @@ $("#ampm").on("change", function () {
 $("#hour").on("change", function () {
     var selectedHour = parseInt($(this).val(), 10);
     var ampmValue = $("#ampm").val();
-    var ampmValue2 = ampmValue;
+   
 
     var currentDate = new Date();
     var currentHour = currentDate.getHours();
     var current_minutes = currentDate.getMinutes();
+
     var valampm=(currentHour >= 12) ? "PM" : "AM";
     if(currentHour > 12){
         currentHour= currentHour%12;
@@ -60,8 +71,11 @@ $("#hour").on("change", function () {
     if (selectedHour === 12) {
         populateOptions("minute", (currentHour === 12)?current_minutes:0, 59, 1);
         // If the selected hour is 12, toggle AM/PM based on the current time
-        if(valampm !== "PM"){
-        ampmValue = (ampmValue === "AM") ? "PM" : "AM";
+        if(valampm !== "PM"){    
+            if(ampmValue != 'PM'){
+                ampmValue = (ampmValue === "AM") ? "PM" : "AM";
+            }
+
         }  
     } 
     else if (selectedHour > currentHour) {

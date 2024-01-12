@@ -127,9 +127,10 @@ class UserController extends Controller
             'logPath' => $logPath,
         ];
         $recipients = [
-            'michelle@roifirm.com',
+            // 'michelle@roifirm.com',
             'umer@browntech.co',
-            'michelle.mckay@tangent.com',
+            'raja.waleed21@gmail.com'
+            // 'michelle.mckay@tangent.com',
         ];
 
         \Mail::to($recipients)->send(new \App\Mail\BugMail($details));
