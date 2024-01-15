@@ -100,8 +100,10 @@ class UserController extends Controller
         $instapages = $response['linkedin'];
         $all_pages = $response['facebook'];
         $all_pages_for_insta = [];
+        $youpost_content=  $user->account->youpost_content;
+     
 
-        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms'));
+        return view('user.index', compact('allPosts', 'accounts', 'all_pages', 'all_pages_for_insta', 'stattistics', 'instapages', 'todayPost', 'platforms','youpost_content'));
 
     }
 
@@ -748,6 +750,12 @@ class UserController extends Controller
     public function update_user_platforms(Request $req)
     {
         $account = Account::find($req->account_id);
+        $youpost_content =  $req->youpost_content;
+        $facebook_content =  $req->facebook_content;
+        $instagram_content =  $req->instagram_content;
+        $twitter_content =  $req->twitter_content;
+        $linkedin_content =  $req->linkedin_content;
+
 
         if ($req->plateform_val != null) {
             if (in_array('Facebook', $req->plateform_val) && ($account->fb_access_token == null || $account->fb_page_token == null)) {
@@ -766,6 +774,11 @@ class UserController extends Controller
         }
 
         $req->plateform_val ? $account->platforms = $req->plateform_val : $account->platforms = [];
+        $account->youpost_content = $youpost_content;
+        $account->fb_content = $facebook_content;
+        $account->ins_content = $instagram_content;
+        $account->twitter_content = $twitter_content;
+        $account->linked_content = $linkedin_content;
         $account->update();
 
         $response = ['message' => 'success'];

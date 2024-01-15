@@ -723,6 +723,12 @@
 
         var account_id = $(this).data('account');
         var all_plateform = $("input[name='plateform[]']:checked");
+        var youpost_content = $('#youpost_content').val();
+        var facebook_content = $('#facebook_content').val();
+        var instagram_content = $('#instagram_content').val();
+        var twitter_content = $('#twitter_content').val();
+        var linkedin_content = $('#linkedin_content').val();
+
         var plateform_val = [];
         all_plateform.each(function () {
             plateform_val.push($(this).val());
@@ -732,7 +738,14 @@
             url: "{{ url('update_user_platforms') }}",
             data: {
                 'plateform_val': plateform_val,
-                'account_id': account_id
+                'account_id': account_id,
+                'youpost_content': youpost_content,
+                'facebook_content': facebook_content,
+                'instagram_content': instagram_content,
+                'twitter_content': twitter_content,
+                'linkedin_content': linkedin_content
+
+
             },
             success: function (response) {
                 window.location.reload();

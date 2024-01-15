@@ -863,7 +863,7 @@ background-position:100% 100% !important;
                                                 <textarea onkeyup="updateDiv(this)" onchange="updateDiv_other(this)"
                                                     name="youpost_content" id="youpost_content" cols="30" rows="10"
                                                     class="form-control wizard-required emojiarea" data-id="youpost_error"
-                                                    placeholder="Write your content for all platforms...">{{old('youpost_content')}}</textarea>
+                                                    placeholder="Write your content for all platforms...">@if(isset(auth()->user()->account->youpost_content)){{auth()->user()->account->youpost_content}}@endif</textarea>
                                                     <p id="youpost_char_count" class="charCount charCountYou"></p>
                                                 <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -958,7 +958,7 @@ background-position:100% 100% !important;
                                                     name="facebook_content" id="facebook_content" cols="30" rows="10" maxlength="63206"
                                                     class="form-control wizard-required emojiarea"
                                                     data-id="facebok_error"
-                                                    placeholder="Write your post...">{{old('facebook_content')}}</textarea>
+                                                    placeholder="Write your post...">@if(isset(auth()->user()->account->fb_content)){{auth()->user()->account->fb_content}}@elseif(auth()->user()->account->youpost_content){{auth()->user()->account->youpost_content}}@endif</textarea>
                                                     <p id="fb_char_count" class="charCount charCountfb"></p>
                                                 <div class="expand_icon d-none"><img src="{{asset('')}}images/Expand.png"
                                                         class="img-fluid" alt="" /></div>
@@ -1053,7 +1053,7 @@ background-position:100% 100% !important;
                                                 <textarea onkeyup="updateDiv(this)" onchange="suggested_text(this)"
                                                     name="instagram_content" id="instagram_content" cols="30" rows="10" maxlength="2200"
                                                     class="form-control wizard-required emojiarea" data-id="insta_error"
-                                                    placeholder="Write your post...">{{old('instagram_content')}}</textarea>
+                                                    placeholder="Write your post...">@if(isset(auth()->user()->account->ins_content)) {{auth()->user()->account->ins_content}} @elseif(auth()->user()->account->youpost_content){{auth()->user()->account->youpost_content}} @endif</textarea>
                                                     <p id="insta_char_count" class="charCount charCountinst"></p>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
@@ -1136,7 +1136,7 @@ background-position:100% 100% !important;
                                                     id="twitter_content" cols="30" rows="10" data-id="twitter_error"
                                                     class="form-control wizard-required emojiarea mention"
                                                     placeholder="Write your post..."
-                                                    plt-name="fb">{{old('twitter_content')}}</textarea>
+                                                    plt-name="fb">@if(isset(auth()->user()->account->twitter_content)){{auth()->user()->account->twitter_content}} @elseif(auth()->user()->account->youpost_content){{auth()->user()->account->youpost_content}}@endif</textarea>
                                                     <p id="twitter_char_count" class="charCount charCounttwt"></p>
 
                                                 <div id="dropdown" class="dropdown-content-search"></div>
@@ -1222,7 +1222,7 @@ background-position:100% 100% !important;
                                                     name="linkedin_content" id="linkedin_content" cols="30" rows="10" maxlength="3000"
                                                     data-id="link_error"
                                                     class="Customemojiarea form-control wizard-required emojiarea mention "
-                                                    placeholder="Write your post...">{{old('linkedin_content')}}</textarea>
+                                                    placeholder="Write your post...">@if(isset(auth()->user()->account->linked_content)){{auth()->user()->account->linked_content}}@elseif(auth()->user()->account->youpost_content){{auth()->user()->account->youpost_content}}@endif</textarea>
                                                     <p id="linkedin_char_count" class="charCount charCountlink"></p>
                                                 <div id="dropdown" class="dropdown-content-search"></div>
                                             </div>
@@ -1562,7 +1562,12 @@ background-position:100% 100% !important;
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title mobprev_container">
-                                        <span id="mypostresult_youpost" class="mypostresult mob_prevcontent">Write your content for all platforms...</span>
+                                        <span id="mypostresult_youpost" class="mypostresult mob_prevcontent">
+                                            @if(isset(auth()->user()->account->youpost_content)) {{ auth()->user()->account->youpost_content }}
+                                            @else
+                                            Write your content for all platforms...
+                                            @endif
+                                        </span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1680,7 +1685,17 @@ background-position:100% 100% !important;
                                     </div>
                                     <p class="m-0"></p>
                                     <div class="Mobcart_title mobprev_container">
-                                        <span id="mypostresult_fb" class="mypostresult mob_prevcontent">Write your post...</span>
+                                        <span id="mypostresult_fb" class="mypostresult mob_prevcontent">
+                                            
+                                            @if(isset(auth()->user()->account->fb_content)) 
+                                            {{ auth()->user()->account->fb_content }}
+                                            @elseif(auth()->user()->account->youpost_content)
+                                            {{ auth()->user()->account->youpost_content }}
+                                            @else
+                                            Write your post...
+                                            @endif
+                                        
+                                        </span>
                                         <span class="icon icon-privacy text-primary" id="mynameresult"></span>
                                     </div>
                                     <div id="selectedValues"></div>
@@ -1818,9 +1833,15 @@ background-position:100% 100% !important;
                                     </div>
                                     <div class="col-md-12" style="height:56px">
                                         <div class="Mobcart_title mobprev_container">
-                                            <span id="mypostresult_insta" class="mypostresult mob_prevcontent" style="color:#000;">Write
-                                                your
-                                                post...</span>
+                                            <span id="mypostresult_insta" class="mypostresult mob_prevcontent" style="color:#000;">
+                                            @if(isset(auth()->user()->account->ins_content)) 
+                                            {{ auth()->user()->account->ins_content }}
+                                            @elseif(auth()->user()->account->youpost_content)
+                                            {{ auth()->user()->account->youpost_content }}
+                                            @else
+                                            Write your post...
+                                            @endif
+                                            </span>
                                             <span class="icon icon-privacy text-primary" id="mynameresult_insta"></span>
                                         </div>
                                         <div id="selectedValues"></div>
@@ -1880,7 +1901,15 @@ background-position:100% 100% !important;
                                         </div>
                                     </div>
                                     <div class="twitter_text pb-1 mobprev_container">
-                                        <span id="mypostresult_twitter" class="mypostresult mob_prevcontent">Write your post...</span>
+                                        <span id="mypostresult_twitter" class="mypostresult mob_prevcontent">
+                                        @if(isset(auth()->user()->account->twitter_content)) 
+                                            {{ auth()->user()->account->twitter_content }}
+                                            @elseif(auth()->user()->account->youpost_content)
+                                            {{ auth()->user()->account->youpost_content }}
+                                            @else
+                                            Write your post...
+                                            @endif
+                                        </span>
                                         <span id="mynameresult_twitter" class="icon icon-privacy text-primary"></span>
 
                                     </div>
@@ -1987,7 +2016,15 @@ background-position:100% 100% !important;
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="linkedin_post mobprev_container">
-                                        <span id="mypostresult_linkedin" class="mypostresult mob_prevcontent">Write your post...</span>
+                                        <span id="mypostresult_linkedin" class="mypostresult mob_prevcontent">
+                                        @if(isset(auth()->user()->account->linked_content)) 
+                                            {{ auth()->user()->account->linked_content }}
+                                            @elseif(auth()->user()->account->youpost_content)
+                                            {{ auth()->user()->account->youpost_content }}
+                                            @else
+                                            Write your post...
+                                            @endif
+                                        </span>
                                         <span id="mynameresult_linkedin" class="icon icon-privacy text-primary"></span>
 
                                     </div>
