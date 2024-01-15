@@ -3984,7 +3984,6 @@ function populateOptions(selectId, start, end, step) {
 
 }
 // Populate hour options (01 to 12)
-$(document).ready(function () {
 var currentTime = new Date();
 var currentHour = currentTime.getHours();
 var currentMinute = currentTime.getMinutes();
@@ -3999,7 +3998,7 @@ var currentMinute = currentTime.getMinutes();
     console.log(min.value);
 
     $("#hour").val('12');
-    $("#hour").trigger("change")
+    // $("#hour").trigger("change")
 
 
     }
@@ -4015,7 +4014,7 @@ else{
 
     }
     else{
-        populateOptions("hour",1,12, 1);
+        populateOptions("hour", 1,12, 1);
 
     }
 
@@ -4031,7 +4030,6 @@ if (currentHour < 12 ) {
     amPmSelect.value = "PM";
     amPmSelect.disabled = true; 
 }
-});
 </script>
 <script>
     $(document).ready(function () {
