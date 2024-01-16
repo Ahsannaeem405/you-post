@@ -693,7 +693,7 @@ input field  */
 <script>
 $(document).ready(function(){
     $('.delete_account').tooltip({
-        title: 'Organization Name refers to how we categorize your social accounts for seamless organization.<br><br>In your trial account, you can create up to 10 organizations, each capable of connecting to all four major social platforms.',
+        title: 'Organization Name refers to how we categorize your social accounts.<br><br>In your trial account, you can create up to 10 organizations, each capable of connecting to all four major social platforms.',
         html: true,
         placement: 'top'
     });

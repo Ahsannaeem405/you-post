@@ -41,7 +41,6 @@ body * {
     <h2>Privacy Policy</h2>
 </div>
 <div class="inner-content">
-    <h1>YouPost Privacy Policy</h1>
     <p>Last Updated: December 18, 2023</p>
     <p>Thank you for using YouPost ("we," "us," or "our").</p>
     <h2>Introduction:</h2>

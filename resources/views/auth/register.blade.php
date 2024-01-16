@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="mb-2 col-md-6">
+                                    <div class="mb-2 col-md-12">
                                         <label for="email">Email</label>
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
                                         @error('email')
@@ -82,10 +82,6 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
-                                    <div class="mb-2 col-md-6">
-                                        <label for="date">Date of birth (MM/DD/YY)</label>
-                                        <input type="date" name="dob" value="{{ old('dob') }}" id="date" class="form-control" placeholder="Date of birth (MM/DD/YY)" required>
                                     </div>
                                 </div>
                                 <div class="row">

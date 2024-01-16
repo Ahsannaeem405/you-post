@@ -197,7 +197,7 @@ toastr.error("Invalid or expired OTP.", "Error");
                                     <h6>Thank you, <br>for registering with YouPost!
                                     </h6>
                                     <div class="verfy_cont"> <span>Please verify your email to complete the registration process.
-                                        </span> <small>The verification link will expire in 72 hours.</small><br> {{auth()->user()->email}} </div>
+                                        </span> <span>The verification link will expire in 72 hours.</span><br> {{auth()->user()->email}} </div>
 
                                     @error('verification_code')
                                     <span class="invalid-feedback" role="alert">

@@ -899,7 +899,7 @@ body.dark .home .text {
         <div class="Tool-body">
             <div class="Tool-content">
                 <span>
-                    Got thoughts to share? Report issues, highlight what you love, or suggest
+                    Have thoughts to share? Report issues, highlight what you love, or suggest
                     changes
                     here! Your input shapes the experience.
                 </span><img src="{{asset('images/planicon.png')}}" class=""/>

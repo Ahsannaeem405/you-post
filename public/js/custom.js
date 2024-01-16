@@ -867,7 +867,7 @@ $(document).ready(function () {
         $('#media_type_youpost').val('image');
         if (!dimention) {
 
-            $('#file_error_youpost').removeClass('d-none').text(dimention_error)
+            $('#file_error_youpost').addClass('d-none').text(dimention_error)
         } else {
 
             $('#file_error_youpost').addClass('d-none')
@@ -882,7 +882,7 @@ $(document).ready(function () {
         $('#media_type_fb').val('image');
         if (!dimention) {
 
-            $('#file_error_fb').removeClass('d-none').text(dimention_error)
+            $('#file_error_fb').addClass('d-none').text(dimention_error)
         } else {
 
             $('#file_error_fb').addClass('d-none')
@@ -897,7 +897,7 @@ $(document).ready(function () {
         $("#image_or_video_insta").parent().append(img_con_ins);
         $('#media_type_insta').val('image');
         if (!dimention) {
-            $('#file_error_insta').removeClass('d-none').text(dimention_error)
+            $('#file_error_insta').addClass('d-none').text(dimention_error)
         } else {
             $('#file_error_insta').addClass('d-none')
         }
@@ -910,7 +910,7 @@ $(document).ready(function () {
         $("#image_or_video_linkedin").parent().append(img_con_lin);
         $('#media_type_linkedin').val('image');
         if (!dimention) {
-            $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
+            $('#file_error_linkedin').addClass('d-none').text(dimention_error)
         } else {
             $('#file_error_linkedin').addClass('d-none')
         }
@@ -924,7 +924,7 @@ $(document).ready(function () {
         $("#image_or_video_twiter").parent().append(img_con_tw);
         $('#media_type_twitter').val('image');
         if (!dimention) {
-            $('#file_error_twiiter').removeClass('d-none').text(dimention_error)
+            $('#file_error_twiiter').addClass('d-none').text(dimention_error)
         } else {
             $('#file_error_twiiter').addClass('d-none')
         }
@@ -978,7 +978,7 @@ $(document).ready(function () {
 
                     if (!dimention) {
 
-                        $('#file_error_fb').removeClass('d-none').text(dimention_error)
+                        $('#file_error_fb').addClass('d-none').text(dimention_error)
                     } else {
 
                         $('#file_error_fb').addClass('d-none')
@@ -998,7 +998,7 @@ $(document).ready(function () {
 
 
                     if (!dimention) {
-                        $('#file_error_insta').removeClass('d-none').text(dimention_error)
+                        $('#file_error_insta').addClass('d-none').text(dimention_error)
                     } else {
                         $('#file_error_insta').addClass('d-none')
                     }
@@ -1017,7 +1017,7 @@ $(document).ready(function () {
                     $('#link_video').val('');
 
                     if (!dimention) {
-                        $('#file_error_linkedin').removeClass('d-none').text(dimention_error)
+                        $('#file_error_linkedin').addClass('d-none').text(dimention_error)
                     } else {
                         $('#file_error_linkedin').addClass('d-none')
                     }
@@ -1034,7 +1034,7 @@ $(document).ready(function () {
                     $("#image_or_video_twiter").parent().find('.cross_img_con_video').remove();
                     $('#twitter_video').val('');
                     if (!dimention) {
-                        $('#file_error_twiiter').removeClass('d-none').text(dimention_error)
+                        $('#file_error_twiiter').addClass('d-none').text(dimention_error)
                     } else {
                         $('#file_error_twiiter').addClass('d-none')
                     }

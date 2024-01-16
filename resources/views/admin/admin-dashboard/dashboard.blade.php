@@ -142,10 +142,10 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                              <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/fbicon.png')}}" alt=" Logo"></div>
+                        <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/accountnoattach.png')}}" alt=" Logo"></div>
                               <div class="count-content">
-                                <h2 class=''>Facebook Accounts</h2>
-                                <p class='m-0'>{{$facebookCount}}</p>
+                              <h2 class=''>Organizations With No Platform Attached</h2>
+                              <p class='m-0'>{{$acWithoutPlateFormAttached}}</p>
                               </div>
                             </div>
                         </div>
@@ -178,10 +178,11 @@ active
                         </div>
                         <div class="col-md-3 col-sm-6  tile_stats_count">
                         <div class="title_stats_count-inner">
-                        <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/accountnoattach.png')}}" alt=" Logo"></div>
+                        <div class="count-icon"><img class='dash-img' src="{{asset('assets/images/writingapp/fbicon.png')}}" alt=" Logo"></div>
                               <div class="count-content">
-                                <h2 class=''>Organizations With No Platform Attached</h2>
-                                <p class='m-0'>{{$acWithoutPlateFormAttached}}</p>
+                              <h2 class=''>Facebook Accounts</h2>
+                              <p class='m-0'>{{$facebookCount}}</p>
+
                               </div>
 </div>
                         </div>
